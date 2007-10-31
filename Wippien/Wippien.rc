@@ -1,0 +1,1312 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+#include "versionno.h"
+#ifdef _APPUPDLIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
+#endif
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
+STYLE WS_POPUP | WS_CAPTION
+CAPTION "Download more skins from Wippien website"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",ID_CANCEL,203,245,50,17
+    LTEXT           "Click on the skin to download and install it.",
+                    IDC_STATIC,2,246,134,8
+    CONTROL         "",IDC_EXPLORER1,"{8856F961-340A-11D0-A96B-00C04FD705A2}",
+                    WS_TABSTOP,0,0,253,245
+    CONTROL         "",IDC_EXPLORERGETGIF,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",NOT WS_VISIBLE | 
+                    WS_TABSTOP,173,240,27,20
+    CONTROL         "",IDC_EXPLORERGETSWF,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",NOT WS_VISIBLE | 
+                    WS_TABSTOP,137,242,27,20
+END
+
+IDD_SETTINGS_JID DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "I need new Jabber account",IDC_RADIO2_JID,"Button",
+                    BS_AUTORADIOBUTTON,5,65,113,10
+    CONTROL         "I have existing Jabber account",IDC_RADIO1_JID,"Button",
+                    BS_AUTORADIOBUTTON,128,65,113,10
+    EDITTEXT        IDC_EDIT_JID,46,77,182,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2_JID,46,90,74,12,ES_PASSWORD
+    PUSHBUTTON      "Test Account",IDC_TEST_JID,122,90,63,13
+    EDITTEXT        IDC_EDIT_JID3,46,109,92,12
+    EDITTEXT        IDC_EDIT_JID4,46,122,40,12,ES_NUMBER
+    PUSHBUTTON      "Search",IDB_BUTTON_JID1,226,25,35,26
+    LTEXT           "You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.",
+                    IDC_LABEL_JID1,0,0,261,21
+    LTEXT           "If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.",
+                    IDC_LABEL_JID2,0,24,223,34
+    LTEXT           "JID:",IDC_STATIC,5,78,35,9
+    LTEXT           "Password:",IDC_STATIC,5,91,35,9
+    LTEXT           "",IDC_JABBER_CONN_STATUS,3,152,145,11
+    LTEXT           "Server:",IDC_STATIC,5,110,35,9
+    LTEXT           "Port:",IDC_STATIC,5,122,35,9
+    LTEXT           "Please click on 'Test Account' to proceed.",IDC_STATIC,
+                    1,138,134,8
+END
+
+IDD_BEGIN DIALOG DISCARDABLE  0, 0, 253, 193
+STYLE DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Welcome"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Wippien setup wizard",IDC_LBL_TITLE,11,14,195,17
+    LTEXT           "Please click ""Next"" to continue",IDC_STATIC_NEXT,141,
+                    159,112,9
+    LTEXT           "This wizard will setup initial Wippien settings.\r\n\r\n\r\n\r\nAll user settings will be erased if you continue with this wizard. If you want to preserve user settings, please use Wippien's settings button.",
+                    IDC_LBL_WELCOME,11,31,195,120
+END
+
+IDD_END DIALOG DISCARDABLE  0, 0, 252, 194
+STYLE DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Completed"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Completed",IDC_STATIC,115,7,35,8
+    LTEXT           "Installation log",IDC_STATIC,115,30,48,8
+END
+
+IDD_NEEDPASS DIALOG DISCARDABLE  0, 0, 186, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Enter Passphrase"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PASSWORD,7,19,172,15,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,129,39,50,14
+    LTEXT           "Please enter key passphrase",IDC_ENTERPASSPHRASE,7,7,
+                    100,11
+END
+
+IDD_SETTINGS_PICTURE DIALOG DISCARDABLE  0, 0, 262, 180
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_CHOOSEICON,0,0,261,163,LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | WS_HSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Add &New",IDC_ADDNEW,219,164,41,15
+END
+
+
+IDD_SETTINGS_ETHERNET DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Show notification if ethernet adapter is unavailable.",
+                    IDC_CHECK_ETHERNET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,12,176,10
+    LTEXT           "UDP port fort for outoing and incoming packets (0 for auto select)",
+                    IDC_STATIC,7,35,206,8
+    EDITTEXT        IDC_UDP_PORT,216,33,28,12,ES_NUMBER
+    GROUPBOX        "IP address for Wippien network adapter ",IDC_STATIC,3,
+                    65,255,68
+    CONTROL         "Ignore. IP will be set outside of this program.",
+                    IDC_IPADDRESSIGNORE,"Button",BS_AUTORADIOBUTTON,6,77,154,
+                    10
+    CONTROL         "Provided by IP mediator",IDC_IPADDRESSBYIPMEDIATOR,
+                    "Button",BS_AUTORADIOBUTTON,6,90,91,10
+    CONTROL         "Use following static address:",IDC_IPADDRESSSTATIC,
+                    "Button",BS_AUTORADIOBUTTON,6,102,105,10
+    CONTROL         "IPAddress1",IDC_ETHERNET_IP,"SysIPAddress32",WS_TABSTOP,
+                    153,102,88,11
+    CONTROL         "IPAddress1",IDC_NETMASK_ETHERNET,"SysIPAddress32",
+                    WS_TABSTOP,153,113,88,11
+    LTEXT           "IP address",IDC_STATIC,114,104,34,8
+    LTEXT           "Netmask",IDC_STATIC,113,116,34,8
+END
+
+IDD_MAINDLG DIALOGEX 0, 0, 172, 294
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_THICKFRAME
+EXSTYLE WS_EX_TOOLWINDOW
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "&Exit",ID_EXIT,"Button",BS_OWNERDRAW | WS_TABSTOP,6,243,
+                    30,14
+    CONTROL         "&Settings",IDB_SETUP,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    45,244,36,14
+    CONTROL         "&About...",ID_APP_ABOUT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,84,244,33,14
+    LTEXT           "Status",IDC_STATUS,10,214,125,12
+    CONTROL         "Tree1",IDC_TREELIST,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_NOTOOLTIPS | 
+                    TVS_FULLROWSELECT | TVS_NONEVENHEIGHT | WS_TABSTOP,32,6,
+                    70,142
+    EDITTEXT        IDC_RENAMEEDIT,55,165,64,12,NOT WS_VISIBLE | NOT 
+                    WS_TABSTOP
+    CONTROL         "+",IDC_MYSTATUS,"Button",BS_OWNERDRAW | WS_TABSTOP,119,
+                    4,17,14
+    CONTROL         "+",IDC_MYCONTACTS,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    118,18,17,14
+    CONTROL         "+",IDC_MYAUTHDLG,"Button",BS_OWNERDRAW | WS_TABSTOP,117,
+                    33,17,14
+    CONTROL         "+",IDC_SMALLMUTE,"Button",BS_OWNERDRAW | WS_TABSTOP,115,
+                    47,17,14
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 263, 204
+STYLE WS_POPUP
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,212,188,50,14
+    LTEXT           "Wippien",IDC_STATIC,3,185,27,8
+    LTEXT           "WipVersion",IDC_WIPPIEN_VERSION,43,185,37,8
+    LTEXT           "wodJabber",IDC_STATIC,4,195,36,8
+    LTEXT           "JabVersion",IDC_WODJABBER_VERSION,43,195,36,8
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,0,0,263,204
+    LTEXT           "Registered to:",IDC_STATIC,3,3,45,8
+    LTEXT           "FREE Version",IDC_LICENSED_TO,4,14,100,33
+    LTEXT           "wodAppUpdate",IDC_STATIC,104,186,50,8
+    LTEXT           "AppVersion",IDC_WODAPPUPDATE_VERSION,157,186,37,8
+    LTEXT           "wodVPN",IDC_STATIC,104,195,29,8
+    LTEXT           "VPNVersion",IDC_WODVPN_VERSION,158,195,39,8
+END
+
+IDD_MSGDLG DIALOG DISCARDABLE  0, 0, 232, 187
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_LIST,"{8856F961-340A-11D0-A96B-00C04FD705A2}",0x0,
+                    0,19,166,81
+    CONTROL         "",IDC_EDITOR,"{8856F961-340A-11D0-A96B-00C04FD705A2}",
+                    0x0,0,138,167,38
+    CONTROL         "<FontForeColor>",IDC_FONTFORECOLOR,"Button",
+                    BS_OWNERDRAW | WS_TABSTOP,0,110,19,15
+    CONTROL         "<FontBackColor>",IDC_FONTBACKCOLOR,"Button",
+                    BS_OWNERDRAW | WS_TABSTOP,17,113,13,12
+    CONTROL         "FontSizeDown",IDC_FONTSIZEDOWN,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,30,111,13,14
+    CONTROL         "FontSizeNormal",IDC_FONTSIZENORMAL,"Button",
+                    BS_OWNERDRAW | WS_TABSTOP,46,111,13,14
+    CONTROL         "FontSizeUp",IDC_FONTSIZEUP,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,61,112,13,14
+    CONTROL         "Bold",IDC_BOLD,"Button",BS_OWNERDRAW | WS_TABSTOP,76,
+                    113,13,14
+    CONTROL         "Italic",IDC_ITALIC,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    93,113,13,14
+    CONTROL         "Underline",IDC_UNDERLINE,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,111,112,13,14
+    CONTROL         "Hyperlink",IDC_HYPERLINK,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,126,111,13,14
+    CONTROL         "Emoticons",IDC_EMOTICONS,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,143,111,24,14
+    CONTROL         "&Send",IDB_SEND,"Button",BS_OWNERDRAW | WS_TABSTOP,181,
+                    134,40,38
+    CONTROL         "<picture goes heere<",IDC_PERSON,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,173,16,47,47
+    CONTROL         "<Send file>",ID_PNG1_SENDFILE,"Button",BS_OWNERDRAW | 
+                    WS_DISABLED | WS_TABSTOP,1,2,33,15
+    PUSHBUTTON      "<Details>",ID_PNG1_DETAILS,41,3,47,13
+    LTEXT           "Contact is typing...",IDC_ISTYPING,163,119,66,9,NOT 
+                    WS_VISIBLE
+    PUSHBUTTON      "<Mute>",ID_PNG1_MUTEONOFF,95,3,47,13
+    PUSHBUTTON      "<Clear>",ID_PNG1_CLEARHISTORY,146,1,47,13
+END
+
+IDD_INSERTHYPERLINKDLG DIALOG DISCARDABLE  0, 0, 242, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Insert Hyperlink"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDITHYPERLINK,48,7,187,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDITDESCRIPTION,48,22,187,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,79,44,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,133,44,50,14
+    LTEXT           "URL:",IDC_STATIC,7,7,20,10
+    LTEXT           "Description:",IDC_STATIC,7,25,38,10
+END
+
+IDD_SETTINGS_ACCOUNTS DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_LISTREGISTEREDGATEWAYS,5,16,253,70,
+                    LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add new account",IDC_ADDNEWACCOUNT,5,87,75,15
+    PUSHBUTTON      "Remove account",IDC_REMOVEACCOUNT,82,87,69,15,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_SCREENNAME,66,139,112,14,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE
+    EDITTEXT        IDC_EDIT_PASSWORD,66,155,111,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL | NOT WS_VISIBLE
+    PUSHBUTTON      "Register!",IDC_ACCOUNT_REGISTER,182,155,39,15,NOT 
+                    WS_VISIBLE
+    LTEXT           "Your current Instant messaging connections:",IDC_STATIC,
+                    9,4,174,10
+    GROUPBOX        "",IDC_NEW_STATIC,5,131,253,42,NOT WS_VISIBLE
+    LTEXT           "Username:",IDC_STATIC_USERNAME,11,141,35,8,NOT 
+                    WS_VISIBLE
+    LTEXT           "Password:",IDC_STATIC_PASSWORD,11,157,45,8,NOT 
+                    WS_VISIBLE
+    LTEXT           "",IDC_SERVICE_DESCRIPTION,2,106,256,26,NOT WS_VISIBLE
+    PUSHBUTTON      "Open new account",IDC_OPENNEWACCOUNT,188,87,69,15,NOT 
+                    WS_VISIBLE
+END
+
+IDD_AUTHORIZATIONDIALOG DIALOG DISCARDABLE  0, 0, 252, 81
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Authorization request"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "Do you allow",IDC_AUTHSTATICTEXT,103,5,42,8
+    DEFPUSHBUTTON   "&Yes",IDYES,11,44,50,14
+    PUSHBUTTON      "&Details",IDC_DETAILS,192,44,50,14
+    CONTROL         "&Apply to all",IDC_APPLYTOALL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,123,45,50,10
+    PUSHBUTTON      "<<",IDC_BACK,7,61,16,13
+    PUSHBUTTON      ">>",IDC_NEXT,229,61,16,13
+    LTEXT           "more requests waiting...",IDC_MOREREQUESTSWAITING,105,
+                    65,75,8
+    RTEXT           "15",IDC_MOREWAITING,82,65,21,8
+    PUSHBUTTON      "&No",IDNO,65,45,50,14
+    CTEXT           "to add you to his contact list?",IDC_AUTHSTATICTEXT2,82,
+                    30,93,8
+    CTEXT           "JOE@USA.NET?",IDC_CONTACTJID,0,16,251,12
+END
+
+IDD_SETTINGS_CONTACTS_ADDREMOVE DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_CONTACTID,7,25,112,12,ES_RIGHT | ES_AUTOHSCROLL
+    COMBOBOX        IDC_CONTACTTYPELIST,120,25,135,45,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_VISIBLENAME,119,42,135,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_GROUPLIST,119,113,121,45,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Group",IDC_ADDNEWGROUP,120,128,53,13
+    PUSHBUTTON      "Remove Group",IDC_REMOVEGROUP,177,128,53,13
+    PUSHBUTTON      "Add Contact",IDC_ADDNEWCONTACT,119,56,55,13
+    LTEXT           "Put contact to the group:",IDC_STATIC,35,115,80,8
+    LTEXT           "Contact ID:",IDC_STATIC,8,16,37,8
+    LTEXT           "Contact Type:",IDC_STATIC,121,15,46,8
+    LTEXT           "Visible Name:",IDC_CONTACTVISIBLE,70,44,44,8
+END
+
+IDD_RENAMECONTACT DIALOG DISCARDABLE  0, 0, 186, 52
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Rename contact"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_RENAMEEDIT,7,18,172,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,38,32,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,96,32,50,14
+    LTEXT           "Enter new contact name:",IDC_STATIC,7,7,80,8
+END
+
+IDD_SETTINGS DIALOGEX 0, 0, 390, 270
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Settings"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_TABSTOP,
+                    7,7,109,210
+    PUSHBUTTON      "< &Back",IDC_BACK,141,249,49,14
+    PUSHBUTTON      "&Next >",IDC_NEXT,192,249,49,14
+    DEFPUSHBUTTON   "O&K",IDOK,281,249,49,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,334,249,49,14
+    CONTROL         "",IDC_BORDER1,"Static",SS_WHITERECT,119,7,265,34
+    LTEXT           "Static",IDC_TEXT1,120,12,212,8,0,WS_EX_TRANSPARENT
+    LTEXT           "Static",IDC_TEXT2,121,23,224,17,0,WS_EX_TRANSPARENT
+    CONTROL         204,IDC_BITMAP,"Static",SS_BITMAP,349,7,33,30
+    CONTROL         205,IDC_TREEBITMAP,"Static",SS_BITMAP,7,7,109,193
+END
+
+IDD_SETTINGS_LOG DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_LOG_JABBER,7,26,227,12
+    PUSHBUTTON      "...",IDB_BROWSE,235,25,15,14
+    EDITTEXT        IDC_LOG_SOCKET,7,64,227,12
+    PUSHBUTTON      "...",IDB_BROWSE2,235,63,15,14
+    EDITTEXT        IDC_LOG_FUNCTION,7,105,227,12
+    PUSHBUTTON      "...",IDB_BROWSE3,235,104,15,14
+    EDITTEXT        IDC_FUNCTIONDELETEMB,157,122,48,12,ES_AUTOHSCROLL
+    LTEXT           "Log Jabber communication",IDC_STATIC,8,16,86,8
+    LTEXT           "Log socket communication",IDC_STATIC,8,55,86,8
+    LTEXT           "Log raw function calls (may grow quickly!)",IDC_STATIC,
+                    8,96,132,8
+    LTEXT           "Delete raw log on each ",IDC_STATIC,79,124,76,8
+    LTEXT           "megabytes",IDC_STATIC,207,124,35,8
+END
+
+IDD_SETTINGS_MEDIATOR DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Use IP mediator to get local IP address",
+                    IDC_USEIPMEDIATOR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    9,12,138,10
+    LTEXT           "Choose IP mediator. Enter his JID here. IP Mediator provides you with IP address, and points to LINK Mediator that will be used to establish connections. If you already have IP address, you don't need this mediator anymore.. Ever..",
+                    IDC_LABEL_ETHERNET2,16,23,204,34
+    LTEXT           "Mediator:",IDC_STATIC,19,62,35,9
+    EDITTEXT        IDC_MEDIATOR,55,60,113,13,ES_AUTOHSCROLL
+    CONTROL         "Show mediator on your contact list",
+                    IDC_CHECK_SHOWMEDIATOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,16,74,124,10
+    LTEXT           "Choose LINK mediator. It will be provided by IP Mediator too.",
+                    IDC_STATIC,15,96,192,8
+    LTEXT           "Hostname:",IDC_STATIC,13,113,35,8
+    EDITTEXT        IDC_LINKMEDIATOR_HOSTNAME,50,111,81,13,ES_AUTOHSCROLL
+    LTEXT           "Port:",IDC_STATIC,147,113,16,8
+    EDITTEXT        IDC_LINKMEDIATOR_PORT,165,111,35,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    CONTROL         "Allow LINK Mediator to be provided by IP Mediator",
+                    IDC_CHECK_ALLOWLINKMEDIATOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,14,128,175,10
+    GROUPBOX        "",IDC_STATIC,7,3,245,84
+    GROUPBOX        "",IDC_STATIC,7,85,245,64
+END
+
+IDD_SETTINGS_MSGWIN DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Various settings regarding chat window",
+                    IDC_LABEL_ETHERNET2,5,0,249,29
+    CONTROL         "Timestamp messages",IDC_TIMESTAMP_MESSAGES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,3,41,86,10
+    CONTROL         "Show message history",IDC_SHOW_MESSAGE_HISTORY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,3,54,86,10
+END
+
+IDD_SETTINGS_USER_1 DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Nickname:",IDC_STATIC,4,14,35,8
+    EDITTEXT        IDC_SETTINGS_USER1_NICKNAME,44,12,100,11,ES_AUTOHSCROLL
+    LTEXT           "First name:",IDC_STATIC,4,30,35,8
+    EDITTEXT        IDC_SETTINGS_USER1_FIRSTNAME,44,28,100,11,ES_AUTOHSCROLL
+    LTEXT           "Last name:",IDC_STATIC,4,44,35,8
+    EDITTEXT        IDC_SETTINGS_USER1_LASTNAME,44,42,100,11,ES_AUTOHSCROLL
+    LTEXT           "Email:",IDC_STATIC,4,58,35,8
+    EDITTEXT        IDC_SETTINGS_USER1_EMAIL,44,56,100,11,ES_AUTOHSCROLL
+    LTEXT           "URL:",IDC_STATIC,4,72,35,8
+    EDITTEXT        IDC_SETTINGS_USER1_URL,44,70,192,11,ES_AUTOHSCROLL
+    LTEXT           "Notes:",IDC_STATIC,3,86,22,8
+    EDITTEXT        IDC_SETTINGS_USER1_DESCRIPTION,3,97,248,44,ES_MULTILINE | 
+                    ES_AUTOHSCROLL
+END
+
+IDD_SETTINGS_USER_2 DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Address",IDC_STATIC,4,31,26,8
+    EDITTEXT        IDC_SETTINGS_USER2_ADDRESS,44,29,204,12,ES_AUTOHSCROLL
+    LTEXT           "Address Ext.",IDC_STATIC,4,47,40,8
+    EDITTEXT        IDC_SETTINGS_USER2_ADDRESSEXT,44,44,204,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "City",IDC_STATIC,4,62,12,8
+    EDITTEXT        IDC_SETTINGS_USER2_CITY,44,59,126,12,ES_AUTOHSCROLL
+    LTEXT           "State",IDC_STATIC,3,76,18,8
+    EDITTEXT        IDC_SETTINGS_USER2_STATE,44,74,69,12,ES_AUTOHSCROLL
+    LTEXT           "ZIP",IDC_STATIC,3,91,12,8
+    EDITTEXT        IDC_SETTINGS_USER2_ZIP,44,89,69,12,ES_AUTOHSCROLL
+    LTEXT           "Country",IDC_STATIC,3,107,25,8
+    EDITTEXT        IDC_SETTINGS_USER2_COUNTRY,44,105,69,12,ES_AUTOHSCROLL
+    LTEXT           "Birthday",IDC_STATIC_BIRTHDAY,138,76,26,8
+    CONTROL         "DateTimePicker1",IDC_SETTINGS_USER2_BDAY,
+                    "SysDateTimePick32",DTS_RIGHTALIGN | DTS_SHOWNONE | 
+                    WS_TABSTOP,179,74,70,12
+    LTEXT           "Voice Tel.",IDC_STATIC,138,91,33,8
+    EDITTEXT        IDC_SETTINGS_USER2_PHONE,179,89,69,12,ES_AUTOHSCROLL
+    LTEXT           "Fax",IDC_STATIC,138,107,12,8
+    EDITTEXT        IDC_SETTINGS_USER2_FAX,179,105,69,12,ES_AUTOHSCROLL
+END
+
+IDD_SETTINGS_USER_3 DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Address",IDC_STATIC,4,31,26,8
+    EDITTEXT        IDC_SETTINGS_USER3_ADDRESS,44,29,204,12,ES_AUTOHSCROLL
+    LTEXT           "Address Ext.",IDC_STATIC,4,47,40,8
+    EDITTEXT        IDC_SETTINGS_USER3_ADDRESSEXT,44,44,204,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "City",IDC_STATIC,4,62,12,8
+    EDITTEXT        IDC_SETTINGS_USER3_CITY,44,59,126,12,ES_AUTOHSCROLL
+    LTEXT           "State",IDC_STATIC,3,76,18,8
+    EDITTEXT        IDC_SETTINGS_USER3_STATE,44,74,69,12,ES_AUTOHSCROLL
+    LTEXT           "ZIP",IDC_STATIC,3,91,12,8
+    EDITTEXT        IDC_SETTINGS_USER3_ZIP,44,89,69,12,ES_AUTOHSCROLL
+    LTEXT           "Country",IDC_STATIC,3,107,25,8
+    EDITTEXT        IDC_SETTINGS_USER3_COUNTRY,44,105,69,12,ES_AUTOHSCROLL
+    LTEXT           "Voice Tel.",IDC_STATIC,138,91,33,8
+    EDITTEXT        IDC_SETTINGS_USER3_PHONE,179,89,69,12,ES_AUTOHSCROLL
+    LTEXT           "Fax",IDC_STATIC,138,107,12,8
+    EDITTEXT        IDC_SETTINGS_USER3_FAX,179,105,69,12,ES_AUTOHSCROLL
+    LTEXT           "Title",IDC_STATIC,138,76,14,8
+    EDITTEXT        IDC_SETTINGS_USER3_TITLE,180,74,69,12,ES_AUTOHSCROLL
+    LTEXT           "Company name",IDC_STATIC,3,128,50,8
+    EDITTEXT        IDC_SETTINGS_USER3_COMPANY,67,126,182,12,ES_AUTOHSCROLL
+    LTEXT           "Department",IDC_STATIC,3,144,38,8
+    EDITTEXT        IDC_SETTINGS_USER3_DEPARTMENT,67,142,182,12,
+                    ES_AUTOHSCROLL
+END
+
+IDD_SETTINGS_USER_4 DIALOGEX 0, 0, 262, 169
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Allowed interfaces for direct connection",IDC_STATIC,0,
+                    3,125,8
+    CONTROL         "List1",IDC_INTERFACELIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOLABELWRAP | LVS_AUTOARRANGE | 
+                    LVS_OWNERDRAWFIXED | LVS_NOCOLUMNHEADER | 
+                    LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,0,25,202,112
+    PUSHBUTTON      "Allow All",IDC_SETTINGS_USER4_RESETALL,206,25,38,13
+    LTEXT           "Click on first column to change values.",IDC_STATIC,0,
+                    16,122,8
+    LTEXT           "If you choose 'not specified' value, then same value is used as in 'all other' setting.",
+                    IDC_STATIC,0,138,182,16,0,WS_EX_TRANSPARENT
+END
+
+IDD_SETTINGS_SKINS DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Following skin files are found:",IDC_STATIC,7,12,93,8
+    PUSHBUTTON      "Apply",IDB_APPLY,157,134,42,14
+    LTEXT           "To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.",
+                    IDC_STATIC,7,135,136,33
+    PUSHBUTTON      "More skins...",IDB_MORESKINS,157,154,67,14
+    LISTBOX         IDC_SKINLIST,7,28,244,105,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+END
+
+IDD_SETTINGS_AUTOAWAY DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_AUTOAWAYMINUTES,24,13,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EXTENDEDAWAYMINUTES,23,27,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_AUTODISCONNECTMINUTES,24,42,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_AUTOAWAYMESSAGE,5,79,170,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EXTENDEDAWAYMESSAGE,5,105,169,14,ES_AUTOHSCROLL
+    CONTROL         "Set back when activity is detected again.",
+                    IDC_SETBACKONACTIVITY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,5,134,146,10
+    LTEXT           "Wait",IDC_STATIC,5,16,16,8
+    LTEXT           "minutes before going to away mode (0 = disable)",
+                    IDC_STATIC,53,16,152,8
+    LTEXT           "Wait",IDC_STATIC,5,30,16,8
+    LTEXT           "minutes before going to extended away mode (0 = disable)",
+                    IDC_STATIC,53,30,184,8
+    LTEXT           "Wait",IDC_STATIC,5,45,16,8
+    LTEXT           "minutes before disconnecting (0 = disable)",IDC_STATIC,
+                    53,45,133,8
+    LTEXT           "Auto-Away message",IDC_STATIC,5,70,65,8
+    LTEXT           "Extended-away message",IDC_STATIC,5,96,96,8
+END
+
+IDD_SETTINGS_SYSTEM DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Show Wippien in taskbar",IDC_SHOWINTASKBAR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,17,95,10
+    CONTROL         "Rearrange desktop when Wippien window is aligned to border",
+                    IDC_ALIGNTOBORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,33,211,10
+    CONTROL         "Snap to desktop border",IDC_SNAPTOBORDER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,48,90,10
+    CONTROL         "Always on top",IDC_ALWAYSONTOP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,62,60,10
+    CONTROL         "Confirm exit from application",IDC_CONFIRMEXIT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,76,103,10
+    LTEXT           "Password protect",IDC_STATIC,7,109,56,8
+    CONTROL         "Settings only",IDC_PASSWORDPROTECTSETTINGS,"Button",
+                    BS_AUTORADIOBUTTON,67,109,56,10
+    CONTROL         "Everything",IDC_PASSWORDPROTECTEVERYTHING,"Button",
+                    BS_AUTORADIOBUTTON,125,109,49,10
+    EDITTEXT        IDC_PASSWORDPROTECTPASSWORD,177,109,72,12,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    LTEXT           "Settings folder   (changing below value requires wippien restart)",
+                    IDC_STATIC,7,127,199,8
+    EDITTEXT        IDC_SETTINGSFOLDER,7,137,247,14,ES_AUTOHSCROLL
+END
+
+IDD_SETTINGS_CONTACTS DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Contact list persistance",IDC_STATIC,3,7,256,41
+    CONTROL         "Delete all local contacts on startup",
+                    IDC_CONTACTS_DELETEONSTARTUP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,17,125,10
+    CONTROL         "Delete all local contacts on connect",
+                    IDC_CONTACTS_DELETEONCONNECT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,30,129,10
+    GROUPBOX        "Contacts subscription authorization",IDC_STATIC,3,65,
+                    255,53
+    CONTROL         "Never authorize",IDC_CONTACTS_AUTH0,"Button",
+                    BS_AUTORADIOBUTTON,6,79,66,10
+    CONTROL         "Ask me",IDC_CONTACTS_AUTH1,"Button",BS_AUTORADIOBUTTON,
+                    6,90,66,10
+    CONTROL         "Always authorize",IDC_CONTACTS_AUTH2,"Button",
+                    BS_AUTORADIOBUTTON,6,102,69,10
+    CONTROL         "Automatically establish VPN on network traffic",
+                    IDC_AUTOCONNECTONTRAFFIC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,150,160,10
+    CONTROL         "Automatically establish VPN on startup",
+                    IDC_AUTOCONNECTONSTARTUP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,138,137,10
+END
+
+IDD_LICENSE DIALOG DISCARDABLE  0, 0, 205, 115
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Enter license details"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_NAME,51,26,126,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMAIL,51,44,126,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_KEY,51,63,137,25,ES_MULTILINE
+    DEFPUSHBUTTON   "OK",IDOK,7,96,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,69,96,50,14
+    PUSHBUTTON      "&Order Now",IDC_ORDERNOW,139,96,50,14
+    LTEXT           "Name:",IDC_STATIC,7,28,22,8
+    LTEXT           "Email:",IDC_STATIC,7,47,20,8
+    LTEXT           "Key:",IDC_STATIC,7,66,15,8
+    LTEXT           "Details are case sensitive. Please type or paste them exactly as in email you received when Wippien was purchased.",
+                    IDC_STATIC,7,7,191,17
+END
+
+IDD_PROGRESS DIALOG DISCARDABLE  0, 0, 234, 52
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Progress"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,179,34,50,14
+    LTEXT           "Downloading",IDC_DOWNLOADINGFILE,5,7,57,8
+    CONTROL         "Progress1",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,
+                    9,31,161,13
+    CTEXT           "",IDC_PROGRESSNUMBER,11,20,157,9
+    LTEXT           "Downloading",IDC_DOWNLOADINGFILE2,62,7,167,8,NOT 
+                    WS_VISIBLE
+END
+
+IDD_BALLOONTIP DIALOGEX 0, 0, 242, 155
+STYLE WS_POPUP
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "",IDC_BALLOONTIPTEXT,43,6,191,26,0,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_BALLOONTIPSTATIC,"Static",SS_WHITERECT,2,2,238,34
+    CONTROL         "&Yes",IDOK,"Button",BS_OWNERDRAW | WS_TABSTOP,78,137,50,
+                    14
+    CONTROL         "&No",IDCANCEL,"Button",BS_OWNERDRAW | WS_TABSTOP,131,
+                    137,50,14
+    CONTROL         396,IDC_BALLOONTIPICON,"Static",SS_BITMAP,10,8,21,20
+    CONTROL         "",IDC_BALLOONTIPMESSAGE,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",0x0,3,38,234,96
+    CONTROL         "&Cancel",IDCANCEL2,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    186,137,50,14
+END
+
+IDD_SETTINGS_VOICECHAT DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Enable voice chat",IDC_ENABLEVOICECHAT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,9,9,73,10
+    LTEXT           "Playback device:",IDC_STATIC,9,34,59,8
+    COMBOBOX        IDC_VOICE_PLAYBACKDEVICE,9,44,194,39,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Recording device:",IDC_STATIC,9,68,59,8
+    COMBOBOX        IDC_VOICE_RECORDINGDEVICE,9,79,194,39,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_SETTINGS_SYSTEM_UPDATE DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Check for updates when Wippien starts",IDC_CHECKUPDATE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,14,140,10
+    CONTROL         "Check for updates on Connect",IDC_CHECKUPDATE_CONNECT,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,28,113,10
+    CONTROL         "Check for updates each",IDC_CHECKUPDATE_TIMED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,43,92,10
+    EDITTEXT        IDC_CHECKUPDATE_TIMEDNUM,99,41,37,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    CONTROL         "Update and restart application silently",
+                    IDC_CHECKUPDATESILENTLY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,57,157,11
+    PUSHBUTTON      "Check now",IDC_UPDATE_CHECKNOW,7,77,52,15
+    LTEXT           "minutes",IDC_STATIC,139,45,25,8
+END
+
+IDD_SETTINGS_MTU DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.",
+                    IDC_STATIC,7,7,246,25
+    CONTROL         "Use fixed MTU",IDC_USEFIXEDMTU,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,7,39,63,10
+    EDITTEXT        IDC_USEFIXEDMTUNUM,72,37,34,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    CONTROL         "Auto-detect MTU",IDC_AUTODETECTMTU,"Button",
+                    BS_AUTORADIOBUTTON,7,62,127,10
+    LTEXT           "(will become effective as peers reconnect)",IDC_STATIC,
+                    21,73,134,8
+END
+
+IDD_SETTINGS_SOUNDS DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_SOUNDEVENTS,7,18,244,89,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LTEXT           "Sound (leave empty for default sound):",IDC_STATIC,7,
+                    113,122,8
+    EDITTEXT        IDC_SOUND,7,125,189,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDB_BROWSE,199,124,15,14
+    PUSHBUTTON      "&Play",IDB_PLAY,218,124,34,14
+    LTEXT           "Program events:",IDC_STATIC,7,7,52,8
+END
+
+IDD_SETTINGS_CONTACTS_HIDE DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_HIDDENCONTACTS,5,16,222,124,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Hide new contact",IDC_BLOCKNEWCONTACT,81,142,75,15
+    PUSHBUTTON      "Unhide contact",IDC_UNBLOCKCONTACT,158,142,69,15,
+                    WS_DISABLED
+    LTEXT           "Currently hidden contacts:",IDC_STATIC,9,4,174,10
+    LTEXT           "",IDC_SERVICE_DESCRIPTION,2,106,256,26,NOT WS_VISIBLE
+    LTEXT           "All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.",
+                    IDC_STATIC,7,158,240,16
+END
+
+IDD_HIDECONTACT DIALOG DISCARDABLE  0, 0, 186, 52
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Hide contact"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_CONTACTLIST,7,15,170,46,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,38,32,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,96,32,50,14
+    LTEXT           "Enter contact JID:",IDC_STATIC,7,7,58,8
+END
+
+IDD_SETTINGS_APPEARANCE DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Avatar picture",IDC_SHOWPICTURE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,21,60,10
+    CONTROL         "Name",IDC_SHOWNAME,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,85,21,83,10
+    CONTROL         "IP address",IDC_SHOWIP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,34,49,10
+    CONTROL         "Status text",IDC_SHOWSTATUS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,85,34,49,10
+    CONTROL         "Avatar picture",IDC_SHOWCONTACTPICTURE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,69,60,10
+    CONTROL         "Name",IDC_SHOWCONTACTNAME,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,85,69,35,10
+    CONTROL         "Last online time",IDC_SHOWCONTACTLASTONLINE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,145,69,65,10
+    CONTROL         "IP address",IDC_SHOWCONTACTIP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,83,49,10
+    CONTROL         "Status text",IDC_SHOWCONTACTSTATUS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,85,83,49,10
+    GROUPBOX        "Visible details ",IDC_STATIC,7,7,247,44
+    GROUPBOX        "Contact's visible details",IDC_STATIC,7,55,248,44
+END
+
+IDD_SETTINGS_CONTACTS_SORT DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "unsorted",IDC_SORTNONE,"Button",BS_AUTORADIOBUTTON,10,
+                    40,43,10
+    CONTROL         "By name",IDC_SORTBYNAME,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,10,52,43,10
+    CONTROL         "By JID",IDC_SORTBYJID,"Button",BS_AUTORADIOBUTTON,10,64,
+                    37,10
+    CONTROL         "by IP (without IP goes bottom)",IDC_SORTBYIPBOTTOM,
+                    "Button",BS_AUTORADIOBUTTON | WS_DISABLED,10,77,110,10
+    CONTROL         "by IP (without IP goes top)",IDC_SORTBYIPTOP,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,10,90,99,10
+    LTEXT           "Sort contact list",IDC_STATIC,10,24,50,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SETTINGS_JID, DIALOG
+    BEGIN
+        HORZGUIDE, 65
+    END
+
+    IDD_NEEDPASS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 53
+    END
+
+    IDD_SETTINGS_PICTURE, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_MAINDLG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 171
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        HORZGUIDE, 185
+    END
+
+    IDD_INSERTHYPERLINKDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 235
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_AUTHORIZATIONDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 245
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 74
+    END
+
+    IDD_RENAMECONTACT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 46
+    END
+
+    IDD_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 383
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 263
+    END
+
+    IDD_SETTINGS_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 166
+    END
+
+    IDD_SETTINGS_MEDIATOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_SETTINGS_USER_4, DIALOG
+    BEGIN
+        VERTGUIDE, 202
+        BOTTOMMARGIN, 165
+        HORZGUIDE, 14
+        HORZGUIDE, 127
+    END
+
+    IDD_SETTINGS_SKINS, DIALOG
+    BEGIN
+        VERTGUIDE, 7
+        VERTGUIDE, 157
+        VERTGUIDE, 251
+        HORZGUIDE, 28
+        HORZGUIDE, 113
+    END
+
+    IDD_SETTINGS_AUTOAWAY, DIALOG
+    BEGIN
+        VERTGUIDE, 5
+    END
+
+    IDD_SETTINGS_SYSTEM, DIALOG
+    BEGIN
+        VERTGUIDE, 7
+        HORZGUIDE, 105
+    END
+
+    IDD_SETTINGS_CONTACTS, DIALOG
+    BEGIN
+        VERTGUIDE, 7
+        VERTGUIDE, 81
+        VERTGUIDE, 136
+        HORZGUIDE, 65
+        HORZGUIDE, 79
+    END
+
+    IDD_LICENSE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 198
+        VERTGUIDE, 51
+        TOPMARGIN, 7
+        HORZGUIDE, 96
+    END
+
+    IDD_BALLOONTIP, DIALOG
+    BEGIN
+        HORZGUIDE, 137
+    END
+
+    IDD_SETTINGS_VOICECHAT, DIALOG
+    BEGIN
+        VERTGUIDE, 9
+    END
+
+    IDD_SETTINGS_SYSTEM_UPDATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_SETTINGS_MTU, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_SETTINGS_SOUNDS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_SETTINGS_CONTACTS_HIDE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_HIDECONTACT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_SETTINGS_APPEARANCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_SETTINGS_CONTACTS_SORT, DIALOG
+    BEGIN
+        VERTGUIDE, 10
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MSGDLG DLGINIT
+BEGIN
+    IDC_LIST, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x19bc, 0x0000, 0x0da5, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    IDC_EDITOR, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x19f1, 0x0000, 0x0668, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+IDD_DOWNLOADSKIN DLGINIT
+BEGIN
+    IDC_EXPLORER1, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x2746, 0x0000, 0x2922, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    IDC_EXPLORERGETGIF, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x043d, 0x0000, 0x0369, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    IDC_EXPLORERGETSWF, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x043d, 0x0000, 0x0369, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+IDD_BALLOONTIP DLGINIT
+BEGIN
+    IDC_BALLOONTIPMESSAGE, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x2447, 0x0000, 0x1020, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WATERMARK           BITMAP  DISCARDABLE     "..\\Gfx\\WizardImage.bmp"
+IDB_DRAGDROP            BITMAP  DISCARDABLE     "..\\Gfx\\dragdrop_16.bmp"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "..\\Gfx\\test1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG
+//
+
+IDB_HUMAN1              PNG     DISCARDABLE     "..\\gfx\\Avatars\\ac0057-48.png"
+IDB_HUMAN2              PNG     DISCARDABLE     "..\\gfx\\Avatars\\ac0058-48.png"
+IDB_HUMAN3              PNG     DISCARDABLE     "..\\gfx\\Avatars\\ALL CAPS!!!.png"
+IDB_HUMAN4              PNG     DISCARDABLE     "..\\gfx\\Avatars\\Beatnik.png"
+IDB_HUMAN5              PNG     DISCARDABLE     "..\\gfx\\Avatars\\BushBaby.png"
+IDB_HUMAN6              PNG     DISCARDABLE     "..\\gfx\\Avatars\\Clueless.png"
+IDB_HUMAN7              PNG     DISCARDABLE     "..\\gfx\\Avatars\\co0001-48.png"
+IDB_HUMAN8              PNG     DISCARDABLE     "..\\gfx\\Avatars\\ec0054-48.png"
+IDB_HUMAN9              PNG     DISCARDABLE     "..\\gfx\\Avatars\\Forum Flirt.png"
+IDB_HUMAN10             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Gamer.png"
+IDB_HUMAN11             PNG     DISCARDABLE     "..\\gfx\\Avatars\\HopelesslyAddicted.png"
+IDB_HUMAN12             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Jekyll and Hyde.png"
+IDB_HUMAN13             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Joker.png"
+IDB_HUMAN14             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Linux Zealot.png"
+IDB_HUMAN15             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Lurker.png"
+IDB_HUMAN16             PNG     DISCARDABLE     "..\\gfx\\Avatars\\MacZealot.png"
+IDB_HUMAN17             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Moderator.png"
+IDB_HUMAN18             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Newbie.png"
+IDB_HUMAN19             PNG     DISCARDABLE     "..\\gfx\\Avatars\\No Dissent.png"
+IDB_HUMAN20             PNG     DISCARDABLE     "..\\gfx\\Avatars\\PCWeenie.png"
+IDB_HUMAN21             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Post Padder.png"
+IDB_HUMAN22             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Push My Button.png"
+IDB_HUMAN23             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Ray of Sunshine.png"
+IDB_HUMAN24             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Ringmaster.png"
+IDB_HUMAN25             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Robot.png"
+IDB_HUMAN26             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Rumor Junkie.png"
+IDB_HUMAN27             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Sozzled Surfer.png"
+IDB_HUMAN28             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Spks in Tungz.png"
+IDB_HUMAN29             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Statistician.png"
+IDB_HUMAN30             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Tech Support.png"
+IDB_HUMAN31             PNG     DISCARDABLE     "..\\gfx\\Avatars\\The Referee.png"
+IDB_HUMAN32             PNG     DISCARDABLE     "..\\gfx\\Avatars\\TheGuru.png"
+IDB_HUMAN33             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Uptight.png"
+IDB_HUMAN34             PNG     DISCARDABLE     "..\\gfx\\Avatars\\wi0152-48.png"
+IDB_HUMAN35             PNG     DISCARDABLE     "..\\gfx\\Avatars\\wi0153-48.png"
+IDB_HUMAN36             PNG     DISCARDABLE     "..\\gfx\\Avatars\\wi0155-48.png"
+IDB_HUMAN37             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Windows Zealot.png"
+IDB_BELL                PNG     DISCARDABLE     "..\\gfx\\bell.png"
+IDB_TREEOPENED          PNG     DISCARDABLE     "..\\gfx\\tree_opened.png"
+IDB_TREECLOSED          PNG     DISCARDABLE     "..\\gfx\\tree_closed.png"
+ID_PNG1_CHAT            PNG     DISCARDABLE     "..\\gfx\\RightClick\\ac0038-16.png"
+ID_PNG1_SENDFILE        PNG     DISCARDABLE     "..\\gfx\\RightClick\\wi0041-16.png"
+ID_PNG2_SENDFILE        PNG     DISCARDABLE     "..\\gfx\\wi0041-24.png"
+ID_PNG1_SENDEMAIL       PNG     DISCARDABLE     "..\\gfx\\RightClick\\ei0029-16.png"
+ID_PNG1_BLOCK           PNG     DISCARDABLE     "..\\gfx\\RightClick\\nd0012-16.png"
+ID_PNG1_RENAME          PNG     DISCARDABLE     "..\\gfx\\RightClick\\rename-16.png"
+ID_PNG1_DELETE          PNG     DISCARDABLE     "..\\gfx\\RightClick\\ni0073-16.png"
+ID_PNG1_DETAILS         PNG     DISCARDABLE     "..\\gfx\\RightClick\\ac0052-16.png"
+ID_PNG2_DETAILS         PNG     DISCARDABLE     "..\\gfx\\ac0052-24.png"
+ID_PNG2_MUTEON          PNG     DISCARDABLE     "..\\gfx\\co0017-24.png"
+ID_PNG2_MUTEOFF         PNG     DISCARDABLE     "..\\gfx\\co0017-24-prekrizeno.png"
+ID_PNG1_MUTEON          PNG     DISCARDABLE     "..\\gfx\\co0017-16.png"
+ID_PNG1_MUTEOFF         PNG     DISCARDABLE     "..\\gfx\\co0017-16-prekrizeno.png"
+ID_PNG1_COPYADDRESS     PNG     DISCARDABLE     "..\\gfx\\RightClick\\Copy.png"
+IDB_FONTFORECOLOR       PNG     DISCARDABLE     "..\\gfx\\MsgWin\\fontforecolor.png"
+IDB_FONTBACKCOLOR       PNG     DISCARDABLE     "..\\gfx\\MsgWin\\fontbackcolor.png"
+IDB_BOLD                PNG     DISCARDABLE     "..\\gfx\\MsgWin\\bold.png"
+IDB_FONTSIZEUP          PNG     DISCARDABLE     "..\\gfx\\MsgWin\\fontsizeup.png"
+IDB_FONTSIZENORMAL      PNG     DISCARDABLE     "..\\gfx\\MsgWin\\fontsizenormal.png"
+IDB_FONTSIZEDOWN        PNG     DISCARDABLE     "..\\gfx\\MsgWin\\fontsizedown.png"
+IDB_ITALIC              PNG     DISCARDABLE     "..\\gfx\\MsgWin\\italic.png"
+IDB_UNDERLINE           PNG     DISCARDABLE     "..\\gfx\\MsgWin\\underline.png"
+IDB_HYPERLINK           PNG     DISCARDABLE     "..\\gfx\\MsgWin\\hyperlink.png"
+IDB_EMOTICONS           PNG     DISCARDABLE     "..\\gfx\\MsgWin\\emoticons.png"
+IDB_SERVICE_ICQ         PNG     DISCARDABLE     "..\\Gfx\\icq.png"
+IDB_SERVICE_AIM         PNG     DISCARDABLE     "..\\Gfx\\aim.png"
+IDB_SERVICE_MSN         PNG     DISCARDABLE     "..\\Gfx\\msn.png"
+IDB_SERVICE_YAHOO       PNG     DISCARDABLE     "..\\Gfx\\yah.png"
+IDB_SERVICE_GOOGLE      PNG     DISCARDABLE     "..\\Gfx\\google.png"
+IDC_MYSTATUS            PNG     DISCARDABLE     "..\\Gfx\\ni0091-16.png"
+IDC_MYCONTACTS          PNG     DISCARDABLE     "..\\Gfx\\ni0070-16.png"
+IDC_MYAUTHDLG           PNG     DISCARDABLE     "..\\Gfx\\co0009-16.png"
+ID_PNG_SKINBASE         PNG     DISCARDABLE     "..\\Gfx\\base_skin.png"
+ID_PNG_AVATARBASE       PNG     DISCARDABLE     "..\\Gfx\\base_avatar.png"
+ID_PNG_CLEARHISTORY     PNG     DISCARDABLE     "..\\Gfx\\clear_history.png"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+IDR_SOUNDOFF            WAVE    DISCARDABLE     "..\\gfx\\Sounds\\on.wav"
+IDR_SOUNDON             WAVE    DISCARDABLE     "..\\gfx\\Sounds\\off.wav"
+IDR_SOUNDMSGIN          WAVE    DISCARDABLE     "..\\gfx\\Sounds\\msgin.wav"
+IDR_SOUNDMSGOUT         WAVE    DISCARDABLE     "..\\gfx\\Sounds\\msgout.wav"
+IDR_SOUNDNONO           WAVE    DISCARDABLE     "..\\Gfx\\Sounds\\nono.wav"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_PROGRAMICON         ICON    DISCARDABLE     "icon1.ico"
+IDR_SETTINGSICON        ICON    DISCARDABLE     "icon3.ico"
+IDR_MSGWINICON          ICON    DISCARDABLE     "icon2.ico"
+IDR_PROGRESSWINICON     ICON    DISCARDABLE     "icon4.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_USERLISTPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup1"
+    BEGIN
+        MENUITEM "&Copy IP",                    ID_POPUP1_COPYADDRESS
+        MENUITEM SEPARATOR
+        MENUITEM "C&hat",                       ID_POPUP1_CHAT
+        MENUITEM "&Voice Chat",                 ID_POPUP1_VOICECHAT, GRAYED
+        MENUITEM "Send &File",                  ID_POPUP1_SENDFILE
+        MENUITEM "Send E&mail",                 ID_POPUP1_SENDEMAIL
+        MENUITEM SEPARATOR
+        MENUITEM "&Block",                      ID_POPUP1_BLOCK
+        MENUITEM "&Rename",                     ID_POPUP1_RENAME
+        MENUITEM "&Delete",                     ID_POPUP1_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "De&tails",                    ID_POPUP1_DETAILS
+    END
+END
+
+IDR_SETUPPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup2"
+    BEGIN
+        MENUITEM "Add/Remove &Accounts",        ID_POPUP2_IDENTITIES
+        MENUITEM "Add/Remove &Contacts",        ID_POPUP2_NEWCONTACT
+    END
+END
+
+IDR_AWAYPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup3"
+    BEGIN
+        MENUITEM "&Online",                     ID_POPUP3_ONLINE
+        MENUITEM "&Away",                       ID_POPUP3_AWAY
+        MENUITEM "Free for &Chat",              ID_POPUP3_CHAT
+        MENUITEM "&Do not Disturb",             ID_POPUP3_DONOTDISTURB
+        MENUITEM "E&xtended Away",              ID_POPUP3_EXTENDEDAWAY
+        MENUITEM "&Invisible",                  ID_POPUP3_INVISIBLE
+        MENUITEM SEPARATOR
+        MENUITEM "O&ffline",                    ID_POPUP3_OFFLINE
+    END
+END
+
+IDR_PICTUREPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup4"
+    BEGIN
+        MENUITEM "Change &Picture",             ID_POPUP4_CHANGEPICTURE
+        MENUITEM "Your &Details",               ID_POPUP4_YOUR_DETAILS
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// JPG
+//
+
+IDR_SPLASH              JPG     DISCARDABLE     "..\\Gfx\\splash2.jpg"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST ""res\\\\Wippien.exe.manifest""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION FILEVER
+ PRODUCTVERSION FILEVER
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "Wippien Module\0"
+            VALUE "FileVersion", STRFILEVER
+            VALUE "InternalName", "Wippien\0"
+            VALUE "LegalCopyright", "Copyright 2006-2007\0"
+            VALUE "OriginalFilename", "Wippien.EXE\0"
+            VALUE "ProductName", "Wippien Executable\0"
+            VALUE "ProductVersion", STRFILEVER
+            VALUE "OLESelfRegister", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_Wippien             REGISTRY MOVEABLE PURE  "Wippien.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SERVICENAME         "Wippien"
+END
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+#ifdef _APPUPDLIB
+#define _LIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
+#endif

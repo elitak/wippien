@@ -1,0 +1,9 @@
+LIBRARY EMOTICO2
+
+EXPORTS
+Transform
+Rollback
+GetCount
+GetItem
+GetText
+GetHtml

@@ -1,0 +1,9 @@
+LIBRARY EMOTICON
+
+EXPORTS
+Transform
+Rollback
+GetCount
+GetItem
+GetText
+GetHtml

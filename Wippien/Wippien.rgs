@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{0DE3D31A-2C8C-4C39-ACDD-2707F9A9B78B} = s 'Wippien'
+		'Wippien.EXE'
+		{
+			val AppID = s {0DE3D31A-2C8C-4C39-ACDD-2707F9A9B78B}
+		}
+	}
+}

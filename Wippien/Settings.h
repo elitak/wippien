@@ -62,7 +62,7 @@ public:
 	MACADDR m_MAC;
 	REQUESTLIST m_AuthRequests;
 	IMAGESLIST m_MenuImages;
-	cryptoAES128 m_AES;
+	_cryptoAES128 m_AES;
 
 	unsigned long m_AutoAwayMinutes, m_ExtendedAwayMinutes, m_AutoDisconnectMinutes;
 	CComBSTR m_AutoAwayMessage, m_ExtendedAwayMessage;

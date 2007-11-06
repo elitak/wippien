@@ -727,7 +727,7 @@ static const unsigned int rcon[] = {
  *
  * @return	the number of rounds for the given cipher key size.
  */
-int cryptoAES::rijndaelKeySetupEnc(unsigned int rk[/*4*(Nr + 1)*/], const u8 cipherKey[], int keyBits) 
+int _cryptoAES::rijndaelKeySetupEnc(unsigned int rk[/*4*(Nr + 1)*/], const u8 cipherKey[], int keyBits) 
 {
    	int i = 0;
 	unsigned int temp;
@@ -814,7 +814,7 @@ int cryptoAES::rijndaelKeySetupEnc(unsigned int rk[/*4*(Nr + 1)*/], const u8 cip
  *
  * @return	the number of rounds for the given cipher key size.
  */
-int cryptoAES::rijndaelKeySetupDec(unsigned int rk[/*4*(Nr + 1)*/], const u8 cipherKey[], int keyBits,int have_encrypt) 
+int _cryptoAES::rijndaelKeySetupDec(unsigned int rk[/*4*(Nr + 1)*/], const u8 cipherKey[], int keyBits,int have_encrypt) 
 {
 	int Nr, i, j;
 	unsigned int temp;
@@ -859,7 +859,7 @@ int cryptoAES::rijndaelKeySetupDec(unsigned int rk[/*4*(Nr + 1)*/], const u8 cip
 	return Nr;
 }
 
-void cryptoAES::rijndaelEncrypt(const unsigned int rk[/*4*(Nr + 1)*/], int Nr, const u8 pt[16], u8 ct[16]) 
+void _cryptoAES::rijndaelEncrypt(const unsigned int rk[/*4*(Nr + 1)*/], int Nr, const u8 pt[16], u8 ct[16]) 
 {
 	unsigned int s0, s1, s2, s3, t0, t1, t2, t3;
 #ifndef FULL_UNROLL
@@ -1041,7 +1041,7 @@ void cryptoAES::rijndaelEncrypt(const unsigned int rk[/*4*(Nr + 1)*/], int Nr, c
 	PUTU32(ct + 12, s3);
 }
 
-void cryptoAES::rijndaelDecrypt(const unsigned int rk[/*4*(Nr + 1)*/], int Nr, const u8 ct[16], u8 pt[16]) 
+void _cryptoAES::rijndaelDecrypt(const unsigned int rk[/*4*(Nr + 1)*/], int Nr, const u8 ct[16], u8 pt[16]) 
 {
 	unsigned int s0, s1, s2, s3, t0, t1, t2, t3;
 #ifndef FULL_UNROLL
@@ -1223,7 +1223,7 @@ void cryptoAES::rijndaelDecrypt(const unsigned int rk[/*4*(Nr + 1)*/], int Nr, c
 	PUTU32(pt + 12, s3);
 }
 
-void cryptoAES::rijndael_set_key(rijndael_ctx *ctx, u_char *key, int bits, int encrypt)
+void _cryptoAES::rijndael_set_key(rijndael_ctx *ctx, u_char *key, int bits, int encrypt)
 {
 	ctx->Nr = rijndaelKeySetupEnc(ctx->ek, key, bits);
         if (encrypt) {
@@ -1236,12 +1236,12 @@ void cryptoAES::rijndael_set_key(rijndael_ctx *ctx, u_char *key, int bits, int e
 	}
 }
 
-void cryptoAES::rijndael_decrypt(rijndael_ctx *ctx, u_char *src, u_char *dst)
+void _cryptoAES::rijndael_decrypt(rijndael_ctx *ctx, u_char *src, u_char *dst)
 {
 	rijndaelDecrypt(ctx->dk, ctx->Nr, src, dst);
 }
 
-void cryptoAES::rijndael_encrypt(rijndael_ctx *ctx, u_char *src, u_char *dst)
+void _cryptoAES::rijndael_encrypt(rijndael_ctx *ctx, u_char *src, u_char *dst)
 {
 	rijndaelEncrypt(ctx->ek, ctx->Nr, src, dst);
 }

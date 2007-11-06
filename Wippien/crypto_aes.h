@@ -12,7 +12,7 @@ typedef unsigned int	u32;
 #define RIJNDAEL_BLOCKSIZE 16
 
 
-class cryptoAES
+class _cryptoAES
 {
 protected:
 	/*  The structure for key information */
@@ -27,7 +27,7 @@ public:
 	int KeyLen, BlockSize;
 	char *Name;
 
-	cryptoAES() 
+	_cryptoAES() 
 	{
 		KeyLen = 0;
 		Name = "";
@@ -117,10 +117,10 @@ public:
 	void rijndael_set_key(rijndael_ctx *ctx, u_char *key, int bits, int encrypt);
 };
 
-class cryptoAES128 : public cryptoAES
+class _cryptoAES128 : public _cryptoAES
 {
 public:
-	cryptoAES128() 
+	_cryptoAES128() 
 	{
 		BlockSize = 16;
 		KeyLen = 16;
@@ -128,10 +128,10 @@ public:
 	}
 };
 
-class cryptoAES256 : public cryptoAES
+class _cryptoAES256 : public _cryptoAES
 {
 public:
-	cryptoAES256() 
+	_cryptoAES256() 
 	{
 		BlockSize = 16;
 		KeyLen = 32;

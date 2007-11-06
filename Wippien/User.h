@@ -125,7 +125,7 @@ public:
 	unsigned long m_GotVCard;
 //	Buffer m_Icon;
 	CxImage *m_Image;
-	cryptoAES128 m_AES;
+	_cryptoAES128 m_AES;
 	int m_MTU;
 	CDetectMTU *m_DetectMTU;
 

@@ -67,7 +67,6 @@
 #define IDR_SOUNDMSGIN                  1052
 #define IDC_CHECK_ETHERNETMEDIATOR      1053
 #define IDC_CHECK_ALLOWANYMEDIATOR      1054
-#define IDC_CHECK_ALLOWLINKMEDIATOR     1054
 #define IDR_SOUNDMSGOUT                 1055
 #define IDC_DETECT                      1056
 #define IDD_MAINDLG                     1057
@@ -392,6 +391,7 @@
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
 #define IDC_ETHERNET_IP                 1480
+#define IDC_CHECK_ALLOWLINKMEDIATOR     1481
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772

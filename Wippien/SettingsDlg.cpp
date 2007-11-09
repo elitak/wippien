@@ -1580,6 +1580,16 @@ BOOL CSettingsDlg::CSettingsMediator::Apply(void)
 	if (*buff)
 		_Settings.m_IPMediator = buff;
 
+	memset(buff, 0, 16384);
+	::SendMessage(GetDlgItem(IDC_LINKMEDIATOR_HOSTNAME), WM_GETTEXT, 16384, (LPARAM)buff);
+	if (*buff)
+		_Settings.m_LinkMediator = buff;
+
+	memset(buff, 0, 16384);
+	::SendMessage(GetDlgItem(IDC_LINKMEDIATOR_PORT), WM_GETTEXT, 16384, (LPARAM)buff);
+	if (*buff)
+		_Settings.m_LinkMediatorPort = atol(buff);
+	
 	if (oldshowmed != _Settings.m_ShowMediatorOnContacts)
 		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
 

@@ -562,19 +562,22 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 						if (SUCCEEDED(Contact->get_JID(&j)))
 						{
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
-							if (user)
+							if (user && !user->m_Block)
 							{
 								switch (user->m_WippienState)
 								{	
+									case WipDisconnected:	
+										if (user->m_DidSendRequest && user->m_DidSendResponse)
+										{
+											user->SendConnectionRequest(FALSE);
+											break;
+										} // intentionally left break
+
 									case WipWaitingInitRequest:
 									case WipWaitingInitResponse:
 										user->SetTimer(rand()%100, 3);
 										break;
-
-									case WipDisconnected:	
-										user->SendConnectionRequest(FALSE);
-										break;
-
+										
 									case WipConnecting:
 										break; // in the process
 

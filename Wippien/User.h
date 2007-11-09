@@ -153,6 +153,8 @@ public:
 	int m_RemotePort;//, /*m_LocalPort, */;
 	RSA *m_RSA;
 	Buffer m_RemoteIPList;
+
+	BOOL m_DidSendRequest, m_DidSendResponse;
 	
 	IPADDRESSLIST m_AllowedRemoteIPs;
 	VARIANT_BOOL m_AllowedRemoteAny, m_AllowedRemoteMediator;

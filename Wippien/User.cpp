@@ -28,9 +28,9 @@ extern CSDKMessageLink *_SDK;
 #ifdef _WODVPNLIB
 long raw_Connected(void *wodVPN, char * PeerID, char * IP, long Port)
 {
-	VARIANT tag;
+	void *tag = NULL;
 	WODVPNCOMLib::VPN_GetTag(wodVPN, &tag);
-	CUser *me = (CUser *)tag.plVal;
+	CUser *me = (CUser *)tag;;
 #else
 STDMETHODIMP CUser::raw_Connected(WODVPNCOMLib::IwodVPNCom * Owner, BSTR PeerID, BSTR IP, LONG Port)
 {
@@ -62,9 +62,9 @@ STDMETHODIMP CUser::raw_Connected(WODVPNCOMLib::IwodVPNCom * Owner, BSTR PeerID,
 #ifdef _WODVPNLIB
 long raw_Disconnected(void *wodVPN, long ErrorCode, char * ErrorText)
 {
-	VARIANT tag;
+	void *tag = NULL;
 	WODVPNCOMLib::VPN_GetTag(wodVPN, &tag);
-	CUser *me = (CUser *)tag.plVal;
+	CUser *me = (CUser *)tag;;
 #else
 STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG ErrorCode, BSTR ErrorText)
 {
@@ -81,9 +81,9 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 #ifdef _WODVPNLIB
 long raw_SearchDone(void *wodVPN, char * IP, long Port, long ErrorCode, char * ErrorText)
 {
-	VARIANT tag;
+	void *tag = NULL;
 	WODVPNCOMLib::VPN_GetTag(wodVPN, &tag);
-	CUser *me = (CUser *)tag.plVal;
+	CUser *me = (CUser *)tag;;
 #else
 STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LONG Port, LONG ErrorCode, BSTR ErrorText)
 {
@@ -111,9 +111,9 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 #ifdef _WODVPNLIB
 long raw_IncomingData(void *wodVPN, void *data, int count)
 {
-	VARIANT tag;
+	void *tag = NULL;
 	WODVPNCOMLib::VPN_GetTag(wodVPN, &tag);
-	CUser *me = (CUser *)tag.plVal;
+	CUser *me = (CUser *)tag;;
 #else
 STDMETHODIMP CUser::raw_IncomingData(WODVPNCOMLib::IwodVPNCom * Owner, VARIANT Data)
 {
@@ -182,10 +182,7 @@ CUser::CUser()
 	m_VPNEvents.IncomingData = raw_IncomingData;
 
 	m_wodVPN = WODVPNCOMLib::_VPN_Create(&m_VPNEvents);
-	VARIANT var;
-	var.vt = VT_I4;
-	var.lVal = (LONG)this;
-	WODVPNCOMLib::VPN_SetTag(m_wodVPN, var);
+	WODVPNCOMLib::VPN_SetTag(m_wodVPN, this);
 #endif
 	m_BlinkConnectingCounter = 0;
 	m_BlinkTimerCounter = 0;
@@ -303,6 +300,7 @@ void CUser::ReInit(BOOL WithDirect)
 {
 
 	m_WippienState = WipWaitingInitRequest;
+	m_DidSendResponse = m_DidSendRequest = FALSE;
 	EnterCriticalSection(&m_CritCS);
 #ifndef _WODVPNLIB
 	m_wodVPN->raw_Stop();
@@ -396,6 +394,17 @@ void CUser::SendConnectionRequest(BOOL Notify)
 {
 	if (m_Block)
 		return;
+
+	if (!m_DidSendRequest || !m_RSA)
+	{
+		SetTimer(rand()%100, 3);
+		return;
+	}
+	if (!m_DidSendResponse)
+	{
+		SetTimer(rand()%100, 4);
+		return;
+	}
 
 	if (!_Settings.m_MediatorAddr.Length() && _Settings.m_UseIPMediator)
 	{
@@ -576,6 +585,7 @@ void CUser::FdTimer(int TimerID)
 			b.Append((char *)_Settings.m_MAC, 6);
 			_Settings.KeyToBlob(&b, FALSE);
 
+			m_DidSendRequest = TRUE;
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
 			KillTimer(3);
 		}
@@ -593,6 +603,7 @@ void CUser::FdTimer(int TimerID)
 			RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, m_RSA, RSA_PKCS1_PADDING);
 			b.Append(dst, 128);
 
+			m_DidSendResponse = TRUE;
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
 			KillTimer(4);
 		}

@@ -480,7 +480,16 @@ void CUpdateHandler::InitUpdater(void)
 		VARIANT var;
 		var.vt = VT_I4;
 		var.lVal = (LONG)this;
+
+		const char *dialognoteurl = "http://www.weonlydo.com/index.asp?showform=AppUpdate&from=Wippien";
+		const char *updtername="WippienUpdater";
+
 		WODAPPUPDCOMLib::AppUpd_SetTag(m_Update, var);
+		WODAPPUPDCOMLib::AppUpd_SetUpdaterName(m_Update, (char *)updtername);
+		WODAPPUPDCOMLib::AppUpd_SetDialogNoteURL(m_Update, (char *)dialognoteurl);
+		WODAPPUPDCOMLib::AppUpd_SetReplaceRule(m_Update, (WODAPPUPDCOMLib::ReplaceRulesEnum)/*ReplaceIfVersion*/1);
+		WODAPPUPDCOMLib::AppUpd_SetReplaceRule(m_Update, (WODAPPUPDCOMLib::ReplaceRulesEnum)/*ReplaceIfVersion*/1);
+		WODAPPUPDCOMLib::AppUpd_SetRequireAdmin(m_Update, (BOOL)TRUE);
 #endif
 	}
 }

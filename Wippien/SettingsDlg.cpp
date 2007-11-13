@@ -4097,6 +4097,12 @@ LRESULT CSettingsDlg::CSettingsSkins::OnApplyBtn(WORD wNotifyCode, WORD wID, HWN
 
 	_Settings.m_Skin.Empty();
 
+	long exstyle = _MainDlg.GetWindowLong(GWL_EXSTYLE);
+	exstyle |= WS_EX_TOOLWINDOW;
+	exstyle -= WS_EX_TOOLWINDOW;
+	long style = _MainDlg.GetWindowLong(GWL_STYLE);
+	style |= WS_SYSMENU;
+
 	int i = m_SkinList.GetCurSel();
 	if (i>0)
 	{
@@ -4112,12 +4118,24 @@ LRESULT CSettingsDlg::CSettingsSkins::OnApplyBtn(WORD wNotifyCode, WORD wID, HWN
 		strcat(buff, ".smf");
 					
 #ifdef _SKINMAGICKEY
+
 		if (LoadSkinFile(buff))
 			_MainDlg.m_WearSkin = TRUE;
 
 		if (_MainDlg.m_WearSkin)
+		{
+			exstyle |= WS_EX_TOOLWINDOW;
+			style -= WS_SYSMENU;
+			_MainDlg.SetWindowLong(GWL_STYLE, style);
+			_MainDlg.SetWindowLong(GWL_EXSTYLE, exstyle);
 			SetWindowSkin(_MainDlg.m_hWnd, "MainFrame");
+		}
 #endif
+	}
+	if (!_MainDlg.m_WearSkin)
+	{
+		_MainDlg.SetWindowLong(GWL_STYLE, style);
+		_MainDlg.SetWindowLong(GWL_EXSTYLE, exstyle);
 	}
 	_MainDlg.ShowWindow(SW_HIDE);
 	_MainDlg.ShowWindow(SW_MINIMIZE);

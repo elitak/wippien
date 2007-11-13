@@ -1,10 +1,7 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
-#include "versionno.h"
-#ifdef _APPUPDLIB
-#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
-#endif
+#include "Versionno.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -15,7 +12,6 @@
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -109,7 +105,6 @@ BEGIN
     PUSHBUTTON      "Add &New",IDC_ADDNEW,219,164,41,15
 END
 
-
 IDD_SETTINGS_ETHERNET DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
@@ -138,9 +133,9 @@ BEGIN
 END
 
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
-STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_THICKFRAME
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_TOOLWINDOW
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+FONT 8, "MS Sans Serif"
 BEGIN
     CONTROL         "&Exit",ID_EXIT,"Button",BS_OWNERDRAW | WS_TABSTOP,6,243,
                     30,14
@@ -1302,11 +1297,6 @@ END
 //
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 
-
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
-#ifdef _APPUPDLIB
-#define _LIB
-#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
-#endif

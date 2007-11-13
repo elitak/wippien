@@ -1333,6 +1333,12 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	m_UserList.Init(this, GetDlgItem(IDC_TREELIST));
 
 	// wear skin
+	m_WearSkin = FALSE;
+	long exstyle = GetWindowLong(GWL_EXSTYLE);
+	exstyle |= WS_EX_TOOLWINDOW;
+	exstyle -= WS_EX_TOOLWINDOW;
+	long style = GetWindowLong(GWL_STYLE);
+	style |= WS_SYSMENU;
 #ifdef _SKINMAGICKEY
 	InitSkinMagicLib(_Module.GetModuleInstance(), "WippienExe" , _SKINMAGICKEY, NULL);
 	if (_Settings.m_Skin.Length())
@@ -1342,14 +1348,32 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 		strcat(buff, "Skin\\");
 		CComBSTR2 mss = _Settings.m_Skin;
 		strcat(buff, mss.ToString());
-		m_WearSkin = FALSE;
 
 		if (LoadSkinFile(buff))
 			m_WearSkin = TRUE;
 
+		// remove toolwindow
 		if (m_WearSkin)
+		{
+			exstyle |= WS_EX_TOOLWINDOW;
+			style -= WS_SYSMENU;
+			SetWindowLong(GWL_STYLE, style);
+			SetWindowLong(GWL_EXSTYLE, exstyle);
+			// remove toolwindow attribute
 			SetWindowSkin(m_hWnd, "MainFrame");
+		}
 	}
+	if (!m_WearSkin)
+	{
+		SetWindowLong(GWL_STYLE, style);
+		SetWindowLong(GWL_EXSTYLE, exstyle);
+	}
+
+     HMENU hSysMenu=GetSystemMenu(FALSE);
+     DeleteMenu(hSysMenu, 6, MF_BYPOSITION);
+     DeleteMenu(hSysMenu, 5, MF_BYPOSITION);
+
+
 #endif
 
 	// set icons

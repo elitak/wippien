@@ -168,6 +168,7 @@ public:
 	Buffer *ExpandArgs(char *Text);
 	//void StartUDP(void);
 	void SendConnectionRequest(BOOL Notify);
+	BOOL ExchangeWippienDetails(void);
 	void FdTimer(int timerid);
 	void FdMTU(int MTU);
 //	void StartConnecting(void);

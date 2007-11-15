@@ -483,7 +483,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 
 											}
 											user->m_WippienState = WipWaitingInitResponse;
-											user->SetTimer(rand()%500, 4);
+											user->SetTimer(rand()%100, 3);
 											break;
 										}	
 									} while (line);

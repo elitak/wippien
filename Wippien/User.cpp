@@ -390,28 +390,31 @@ void CUser::ReInit(BOOL WithDirect)
 	}
 }*/
 
+BOOL CUser::ExchangeWippienDetails(void)
+{
+	if (m_WippienState == WipConnected)
+		return TRUE;
+
+	SetTimer(100, 3);
+
+	// still connecting...
+	return FALSE;
+}
+
 void CUser::SendConnectionRequest(BOOL Notify)
 {
 	if (m_Block)
 		return;
 
-	if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
-	{
-		SetTimer(rand()%100, 3);
-		return;
-	}
-
-	if (m_RemoteWippienState < WipDisconnected || m_WippienState < WipDisconnected)
-	{
-		SetTimer(rand()%100, 4);
-		return;
-	}
 
 	if (!_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
 	{
 		_MainDlg.ShowStatusText("Mediator not available!");
 		return;
 	}
+
+	if (!ExchangeWippienDetails())
+		return;
 
 
 	EnterCriticalSection(&m_CritCS);
@@ -571,36 +574,46 @@ void CUser::FdTimer(int TimerID)
 	else
 	if (TimerID==3)
 	{
-		// request to exchange details
-		if (_Settings.m_MyLastNetwork)
+		KillTimer(3);
+		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
 		{
-			Buffer b;
-			b.PutInt(_Settings.m_MyLastNetwork);
-			b.Append((char *)_Settings.m_MAC, 6);
-			_Settings.KeyToBlob(&b, FALSE);
-			b.PutChar((char)m_WippienState);
- 
-			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
-			KillTimer(3);
+			if (_Settings.m_MyLastNetwork)
+			{
+				Buffer b;
+				b.PutInt(_Settings.m_MyLastNetwork);
+				b.Append((char *)_Settings.m_MAC, 6);
+				_Settings.KeyToBlob(&b, FALSE);
+				b.PutChar((char)m_WippienState);
+
+				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
+			}
+			return;
 		}
-	}
-	else
-	if (TimerID==4)
-	{
-		if (_Settings.m_MyLastNetwork && m_RSA)
+
+		if (m_RemoteWippienState < WipDisconnected || m_WippienState < WipDisconnected)
 		{
-			SetSubtext();
-			Buffer b;
+			if (_Settings.m_MyLastNetwork && m_RSA)
+			{
+				SetSubtext();
+				Buffer b;
 
-			char src[128 - RSA_PKCS1_PADDING_SIZE], dst[128];
-			memcpy(src + 24, m_MyKey, 16); // this is stupid, ok?...
-			RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, m_RSA, RSA_PKCS1_PADDING);
-			b.Append(dst, 128);
-			b.PutChar((char)m_WippienState);
+				char src[128 - RSA_PKCS1_PADDING_SIZE], dst[128];
+				memcpy(src + 24, m_MyKey, 16); // this is stupid, ok?...
+				RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, m_RSA, RSA_PKCS1_PADDING);
+				b.Append(dst, 128);
+				b.PutChar((char)m_WippienState);
 
-			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
-			KillTimer(4);
+				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
+			}
+			return;
 		}
+
+		if (m_RemoteWippienState < WipConnecting || m_WippienState < WipConnecting)
+		{
+			NotifyConnect();
+			return;
+		}
+
 	}
 	else
 	if (TimerID == 9)

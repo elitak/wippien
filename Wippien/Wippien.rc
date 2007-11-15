@@ -1,9 +1,10 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
-#include "Versionno.h"
-
-#define APSTUDIO_READONLY_SYMBOLS
+#include "versionno.h"
+#ifdef _APPUPDLIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
+#endif
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
@@ -1300,3 +1301,7 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
+#ifdef _APPUPDLIB
+#define _LIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
+#endif

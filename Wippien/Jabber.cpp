@@ -476,6 +476,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 												user->m_RSA->n = BN_new();
 												out.GetBignum2(user->m_RSA->n);
 
+												if (out.Len())
+													user->m_RemoteWippienState = (WippienState)out.GetChar();
+
 												user->m_Changed = TRUE;
 
 											}
@@ -515,6 +518,10 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 									{
 										return;
 									}
+
+									out.Consume(128);
+									if (out.Len())
+										user->m_RemoteWippienState = (WippienState)out.GetChar();
 
 									// and XOR with ours
 									for (int i = 0; i < 16; i++)
@@ -563,9 +570,29 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 						if (SUCCEEDED(Contact->get_JID(&j)))
 						{
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
+							if (user)
+							{
+								Buffer in, out;
+								CComBSTR2 r;
+								char *r1 = r.ToString();
+								if (r1)
+								{
+									in.Append(r1);
+									if (in.Len())
+									{		
+										_Settings.FromHex(&in, &out);
+										if (out.Len())
+										{
+											user->m_RemoteWippienState = (WippienState)out.GetChar();
+										}
+									}
+								}
+							}
 							if (user && !user->m_Block)
 							{
-								switch (user->m_WippienState)
+								user->SendConnectionRequest(FALSE);
+
+/*								switch (user->m_WippienState)
 								{	
 									case WipDisconnected:	
 										if (user->m_DidSendRequest && user->m_DidSendResponse)
@@ -588,6 +615,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 //									default:
 //										MessageBeep(-1);
 								}
+*/
 							}
 						}
 					}			

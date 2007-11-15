@@ -39,7 +39,8 @@ typedef enum WippienState
 	WipDisconnected,
 	WipConnecting,
 	WipNegotiating,
-	WipConnected
+	WipConnected,
+	WipUndefined
 } WippienState;
 
 typedef struct IPAddressConnectionStruct
@@ -153,8 +154,6 @@ public:
 	int m_RemotePort;//, /*m_LocalPort, */;
 	RSA *m_RSA;
 	Buffer m_RemoteIPList;
-
-	BOOL m_DidSendRequest, m_DidSendResponse;
 	
 	IPADDRESSLIST m_AllowedRemoteIPs;
 	VARIANT_BOOL m_AllowedRemoteAny, m_AllowedRemoteMediator;

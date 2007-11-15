@@ -300,8 +300,7 @@ void CUser::ReInit(BOOL WithDirect)
 {
 
 	m_WippienState = WipWaitingInitRequest;
-	m_RemoteWippienState = WipWaitingInitRequest;
-	m_DidSendResponse = m_DidSendRequest = FALSE;
+	m_RemoteWippienState = WipUndefined;
 	EnterCriticalSection(&m_CritCS);
 #ifndef _WODVPNLIB
 	m_wodVPN->raw_Stop();
@@ -396,12 +395,13 @@ void CUser::SendConnectionRequest(BOOL Notify)
 	if (m_Block)
 		return;
 
-	if (!m_DidSendRequest || !m_RSA)
+	if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
 	{
 		SetTimer(rand()%100, 3);
 		return;
 	}
-	if (!m_DidSendResponse)
+
+	if (m_RemoteWippienState < WipDisconnected || m_WippienState < WipDisconnected)
 	{
 		SetTimer(rand()%100, 4);
 		return;
@@ -410,13 +410,6 @@ void CUser::SendConnectionRequest(BOOL Notify)
 	if (!_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
 	{
 		_MainDlg.ShowStatusText("Mediator not available!");
-		return;
-	}
-	
-	if (m_WippienState < WipDisconnected)
-	{
-		ATLTRACE("Cannot send connection request because state < connecting\r\n");
-		SetTimer(rand()%500, 3);
 		return;
 	}
 
@@ -587,7 +580,6 @@ void CUser::FdTimer(int TimerID)
 			_Settings.KeyToBlob(&b, FALSE);
 			b.PutChar((char)m_WippienState);
 
-			m_DidSendRequest = TRUE;
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
 			KillTimer(3);
 		}
@@ -606,7 +598,6 @@ void CUser::FdTimer(int TimerID)
 			b.Append(dst, 128);
 			b.PutChar((char)m_WippienState);
 
-			m_DidSendResponse = TRUE;
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
 			KillTimer(4);
 		}

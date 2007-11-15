@@ -1553,6 +1553,12 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		::SendMessage(GetDlgItem(IDC_CHECK_SHOWMEDIATOR), BM_SETCHECK, FALSE, NULL);
 
+	if (_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator)
+		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_SETCHECK, FALSE, NULL);
+	
+
 	return TRUE;
 }
 
@@ -1573,6 +1579,11 @@ BOOL CSettingsDlg::CSettingsMediator::Apply(void)
 		_Settings.m_ShowMediatorOnContacts = TRUE;
 	else
 		_Settings.m_ShowMediatorOnContacts = FALSE;
+	
+	if (::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_GETSTATE, NULL, NULL))
+		_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator = TRUE;
+	else
+		_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator = FALSE;
 	
 	char buff[16384];
 	memset(buff, 0, 16384);

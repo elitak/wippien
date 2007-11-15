@@ -52,7 +52,7 @@ public:
 	long	m_LinkMediatorPort, m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_FunctionDebugFile;
 	CComBSTR m_Skin;
-	BOOL m_UseIPMediator, m_AllowAnyMediator, m_ShowMediatorOnContacts, m_SoundOn, m_LoadSuccess;
+	BOOL m_UseIPMediator, m_AllowLinkMediatorToBeProvidedByIPMediator, m_AllowAnyMediator, m_ShowMediatorOnContacts, m_SoundOn, m_LoadSuccess;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
 	int m_ServerPort, m_UDPPort, m_LastOperatorMessageID;
@@ -69,8 +69,7 @@ public:
 	BOOL m_AutoSetBack;
 	unsigned long m_MyLastNetwork, m_MyLastNetmask; // in NETWORK ORDER!!
 	
-	CComBSTR	m_MediatorAddr;
-	long		m_MediatorPort;
+//	CComBSTR	m_MediatorAddr;
 
 	BOOL m_EnableVoiceChat;
 	unsigned long m_VoiceChatRecordingDevice, m_VoiceChatPlaybackDevice;

@@ -406,7 +406,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 		return;
 	}
 
-	if (!_Settings.m_MediatorAddr.Length() && _Settings.m_UseIPMediator)
+	if (!_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
 	{
 		_MainDlg.ShowStatusText("Mediator not available!");
 		return;

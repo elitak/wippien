@@ -382,12 +382,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 								}
 							}
 
-							struct  in_addr inaddr;
-							inaddr.s_addr = inet_addr(ip);
-							if (inaddr.s_addr != INADDR_NONE)
+//							struct  in_addr inaddr;
+//							inaddr.s_addr = inet_addr(ip);
+//							if (inaddr.s_addr != INADDR_NONE)
 							{
-								_Settings.m_MediatorAddr = ip;
-								_Settings.m_MediatorPort = atol(port);
+								_Settings.m_LinkMediator = ip;
+								_Settings.m_LinkMediatorPort = atol(port);
+								_Settings.Save(FALSE);
 							}
 							_MainDlg.ShowStatusText("Mediator is available.");
 							_MainDlg.Invalidate();
@@ -630,7 +631,7 @@ void __stdcall CJabberEvents::DispContactList()
 	BOOL init = m_pJ->m_Initial;
 	m_pJ->m_Initial = FALSE;
 
-	if (!_Settings.m_MediatorAddr.Length() && _Settings.m_UseIPMediator)
+	if (_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
 	{
 		// ask mediator for his details
 		WODJABBERCOMLib::IJbrContacts *contacts;

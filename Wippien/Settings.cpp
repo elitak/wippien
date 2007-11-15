@@ -39,7 +39,6 @@ char *REGISTRYKEY = "Software\\Kresimir Petric\\Wippien";
 CSettings::CSettings()
 {
 	m_LoadSuccess = FALSE;
-	m_MediatorPort = 0;
 
 	m_TimestampMessages = TRUE;
 	m_ShowMessageHistory = TRUE;
@@ -67,6 +66,7 @@ CSettings::CSettings()
 
 	m_MyLastNetwork = m_MyLastNetmask = 0;
 	m_AllowAnyMediator = TRUE;
+	m_AllowLinkMediatorToBeProvidedByIPMediator = TRUE;
 	m_UseIPMediator = TRUE;
 	m_ShowMediatorOnContacts = TRUE;
 	m_IPMediator = "mediator@wippien.com";
@@ -931,6 +931,13 @@ int CSettings::Load(void)
 			if (data != "1")
 				m_AllowAnyMediator = FALSE;
 		}
+		m_AllowLinkMediatorToBeProvidedByIPMediator = TRUE;
+		if (xml.FindElem("AllowLinkMediatorToBeProvidedByIP"))
+		{
+			data = xml.GetData();
+			if (data != "1")
+				m_AllowLinkMediatorToBeProvidedByIPMediator = FALSE;
+		}
 		
 		m_UseIPMediator = TRUE;
 		if (xml.FindElem("UseMediator"))
@@ -1733,6 +1740,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 		xml.AddChildElem("LinkMediatorPort", m_LinkMediatorPort);
 		xml.AddChildElem("ObtainIPAddress", m_ObtainIPAddress);
 		xml.AddChildElem("AllowAnyMediator", m_AllowAnyMediator?"1":"0");
+		xml.AddChildElem("AllowLinkMediatorToBeProvidedByIP", m_AllowLinkMediatorToBeProvidedByIPMediator?"1":"0");
 		xml.AddChildElem("UseMediator", m_UseIPMediator?"1":"0");
 		xml.AddChildElem("ShowMediator", m_ShowMediatorOnContacts?"1":"0");
 		xml.AddChildElem("ShowContactPicture", m_ShowContactPicture?"1":"0");

@@ -392,7 +392,7 @@ void CUser::ReInit(BOOL WithDirect)
 
 BOOL CUser::ExchangeWippienDetails(void)
 {
-	if (m_WippienState == WipConnected)
+	if (m_WippienState >= WipDisconnected)
 		return TRUE;
 
 	SetTimer(100, 3);

@@ -541,6 +541,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 									LeaveCriticalSection(&user->m_CritCS);
 
 									user->m_WippienState = WipDisconnected;
+									user->SetTimer(rand()%100, 3);
 									if (_Settings.m_AutoConnectVPNOnStartup)
 										user->SendConnectionRequest(TRUE);
 
@@ -574,16 +575,19 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 							{
 								Buffer in, out;
 								CComBSTR2 r;
-								char *r1 = r.ToString();
-								if (r1)
+								if (SUCCEEDED(Message->get_Text(&r)))
 								{
-									in.Append(r1);
-									if (in.Len())
-									{		
-										_Settings.FromHex(&in, &out);
-										if (out.Len())
-										{
-											user->m_RemoteWippienState = (WippienState)out.GetChar();
+									char *r1 = r.ToString();
+									if (r1)
+									{
+										in.Append(r1);
+										if (in.Len())
+										{		
+											_Settings.FromHex(&in, &out);
+											if (out.Len())
+											{
+												user->m_RemoteWippienState = (WippienState)out.GetChar();
+											}
 										}
 									}
 								}

@@ -438,6 +438,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
+									ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
 									Buffer b;
 									b.Append(user->m_Resource);
 									b.Append("\r\n");
@@ -493,7 +494,6 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 					}
 					if (subj == WIPPIENINITRESPONSE && Contact)
 					{
-						ATLTRACE("Got WIPPIENINITRESPONSE\r\n");
 						if (!_Ethernet.m_Available) return; // ignore if ethernet is not available
 
 						Buffer in, out;
@@ -512,6 +512,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
+									ATLTRACE("Got WIPPIENINITRESPONSE from %s\r\n", user->m_JID);
 									char src[8192], dst[8192];
 									memcpy(src, out.Ptr(), 128);
 									if (RSA_private_decrypt(128, (unsigned char *)src, (unsigned char *)dst,  _Settings.m_RSA, RSA_PKCS1_PADDING) < 0)
@@ -565,7 +566,6 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 					}
 					if (subj == WIPPIENCONNECT && Contact)
 					{
-						ATLTRACE("Got CONNECT message\r\n");
 						// reinit...
 						CComBSTR j;
 						if (SUCCEEDED(Contact->get_JID(&j)))
@@ -573,6 +573,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 							if (user)
 							{
+								ATLTRACE("Got CONNECT message from %s\r\n", user->m_JID);
 								Buffer in, out;
 								CComBSTR2 r;
 								if (SUCCEEDED(Message->get_Text(&r)))

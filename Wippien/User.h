@@ -130,7 +130,7 @@ public:
 	CDetectMTU *m_DetectMTU;
 
 	char m_StatusText[128];
-	WippienState m_WippienState;
+	WippienState m_WippienState, m_RemoteWippienState;
 	char m_MyKey[16], m_SharedKey[16];
 	MACADDR m_MAC;
 	CSettingsDlg *m_SettingsContactsDlg;

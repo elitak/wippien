@@ -300,6 +300,7 @@ void CUser::ReInit(BOOL WithDirect)
 {
 
 	m_WippienState = WipWaitingInitRequest;
+	m_RemoteWippienState = WipWaitingInitRequest;
 	m_DidSendResponse = m_DidSendRequest = FALSE;
 	EnterCriticalSection(&m_CritCS);
 #ifndef _WODVPNLIB
@@ -584,6 +585,7 @@ void CUser::FdTimer(int TimerID)
 			b.PutInt(_Settings.m_MyLastNetwork);
 			b.Append((char *)_Settings.m_MAC, 6);
 			_Settings.KeyToBlob(&b, FALSE);
+			b.PutChar((char)m_WippienState);
 
 			m_DidSendRequest = TRUE;
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
@@ -602,6 +604,7 @@ void CUser::FdTimer(int TimerID)
 			memcpy(src + 24, m_MyKey, 16); // this is stupid, ok?...
 			RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, m_RSA, RSA_PKCS1_PADDING);
 			b.Append(dst, 128);
+			b.PutChar((char)m_WippienState);
 
 			m_DidSendResponse = TRUE;
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
@@ -1047,6 +1050,14 @@ void CUser::NotifyConnect(void)
 
 			CComBSTR t = WIPPIENCONNECT;
 			msg->put_Subject(t);
+
+			Buffer in,out;
+			in.PutChar((char)m_WippienState);
+			_Settings.ToHex(&in, &out);
+			out.Append("\0", 1);
+			CComBSTR t1 = out.Ptr();
+			msg->put_Text(t1);
+
 
 		//	Contact->SendMessage(msg);
 			HRESULT hr = ct->raw_SendMessage(msg);

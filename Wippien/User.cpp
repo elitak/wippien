@@ -579,7 +579,7 @@ void CUser::FdTimer(int TimerID)
 			b.Append((char *)_Settings.m_MAC, 6);
 			_Settings.KeyToBlob(&b, FALSE);
 			b.PutChar((char)m_WippienState);
-
+ 
 			_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
 			KillTimer(3);
 		}

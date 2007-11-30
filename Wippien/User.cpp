@@ -489,7 +489,8 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			WODVPNCOMLib::VPN_SetRetryCount(m_wodVPN, 30);
 			WODVPNCOMLib::VPN_SetRetryWait(m_wodVPN, 500);
 			WODVPNCOMLib::VPN_SetThreads(m_wodVPN, TRUE);
-			WODVPNCOMLib::VPN_Start(m_wodVPN, 0);
+			long port = 0;
+			WODVPNCOMLib::VPN_Start(m_wodVPN, &port);
 			CComBSTR2 hisid2 = hisid;
 			WODVPNCOMLib::VPN_Search(m_wodVPN, (WODVPNCOMLib::SearchEnum)0, hisid2.ToString(), varhost, varport, varempty);
 #else
@@ -996,28 +997,29 @@ BOOL CUser::SaveUserImage(CxImage &img)
 
 void CUser::NotifyDisconnect(void)
 {
+
+#ifndef _WODXMPPLIB	
+	CComBSTR t = WIPPIENDISCONNECT;
 	CComBSTR j = m_JID;
 	VARIANT var;
 	var.vt = VT_BSTR;
 	var.bstrVal = j;
-	WODJABBERCOMLib::IJbrContacts *cts = NULL;
-	WODJABBERCOMLib::IJbrContact *ct = NULL;
+	WODXMPPCOMLib::IXMPPContacts *cts = NULL;
+	WODXMPPCOMLib::IXMPPContact *ct = NULL;
 
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 	{
 		if (SUCCEEDED(cts->get_Item(var, &ct)))
 		{
 
+
 			// send DISCONNECT message
-			CComPtr<WODJABBERCOMLib::IJbrMessage> msg;
-			msg.CoCreateInstance(__uuidof(WODJABBERCOMLib::JbrMessage));
+			CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
+			msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
 
-			msg->put_Type((WODJABBERCOMLib::MessageTypesEnum)/*WODJABBERCOMLib::MessageTypesEnum::MsgHeadline*/3);
-
-			CComBSTR t = WIPPIENDISCONNECT;
+			msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
 			msg->put_Subject(t);
 
-		//	Contact->SendMessage(msg);
 			HRESULT hr = ct->raw_SendMessage(msg);
 			if (FAILED(hr))
 			{
@@ -1029,52 +1031,58 @@ void CUser::NotifyDisconnect(void)
 		}
 		cts->Release();
 	}
+#else
+	void *msg = WODXMPPCOMLib::XMPP_Message_New();
+	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
+	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, WIPPIENDISCONNECT);
+	WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, m_JID, msg);
+	WODXMPPCOMLib::XMPP_Message_Free(msg);
+#endif
 	ReInit(TRUE);
 }
 
 void CUser::NotifyConnect(void)
-{
+{	
+#ifndef _WODXMPPLIB	
+	CComBSTR t = WIPPIENDISCONNECT;
 	CComBSTR j = m_JID;
 	VARIANT var;
 	var.vt = VT_BSTR;
 	var.bstrVal = j;
-	WODJABBERCOMLib::IJbrContacts *cts = NULL;
-	WODJABBERCOMLib::IJbrContact *ct = NULL;
-
+	WODXMPPCOMLib::IXMPPContacts *cts = NULL;
+	WODXMPPCOMLib::IXMPPContact *ct = NULL;
+	
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 	{
 		if (SUCCEEDED(cts->get_Item(var, &ct)))
 		{
-
+			
+			
 			// send DISCONNECT message
-			CComPtr<WODJABBERCOMLib::IJbrMessage> msg;
-			msg.CoCreateInstance(__uuidof(WODJABBERCOMLib::JbrMessage));
-
-			msg->put_Type((WODJABBERCOMLib::MessageTypesEnum)/*WODJABBERCOMLib::MessageTypesEnum::MsgHeadline*/3);
-
-			CComBSTR t = WIPPIENCONNECT;
+			CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
+			msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
+			
+			msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
 			msg->put_Subject(t);
-
-			Buffer in,out;
-			in.PutChar((char)m_WippienState);
-			_Settings.ToHex(&in, &out);
-			out.Append("\0", 1);
-			CComBSTR t1 = out.Ptr();
-			msg->put_Text(t1);
-
-
-		//	Contact->SendMessage(msg);
+			
 			HRESULT hr = ct->raw_SendMessage(msg);
 			if (FAILED(hr))
 			{
-//					ShowError();
+				//					ShowError();
 			}
-
+			
 			
 			ct->Release();
 		}
 		cts->Release();
 	}
+#else
+	void *msg = WODXMPPCOMLib::XMPP_Message_New();
+	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
+	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, WIPPIENCONNECT);
+	WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, m_JID, msg);
+	WODXMPPCOMLib::XMPP_Message_Free(msg);
+#endif
 }
 
 void CUser::NotifyBlock(void)

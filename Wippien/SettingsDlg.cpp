@@ -483,8 +483,14 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 		if (_Jabber)
 		{
 			// and request vcard
-			WODJABBERCOMLib::IJbrVCard *vc;
+#ifndef _WODXMPPLIB
+			WODXMPPCOMLib::IXMPPVCard *vc;
 			if (SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc)))
+#else
+			void *vc;
+			WODXMPPCOMLib::XMPP_GetVCard(_Jabber->m_Jabb, &vc);
+			if (vc)
+#endif
 			{
 
 				// put photo...
@@ -580,6 +586,7 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 				if (_Settings.m_Icon.Len())
 				{
 
+#ifndef _WODXMPPLIB
 					SAFEARRAY * psaiNew; 
 					SAFEARRAYBOUND aDim[1]; 
 					aDim[0].lLbound = 1; 
@@ -596,6 +603,10 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 
 						vc->put_PhotoData(&psaiNew);
 					}
+#else
+					WODXMPPCOMLib::XMPP_VCard_SetPhotoData(vc, _Settings.m_Icon.Ptr(), _Settings.m_Icon.Len());
+#endif
+
 
 /*					LPVOID pvData = NULL;
 					// alloc memory based on file size
@@ -637,8 +648,13 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 				}
 //				free(buffer);
 
+#ifndef _WODXMPPLIB
 				vc->Send();
 				vc->Release();
+#else
+				WODXMPPCOMLib::XMPP_VCard_Send(vc);
+				WODXMPPCOMLib::XMPP_VCard_Free(vc);
+#endif
 			}
 		}
 	}
@@ -917,12 +933,14 @@ void CSettingsDlg::CSettingsJID::Show(BOOL Show, RECT *rc)
 	}
 }
 
+#ifndef _WODXMPPLIB
+
 // Define the ftp events to be handled:
 _ATL_FUNC_INFO SettingsConnectedInfo = {CC_STDCALL, VT_EMPTY, 0};
 _ATL_FUNC_INFO SettingsDisconnectedInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_I4,VT_BSTR}};
 _ATL_FUNC_INFO SettingsStateChangeInfo = {CC_STDCALL, VT_EMPTY, 1, {VT_I4}};
 
-class CSettingsDlg::CSettingsJID::CJabberEvents : public IDispEventSimpleImpl<1, CSettingsDlg::CSettingsJID::CJabberEvents, &__uuidof(WODJABBERCOMLib::_IwodJabberComEvents)>
+class CSettingsDlg::CSettingsJID::CJabberEvents : public IDispEventSimpleImpl<1, CSettingsDlg::CSettingsJID::CJabberEvents, &__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents)>
 {
 public:
     CJabberEvents (CSettingsDlg::CSettingsJID::CJabberWiz * ppJ)
@@ -937,8 +955,18 @@ public:
 //        m_pJ->m_Jabb.Release();
     }
 
+#endif
+
+#ifdef _WODXMPPLIB
+	void XMPP_SettingsDlgConnected(void *wodXMPP)
+	{
+		CSettingsDlg::CSettingsJID::CJabberWiz * m_pJ;
+		WODXMPPCOMLib::XMPP_GetTag(wodXMPP, (void **)&m_pJ);
+
+#else
     void __stdcall DispConnected ()
     {
+#endif
 
 		m_pJ->m_Owner->m_TestSuccess = TRUE;
 		::EnableWindow(::GetDlgItem(m_pJ->m_Owner->m_hWnd, IDC_TEST_JID), FALSE);
@@ -946,36 +974,73 @@ public:
 		::EnableWindow(::GetDlgItem(m_pJ->m_Owner->m_Owner, IDC_NEXT), TRUE);
 		::MessageBox(NULL, "Success!", "Jabber test", MB_OK);
     }
+#ifdef _WODXMPPLIB
+	void XMPP_SettingsDlgDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
+	{
+		CSettingsDlg::CSettingsJID::CJabberWiz * m_pJ;
+		WODXMPPCOMLib::XMPP_GetTag(wodXMPP, (void **)&m_pJ);		
+#else
     void __stdcall DispDisconnected (long ErrorCode, BSTR ErrorText)
     {
+#endif
 		CComBSTR2 e = ErrorText;
 		if (ErrorCode)
 			::MessageBox(NULL, e.ToString(), "Jabber error", MB_OK);
     }
-    void __stdcall DispStateChange(WODJABBERCOMLib::StatesEnum OldState)
+#ifdef _WODXMPPLIB
+	void XMPP_SettingsDLGStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState)
+	{
+		CSettingsDlg::CSettingsJID::CJabberWiz * m_pJ;
+		WODXMPPCOMLib::XMPP_GetTag(wodXMPP, (void **)&m_pJ);
+#else
+    void __stdcall DispStateChange(WODXMPPCOMLib::StatesEnum OldState)
     {
+#endif
+
+#ifndef _WODXMPPLIB
+		CComBSTR2 b;
 		VARIANT var;
 		var.vt = VT_ERROR;
-		CComBSTR2 b;
 		if (SUCCEEDED(m_pJ->m_Jabb->get_StateText(var, &b)))
 			::SetDlgItemText(m_pJ->m_Owner->m_hWnd, IDC_JABBER_CONN_STATUS, b.ToString());
+#else
+		char bf[10240];
+		int bflen = sizeof(bf);
+		WODXMPPCOMLib::StatesEnum st;
+		WODXMPPCOMLib::XMPP_GetState(wodXMPP, &st);
+		WODXMPPCOMLib::XMPP_GetStateText(wodXMPP, st, bf, &bflen);
+		::SetDlgItemText(m_pJ->m_Owner->m_hWnd, IDC_JABBER_CONN_STATUS, bf);
+#endif
     }
     
+#ifndef _WODXMPPLIB
     BEGIN_SINK_MAP (CJabberEvents)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),0,DispConnected,&SettingsConnectedInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),1,DispDisconnected,&SettingsDisconnectedInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),2,DispStateChange,&SettingsStateChangeInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),0,DispConnected,&SettingsConnectedInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),1,DispDisconnected,&SettingsDisconnectedInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),2,DispStateChange,&SettingsStateChangeInfo)
         END_SINK_MAP ()
 private:
 	CJabberWiz * m_pJ;
 };
+#endif
 
 CSettingsDlg::CSettingsJID::CJabberWiz::CJabberWiz(CSettingsDlg::CSettingsJID *Owner)
 {
-	m_Jabb.CoCreateInstance(__uuidof(WODJABBERCOMLib::wodJabberCom));
+#ifndef _WODXMPPLIB
+	m_Jabb.CoCreateInstance(__uuidof(WODXMPPCOMLib::wodXMPPCom));
 	m_Events = new CJabberEvents(this);
-#ifdef WODJABBER_LICENSE_KEY
-	CComBSTR blic(WODJABBER_LICENSE_KEY);
+#else
+	memset(&m_Events, 0, sizeof(m_Events));
+	m_Events.Connected = XMPP_SettingsDlgConnected;
+	m_Events.Disconnected = XMPP_SettingsDlgDisconnected;
+	m_Events.StateChange = XMPP_SettingsDLGStateChange;
+	m_Jabb = WODXMPPCOMLib::__XMPP_Create(&m_Events);
+	WODXMPPCOMLib::XMPP_SetTag(m_Jabb, (void *)this);
+#endif
+
+
+#ifdef WODXMPP_LICENSE_KEY
+	CComBSTR blic(WODXMPP_LICENSE_KEY);
 	m_Jabb->put_LicenseKey(blic);
 #endif
 	m_Owner = Owner;
@@ -983,8 +1048,12 @@ CSettingsDlg::CSettingsJID::CJabberWiz::CJabberWiz(CSettingsDlg::CSettingsJID *O
 
 CSettingsDlg::CSettingsJID::CJabberWiz::~CJabberWiz()
 {
+#ifndef _WODXMPPLIB
 	m_Jabb->Disconnect();
 	delete m_Events;
+#else
+	WODXMPPCOMLib::XMPP_Disconnect(m_Jabb);
+#endif
 }
 
 void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew)
@@ -995,12 +1064,7 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 
 	CComBSTR l = JID,p = pass, h = hostname;
 	l += "/WippienTest";
-	m_Jabb->put_Login(l);
-	m_Jabb->put_Password(p);
-	if (port)
-		m_Jabb->put_Port(port);
 
-	m_Jabb->put_AutoVisible(VARIANT_FALSE);
 	VARIANT var;
 	if (h.Length())
 	{
@@ -1009,6 +1073,14 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 	}
 	else
 		var.vt = VT_ERROR;
+	
+#ifndef _WODXMPPLIB
+	m_Jabb->put_Login(l);
+	m_Jabb->put_Password(p);
+	if (port)
+		m_Jabb->put_Port(port);
+
+	m_Jabb->put_AutoVisible(VARIANT_FALSE);
 
 	if (registernew)
 		m_Jabb->put_Register(VARIANT_TRUE);
@@ -1023,11 +1095,35 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 		m_Jabb->get_LastErrorText(&b);
 		::MessageBox(NULL, b.ToString(), "Jabber error", MB_OK);
 	}
+
+#else
+	CComBSTR2 l1 = l;
+	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
+	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
+	if (port)
+		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, port);
+	if (registernew)
+		WODXMPPCOMLib::XMPP_SetRegister(m_Jabb, TRUE);
+	WODXMPPCOMLib::XMPP_SetAutoVisible(m_Jabb, FALSE);
+	
+	long hr = WODXMPPCOMLib::XMPP_Connect(m_Jabb, hostname);
+	if (!hr)
+	{
+		char buff[1024];
+		int bflen = sizeof(buff);
+		WODXMPPCOMLib::XMPP_GetLastErrorText(m_Jabb, buff, &bflen);
+		::MessageBox(NULL, buff, "Jabber error", MB_OK);
+	}
+#endif
 }
 
 void CSettingsDlg::CSettingsJID::CJabberWiz::Disconnect(void)
 {
+#ifndef _WODXMPPLIB
 	m_Jabb->Disconnect();
+#else
+	WODXMPPCOMLib::XMPP_Disconnect(m_Jabb);
+#endif
 }
 
 CSettingsDlg::CSettingsIcon::CSettingsIcon() : _CSettingsTemplate()
@@ -1726,7 +1822,8 @@ void CSettingsDlg::CSettingsAccounts::RefreshGatewaysList(void)
 
 	m_ServicesList.ResetContent();
 
-	WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		short count;
@@ -1734,46 +1831,96 @@ void CSettingsDlg::CSettingsAccounts::RefreshGatewaysList(void)
 		{
 			for (int i=0;i<count;i++)
 			{
-				WODJABBERCOMLib::IJbrService *s = NULL;
+				WODXMPPCOMLib::IXMPPService *s = NULL;
 				VARIANT var;
 				var.vt = VT_I2;
 				var.iVal = i;
 				if (SUCCEEDED(serv->get_Item(var, &s)))
 				{
-					short ct;
-					WODJABBERCOMLib::IJbrIdentities *idents;
+#else
+	short count = 0;
+	WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+	for (int i=0;i<count;i++)
+	{
+		void *s = NULL;
+		WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+		if (s)
+		{
+			{
+				{
+#endif
+
+					
+					short ct = 0;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPIdentities *idents;
 					if (SUCCEEDED(s->get_Identity(&idents)))
 					{
 						if (SUCCEEDED(idents->get_Count(&ct)))
 						{
+#else
+					WODXMPPCOMLib::XMPP_Service_GetIdentitiesCount(s, &ct);
+					{
+						{
+#endif
 
 							VARIANT_BOOL bl;
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(s->get_Registered(&bl)))
+#else
+							WODXMPPCOMLib::XMPP_Service_GetRegistered(s, &bl);
+#endif
 							{
 								if (bl)
 								{
 									for (int c=0;c<ct;c++)
 									{
-										WODJABBERCOMLib::IJbrIdentity *idty;
+#ifndef _WODXMPPLIB
+										WODXMPPCOMLib::IXMPPIdentity *idty;
 										var.iVal = c;
 										if (SUCCEEDED(idents->get_Item(var, &idty)))
 										{
-											WODJABBERCOMLib::IdentityCategoryEnum id = (WODJABBERCOMLib::IdentityCategoryEnum)0;
+											WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
 											idty->get_Category(&id);
 											if (!c)
-											{														
+											{			
+#else
+										char idbuf[1024];
+										int idlen = sizeof(idbuf);
+										void *idty = NULL;
+										WODXMPPCOMLib::XMPP_Service_GetIdentity(s, c, &idty);
+										if (idty)
+										{
+											WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+											WODXMPPCOMLib::XMPP_Identity_GetCategory(idty, &id);
+											{
+#endif												
 												// get name
 												CComBSTR2 type, n;
 
+#ifndef _WODXMPPLIB
 												idty->get_Name(&n);
-
 												idty->get_Type(&type);
 												char *t = type.ToString();
 												strlwr(t);
 												idty->Release();
-
+#else
+												WODXMPPCOMLib::XMPP_Identity_GetName(idty, idbuf, &idlen);
+												n = idbuf;
+												idlen = sizeof(idbuf);
+												WODXMPPCOMLib::XMPP_Identity_GetType(idty, idbuf, &idlen);
+												strlwr(idbuf);
+												char *t = idbuf;
+												WODXMPPCOMLib::XMPP_Identity_Free(idty);
+#endif
 												CComBSTR2 b;
+#ifndef _WODXMPPLIB
 												if (SUCCEEDED(s->get_JID(&b)))
+#else
+												idlen = sizeof(idbuf);
+												WODXMPPCOMLib::XMPP_Service_GetJID(s, idbuf, &idlen);
+												b = idbuf;
+#endif
 												{
 													char *jd1 = b.ToString();
 													char *jd2 = strchr(jd1, '/');
@@ -1793,11 +1940,18 @@ void CSettingsDlg::CSettingsAccounts::RefreshGatewaysList(void)
 							}
 						}
 					}
+#ifndef _WODXMPPLIB
 					s->Release();
+#else
+					if (s)
+						WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 				}
 			}
 		}
+#ifndef _WODXMPPLIB
 		serv->Release();
+#endif
 	}
 }
 
@@ -1839,7 +1993,8 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnRemoveAccount(WORD wNotifyCode, WORD 
 			if (i==6)
 			{
 
-				WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+				WODXMPPCOMLib::IXMPPServices *serv = NULL;
 				if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 				{
 					short count;
@@ -1847,7 +2002,7 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnRemoveAccount(WORD wNotifyCode, WORD 
 					{
 						for (int i=0;i<count;i++)
 						{
-							WODJABBERCOMLib::IJbrService *s = NULL;
+							WODXMPPCOMLib::IXMPPService *s = NULL;
 							VARIANT var;
 							var.vt = VT_I2;
 							var.iVal = i;
@@ -1864,6 +2019,23 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnRemoveAccount(WORD wNotifyCode, WORD 
 						}
 					}
 				}
+#else
+				short count = 0;
+				WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+				for (int i=0;i<count;i++)
+				{
+					void *s = NULL;
+					WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+					if (s == x)
+					{
+						WODXMPPCOMLib::XMPP_Service_Unregister(s);
+						WODXMPPCOMLib::XMPP_Service_Free(s);
+						break;
+					}
+					WODXMPPCOMLib::XMPP_Service_Free(s);
+
+				}
+#endif
 			}
 		}
 	}
@@ -1874,16 +2046,22 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAccountRegister(WORD wNotifyCode, WOR
 	if (m_ServiceName.Length())
 	{
 		// ok, let's register this service
-		WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPServices *serv = NULL;
 		if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 		{
 			VARIANT var;
 			var.vt = VT_BSTR;
 			var.bstrVal = m_ServiceName;
-			WODJABBERCOMLib::IJbrService *s;
+			WODXMPPCOMLib::IXMPPService *s;
 			if (SUCCEEDED(serv->get_Item(var, &s)))
 			{
-			
+#else
+		void *s = NULL;
+		WODXMPPCOMLib::XMPP_ServicesGetServiceByJID(_Jabber->m_Jabb, m_ServiceName.ToString(), &s);
+		{
+			{
+#endif
 				CComBSTR2 log, pass;
 				char buff[1024];
 				buff[0]=0;
@@ -1895,16 +2073,30 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAccountRegister(WORD wNotifyCode, WOR
 					GetDlgItemText(IDC_EDIT_PASSWORD, buff, 1024);
 					if (buff[0])
 					{
+#ifndef _WODXMPPLIB
 						pass = buff;
 						s->put_Login(log);
 						s->put_Password(pass);
 						s->Register();
+#else
+						CComBSTR2 l = log;
+						WODXMPPCOMLib::XMPP_Service_SetLogin(s, l.ToString());
+						WODXMPPCOMLib::XMPP_Service_SetPassword(s, buff);
+						WODXMPPCOMLib::XMPP_Service_Register(s);
+#endif
+
 						SetAccRegisterWindowVisibility(SW_HIDE);
 					}
 				}
+#ifndef _WODXMPPLIB
 				s->Release();
+#else
+				WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 			}
+#ifndef _WODXMPPLIB
 			serv->Release();
+#endif
 		}				
 	}
 	return TRUE;
@@ -1916,12 +2108,19 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 	_Jabber->m_ServiceRefreshHwnd = m_hWnd;
 	m_ServiceName.Empty();
 
-	WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		short count;
 		if (SUCCEEDED(serv->get_Count(&count)))
 		{
+#else
+	short count = 0;
+	WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+	{
+		{
+#endif
 			HMENU h = CreateMenu();
 			HMENU hpop = CreatePopupMenu(); 
 			AppendMenu(h, MF_STRING | MF_POPUP, (UINT) hpop,  "Accounts"); 
@@ -1931,27 +2130,39 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 			m_Menu.Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
 			for (int i=0;i<count;i++)
 			{
-				WODJABBERCOMLib::IJbrService *s = NULL;
+#ifndef _WODXMPPLIB
+				WODXMPPCOMLib::IXMPPService *s = NULL;
 				VARIANT var;
 				var.vt = VT_I2;
 				var.iVal = i;
 				if (SUCCEEDED(serv->get_Item(var, &s)))
+#else
+				void *s = NULL;
+				WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+#endif
 				{
 					short ct;
-					WODJABBERCOMLib::IJbrIdentities *idents;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPIdentities *idents;
 					if (SUCCEEDED(s->get_Identity(&idents)))
 					{
 						if (SUCCEEDED(idents->get_Count(&ct)))
 						{
+#else
+					WODXMPPCOMLib::XMPP_Service_GetIdentitiesCount(s, &ct);
+					{
+						{
+#endif
 							for (int c=0;c<ct;c++)
 							{
-								WODJABBERCOMLib::IJbrIdentity *idty;
+#ifndef _WODXMPPLIB
+								WODXMPPCOMLib::IXMPPIdentity *idty;
 								var.iVal = c;
 								if (SUCCEEDED(idents->get_Item(var, &idty)))
 								{
-									WODJABBERCOMLib::IdentityCategoryEnum id = (WODJABBERCOMLib::IdentityCategoryEnum)0;
+									WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
 									idty->get_Category(&id);
-									if ((m_ShowAllServices && !c) || id == (WODJABBERCOMLib::IdentityCategoryEnum)/*::CatGateway*/9)
+									if ((m_ShowAllServices && !c) || id == (WODXMPPCOMLib::IdentityCategoryEnum)/*::CatGateway*/9)
 									{
 										
 										// get name
@@ -1961,8 +2172,33 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 										strlwr(t);
 
 										idty->Release();
+
+#else					
+								WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+								void *idty = NULL;
+								WODXMPPCOMLib::XMPP_Service_GetIdentity(s, c, &idty);
+								if (idty)
+								{
+									WODXMPPCOMLib::XMPP_Identity_GetCategory(idty, &id);
+									if ((m_ShowAllServices && !c) || id == (WODXMPPCOMLib::IdentityCategoryEnum)/*::CatGateway*/9)
+									{
+										char t[1024];
+										int tlen = sizeof(t);
+										WODXMPPCOMLib::XMPP_Identity_GetType(idty, t, &tlen);
+										strlwr(t);
+
+										WODXMPPCOMLib::XMPP_Identity_Free(idty);
+#endif
+
 										CComBSTR2 b;
+#ifndef _WODXMPPLIB
 										if (SUCCEEDED(s->get_JID(&b)))
+#else
+										char jd[1024];
+										tlen = sizeof(jd);
+										WODXMPPCOMLib::XMPP_Service_GetJID(s, jd, &tlen);
+										b = jd;
+#endif
 										{
 											int val = GetServiceType(t);
 											if (val)
@@ -1970,8 +2206,12 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 											else
 												val = i;
 
+#ifndef _WODXMPPLIB
 											var.iVal = val;
 											s->put_Tag(var);
+#else
+											WODXMPPCOMLib::XMPP_Service_SetTag(s, (void *)val);
+#endif
 
 											AppendMenu(hpop, MF_STRING, val, b.ToString());
 										}
@@ -1980,7 +2220,11 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 							}
 						}
 					}
+#ifndef _WODXMPPLIB
 					s->Release();
+#else
+					WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 				}
 			}
 
@@ -2016,7 +2260,8 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 			
 				for (i=0;i<count;i++)
 				{
-					WODJABBERCOMLib::IJbrService *s = NULL;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPService *s = NULL;
 					VARIANT var;
 					var.vt = VT_I2;
 					var.iVal = i;
@@ -2025,10 +2270,26 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 						s->get_Tag(&var);
 						if (var.vt == VT_I2 && var.iVal == sel)
 						{
+#else
+					void *s;
+					WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+					{
+						{
+
+#endif
 							m_ServiceName.Empty();
-							s->get_JID(&m_ServiceName);
 							_Jabber->m_ServiceRegisterHwnd = GetDlgItem(IDC_SERVICE_DESCRIPTION);
+
+#ifndef _WODXMPPLIB
+							s->get_JID(&m_ServiceName);
 							s->RegisterInfo();
+#else
+							char sn[1024];
+							int snlen = sizeof(sn);
+							WODXMPPCOMLib::XMPP_Service_GetJID(s, sn, &snlen);
+							m_ServiceName = sn;
+							WODXMPPCOMLib::XMPP_Service_RegisterInfo(s);
+#endif
 							
 							sel -= 30000;
 							if (sel == IDB_SERVICE_ICQ)
@@ -2050,13 +2311,19 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 								::ShowWindow(GetDlgItem(IDC_OPENNEWACCOUNT), SW_HIDE);
 							::SetFocus(GetDlgItem(IDC_EDIT_SCREENNAME));
 						}
+#ifndef _WODXMPPLIB
 						s->Release();
+#else
+						WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 					}
 				}
 			}
 
 		}
+#ifndef _WODXMPPLIB
 		serv->Release();
+#endif
 	}
 
 	return TRUE;
@@ -2097,7 +2364,8 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnDrawItem(UINT uMsg, WPARAM wParam, LP
 
 	// should I draw icon?
 	int icon = 0;
-	WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		short count;
@@ -2105,50 +2373,96 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnDrawItem(UINT uMsg, WPARAM wParam, LP
 		{
 			for (int i=0;i<count;i++)
 			{
-				WODJABBERCOMLib::IJbrService *s = NULL;
+				WODXMPPCOMLib::IXMPPService *s = NULL;
 				VARIANT var;
 				var.vt = VT_I2;
 				var.iVal = i;
 				if (SUCCEEDED(serv->get_Item(var, &s)))
 				{
+#else
+	short count;
+	WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+	for (int i=0;i<count;i++)
+	{
+		void *s = NULL;
+		WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+		if (s)
+		{
+			{
+				{
+#endif
 					if ((void *)s == (void *)lp->itemData)
 					{
 						short ct;
-						WODJABBERCOMLib::IJbrIdentities *idents;
+#ifndef _WODXMPPLIB
+						WODXMPPCOMLib::IXMPPIdentities *idents;
 						if (SUCCEEDED(s->get_Identity(&idents)))
 						{
 							if (SUCCEEDED(idents->get_Count(&ct)))
 							{
+#else
+						WODXMPPCOMLib::XMPP_Service_GetIdentitiesCount(s, &ct);
+						{
+							{
+
+#endif
 								for (int c=0;c<ct;c++)
 								{
-									WODJABBERCOMLib::IJbrIdentity *idty;
+#ifndef _WODXMPPLIB
+									WODXMPPCOMLib::IXMPPIdentity *idty;
 									var.iVal = c;
 									if (SUCCEEDED(idents->get_Item(var, &idty)))
 									{
-										WODJABBERCOMLib::IdentityCategoryEnum id = (WODJABBERCOMLib::IdentityCategoryEnum)0;
+										WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
 										idty->get_Category(&id);
 										if (!c)
 										{		
 											// get name
-											CComBSTR2 type, n;
+											CComBSTR2 type;//, n;
 
-											idty->get_Name(&n);
+//											idty->get_Name(&n);
 
 											idty->get_Type(&type);
 											char *t = type.ToString();
 											strlwr(t);
-											idty->Release();
 
 											icon = GetServiceType(t);
 										}
+										idty->Release();
 									}
+#else
+									void *idty = NULL;
+									WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+									WODXMPPCOMLib::XMPP_Service_GetIdentity(s, c, &idty);
+									if (idty)
+									{
+										WODXMPPCOMLib::XMPP_Identity_GetCategory(idty, &id);
+										if (!c)
+										{
+											char t[1024];
+											int tlen = sizeof(t);
+											WODXMPPCOMLib::XMPP_Identity_GetType(idty, t, &tlen);
+											strlwr(t);
+											icon = GetServiceType(t);
+										}
+										WODXMPPCOMLib::XMPP_Identity_Free(idty);
+									}
+#endif
 								}
 							}
 						}
+#ifndef _WODXMPPLIB
 						s->Release();
+#else
+						WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 						break;
 					}
+#ifndef _WODXMPPLIB
 					s->Release();
+#else
+					WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 				}
 			}
 		}
@@ -2282,7 +2596,8 @@ void CSettingsDlg::CSettingsContactsAddRemove::RefreshGatewaysList(void)
 	m_Combo1.AddString("    <Jabber>");
 	m_Combo1.AddString("@gmail.com    <GMail>");
 
-	WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		short count;
@@ -2290,14 +2605,27 @@ void CSettingsDlg::CSettingsContactsAddRemove::RefreshGatewaysList(void)
 		{
 			for (int i=0;i<count;i++)
 			{
-				WODJABBERCOMLib::IJbrService *s = NULL;
+				WODXMPPCOMLib::IXMPPService *s = NULL;
 				VARIANT var;
 				var.vt = VT_I2;
 				var.iVal = i;
 				if (SUCCEEDED(serv->get_Item(var, &s)))
 				{
+#else
+	void *s = NULL;
+	short count = 0;
+	WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+	for (int i=0;i<count;i++)
+	{
+		WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+		if (s)
+		{
+			{
+				{
+#endif
 					short ct;
-					WODJABBERCOMLib::IJbrIdentities *idents;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPIdentities *idents;
 					if (SUCCEEDED(s->get_Identity(&idents)))
 					{
 						if (SUCCEEDED(idents->get_Count(&ct)))
@@ -2308,14 +2636,25 @@ void CSettingsDlg::CSettingsContactsAddRemove::RefreshGatewaysList(void)
 							{
 								if (bl)
 								{
+#else
+					WODXMPPCOMLib::XMPP_Service_GetIdentitiesCount(s, &ct);
+					VARIANT_BOOL bl;
+					WODXMPPCOMLib::XMPP_Service_GetRegistered(s, &bl);
+					if (bl)
+					{
+						{
+							{
+								{
+#endif
 									for (int c=0;c<ct;c++)
 									{
-										WODJABBERCOMLib::IJbrIdentity *idty;
+#ifndef _WODXMPPLIB
+										WODXMPPCOMLib::IXMPPIdentity *idty;
 										var.iVal = c;
 										if (SUCCEEDED(idents->get_Item(var, &idty)))
 										{
-											WODJABBERCOMLib::IdentityCategoryEnum id = (WODJABBERCOMLib::IdentityCategoryEnum)0;
-											idty->get_Category(&id);
+//											WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+//											idty->get_Category(&id);
 											if (!c)
 											{														
 												// get name
@@ -2326,7 +2665,28 @@ void CSettingsDlg::CSettingsContactsAddRemove::RefreshGatewaysList(void)
 
 												CComBSTR2 b;
 												if (SUCCEEDED(s->get_JID(&b)))
-												{												
+												{								
+#else
+										void *idty = NULL;
+										WODXMPPCOMLib::XMPP_Service_GetIdentity(s, c, &idty);
+										if (idty)
+										{
+											WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+											WODXMPPCOMLib::XMPP_Identity_GetCategory(idty, &id);
+											if (!c)
+											{
+												char bf[1024];
+												int bflen = sizeof(bf);
+												WODXMPPCOMLib::XMPP_Identity_GetName(idty, bf, &bflen);
+												CComBSTR2 name = bf;
+												WODXMPPCOMLib::XMPP_Identity_Free(idty);
+
+												bflen = sizeof(bf);
+												WODXMPPCOMLib::XMPP_Service_GetJID(s, bf, &bflen);
+												CComBSTR2 b = bf;
+												{
+
+#endif
 													sprintf(buff, "@%s   <%s>", b.ToString(), name.ToString());
 													int j = m_Combo1.InsertString(-1, buff);
 													if (j != LB_ERR)
@@ -2335,17 +2695,33 @@ void CSettingsDlg::CSettingsContactsAddRemove::RefreshGatewaysList(void)
 													}
 												}
 											}
+											else
+											{
+#ifndef _WODXMPPLIB
+												if (idty)
+													idty->Release();
+#else
+												if (idty)
+													WODXMPPCOMLib::XMPP_Identity_Free(idty);
+#endif
+											}
 										}
 									}
 								}
 							}
 						}
 					}
+#ifndef _WODXMPPLIB								
 					s->Release();
+#else
+					WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 				}
 			}
 		}
+#ifndef _WODXMPPLIB
 		serv->Release();
+#endif
 	}
 	m_Combo1.SetCurSel(0);
 }
@@ -2501,29 +2877,47 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 			else
 			{
 				void *x = (void *)m_Combo1.GetItemData(i);
-				WODJABBERCOMLib::IJbrServices *serv = NULL;
 				BOOL foundgateway = FALSE;
 				if (x)
 				{
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPServices *serv = NULL;
 					if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 					{
 						short count;
 						if (SUCCEEDED(serv->get_Count(&count)))
 						{
+#else
+					short count;
+					WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+					{
+						{
+
+#endif
 							for (int i=0;i<count && !foundgateway;i++)
 							{
-								WODJABBERCOMLib::IJbrService *s = NULL;
+#ifndef _WODXMPPLIB
+								WODXMPPCOMLib::IXMPPService *s = NULL;
 								VARIANT var;
 								var.vt = VT_I2;
 								var.iVal = i;
 								if (SUCCEEDED(serv->get_Item(var, &s)))
 								{
+#else
+								void *s = NULL;
+								WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+								{
+#endif
 									if (s == x)
 									{
 										foundgateway = TRUE;
 										break;
 									}
+#ifndef _WODXMPPLIB
 									s->Release();				
+#else
+									WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
 								}
 							}
 						}
@@ -2537,27 +2931,43 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 				
 					// get gateway JID
 					CComBSTR2 j;
-					WODJABBERCOMLib::IJbrService *s = (WODJABBERCOMLib::IJbrService *)x;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPService *s = (WODXMPPCOMLib::IXMPPService *)x;
 					if (SUCCEEDED(s->get_JID(&j)))
 					{
 						strcat(buff, "@");
 						strcat(buff, j.ToString());
 					}
 					s->Release();
+#else
+					char bfs[1024];
+					int bflen = sizeof(bfs);
+					WODXMPPCOMLib::XMPP_Service_GetJID(x, bfs, &bflen);
+					strcat(buff, "@");
+					strcat(buff, bfs);
+					WODXMPPCOMLib::XMPP_Service_Free(x);
+#endif			
 				}
 			}
 
 
 
+#ifndef _WODXMPPLIB
 			// create new contact
-			WODJABBERCOMLib::IJbrContact *ct;
-			WODJABBERCOMLib::IJbrContacts *cts;
+			WODXMPPCOMLib::IXMPPContact *ct;
+			WODXMPPCOMLib::IXMPPContacts *cts;
 
 			if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 			{
 				CComBSTR b = buff;
 				if (SUCCEEDED(cts->raw_Add(b, &ct)))
 				{
+#else
+			void *ct = NULL;
+			WODXMPPCOMLib::XMPP_ContactsAdd(_Jabber->m_Jabb, buff, &ct);
+			{
+				{
+#endif
 					if (GetDlgItemText(IDC_GROUPLIST, grp, 1024))
 					{
 						// is this new group?
@@ -2581,25 +2991,40 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 							//_Settings.m_Groups.push_back(tg);
 						}
 
+#ifndef _WODXMPPLIB
 						// set up group
 						CComBSTR2 g = grp;
 						ct->put_Group(g);
+
+						try
+						{
+							ct->Subscribe();
+						}catch(_com_error e)
+						{
+							e = e;
+							MessageBeep(-1);
+						}
+
+#else
+						WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, grp);
+						WODXMPPCOMLib::XMPP_Contact_Subscribe(ct);
+#endif
 					}
 
-					try
-					{
-						ct->Subscribe();
-					}catch(_com_error e)
-					{
-						e = e;
-						MessageBeep(-1);
-					}
 					// and subscribe
 					::SendMessage(m_Owner, WM_COMMAND, MAKELONG(IDCANCEL, 0), 0);
 //					::DestroyWindow(GetParent());
 				}
-				cts->Release();
+#ifndef _WODXMPPLIB
+				if (ct)
+					ct->Release();
+#else
+				WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+#endif
 			}
+#ifndef _WODXMPPLIB
+			cts->Release();
+#endif
 		}
 	}
 	return TRUE;
@@ -2737,7 +3162,12 @@ BOOL CSettingsDlg::CSettingsLogging::Apply(void)
 
 	if (_Jabber)
 	{
+#ifndef _WODXMPPLIB
 		_Jabber->m_Jabb->put_DebugFile(_Settings.m_JabberDebugFile);
+#else
+		CComBSTR2 jdf = _Settings.m_JabberDebugFile;
+		WODXMPPCOMLib::XMPP_SetDebugFile(_Jabber->m_Jabb, jdf.ToString());
+#endif
 	}
 	return TRUE;
 }
@@ -2962,7 +3392,11 @@ LRESULT CSettingsDlg::CSettingsUser1::OnPaint(UINT uMsg, WPARAM wParam, LPARAM l
 	return FALSE;
 }
 		
-void CSettingsDlg::CSettingsUser1::InitData(WODJABBERCOMLib::IJbrVCard *card)
+#ifndef _WODXMPPLIB
+void CSettingsDlg::CSettingsUser1::InitData(WODXMPPCOMLib::IXMPPVCard *card)
+#else
+void CSettingsDlg::CSettingsUser1::InitData(void *card)
+#endif
 {
 	if (!IsWindow())
 		return;
@@ -2985,29 +3419,71 @@ void CSettingsDlg::CSettingsUser1::InitData(WODJABBERCOMLib::IJbrVCard *card)
 		}
 	}
 
+#ifdef _WODXMPPLIB
+	char bff[1024];
+	int bfflen;
+#endif
+
+
+#ifndef _WODXMPPLIB
 	CComBSTR2 n1;
 	card->get_NickName(&n1);
 	SetDlgItemText(IDC_SETTINGS_USER1_NICKNAME, n1.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetNickName(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER1_NICKNAME, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n2;
 	card->get_FirstName(&n2);
 	SetDlgItemText(IDC_SETTINGS_USER1_FIRSTNAME, n2.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetFirstName(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER1_FIRSTNAME, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n3;
 	card->get_LastName(&n3);
 	SetDlgItemText(IDC_SETTINGS_USER1_LASTNAME, n3.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetLastName(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER1_LASTNAME, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n4;
 	card->get_Email(&n4);
 	SetDlgItemText(IDC_SETTINGS_USER1_EMAIL, n4.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetEmail(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER1_EMAIL, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n5;
 	card->get_URL(&n5);
 	SetDlgItemText(IDC_SETTINGS_USER1_URL, n5.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetURL(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER1_URL, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n6;
 	card->get_Description(&n6);
 	SetDlgItemText(IDC_SETTINGS_USER1_DESCRIPTION, n6.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetDescription(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER1_DESCRIPTION, bff);
+#endif
 
 }
 
@@ -3027,42 +3503,76 @@ BOOL CSettingsDlg::CSettingsUser1::Apply(void)
 	char buff[1024];
 	if (!m_IsContact)
 	{
-		WODJABBERCOMLib::IJbrVCard *vc = NULL;
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPVCard *vc = NULL;
 		if (_Jabber)
 			_Jabber->m_Jabb->get_VCard(&vc);
+#else
+		void *vc = NULL;
+		WODXMPPCOMLib::XMPP_GetVCard(_Jabber->m_Jabb, &vc);
+#endif
 		if (vc)
 		{
 
 			CComBSTR n;
 			SendDlgItemMessage(IDC_SETTINGS_USER1_NICKNAME, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_NickName(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetNickName(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER1_FIRSTNAME, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_FirstName(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetFirstName(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER1_LASTNAME, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_LastName(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetLastName(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER1_EMAIL, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_Email(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetEmail(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER1_URL, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_URL(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetURL(vc, buff);
+#endif
+
 
 			SendDlgItemMessage(IDC_SETTINGS_USER1_DESCRIPTION, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_Description(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetDescription(vc, buff);
+#endif
+			
 		}
 	}
 
@@ -3154,37 +3664,86 @@ LRESULT CSettingsDlg::CSettingsUser2::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	return TRUE;
 }
 
-void CSettingsDlg::CSettingsUser2::InitData(WODJABBERCOMLib::IJbrVCard *card)
+#ifndef _WODXMPPLIB
+void CSettingsDlg::CSettingsUser2::InitData(WODXMPPCOMLib::IXMPPVCard *card)
+#else
+void CSettingsDlg::CSettingsUser2::InitData(void *card)
+#endif
 {
 	if (!IsWindow())
 		return;
 
+#ifdef _WODXMPPLIB
+	char bff[1024];
+	int bfflen;
+#endif
+
+#ifndef _WODXMPPLIB
 	CComBSTR2 n1;
 	card->get_HomeAddress(&n1);
 	SetDlgItemText(IDC_SETTINGS_USER2_ADDRESS, n1.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeAddress(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_ADDRESS, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n2;
 	card->get_HomeAddressExt(&n2);
 	SetDlgItemText(IDC_SETTINGS_USER2_ADDRESSEXT, n2.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeAddressExt(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_ADDRESSEXT, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n3;
 	card->get_HomeCity(&n3);
 	SetDlgItemText(IDC_SETTINGS_USER2_CITY, n3.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeCity(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_CITY, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n4;
 	card->get_HomeState(&n4);
 	SetDlgItemText(IDC_SETTINGS_USER2_STATE, n4.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeState(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_STATE, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n5;
 	card->get_HomeZip(&n5);
 	SetDlgItemText(IDC_SETTINGS_USER2_ZIP, n5.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeZip(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_ZIP, bff);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n6;
 	card->get_HomeCountry(&n6);
 	SetDlgItemText(IDC_SETTINGS_USER2_COUNTRY, n6.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeCountry(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_COUNTRY, bff);
+#endif
 
 	DATE day = 0;
+#ifndef _WODXMPPLIB
 	card->get_BirthDay(&day);
+#else
+	WODXMPPCOMLib::XMPP_VCard_GetBirthDay(card, &day);
+#endif
 	if (day)
 	{
 		SYSTEMTIME st;
@@ -3195,13 +3754,27 @@ void CSettingsDlg::CSettingsUser2::InitData(WODJABBERCOMLib::IJbrVCard *card)
 	else
 		SendDlgItemMessage(IDC_SETTINGS_USER2_BDAY,DTM_SETSYSTEMTIME, GDT_NONE, NULL); 
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n8;
 	card->get_HomePhone(&n8);
 	SetDlgItemText(IDC_SETTINGS_USER2_PHONE, n8.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomePhone(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_PHONE, bff);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n9;
 	card->get_HomeFax(&n9);
 	SetDlgItemText(IDC_SETTINGS_USER2_FAX, n9.ToString());
+#else
+	bfflen = sizeof(bff);
+	WODXMPPCOMLib::XMPP_VCard_GetHomeFax(card, bff, &bfflen);
+	SetDlgItemText(IDC_SETTINGS_USER2_FAX, bff);
+#endif
+	
 
 }
 
@@ -3225,52 +3798,91 @@ BOOL CSettingsDlg::CSettingsUser2::Apply(void)
 	char buff[1024];
 	if (!m_IsContact)
 	{
-		WODJABBERCOMLib::IJbrVCard *vc = NULL;
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPVCard *vc = NULL;
 		if (_Jabber)
 			_Jabber->m_Jabb->get_VCard(&vc);
+#else
+		void *vc = NULL;
+		WODXMPPCOMLib::XMPP_GetVCard(_Jabber->m_Jabb, &vc);
+#endif
 		if (vc)
 		{
 
 			CComBSTR n;
 			SendDlgItemMessage(IDC_SETTINGS_USER2_ADDRESS, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeAddress(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeAddress(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_ADDRESSEXT, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeAddressExt(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeAddressExt(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_CITY, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeCity(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeCity(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_STATE, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeState(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeState(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_ZIP, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeZip(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeZip(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_COUNTRY, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeCountry(n);
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_PHONE, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomePhone(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomePhone(vc, buff);
+#endif
+			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_FAX, WM_GETTEXT, 1024, (LPARAM)buff);
 			n.Empty();
 			n = buff;
 			vc->put_HomeFax(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeFax(vc, buff);
+#endif
+			
 			
 			SYSTEMTIME st;
 			memset(&st, 0, sizeof(st));
@@ -3278,7 +3890,12 @@ BOOL CSettingsDlg::CSettingsUser2::Apply(void)
 			{
 				DATE d;
 				SystemTimeToVariantTime(&st, &d);
+#ifndef _WODXMPPLIB
 				vc->put_BirthDay(d);
+#else
+				WODXMPPCOMLib::XMPP_VCard_SetBirthDay(vc, d);
+#endif
+				
 			}
 		}
 	}
@@ -3372,54 +3989,139 @@ LRESULT CSettingsDlg::CSettingsUser3::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 
 	return TRUE;
 }
-void CSettingsDlg::CSettingsUser3::InitData(WODJABBERCOMLib::IJbrVCard *card)
+#ifndef _WODXMPPLIB
+void CSettingsDlg::CSettingsUser3::InitData(WODXMPPCOMLib::IXMPPVCard *card)
+#else
+void CSettingsDlg::CSettingsUser3::InitData(void *card)
+#endif
 {
 	if (!IsWindow())
 		return;
 
+#ifdef _WODXMPPLIB
+	char bf[1024];
+	int bfl = 0;
+#endif
+
+#ifndef _WODXMPPLIB
 	CComBSTR2 n1;
 	card->get_WorkAddress(&n1);
 	SetDlgItemText(IDC_SETTINGS_USER3_ADDRESS, n1.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkAddress(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_ADDRESS, bf);
+#endif
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n2;
 	card->get_WorkAddressExt(&n2);
 	SetDlgItemText(IDC_SETTINGS_USER3_ADDRESSEXT, n2.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkAddressExt(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_ADDRESSEXT, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n3;
 	card->get_WorkCity(&n3);
 	SetDlgItemText(IDC_SETTINGS_USER3_CITY, n3.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkCity(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_CITY, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n4;
 	card->get_WorkState(&n4);
 	SetDlgItemText(IDC_SETTINGS_USER3_STATE, n4.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkState(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_STATE, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n5;
 	card->get_WorkZip(&n5);
 	SetDlgItemText(IDC_SETTINGS_USER3_ZIP, n5.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkZip(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_ZIP, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n6;
 	card->get_WorkCountry(&n6);
 	SetDlgItemText(IDC_SETTINGS_USER3_COUNTRY, n6.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkCountry(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_COUNTRY, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n7;
 	card->get_WorkPhone(&n7);
 	SetDlgItemText(IDC_SETTINGS_USER3_PHONE, n7.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkPhone(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_PHONE, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n8;
 	card->get_WorkFax(&n8);
 	SetDlgItemText(IDC_SETTINGS_USER3_FAX, n8.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetWorkFax(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_FAX, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n9;
 	card->get_Title(&n9);
 	SetDlgItemText(IDC_SETTINGS_USER3_TITLE, n9.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetTitle(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_TITLE, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n10;
 	card->get_OrganizationName(&n10);
 	SetDlgItemText(IDC_SETTINGS_USER3_COMPANY, n10.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetOrganizationName(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_COMPANY, bf);
+#endif
+	
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 n11;
 	card->get_OrganizationUnit(&n11);
 	SetDlgItemText(IDC_SETTINGS_USER3_DEPARTMENT, n11.ToString());
+#else
+	bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_VCard_GetOrganizationUnit(card, bf, &bfl);
+	SetDlgItemText(IDC_SETTINGS_USER3_DEPARTMENT, bf);
+#endif
+	
 
 }
 
@@ -3444,66 +4146,116 @@ BOOL CSettingsDlg::CSettingsUser3::Apply(void)
 	char buff[1024];
 	if (!m_IsContact)
 	{
-		WODJABBERCOMLib::IJbrVCard *vc = NULL;
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPVCard *vc = NULL;
 		if (_Jabber)
 			_Jabber->m_Jabb->get_VCard(&vc);
+#else
+		void *vc = NULL;
+		WODXMPPCOMLib::XMPP_GetVCard(_Jabber->m_Jabb, &vc);
+#endif
+
 		if (vc)
 		{
 			CComBSTR n;
 			SendDlgItemMessage(IDC_SETTINGS_USER3_ADDRESS, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkAddress(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkAddress(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER3_ADDRESSEXT, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkAddressExt(n);
-
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkAddressExt(vc, buff);
+#endif
+			
 			SendDlgItemMessage(IDC_SETTINGS_USER3_CITY, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkCity(n);
-
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkCity(vc, buff);
+#endif
+			
 			SendDlgItemMessage(IDC_SETTINGS_USER3_STATE, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkState(n);
-
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkState(vc, buff);
+#endif
+			
 			SendDlgItemMessage(IDC_SETTINGS_USER3_ZIP, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkZip(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkZip(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER3_COUNTRY, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkCountry(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkCountry(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER3_PHONE, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkPhone(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkPhone(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER3_FAX, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_WorkFax(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetWorkFax(vc, buff);
+#endif
 			
 			SendDlgItemMessage(IDC_SETTINGS_USER3_TITLE, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_Title(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetTitle(vc, buff);
+#endif
 			
 			SendDlgItemMessage(IDC_SETTINGS_USER3_COMPANY, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_OrganizationName(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetOrganizationName(vc, buff);
+#endif
 			
 			SendDlgItemMessage(IDC_SETTINGS_USER3_DEPARTMENT, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_OrganizationUnit(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetOrganizationUnit(vc, buff);
+#endif
 			
 		}
 	}
@@ -4304,7 +5056,7 @@ LRESULT CSettingsDlg::CSettingsAutoAway::OnPaint(UINT uMsg, WPARAM wParam, LPARA
 //	CExtWndShadow _shadow;		
 
 
-//	DRAWSHADOW(IDC_LOG_JABBER);
+//	DRAWSHADOW(IDC_LOG_XMPP);
 //	DRAWSHADOW(IDC_LOG_SOCKET);
 //		
 	return TRUE;

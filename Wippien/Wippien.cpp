@@ -283,6 +283,11 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 #ifdef _APPUPDLIB
 	WODAPPUPDCOMLib::_AppUpd_LibInit(hInstance);
 #endif
+
+#ifdef _WODXMPPLIB
+	WODXMPPCOMLib::_XMPP_LibInit(hInstance);
+#endif
+	
 	
 // If you are running on NT 4.0 or higher you can use the following call instead to 
 // make the EXE free threaded. This means that calls come in on a random RPC thread.
@@ -312,6 +317,9 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	WODAPPUPDCOMLib::_AppUpd_LibDeInit();
 #endif
 
+#ifdef _WODXMPPLIB
+	WODXMPPCOMLib::_XMPP_LibDeInit();
+#endif
 
 	return nRet;
 }

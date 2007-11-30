@@ -1463,19 +1463,20 @@ BOOL CMsgWin::CChatBox::Free()
 		UnsubclassWindow(FALSE);
 	if (m_wb2ChatBox) 
 	{
-		try
-		{
+//		try
+//		{
 		m_wb2ChatBox = NULL;
-		}catch(_com_error e)
-		{
-			e = e;
-			MessageBeep(-1);
-		}
-		catch(_com_error *e)
-		{
-			e = e;
-			MessageBeep(-1);
-		}
+//		}
+//		catch(_com_error e)
+//		{
+//			e = e;
+//			MessageBeep(-1);
+//		}
+//		catch(_com_error *e)
+//		{
+//			e = e;
+//			MessageBeep(-1);
+//		}
 	}
 /*	if (m_htmlChatBox)
 	{
@@ -1670,10 +1671,10 @@ BOOL CMsgWin::CInputBox::Free()
 		UnsubclassWindow(FALSE);
 	if (m_wb2InputBox) 
 	{
-		try
-		{
+//		try
+//		{
 		m_wb2InputBox = NULL;
-		}catch(_com_error e)
+/*		}catch(_com_error e)
 		{
 			e = e;
 			MessageBeep(-1);
@@ -1683,6 +1684,7 @@ BOOL CMsgWin::CInputBox::Free()
 			e = e;
 			MessageBeep(-1);
 		}
+*/
 	}
 	if (m_htmlEditDesigner) 
 	{
@@ -2112,9 +2114,11 @@ HRESULT CMsgWin::CInputBox::Send()
 				m_ParentDlg->SaveHistory(TRUE, b3.ToString());
 				_Jabber->Message(NULL, m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
 				//CUser * user = _MainDlg.m_UserList.GetUserByJID(m_ParentDlg->m_User->m_JID);
-				WODJABBERCOMLib::IJbrContact *cnt;
-				WODJABBERCOMLib::IJbrContacts *cnts;
+
 				BOOL online = FALSE;
+#ifndef _WODXMPPLIB
+				WODXMPPCOMLib::IXMPPContact *cnt;
+				WODXMPPCOMLib::IXMPPContacts *cnts;
 				if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cnts)))
 				{
 					VARIANT var;
@@ -2122,16 +2126,29 @@ HRESULT CMsgWin::CInputBox::Send()
 					var.bstrVal = T2BSTR(m_ParentDlg->m_User->m_JID);
 					if (SUCCEEDED(cnts->get_Item(var, &cnt)))
 					{					
-						WODJABBERCOMLib::StatusEnum stat;
+						WODXMPPCOMLib::StatusEnum stat;
 						if (SUCCEEDED(cnt->get_Status(&stat)))
 						{
-							if (stat > /*WODJABBERCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODJABBERCOMLib::StatusEnum::Requested*/ 6)
+							if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
 								online = TRUE;
 						}
 						cnt->Release();
 					}
 					cnts->Release();
 				}
+#else
+				void *cnt = NULL;
+				WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, m_ParentDlg->m_User->m_JID, &cnt);
+				if (cnt)
+				{
+					WODXMPPCOMLib::StatusEnum stat;
+					WODXMPPCOMLib::XMPP_Contact_GetStatus(cnt, &stat);
+					if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
+						online = TRUE;
+					WODXMPPCOMLib::XMPP_Contacts_Free(cnt);
+				}
+#endif
+
 				if (!online)
 				{
 					Buffer b2;
@@ -2183,8 +2200,10 @@ HRESULT CMsgWin::CInputBox::NotifyTyping()
 {
 //	_Jabber->Message(m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
 //	CUser * user = _MainDlg.m_UserList.GetUserByJID(m_ParentDlg->m_User->m_JID);
-	WODJABBERCOMLib::IJbrContact *cnt;
-	WODJABBERCOMLib::IJbrContacts *cnts;
+
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPContact *cnt;
+	WODXMPPCOMLib::IXMPPContacts *cnts;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cnts)))
 	{
 		VARIANT var;
@@ -2192,24 +2211,42 @@ HRESULT CMsgWin::CInputBox::NotifyTyping()
 		var.bstrVal = T2BSTR(m_ParentDlg->m_User->m_JID);
 		if (SUCCEEDED(cnts->get_Item(var, &cnt)))
 		{					
-			WODJABBERCOMLib::StatusEnum stat;
+			WODXMPPCOMLib::StatusEnum stat;
 			if (SUCCEEDED(cnt->get_Status(&stat)))
 			{
-				if (stat > /*WODJABBERCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODJABBERCOMLib::StatusEnum::Requested*/ 6)
+				if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
 				{
 					VARIANT var;
 					var.vt = VT_I4;
 					var.lVal = 1;
 					//HRESULT hr;
-					/*hr = */cnt->raw_Notify((WODJABBERCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
+					/*hr = */cnt->raw_Notify((WODXMPPCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
 
-//					cnt->Notify((WODJABBERCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
+//					cnt->Notify((WODXMPPCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
 				}
 			}
 			cnt->Release();
 		}
 		cnts->Release();
 	}
+#else
+	void *cnt = NULL;
+	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, m_ParentDlg->m_User->m_JID, &cnt);
+	if (cnt)
+	{
+		WODXMPPCOMLib::StatusEnum stat;
+		WODXMPPCOMLib::XMPP_Contact_GetStatus(cnt, &stat);
+		if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
+		{
+			VARIANT var;
+			var.vt = VT_I4;
+			var.lVal = 1;
+			WODXMPPCOMLib::XMPP_Contact_Notify(cnt, (WODXMPPCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
+		}
+		WODXMPPCOMLib::XMPP_Contacts_Free(cnt);
+	}
+#endif
+
 	//m_ParentDlg->m_fontBackColorChanged = FALSE;
 	return S_OK;
 }

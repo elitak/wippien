@@ -2,6 +2,15 @@
 //
 //////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
+
+#ifdef _WODXMPPLIB
+namespace WODXMPPCOMLib
+{
+#include "\WeOnlyDo\wodXMPP\Code\Win32LIB\Win32LIB.h"
+}
+void XMPPStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState);
+#endif
+
 #include "SDKMessageLink.h"
 #include "MainDlg.h"
 #include "Ethernet.h"
@@ -15,6 +24,9 @@ CSDKMessageLink *_SDK = NULL;
 
 BOOL fWndClassRegistered = FALSE;
 
+
+#ifndef _WODXMPPLIB
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -22,7 +34,7 @@ BOOL fWndClassRegistered = FALSE;
 _ATL_FUNC_INFO SDKJabberConnectedInfo = {CC_STDCALL, VT_EMPTY, 0};
 _ATL_FUNC_INFO SDKJabberDisconnectedInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_I4,VT_BSTR}};
 
-class CSDKMessageLink::CJabberEvents : public IDispEventSimpleImpl<1, CSDKMessageLink::CJabberEvents, &__uuidof(WODJABBERCOMLib::_IwodJabberComEvents)>
+class CSDKMessageLink::CJabberEvents : public IDispEventSimpleImpl<1, CSDKMessageLink::CJabberEvents, &__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents)>
 {
 public:
     CJabberEvents (CSDKMessageLink::CJabberWiz * ppJ)
@@ -36,8 +48,13 @@ public:
         DispEventUnadvise ( (IUnknown*)m_pJ->m_Jabb);
 //        m_pJ->m_Jabb.Release();
     }
+#endif
 
+#ifdef _WODXMPPLIB
+	void SDKXMPPConnected(void *wodXMPP)
+#else
     void __stdcall DispConnected ()
+#endif
     {
 		if (_SDK)
 		{
@@ -49,7 +66,11 @@ public:
 		}
 //		delete m_pJ;
     }
+#ifdef _WODXMPPLIB
+	void SDKXMPPDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
+#else
     void __stdcall DispDisconnected (long ErrorCode, BSTR ErrorText)
+#endif
     {
 		if (ErrorCode && _SDK)
 		{
@@ -61,20 +82,31 @@ public:
 		}
 //		delete m_pJ;
     }    
+#ifndef _WODXMPPLIB
     BEGIN_SINK_MAP (CJabberEvents)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),0,DispConnected,&SDKJabberConnectedInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),1,DispDisconnected,&SDKJabberDisconnectedInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),0,DispConnected,&SDKJabberConnectedInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),1,DispDisconnected,&SDKJabberDisconnectedInfo)
         END_SINK_MAP ()
 private:
 	CJabberWiz * m_pJ;
 };
+#endif
+
 
 CSDKMessageLink::CJabberWiz::CJabberWiz(CSDKMessageLink *Owner)
 {
-	m_Jabb.CoCreateInstance(__uuidof(WODJABBERCOMLib::wodJabberCom));
+#ifndef _WODXMPPLIB
+	m_Jabb.CoCreateInstance(__uuidof(WODXMPPCOMLib::wodXMPPCom));
 	m_Events = new CJabberEvents(this);
-#ifdef WODJABBER_LICENSE_KEY
-	CComBSTR blic(WODJABBER_LICENSE_KEY);
+#else
+	m_Events.Connected = SDKXMPPConnected;
+	m_Events.Disconnected = SDKXMPPDisconnected;
+	memset(&m_Events, 0, sizeof(m_Events));
+	m_Jabb = WODXMPPCOMLib::__XMPP_Create(&m_Events);
+#endif
+
+#ifdef WODXMPP_LICENSE_KEY
+	CComBSTR blic(WODXMPP_LICENSE_KEY);
 	m_Jabb->put_LicenseKey(blic);
 #endif
 	m_Owner = Owner;
@@ -82,8 +114,12 @@ CSDKMessageLink::CJabberWiz::CJabberWiz(CSDKMessageLink *Owner)
 
 CSDKMessageLink::CJabberWiz::~CJabberWiz()
 {
+#ifndef _WODXMPPLIB
 	m_Jabb->Disconnect();
 	delete m_Events;
+#else
+	WODXMPPCOMLib::XMPP_Disconnect(m_Jabb);
+#endif
 }
 
 void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew)
@@ -94,12 +130,8 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 
 	CComBSTR l = JID,p = pass, h = hostname;
 	l += "/WippienTest";
-	m_Jabb->put_Login(l);
-	m_Jabb->put_Password(p);
-	if (port)
-		m_Jabb->put_Port(port);
 
-	m_Jabb->put_AutoVisible(VARIANT_FALSE);
+
 	VARIANT var;
 	if (h.Length())
 	{
@@ -109,8 +141,16 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 	else
 		var.vt = VT_ERROR;
 
+#ifndef _WODXMPPLIB
+	m_Jabb->put_Login(l);
+	m_Jabb->put_Password(p);
+	if (port)
+		m_Jabb->put_Port(port);
+
 	if (registernew)
 		m_Jabb->put_Register(VARIANT_TRUE);
+
+	m_Jabb->put_AutoVisible(VARIANT_FALSE);
 
 	try
 	{
@@ -122,11 +162,35 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 		m_Jabb->get_LastErrorText(&b);
 		::MessageBox(NULL, b.ToString(), "Jabber error", MB_OK);
 	}
+
+#else
+	CComBSTR2 l1 = l;
+	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
+	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
+	if (port)
+		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, port);
+	if (registernew)
+		WODXMPPCOMLib::XMPP_SetRegister(m_Jabb, TRUE);
+	WODXMPPCOMLib::XMPP_SetAutoVisible(m_Jabb, FALSE);
+
+	long hr = WODXMPPCOMLib::XMPP_Connect(m_Jabb, hostname);
+	if (!hr)
+	{
+		char buff[1024];
+		int bflen = sizeof(buff);
+		WODXMPPCOMLib::XMPP_GetLastErrorText(m_Jabb, buff, &bflen);
+		::MessageBox(NULL, buff, "Jabber error", MB_OK);
+	}
+#endif
 }
 
 void CSDKMessageLink::CJabberWiz::Disconnect(void)
 {
+#ifndef _WODXMPPLIB
 	m_Jabb->Disconnect();
+#else
+	WODXMPPCOMLib::XMPP_Disconnect(m_Jabb);
+#endif
 }
 
 
@@ -305,8 +369,12 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 				if (_Jabber && _Jabber->m_Jabb)
 				{
 
-					WODJABBERCOMLib::StatusEnum st;
+					WODXMPPCOMLib::StatusEnum st;
+#ifndef _WODXMPPLIB
 					if (SUCCEEDED(_Jabber->m_Jabb->get_Status(&st)))
+#else
+					WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &st);
+#endif
 					{
 						return st+1;
 					}
@@ -342,8 +410,12 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 					}
 					else
 					{
-						WODJABBERCOMLib::StatusEnum st;
+						WODXMPPCOMLib::StatusEnum st;
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(_Jabber->m_Jabb->get_Status(&st)))
+#else
+						WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &st);
+#endif
 						{
 							HRESULT hr = E_FAIL;
 							if (st == 0/*Offline*/)
@@ -357,9 +429,14 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							{
 								if (_Jabber && _Jabber->m_Jabb)
 								{
-									hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/lParam);
+#ifndef _WODXMPPLIB
+									hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)/*Online*/lParam);
 									if (SUCCEEDED(hr))
-										_Jabber->m_Events->DispStateChange((WODJABBERCOMLib::StatesEnum)0);
+										_Jabber->m_Events->DispStateChange((WODXMPPCOMLib::StatesEnum)0);
+#else
+									WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)lParam, NULL);
+									XMPPStateChange(_Jabber->m_Jabb, (WODXMPPCOMLib::StatesEnum)0);
+#endif
 
 								}
 							}
@@ -513,8 +590,10 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					if (_Jabber && _Jabber->m_Jabb)
 					{
-						WODJABBERCOMLib::StatusEnum st;
-						WODJABBERCOMLib::IJbrContacts *cts = NULL;
+						WODXMPPCOMLib::StatusEnum st;
+#ifndef _WODXMPPLIB
+						
+						WODXMPPCOMLib::IXMPPContacts *cts = NULL;
 						_Jabber->m_Jabb->get_Contacts(&cts);
 						if (cts)
 						{
@@ -522,7 +601,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							var.vt = VT_BSTR;
 							var.bstrVal = T2BSTR(user->m_JID);
 
-							WODJABBERCOMLib::IJbrContact *ct = NULL;
+							WODXMPPCOMLib::IXMPPContact *ct = NULL;
 							cts->get_Item(var, &ct);
 							if (ct)
 							{
@@ -531,11 +610,19 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							}
 							else
 							{
-								st = (WODJABBERCOMLib::StatusEnum)0;
+								st = (WODXMPPCOMLib::StatusEnum)0;
 								hr = S_OK;
 							}
 							cts->Release();
 						}
+#else
+						void *ct = NULL;
+						hr = WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+						if (SUCCEEDED(hr))
+							WODXMPPCOMLib::XMPP_Contact_GetStatus(ct, &st);
+						if (ct)
+							WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+#endif
 						if (SUCCEEDED(hr))
 						{
 							return st+1;
@@ -828,9 +915,10 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							{
 								BOOL subscribe = b.GetChar();
 
+#ifndef _WODXMPPLIB
 								// create new contact
-								WODJABBERCOMLib::IJbrContact *ct;
-								WODJABBERCOMLib::IJbrContacts *cts;
+								WODXMPPCOMLib::IXMPPContact *ct;
+								WODXMPPCOMLib::IXMPPContacts *cts;
 
 								if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 								{
@@ -851,6 +939,22 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 									}
 									cts->Release();
 								}
+#else
+								void *ct = NULL;
+								if (SUCCEEDED(WODXMPPCOMLib::XMPP_ContactsAdd(_Jabber->m_Jabb,aold, &ct)))
+								{
+									if (ct)
+									{
+										if (subscribe)
+										{
+											WODXMPPCOMLib::XMPP_Contact_Subscribe(ct);
+										}
+									}
+								}
+								if (ct)
+									WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+#endif
+
 							}
 						}
 						break;		
@@ -894,9 +998,10 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 
 								if (unsubscribe)
 								{
+#ifndef _WODXMPPLIB
 									// locate this user 
-									WODJABBERCOMLib::IJbrContact *ct;
-									WODJABBERCOMLib::IJbrContacts *cts;
+									WODXMPPCOMLib::IXMPPContact *ct;
+									WODXMPPCOMLib::IXMPPContacts *cts;
 									if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 									{
 										VARIANT var;
@@ -915,6 +1020,16 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 										}
 										cts->Release();
 									}
+#else
+									void *ct = NULL;
+									WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, aold, &ct);
+									if (ct)
+									{
+										WODXMPPCOMLib::XMPP_Contact_Unsubscribe(ct);
+										WODXMPPCOMLib::XMPP_ContactsRemove(_Jabber->m_Jabb, ct);
+										WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+									}
+#endif
 
 									// and remove contact from list of users
 									for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)

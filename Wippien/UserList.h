@@ -46,8 +46,13 @@ public:
 	BOOL ConnectIfPossible(CUser *user, BOOL perform);
 	//void DisableInlineEdit();
 	void AddMenuImage(int resid, int dataid);
-	void OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOOL received);
-	CUser *AddNewUser(char *j, WODJABBERCOMLib::IJbrContact *contact);
+#ifndef _WODXMPPLIB
+	void OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL received);
+	CUser *AddNewUser(char *j, WODXMPPCOMLib::IXMPPContact *contact);
+#else
+	CUser *AddNewUser(char *j, void *contact);
+	void OnVCard(void *Contact, BOOL Partial, BOOL received);
+#endif
 	void SortUsers(void);
 	Buffer m_SortedUsersBuffer;
 	int *m_SortedUser;

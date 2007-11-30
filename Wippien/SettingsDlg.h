@@ -19,6 +19,13 @@
 #include "ComBSTR2.h"
 #include "CwodWinSocket.h"
 
+#ifdef _WODXMPPLIB
+namespace WODXMPPCOMLib
+{
+#include "\WeOnlyDo\wodXMPP\Code\Win32LIB\Win32LIB.h"
+}
+#endif
+
 
 typedef std::vector<CxImage*> IMAGELIST;
 
@@ -189,20 +196,29 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 
 	class CSettingsJID   : public CAxDialogImpl<CSettingsJID>, public _CSettingsTemplate
 	{
-
+	public:
+#ifndef _WODXMPPLIB
 		class CJabberEvents;
+#endif
 		class CJabberWiz
 		{
 		public:
 
-			CComPtr<WODJABBERCOMLib::IwodJabberCom> m_Jabb;
-
+#ifndef _WODXMPPLIB
+			CComPtr<WODXMPPCOMLib::IwodXMPPCom> m_Jabb;
+#else
+			void *m_Jabb;
+#endif
 			CJabberWiz(CSettingsJID *Owner);
 			~CJabberWiz();
 			void Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew);
 			void Disconnect(void);
 
+#ifndef _WODXMPPLIB
 			CJabberEvents *m_Events;
+#else
+			WODXMPPCOMLib::XMPPEventsStruct m_Events;
+#endif
 			CSettingsJID *m_Owner;
 		};
 
@@ -829,7 +845,11 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 
 		
 		char m_Text2[256], m_Path[256];
-		void InitData(WODJABBERCOMLib::IJbrVCard *card);
+#ifndef _WODXMPPLIB
+		void InitData(WODXMPPCOMLib::IXMPPVCard *card);
+#else
+		void InitData(void  *card);
+#endif
 		void Lock(BOOL);
 		CxImage m_Image;
 		BOOL m_IsContact;
@@ -866,7 +886,11 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		END_MSG_MAP()
 
 		char m_Text2[256], m_Path[256];
-		void InitData(WODJABBERCOMLib::IJbrVCard *card);
+#ifndef _WODXMPPLIB
+		void InitData(WODXMPPCOMLib::IXMPPVCard *card);
+#else
+		void InitData(void *card);
+#endif
 		void Lock(BOOL);
 		BOOL m_IsContact;
 
@@ -904,7 +928,11 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 
 
 		char m_Text2[256], m_Path[256];
-		void InitData(WODJABBERCOMLib::IJbrVCard *card);
+#ifndef _WODXMPPLIB
+		void InitData(WODXMPPCOMLib::IXMPPVCard *card);
+#else
+		void InitData(void *card);
+#endif
 		void Lock(BOOL);
 		BOOL m_IsContact;
 

@@ -34,8 +34,10 @@ extern CAppModule _Module;
 #include <atlctrlw.h>
 #include <atlmisc.h>
 
-//#define WODJABBER_LICENSE_KEY "put_licensekey_here"
-#import "C:\WINDOWS\SYSTEM32\wodJabbr.dll" exclude("LanguageEnum")
+#ifndef _WODXMPPLIB
+//#define WODXMPP_LICENSE_KEY "put_licensekey_here"
+#import "C:\WINDOWS\SYSTEM32\wodXMPP.dll" exclude("LanguageEnum")
+#endif
 
 #ifndef _APPUPDLIB
 //#define WODAPPUPDATE_LICENSE_KEY "put_licensekey_here"

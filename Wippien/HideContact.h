@@ -31,8 +31,9 @@ public:
 	void AddContacts(void)
 	{
 		// create new contact
-		WODJABBERCOMLib::IJbrContact *ct;
-		WODJABBERCOMLib::IJbrContacts *cts;
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPContact *ct;
+		WODXMPPCOMLib::IXMPPContacts *cts;
 
 		if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 		{
@@ -61,7 +62,30 @@ public:
 				}
 			}
 			cts->Release();
-		}		}
+		}		
+#else
+		short Count = 0;
+		WODXMPPCOMLib::XMPP_ContactsGetCount(_Jabber->m_Jabb, &Count);
+		for (int i=0;i<Count;i++)
+		{
+			void *ct = NULL;
+			WODXMPPCOMLib::XMPP_ContactsGetContact(_Jabber->m_Jabb, i, &ct);
+			if (ct)
+			{
+				char buff[1024];
+				int bflen = sizeof(buff);
+				WODXMPPCOMLib::XMPP_Contact_GetJID(ct, buff, &bflen);
+				char *c2 = strchr(buff, '/');
+				if (c2)
+					*c2 = 0;
+				if (!_Settings.IsHiddenContact(buff))
+					::SendDlgItemMessage(m_hWnd, IDC_CONTACTLIST, CB_ADDSTRING, 0, (LPARAM)buff);
+
+				WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+			}
+		}
+#endif
+	}
 	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 	{
 		AddContacts();

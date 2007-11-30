@@ -33,6 +33,7 @@ namespace WODVPNCOMLib
 }
 #endif
 
+void XMPPStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState);
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -579,8 +580,12 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					unsigned long l = l1/60000L; // minutes
 					
 					// get our status
-					WODJABBERCOMLib::StatusEnum stat;
+					WODXMPPCOMLib::StatusEnum stat;
+#ifndef _WODXMPPLIB					
 					if (_Jabber && SUCCEEDED(_Jabber->m_Jabb->get_Status(&stat)))
+#else
+					if (_Jabber && SUCCEEDED(WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &stat)))
+#endif
 					{
 						if (m_DidGoAutoAway && _Settings.m_AutoSetBack && l1<=INACTIVITYTIMERCHECK)
 
@@ -595,11 +600,19 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							VARIANT var;
 							var.vt = VT_ERROR;
 							if (stat == 2/*Away*/ || stat == 5/*ExtendedAway*/) // but now 1
-								_Jabber->m_Jabb->SetStatus((WODJABBERCOMLib::StatusEnum)1/*Online*/, var);
+#ifndef _WODXMPPLIB
+								_Jabber->m_Jabb->SetStatus((WODXMPPCOMLib::StatusEnum)1/*Online*/, var);
+#else
+							WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)1,NULL);
+#endif
 						}
 						if (_Settings.m_AutoDisconnectMinutes && l > _Settings.m_AutoDisconnectMinutes)
 						{
+#ifndef _WODXMPPLIB
 							_Jabber->m_Jabb->Disconnect();
+#else
+							WODXMPPCOMLib::XMPP_Disconnect(_Jabber->m_Jabb);
+#endif
 							ShowStatusText("Disconnected due to inactivity rule");
 						}
 						else
@@ -614,7 +627,14 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								var.bstrVal = _Settings.m_ExtendedAwayMessage;
 							}
 							if (stat == 1/*Online*/ || stat == 2/*Away*/) 
-								_Jabber->m_Jabb->SetStatus((WODJABBERCOMLib::StatusEnum)5/*ExtAway*/, var);
+#ifndef _WODXMPPLIB
+								_Jabber->m_Jabb->SetStatus((WODXMPPCOMLib::StatusEnum)5/*ExtAway*/, var);
+#else
+							{
+								CComBSTR2 et1 = _Settings.m_ExtendedAwayMessage;
+								WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)5, et1.ToString());
+							}
+#endif
 						}
 						else
 						if (_Settings.m_AutoAwayMinutes && l > _Settings.m_AutoAwayMinutes)
@@ -628,7 +648,14 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								var.bstrVal = _Settings.m_AutoAwayMessage;
 							}
 							if (stat == 1/*Online*/) 
-								_Jabber->m_Jabb->SetStatus((WODJABBERCOMLib::StatusEnum)2/*Away*/, var);
+#ifndef _WODXMPPLIB
+								_Jabber->m_Jabb->SetStatus((WODXMPPCOMLib::StatusEnum)2/*Away*/, var);
+#else
+							{
+								CComBSTR2 et1 = _Settings.m_AutoAwayMessage;
+								WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)5, et1.ToString());
+							}
+#endif
 						}
 					}
 				}
@@ -761,8 +788,12 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					if (_Settings.m_CheckUpdateTimed)
 					{
 						// get our status
-						WODJABBERCOMLib::StatesEnum stat;
+						WODXMPPCOMLib::StatesEnum stat;
+#ifndef _WODXMPPLIB
 						if (_Jabber && SUCCEEDED(_Jabber->m_Jabb->get_State(&stat)))
+#else
+						if (_Jabber && SUCCEEDED(WODXMPPCOMLib::XMPP_GetState(_Jabber->m_Jabb, &stat)))
+#endif
 						{
 							int i = (int)stat;
 							if (i>0)
@@ -846,8 +877,10 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 				// look for images and details and delete jabber debug log
 				{
 
-					WODJABBERCOMLib::IJbrContacts *cts = NULL;
-					WODJABBERCOMLib::IJbrContact *ct = NULL;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPContacts *cts = NULL;
+					WODXMPPCOMLib::IXMPPContact *ct = NULL;
+#endif
 
 					// let's see if jabber log is also above specified size
 					if (_Settings.m_JabberDebugFile.Length())
@@ -884,7 +917,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 
 								if (SUCCEEDED(cts->get_Item(var, &ct)))
 								{
-									WODJABBERCOMLib::SubscriptionsEnum sub = (WODJABBERCOMLib::SubscriptionsEnum)0;
+									WODXMPPCOMLib::SubscriptionsEnum sub = (WODXMPPCOMLib::SubscriptionsEnum)0;
 									ct->get_Subscription(&sub);
 									if (!sub)
 									{
@@ -967,6 +1000,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 
 							CUser *us = (CUser *)m_UserList.m_Users[intcol[r]];
 
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 							{
 								VARIANT var;
@@ -975,7 +1009,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								if (SUCCEEDED(cts->get_Item(var, &ct)))
 								{
 									// and request vcard
-									WODJABBERCOMLib::IJbrVCard *vc;
+									WODXMPPCOMLib::IXMPPVCard *vc;
 									if (SUCCEEDED(ct->get_VCard(&vc)))
 									{
 										vc->Receive();
@@ -986,6 +1020,13 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								::SysFreeString(var.bstrVal);
 								cts->Release();
 							}
+#else
+							void *ct = NULL;
+							if (SUCCEEDED(WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, us->m_JID, &ct)) && ct)
+							{
+								WODXMPPCOMLib::XMPP_Contact_VCard_Receive(ct);
+							}
+#endif
 						}
 					}					
 				}
@@ -1790,8 +1831,13 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		m_SettingsDlg->m_Dialogs.push_back(pg);
 
 
-		WODJABBERCOMLib::IJbrVCard *vc = NULL;
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPVCard *vc = NULL;
 		SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc));
+#else
+		void *vc = NULL;
+		WODXMPPCOMLib::XMPP_GetVCard(_Jabber->m_Jabb, &vc);
+#endif
 
 		CSettingsDlg::CSettingsUser1 *us1 = new CSettingsDlg::CSettingsUser1();
 		CComBSTR2 b2 = _Settings.m_JID;
@@ -1829,7 +1875,11 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		us3->InitData(vc);
 
 		if (vc)
+#ifndef _WODXMPPLIB
 			vc->Release();
+#else
+		WODXMPPCOMLib::XMPP_VCard_Free(vc);
+#endif
 	}
 
 //	dlg.DoModal();
@@ -1884,14 +1934,22 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	BOOL connecting = FALSE;
 	if (_Jabber)
 	{
-		WODJABBERCOMLib::StatusEnum st = (WODJABBERCOMLib::StatusEnum)0;
+		WODXMPPCOMLib::StatusEnum st = (WODXMPPCOMLib::StatusEnum)0;
+#ifndef _WODXMPPLIB
 		_Jabber->m_Jabb->get_Status(&st);
+#else
+		WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &st);
+#endif
 		int i = (int)st;
 		if (i)
 			online = TRUE;
 
-		WODJABBERCOMLib::StatesEnum st1 = (WODJABBERCOMLib::StatesEnum)0;
+		WODXMPPCOMLib::StatesEnum st1 = (WODXMPPCOMLib::StatesEnum)0;
+#ifndef _WODXMPPLIB
 		_Jabber->m_Jabb->get_State(&st1);
+#else
+		WODXMPPCOMLib::XMPP_GetState(_Jabber->m_Jabb, &st1);
+#endif
 		i = (int)st1;
 		if (i<5 /*connected*/ && i>0 /*disconnected*/)
 			connecting = TRUE;
@@ -1966,40 +2024,68 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 							_MainDlg.SetTimer(106,200);
 					}
 					else
-						hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/1);
+#ifndef _WODXMPPLIB
+					hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)/*Online*/1);
+#else
+					hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)1, NULL);
+#endif
 				}
 			break;
 
 		case ID_POPUP3_AWAY:
 				if (_Jabber)
-					hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/2);
+#ifndef _WODXMPPLIB
+					hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)2);
+#else
+				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)2, NULL);
+#endif
 			break;
 
 		case ID_POPUP3_CHAT:
 				if (_Jabber)
-					hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/3);
+#ifndef _WODXMPPLIB
+					hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)3);
+#else
+				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)3, NULL);
+#endif
 			break;
 
 		case ID_POPUP3_DONOTDISTURB:
 				if (_Jabber)
-					hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/4);
+#ifndef _WODXMPPLIB
+					hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)2);
+#else
+				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)4, NULL);
+#endif
 			break;
 
 		case ID_POPUP3_EXTENDEDAWAY:
 				if (_Jabber)
-					hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/5);
+#ifndef _WODXMPPLIB
+					hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)2);
+#else
+				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)5, NULL);
+#endif
 			break;
 
 		case ID_POPUP3_INVISIBLE:
 				if (_Jabber)
-					hr = _Jabber->m_Jabb->raw_SetStatus((WODJABBERCOMLib::StatusEnum)/*Online*/6);
+#ifndef _WODXMPPLIB
+					hr = _Jabber->m_Jabb->raw_SetStatus((WODXMPPCOMLib::StatusEnum)2);
+#else
+				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)6, NULL);
+#endif
 			break;
 
 		case ID_POPUP3_OFFLINE:
 				if (_Jabber)
 				{
 					_Jabber->m_DoReconnect = FALSE;
+#ifndef _WODXMPPLIB
 					_Jabber->m_Jabb->Disconnect();
+#else	
+					WODXMPPCOMLib::XMPP_Disconnect(_Jabber->m_Jabb);
+#endif
 					_Jabber->m_DoReconnect = TRUE;
 				}
 
@@ -2008,7 +2094,11 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	
 	}
 	if (SUCCEEDED(hr))
-		_Jabber->m_Events->DispStateChange((WODJABBERCOMLib::StatesEnum)0);
+#ifndef _WODXMPPLIB
+		_Jabber->m_Events->DispStateChange((WODXMPPCOMLib::StatesEnum)0);
+#else
+	XMPPStateChange(_Jabber->m_Jabb, (WODXMPPCOMLib::StatesEnum)0);
+#endif
 
 	if (FAILED(hr))
 	{
@@ -2191,8 +2281,13 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 
 					CSettingsDlg::_CSettingsTemplate *pg = NULL;
 					
-					WODJABBERCOMLib::IJbrVCard *vc = NULL;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPVCard *vc = NULL;
 					SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc));
+#else
+					void *vc;
+					WODXMPPCOMLib::XMPP_GetVCard(_Jabber->m_Jabb, &vc);
+#endif
 
 					CSettingsDlg::CSettingsUser1 *us1 = new CSettingsDlg::CSettingsUser1();
 					CComBSTR2 b2 = _Settings.m_JID;
@@ -2230,7 +2325,11 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 					us3->InitData(vc);
 
 					if (vc)
+#ifndef _WODXMPPLIB
 						vc->Release();
+#else
+					WODXMPPCOMLib::XMPP_VCard_Free(vc);
+#endif
 				}
 		}
 	}

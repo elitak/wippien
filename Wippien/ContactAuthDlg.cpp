@@ -42,8 +42,15 @@ LRESULT CContactAuthDlg::OnCtlColorStatic(UINT /*uMsg*/, WPARAM /*wParam*/, LPAR
 
 void CContactAuthDlg::SendPresence(BOOL allow)
 {
-	WODJABBERCOMLib::IJbrContact *ct;
-	WODJABBERCOMLib::IJbrContacts *cts;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPContact *ct;
+	WODXMPPCOMLib::IXMPPContacts *cts;
+#else
+	void *ct;
+#endif
+
+
+#ifndef _WODXMPPLIB
 
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 	{
@@ -54,13 +61,22 @@ void CContactAuthDlg::SendPresence(BOOL allow)
 		{
 			if (ct)
 			{
-				WODJABBERCOMLib::StatusEnum st = (WODJABBERCOMLib::StatusEnum)6;
+				WODXMPPCOMLib::StatusEnum st = (WODXMPPCOMLib::StatusEnum)6;
+#else
+				CComBSTR2 j = m_JID;
+				WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, j.ToString(), &ct);
+				WODXMPPCOMLib::StatusEnum st = (WODXMPPCOMLib::StatusEnum)6;
+#endif
 				if (allow)
 				{
 					// get state
 					if (ct)
 					{
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(ct->get_Status(&st)))
+#else
+							WODXMPPCOMLib::XMPP_Contact_GetStatus(ct, &st);
+#endif
 						{
 						}
 					}
@@ -72,20 +88,32 @@ void CContactAuthDlg::SendPresence(BOOL allow)
 				sprintf(buff, "<presence to='%s' type='%s'><priority>0</priority></presence>", jid.ToString(), allow?"subscribed":"unsubscribed");
 				if (_Jabber)
 				{
+#ifndef _WODXMPPLIB
 					CComBSTR2 b = buff;
 					_Jabber->m_Jabb->raw_RawSend(b);
+#else
+					WODXMPPCOMLib::XMPP_RawSend(_Jabber->m_Jabb, buff);
+#endif
 				}
 
 
 				if (!(st >=1 && st <=7)) // not online, nor requested
 				{
 					// we want to request authorization too
+#ifndef _WODXMPPLIB
 					ct->Subscribe();
+#else
+					WODXMPPCOMLib::XMPP_Contact_Subscribe(ct);
+#endif
 				}
+#ifndef _WODXMPPLIB
 			}
 			ct->Release();
 		}
 	}
+#else
+			WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+#endif
 
 }
 
@@ -133,15 +161,16 @@ BOOL CContactAuthDlg::UpdateWin()
 	m_JID.Empty();
 
 	CComBSTR2 jid = _Settings.m_AuthRequests[m_Pos];
-	char *jd1 = jid.ToString();
-	char *jd2 = strchr(jd1, '/');
-	if (jd2)
-		*jd2 = 0;
+//	char *jd1 = jid.ToString();
+//	char *jd2 = strchr(jd1, '/');
+//	if (jd2)
+//		*jd2 = 0;
 
 	// find current contact
-	WODJABBERCOMLib::IJbrContacts *cts;
-	WODJABBERCOMLib::IJbrContact *ct;
 	CComBSTR2 jd;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPContacts *cts;
+	WODXMPPCOMLib::IXMPPContact *ct;
 
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 	{
@@ -153,18 +182,30 @@ BOOL CContactAuthDlg::UpdateWin()
 		{
 			if (SUCCEEDED(ct->get_JID(&jd)))
 			{
-				jd1 = jd.ToString();
-				jd2 = strchr(jd1, '/');
+				char *jd1 = jd.ToString();
+				char *jd2 = strchr(jd1, '/');
 				if (jd2)
 					*jd2 = 0;
 				m_JID = jd1;
+				SetDlgItemText(IDC_CONTACTJID, jd1);
 			}
 			ct->Release();
 		}
 		cts->Release();
 	}
-
-	SetDlgItemText(IDC_CONTACTJID, jd1);
+#else
+	void *ct;
+	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, jid.ToString(), &ct);
+	if (ct)
+	{
+		char jfb[1024];
+		int jlen = sizeof(jfb);
+		WODXMPPCOMLib::XMPP_Contact_GetJID(ct, jfb, &jlen);
+		m_JID = jfb;
+		WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+		SetDlgItemText(IDC_CONTACTJID, jfb);
+	}
+#endif
 
 
 	if (_Settings.m_AuthContacts == 0)

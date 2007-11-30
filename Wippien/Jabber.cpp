@@ -18,6 +18,12 @@ namespace WODVPNCOMLib
 #include "\WeOnlyDo\wodVPN\Code\Win32LIB\Win32LIB.h"
 }
 #endif
+#ifdef _WODXMPPLIB
+namespace WODXMPPCOMLib
+{
+#include "\WeOnlyDo\wodXMPP\Code\Win32LIB\Win32LIB.h"
+}
+#endif
 
 
 CJabber *_Jabber = NULL;
@@ -29,6 +35,7 @@ extern CSDKMessageLink *_SDK;
 
 int uuencode(unsigned char *src, unsigned int srclength,char *target, size_t targsize);
 
+#ifndef _WODXMPPLIB
 
 // Define the jabber events to be handled:
 _ATL_FUNC_INFO ConnectedInfo = {CC_STDCALL, VT_EMPTY, 0};
@@ -53,13 +60,25 @@ CJabberEvents::~CJabberEvents ()
 {
     DispEventUnadvise ( (IUnknown*)m_pJ->m_Jabb);
 }
+#endif
 
-void __stdcall CJabberEvents::DispContactAuthRequest(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::JabberActionsEnum *Action)
+
+#ifdef _WODXMPPLIB
+void XMPPContactAuthRequest(void *wodXMPP, void  *Contact, WODXMPPCOMLib::XMPPActionsEnum *Action)
+#else
+void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::XMPPActionsEnum *Action)
+#endif
 {
 	// add to list of auth requests
 	CComBSTR2 j;
 
+#ifndef _WODXMPPLIB
 	if (SUCCEEDED(Contact->get_JID(&j)))
+#else
+	char bf[1024];
+	int bfl = sizeof(bf);
+	WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, bf, &bfl);
+#endif
 	{
 		char *jd1 = j.ToString();
 		char *jd2 = strchr(jd1, '/');
@@ -92,15 +111,20 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODJABBERCOMLib::IJbrContac
 		_ContactAuthDlg->ShowWindow(SW_SHOW);
 */
 
-	*Action = (WODJABBERCOMLib::JabberActionsEnum)2;//::SilentDeny);
+	*Action = (WODXMPPCOMLib::XMPPActionsEnum)2;//::SilentDeny);
 }
 
+#ifdef _WODXMPPLIB
+void XMPPConnected(void *wodXMPP)
+#else
 void __stdcall CJabberEvents::DispConnected ()
+#endif
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	_Jabber->m_ConnectTime = GetTickCount();
 //		_MainDlg.ShowStatusText("Connected.");
-	WODJABBERCOMLib::IJbrServices *serv = NULL;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		serv->Discover(TRUE);
@@ -108,13 +132,17 @@ void __stdcall CJabberEvents::DispConnected ()
 	}
 
 	// and request vcard
-	WODJABBERCOMLib::IJbrVCard *vc;
+	WODXMPPCOMLib::IXMPPVCard *vc;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc)))
 	{
 		vc->Receive();
 		vc->Release();
 	}
-	DispStateChange((WODJABBERCOMLib::StatesEnum)0);
+	DispStateChange((WODXMPPCOMLib::StatesEnum)0);
+#else
+	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
+	WODXMPPCOMLib::XMPP_VCardReceive(_Jabber->m_Jabb);
+#endif
 
 	if (_Settings.m_DeleteContactsOnConnect)
 	{
@@ -140,11 +168,15 @@ void __stdcall CJabberEvents::DispConnected ()
 	}
 
 }
+#ifdef _WODXMPPLIB
+void XMPPDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
+#else
 void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
+#endif
 {
 
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-	m_pJ->m_Initial = TRUE;
+	_Jabber->m_Initial = TRUE;
 
 	if (_SDK)
 	{
@@ -166,7 +198,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 	else
 		_MainDlg.ShowStatusText("Disconnected.");
 
-	if (m_pJ->m_DoReconnect)
+	if (_Jabber->m_DoReconnect)
 	{
 		_MainDlg.m_ReconnectWait = 15;
 		if (_MainDlg.IsWindow())
@@ -188,11 +220,22 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 	}
 
 }
-void __stdcall CJabberEvents::DispStateChange(WODJABBERCOMLib::StatesEnum OldState)
+#ifdef _WODXMPPLIB
+void XMPPStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState)
+#else
+void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState)
+#endif
 {
+	int newst = 0;
+#ifndef _WODXMPPLIB
+	if (SUCCEEDED(_Jabber->m_Jabb->get_State((WODXMPPCOMLib::StatesEnum *)&newst)))
+#else
+	WODXMPPCOMLib::XMPP_GetState(wodXMPP, (WODXMPPCOMLib::StatesEnum *)&newst);
+#endif
 
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 
+#ifndef _WODXMPPLIB
 	CComBSTR2 j;
 	VARIANT var;
 	var.vt = VT_ERROR;
@@ -208,12 +251,20 @@ void __stdcall CJabberEvents::DispStateChange(WODJABBERCOMLib::StatesEnum OldSta
 		}
 		_MainDlg.ShowStatusText(buff);
 	}
-	
+#else
+	char stat[1024], stet[1024];
+	int slen = 1024;
+	WODXMPPCOMLib::XMPP_GetStatusText(wodXMPP, stat, &slen);
+	strcat(stat, " - ");
+	slen = 1024;
+	WODXMPPCOMLib::XMPP_GetStateText(wodXMPP, (WODXMPPCOMLib::StatesEnum)newst, stet, &slen);
+	strcat(stat, stet);
+	_MainDlg.ShowStatusText(stat);
+#endif
+
 	// let's integrate SDK too
 	if (_SDK)
 	{
-		int newst = 0;
-		if (SUCCEEDED(_Jabber->m_Jabb->get_State((WODJABBERCOMLib::StatesEnum *)&newst)))
 		{
 			Buffer b;
 			b.PutInt((int)OldState);
@@ -224,19 +275,31 @@ void __stdcall CJabberEvents::DispStateChange(WODJABBERCOMLib::StatesEnum OldSta
 	}
 	
 }
-void __stdcall CJabberEvents::DispContactStatusChange(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::StatusEnum OldStatus)
+#ifdef _WODXMPPLIB
+void XMPPContactStatusChange(void *wodXMPP, void  *Contact, WODXMPPCOMLib::StatusEnum OldStatus)
+#else
+void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::StatusEnum OldStatus)
+#endif
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-	if (!m_pJ->m_Initial)
+	if (!_Jabber->m_Initial)
 	{
 
 		if (_SDK)
 		{
 			CComBSTR j;
-			Contact->get_JID(&j);
 
-			WODJABBERCOMLib::StatusEnum st;
+			WODXMPPCOMLib::StatusEnum st;
+#ifndef _WODXMPPLIB
+			Contact->get_JID(&j);
 			Contact->get_Status(&st);
+#else
+			char bf[1024];
+			int bflen = sizeof(bf);
+			WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, bf, &bflen);
+			j = bf;
+			WODXMPPCOMLib::XMPP_Contact_GetStatus(Contact, &st);
+#endif
 
 			Buffer b;
 			b.PutCString(j);
@@ -252,8 +315,13 @@ void __stdcall CJabberEvents::DispContactStatusChange(WODJABBERCOMLib::IJbrConta
 	}
 //		m_pJ->m_Owner->ParseUsers(m_pJ->m_Jabb);
 }
-void __stdcall CJabberEvents::DispIncomingNotification(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::ContactNotifyEnum NotifyID, VARIANT Data)
+#ifdef _WODXMPPLIB
+void XMPPIncomingNotification(void *wodXMPP, void  *Contact, WODXMPPCOMLib::ContactNotifyEnum NotifyID, VARIANT Data)
+#else
+void __stdcall CJabberEvents::DispIncomingNotification(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::ContactNotifyEnum NotifyID, VARIANT Data)
+#endif
 {
+#ifndef _WODXMPPLIB
 	CComBSTR2 j;
 	Contact->get_JID(&j);
 
@@ -261,21 +329,41 @@ void __stdcall CJabberEvents::DispIncomingNotification(WODJABBERCOMLib::IJbrCont
 	char *jd2 = strchr(jd1, '/');
 	if (jd2)
 		*jd2 = 0;
+#else
+	char jd1[1024];
+	int jl = sizeof(jd1);
+	WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, jd1, &jl);
+#endif
 
 	_MainDlg.OnIncomingNotification(jd1, (int)NotifyID, Data);
 }
-void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::IJbrMessage *Message)
+#ifdef _WODXMPPLIB
+void XMPPIncomingMessage(void *wodXMPP, void  *Contact, void  *Message)
+#else
+void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message)
+#endif
 {
 	if (Contact)
 	{
-		WODJABBERCOMLib::MessageTypesEnum msgtype = (WODJABBERCOMLib::MessageTypesEnum)0;
+		WODXMPPCOMLib::MessageTypesEnum msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
 		if (Message)
+#ifndef _WODXMPPLIB
 			Message->get_Type(&msgtype);
+#else
+		WODXMPPCOMLib::XMPP_Message_GetType(Message, &msgtype);
+#endif
 
 		// is it from mediator?
 		CComBSTR jid;
 		CComBSTR2 jd;
+#ifndef _WODXMPPLIB
 		if (SUCCEEDED(Contact->get_JID(&jd)))
+#else
+		char jdbf[1024];
+		int jdbflen = sizeof(jdbf);
+		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, jdbf, &jdbflen);
+		jd = jdbf;
+#endif
 		{
 			char *jd1 = jd.ToString();
 			if (_Settings.IsHiddenContact(jd1))
@@ -296,7 +384,14 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 
 				// yes, store mediator info
 				CComBSTR2 text;
+#ifndef _WODXMPPLIB
 				if (SUCCEEDED(Message->get_Text(&text)))
+#else
+				char textbuff[16384];
+				int textbufflen = sizeof(textbuff);
+				WODXMPPCOMLib::XMPP_Message_GetText(Message, textbuff, &textbufflen);
+				text = textbuff;
+#endif
 				{
 					char *t = text.ToString();
 
@@ -397,8 +492,12 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 					else
 					if (strstr(t, "<Restart>"))
 					{
-						m_pJ->m_DoReconnect = TRUE;
-						m_pJ->m_Jabb->Disconnect();
+						_Jabber->m_DoReconnect = TRUE;
+#ifndef _WODXMPPLIB
+						_Jabber->m_Jabb->Disconnect();
+#else
+						WODXMPPCOMLib::XMPP_Disconnect(_Jabber->m_Jabb);
+#endif
 //						CComBSTR b("Restarted by mediator");
 //						DispDisconnected(-1,b);
 					}
@@ -408,15 +507,22 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 		}
 		
 		// is it headline
-//		WODJABBERCOMLib::MessageTypesEnum ms;
+//		WODXMPPCOMLib::MessageTypesEnum ms;
 
 //		if (SUCCEEDED(Message->get_Type(&ms)))
 		{
-			if (msgtype == (WODJABBERCOMLib::MessageTypesEnum)3)//::MsgHeadline)
+			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3)//::MsgHeadline)
 			{
 				ATLTRACE("Got message from remote peer\r\n");
 				CComBSTR subj;
+#ifndef _WODXMPPLIB
 				if (SUCCEEDED(Message->get_Subject(&subj)))
+#else
+				char subjbuff[1024];
+				int subjbufflen = sizeof(subjbuff);
+				WODXMPPCOMLib::XMPP_Message_GetSubject(Message, subjbuff, &subjbufflen);
+				subj = subjbuff;
+#endif
 				{
 					if (subj == WIPPIENINITREQUEST && Contact)
 					{
@@ -424,7 +530,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 
 						Buffer in, out;
 						CComBSTR2 r;
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(Message->get_Text(&r)))
+#else
+						subjbufflen = sizeof(subjbuff);
+						WODXMPPCOMLib::XMPP_Message_GetText(Message, subjbuff, &subjbufflen);
+						r = subjbuff;
+#endif
 						{
 							char *r1 = r.ToString();
 							in.Append(r1);
@@ -433,7 +545,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 
 							// save this for user
 							CComBSTR j;
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(Contact->get_JID(&j)))
+#else
+							subjbufflen = sizeof(subjbuff);
+							WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, subjbuff, &subjbufflen);
+							j = subjbuff;
+#endif
 							{
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
@@ -498,7 +616,14 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 
 						Buffer in, out;
 						CComBSTR2 r;
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(Message->get_Text(&r)))
+#else
+						char textbuff[1024];
+						int tblen = sizeof(textbuff);
+						WODXMPPCOMLib::XMPP_Message_GetText(Message, textbuff, &tblen);
+						r = textbuff;
+#endif
 						{
 							char *r1 = r.ToString();
 							in.Append(r1);
@@ -507,7 +632,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 
 							// save this for user
 							CComBSTR j;
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(Contact->get_JID(&j)))
+#else
+							tblen = sizeof(textbuff);
+							WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, textbuff, &tblen);
+							j = textbuff;
+#endif
 							{
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
@@ -555,7 +686,14 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 						ATLTRACE("Got DISCONNECT message\r\n");
 						// reinit...
 						CComBSTR j;
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(Contact->get_JID(&j)))
+#else
+						char tb[1024];
+						int tblen = sizeof(tb);
+						WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
+						j = tb;
+#endif
 						{
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 							if (user)
@@ -568,7 +706,14 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 					{
 						// reinit...
 						CComBSTR j;
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(Contact->get_JID(&j)))
+#else
+						char tb[1024];
+						int tblen = sizeof(tb);
+						WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
+						j = tb;
+#endif
 						{
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 							if (user)
@@ -576,7 +721,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 								ATLTRACE("Got CONNECT message from %s\r\n", user->m_JID);
 								Buffer in, out;
 								CComBSTR2 r;
+#ifndef _WODXMPPLIB
 								if (SUCCEEDED(Message->get_Text(&r)))
+#else
+								tblen = sizeof(tb);
+								WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
+								r = tb;
+#endif
 								{
 									char *r1 = r.ToString();
 									if (r1)
@@ -629,14 +780,27 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 			else
 			{
 				CComBSTR2 j;
+#ifndef _WODXMPPLIB
 				Contact->get_JID(&j);
-				if (msgtype == (WODJABBERCOMLib::MessageTypesEnum)4)//::error)
+#else
+				char tb[1024];
+				int tblen = sizeof(tb);
+				WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
+				j = tb;
+#endif
+				if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)4)//::error)
 				{
 					if (Message)
 					{
 						BOOL show = TRUE;
 						CComBSTR2 j1;
+#ifndef _WODXMPPLIB
 						Message->get_Thread(&j1);
+#else
+						tblen = sizeof(tb);
+						WODXMPPCOMLib::XMPP_Message_GetThread(Message, tb, &tblen);
+						j1 = tb;
+#endif
 						if (j1.Length())
 						{
 							char *j2 = j1.ToString();
@@ -648,9 +812,21 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 				else
 				{
 					CComBSTR2 t;
+#ifndef _WODXMPPLIB
 					Message->get_Text(&t);
+#else
+					tblen = sizeof(tb);
+					WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
+					t = tb;
+#endif
 					CComBSTR2 ht;
+#ifndef _WODXMPPLIB
 					Message->get_HTMLText(&ht);
+#else
+					tblen = sizeof(tb);
+					WODXMPPCOMLib::XMPP_Message_GetHTMLText(Message, tb, &tblen);
+					ht = tb;
+#endif
 					_MainDlg.OnIncomingMessage(j.ToString(), t.ToString(), ht.ToString());
 				}
 			}
@@ -658,20 +834,26 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODJABBERCOMLib::IJbrContact *
 		
 	}
 }
+#ifdef _WODXMPPLIB
+void XMPPContactList(void *wodXMPP)
+#else
 void __stdcall CJabberEvents::DispContactList()
+#endif
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-	BOOL init = m_pJ->m_Initial;
-	m_pJ->m_Initial = FALSE;
+	BOOL init = _Jabber->m_Initial;
+	_Jabber->m_Initial = FALSE;
 
 	if (_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
 	{
+
+#ifndef _WODXMPPLIB
 		// ask mediator for his details
-		WODJABBERCOMLib::IJbrContacts *contacts;
+		WODXMPPCOMLib::IXMPPContacts *contacts;
 		if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&contacts)))
 		{
 			
-			WODJABBERCOMLib::IJbrContact *contact;
+			WODXMPPCOMLib::IXMPPContact *contact;
 			VARIANT var;
 			var.vt = VT_BSTR;
 			var.bstrVal = _Settings.m_IPMediator;
@@ -686,14 +868,29 @@ void __stdcall CJabberEvents::DispContactList()
 			}
 			contacts->Release();
 		}
+#else
+	void *ct = NULL;
+	CComBSTR2 md = _Settings.m_IPMediator;
+	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(wodXMPP, md.ToString(), &ct);
+		if (!ct)
+			WODXMPPCOMLib::XMPP_ContactsAdd(wodXMPP, md.ToString(), &ct);
+		if (ct)
+		{
+			_Jabber->Message(ct, NULL, "HELO", "");
+			WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+		}
+#endif
 	}
-
 //	if (_MainDlg.IsWindow())
 //		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, TRUE);
 //		_MainDlg.m_UserList.Refresh(NULL);
 	_MainDlg.m_UserList.RefreshUser(NULL);
 }
-void __stdcall CJabberEvents::DispServiceRegister (WODJABBERCOMLib::IJbrService *Service, VARIANT_BOOL Success, BSTR Instructions)
+#ifdef _WODXMPPLIB
+void XMPPServiceRegister(void *wodXMPP, void  *Service, BOOL Success, char *Instructions)
+#else
+void __stdcall CJabberEvents::DispServiceRegister (WODXMPPCOMLib::IXMPPService *Service, VARIANT_BOOL Success, BSTR Instructions)
+#endif
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	CComBSTR2 i = Instructions;
@@ -702,7 +899,11 @@ void __stdcall CJabberEvents::DispServiceRegister (WODJABBERCOMLib::IJbrService 
 		SetWindowText(_Jabber->m_ServiceRegisterHwnd, i.ToString());
 	}
 }
-void __stdcall CJabberEvents::DispServiceStatusChange (WODJABBERCOMLib::IJbrService *Service)
+#ifdef _WODXMPPLIB
+void XMPPServiceStatusChange(void *wodXMPP, void  *Service)
+#else
+void __stdcall CJabberEvents::DispServiceStatusChange (WODXMPPCOMLib::IXMPPService *Service)
+#endif
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	if (_Jabber->m_ServiceRefreshHwnd)
@@ -710,7 +911,11 @@ void __stdcall CJabberEvents::DispServiceStatusChange (WODJABBERCOMLib::IJbrServ
 		PostMessage(_Jabber->m_ServiceRefreshHwnd, WM_REFRESH, 0, 0);
 	}
 }
-void __stdcall CJabberEvents::DispVCardDetails(WODJABBERCOMLib::IJbrContact *Contact, VARIANT_BOOL Partial)
+#ifdef _WODXMPPLIB
+void XMPPVCardDetails(void *wodXMPP, void  *Contact, BOOL Partial)
+#else
+void __stdcall CJabberEvents::DispVCardDetails(WODXMPPCOMLib::IXMPPContact *Contact, VARIANT_BOOL Partial)
+#endif
 {
 //	if (Contact)
 //	{
@@ -720,14 +925,34 @@ void __stdcall CJabberEvents::DispVCardDetails(WODJABBERCOMLib::IJbrContact *Con
 
 CJabber::CJabber(void)
 {
-	m_Jabb.CoCreateInstance(__uuidof(WODJABBERCOMLib::wodJabberCom));
+#ifdef _WODXMPPLIB
+	memset(&m_Events, 0, sizeof(m_Events));
 
-#ifdef WODJABBER_LICENSE_KEY
-	CComBSTR blic(WODJABBER_LICENSE_KEY);
+	m_Events.Connected = XMPPConnected;
+	m_Events.Disconnected = XMPPDisconnected;
+	m_Events.StateChange = XMPPStateChange;
+	m_Events.ContactStatusChange = XMPPContactStatusChange;
+	m_Events.IncomingMessage = XMPPIncomingMessage;
+	m_Events.IncomingNotification = XMPPIncomingNotification;
+	m_Events.ContactList = XMPPContactList;
+	m_Events.ServiceRegister = XMPPServiceRegister;
+	m_Events.ServiceStatusChange = XMPPServiceStatusChange;
+	m_Events.ContactAuthRequest = XMPPContactAuthRequest;
+	m_Events.VCardDetails = XMPPVCardDetails;
+
+		
+	m_Jabb = WODXMPPCOMLib::__XMPP_Create(&m_Events);
+#else
+	m_Jabb.CoCreateInstance(__uuidof(WODXMPPCOMLib::wodXMPPCom));
+	m_Events = NULL;
+#endif
+
+#ifdef WODXMPP_LICENSE_KEY
+	CComBSTR blic(WODXMPP_LICENSE_KEY);
 	m_Jabb->put_LicenseKey(blic);
 #endif	
+
 	m_Initial = TRUE;
-	m_Events = NULL;
 	m_ServiceRegisterHwnd = NULL;
 	m_ServiceRefreshHwnd = NULL;
 	m_DoReconnect = TRUE;
@@ -736,7 +961,9 @@ CJabber::CJabber(void)
 CJabber::~CJabber()
 {
 	Disconnect();
+#ifndef _WODXMPPLIB
 	m_Jabb.Release();
+#endif
 }
 
 void CJabber::Connect(char *JID, char *pass, char *hostname, int port)
@@ -759,11 +986,23 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port)
 //		sprintf(&buff[strlen(buff)], "%x", rand());
 //	l += buff;
 
+#ifndef _WODXMPPLIB
 	m_Jabb->put_Login(l);
 	m_Jabb->put_Password(p);
 	if (prt)
 		m_Jabb->put_Port(prt);
+#else
+	CComBSTR2 l1 = l;
+	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
+	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
+	if (prt)
+		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, prt);
+#endif
+		
 
+
+	m_Initial = TRUE;
+#ifndef _WODXMPPLIB
 	VARIANT var;
 	if (h.Length())
 	{
@@ -772,52 +1011,66 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port)
 	}
 	else
 		var.vt = VT_ERROR;
-
-	m_Initial = TRUE;
+	
 	if (m_Events)
 		delete m_Events;
 	m_Events = new CJabberEvents(this);
-	
 
 	m_Jabb->put_DebugFile(_Settings.m_JabberDebugFile);
-//	CComBSTR b = "c:\\jabber.nfo";
-//	m_Jabb->put_DebugFile(b);
-//	CComBSTR blic("6VRR-2G5P-Q42G-9GRA");
-//	m_Jabb->put_LicenseKey(blic);
-
 	HRESULT hr;
 	hr = m_Jabb->raw_Connect(var);
+#else
+	long hr;
+	CComBSTR2 df = _Settings.m_JabberDebugFile;
+	WODXMPPCOMLib::XMPP_SetDebugFile(m_Jabb, df.ToString());
+	hr = WODXMPPCOMLib::XMPP_Connect(m_Jabb, hostname);
+#endif
+
 	if (FAILED(hr))
 		ShowError();
 }
 
 void CJabber::Disconnect(void)
 {
+#ifndef _WODXMPPLIB
 	m_Jabb->Disconnect();
+
 	if (m_Events)
 		delete m_Events;
 	m_Events = NULL;
+#else
+	WODXMPPCOMLib::XMPP_Disconnect(m_Jabb);
+#endif
 }
 
-void CJabber::Message(WODJABBERCOMLib::IJbrContact *Contact, char *JID, char *MessageText, char *HtmlText)
+#ifndef _WODXMPPLIB
+void CJabber::Message(WODXMPPCOMLib::IXMPPContact *Contact, char *JID, char *MessageText, char *HtmlText)
+#else
+void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlText)
+#endif
 {
-	CComPtr<WODJABBERCOMLib::IJbrMessage> msg;
-	msg.CoCreateInstance(__uuidof(WODJABBERCOMLib::JbrMessage));
+#ifndef _WODXMPPLIB
+	CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
+	msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
+#else
+	void *msg = WODXMPPCOMLib::XMPP_Message_New();
 
+#endif
 	BOOL sendhtml = FALSE;
 
 	CComBSTR2 res;
 
-	WODJABBERCOMLib::IJbrContact *c = Contact;
-	WODJABBERCOMLib::IJbrContact *ct = NULL;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPContact *c = Contact;
+	WODXMPPCOMLib::IXMPPContact *ct = NULL;
 	if (!c)
 	{
 		CComBSTR j = JID;
 		VARIANT var;
 		var.vt = VT_BSTR;
 		var.bstrVal = j;
-		WODJABBERCOMLib::IJbrContacts *cts = NULL;
-		WODJABBERCOMLib::IJbrContact *ct = NULL;
+		WODXMPPCOMLib::IXMPPContacts *cts = NULL;
+		WODXMPPCOMLib::IXMPPContact *ct = NULL;
 
 		if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 		{
@@ -828,34 +1081,65 @@ void CJabber::Message(WODJABBERCOMLib::IJbrContact *Contact, char *JID, char *Me
 			cts->Release();
 		}
 	}
+#else
+	void *c = NULL;
+	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, JID, &c);
+#endif
 	if (c)
 	{
+#ifndef _WODXMPPLIB
 		c->get_Resource(&res);
 		if (strstr(res.ToString(), WIPPIENIM))
 			sendhtml = TRUE;
-
+#else
+		char tb[1024];
+		int tblen = sizeof(tb);
+		WODXMPPCOMLib::XMPP_Contact_GetResource(c, tb, &tblen);
+		if (strstr(tb, WIPPIENIM))
+			sendhtml = TRUE;
+		WODXMPPCOMLib::XMPP_Contacts_Free(c);
+#endif
 	}
+#ifndef _WODXMPPLIB
 	if (ct)
 		ct->Release();
+#endif
 	
-	msg->put_Type((WODJABBERCOMLib::MessageTypesEnum)1/*MsgChat*/);
+#ifndef _WODXMPPLIB
 	CComBSTR t = MessageText;
+	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)1/*MsgChat*/);
 	msg->put_Text(t);
 	if (sendhtml)
 	{
 		CComBSTR ht = HtmlText;
 		msg->put_HTMLText(ht);
 	}
+#else
+	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)1);
+	WODXMPPCOMLib::XMPP_Message_SetText(msg, MessageText);
+	if (sendhtml)
+	{
+		WODXMPPCOMLib::XMPP_Message_SetHTMLText(msg, HtmlText);
+	}
+#endif
 
 	HRESULT hr = S_OK;
 	if (Contact)
 	{
+#ifndef _WODXMPPLIB
 		hr = Contact->raw_SendMessage(msg);
+#else
+		hr = WODXMPPCOMLib::XMPP_Contact_SendMessage(Contact, msg);
+#endif
 	}
 	else
 	{
+#ifndef _WODXMPPLIB
 		CComBSTR j(JID);
 		hr = m_Jabb->raw_SendMessage(j, msg);
+#else
+		hr = WODXMPPCOMLib::XMPP_SendMessage(m_Jabb, JID, msg);
+#endif
 	}
 
 	if (FAILED(hr))
@@ -866,12 +1150,13 @@ void CJabber::Message(WODJABBERCOMLib::IJbrContact *Contact, char *JID, char *Me
 
 void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 {
+#ifndef _WODXMPPLIB
 	CComBSTR j = JID;
 	VARIANT var;
 	var.vt = VT_BSTR;
 	var.bstrVal = j;
-	WODJABBERCOMLib::IJbrContacts *cts = NULL;
-	WODJABBERCOMLib::IJbrContact *ct = NULL;
+	WODXMPPCOMLib::IXMPPContacts *cts = NULL;
+	WODXMPPCOMLib::IXMPPContact *ct = NULL;
 
 	if (SUCCEEDED(m_Jabb->get_Contacts(&cts)))
 	{
@@ -882,33 +1167,63 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 		}
 		cts->Release();
 	}
+#else
+	void *ct = NULL;
+	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(m_Jabb, JID, &ct);
+	ExchangeWippienDetails(ct, Subj, Text);
+	WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+#endif
 }
 
 
-void CJabber::ExchangeWippienDetails(WODJABBERCOMLib::IJbrContact *Contact, char *Subj, Buffer *Text)
+#ifndef _WODXMPPLIB
+void CJabber::ExchangeWippienDetails(WODXMPPCOMLib::IXMPPContact *Contact, char *Subj, Buffer *Text)
+#else
+void CJabber::ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text)
+#endif
 {
-	CComPtr<WODJABBERCOMLib::IJbrMessage> msg;
-	msg.CoCreateInstance(__uuidof(WODJABBERCOMLib::JbrMessage));
 
-	msg->put_Type((WODJABBERCOMLib::MessageTypesEnum)/*WODJABBERCOMLib::MessageTypesEnum::MsgHeadline*/3);
+#ifndef _WODXMPPLIB
+	CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
+	msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
+#else
+	void *msg = WODXMPPCOMLib::XMPP_Message_New();
+#endif
 
+
+#ifndef _WODXMPPLIB
+	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
 	CComBSTR t = Subj;
 	msg->put_Subject(t);
-
 	CComBSTR thr = "ExchangeDetailsThread";
 	msg->put_Thread(thr);
+#else
+	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
+	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, Subj);
+	WODXMPPCOMLib::XMPP_Message_SetThread(msg, "ExchangeDetailsThread");
+#endif
+
+
 
 	if (Text && Text->Len())
 	{
 		Buffer out;
 		_Settings.ToHex(Text, &out);
 		out.Append("\0", 1);
+#ifndef _WODXMPPLIB
 		CComBSTR t1 = out.Ptr();
 		msg->put_Text(t1);
+#else
+		WODXMPPCOMLib::XMPP_Message_SetText(msg, out.Ptr());
+#endif
 	}
 
 //	Contact->SendMessage(msg);
+#ifndef _WODXMPPLIB
 	HRESULT hr = Contact->raw_SendMessage(msg);
+#else
+	HRESULT hr = WODXMPPCOMLib::XMPP_Contact_SendMessage(Contact, msg);
+#endif
 	if (FAILED(hr))
 	{
 		ShowError();
@@ -917,11 +1232,21 @@ void CJabber::ExchangeWippienDetails(WODJABBERCOMLib::IJbrContact *Contact, char
 
 void CJabber::ShowError(void)
 {
+#ifndef _WODXMPPLIB
 	CComBSTR2 text;
 	_Jabber->m_Jabb->get_LastErrorText(&text);
 	if (text.Length())
 	{
 		_MainDlg.ShowStatusText(text.ToString());
 	}
+#else
+	char t[1024];
+	int tlen = sizeof(t);
+	WODXMPPCOMLib::XMPP_GetLastErrorText(_Jabber->m_Jabb, t, &tlen);
+	if (tlen)
+	{
+		_MainDlg.ShowStatusText(t);
+	}
+#endif
 
 }

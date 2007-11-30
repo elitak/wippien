@@ -38,14 +38,21 @@ public:
 	{
 	public:
 
-		CComPtr<WODJABBERCOMLib::IwodJabberCom> m_Jabb;
-
+#ifndef _WODXMPPLIB
+		CComPtr<WODXMPPCOMLib::IwodXMPPCom> m_Jabb;
+#else
+		void *m_Jabb;
+#endif
 		CJabberWiz(CSDKMessageLink *Owner);
 		~CJabberWiz();
 		void Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew);
 		void Disconnect(void);
 
+#ifndef _WODXMPPLIB
 		CJabberEvents *m_Events;
+#else
+		WODXMPPCOMLib::XMPPEventsStruct m_Events;
+#endif
 		CSDKMessageLink *m_Owner;
 	};
 

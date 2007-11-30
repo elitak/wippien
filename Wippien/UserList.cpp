@@ -181,7 +181,11 @@ void ResampleImageIfNeeded(CxImage *img, int size)
 	ResampleImageIfNeeded(img, size, size);
 }
 
-CUser *CUserList::AddNewUser(char *j, WODJABBERCOMLib::IJbrContact *contact)
+#ifndef _WODXMPPLIB
+CUser *CUserList::AddNewUser(char *j, WODXMPPCOMLib::IXMPPContact *contact)
+#else
+CUser *CUserList::AddNewUser(char *j, void *contact)
+#endif
 {
 		CComBSTR2 m = _Settings.m_IPMediator;
 		// should we show mediator?
@@ -211,8 +215,15 @@ CUser *CUserList::AddNewUser(char *j, WODJABBERCOMLib::IJbrContact *contact)
 		CComBSTR2 g;
 		if (contact)
 		{
+#ifndef _WODXMPPLIB
 			if (SUCCEEDED(contact->get_Group(&g)))
 				strcpy(user->m_Group, g.ToString());
+#else
+			char gb[1024];
+			int gblen = sizeof(gb);
+			WODXMPPCOMLib::XMPP_Contact_GetGroup(contact, gb, &gblen);
+			strcpy(user->m_Group, gb);
+#endif
 		}
 
 		// calculate visible name
@@ -357,7 +368,8 @@ void CUserList::SortUsers(void)
 
 void CUserList::RefreshUser(void *cntc)
 {
-	WODJABBERCOMLib::IJbrContacts *contacts;
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPContacts *contacts;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&contacts)))
 	{
 		short count;
@@ -365,10 +377,10 @@ void CUserList::RefreshUser(void *cntc)
 		{
 			for (int i=0;i<(cntc?1:count);i++)
 			{
-				WODJABBERCOMLib::IJbrContact *contact;
+				WODXMPPCOMLib::IXMPPContact *contact;
 				HRESULT hr = S_OK;
 				if (cntc)
-					contact = (WODJABBERCOMLib::IJbrContact *)cntc;
+					contact = (WODXMPPCOMLib::IXMPPContact *)cntc;
 				else
 				{
 					VARIANT var;
@@ -381,6 +393,26 @@ void CUserList::RefreshUser(void *cntc)
 					CComBSTR2 jid, jd;
 					if (SUCCEEDED(contact->get_JID(&jd)))
 					{
+#else
+	short count = 0;
+	WODXMPPCOMLib::XMPP_ContactsGetCount(_Jabber->m_Jabb, &count);
+	for (int i=0;i<(cntc?1:count);i++)
+	{
+		void *contact = NULL;
+		if (cntc)
+			contact = cntc;
+		else
+			WODXMPPCOMLib::XMPP_ContactsGetContact(_Jabber->m_Jabb, i, &contact);
+		if (contact)
+		{
+			{
+				{
+					char jdbuff[1024];
+					int jdlen = sizeof(jdbuff);
+					WODXMPPCOMLib::XMPP_Contact_GetJID(contact, jdbuff, &jdlen);
+					CComBSTR2 jid, jd = jdbuff;
+					{
+#endif
 						char *res = NULL;
 						char *jd1 = jd.ToString();
 						char *jd2 = strchr(jd1, '/');
@@ -391,6 +423,7 @@ void CUserList::RefreshUser(void *cntc)
 							res = jd2;
 						}
 						jid = jd1;
+
 
 						// if this is mediator, skip it
 						if (!_Settings.m_ShowMediatorOnContacts)
@@ -412,10 +445,15 @@ void CUserList::RefreshUser(void *cntc)
 							if (!stricmp(user->m_JID, j))
 							 found = TRUE;
 						}
-						WODJABBERCOMLib::StatusEnum stat = (WODJABBERCOMLib::StatusEnum)0/*Offline*/;
+						WODXMPPCOMLib::StatusEnum stat = (WODXMPPCOMLib::StatusEnum)0/*Offline*/;
+#ifndef _WODXMPPLIB
 						if (SUCCEEDED(contact->get_Status(&stat)))
 						{
 						}
+#else
+						WODXMPPCOMLib::XMPP_Contact_GetStatus(contact, &stat);
+#endif
+
 //						stat = stat;
 
 
@@ -445,12 +483,12 @@ void CUserList::RefreshUser(void *cntc)
 
 						if (user && !user->m_Hidden)
 						{
-//							WODJABBERCOMLib::StatusEnum stat;
+//							WODXMPPCOMLib::StatusEnum stat;
 //							if (SUCCEEDED(contact->get_Status(&stat)))
 							{
 //								ATLTRACE("refresh for %s\r\n", j);
 								m_SortedUsersBuffer.Clear();
-								if (stat > /*WODJABBERCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODJABBERCOMLib::StatusEnum::Requested*/ 6)
+								if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
 								{
 									if (!user->m_Online)
 									{
@@ -466,7 +504,14 @@ void CUserList::RefreshUser(void *cntc)
 									{
 										// is this wippien dude?
 										CComBSTR2 r;
+#ifndef _WODXMPPLIB
 										if (SUCCEEDED(contact->get_Resource(&r)))
+#else
+										char rsbuf[1024];
+										int rsbuflen = sizeof(rsbuf);
+										WODXMPPCOMLib::XMPP_Contact_GetResource(contact, rsbuf, &rsbuflen);
+										r = rsbuf;
+#endif
 										{
 											Buffer b;
 											b.Append(r.ToString());
@@ -500,7 +545,14 @@ void CUserList::RefreshUser(void *cntc)
 							
 							}
 							CComBSTR2 s;							
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(contact->get_StatusText(&s)))
+#else
+							char stbuf[1024];
+							int stlen = sizeof(stbuf);
+							WODXMPPCOMLib::XMPP_Contact_GetStatusText(contact, stbuf, &stlen);
+							s = stbuf;
+#endif
 							{
 /*								if (!user->m_Online)
 								{
@@ -521,14 +573,21 @@ void CUserList::RefreshUser(void *cntc)
 								user->m_Changed = TRUE;
 						}
 					}
+#ifndef _WODXMPPLIB
 					if (!cntc)
 						contact->Release();
+#else
+					if (!cntc && contact)
+						WODXMPPCOMLib::XMPP_Contacts_Free(contact);
+#endif
 				}
 				if (cntc)
 					break; // go outsize for loop
 			}
 		}
+#ifndef _WODXMPPLIB
 		contacts->Release();
+#endif
 	}
 
 	::PostMessage(m_hWnd, WM_REFRESH, 0, cntc?TRUE:FALSE);
@@ -565,7 +624,7 @@ void CUserList::RefreshView(BOOL updateonly)
 		}
 	}
 //	else
-//		OnVCard((WODJABBERCOMLib::IJbrContact *)cntc, FALSE, FALSE);
+//		OnVCard((WODXMPPCOMLib::IXMPPContact *)cntc, FALSE, FALSE);
 	if (_Settings.m_ShowContactPicture)
 		TreeItem.itemex.iIntegral=40;
 	else
@@ -1354,9 +1413,10 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 				int i = MessageBox(buff, "Remove contact?", MB_YESNO | MB_ICONQUESTION);
 				if (i == IDYES)
 				{
+#ifndef _WODXMPPLIB
 					// locate this user 
-					WODJABBERCOMLib::IJbrContact *ct;
-					WODJABBERCOMLib::IJbrContacts *cts;
+					WODXMPPCOMLib::IXMPPContact *ct;
+					WODXMPPCOMLib::IXMPPContacts *cts;
 
 					if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 					{
@@ -1375,6 +1435,17 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 						}
 						cts->Release();
 					}
+#else
+					void *ct = NULL;
+					WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+					if (ct)
+					{
+						WODXMPPCOMLib::XMPP_Contact_Unsubscribe(ct);
+						WODXMPPCOMLib::XMPP_ContactsRemove(_Jabber->m_Jabb, ct);
+						WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+					}
+#endif
+
 
 					// and remove contact from list of users
 					for (int i=0;i<m_Users.size();i++)
@@ -1410,8 +1481,9 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 		case ID_POPUP1_DETAILS:
 			{
 				CComBSTR2 b1 = user->m_JID;
-				WODJABBERCOMLib::IJbrContact *ct;
-				WODJABBERCOMLib::IJbrContacts *cts;
+#ifndef _WODXMPPLIB
+				WODXMPPCOMLib::IXMPPContact *ct;
+				WODXMPPCOMLib::IXMPPContacts *cts;
 
 				if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 				{
@@ -1421,10 +1493,20 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 					if (SUCCEEDED(cts->get_Item(var, &ct)))
 					{
 
-					// create window
-						WODJABBERCOMLib::IJbrVCard *vcard = NULL;
+						// create window
+						WODXMPPCOMLib::IXMPPVCard *vcard = NULL;
 						ct->get_VCard(&vcard);
-						
+#else
+				void *ct = NULL;
+				void *vcard = NULL;
+				WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+				if (ct)
+				{
+					WODXMPPCOMLib::XMPP_Contact_GetVCard(ct, &vcard);
+					if (vcard)
+					{
+#endif
+
 						CSettingsDlg::CSettingsUser1 *us1 = NULL;
 						CSettingsDlg::CSettingsUser2 *us2 = NULL;
 						CSettingsDlg::CSettingsUser3 *us3 = NULL;
@@ -1489,14 +1571,26 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 							us1->InitData(vcard);
 							us2->InitData(vcard);
 							us3->InitData(vcard);
+#ifndef _WODXMPPLIB
 							vcard->Receive();
 							vcard->Release();
+#else
+							WODXMPPCOMLib::XMPP_Contact_VCard_Receive(ct);
+							WODXMPPCOMLib::XMPP_VCard_Free(vcard);
+#endif
+
 						}
 						us4->InitData();
 							
+#ifndef _WODXMPPLIB
 						ct->Release();
+#else
+						WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+#endif
 					}
+#ifndef _WODXMPPLIB
 					cts->Release();
+#endif
 				}
 			}
 			break;
@@ -1561,12 +1655,12 @@ LRESULT CUserList::OnRefresh(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHan
 		if (_Jabber)
 		{
 			short count = 0;
-			WODJABBERCOMLib::IJbrContacts *cts = NULL;
+			WODXMPPCOMLib::IXMPPContacts *cts = NULL;
 			if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
 			{
 				if (SUCCEEDED(cts->get_Count(&count)))
 				{
-					WODJABBERCOMLib::IJbrContact *ct;
+					WODXMPPCOMLib::IXMPPContact *ct;
 					VARIANT var;
 					var.vt = VT_I2;
 					for (var.iVal =0;var.iVal<count;var.iVal++)
@@ -1615,7 +1709,11 @@ int GetPhotoType(Buffer *PhotoData)
 }
 
 
-void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOOL received)
+#ifdef _WODXMPPLIB
+void CUserList::OnVCard(void *Contact, BOOL Partial, BOOL received)
+#else
+void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL received)
+#endif
 {
 	time_t now;
 	time( &now );
@@ -1623,7 +1721,14 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 	if (Contact)
 	{
 		CComBSTR j;
+#ifndef _WODXMPPLIB
 		if (SUCCEEDED(Contact->get_JID(&j)))
+#else
+		char jdbuf[1024];
+		int jdlen = sizeof(jdbuf);
+		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, jdbuf, &jdlen);
+		j = jdbuf;
+#endif
 		{
 			CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 			if (user)
@@ -1632,8 +1737,14 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 				{
 					if (user->m_SettingsContactsDlg)
 					{
-						WODJABBERCOMLib::IJbrVCard *vc;
+#ifndef _WODXMPPLIB
+						WODXMPPCOMLib::IXMPPVCard *vc;
 						if (SUCCEEDED(Contact->get_VCard(&vc)))
+#else
+						void *vc = NULL;
+						WODXMPPCOMLib::XMPP_Contact_GetVCard(Contact, &vc);
+						if (vc)
+#endif
 						{
 							CSettingsDlg::CSettingsUser1 *us1 = (CSettingsDlg::CSettingsUser1 *)user->m_SettingsContactsDlg->m_Dialogs[0];
 							CSettingsDlg::CSettingsUser2 *us2 = (CSettingsDlg::CSettingsUser2 *)user->m_SettingsContactsDlg->m_Dialogs[1];
@@ -1645,7 +1756,11 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 							us3->InitData(vc);
 //							us4->InitData();
 
+#ifndef _WODXMPPLIB
 							vc->Release();
+#else
+							WODXMPPCOMLib::XMPP_VCard_Free(vc);
+#endif
 						}
 					}
 //					unsigned long uservcard = user->m_GotVCard;
@@ -1653,11 +1768,25 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 //					if (!user->m_GotVCard)
 					{
 						user->m_GotVCard = now;
-						WODJABBERCOMLib::IJbrVCard *vc;
+#ifndef _WODXMPPLIB
+						WODXMPPCOMLib::IXMPPVCard *vc;
 						if (SUCCEEDED(Contact->get_VCard(&vc)))
+#else
+						void *vc = NULL;
+						WODXMPPCOMLib::XMPP_Contact_GetVCard(Contact, &vc);
+						char vcbuf[1024];
+						int vclen;
+						if (vc)
+#endif
 						{
 							CComBSTR2 vis;
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(vc->get_NickName(&vis)))
+#else
+							vclen = sizeof(vcbuf);
+							WODXMPPCOMLib::XMPP_VCard_GetNickName(vc, vcbuf, &vclen);
+							vis = vcbuf;
+#endif
 							{
 								if (vis.Length())
 								{
@@ -1668,7 +1797,13 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 								}
 							}
 							CComBSTR2 e;
+#ifndef _WODXMPPLIB
 							if (SUCCEEDED(vc->get_Email(&e)))
+#else
+							vclen = sizeof(vcbuf);
+							WODXMPPCOMLib::XMPP_VCard_GetEmail(vc, vcbuf, &vclen);
+							vis = vcbuf;
+#endif
 							{
 								if (e.Length())
 								{
@@ -1718,6 +1853,7 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 														{
 */
 
+#ifndef _WODXMPPLIB
 														SAFEARRAY * psa = NULL;
 														if (SUCCEEDED(vc->get_PhotoData(&psa)))
 														{
@@ -1733,6 +1869,14 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 															SafeArrayUnaccessData(psa);
 															SafeArrayDestroy(psa);
 
+#else
+														char photobuff[65535];
+														int pblen = sizeof(photobuff);
+														if (SUCCEEDED(WODXMPPCOMLib::XMPP_VCard_GetPhotoData(vc, photobuff, &pblen)))
+														{
+															Buffer b;
+															b.Append(photobuff, pblen);
+#endif
 
 															CxMemFile fTmp((BYTE*)b.Ptr(),b.Len());
 															user->m_Image->Decode(&fTmp, GetPhotoType(&b));
@@ -1786,12 +1930,16 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 				{
 					if (now - REFRESHUSERDETAILS > user->m_GotVCard)
 					{
-						WODJABBERCOMLib::IJbrVCard *vc;
+#ifndef _WODXMPPLIB
+						WODXMPPCOMLib::IXMPPVCard *vc;
 						if (SUCCEEDED(Contact->get_VCard(&vc)))
 						{
 							vc->Receive();
 							vc->Release();
 						}
+#else
+						WODXMPPCOMLib::XMPP_Contact_VCard_Receive(Contact);
+#endif
 					}
 				}
 			}
@@ -1804,7 +1952,7 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 				{
 					if (user->m_SettingsContactsDlg)
 					{
-						WODJABBERCOMLib::IJbrVCard *vc;
+						WODXMPPCOMLib::IXMPPVCard *vc;
 						if (SUCCEEDED(Contact->get_VCard(&vc)))
 						{
 							CSettingsDlg::CSettingsUser1 *us1 = (CSettingsDlg::CSettingsUser1 *)user->m_SettingsContactsDlg->m_Dialogs[0];
@@ -1823,7 +1971,7 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 					if (!user->m_GotVCard)
 					{
 						user->m_GotVCard = TRUE;
-						WODJABBERCOMLib::IJbrVCard *vc;
+						WODXMPPCOMLib::IXMPPVCard *vc;
 						if (SUCCEEDED(Contact->get_VCard(&vc)))
 						{
 							CComBSTR2 vis;
@@ -1909,7 +2057,7 @@ void CUserList::OnVCard(WODJABBERCOMLib::IJbrContact *Contact, BOOL Partial, BOO
 				{
 					if (!user->m_GotVCard)
 					{
-						WODJABBERCOMLib::IJbrVCard *vc;
+						WODXMPPCOMLib::IXMPPVCard *vc;
 						if (SUCCEEDED(Contact->get_VCard(&vc)))
 						{
 							vc->Receive();

@@ -168,8 +168,8 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,212,188,50,14
     LTEXT           "Wippien",IDC_STATIC,3,185,27,8
     LTEXT           "WipVersion",IDC_WIPPIEN_VERSION,43,185,37,8
-    LTEXT           "wodJabber",IDC_STATIC,4,195,36,8
-    LTEXT           "JabVersion",IDC_WODJABBER_VERSION,43,195,36,8
+    LTEXT           "wodXMPP",IDC_STATIC,4,195,36,8
+    LTEXT           "XMPPVersion",IDC_WODJABBER_VERSION,43,195,36,8
     CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,0,0,263,204
     LTEXT           "Registered to:",IDC_STATIC,3,3,45,8
     LTEXT           "FREE Version",IDC_LICENSED_TO,4,14,100,33

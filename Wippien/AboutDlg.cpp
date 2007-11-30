@@ -85,8 +85,14 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	CComBSTR2 jab;
 	if (_Jabber)
 	{
+#ifndef _WODXMPPLIB
 		_Jabber->m_Jabb->get_Version(&jab);
-
+#else
+		char jb[1024];
+		int jblen = sizeof(jb);
+		WODXMPPCOMLib::XMPP_GetVersion(_Jabber->m_Jabb, jb, &jblen);
+		jab = jb;
+#endif
 	}
 	SetDlgItemText(IDC_WODJABBER_VERSION, jab.ToString());
 
@@ -104,6 +110,9 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 #endif	
 
 #ifndef _WODVPNLIB
+		CComPtr<WODVPNCOMLib::IwodVPNCom> vpn;
+		vpn.CoCreateInstance(__uuidof(WODVPNCOMLib::wodVPNCom));
+		vpn->get_Version(&app);
 		SetDlgItemText(IDC_WODVPN_VERSION, app.ToString());
 #else
 		len = sizeof(buff);

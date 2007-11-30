@@ -7,6 +7,15 @@
 #define WIPPIENDISCONNECT		"WippienDisconnect"
 #define WIPPIENDETAILSTHREAD	"ExchangeDetailsThread"
 
+
+#ifdef _WODXMPPLIB
+namespace WODXMPPCOMLib
+{
+#include "\WeOnlyDo\wodXMPP\Code\Win32LIB\Win32LIB.h"
+}
+
+#else
+
 // Define the ftp events to be handled:
 extern _ATL_FUNC_INFO 
 ConnectedInfo, 
@@ -21,44 +30,48 @@ ServiceStatusChangeInfo,
 ContactAuthRequestInfo,
 VCardDetailsInfo;
 
+#endif
+
 class CJabber;
 
 
-class CJabberEvents : public IDispEventSimpleImpl<1, CJabberEvents, &__uuidof(WODJABBERCOMLib::_IwodJabberComEvents)>
+#ifndef _WODXMPPLIB
+class CJabberEvents : public IDispEventSimpleImpl<1, CJabberEvents, &__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents)>
 {
 public:
 
     CJabberEvents (CJabber * ppJ);
     virtual ~CJabberEvents ();
-	void __stdcall DispContactAuthRequest(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::JabberActionsEnum *Action);
+	void __stdcall DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::XMPPActionsEnum *Action);
     void __stdcall DispConnected ();
     void __stdcall DispDisconnected (long ErrorCode, BSTR ErrorText);
-    void __stdcall DispStateChange(WODJABBERCOMLib::StatesEnum OldState);
-    void __stdcall DispContactStatusChange(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::StatusEnum OldStatus);
-	void __stdcall DispIncomingNotification(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::ContactNotifyEnum NotifyID, VARIANT Data);
-    void __stdcall DispIncomingMessage(WODJABBERCOMLib::IJbrContact *Contact, WODJABBERCOMLib::IJbrMessage *Message);
+    void __stdcall DispStateChange(WODXMPPCOMLib::StatesEnum OldState);
+    void __stdcall DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::StatusEnum OldStatus);
+	void __stdcall DispIncomingNotification(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::ContactNotifyEnum NotifyID, VARIANT Data);
+    void __stdcall DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message);
     void __stdcall DispContactList();
-    void __stdcall DispServiceRegister (WODJABBERCOMLib::IJbrService *Service, VARIANT_BOOL Success, BSTR Instructions);
-    void __stdcall DispServiceStatusChange (WODJABBERCOMLib::IJbrService *Service);
-    void __stdcall DispVCardDetails(WODJABBERCOMLib::IJbrContact *Contact, VARIANT_BOOL Partial);
+    void __stdcall DispServiceRegister (WODXMPPCOMLib::IXMPPService *Service, VARIANT_BOOL Success, BSTR Instructions);
+    void __stdcall DispServiceStatusChange (WODXMPPCOMLib::IXMPPService *Service);
+    void __stdcall DispVCardDetails(WODXMPPCOMLib::IXMPPContact *Contact, VARIANT_BOOL Partial);
     
     BEGIN_SINK_MAP (CJabberEvents)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),0,DispConnected,&ConnectedInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),1,DispDisconnected,&DisconnectedInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),2,DispStateChange,&StateChangeInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),5,DispContactAuthRequest,&ContactAuthRequestInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),6,DispContactStatusChange,&ContactStatusChangeInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),7,DispIncomingMessage,&IncomingMessageInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),9,DispServiceStatusChange,&ServiceStatusChangeInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),10,DispServiceRegister,&ServiceRegisterInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),11,DispIncomingNotification,&IncomingNotificationInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),12,DispContactList,&ContactListInfo)
-        SINK_ENTRY_INFO (1,__uuidof(WODJABBERCOMLib::_IwodJabberComEvents),13,DispVCardDetails,&VCardDetailsInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),0,DispConnected,&ConnectedInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),1,DispDisconnected,&DisconnectedInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),2,DispStateChange,&StateChangeInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),5,DispContactAuthRequest,&ContactAuthRequestInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),6,DispContactStatusChange,&ContactStatusChangeInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),7,DispIncomingMessage,&IncomingMessageInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),9,DispServiceStatusChange,&ServiceStatusChangeInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),10,DispServiceRegister,&ServiceRegisterInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),11,DispIncomingNotification,&IncomingNotificationInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),12,DispContactList,&ContactListInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),13,DispVCardDetails,&VCardDetailsInfo)
         END_SINK_MAP ()
 private:
 	CJabber * m_pJ;
 };
 
+#endif
 
 class Buffer;
 
@@ -66,23 +79,39 @@ class CJabber
 {
 public:
 
-	CComPtr<WODJABBERCOMLib::IwodJabberCom> m_Jabb;
+#ifndef _WODXMPPLIB
+	CComPtr<WODXMPPCOMLib::IwodXMPPCom> m_Jabb;
+#else
+	void *m_Jabb;
+#endif
 
 	CJabber();
 	virtual ~CJabber();
 	void Connect(char *JID, char *pass, char *hostname, int port);
 	void Disconnect(void);
 //	void Message(char *JID, char *MessageText, char *HtmlText);
-	void Message(WODJABBERCOMLib::IJbrContact *Contact, char *JID, char *MessageText, char *HtmlText);
-
+	
+#ifndef _WODXMPPLIB
+	void Message(WODXMPPCOMLib::IXMPPContact *Contact, char *JID, char *MessageText, char *HtmlText);
+#else
+	void Message(void *Contact, char *JID, char *MessateText, char *HtmlText);
+#endif
 	void ShowError(void);
 	HWND	m_ServiceRegisterHwnd, m_ServiceRefreshHwnd;
 
 
 	void ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text);
-	void ExchangeWippienDetails(WODJABBERCOMLib::IJbrContact *Contact, char *Subj, Buffer *Text);
+#ifndef _WODXMPPLIB
+	void ExchangeWippienDetails(WODXMPPCOMLib::IXMPPContact *Contact, char *Subj, Buffer *Text);
+#else
+	void ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text);
+#endif
 
+#ifndef _WODXMPPLIB
 	CJabberEvents *m_Events;
+#else
+	WODXMPPCOMLib::XMPPEventsStruct m_Events;
+#endif
 	BOOL m_Initial, m_DoReconnect;
 	unsigned long m_ConnectTime;
 };

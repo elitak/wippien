@@ -234,6 +234,7 @@ CSettings::CSettings()
 
 	m_SortContacts = 1;
 	m_AuthContacts = 1;
+	m_UseSSLWrapper = FALSE;
 }	
 
 CSettings::~CSettings()

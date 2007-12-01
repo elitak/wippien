@@ -82,6 +82,7 @@ CSettings::CSettings()
 	m_AutoAwayMessage = AWAY_MESSAGE;
 	m_ExtendedAwayMessage = EXTAWAY_MESSAGE;
 	m_DeleteFunctionLogMb = 10*1024*1024;
+	m_UseSSLWrapper = FALSE;
 
 	HKEY hkey = NULL;
 	RegOpenKeyExA(HKEY_LOCAL_MACHINE, REGISTRYKEY , 0, KEY_ALL_ACCESS, &hkey);
@@ -853,6 +854,13 @@ int CSettings::Load(void)
 			m_JID = data;
 		}	
 
+		m_UseSSLWrapper = TRUE;
+		if (xml.FindElem("UseSSLWrapper"))
+		{
+			data = xml.GetData();
+			m_UseSSLWrapper = atoi(data);
+		}
+		
 
 		if (!m_Password.Length())
 		{
@@ -1701,6 +1709,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 
 		CComBSTR2 j = m_JID;
 		xml.AddChildElem("JID", j.ToString());
+		xml.AddChildElem("UseSSLWrapper", m_UseSSLWrapper?"1":"0");
 
 
 

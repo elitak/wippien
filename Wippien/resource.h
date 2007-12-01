@@ -27,13 +27,11 @@
 #define IDB_PLAY                        1013
 #define IDC_BUTTON2                     1014
 #define IDC_LBL_TITLE                   1015
-#define IDD_BEGIN                       1016
 #define IDC_STATIC_NEXT                 1017
 #define IDC_REMOVEGROUP                 1018
 #define IDC_LBL_WELCOME                 1019
 #define IDB_WATERMARK                   1020
 #define IDC_EDIT_JID                    1021
-#define IDD_END                         1022
 #define IDC_LABEL_JID                   1023
 #define IDC_LABEL_JID1                  1024
 #define IDC_LABEL_JID2                  1025
@@ -117,7 +115,6 @@
 #define IDR_MSGWINICON                  1103
 #define IDD_SETTINGS_AUTOAWAY           1104
 #define IDD_SETTINGS_SYSTEM             1105
-#define IDD_LICENSE                     1106
 #define IDR_PROGRESSWINICON             1107
 #define IDD_DOWNLOADSKIN                1108
 #define IDD_PROGRESS                    1109
@@ -392,6 +389,7 @@
 #define IDC_IPADDRESSSTATIC             1479
 #define IDC_ETHERNET_IP                 1480
 #define IDC_CHECK_ALLOWLINKMEDIATOR     1481
+#define IDC_USESSLWRAPPER               1482
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -421,7 +419,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1380
 #define _APS_NEXT_COMMAND_VALUE         32795
-#define _APS_NEXT_CONTROL_VALUE         1481
+#define _APS_NEXT_CONTROL_VALUE         1483
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

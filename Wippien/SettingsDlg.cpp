@@ -713,6 +713,8 @@ LRESULT CSettingsDlg::CSettingsJID::OnChange(WORD wNotifyCode, WORD wID, HWND hW
 	{
 		case IDC_EDIT_JID3:
 		case IDC_EDIT_JID4:			
+		case IDC_EDIT2_JID:
+		case IDC_USESSLWRAPPER:
 		case IDC_EDIT_JID:
 			NeedRestart();
 			if (wID == IDC_EDIT_JID)
@@ -831,6 +833,11 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 			_Settings.m_ServerPort = 5222;
 	}
 
+	int i = ::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETSTATE, NULL, NULL);
+	if (i&BST_CHECKED == BST_CHECKED)
+		_Settings.m_UseSSLWrapper = TRUE;
+	else
+		_Settings.m_UseSSLWrapper = FALSE;
 
 	return TRUE;
 }
@@ -899,6 +906,14 @@ LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND h
 	int port = atol(bufport);
 	if (!port)
 		port = 5222;
+
+	BOOL usessl = FALSE;
+	int ssl = ::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETSTATE, NULL, NULL);
+	if (ssl&BST_CHECKED == BST_CHECKED)
+		usessl = TRUE;
+
+
+
 	
 	BOOL regnew = ::SendMessage(GetDlgItem(IDC_RADIO2_JID), BM_GETSTATE, NULL, NULL);
 
@@ -907,8 +922,22 @@ LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND h
 		delete m_Jabber;
 	}
 	m_Jabber = new CJabberWiz(this);
-	m_Jabber->Connect(bufjid, bufpass, bufserv, port, regnew);
+	m_Jabber->Connect(bufjid, bufpass, bufserv, port, regnew, usessl);
 //			GetPropertySheet().SetWizardButtons(PSWIZB_BACK | PSWIZB_NEXT);
+	return 0;
+}
+
+LRESULT CSettingsDlg::CSettingsJID::OnBtnUseSSLWrapper(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{
+	int i = ::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETSTATE, NULL, NULL);
+	if (i&BST_CHECKED == BST_CHECKED)
+		::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_SETTEXT, 0, (LPARAM)"443");
+	else
+		::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_SETTEXT, 0, (LPARAM)"5222");
+
+	::EnableWindow(GetDlgItem(IDC_TEST_JID), FALSE);
+
+
 	return 0;
 }
 
@@ -1056,7 +1085,7 @@ CSettingsDlg::CSettingsJID::CJabberWiz::~CJabberWiz()
 #endif
 }
 
-void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew)
+void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew, BOOL usessl)
 {
 	char *a = strchr(JID, '/');
 	if (a)
@@ -1085,6 +1114,13 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 	if (registernew)
 		m_Jabb->put_Register(VARIANT_TRUE);
 
+	if (usessl)
+		m_Jabb->put_Security(3);
+	else
+		m_Jabb->put_Security(1);
+
+	m_Jabb->put_DebugFile(_Settings.m_JabberDebugFile);
+
 	try
 	{
 		m_Jabb->Connect(var);
@@ -1105,9 +1141,17 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 	if (registernew)
 		WODXMPPCOMLib::XMPP_SetRegister(m_Jabb, TRUE);
 	WODXMPPCOMLib::XMPP_SetAutoVisible(m_Jabb, FALSE);
+
+	if (usessl)
+		WODXMPPCOMLib::XMPP_SetSecurity(m_Jabb, (WODXMPPCOMLib::SecurityEnum)3); // security implicit
+	else
+		WODXMPPCOMLib::XMPP_SetSecurity(m_Jabb, (WODXMPPCOMLib::SecurityEnum)1); // security allowed
+
+	CComBSTR2 df = _Settings.m_JabberDebugFile;
+	WODXMPPCOMLib::XMPP_SetDebugFile(m_Jabb, df.ToString());
 	
 	long hr = WODXMPPCOMLib::XMPP_Connect(m_Jabb, hostname);
-	if (!hr)
+	if (hr)
 	{
 		char buff[1024];
 		int bflen = sizeof(buff);

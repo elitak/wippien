@@ -45,7 +45,7 @@ public:
 #endif
 		CJabberWiz(CSDKMessageLink *Owner);
 		~CJabberWiz();
-		void Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew);
+		void Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew, BOOL sslwrapped);
 		void Disconnect(void);
 
 #ifndef _WODXMPPLIB

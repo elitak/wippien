@@ -211,7 +211,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 #endif
 			CJabberWiz(CSettingsJID *Owner);
 			~CJabberWiz();
-			void Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew);
+			void Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew, BOOL sslwrapped);
 			void Disconnect(void);
 
 #ifndef _WODXMPPLIB
@@ -239,6 +239,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 			COMMAND_ID_HANDLER(IDC_EDIT_JID, OnJIDChange)
 			COMMAND_ID_HANDLER(IDC_EDIT2_JID, OnJIDPassChange)
 			COMMAND_ID_HANDLER(IDC_TEST_JID, OnBtnTest)
+			COMMAND_ID_HANDLER(IDC_USESSLWRAPPER, OnBtnUseSSLWrapper)
 			COMMAND_CODE_HANDLER(EN_CHANGE, OnChange)
 		END_MSG_MAP()
 
@@ -250,6 +251,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		LRESULT OnChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnBtnTest(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnBtnUseSSLWrapper(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnBtnSearch(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnJIDChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnJIDPassChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);

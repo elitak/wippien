@@ -87,7 +87,7 @@ public:
 
 	CJabber();
 	virtual ~CJabber();
-	void Connect(char *JID, char *pass, char *hostname, int port);
+	void Connect(char *JID, char *pass, char *hostname, int port, BOOL sslwrapped);
 	void Disconnect(void);
 //	void Message(char *JID, char *MessageText, char *HtmlText);
 	

@@ -19,6 +19,7 @@
 // Dialog
 //
 
+
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -62,27 +63,9 @@ BEGIN
     LTEXT           "Port:",IDC_STATIC,5,122,35,9
     LTEXT           "Please click on 'Test Account' to proceed.",IDC_STATIC,
                     1,138,134,8
-END
-
-IDD_BEGIN DIALOG DISCARDABLE  0, 0, 253, 193
-STYLE DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Welcome"
-FONT 8, "MS Shell Dlg"
-BEGIN
-    LTEXT           "Wippien setup wizard",IDC_LBL_TITLE,11,14,195,17
-    LTEXT           "Please click ""Next"" to continue",IDC_STATIC_NEXT,141,
-                    159,112,9
-    LTEXT           "This wizard will setup initial Wippien settings.\r\n\r\n\r\n\r\nAll user settings will be erased if you continue with this wizard. If you want to preserve user settings, please use Wippien's settings button.",
-                    IDC_LBL_WELCOME,11,31,195,120
-END
-
-IDD_END DIALOG DISCARDABLE  0, 0, 252, 194
-STYLE DS_FIXEDSYS | WS_POPUP | WS_CAPTION
-CAPTION "Completed"
-FONT 8, "MS Shell Dlg"
-BEGIN
-    LTEXT           "Completed",IDC_STATIC,115,7,35,8
-    LTEXT           "Installation log",IDC_STATIC,115,30,48,8
+    CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
+                    IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    88,123,145,10
 END
 
 IDD_NEEDPASS DIALOG DISCARDABLE  0, 0, 186, 60
@@ -136,7 +119,7 @@ END
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_TOOLWINDOW
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     CONTROL         "&Exit",ID_EXIT,"Button",BS_OWNERDRAW | WS_TABSTOP,6,243,
                     30,14
@@ -577,24 +560,6 @@ BEGIN
                     WS_TABSTOP,7,138,137,10
 END
 
-IDD_LICENSE DIALOG DISCARDABLE  0, 0, 205, 115
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
-CAPTION "Enter license details"
-FONT 8, "MS Sans Serif"
-BEGIN
-    EDITTEXT        IDC_NAME,51,26,126,13,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EMAIL,51,44,126,13,ES_AUTOHSCROLL
-    EDITTEXT        IDC_KEY,51,63,137,25,ES_MULTILINE
-    DEFPUSHBUTTON   "OK",IDOK,7,96,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,69,96,50,14
-    PUSHBUTTON      "&Order Now",IDC_ORDERNOW,139,96,50,14
-    LTEXT           "Name:",IDC_STATIC,7,28,22,8
-    LTEXT           "Email:",IDC_STATIC,7,47,20,8
-    LTEXT           "Key:",IDC_STATIC,7,66,15,8
-    LTEXT           "Details are case sensitive. Please type or paste them exactly as in email you received when Wippien was purchased.",
-                    IDC_STATIC,7,7,191,17
-END
-
 IDD_PROGRESS DIALOG DISCARDABLE  0, 0, 234, 52
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Progress"
@@ -877,15 +842,6 @@ BEGIN
         VERTGUIDE, 136
         HORZGUIDE, 65
         HORZGUIDE, 79
-    END
-
-    IDD_LICENSE, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 198
-        VERTGUIDE, 51
-        TOPMARGIN, 7
-        HORZGUIDE, 96
     END
 
     IDD_BALLOONTIP, DIALOG

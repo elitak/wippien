@@ -55,6 +55,7 @@ public:
 	BOOL m_UseIPMediator, m_AllowLinkMediatorToBeProvidedByIPMediator, m_AllowAnyMediator, m_ShowMediatorOnContacts, m_SoundOn, m_LoadSuccess;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
+	BOOL	m_UseSSLWrapper;
 	int m_ServerPort, m_UDPPort, m_LastOperatorMessageID;
 	long m_DeleteFunctionLogMb;
 	Buffer m_Icon;

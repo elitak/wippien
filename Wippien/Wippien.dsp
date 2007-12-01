@@ -134,7 +134,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
 # SUBTRACT BASE LINK32 /debug
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib  ..\..\..\WeOnlyDo\wodXMPP\Code\Zlib\Release\zlib.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Libpng\Release\libpng.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Tinyxml\Release\Tinyxml.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
+# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Zlib\Release\zlib.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Libpng\Release\libpng.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Tinyxml\Release\Tinyxml.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
 # SUBTRACT LINK32 /debug
 
 !ENDIF 
@@ -195,10 +195,6 @@ SOURCE=.\ExtWndShadow.cpp
 # Begin Source File
 
 SOURCE=.\Jabber.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\LicenseDlg.cpp
 # End Source File
 # Begin Source File
 
@@ -332,10 +328,6 @@ SOURCE=.\HideContact.h
 # Begin Source File
 
 SOURCE=.\Jabber.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\LicenseDlg.h
 # End Source File
 # Begin Source File
 

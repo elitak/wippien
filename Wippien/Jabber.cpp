@@ -966,7 +966,7 @@ CJabber::~CJabber()
 #endif
 }
 
-void CJabber::Connect(char *JID, char *pass, char *hostname, int port)
+void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL usessl)
 {
 	m_ConnectTime = GetTickCount();
 	char *a = strchr(JID, '/');
@@ -991,12 +991,24 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port)
 	m_Jabb->put_Password(p);
 	if (prt)
 		m_Jabb->put_Port(prt);
+	if (usessl)
+		m_Jabb->put_Security(3);
+	else
+		m_Jabb->put_Security(1);
+
 #else
 	CComBSTR2 l1 = l;
 	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
 	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
 	if (prt)
 		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, prt);
+	if (usessl)
+		WODXMPPCOMLib::XMPP_SetSecurity(m_Jabb, (WODXMPPCOMLib::SecurityEnum)3); // security implicit
+	else
+		WODXMPPCOMLib::XMPP_SetSecurity(m_Jabb, (WODXMPPCOMLib::SecurityEnum)1); // security allowed
+
+//		m_Jabb->put_Protocol = 3;
+
 #endif
 		
 

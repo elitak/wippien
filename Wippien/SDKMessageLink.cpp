@@ -122,7 +122,7 @@ CSDKMessageLink::CJabberWiz::~CJabberWiz()
 #endif
 }
 
-void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew)
+void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname, int port, BOOL registernew, BOOL usessl)
 {
 	char *a = strchr(JID, '/');
 	if (a)
@@ -152,6 +152,12 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 
 	m_Jabb->put_AutoVisible(VARIANT_FALSE);
 
+	if (usessl)
+		m_Jabb->put_Security(3);
+	else
+		m_Jabb->put_Security(1);
+
+
 	try
 	{
 		m_Jabb->Connect(var);
@@ -172,6 +178,12 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 	if (registernew)
 		WODXMPPCOMLib::XMPP_SetRegister(m_Jabb, TRUE);
 	WODXMPPCOMLib::XMPP_SetAutoVisible(m_Jabb, FALSE);
+
+	if (usessl)
+		WODXMPPCOMLib::XMPP_SetSecurity(m_Jabb, (WODXMPPCOMLib::SecurityEnum)3); // security implicit
+	else
+		WODXMPPCOMLib::XMPP_SetSecurity(m_Jabb, (WODXMPPCOMLib::SecurityEnum)1); // security allowed
+
 
 	long hr = WODXMPPCOMLib::XMPP_Connect(m_Jabb, hostname);
 	if (!hr)
@@ -422,7 +434,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							{
 								// connect
 								CComBSTR2 j = _Settings.m_JID, p = _Settings.m_Password, s = _Settings.m_ServerHost;
-								_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort);
+								_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort, _Settings.m_UseSSLWrapper);
 								hr = S_OK;
 							}
 							else							
@@ -977,7 +989,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 											delete pLink->Wiz;
 
 										pLink->Wiz = new CJabberWiz(pLink);
-										pLink->Wiz->Connect(ajid, apass, ahost, aport, TRUE);
+										pLink->Wiz->Connect(ajid, apass, ahost, aport, TRUE, _Settings.m_UseSSLWrapper);
 
 										free(ahost);
 									}

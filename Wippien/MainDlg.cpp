@@ -773,7 +773,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 
 						// now connect!
 						CComBSTR2 j = _Settings.m_JID, p = _Settings.m_Password, s = _Settings.m_ServerHost;
-						_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort);
+						_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort, _Settings.m_UseSSLWrapper);
 					}
 					
 					if (m_ReconnectWait>0)

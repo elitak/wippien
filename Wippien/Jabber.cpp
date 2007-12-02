@@ -78,6 +78,7 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 	char bf[1024];
 	int bfl = sizeof(bf);
 	WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, bf, &bfl);
+	j = bf;
 #endif
 	{
 		char *jd1 = j.ToString();
@@ -992,9 +993,9 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	if (prt)
 		m_Jabb->put_Port(prt);
 	if (usessl)
-		m_Jabb->put_Security(3);
+		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)3);
 	else
-		m_Jabb->put_Security(1);
+		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)1);
 
 #else
 	CComBSTR2 l1 = l;

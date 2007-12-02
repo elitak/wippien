@@ -46,7 +46,7 @@ void CContactAuthDlg::SendPresence(BOOL allow)
 	WODXMPPCOMLib::IXMPPContact *ct;
 	WODXMPPCOMLib::IXMPPContacts *cts;
 #else
-	void *ct;
+	void *ct = NULL;
 #endif
 
 
@@ -65,6 +65,9 @@ void CContactAuthDlg::SendPresence(BOOL allow)
 #else
 				CComBSTR2 j = m_JID;
 				WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, j.ToString(), &ct);
+				if (!ct || !m_JID.Length())
+					return;
+
 				WODXMPPCOMLib::StatusEnum st = (WODXMPPCOMLib::StatusEnum)6;
 #endif
 				if (allow)
@@ -161,6 +164,11 @@ BOOL CContactAuthDlg::UpdateWin()
 	m_JID.Empty();
 
 	CComBSTR2 jid = _Settings.m_AuthRequests[m_Pos];
+	if (!jid.Length())
+	{
+		PostMessage(WM_COMMAND, IDNO);
+		return TRUE;
+	}
 //	char *jd1 = jid.ToString();
 //	char *jd2 = strchr(jd1, '/');
 //	if (jd2)
@@ -195,15 +203,17 @@ BOOL CContactAuthDlg::UpdateWin()
 	}
 #else
 	void *ct;
-	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, jid.ToString(), &ct);
-	if (ct)
+	if (SUCCEEDED(WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, jid.ToString(), &ct)))
 	{
-		char jfb[1024];
-		int jlen = sizeof(jfb);
-		WODXMPPCOMLib::XMPP_Contact_GetJID(ct, jfb, &jlen);
-		m_JID = jfb;
-		WODXMPPCOMLib::XMPP_Contacts_Free(ct);
-		SetDlgItemText(IDC_CONTACTJID, jfb);
+		if (ct)
+		{
+			char jfb[1024];
+			int jlen = sizeof(jfb);
+			WODXMPPCOMLib::XMPP_Contact_GetJID(ct, jfb, &jlen);
+			m_JID = jfb;
+			WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+			SetDlgItemText(IDC_CONTACTJID, jfb);
+		}
 	}
 #endif
 

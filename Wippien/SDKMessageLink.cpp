@@ -153,9 +153,9 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 	m_Jabb->put_AutoVisible(VARIANT_FALSE);
 
 	if (usessl)
-		m_Jabb->put_Security(3);
+		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)3);
 	else
-		m_Jabb->put_Security(1);
+		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)1);
 
 
 	try

@@ -855,7 +855,7 @@ int CSettings::Load(void)
 			m_JID = data;
 		}	
 
-		m_UseSSLWrapper = TRUE;
+		m_UseSSLWrapper = FALSE;
 		if (xml.FindElem("UseSSLWrapper"))
 		{
 			data = xml.GetData();

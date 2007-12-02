@@ -1115,9 +1115,9 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 		m_Jabb->put_Register(VARIANT_TRUE);
 
 	if (usessl)
-		m_Jabb->put_Security(3);
+		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)3);
 	else
-		m_Jabb->put_Security(1);
+		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)1);
 
 	m_Jabb->put_DebugFile(_Settings.m_JabberDebugFile);
 
@@ -3040,20 +3040,24 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 						CComBSTR2 g = grp;
 						ct->put_Group(g);
 
-						try
-						{
-							ct->Subscribe();
-						}catch(_com_error e)
-						{
-							e = e;
-							MessageBeep(-1);
-						}
-
 #else
 						WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, grp);
-						WODXMPPCOMLib::XMPP_Contact_Subscribe(ct);
 #endif
 					}
+
+					
+#ifndef _WODXMPPLIB
+					try
+					{
+						ct->Subscribe();
+					}catch(_com_error e)
+					{
+						e = e;
+						MessageBeep(-1);
+					}
+#else
+					WODXMPPCOMLib::XMPP_Contact_Subscribe(ct);
+#endif
 
 					// and subscribe
 					::SendMessage(m_Owner, WM_COMMAND, MAKELONG(IDCANCEL, 0), 0);

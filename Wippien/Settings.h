@@ -140,7 +140,7 @@ public:
 	RECT m_RosterRect;
 	char m_RosterSnap;
 
-	BOOL m_CheckUpdate, m_CheckUpdateSilently,m_PasswordProtectAll, m_NowProtected;
+	BOOL m_CheckUpdate, m_CheckUpdateSilently,m_PasswordProtectAll, m_NowProtected, m_UsePowerOptions;
 	BOOL m_CheckUpdateConnect, m_CheckUpdateTimed;
 	int m_CheckUpdateTimedNum;
 	int m_AuthContacts;

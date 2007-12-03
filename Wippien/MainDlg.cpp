@@ -2445,6 +2445,26 @@ LRESULT CMainDlg::OnPowerBroadcast(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 		{
 			_Ethernet.hSetupThread = CreateThread(NULL, 0, _Ethernet.SetupThreadFunc, &_Ethernet, 0, &_Ethernet.SetupThreadId);
 		}
+
+
+		if (_Settings.m_UsePowerOptions)
+		{
+			m_ReconnectWait = 1;
+			if (IsWindow())
+				_MainDlg.SetTimer(106,200);
+		}
+	}
+	if (wParam == PBT_APMSUSPEND)
+	{
+		if (_Settings.m_UsePowerOptions)
+		{
+#ifndef _WODXMPPLIB
+			_Jabber->m_Jabb->Disconnect();
+#else
+		WODXMPPCOMLib::XMPP_Disconnect(_Jabber->m_Jabb);
+#endif
+		}
+
 	}
 
 	return FALSE;

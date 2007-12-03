@@ -276,6 +276,7 @@
 #define IDC_SORTNONE                    1265
 #define IDC_CONFIRMEXIT                 1266
 #define IDC_UNBLOCKCONTACT              1267
+#define IDC_USEPOWEROPTIONS             1267
 #define IDC_BLOCKNEWCONTACT             1268
 #define IDC_HIDDENCONTACTS              1269
 #define IDC_SHOWCONTACTPICTURE          1270

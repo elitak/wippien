@@ -4,7 +4,7 @@
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
-CFG=Wippien - Win32 LibDebug
+CFG=WIPPIEN - WIN32 LIBRELEASE
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
@@ -13,7 +13,7 @@ CFG=Wippien - Win32 LibDebug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "Wippien.mak" CFG="Wippien - Win32 LibDebug"
+!MESSAGE NMAKE /f "Wippien.mak" CFG="WIPPIEN - WIN32 LIBRELEASE"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 

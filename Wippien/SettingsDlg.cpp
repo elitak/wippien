@@ -5245,6 +5245,12 @@ LRESULT CSettingsDlg::CSettingsSystem::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	else
 		::SendMessage(GetDlgItem(IDC_PASSWORDPROTECTSETTINGS), BM_SETCHECK, TRUE, NULL);
 
+	if (_Settings.m_UsePowerOptions)
+		::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_SETCHECK, TRUE, NULL);
+	
+
 	CComBSTR2 j = _Settings.m_PasswordProtectPassword;
 	SetDlgItemText(IDC_PASSWORDPROTECTPASSWORD, j.ToString());
 
@@ -5284,6 +5290,11 @@ BOOL CSettingsDlg::CSettingsSystem::Apply(void)
 	else
 		_Settings.m_DoNotShow[DONOTSHOW_NOALLOWEXIT] = '1';
 
+	if (::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_GETSTATE, NULL, NULL))
+		_Settings.m_UsePowerOptions = 0;
+	else
+		_Settings.m_UsePowerOptions = 1;
+	
 	if (_MainDlg.m_EmptyWin)
 	{
 		if (_Settings.m_ShowInTaskbar)

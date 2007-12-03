@@ -235,6 +235,7 @@ CSettings::CSettings()
 	m_SortContacts = 1;
 	m_AuthContacts = 1;
 	m_UseSSLWrapper = FALSE;
+	m_UsePowerOptions = TRUE;
 }	
 
 CSettings::~CSettings()
@@ -800,6 +801,16 @@ int CSettings::Load(void)
 		else
 			m_CheckUpdateSilently = FALSE;
 
+		if (xml.FindElem("UsePowerOptions"))
+		{
+			data = xml.GetData();
+			m_UsePowerOptions = atoi(data);
+		}		
+		else
+			m_UsePowerOptions = TRUE;
+
+		
+		
 		if (xml.FindElem("FixedMTU"))
 		{
 			m_FixedMTU = FALSE;
@@ -862,7 +873,7 @@ int CSettings::Load(void)
 			m_UseSSLWrapper = atoi(data);
 		}
 		
-
+		
 		if (!m_Password.Length())
 		{
 			if (xml.FindElem("Password"))
@@ -1701,6 +1712,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 		xml.AddChildElem("CheckUpdateTimed", m_CheckUpdateTimed?"1":"0");
 		xml.AddChildElem("CheckUpdateTimedNum", m_CheckUpdateTimedNum);
 		xml.AddChildElem("CheckUpdateSilently", m_CheckUpdateSilently?"1":"0");
+		xml.AddChildElem("UsePowerOptions", m_UsePowerOptions?"1":"0");
 		xml.AddChildElem("FixedMTU", m_FixedMTU?"1":"0");
 		xml.AddChildElem("FixedMTUNum", m_FixedMTUNum);
 		xml.AddChildElem("SortContacts", m_SortContacts);

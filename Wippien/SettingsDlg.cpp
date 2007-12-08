@@ -2318,6 +2318,9 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 					void *s;
 					WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
 					{
+						long v = 0;
+						WODXMPPCOMLib::XMPP_Service_GetTag(s, (void **)&v);
+						if (v && v == sel)
 						{
 
 #endif

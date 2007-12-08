@@ -1064,7 +1064,16 @@ void CUser::NotifyConnect(void)
 			
 			msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
 			msg->put_Subject(t);
-			
+
+			Buffer t;
+			Buffer out;
+			t.PutChar((char)m_WippienState);
+			_Settings.ToHex(&t, &out);
+			out.Append("\0", 1);
+			CComBSTR t1 = out.Ptr();
+			msg->put_Text(t1);
+			WODXMPPCOMLib::XMPP_Message_SetText(msg, out.Ptr());
+
 			HRESULT hr = ct->raw_SendMessage(msg);
 			if (FAILED(hr))
 			{
@@ -1080,6 +1089,12 @@ void CUser::NotifyConnect(void)
 	void *msg = WODXMPPCOMLib::XMPP_Message_New();
 	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
 	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, WIPPIENCONNECT);
+	Buffer t;
+	Buffer out;
+	t.PutChar((char)m_WippienState);
+	_Settings.ToHex(&t, &out);
+	out.Append("\0", 1);
+	WODXMPPCOMLib::XMPP_Message_SetText(msg, out.Ptr());
 	WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, m_JID, msg);
 	WODXMPPCOMLib::XMPP_Message_Free(msg);
 #endif

@@ -210,6 +210,9 @@ BOOL CContactAuthDlg::UpdateWin()
 			char jfb[1024];
 			int jlen = sizeof(jfb);
 			WODXMPPCOMLib::XMPP_Contact_GetJID(ct, jfb, &jlen);
+			char *jd2 = strchr(jfb, '/');
+			if (jd2)
+				*jd2 = 0;
 			m_JID = jfb;
 			WODXMPPCOMLib::XMPP_Contacts_Free(ct);
 			SetDlgItemText(IDC_CONTACTJID, jfb);

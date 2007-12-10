@@ -95,7 +95,10 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 		}
 
 		if (!found)
-			_Settings.m_AuthRequests.push_back(j.Copy());
+		{
+			CComBSTR j3 = jd1;
+			_Settings.m_AuthRequests.push_back(j3.Copy());
+		}
 	}
 
 	BOOL b;

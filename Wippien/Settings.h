@@ -51,7 +51,7 @@ public:
 	CComBSTR m_IPMediator, m_LinkMediator;
 	long	m_LinkMediatorPort, m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_FunctionDebugFile;
-	CComBSTR m_Skin;
+	CComBSTR m_Skin, m_UpdateURL;
 	BOOL m_UseIPMediator, m_AllowLinkMediatorToBeProvidedByIPMediator, m_AllowAnyMediator, m_ShowMediatorOnContacts, m_SoundOn, m_LoadSuccess;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;

@@ -236,6 +236,8 @@ CSettings::CSettings()
 	m_AuthContacts = 1;
 	m_UseSSLWrapper = FALSE;
 	m_UsePowerOptions = TRUE;
+
+	m_UpdateURL = "http://wippien.com/Download/update.php";
 }	
 
 CSettings::~CSettings()
@@ -918,6 +920,14 @@ int CSettings::Load(void)
 		}
 		else
 			m_IPMediator = "mediator@wippien.com";
+
+		if (xml.FindElem("UpdateURL"))
+		{
+			data = xml.GetData();
+			m_UpdateURL = data;
+		}
+		else
+			m_UpdateURL = "http://wippien.com/Download/update.php";
 
 		if (xml.FindElem("LinkMediator"))
 		{
@@ -1758,6 +1768,8 @@ BOOL CSettings::Save(BOOL UserOnly)
 		xml.AddChildElem("Mediator", m.ToString());
 		m.Empty();
 		m = m_LinkMediator;
+		CComBSTR2 uurl = m_UpdateURL;
+		xml.AddChildElem("UpdateURL", uurl.ToString());
 		xml.AddChildElem("LinkMediator", m.ToString());
 		xml.AddChildElem("LinkMediatorPort", m_LinkMediatorPort);
 		xml.AddChildElem("ObtainIPAddress", m_ObtainIPAddress);

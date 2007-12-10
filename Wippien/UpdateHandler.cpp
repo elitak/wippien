@@ -503,7 +503,9 @@ void CUpdateHandler::DownloadUpdates(BOOL silently)
 
 	// let's see if we have newer versions
 	Buffer URLbuff;
-	URLbuff.Append("http://wippien.com/Download/update.php?JID=");
+	CComBSTR2 uurl = _Settings.m_UpdateURL;
+	URLbuff.Append(_Settings.m_UpdateURL);
+	URLbuff.Append("?JID=");
 	Buffer u1;
 	u1.Append(_Settings.m_JID);
 

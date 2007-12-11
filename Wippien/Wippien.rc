@@ -321,18 +321,23 @@ FONT 8, "MS Sans Serif"
 BEGIN
     EDITTEXT        IDC_LOG_JABBER,7,26,227,12
     PUSHBUTTON      "...",IDB_BROWSE,235,25,15,14
-    EDITTEXT        IDC_LOG_SOCKET,7,64,227,12
-    PUSHBUTTON      "...",IDB_BROWSE2,235,63,15,14
-    EDITTEXT        IDC_LOG_FUNCTION,7,105,227,12
-    PUSHBUTTON      "...",IDB_BROWSE3,235,104,15,14
-    EDITTEXT        IDC_FUNCTIONDELETEMB,157,122,48,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LOG_SOCKET,7,60,227,12
+    PUSHBUTTON      "...",IDB_BROWSE2,235,59,15,14
+    EDITTEXT        IDC_LOG_VPNSOCKET,7,95,227,12
+    PUSHBUTTON      "...",IDB_BROWSE4,235,93,15,14
+    EDITTEXT        IDC_LOG_FUNCTION,7,129,227,12
+    PUSHBUTTON      "...",IDB_BROWSE3,235,128,15,14
+    EDITTEXT        IDC_FUNCTIONDELETEMB,157,146,48,12,ES_AUTOHSCROLL
     LTEXT           "Log Jabber communication",IDC_STATIC,8,16,86,8
-    LTEXT           "Log socket communication",IDC_STATIC,8,55,86,8
+    LTEXT           "Log socket communication",IDC_STATIC,8,51,86,8
     LTEXT           "Log raw function calls (may grow quickly!)",IDC_STATIC,
-                    8,96,132,8
-    LTEXT           "Delete raw log on each ",IDC_STATIC,79,124,76,8
-    LTEXT           "megabytes",IDC_STATIC,207,124,35,8
+                    8,120,132,8
+    LTEXT           "Delete raw log on each ",IDC_STATIC,79,148,76,8
+    LTEXT           "megabytes",IDC_STATIC,207,148,35,8
+    LTEXT           "Log VPN communication on P2P startup",IDC_STATIC,8,85,
+                    128,8
 END
+
 
 IDD_SETTINGS_MEDIATOR DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
@@ -355,7 +360,7 @@ BEGIN
     LTEXT           "Port:",IDC_STATIC,147,113,16,8
     EDITTEXT        IDC_LINKMEDIATOR_PORT,165,111,35,13,ES_AUTOHSCROLL | 
                     ES_NUMBER
-    CONTROL         "Allow LINK Mediator to be provided by IP Mediator",
+    CONTROL         "Update LINK Mediator with address received by IP Mediator",
                     IDC_CHECK_ALLOWLINKMEDIATOR,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,14,128,175,10
     GROUPBOX        "",IDC_STATIC,7,3,245,84

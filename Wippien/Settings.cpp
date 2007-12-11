@@ -1302,6 +1302,13 @@ int CSettings::Load(void)
 			m_SocketDebugFile = data;
 		}
 
+		m_VPNSocketDebugFile.Empty();
+		if (xml.FindElem("VPNSocketDebugFile"))
+		{
+			data = xml.GetData();
+			m_VPNSocketDebugFile = data;
+		}
+		
 		m_FunctionDebugFile.Empty();
 		if (xml.FindElem("FunctionDebugFile"))
 		{
@@ -1893,6 +1900,9 @@ BOOL CSettings::Save(BOOL UserOnly)
 		CComBSTR2 dbf2 = m_SocketDebugFile;
 		xml.AddChildElem("SocketDebugFile", dbf2.ToString());
 
+		CComBSTR2 dbf22 = m_VPNSocketDebugFile;
+		xml.AddChildElem("VPNSocketDebugFile", dbf22.ToString());
+		
 		CComBSTR2 dbf21 = m_FunctionDebugFile;
 		xml.AddChildElem("FunctionDebugFile", dbf21.ToString());
 		xml.AddChildElem("DeleteFunctionLogMb", m_DeleteFunctionLogMb);

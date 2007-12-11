@@ -52,6 +52,7 @@
 #define IDC_LABEL_ETHERNET1             1040
 #define IDB_BROWSE2                     1041
 #define IDC_LABEL_ETHERNET2             1042
+#define IDB_BROWSE4                     1042
 #define IDB_BROWSE3                     1043
 #define IDC_IP_ETHERNET                 1044
 #define IDC_CHECK_ETHERNET              1045
@@ -391,6 +392,7 @@
 #define IDC_ETHERNET_IP                 1480
 #define IDC_CHECK_ALLOWLINKMEDIATOR     1481
 #define IDC_USESSLWRAPPER               1482
+#define IDC_LOG_VPNSOCKET               1483
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -420,7 +422,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1380
 #define _APS_NEXT_COMMAND_VALUE         32795
-#define _APS_NEXT_CONTROL_VALUE         1483
+#define _APS_NEXT_CONTROL_VALUE         1485
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

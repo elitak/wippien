@@ -484,6 +484,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 //							struct  in_addr inaddr;
 //							inaddr.s_addr = inet_addr(ip);
 //							if (inaddr.s_addr != INADDR_NONE)
+							if (_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator)
 							{
 								_Settings.m_LinkMediator = ip;
 								_Settings.m_LinkMediatorPort = atol(port);

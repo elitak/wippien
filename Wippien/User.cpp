@@ -490,6 +490,13 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			WODVPNCOMLib::VPN_SetRetryWait(m_wodVPN, 500);
 			WODVPNCOMLib::VPN_SetThreads(m_wodVPN, TRUE);
 			long port = 0;
+			if (_Settings.m_VPNSocketDebugFile.Length())
+			{
+				CComBSTR2 vs = _Settings.m_VPNSocketDebugFile;
+				char vsbuff[1024];
+				sprintf(vsbuff, vs.ToString(), m_JID);
+				WODVPNCOMLib::VPN_SetDebugFile(m_wodVPN, vsbuff);
+			}
 			WODVPNCOMLib::VPN_Start(m_wodVPN, &port);
 			CComBSTR2 hisid2 = hisid;
 			WODVPNCOMLib::VPN_Search(m_wodVPN, (WODVPNCOMLib::SearchEnum)0, hisid2.ToString(), varhost, varport, varempty);

@@ -3140,6 +3140,7 @@ LRESULT CSettingsDlg::CSettingsLogging::OnPaint(UINT uMsg, WPARAM wParam, LPARAM
 
 	DRAWSHADOW(IDC_LOG_JABBER);
 	DRAWSHADOW(IDC_LOG_SOCKET);
+	DRAWSHADOW(IDC_LOG_VPNSOCKET);
 	DRAWSHADOW(IDC_LOG_FUNCTION);
 	DRAWSHADOW(IDC_FUNCTIONDELETEMB);
 		
@@ -3157,6 +3158,10 @@ LRESULT CSettingsDlg::CSettingsLogging::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPa
 	CComBSTR2 j1 = _Settings.m_SocketDebugFile;
 	SetDlgItemText(IDC_LOG_SOCKET, j1.ToString());
 	
+	CComBSTR2 j3 = _Settings.m_VPNSocketDebugFile;
+	SetDlgItemText(IDC_LOG_VPNSOCKET, j3.ToString());
+	
+
 	CComBSTR2 j2 = _Settings.m_FunctionDebugFile;
 	SetDlgItemText(IDC_LOG_FUNCTION, j2.ToString());
 
@@ -3190,6 +3195,15 @@ BOOL CSettingsDlg::CSettingsLogging::Apply(void)
 	}
 	else
 		_Settings.m_SocketDebugFile.Empty();
+
+	*buff = 0;
+	::SendMessage(GetDlgItem(IDC_LOG_VPNSOCKET), WM_GETTEXT, 16384, (LPARAM)buff);
+	if (buff[0])
+	{
+		_Settings.m_VPNSocketDebugFile = buff;
+	}
+	else
+		_Settings.m_VPNSocketDebugFile.Empty();
 
 	*buff = 0;
 	::SendMessage(GetDlgItem(IDC_LOG_FUNCTION), WM_GETTEXT, 16384, (LPARAM)buff);
@@ -3288,6 +3302,22 @@ LRESULT CSettingsDlg::CSettingsLogging::OnBrowse3Cmd(WORD wNotifyCode, WORD wID,
 	if (cf.DoModal() == IDOK)
 	{
 		SendMessage(GetDlgItem(IDC_LOG_FUNCTION), WM_SETTEXT, 0, (LPARAM)cf.m_szFileName);
+	}
+	return 0;
+}
+
+LRESULT CSettingsDlg::CSettingsLogging::OnBrowse4Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{
+	char *szFilter = "All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0";
+	CFileDialog cf(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_ENABLESIZING  | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST, 
+		NULL, m_hWnd);
+	
+	cf.m_ofn.lpstrFilter = szFilter;
+	cf.m_ofn.lpstrDefExt = "*";
+	
+	if (cf.DoModal() == IDOK)
+	{
+		SendMessage(GetDlgItem(IDC_LOG_VPNSOCKET), WM_SETTEXT, 0, (LPARAM)cf.m_szFileName);
 	}
 	return 0;
 }

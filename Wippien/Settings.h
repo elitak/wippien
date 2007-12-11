@@ -50,7 +50,7 @@ public:
 	CComBSTR m_JID, m_Password, m_ServerHost;
 	CComBSTR m_IPMediator, m_LinkMediator;
 	long	m_LinkMediatorPort, m_ObtainIPAddress;
-	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_FunctionDebugFile;
+	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFile, m_FunctionDebugFile;
 	CComBSTR m_Skin, m_UpdateURL;
 	BOOL m_UseIPMediator, m_AllowLinkMediatorToBeProvidedByIPMediator, m_AllowAnyMediator, m_ShowMediatorOnContacts, m_SoundOn, m_LoadSuccess;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,

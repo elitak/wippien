@@ -612,12 +612,14 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 			COMMAND_ID_HANDLER(IDB_BROWSE, OnBrowseCmd)
 			COMMAND_ID_HANDLER(IDB_BROWSE2, OnBrowse2Cmd)
 			COMMAND_ID_HANDLER(IDB_BROWSE3, OnBrowse3Cmd)
+			COMMAND_ID_HANDLER(IDB_BROWSE4, OnBrowse4Cmd)
 		END_MSG_MAP()
 
 		LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		LRESULT OnBrowseCmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnBrowse2Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnBrowse3Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnBrowse4Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		void Show(BOOL Show, RECT *rc);
 		void Init(HWND Owner);

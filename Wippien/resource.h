@@ -252,7 +252,7 @@
 #define IDC_RADIO2_JID                  1236
 #define IDC_PROGCTRL1                   1237
 #define ID_WIPUPD                       1240
-#define IDC_BALLOONTIPICON              1243
+//#define IDC_BALLOONTIPICON              1243
 #define IDC_BALLOONTIPSTATIC            1244
 #define IDC_BALLOONTIPTEXT              1245
 #define IDC_BALLOONTIPMESSAGE           1246

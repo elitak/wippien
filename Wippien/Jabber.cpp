@@ -946,7 +946,7 @@ CJabber::CJabber(void)
 	m_Events.VCardDetails = XMPPVCardDetails;
 
 		
-	m_Jabb = WODXMPPCOMLib::__XMPP_Create(&m_Events);
+	m_Jabb = WODXMPPCOMLib::_XMPP_Create(&m_Events);
 #else
 	m_Jabb.CoCreateInstance(__uuidof(WODXMPPCOMLib::wodXMPPCom));
 	m_Events = NULL;

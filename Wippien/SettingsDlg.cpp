@@ -1063,7 +1063,7 @@ CSettingsDlg::CSettingsJID::CJabberWiz::CJabberWiz(CSettingsDlg::CSettingsJID *O
 	m_Events.Connected = XMPP_SettingsDlgConnected;
 	m_Events.Disconnected = XMPP_SettingsDlgDisconnected;
 	m_Events.StateChange = XMPP_SettingsDLGStateChange;
-	m_Jabb = WODXMPPCOMLib::__XMPP_Create(&m_Events);
+	m_Jabb = WODXMPPCOMLib::_XMPP_Create(&m_Events);
 	WODXMPPCOMLib::XMPP_SetTag(m_Jabb, (void *)this);
 #endif
 

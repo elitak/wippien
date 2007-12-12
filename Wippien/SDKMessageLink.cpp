@@ -102,7 +102,7 @@ CSDKMessageLink::CJabberWiz::CJabberWiz(CSDKMessageLink *Owner)
 	m_Events.Connected = SDKXMPPConnected;
 	m_Events.Disconnected = SDKXMPPDisconnected;
 	memset(&m_Events, 0, sizeof(m_Events));
-	m_Jabb = WODXMPPCOMLib::__XMPP_Create(&m_Events);
+	m_Jabb = WODXMPPCOMLib::_XMPP_Create(&m_Events);
 #endif
 
 #ifdef WODXMPP_LICENSE_KEY

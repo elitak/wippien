@@ -214,6 +214,7 @@ CSettings::CSettings()
 
 	m_CheckUpdate = TRUE;
 	m_CheckUpdateSilently = FALSE;
+	m_ShowUpdaterMessages = TRUE;
 	m_CheckUpdateConnect = FALSE;
 	m_CheckUpdateTimed = TRUE;
 	m_CheckUpdateTimedNum = 60;
@@ -802,6 +803,17 @@ int CSettings::Load(void)
 		}
 		else
 			m_CheckUpdateSilently = FALSE;
+
+		if (xml.FindElem("ShowUpdaterMessages"))
+		{
+			m_ShowUpdaterMessages = FALSE;
+			data = xml.GetData();
+			if (data == "1")
+				m_ShowUpdaterMessages = TRUE;
+		}
+		else
+			m_CheckUpdateSilently = TRUE;
+
 
 		if (xml.FindElem("UsePowerOptions"))
 		{
@@ -1729,6 +1741,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 		xml.AddChildElem("CheckUpdateTimed", m_CheckUpdateTimed?"1":"0");
 		xml.AddChildElem("CheckUpdateTimedNum", m_CheckUpdateTimedNum);
 		xml.AddChildElem("CheckUpdateSilently", m_CheckUpdateSilently?"1":"0");
+		xml.AddChildElem("ShowUpdaterMessages", m_ShowUpdaterMessages?"1":"0");
 		xml.AddChildElem("UsePowerOptions", m_UsePowerOptions?"1":"0");
 		xml.AddChildElem("FixedMTU", m_FixedMTU?"1":"0");
 		xml.AddChildElem("FixedMTUNum", m_FixedMTUNum);

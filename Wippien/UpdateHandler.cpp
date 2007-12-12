@@ -143,7 +143,7 @@ public:
 						}
 					}	
 					
-					if (showmsg)
+					if (showmsg && _Settings.m_ShowUpdaterMessages)
 					{
 						if (!m_UpdateHandlerMsgBoxShown)
 						{

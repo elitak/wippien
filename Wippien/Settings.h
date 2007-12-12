@@ -141,7 +141,7 @@ public:
 	char m_RosterSnap;
 
 	BOOL m_CheckUpdate, m_CheckUpdateSilently,m_PasswordProtectAll, m_NowProtected, m_UsePowerOptions;
-	BOOL m_CheckUpdateConnect, m_CheckUpdateTimed;
+	BOOL m_CheckUpdateConnect, m_CheckUpdateTimed, m_ShowUpdaterMessages;
 	int m_CheckUpdateTimedNum;
 	int m_AuthContacts;
 

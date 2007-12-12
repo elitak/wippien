@@ -252,7 +252,6 @@
 #define IDC_RADIO2_JID                  1236
 #define IDC_PROGCTRL1                   1237
 #define ID_WIPUPD                       1240
-//#define IDC_BALLOONTIPICON              1243
 #define IDC_BALLOONTIPSTATIC            1244
 #define IDC_BALLOONTIPTEXT              1245
 #define IDC_BALLOONTIPMESSAGE           1246
@@ -265,6 +264,7 @@
 #define IDC_CONTACTS_DELETEONCONNECT    1253
 #define IDC_CHECKUPDATESILENTLY         1254
 #define IDC_AUTOCONNECTONTRAFFIC        1255
+#define IDC_SHOWUPDATERMESSAGES         1255
 #define IDC_CHECKUPDATE_TIMEDNUM        1256
 #define IDC_AUTOCONNECTONSTARTUP        1257
 #define IDC_RELEASEIPONVPNDISCONNECT    1258

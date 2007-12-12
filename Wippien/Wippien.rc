@@ -628,10 +628,14 @@ BEGIN
                     ES_NUMBER
     CONTROL         "Update and restart application silently",
                     IDC_CHECKUPDATESILENTLY,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,57,157,11
-    PUSHBUTTON      "Check now",IDC_UPDATE_CHECKNOW,7,77,52,15
+                    WS_TABSTOP,7,63,157,11
+    CONTROL         "Show system messages received from updater",
+                    IDC_SHOWUPDATERMESSAGES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,76,161,10
+    PUSHBUTTON      "Check now",IDC_UPDATE_CHECKNOW,7,109,52,15
     LTEXT           "minutes",IDC_STATIC,139,45,25,8
 END
+
 
 IDD_SETTINGS_MTU DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD

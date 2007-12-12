@@ -5609,6 +5609,11 @@ LRESULT CSettingsDlg::CSettingsSystemUpdate::OnInitDialog(UINT /*uMsg*/, WPARAM 
 	else
 		::SendMessage(GetDlgItem(IDC_CHECKUPDATESILENTLY), BM_SETCHECK, FALSE, NULL);
 
+	if (_Settings.m_ShowUpdaterMessages)
+		::SendMessage(GetDlgItem(IDC_SHOWUPDATERMESSAGES), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_SHOWUPDATERMESSAGES), BM_SETCHECK, FALSE, NULL);
+	
 
 	return TRUE;
 }
@@ -5663,6 +5668,11 @@ BOOL CSettingsDlg::CSettingsSystemUpdate::Apply(void)
 	else
 		_Settings.m_CheckUpdateSilently = FALSE;
 
+	if (::SendMessage(GetDlgItem(IDC_SHOWUPDATERMESSAGES), BM_GETSTATE, NULL, NULL))
+		_Settings.m_ShowUpdaterMessages = TRUE;
+	else
+		_Settings.m_ShowUpdaterMessages = FALSE;
+	
 	return TRUE;
 }
 

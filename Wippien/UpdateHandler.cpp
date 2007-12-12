@@ -122,7 +122,6 @@ public:
 							WODAPPUPDCOMLib::AppUpd_Message_GetID(msg, &ID);
 #endif
 
-							ID = 200;
 							if (ID < min && ID>_Settings.m_LastOperatorMessageID)
 							{
 								min = ID;
@@ -154,7 +153,7 @@ public:
 #else
 							WODAPPUPDCOMLib::AppUpd_Message_GetID(showmsg, &ID);
 #endif
-//							_Settings.m_LastOperatorMessageID = ID;
+							_Settings.m_LastOperatorMessageID = ID;
 							_Settings.Save(FALSE);
 
 							// spawn new thread to show the message

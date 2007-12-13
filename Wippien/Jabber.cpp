@@ -264,6 +264,8 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 	WODXMPPCOMLib::XMPP_GetStateText(wodXMPP, (WODXMPPCOMLib::StatesEnum)newst, stet, &slen);
 	strcat(stat, stet);
 	_MainDlg.ShowStatusText(stat);
+	if (_MainDlg.IsWindow())
+		_MainDlg.Invalidate(FALSE);
 #endif
 
 	// let's integrate SDK too

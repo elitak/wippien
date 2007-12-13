@@ -15,6 +15,8 @@
 // crna, text IP identity-ja
 #define WIP_IDENTITYIPTEXT	RGB(0,0,0)
 
+// siva, text nick identity-ja
+#define WIP_IDENTITYSTATUSTEXT	RGB(128,128,128)
 
 
 #endif

@@ -80,6 +80,7 @@ CMainDlg::CMainDlg()
 	
 	m_Identity_NameFont = NULL;
 	m_Identity_IPFont = NULL;
+	m_Identity_StatusFont = NULL;
 	m_AppbarRegistered = FALSE;
 	m_IMove = FALSE;
 	m_IMinimized = FALSE;
@@ -120,6 +121,7 @@ CMainDlg::~CMainDlg()
 	DeleteObject(m_LightBlueBrush);
 	DeleteObject(m_Identity_NameFont);
 	DeleteObject(m_Identity_IPFont);
+	DeleteObject(m_Identity_StatusFont);
 
 //	while (m_EmoticonsInstance.size())
 	{
@@ -1287,32 +1289,66 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	else
 		rt.left += 10;
 
-	rt.top += 10;
+	rt.top += 2;
 	
-	CComBSTR2 j = _Settings.m_JID;
-	char *j1 = j.ToString();
-	char *j2 = strchr(j1, '@');
-	if (j2)
-		*j2 = 0;
 	if (_Settings.m_ShowMyName)
-		::DrawText(dc_ff, j1, strlen(j1), &rt, DT_LEFT | DT_NOPREFIX); 
-	//::TextOut(dc, ps.rcPaint.left, ps.rcPaint.top, _Settings.Nickname, strlen(_Settings.Nickname));
-	
-	rt.top += 20;
-	char *a = "No network";
-	if (_Ethernet.m_Available)
 	{
-		struct  in_addr sin_addr;
-		
-		sin_addr.S_un.S_addr = _Settings.m_MyLastNetwork;
-		a = inet_ntoa(sin_addr);
-	}
-	SelectObject(dc_ff, m_Identity_IPFont);
-	::SetTextColor(dc_ff, WIP_IDENTITYIPTEXT);
+		CComBSTR2 j = _Settings.m_JID;
+		char *j1 = j.ToString();
+		char *j2 = strchr(j1, '@');
+		if (j2)
+			*j2 = 0;
+		::DrawText(dc_ff, j1, strlen(j1), &rt, DT_LEFT | DT_NOPREFIX); 
+		//::TextOut(dc, ps.rcPaint.left, ps.rcPaint.top, _Settings.Nickname, strlen(_Settings.Nickname));
+		rt.top += 20;
+	}	
 	if (_Settings.m_ShowMyIP)
+	{
+		char *a = "No network";
+		if (_Ethernet.m_Available)
+		{
+			struct  in_addr sin_addr;
+		
+			sin_addr.S_un.S_addr = _Settings.m_MyLastNetwork;
+			a = inet_ntoa(sin_addr);
+		}
+		SelectObject(dc_ff, m_Identity_IPFont);
+		::SetTextColor(dc_ff, WIP_IDENTITYIPTEXT);
 		::DrawText(dc_ff, a, strlen(a), &rt, DT_LEFT | DT_NOPREFIX); 
-	SelectObject(dc_ff, oldfont);
-	
+		SelectObject(dc_ff, oldfont);
+		rt.top += 14;
+	}	
+
+
+
+	char *st = NULL;
+#ifndef _WODXMPPLIB
+	CComBSTR2 k;
+	VARIANT var;
+	var.vt = VT_ERROR;
+	if (SUCCEEDED(_Jabber->m_Jabb->get_StatusText(var, &j)))
+	{
+		st = k.ToString();
+	}
+#else
+	char stat[1024] = {0};	
+	int slen = 1024;
+	WODXMPPCOMLib::XMPP_GetStatusText(_Jabber->m_Jabb, stat, &slen);
+	st = stat;
+#endif
+	if (_Settings.m_ShowMyIP)
+	{
+		SelectObject(dc_ff, m_Identity_StatusFont);
+		::SetTextColor(dc_ff, WIP_IDENTITYSTATUSTEXT);
+		if (_Settings.m_ShowMyIP)
+			::DrawText(dc_ff, st, strlen(st), &rt, DT_LEFT | DT_NOPREFIX); 
+		SelectObject(dc_ff, oldfont);
+	}	
+
+
+
+
+
 	// Now Blt the changes to the real device context - this prevents flicker.
 	dc.BitBlt(rtorg.left, rtorg.top, rtorg.Width(), 80, dc_ff, 0, 0, SRCCOPY);
 	dc.BitBlt(0, rtorg.bottom - 51, rtorg.Width(), 51, dc_ff, 0, rtorg.bottom - 51, SRCCOPY);
@@ -1363,7 +1399,7 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
     ::ReleaseDC(NULL, hdc);
     m_Identity_NameFont = CreateFont(lfHeightName, 0, 0, 0, FW_BOLD, TRUE, 0, 0, 0, 0, 0, 0, 0, "Arial");
     m_Identity_IPFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "Arial");
-	
+	m_Identity_StatusFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
 
 
 	// center the dialog on the screen

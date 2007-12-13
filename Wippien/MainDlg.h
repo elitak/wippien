@@ -64,7 +64,7 @@ public:
 	//CStatic m_Status;
 	CxImage m_UserImage;
 	HBRUSH	m_WhiteBrush, m_LightBlueBrush;
-	HFONT m_Identity_NameFont, m_Identity_IPFont;
+	HFONT m_Identity_NameFont, m_Identity_IPFont, m_Identity_StatusFont;
 	POINT m_TooltipPoint;
 	BOOL m_CanTooltip, m_GoAppbar, m_WearSkin, m_DidGoAutoAway;
 	POINT m_ToolTipPosition;

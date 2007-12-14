@@ -165,6 +165,7 @@ void __stdcall CJabberEvents::DispConnected ()
 	}
 
 	
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1]); //online
 	if (_SDK)
 	{
 		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_CONNECTED,""))
@@ -222,6 +223,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 		_MainDlg.m_UserList.RefreshUser(NULL);
 //		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
 	}
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0]); //offline
 
 }
 #ifdef _WODXMPPLIB
@@ -238,8 +240,10 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 #endif
 
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
+	WODXMPPCOMLib::StatusEnum newstatus;
 
 #ifndef _WODXMPPLIB
+	_Jabber->m_Jabb->get_Status(&newstatus);
 	CComBSTR2 j;
 	VARIANT var;
 	var.vt = VT_ERROR;
@@ -256,6 +260,7 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 		_MainDlg.ShowStatusText(buff);
 	}
 #else
+	WODXMPPCOMLib::XMPP_GetStatus(wodXMPP, &newstatus);
 	char stat[1024], stet[1024];
 	int slen = 1024;
 	WODXMPPCOMLib::XMPP_GetStatusText(wodXMPP, stat, &slen);
@@ -265,7 +270,12 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 	strcat(stat, stet);
 	_MainDlg.ShowStatusText(stat);
 	if (_MainDlg.IsWindow())
+	{
+		if (newstatus<7)
+			_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[newstatus]);
 		_MainDlg.Invalidate(FALSE);
+	}
+
 #endif
 
 	// let's integrate SDK too

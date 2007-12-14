@@ -79,7 +79,7 @@ public:
 	CRITICAL_SECTION m_SocketCS;
 
 
-	HICON m_IconSmall, m_Icon;
+	HICON m_IconSmall, m_Icon, m_OnlineStatus[7];
 
 	int m_MoveX, m_MoveY, m_SizeX, m_SizeY;
 	int m_AuthDlgBlinker, m_PendingVCardRequests;
@@ -205,7 +205,7 @@ public:
 	void RegisterAppBar(BOOL isregister, RECT *rc, int style);
 	void OnIncomingMessage(char *Contact, char *Message, char *HtmlMessage);
 	void OnIncomingNotification(char *Contact, int NotID, VARIANT Data);
-	void ShellIcon(int Message);
+	void ShellIcon(int Message, HICON Icon);
 	LRESULT CalcSizeXSizeY(void);
 	void CheckAppbar(void);
 	LRESULT CalcAlignment(RECT *rcin);

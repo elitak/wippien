@@ -393,6 +393,13 @@
 #define IDC_CHECK_ALLOWLINKMEDIATOR     1481
 #define IDC_USESSLWRAPPER               1482
 #define IDC_LOG_VPNSOCKET               1483
+#define IDI_STATUS_ONLINE				1484
+#define IDI_STATUS_OFFLINE				1485
+#define IDI_STATUS_AWAY					1486
+#define IDI_STATUS_XA					1487
+#define IDI_STATUS_DND					1488
+#define IDI_STATUS_INVISIBLE			1489
+#define IDI_STATUS_FFC					1490
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -422,7 +429,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1380
 #define _APS_NEXT_COMMAND_VALUE         32795
-#define _APS_NEXT_CONTROL_VALUE         1485
+#define _APS_NEXT_CONTROL_VALUE         1491
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

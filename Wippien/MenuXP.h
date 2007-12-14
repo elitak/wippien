@@ -605,10 +605,16 @@ public:
 						POINT point = { rcButn.left + sz.cx, rcButn.top + sz.cy };
 
 						// draw disabled or normal
-						if(bDisabled) IMG->GrayScale();
-						
-//								cxImage.Resample(m_szBitmap.cx, m_szBitmap.cy);
-						IMG->Draw(dc, point.x,point.y-1);
+						if(bDisabled) 
+						{
+							CxImage img1;
+							img1.Copy(*IMG);
+							img1.GrayScale();						
+							img1.Draw(dc, point.x,point.y-1);
+						}
+						else
+							IMG->Draw(dc, point.x,point.y-1);
+
 						bHasImage = TRUE;
 					}
 					else
@@ -755,10 +761,15 @@ public:
 						POINT point = { rcButn.left + sz.cx, rcButn.top + sz.cy };
 
 						// draw disabled or normal
-						if(bDisabled) IMG->GrayScale();
-						
-//								cxImage.Resample(m_szBitmap.cx, m_szBitmap.cy);
-						IMG->Draw(dc, point.x,point.y-1);
+						if(bDisabled) 
+						{
+							CxImage img1;
+							img1.Copy(*IMG);
+							img1.GrayScale();						
+							img1.Draw(dc, point.x,point.y-1);
+						}
+						else
+							IMG->Draw(dc, point.x,point.y-1);
 					}
 					else
 					{

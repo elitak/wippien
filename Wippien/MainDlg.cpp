@@ -123,6 +123,9 @@ CMainDlg::~CMainDlg()
 	DeleteObject(m_Identity_IPFont);
 	DeleteObject(m_Identity_StatusFont);
 
+	for (int i=0;i<7;i++)
+		DeleteObject(m_OnlineStatus[i]);
+
 //	while (m_EmoticonsInstance.size())
 	{
 //		EmoticonsStruct *st = (EmoticonsStruct *)m_EmoticonsInstance[0];
@@ -1461,6 +1464,49 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 		IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
 	SetIcon(m_IconSmall, FALSE);
 	
+	m_OnlineStatus[0] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_OFFLINE),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	CxImage *img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[0]);
+	img->pUserData = (void *)ID_POPUP3_OFFLINE;
+	_Settings.m_MenuImages.push_back(img);
+	
+	m_OnlineStatus[1] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_ONLINE),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[1]);
+	img->pUserData = (void *)ID_POPUP3_ONLINE;
+	_Settings.m_MenuImages.push_back(img);
+
+	m_OnlineStatus[2] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_AWAY),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[2]);
+	img->pUserData = (void *)ID_POPUP3_AWAY;
+	_Settings.m_MenuImages.push_back(img);
+	
+	m_OnlineStatus[3] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_FFC),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[3]);
+	img->pUserData = (void *)ID_POPUP3_CHAT;
+	_Settings.m_MenuImages.push_back(img);
+	
+	m_OnlineStatus[4] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_DND),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[4]);
+	img->pUserData = (void *)ID_POPUP3_DONOTDISTURB;
+	_Settings.m_MenuImages.push_back(img);
+	
+	m_OnlineStatus[5] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_XA),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[5]);
+	img->pUserData = (void *)ID_POPUP3_EXTENDEDAWAY;
+	_Settings.m_MenuImages.push_back(img);
+	
+	m_OnlineStatus[6] = (HICON)::LoadImage(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_STATUS_INVISIBLE),  IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
+	img = new CxImage();
+	img->CreateFromHICON(m_OnlineStatus[6]);
+	img->pUserData = (void *)ID_POPUP3_INVISIBLE;
+	_Settings.m_MenuImages.push_back(img);
+	
+
 
 	// init hidden window
 	WNDCLASSEX wcx; 
@@ -1655,14 +1701,14 @@ BOOL CMainDlg::ReloadEmoticons(BOOL ReleaseOnly)
 }
 
 
-void CMainDlg::ShellIcon(int Message)
+void CMainDlg::ShellIcon(int Message, HICON Icon)
 {
 	DumpDebug("*MainDlg::ShellIcon \r\n");
 	// add icon to tray
 	NOTIFYICONDATA nid;
 	memset(&nid, 0, sizeof(nid));
 	nid.cbSize = sizeof(nid);
-	nid.hIcon = m_IconSmall;
+	nid.hIcon = Icon;
 	nid.hWnd = m_hWnd;
 	nid.uFlags = NIF_ICON | NIF_MESSAGE;
 	nid.uCallbackMessage = WM_TRAYICON;
@@ -1671,7 +1717,7 @@ void CMainDlg::ShellIcon(int Message)
 
 LRESULT CMainDlg::OnCreateTrayIcon(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	ShellIcon(NIM_ADD);
+	ShellIcon(NIM_ADD, m_IconSmall);
 	return FALSE;
 }
 LRESULT CMainDlg::OnTrayIcon(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
@@ -1699,7 +1745,7 @@ LRESULT CMainDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	GetWindowRect(&_Settings.m_RosterRect);
 	_Settings.m_RosterRect.bottom = _Settings.m_RosterRect.top + m_SizeY;
 
-	ShellIcon(NIM_DELETE);
+	ShellIcon(NIM_DELETE, m_IconSmall);
 	UNREGISTERAPPBAR();
 	if (m_EmptyWin)
 		::DestroyWindow(m_EmptyWin);
@@ -1760,7 +1806,7 @@ LRESULT CMainDlg::OnExit(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL&
 	GetWindowRect(&_Settings.m_RosterRect);
 	_Settings.m_RosterRect.bottom = _Settings.m_RosterRect.top + m_SizeY;
 
-	ShellIcon(NIM_DELETE);
+	ShellIcon(NIM_DELETE, m_IconSmall);
 	UNREGISTERAPPBAR();
 	_Settings.Save(FALSE);
 
@@ -1955,12 +2001,6 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	RECT rt;
 	::GetWindowRect(GetDlgItem(IDC_MYSTATUS), &rt);
 
-/*	AddMenuImage(ID_PNG_ONLINE, ID_POPUP3_ONLINE);
-	AddMenuImage(ID_PNG_AWAY, ID_POPUP3_AWAY);
-	AddMenuImage(ID_PNG_CHAT, ID_POPUP3_CHAT);
-	AddMenuImage(ID_PNG_DONOTDISTURB, ID_POPUP3_DONOTDISTURB);
-	AddMenuImage(ID_PNG_EXTENDEDAWAY, ID_POPUP3_EXTENDEDAWAY);
-*/
 
 	HMENU hm = LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_AWAYPOPUP));
 	HMENU h = GetSubMenu(hm, 0);
@@ -2040,6 +2080,15 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	else
 		lpmii.fState = MFS_DISABLED;
 	SetMenuItemInfo(h, ID_POPUP3_OFFLINE, FALSE, &lpmii);
+/*
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_ONLINE, ID_POPUP3_ONLINE);
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_AWAY, ID_POPUP3_AWAY);
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_FFC, ID_POPUP3_CHAT);
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_DND, ID_POPUP3_DONOTDISTURB);
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_XA, ID_POPUP3_EXTENDEDAWAY);
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_OFFLINE, ID_POPUP3_OFFLINE);
+	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_INVISIBLE, ID_POPUP3_INVISIBLE);
+*/
 
 
 	m_CanTooltip = FALSE;

@@ -205,7 +205,7 @@ public:
 	void RegisterAppBar(BOOL isregister, RECT *rc, int style);
 	void OnIncomingMessage(char *Contact, char *Message, char *HtmlMessage);
 	void OnIncomingNotification(char *Contact, int NotID, VARIANT Data);
-	void ShellIcon(int Message, HICON Icon);
+	void ShellIcon(int Message, HICON Icon, char *Tip);
 	LRESULT CalcSizeXSizeY(void);
 	void CheckAppbar(void);
 	LRESULT CalcAlignment(RECT *rcin);

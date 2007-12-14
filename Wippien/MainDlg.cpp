@@ -1701,7 +1701,7 @@ BOOL CMainDlg::ReloadEmoticons(BOOL ReleaseOnly)
 }
 
 
-void CMainDlg::ShellIcon(int Message, HICON Icon)
+void CMainDlg::ShellIcon(int Message, HICON Icon, char *Tip)
 {
 	DumpDebug("*MainDlg::ShellIcon \r\n");
 	// add icon to tray
@@ -1710,14 +1710,18 @@ void CMainDlg::ShellIcon(int Message, HICON Icon)
 	nid.cbSize = sizeof(nid);
 	nid.hIcon = Icon;
 	nid.hWnd = m_hWnd;
-	nid.uFlags = NIF_ICON | NIF_MESSAGE;
+	nid.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
+	char buff[1024];
+	sprintf(buff, "Wippien - %s", Tip);
+	memcpy(nid.szTip, buff, 128);
+//	nid.szTip = buff;
 	nid.uCallbackMessage = WM_TRAYICON;
 	Shell_NotifyIcon(Message, &nid);	
 }
 
 LRESULT CMainDlg::OnCreateTrayIcon(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	ShellIcon(NIM_ADD, m_IconSmall);
+	ShellIcon(NIM_ADD, m_IconSmall, "Idle");
 	return FALSE;
 }
 LRESULT CMainDlg::OnTrayIcon(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
@@ -1745,7 +1749,7 @@ LRESULT CMainDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	GetWindowRect(&_Settings.m_RosterRect);
 	_Settings.m_RosterRect.bottom = _Settings.m_RosterRect.top + m_SizeY;
 
-	ShellIcon(NIM_DELETE, m_IconSmall);
+	ShellIcon(NIM_DELETE, m_IconSmall, "");
 	UNREGISTERAPPBAR();
 	if (m_EmptyWin)
 		::DestroyWindow(m_EmptyWin);
@@ -1806,7 +1810,7 @@ LRESULT CMainDlg::OnExit(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL&
 	GetWindowRect(&_Settings.m_RosterRect);
 	_Settings.m_RosterRect.bottom = _Settings.m_RosterRect.top + m_SizeY;
 
-	ShellIcon(NIM_DELETE, m_IconSmall);
+	ShellIcon(NIM_DELETE, m_IconSmall, "");
 	UNREGISTERAPPBAR();
 	_Settings.Save(FALSE);
 

@@ -165,7 +165,7 @@ void __stdcall CJabberEvents::DispConnected ()
 	}
 
 	
-	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1]); //online
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1], "Connected"); //online
 	if (_SDK)
 	{
 		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_CONNECTED,""))
@@ -223,7 +223,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 		_MainDlg.m_UserList.RefreshUser(NULL);
 //		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
 	}
-	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0]); //offline
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0], "Disconnected"); //offline
 
 }
 #ifdef _WODXMPPLIB
@@ -264,17 +264,21 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 	char stat[1024], stet[1024];
 	int slen = 1024;
 	WODXMPPCOMLib::XMPP_GetStatusText(wodXMPP, stat, &slen);
+
+	if (_MainDlg.IsWindow())
+	{
+		if (newstatus<7)
+		{
+			_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[newstatus], stat);
+		}
+		_MainDlg.Invalidate(FALSE);
+	}
+
 	strcat(stat, " - ");
 	slen = 1024;
 	WODXMPPCOMLib::XMPP_GetStateText(wodXMPP, (WODXMPPCOMLib::StatesEnum)newst, stet, &slen);
 	strcat(stat, stet);
 	_MainDlg.ShowStatusText(stat);
-	if (_MainDlg.IsWindow())
-	{
-		if (newstatus<7)
-			_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[newstatus]);
-		_MainDlg.Invalidate(FALSE);
-	}
 
 #endif
 

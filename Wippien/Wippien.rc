@@ -1205,8 +1205,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,7,2,202
- PRODUCTVERSION 1,7,2,202
+ FILEVERSION FILEVER
+ PRODUCTVERSION FILEVER
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -1223,12 +1223,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "Wippien Module\0"
-            VALUE "FileVersion", "1, 7, 2, 202\0"
+            VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "Wippien\0"
             VALUE "LegalCopyright", "Copyright 2006-2007\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
-            VALUE "ProductVersion", "1, 7, 2, 202\0"
+            VALUE "ProductVersion", STRFILEVER
             VALUE "OLESelfRegister", "\0"
         END
     END

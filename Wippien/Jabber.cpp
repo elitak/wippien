@@ -128,13 +128,13 @@ void __stdcall CJabberEvents::DispConnected ()
 	_Jabber->m_ConnectTime = GetTickCount();
 //		_MainDlg.ShowStatusText("Connected.");
 #ifndef _WODXMPPLIB
-	WODXMPPCOMLib::IXMPPServices *serv = NULL;
+/*	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		serv->Discover(TRUE);
 		serv->Release();
 	}
-
+*/
 	// and request vcard
 	WODXMPPCOMLib::IXMPPVCard *vc;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc)))
@@ -143,8 +143,8 @@ void __stdcall CJabberEvents::DispConnected ()
 		vc->Release();
 	}
 	DispStateChange((WODXMPPCOMLib::StatesEnum)0);
-#else
-	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
+#else 
+//	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
 	WODXMPPCOMLib::XMPP_VCardReceive(_Jabber->m_Jabb);
 #endif
 

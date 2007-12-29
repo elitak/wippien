@@ -497,6 +497,30 @@ void CUser::SendConnectionRequest(BOOL Notify)
 				sprintf(vsbuff, vs.ToString(), m_JID);
 				WODVPNCOMLib::VPN_SetDebugFile(m_wodVPN, vsbuff);
 			}
+
+			char intbuff[1024] = {0};
+			int ilen = sizeof(intbuff);
+			intbuff[0] = ' ';
+			ilen--;
+			WODVPNCOMLib::VPN_GetBindIP(m_wodVPN, intbuff, &ilen);
+			if (ilen)
+			{
+				char net[1024];
+				struct in_addr ina;
+				ina.s_addr = _Settings.m_MyLastNetwork;
+				strcpy(net, inet_ntoa(ina));
+				// does it contain my IP inside
+				char *c = strstr(intbuff, net);
+				if (c)
+				{
+					char *d = c + strlen(net);
+					if (*d == ' ')
+						d++;
+					MoveMemory(c, d, strlen(d)+1);
+					WODVPNCOMLib::VPN_SetBindIP(m_wodVPN, intbuff);
+				}
+			}
+
 			WODVPNCOMLib::VPN_Start(m_wodVPN, &port);
 			CComBSTR2 hisid2 = hisid;
 			WODVPNCOMLib::VPN_Search(m_wodVPN, (WODVPNCOMLib::SearchEnum)0, hisid2.ToString(), varhost, varport, varempty);

@@ -489,6 +489,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			WODVPNCOMLib::VPN_SetRetryCount(m_wodVPN, 30);
 			WODVPNCOMLib::VPN_SetRetryWait(m_wodVPN, 500);
 			WODVPNCOMLib::VPN_SetThreads(m_wodVPN, TRUE);
+			WODVPNCOMLib::VPN_SetTimeout(m_wodVPN, 15);
 			long port = 0;
 			if (_Settings.m_VPNSocketDebugFile.Length())
 			{

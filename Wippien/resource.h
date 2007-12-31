@@ -58,6 +58,7 @@
 #define IDC_CHECK_ETHERNET              1045
 #define IDR_SOUNDON                     1046
 #define IDC_MEDIATOR                    1048
+#define IDC_IPOBTAINURL                 1048
 #define IDR_SOUNDOFF                    1049
 #define IDC_LINKMEDIATOR_HOSTNAME       1049
 #define IDC_CHECK_ETHERNETSHOWMEDIATOR  1050
@@ -385,7 +386,7 @@
 #define IDB_HUMAN36                     1374
 #define IDB_HUMAN37                     1375
 #define IDD_APPUPDPROGRESS              1376
-#define IDC_USEIPMEDIATOR               1476
+#define IDC_USEIPFROMDATABASE           1476
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
@@ -393,13 +394,13 @@
 #define IDC_CHECK_ALLOWLINKMEDIATOR     1481
 #define IDC_USESSLWRAPPER               1482
 #define IDC_LOG_VPNSOCKET               1483
-#define IDI_STATUS_ONLINE				1484
-#define IDI_STATUS_OFFLINE				1485
-#define IDI_STATUS_AWAY					1486
-#define IDI_STATUS_XA					1487
-#define IDI_STATUS_DND					1488
-#define IDI_STATUS_INVISIBLE			1489
-#define IDI_STATUS_FFC					1490
+#define IDI_STATUS_ONLINE               1484
+#define IDI_STATUS_OFFLINE              1485
+#define IDI_STATUS_AWAY                 1486
+#define IDI_STATUS_XA                   1487
+#define IDI_STATUS_DND                  1488
+#define IDI_STATUS_INVISIBLE            1489
+#define IDI_STATUS_FFC                  1490
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772

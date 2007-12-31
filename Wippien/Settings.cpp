@@ -7,6 +7,7 @@
 #include "MainDlg.h"
 #include "Buffer.h"
 #include "Markup.h"
+#include "SimpleXmlParser.h"
 #include "ComBSTR2.h"
 #include "Notify.h"
 #include <io.h>
@@ -66,10 +67,9 @@ CSettings::CSettings()
 
 	m_MyLastNetwork = m_MyLastNetmask = 0;
 	m_AllowAnyMediator = TRUE;
-	m_AllowLinkMediatorToBeProvidedByIPMediator = TRUE;
-	m_UseIPMediator = TRUE;
-	m_ShowMediatorOnContacts = TRUE;
-	m_IPMediator = "mediator@wippien.com";
+	m_UseLinkMediatorFromDatabase = TRUE;
+	m_UseIPFromDatabase = TRUE;
+	m_IPProviderURL = "http://wippien.com/ip/?jid=";
 	m_LinkMediator = "mediator.wippien.com";
 	m_LinkMediatorPort = 8000;
 	m_ObtainIPAddress = 1;
@@ -347,6 +347,59 @@ x = data;\
 }
 */
 
+void CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value, BOOL default_value)
+{
+	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
+	if (ent)
+	{
+		*Value = atoi(ent->Value);
+	}
+	else
+		*Value = default_value;
+}
+void CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, long *Value, long default_value)
+{
+	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
+	if (ent)
+	{
+		*Value = atol(ent->Value);
+	}
+	else
+		*Value = default_value;
+}
+void CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, unsigned long *Value, unsigned long default_value)
+{
+	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
+	if (ent)
+	{
+		*Value = atol(ent->Value);
+	}
+	else
+		*Value = default_value;
+}
+void CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, CComBSTR &Value, char *default_value)
+{
+	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
+	if (ent)
+	{
+		Value = ent->Value;
+	}
+	else
+		Value = default_value;
+}
+void CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, Buffer *Value)
+{
+	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
+	if (ent)
+	{
+		Buffer in;
+		in.Append(ent->Value);
+		FromHex(&in, Value);
+	}
+	else
+		Value->Clear();
+}
+
 int CSettings::Load(void)
 {
 	char buff[32768];
@@ -382,6 +435,16 @@ int CSettings::Load(void)
 			m_PasswordProtectAll = TRUE;
 	}
 
+	// go to root
+	while (m_Groups.size())
+	{
+		TreeGroup *tg = m_Groups[0];
+		//		free(tg->Name);
+		m_Groups.erase(m_Groups.begin());
+		delete tg;
+	}
+
+
 	// read from file
 	int handle = open(m_CfgFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle == (-1))
@@ -407,198 +470,129 @@ int CSettings::Load(void)
 	xml.SetDoc(b.Ptr());
 	CString data;
 
-
-	/* Tinyxmlparser attempt
-	TiXmlDocument doc( "packet.xml" );
-	doc.Parse(b.Ptr());
-
-
-	// go to root
-	while (m_Groups.size())
+	CXmlParser xmlparser;
+	CXmlEntity *start = xmlparser.Parse(&b);
+	if (start)
 	{
-		TreeGroup *tg = m_Groups[0];
-//		free(tg->Name);
-		m_Groups.erase(m_Groups.begin());
-		delete tg;
-	}
-
-	TiXmlNode* node = NULL;
-	TiXmlElement* todoElement = NULL;
-
-	node = doc.FirstChildElement();
-	
-	do
-	{
-		if (node)
+		CXmlEntity *wip = CXmlEntity::FindByName(start, "Wippien", 1);
+		if (wip)
 		{
-			char *name = (char *)node->Value();
-			if (!strcmp(name, "Wippien"))
+			CXmlEntity *ent = NULL;
+			ReadSettingsCfg(wip, "ShowInTaskbar", &m_ShowInTaskbar, FALSE);
+			ReadSettingsCfg(wip, "SoundOn", &m_SoundOn, TRUE);
+			ReadSettingsCfg(wip, "DeleteContactsOnStartup", &m_DeleteContactsOnStartup, FALSE);
+			ReadSettingsCfg(wip, "DeleteContactsOnConnect", &m_DeleteContactsOnConnect, FALSE);
+			ReadSettingsCfg(wip, "AuthContacts", &m_AuthContacts, 1);
+			ReadSettingsCfg(wip, "AutoConnectVPNOnNetwork", &m_AutoConnectVPNOnNetwork, TRUE);
+			ReadSettingsCfg(wip, "AutoConnectVPNOnStartup", &m_AutoConnectVPNOnStartup, TRUE);
+			ReadSettingsCfg(wip, "VoiceChat", &m_EnableVoiceChat, TRUE);
+			ReadSettingsCfg(wip, "CheckUpdate", &m_CheckUpdate, TRUE);
+			ReadSettingsCfg(wip, "CheckUpdateConnect", &m_CheckUpdateConnect, TRUE);
+			ReadSettingsCfg(wip, "CheckUpdateTimed", &m_CheckUpdateTimed, TRUE);
+			ReadSettingsCfg(wip, "CheckUpdateTimedNum", &m_CheckUpdateTimedNum, 60);
+			ReadSettingsCfg(wip, "CheckUpdateSilently", &m_CheckUpdateSilently, FALSE);
+			ReadSettingsCfg(wip, "ShowUpdaterMessages", &m_ShowUpdaterMessages, TRUE);
+			ReadSettingsCfg(wip, "UsePowerOptions", &m_UsePowerOptions, TRUE);
+			ReadSettingsCfg(wip, "FixedMTU", &m_FixedMTU, FALSE);
+			ReadSettingsCfg(wip, "FixedMTUNum", &m_FixedMTUNum, 1200);
+			ReadSettingsCfg(wip, "SortContacts", &m_SortContacts, 1);
+			ReadSettingsCfg(wip, "VoiceChatRecordingDevice", &m_VoiceChatRecordingDevice, -1);
+			ReadSettingsCfg(wip, "VoiceChatPlaybackDevice", &m_VoiceChatPlaybackDevice, -1);
+			ReadSettingsCfg(wip, "LastOperatorMessageID", &m_LastOperatorMessageID, LASTOPERATORMSGID);
+			ReadSettingsCfg(wip, "JID", m_JID, "");
+			if (!m_Password.Length())
 			{
-				node = node->FirstChild();
-				break;
+				ReadSettingsCfg(wip, "Password", m_Password, "");
 			}
-				
-			TiXmlNode *n = node->FirstChild();
-			if (n)
-				node = n;
-			else
-				node = node->NextSibling();
-		}
-	} while (node);
+			ReadSettingsCfg(wip, "m_UseSSLWrapper", &m_UseSSLWrapper, FALSE);
+			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
+			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
+			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
+			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://wippien.com/ip/?jid=");
+			ReadSettingsCfg(wip, "UpdateURL", m_UpdateURL, "http://wippien.com/Download/update.php");
+			ReadSettingsCfg(wip, "LinkMediator", m_LinkMediator, "mediator.wippien.com");
+			ReadSettingsCfg(wip, "LinkMediatorPort", &m_LinkMediatorPort, 8000);
+			ReadSettingsCfg(wip, "ObtainIPAddress", &m_ObtainIPAddress, 1);
+			ReadSettingsCfg(wip, "AllowMediator", &m_AllowAnyMediator, TRUE);
+			ReadSettingsCfg(wip, "UseLinkMediatorFromDatabase", &m_UseLinkMediatorFromDatabase, TRUE);
+			ReadSettingsCfg(wip, "UseIPFromDatabase", &m_UseIPFromDatabase, TRUE);
+			ReadSettingsCfg(wip, "ShowContactPicture", &m_ShowContactPicture, TRUE);
+			ReadSettingsCfg(wip, "ShowContactLastOnline", &m_ShowContactLastOnline, TRUE);
+			ReadSettingsCfg(wip, "ShowContactIP", &m_ShowContactIP, TRUE);
+			ReadSettingsCfg(wip, "ShowContactStatus", &m_ShowContactStatus, TRUE);
+			ReadSettingsCfg(wip, "ShowMyPicture", &m_ShowMyPicture, TRUE);
+			ReadSettingsCfg(wip, "ShowMyName", &m_ShowMyName, TRUE);
+			ReadSettingsCfg(wip, "ShowMyIP", &m_ShowMyIP, TRUE);
+			ReadSettingsCfg(wip, "ShowMyStatus", &m_ShowMyStatus, TRUE);
+			ReadSettingsCfg(wip, "TimestampMessages", &m_TimestampMessages, TRUE);
+			ReadSettingsCfg(wip, "SnapToBorder", &m_SnapToBorder, FALSE);
+			ReadSettingsCfg(wip, "ShowMessageHistory", &m_ShowMessageHistory, TRUE);
+			ReadSettingsCfg(wip, "Skin", m_Skin, "");
+			CComBSTR2 donotshow;
+			ReadSettingsCfg(wip, "DoNotShow", donotshow, "00000000");
+			int dnsi = donotshow.Length();
+			if (dnsi>MAXDONOTSHOWANYMORESETTINGS)
+				dnsi=MAXDONOTSHOWANYMORESETTINGS;
+			memcpy(m_DoNotShow, donotshow.ToString(), dnsi);
+			ReadSettingsCfg(wip, "LastNetwork", &m_MyLastNetwork, 0);
+			m_MyLastNetmask &= 0x00FFFFFF;
+			ReadSettingsCfg(wip, "LastNetmask", &m_MyLastNetmask, FALSE);
+			ReadSettingsCfg(wip, "Icon", &m_Icon);
 
-	do
-	{
-		if (node)
-		{
-			CComBSTR2 cc = node->Value();
-			ATLTRACE("Reading %s\r\n", cc.ToString());
-			READCFG(m_ShowInTaskbar, "ShowInTaskbar", FALSE);
-			READCFG(m_SoundOn, "SoundOn", TRUE);
-			READCFG(m_DeleteContactsOnStartup, "DeleteContactsOnStartup", FALSE);
-			READCFG(m_DeleteContactsOnConnect, "DeleteContactsOnConnect", FALSE);
-			READCFG(m_AutoConnectVPNOnNetwork, "AutoConnectVPNOnNetwork", TRUE);
-			READCFG(m_EnableVoiceChat, "VoiceChat", TRUE);
-			READCFG(m_CheckUpdate, "CheckUpdate", TRUE);
-			READCFG(m_CheckUpdateConnect, "CheckUpdateConnect", TRUE);
-			READCFG(m_CheckUpdateTimed, "CheckUpdateTimed", TRUE);
-			READCFG(m_CheckUpdateTimedNum, "CheckUpdateTimedNum", 60);
-			READCFG(m_CheckUpdateSilently, "CheckUpdateSilently", FALSE);
-			READCFG(m_FixedMTU, "FixedMTU", FALSE);
-			READCFG(m_FixedMTUNum, "FixedMTUNum", 1200);
-			READCFG(m_VoiceChatRecordingDevice, "VoiceChatRecordingDevice", -1);
-			READCFG(m_VoiceChatPlaybackDevice, "VoiceChatPlaybackDevice", -1);
-			READCFG(m_LastOperatorMessageID, "LastOperatorMessageID", -1);
-			READCFGSTRING(m_JID, "JID");
-			READCFGSTRING(m_Password, "Password");
-			READCFGSTRING(m_ServerHost, "ServerHost");
-			READCFG(m_ServerPort, "ServerPort", 5222);
-			READCFG(m_UDPPort, "UDPPort", 0);
-			READCFGSTRING(m_Mediator, "Mediator");
-			READCFG(m_AllowAnyMediator, "AllowMediator", FALSE);
-			READCFG(m_ShowMediatorOnContacts, "ShowMediator", TRUE);
-			READCFG(m_TimestampMessages, "TimestampMessages", TRUE);
-			READCFG(m_SnapToBorder, "SnapToBorder", FALSE);
-			READCFG(m_ShowMessageHistory, "ShowMessageHistory", TRUE);
-			READCFGSTRING(m_Skin, "Skin");
-			READCFGSTRING(m_JabberDebugFile, "JabberDebugFile");
-			READCFGSTRING(m_SocketDebugFile, "SocketDebugFile");
-			READCFGSTRING(m_FunctionDebugFile, "FunctionDebugFile");
-			READCFG(m_DeleteFunctionLogMb, "DeleteFunctionLogMb", 10485760L);
-			READCFG(m_AutoAwayMinutes, "AutoAwayMinutes", 10);
-			READCFG(m_ExtendedAwayMinutes, "ExtendedAwayMinutes", 20);
-			READCFG(m_AutoDisconnectMinutes, "AutoDisconnectMinutes", 0);
-			READCFGSTRING2(m_AutoAwayMessage, "AutoAwayMessage", AWAY_MESSAGE);
-			READCFGSTRING2(m_ExtendedAwayMessage, "ExtendedAwayMessage", EXTAWAY_MESSAGE);
-			READCFG(m_AutoSetBack, "AutoSetBack", TRUE);
-			
-			if (!strcmp(node->Value(), "Icon"))
+			char icobuf[1024];
+			strcpy(icobuf, m_CfgFilename);
+			strcat(icobuf, ".png");
+			handle = open(icobuf, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+			if (handle != (-1))
 			{
-				data = node->Value();
-				Buffer in;
-				in.Append(data, strlen(data));
-				FromHex(&in, &m_Icon);
-			}
-			if (!strcmp(node->Value(), "DoNotShow"))
-			{
-				data = node->Value();
-				int i = strlen(data);
-				if (i>MAXDONOTSHOWANYMORESETTINGS)
-					i = MAXDONOTSHOWANYMORESETTINGS;
-				memcpy(m_DoNotShow, data, i);
-			}
-			if (!strcmp(node->Value(), "LastNetwork"))
-			{
-				data = node->Value();
-				long mip = atol(data);
-				memcpy(&m_MyLastNetwork, &mip, sizeof(long));
-				m_MyLastNetmask &= 0x00FFFFFF; 
-			}
-			if (!strcmp(node->Value(), "LastNetmask"))
-			{
-				data = node->Value();
-				long mnm = atol(data);
-				memcpy(&m_MyLastNetmask, &mnm, sizeof(long));
-			}
-			if (!strcmp(node->Value(), "AuthRequests"))
-			{
-				TiXmlElement* child = node->FirstChildElement();
-
+				m_Icon.Clear();
 				do
 				{
-					if (child && !strcmp(child->Value(), "Group"))
-					{
-						TiXmlNode *ch = child->FirstChild();
-						if (ch)
-						{
-							data = ch->Value();
-							CComBSTR d = data;
-							m_AuthRequests.push_back(d.Copy());
-						}
-						child = child->NextSiblingElement();
-					}
-				} while (child);
+					i = read(handle, icobuf, 1024);
+					if (i>0)
+						m_Icon.Append(icobuf, i);
+				} while (i>0);
+				close(handle);
 			}
-			if (!strcmp(node->Value(), "Roster"))
-			{
-				TiXmlElement* child = node->FirstChildElement();
 
+			CXmlEntity *rst = CXmlEntity::FindByName(wip, "Roster", 1);
+			if (rst)
+			{
+				CXmlEntity *ent = NULL;
 				BOOL foundOff = FALSE;
 				BOOL OffOpen = FALSE;
 				BOOL foundGen = FALSE;
-
 				do 
 				{
-					if (child && !strcmp(child->Value(), "Group"))
+					ent = CXmlEntity::FindByName(rst, "Group", 1);
+					if (ent)
 					{
-						TiXmlNode *ch = child->FirstChild();
-						if (ch)
+						char *a = (char *)malloc(strlen(ent->Value)+1);
+						memset(a, 0, strlen(ent->Value)+1);
+						memcpy(a, ent->Value, strlen(ent->Value));
+						if (!strcmp(a, GROUP_OFFLINE))
 						{
-							data = ch->Value();
-							char *a = (char *)malloc(strlen(data)+1);
-							memset(a, 0, strlen(data)+1);
-							memcpy(a, data, strlen(data));
-							if (!strcmp(a, GROUP_OFFLINE))
-							{
-								TiXmlAttribute *attrib = 0;
-								attrib = child->FirstAttribute();
-								while (attrib)
-								{
-									if (attrib->Name() == "Open" && attrib->Value() == "true")
-									{
-										OffOpen = TRUE;
-										break;
-									}
-									attrib = attrib->Next();
-								}
-								foundOff = TRUE;
-								free(a);
-							}
-							else
-							{				
-								TreeGroup *tg = new TreeGroup;
-								tg->Item = NULL;
-								tg->Open = FALSE;
-								tg->Name = a;
-								TiXmlAttribute *attrib = 0;
-								attrib = child->FirstAttribute();
-								while (attrib)
-								{
-									if (attrib->Name() == "Open" && attrib->Value() == "true")
-									{
-										tg->Open = TRUE;
-										break;
-									}
-									attrib = attrib->Next();
-								}
-								if (!strcmp(a, GROUP_GENERAL))
-									foundGen = TRUE;
-								PushGroupSorted(tg);
-							}
-						}
 
-						child = child->NextSiblingElement();
+							if (CXmlEntity::FindAttrByName(ent, "Open"))
+								OffOpen = TRUE;
+							foundOff = TRUE;
+							free(a);
+						}
+						else
+						{				
+							TreeGroup *tg = new TreeGroup;
+							tg->Item = NULL;
+							tg->Open = FALSE;
+							tg->Name = a;
+							if (CXmlEntity::FindAttrByName(ent, "Open"))
+								tg->Open = TRUE;
+							if (!strcmp(a, GROUP_GENERAL))
+								foundGen = TRUE;
+							PushGroupSorted(tg);						
+						}
+						ent->Name[0] = 0;
 					}
-				} while (child);
+				} while (ent);
 
 				if (!foundGen && m_Groups.size()<2)
 				{
@@ -609,6 +603,7 @@ int CSettings::Load(void)
 					tg->Open = FALSE;
 					tg->Name = a;
 					PushGroupSorted(tg);
+					//				m_Groups.push_back(tg);
 				}
 				char *a = (char *)malloc(strlen(GROUP_OFFLINE)+1);
 				memcpy(a, GROUP_OFFLINE, strlen(GROUP_OFFLINE)+1);
@@ -617,614 +612,14 @@ int CSettings::Load(void)
 				tg->Open = OffOpen;
 				tg->Name = a;
 				m_Groups.push_back(tg);
+
 			}
-
-
-			node = node->NextSibling();
 		}
-	} while  (node);
-	
-	// re-read password
-	if (!m_Password.Length())
-	{
-		memset(buff, 0, sizeof(buff));
-		if (EXECryptor_SecureRead("Password", buff))
-			m_Password = buff;
-	}
-	
-	
-	node = doc.FirstChildElement();
-	if (node) node = node->NextSibling();
-	do
-	{
-		if (node)
-		{
-			char *name = (char *)node->Value();
-			if (!strcmp(name, "Message_Dialog_Window"))
-			{
-				node = node->FirstChild();
-				break;
-			}
-				
-			TiXmlNode *n = node->FirstChild();
-			if (n)
-				node = n;
-			else
-				node = node->NextSibling();
-		}
-	} while (node);
-
-	do
-	{
-		if (node)
-		{
-			READCFG(m_RosterRect.left, "Left", 500);
-			READCFG(m_RosterRect.top, "Top", 0);
-			READCFG(m_RosterRect.right, "Right", 800);
-			READCFG(m_RosterRect.bottom, "Bottom", 300);
-			READCFG(m_RosterSnap, "Snap", FALSE);
-			READCFG(m_IsAligned, "Aligned", FALSE);
-			READCFG(m_IsTopMost, "TopMost", FALSE);
-			READCFG(m_DoAlign, "DoAlign", FALSE);
-
-			node = node->NextSibling();
-		}
-	} while  (node);
-	*/
-	// go to root
-	while (m_Groups.size())
-	{
-		TreeGroup *tg = m_Groups[0];
-//		free(tg->Name);
-		m_Groups.erase(m_Groups.begin());
-		delete tg;
 	}
 	if (xml.FindElem("Wippien"))
 	{
-		xml.IntoElem();
+		xml.IntoElem();		
 		
-		m_ShowInTaskbar = FALSE;
-		if (xml.FindElem("ShowInTaskbar"))
-		{
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowInTaskbar = TRUE;
-		}
-
-		if (xml.FindElem("SoundOn"))
-		{
-			m_SoundOn = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_SoundOn = TRUE;
-		}
-		else
-			m_SoundOn = TRUE;
-
-		if (xml.FindElem("DeleteContactsOnStartup"))
-		{
-			m_DeleteContactsOnStartup = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_DeleteContactsOnStartup = TRUE;
-		}
-		else
-			m_DeleteContactsOnStartup = FALSE;
-
-		if (xml.FindElem("DeleteContactsOnConnect"))
-		{
-			m_DeleteContactsOnConnect = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_DeleteContactsOnConnect = TRUE;
-		}
-		else
-			m_DeleteContactsOnConnect = FALSE;
-
-		m_AuthContacts = 1;
-		if (xml.FindElem("AuthContacts"))
-		{
-			data = xml.GetData();
-			m_AuthContacts = atoi(data);
-		}
-
-		if (xml.FindElem("AutoConnectVPNOnNetwork"))
-		{
-			m_AutoConnectVPNOnNetwork = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_AutoConnectVPNOnNetwork = TRUE;
-		}
-		else
-			m_AutoConnectVPNOnNetwork = TRUE;
-
-		if (xml.FindElem("AutoConnectVPNOnStartup"))
-		{
-			m_AutoConnectVPNOnStartup = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_AutoConnectVPNOnStartup = TRUE;
-		}
-		else
-			m_AutoConnectVPNOnNetwork = TRUE;
-		
-		if (xml.FindElem("VoiceChat"))
-		{
-			m_EnableVoiceChat = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_EnableVoiceChat = TRUE;
-		}
-		else
-			m_EnableVoiceChat = TRUE;
-
-		if (xml.FindElem("CheckUpdate"))
-		{
-			m_CheckUpdate = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_CheckUpdate = TRUE;
-		}
-		else
-			m_CheckUpdate = TRUE;
-
-		m_CheckUpdateConnect = TRUE;
-		if (xml.FindElem("CheckUpdateConnect"))
-		{
-			m_CheckUpdateConnect = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_CheckUpdateConnect = TRUE;
-		}
-
-		if (xml.FindElem("CheckUpdateTimed"))
-		{
-			m_CheckUpdateTimed = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_CheckUpdateTimed = TRUE;
-		}
-		else
-			m_CheckUpdateTimed = TRUE;
-
-		m_CheckUpdateTimedNum = 60;
-		if (xml.FindElem("CheckUpdateTimedNum"))
-		{
-			data = xml.GetData();
-			m_CheckUpdateTimedNum = atoi(data);
-		}
-
-		if (xml.FindElem("CheckUpdateSilently"))
-		{
-			m_CheckUpdateSilently = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_CheckUpdateSilently = TRUE;
-		}
-		else
-			m_CheckUpdateSilently = FALSE;
-
-		if (xml.FindElem("ShowUpdaterMessages"))
-		{
-			m_ShowUpdaterMessages = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowUpdaterMessages = TRUE;
-		}
-		else
-			m_CheckUpdateSilently = TRUE;
-
-
-		if (xml.FindElem("UsePowerOptions"))
-		{
-			data = xml.GetData();
-			m_UsePowerOptions = atoi(data);
-		}		
-		else
-			m_UsePowerOptions = TRUE;
-
-		
-		
-		if (xml.FindElem("FixedMTU"))
-		{
-			m_FixedMTU = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_FixedMTU = TRUE;
-		}
-		else
-			m_FixedMTU = FALSE;
-
-		if (xml.FindElem("FixedMTUNum"))
-		{
-			data = xml.GetData();
-			m_FixedMTUNum = atoi(data);
-		}
-		else
-			m_FixedMTUNum = 1200;
-
-		if (xml.FindElem("SortContacts"))
-		{
-			data = xml.GetData();
-			m_SortContacts = atoi(data);
-		}
-		else
-			m_SortContacts = 1;
-
-
-		m_VoiceChatRecordingDevice = -1;
-		if (xml.FindElem("VoiceChatRecordingDevice"))
-		{
-			data = xml.GetData();
-			m_VoiceChatRecordingDevice = atoi(data);
-		}
-
-		m_VoiceChatPlaybackDevice = -1;
-		if (xml.FindElem("VoiceChatPlaybackDevice"))
-		{
-			data = xml.GetData();
-			m_VoiceChatPlaybackDevice = atoi(data);
-		}
-
-		m_LastOperatorMessageID = LASTOPERATORMSGID;
-		if (xml.FindElem("LastOperatorMessageID"))
-		{
-			data = xml.GetData();
-			m_LastOperatorMessageID = atoi(data);
-		}
-
-		m_JID.Empty();
-		if (xml.FindElem("JID"))
-		{
-			data = xml.GetData();
-			m_JID = data;
-		}	
-
-		m_UseSSLWrapper = FALSE;
-		if (xml.FindElem("UseSSLWrapper"))
-		{
-			data = xml.GetData();
-			m_UseSSLWrapper = atoi(data);
-		}
-		
-		
-		if (!m_Password.Length())
-		{
-			if (xml.FindElem("Password"))
-			{
-//			m_Password.Empty();
-				data = xml.GetData();
-				m_Password = data;
-			}	
-			else
-			{
-				memset(buff, 0, sizeof(buff));
-//				if (EXECryptor_SecureRead("Password", buff))
-//					m_Password = buff;
-			}
-		}
-
-		m_ServerHost.Empty();
-		if (xml.FindElem("ServerHost"))
-		{
-			data = xml.GetData();
-			m_ServerHost = data;
-		}
-
-		m_ServerPort = 5222;
-		if (xml.FindElem("ServerPort"))
-		{
-			data = xml.GetData();
-			m_ServerPort = atoi(data);
-		}
-
-		m_UDPPort = 0;
-		if (xml.FindElem("UDPPort"))
-		{
-			data = xml.GetData();
-			m_UDPPort = atoi(data);
-		}
-
-		if (xml.FindElem("Mediator"))
-		{
-			data = xml.GetData();
-			m_IPMediator = data;
-		}
-		else
-			m_IPMediator = "mediator@wippien.com";
-
-		if (xml.FindElem("UpdateURL"))
-		{
-			data = xml.GetData();
-			m_UpdateURL = data;
-		}
-		else
-			m_UpdateURL = "http://wippien.com/Download/update.php";
-
-		if (xml.FindElem("LinkMediator"))
-		{
-			data = xml.GetData();
-			m_LinkMediator = data;
-		}
-		else
-			m_LinkMediator = "mediator.wippien.com";
-
-		if (xml.FindElem("LinkMediatorPort"))
-		{
-			data = xml.GetData();
-			m_LinkMediatorPort = atoi(data);
-		}
-		else
-			m_LinkMediatorPort = 8000;
-		
-		if (xml.FindElem("ObtainIPAddress"))
-		{
-			data = xml.GetData();
-			m_ObtainIPAddress = atoi(data);
-		}
-		else
-			m_ObtainIPAddress = 1;
-		
-		
-		m_AllowAnyMediator = TRUE;
-		if (xml.FindElem("AllowMediator"))
-		{
-			data = xml.GetData();
-			if (data != "1")
-				m_AllowAnyMediator = FALSE;
-		}
-		m_AllowLinkMediatorToBeProvidedByIPMediator = TRUE;
-		if (xml.FindElem("AllowLinkMediatorToBeProvidedByIP"))
-		{
-			data = xml.GetData();
-			if (data != "1")
-				m_AllowLinkMediatorToBeProvidedByIPMediator = FALSE;
-		}
-		
-		m_UseIPMediator = TRUE;
-		if (xml.FindElem("UseMediator"))
-		{
-			data = xml.GetData();
-			if (data != "1")
-				m_UseIPMediator = FALSE;
-		}
-		
-		m_ShowMediatorOnContacts = FALSE;
-		if (xml.FindElem("ShowMediator"))
-		{
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowMediatorOnContacts = TRUE;
-		}
-
-		m_ShowContactPicture = TRUE;
-		if (xml.FindElem("ShowContactPicture"))
-		{
-			m_ShowContactPicture = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowContactPicture = TRUE;
-		}
-
-		m_ShowContactLastOnline = TRUE;
-		if (xml.FindElem("ShowContactLastOnline"))
-		{
-			m_ShowContactLastOnline = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowContactLastOnline = TRUE;
-		}
-
-/*		m_ShowContactName = TRUE;
-		if (xml.FindElem("ShowContactName"))
-		{
-			m_ShowContactName = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowContactName = TRUE;
-		}
-*/
-
-		m_ShowContactIP = TRUE;
-		if (xml.FindElem("ShowContactIP"))
-		{
-			m_ShowContactIP = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowContactIP = TRUE;
-		}
-
-		m_ShowContactStatus = TRUE;
-		if (xml.FindElem("ShowContactStatus"))
-		{
-			m_ShowContactStatus = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowContactStatus = TRUE;
-		}
-
-		m_ShowMyPicture = TRUE;
-		if (xml.FindElem("ShowMyPicture"))
-		{
-			m_ShowMyPicture = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowMyPicture = TRUE;
-		}
-
-		m_ShowMyName = TRUE;
-		if (xml.FindElem("ShowMyName"))
-		{
-			m_ShowMyName = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowMyName = TRUE;
-		}
-
-		m_ShowMyIP = TRUE;
-		if (xml.FindElem("ShowMyIP"))
-		{
-			m_ShowMyIP = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowMyIP = TRUE;
-		}
-
-		m_ShowMyStatus = TRUE;
-		if (xml.FindElem("ShowMyStatus"))
-		{
-			m_ShowMyStatus = FALSE;
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowMyStatus = TRUE;
-		}
-
-
-		m_TimestampMessages = FALSE;
-		if (xml.FindElem("TimestampMessages"))
-		{
-			data = xml.GetData();
-			if (data == "1")
-				m_TimestampMessages = TRUE;
-		}
-
-		m_SnapToBorder = FALSE;
-		if (xml.FindElem("SnapToBorder"))
-		{
-			data = xml.GetData();
-			if (data == "1")
-				m_SnapToBorder = TRUE;
-		}
-
-
-		m_ShowMessageHistory = FALSE;
-		if (xml.FindElem("ShowMessageHistory"))
-		{
-			data = xml.GetData();
-			if (data == "1")
-				m_ShowMessageHistory = TRUE;
-		}
-
-		if (xml.FindElem("Icon"))
-		{
-			data = xml.GetData();
-			Buffer in;
-			in.Append(data, strlen(data));
-			FromHex(&in, &m_Icon);
-		}
-
-		char icobuf[1024];
-		strcpy(icobuf, m_CfgFilename);
-		strcat(icobuf, ".png");
-		handle = open(icobuf, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
-		if (handle != (-1))
-		{
-			m_Icon.Clear();
-			do
-			{
-				i = read(handle, icobuf, 1024);
-				if (i>0)
-					m_Icon.Append(icobuf, i);
-			} while (i>0);
-			close(handle);
-		}
-
-		if (xml.FindElem("DoNotShow"))
-		{
-			data = xml.GetData();
-			int i = strlen(data);
-			if (i>MAXDONOTSHOWANYMORESETTINGS)
-				i = MAXDONOTSHOWANYMORESETTINGS;
-			memcpy(m_DoNotShow, data, i);
-		}
-
-		if (xml.FindElem("LastNetwork"))
-		{
-			data = xml.GetData();
-			long mip = atol(data);
-			memcpy(&m_MyLastNetwork, &mip, sizeof(long));
-			m_MyLastNetmask &= 0x00FFFFFF; 
-		}
-		if (xml.FindElem("LastNetmask"))
-		{
-			data = xml.GetData();
-			long mnm = atol(data);
-			memcpy(&m_MyLastNetmask, &mnm, sizeof(long));
-		}
-
-/*		if (xml.FindElem("Key"))
-		{
-			data = xml.GetData();
-			Buffer in, out;
-			in.Append(data, strlen(data));
-			FromHex(&in, &out);
-			KeyFromBlob(&out);
-		}
-*/		
-		if (xml.FindElem("Skin"))
-		{
-			m_Skin.Empty();
-			data = xml.GetData();
-			m_Skin = data;
-		}
-
-		if (xml.FindElem("Roster"))
-		{
-			xml.IntoElem();
-
-			BOOL foundOff = FALSE;
-			BOOL OffOpen = FALSE;
-			BOOL foundGen = FALSE;
-			while (xml.FindElem("Group"))
-			{
-				data = xml.GetData();
-				char *a = (char *)malloc(strlen(data)+1);
-				memset(a, 0, strlen(data)+1);
-				memcpy(a, data, strlen(data));
-				if (!strcmp(a, GROUP_OFFLINE))
-				{
-					if (xml.GetAttrib("Open") != _T(""))
-						OffOpen = TRUE;
-					foundOff = TRUE;
-					free(a);
-				}
-				else
-				{				
-					TreeGroup *tg = new TreeGroup;
-					tg->Item = NULL;
-					tg->Open = FALSE;
-					tg->Name = a;
-					if (xml.GetAttrib("Open") != _T(""))
-						tg->Open = TRUE;
-					if (!strcmp(a, GROUP_GENERAL))
-						foundGen = TRUE;
-					PushGroupSorted(tg);
-//					m_Groups.push_back(tg);
-				}
-
-			}
-
-			if (!foundGen && m_Groups.size()<2)
-			{
-				char *a = (char *)malloc(strlen(GROUP_GENERAL)+1);
-				memcpy(a, GROUP_GENERAL, strlen(GROUP_GENERAL)+1);
-				TreeGroup *tg = new TreeGroup;
-				tg->Item = NULL;
-				tg->Open = FALSE;
-				tg->Name = a;
-				PushGroupSorted(tg);
-//				m_Groups.push_back(tg);
-			}
-			char *a = (char *)malloc(strlen(GROUP_OFFLINE)+1);
-			memcpy(a, GROUP_OFFLINE, strlen(GROUP_OFFLINE)+1);
-			TreeGroup *tg = new TreeGroup;
-			tg->Item = NULL;
-			tg->Open = OffOpen;
-			tg->Name = a;
-			m_Groups.push_back(tg);
-
-			xml.OutOfElem();
-		}
 
 		m_HiddenContactsBuffer.Clear();
 		if (xml.FindElem("HiddenContacts"))
@@ -1479,163 +874,147 @@ int CSettings::Load(void)
 				}
 
 				CComBSTR j = user->m_JID;
-				if (j == m_IPMediator && !m_ShowMediatorOnContacts)
+				// does this one already exist?
+				if (_MainDlg.m_UserList.GetUserByJID(j))
+				{
 #ifdef _WODVPNLIB
 					delete user;
 #else
 					user->Release();
 #endif						
+				}
 				else
 				{
-					// does this one already exist?
-					if (_MainDlg.m_UserList.GetUserByJID(j))
-					{
-#ifdef _WODVPNLIB
-						delete user;
-#else
-						user->Release();
-#endif						
-					}
+					_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
+					_MainDlg.m_UserList.m_Users.push_back(user);
+				}
+
+
+				if (xml.FindElem("VisibleName"))
+				{
+					data = xml.GetData();
+					if (data.GetLength()<sizeof(user->m_VisibleName))
+						strcpy(user->m_VisibleName, data);
+				}
+
+				if (xml.FindElem("Block"))
+				{
+					data = xml.GetData();
+					if (data == "1")
+						user->m_Block = TRUE;
 					else
-					{
-						_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-						_MainDlg.m_UserList.m_Users.push_back(user);
-					}
+						user->m_Block = FALSE;
+				}
 
+				if (xml.FindElem("VCard"))
+				{
+					data = xml.GetData();
+					long mnm = atol(data);
+					memcpy(&user->m_GotVCard, &mnm, sizeof(long));
+				}
 
-					if (xml.FindElem("VisibleName"))
-					{
-						data = xml.GetData();
-						if (data.GetLength()<sizeof(user->m_VisibleName))
-							strcpy(user->m_VisibleName, data);
-					}
-
-					if (xml.FindElem("Block"))
-					{
-						data = xml.GetData();
-						if (data == "1")
-							user->m_Block = TRUE;
-						else
-							user->m_Block = FALSE;
-					}
-
-					if (xml.FindElem("VCard"))
-					{
-						data = xml.GetData();
-						long mnm = atol(data);
-						memcpy(&user->m_GotVCard, &mnm, sizeof(long));
-					}
-
-					if (xml.FindElem("Group"))
-					{
-						data = xml.GetData();
-						if (data.GetLength()<sizeof(user->m_Group))
-							strcpy(user->m_Group, data);
+				if (xml.FindElem("Group"))
+				{
+					data = xml.GetData();
+					if (data.GetLength()<sizeof(user->m_Group))
+						strcpy(user->m_Group, data);
 //						if (!data.GetLength())
 //							strcpy(user->m_Group, GROUP_GENERAL);
-					}
+				}
 
-					if (xml.FindElem("Email"))
+				if (xml.FindElem("Email"))
+				{
+					data = xml.GetData();
+					if (data.GetLength()<sizeof(user->m_Email))
+						strcpy(user->m_Email, data);
+				}
+
+				if (xml.FindElem("LastOnline"))
+				{
+					data = xml.GetData();
+					long lo = atoi(data);
+					if (lo)
+					{
+						user->m_LastOnline = lo;
+						user->SetSubtext();
+					}
+				}
+
+				if (xml.FindElem("Chat_Dialog_Window"))
+				{
+					xml.IntoElem();
+					if (xml.FindElem("Left"))
 					{
 						data = xml.GetData();
-						if (data.GetLength()<sizeof(user->m_Email))
-							strcpy(user->m_Email, data);
-					}
-
-					if (xml.FindElem("LastOnline"))
+						user->m_ChatWindowRect.left = atoi(data);
+					}			
+					if (xml.FindElem("Top"))
 					{
 						data = xml.GetData();
-						long lo = atoi(data);
-						if (lo)
-						{
-							user->m_LastOnline = lo;
-							user->SetSubtext();
-						}
-					}
-
-					if (xml.FindElem("Chat_Dialog_Window"))
+						user->m_ChatWindowRect.top = atoi(data);
+					}			
+					if (xml.FindElem("Right"))
 					{
-						xml.IntoElem();
-						if (xml.FindElem("Left"))
-						{
-							data = xml.GetData();
-							user->m_ChatWindowRect.left = atoi(data);
-						}			
-						if (xml.FindElem("Top"))
-						{
-							data = xml.GetData();
-							user->m_ChatWindowRect.top = atoi(data);
-						}			
-						if (xml.FindElem("Right"))
-						{
-							data = xml.GetData();
-							user->m_ChatWindowRect.right = atoi(data);
-						}			
-						if (xml.FindElem("Bottom"))
-						{
-							data = xml.GetData();
-							user->m_ChatWindowRect.bottom = atoi(data);
-						}			
-						xml.OutOfElem();
-					}
-
-					if (xml.FindElem("AllowMediatorIP"))
-					{
-						user->m_AllowedRemoteMediator = FALSE;
 						data = xml.GetData();
-						if (data == "1")
-							user->m_AllowedRemoteMediator = TRUE;
-					}
-					if (xml.FindElem("AllowAnyIP"))
+						user->m_ChatWindowRect.right = atoi(data);
+					}			
+					if (xml.FindElem("Bottom"))
 					{
-						user->m_AllowedRemoteAny = FALSE;
 						data = xml.GetData();
-						if (data == "1")
-							user->m_AllowedRemoteAny = TRUE;
-					}
-					xml.AddElem("Allowed_IPs");
-					if (xml.FindElem("Allowed_IPs"))
-					{
-						xml.IntoElem();
-						while (xml.FindElem("IP"))
-						{
-							data = xml.GetData();
-							unsigned long x = inet_addr(data);
-							if (x != INADDR_NONE)
-							{
-								IPAddressConnectionStruct *ips  = new IPAddressConnectionStruct();
-								ips->Address = x;
-								if (xml.GetAttrib("Allowed=") != _T(""))
-									ips->Allowed = TRUE;
-								else
-									ips->Allowed = FALSE;
-
-								ips->Ignored = FALSE;
-
-								user->m_AllowedRemoteIPs.push_back(ips);
-							}
-						}
-						xml.OutOfElem();
-					}
-
-					user->m_Changed = FALSE;
-					user->m_ChangeNotify = FALSE;
-					user->m_Online = FALSE;
-					if (!strlen(user->m_StatusText))
-						strcpy(user->m_StatusText, "Offline");
-
+						user->m_ChatWindowRect.bottom = atoi(data);
+					}			
 					xml.OutOfElem();
 				}
+
+				if (xml.FindElem("AllowMediatorIP"))
+				{
+					user->m_AllowedRemoteMediator = FALSE;
+					data = xml.GetData();
+					if (data == "1")
+						user->m_AllowedRemoteMediator = TRUE;
+				}
+				if (xml.FindElem("AllowAnyIP"))
+				{
+					user->m_AllowedRemoteAny = FALSE;
+					data = xml.GetData();
+					if (data == "1")
+						user->m_AllowedRemoteAny = TRUE;
+				}
+				xml.AddElem("Allowed_IPs");
+				if (xml.FindElem("Allowed_IPs"))
+				{
+					xml.IntoElem();
+					while (xml.FindElem("IP"))
+					{
+						data = xml.GetData();
+						unsigned long x = inet_addr(data);
+						if (x != INADDR_NONE)
+						{
+							IPAddressConnectionStruct *ips  = new IPAddressConnectionStruct();
+							ips->Address = x;
+							if (xml.GetAttrib("Allowed=") != _T(""))
+								ips->Allowed = TRUE;
+							else
+								ips->Allowed = FALSE;
+
+							ips->Ignored = FALSE;
+
+							user->m_AllowedRemoteIPs.push_back(ips);
+						}
+					}
+					xml.OutOfElem();
+				}
+
+				user->m_Changed = FALSE;
+				user->m_ChangeNotify = FALSE;
+				user->m_Online = FALSE;
+				if (!strlen(user->m_StatusText))
+					strcpy(user->m_StatusText, "Offline");
+
+				xml.OutOfElem();
 			}
 		}
 	}
-
-//	if (!m_RSA)
-//	{
-		// regenerate RSA
-//		m_RSA = RSA_generate_key(1024,35,NULL,NULL);
-//	}
-
 	return TRUE;
 }
 
@@ -1784,8 +1163,8 @@ BOOL CSettings::Save(BOOL UserOnly)
 		xml.AddChildElem("ServerPort", m_ServerPort);
 		xml.AddChildElem("UDPPort", m_UDPPort);
 
-		CComBSTR2 m = m_IPMediator;
-		xml.AddChildElem("Mediator", m.ToString());
+		CComBSTR2 m = m_IPProviderURL;
+		xml.AddChildElem("IPProviderURL", m.ToString());
 		m.Empty();
 		m = m_LinkMediator;
 		CComBSTR2 uurl = m_UpdateURL;
@@ -1794,9 +1173,8 @@ BOOL CSettings::Save(BOOL UserOnly)
 		xml.AddChildElem("LinkMediatorPort", m_LinkMediatorPort);
 		xml.AddChildElem("ObtainIPAddress", m_ObtainIPAddress);
 		xml.AddChildElem("AllowAnyMediator", m_AllowAnyMediator?"1":"0");
-		xml.AddChildElem("AllowLinkMediatorToBeProvidedByIP", m_AllowLinkMediatorToBeProvidedByIPMediator?"1":"0");
-		xml.AddChildElem("UseMediator", m_UseIPMediator?"1":"0");
-		xml.AddChildElem("ShowMediator", m_ShowMediatorOnContacts?"1":"0");
+		xml.AddChildElem("UseLinkMediatorFromDatabase", m_UseLinkMediatorFromDatabase?"1":"0");
+		xml.AddChildElem("UseIPFromDatabase", m_UseIPFromDatabase?"1":"0");
 		xml.AddChildElem("ShowContactPicture", m_ShowContactPicture?"1":"0");
 		xml.AddChildElem("ShowContactLastOnline", m_ShowContactLastOnline?"1":"0");
 //		xml.AddChildElem("ShowContactName", m_ShowContactName?"1":"0");
@@ -1968,57 +1346,54 @@ BOOL CSettings::Save(BOOL UserOnly)
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
 
 		CComBSTR j = user->m_JID;
-		if (!(j == m_IPMediator))
-		{
-			xml.AddElem("User");
-			xml.IntoElem();
-			xml.AddElem("Name", user->m_JID);
-			xml.AddElem("VisibleName", user->m_VisibleName);
+		xml.AddElem("User");
+		xml.IntoElem();
+		xml.AddElem("Name", user->m_JID);
+		xml.AddElem("VisibleName", user->m_VisibleName);
 //			out.Clear();
 //			Buffer in;
 //			in.Append(user->m_Icon.Ptr(), user->m_Icon.Len());
 //			ToHex(&in, &out);
 //			out.Append("\0", 1);
 //			xml.AddElem("Icon", out.Ptr());
-			xml.AddElem("Block", user->m_Block?"1":"0");
+		xml.AddElem("Block", user->m_Block?"1":"0");
 //			if (user->m_StaticIP)
 //				xml.AddElem("StaticIP", user->m_HisDHCPAddressOffset);
-			
-			long mip;
-			memcpy(&mip, &user->m_GotVCard, sizeof(long));
-			xml.AddElem("VCard", mip);
+		
+		long mip;
+		memcpy(&mip, &user->m_GotVCard, sizeof(long));
+		xml.AddElem("VCard", mip);
 
-			xml.AddElem("Group", user->m_Group);
-			xml.AddElem("Email", user->m_Email);
-			xml.AddElem("LastOnline", user->m_LastOnline);
+		xml.AddElem("Group", user->m_Group);
+		xml.AddElem("Email", user->m_Email);
+		xml.AddElem("LastOnline", user->m_LastOnline);
 
-			xml.AddElem("Chat_Dialog_Window");
-			xml.AddChildElem("Left", user->m_ChatWindowRect.left);
-			xml.AddChildElem("Top", user->m_ChatWindowRect.top);
-			xml.AddChildElem("Right", user->m_ChatWindowRect.right);
-			xml.AddChildElem("Bottom", user->m_ChatWindowRect.bottom);
+		xml.AddElem("Chat_Dialog_Window");
+		xml.AddChildElem("Left", user->m_ChatWindowRect.left);
+		xml.AddChildElem("Top", user->m_ChatWindowRect.top);
+		xml.AddChildElem("Right", user->m_ChatWindowRect.right);
+		xml.AddChildElem("Bottom", user->m_ChatWindowRect.bottom);
 
-			xml.AddElem("AllowMediatorIP", user->m_AllowedRemoteMediator?"1":"0");
-			xml.AddElem("AllowAnyIP", user->m_AllowedRemoteAny?"1":"0");
-			xml.AddElem("Allowed_IPs");
-			struct in_addr sa;
-			for (int x=0;x<user->m_AllowedRemoteIPs.size();x++)
+		xml.AddElem("AllowMediatorIP", user->m_AllowedRemoteMediator?"1":"0");
+		xml.AddElem("AllowAnyIP", user->m_AllowedRemoteAny?"1":"0");
+		xml.AddElem("Allowed_IPs");
+		struct in_addr sa;
+		for (int x=0;x<user->m_AllowedRemoteIPs.size();x++)
+		{
+			IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[x];
+			if (!ips->Ignored)
 			{
-				IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[x];
-				if (!ips->Ignored)
-				{
-					sa.S_un.S_addr = ips->Address;
-					xml.AddChildElem("IP", inet_ntoa(sa));
-					if (ips->Allowed)
-						xml.AddChildAttrib("Allowed", "1");
-				}
+				sa.S_un.S_addr = ips->Address;
+				xml.AddChildElem("IP", inet_ntoa(sa));
+				if (ips->Allowed)
+					xml.AddChildAttrib("Allowed", "1");
 			}
+		}
 
 /*
-			xml.AddChildElem("Time", user->m_Time);
+		xml.AddChildElem("Time", user->m_Time);
 */
-			xml.OutOfElem();
-		}
+		xml.OutOfElem();
 	}
 
 	CString csXML = xml.GetDoc();

@@ -21,6 +21,7 @@
 #include <vector>
 
 class CUser;
+class CXmlEntity;
 //typedef std::vector<CUser *> DHCPLIST;
 typedef std::vector<BSTR> REQUESTLIST;
 typedef std::vector<CxImage *> IMAGESLIST;
@@ -48,11 +49,11 @@ public:
 	virtual ~CSettings();
 
 	CComBSTR m_JID, m_Password, m_ServerHost;
-	CComBSTR m_IPMediator, m_LinkMediator;
+	CComBSTR m_LinkMediator;
 	long	m_LinkMediatorPort, m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFile, m_FunctionDebugFile;
-	CComBSTR m_Skin, m_UpdateURL;
-	BOOL m_UseIPMediator, m_AllowLinkMediatorToBeProvidedByIPMediator, m_AllowAnyMediator, m_ShowMediatorOnContacts, m_SoundOn, m_LoadSuccess;
+	CComBSTR m_Skin, m_UpdateURL, m_IPProviderURL;
+	BOOL m_UseIPFromDatabase, m_UseLinkMediatorFromDatabase, m_AllowAnyMediator, m_SoundOn, m_LoadSuccess;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
 	BOOL	m_UseSSLWrapper;
@@ -149,6 +150,14 @@ public:
 	int m_FixedMTUNum;
 
 	CComBSTR m_PasswordProtectPassword;
+
+	void ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value, BOOL default_value);
+	void ReadSettingsCfg(CXmlEntity *own, char *Name, long *Value, long default_value);
+	void ReadSettingsCfg(CXmlEntity *own, char *Name, unsigned long *Value, unsigned long default_value);
+	void ReadSettingsCfg(CXmlEntity *own, char *Name, CComBSTR &Value, char *default_value);
+	void ReadSettingsCfg(CXmlEntity *own, char *Name, Buffer *Value);
+
+
 };
 
 #endif // !defined(AFX_SETTINGS_H__1DE4FC9D_C300_4D67_9DE6_DF3E02864843__INCLUDED_)

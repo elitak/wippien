@@ -19,6 +19,10 @@
 #include "SDKMessageLink.h"
 #include "UpdateHandler.h"
 #include "MsgWin.h"
+#include "SimpleHttpRequest.h"
+#include "SimpleXmlParser.h"
+
+
 #ifdef _SKINMAGICKEY
 #include "SkinMagicLib.h"
 #endif
@@ -107,11 +111,14 @@ CMainDlg::CMainDlg()
 	InitializeCriticalSection(&m_IcmpCS);
 
 	m_User32Module =::LoadLibrary(_T("User32.dll"));
+	m_SimpleHttpRequest = NULL;
 
 }
 
 CMainDlg::~CMainDlg()
 {
+	if (m_SimpleHttpRequest)
+		delete m_SimpleHttpRequest;
 	DumpDebug("*MainDlg::~MainDlg\r\n");
 	if (_Settings.m_LoadSuccess)
 		_Settings.Save(FALSE);
@@ -762,6 +769,60 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 				KillTimer(108);
 				break;
 
+			case 999:
+				{
+					// not real timer, but fired when below simplehttprequest finishes
+					CXmlParser xml;
+					xml.SkipHeaders(&m_SimpleHttpRequest->m_Out);
+					CXmlEntity *xmlent = xml.Parse(&m_SimpleHttpRequest->m_Out);
+					if (xmlent)
+					{
+						if (_Settings.m_ObtainIPAddress == 1)
+						{
+							// what's our IP?
+							CXmlEntity *virtip = CXmlEntity::FindByName(xmlent, "VirtualIP", 1);
+							if (virtip)
+							{
+								CXmlEntity *virtmask = CXmlEntity::FindByName(xmlent, "VirtualMask", 1);
+								if (virtmask)
+								{
+									_Settings.m_MyLastNetwork = 0;
+									_Settings.m_MyLastNetmask = 0;
+									_Ethernet.Start(inet_addr(virtip->Value), inet_addr(virtmask->Value));
+									_Settings.Save(FALSE);
+								}
+							}
+						}
+
+						if (_Settings.m_UseLinkMediatorFromDatabase)
+						{
+							CXmlEntity *start = NULL;
+							do 
+							{
+								start = CXmlEntity::FindByName(xmlent, "Mediator", 1);
+								if (start)
+								{
+									CXmlEntity *medip = CXmlEntity::FindByName(start, "IP", 1);
+									CXmlEntity *medport = CXmlEntity::FindByName(start, "UDPPort", 1);
+									if (medip && medport)
+									{
+										_Settings.m_LinkMediator = medip->Value;
+										_Settings.m_LinkMediatorPort = atol(medport->Value);
+										_Settings.Save(FALSE);
+										break; //TODO REMOVE THIS!
+									}
+									start->Name[0] = 0; // to disable this mediator from future search
+								}
+							} while(start);
+						}
+					}
+
+					if (m_SimpleHttpRequest)
+						delete m_SimpleHttpRequest;
+					m_SimpleHttpRequest = NULL;
+				}
+				break;
+
 			case 106:
 				{
 					// this is connect timer
@@ -775,9 +836,21 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					if (m_ReconnectWait < 1)
 					{
 						KillTimer(106);
+						CComBSTR2 j = _Settings.m_JID, p = _Settings.m_Password, s = _Settings.m_ServerHost;
+
+						if (_Settings.m_UseLinkMediatorFromDatabase || _Settings.m_ObtainIPAddress == 1)
+						{
+							// send request to obtain our IP address
+							if (m_SimpleHttpRequest)
+								delete m_SimpleHttpRequest;
+							m_SimpleHttpRequest = new CSimpleHttpRequest(m_hWnd, 999); // which timer event occurs?
+							CComBSTR j1 = _Settings.m_IPProviderURL;
+							j1 += _Settings.m_JID;
+							CComBSTR2 j2 = j1;
+							m_SimpleHttpRequest->Get(j2.ToString());
+						}
 
 						// now connect!
-						CComBSTR2 j = _Settings.m_JID, p = _Settings.m_Password, s = _Settings.m_ServerHost;
 						_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort, _Settings.m_UseSSLWrapper);
 					}
 					

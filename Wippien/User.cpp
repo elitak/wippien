@@ -406,16 +406,8 @@ void CUser::SendConnectionRequest(BOOL Notify)
 	if (m_Block)
 		return;
 
-
-	if (!_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
-	{
-		_MainDlg.ShowStatusText("Mediator not available!");
-		return;
-	}
-
 	if (!ExchangeWippienDetails())
 		return;
-
 
 	EnterCriticalSection(&m_CritCS);
 #ifdef _WODVPNLIB

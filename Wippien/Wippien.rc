@@ -19,6 +19,7 @@
 // Dialog
 //
 
+
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -103,8 +104,9 @@ BEGIN
     CONTROL         "Ignore. IP will be set outside of this program.",
                     IDC_IPADDRESSIGNORE,"Button",BS_AUTORADIOBUTTON,6,77,154,
                     10
-    CONTROL         "Provided by IP mediator",IDC_IPADDRESSBYIPMEDIATOR,
-                    "Button",BS_AUTORADIOBUTTON,6,90,91,10
+    CONTROL         "Obtained by IP provider database",
+                    IDC_IPADDRESSBYIPMEDIATOR,"Button",BS_AUTORADIOBUTTON,6,
+                    90,121,10
     CONTROL         "Use following static address:",IDC_IPADDRESSSTATIC,
                     "Button",BS_AUTORADIOBUTTON,6,102,105,10
     CONTROL         "IPAddress1",IDC_ETHERNET_IP,"SysIPAddress32",WS_TABSTOP,
@@ -341,26 +343,23 @@ IDD_SETTINGS_MEDIATOR DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "Use IP mediator to get local IP address",
-                    IDC_USEIPMEDIATOR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
-                    9,12,138,10
-    LTEXT           "Choose IP mediator. Enter his JID here. IP Mediator provides you with IP address, and points to LINK Mediator that will be used to establish connections. If you already have IP address, you don't need this mediator anymore.. Ever..",
-                    IDC_LABEL_ETHERNET2,16,23,204,34
-    LTEXT           "Mediator:",IDC_STATIC,19,62,35,9
-    EDITTEXT        IDC_MEDIATOR,55,60,113,13,ES_AUTOHSCROLL
-    CONTROL         "Show mediator on your contact list",
-                    IDC_CHECK_SHOWMEDIATOR,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,16,74,124,10
-    LTEXT           "Choose LINK mediator. It will be provided by IP Mediator too.",
-                    IDC_STATIC,15,96,192,8
-    LTEXT           "Hostname:",IDC_STATIC,13,113,35,8
-    EDITTEXT        IDC_LINKMEDIATOR_HOSTNAME,50,111,81,13,ES_AUTOHSCROLL
+    CONTROL         "Obtain IP from main Wippien IP database",
+                    IDC_USEIPFROMDATABASE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,9,12,145,10
+    LTEXT           "Enter URL below. We can provide IP address for you, and details about current LINK mediators available. You can of course ignore our settings and use your own.",
+                    IDC_LABEL_ETHERNET2,16,23,228,23
+    LTEXT           "URL to obtain IP:",IDC_STATIC,16,49,56,8
+    EDITTEXT        IDC_IPOBTAINURL,16,60,226,13,ES_AUTOHSCROLL
+    LTEXT           "Choose LINK mediator. It can be obtained from IP provider",
+                    IDC_STATIC,15,96,184,8
+    LTEXT           "Hostname:",IDC_STATIC,15,113,35,8
+    EDITTEXT        IDC_LINKMEDIATOR_HOSTNAME,52,111,81,13,ES_AUTOHSCROLL
     LTEXT           "Port:",IDC_STATIC,147,113,16,8
     EDITTEXT        IDC_LINKMEDIATOR_PORT,165,111,35,13,ES_AUTOHSCROLL | 
                     ES_NUMBER
-    CONTROL         "Update LINK Mediator with address received by IP Mediator",
+    CONTROL         "Update LINK Mediator with address received from IP provider",
                     IDC_CHECK_ALLOWLINKMEDIATOR,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,14,128,175,10
+                    WS_TABSTOP,14,128,221,10
     GROUPBOX        "",IDC_STATIC,7,3,245,84
     GROUPBOX        "",IDC_STATIC,7,85,245,64
 END

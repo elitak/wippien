@@ -187,9 +187,6 @@ CUser *CUserList::AddNewUser(char *j, WODXMPPCOMLib::IXMPPContact *contact)
 CUser *CUserList::AddNewUser(char *j, void *contact)
 #endif
 {
-		CComBSTR2 m = _Settings.m_IPMediator;
-		// should we show mediator?
-
 		//CUser *user = new CUser();
 #ifdef _WODVPNLIB
 		CUser *user = new CUser();
@@ -200,17 +197,9 @@ CUser *CUserList::AddNewUser(char *j, void *contact)
 #endif	
 		strcpy(user->m_JID, j);
 
-		if (!stricmp(j, m.ToString()) && !_Settings.m_ShowMediatorOnContacts)
-		{
-			user->m_Hidden = TRUE;
+		if (!user->m_Hidden)
 			user->m_Changed = TRUE;
-		}
-		else
-		{
-			if (!user->m_Hidden)
-				user->m_Changed = TRUE;
-			user->m_Hidden = FALSE;
-		}
+		user->m_Hidden = FALSE;
 
 		CComBSTR2 g;
 		if (contact)
@@ -424,13 +413,6 @@ void CUserList::RefreshUser(void *cntc)
 						}
 						jid = jd1;
 
-
-						// if this is mediator, skip it
-						if (!_Settings.m_ShowMediatorOnContacts)
-						{
-							if (jid == _Settings.m_IPMediator)
-								continue;
-						}
 
 						char *j = jid.ToString();						
 						if (_Settings.IsHiddenContact(j))

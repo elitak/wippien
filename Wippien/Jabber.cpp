@@ -395,10 +395,10 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 			jid = jd1;
 
 			
-			if (jid == _Settings.m_IPMediator)
+			if (jid == "mediator@wippien.com")
 			{
 				if (!_Ethernet.m_Available) return; // ignore if ethernet is not available
-				if (!_Settings.m_UseIPMediator) return; //ingore if user said so
+				if (!_Settings.m_UseIPFromDatabase) return; //ingore if user said so
 				if (msgtype == /*MsgError*/4) return; // ignore errors from mediator
 
 
@@ -500,7 +500,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 //							struct  in_addr inaddr;
 //							inaddr.s_addr = inet_addr(ip);
 //							if (inaddr.s_addr != INADDR_NONE)
-							if (_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator)
+							if (_Settings.m_UseLinkMediatorFromDatabase)
 							{
 								_Settings.m_LinkMediator = ip;
 								_Settings.m_LinkMediatorPort = atol(port);
@@ -862,49 +862,7 @@ void __stdcall CJabberEvents::DispContactList()
 #endif
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-	BOOL init = _Jabber->m_Initial;
 	_Jabber->m_Initial = FALSE;
-
-	if (_Settings.m_IPMediator.Length() && _Settings.m_UseIPMediator)
-	{
-
-#ifndef _WODXMPPLIB
-		// ask mediator for his details
-		WODXMPPCOMLib::IXMPPContacts *contacts;
-		if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&contacts)))
-		{
-			
-			WODXMPPCOMLib::IXMPPContact *contact;
-			VARIANT var;
-			var.vt = VT_BSTR;
-			var.bstrVal = _Settings.m_IPMediator;
-			HRESULT hr = contacts->get_Item(var, &contact);
-			if (FAILED(hr))
-				hr = contacts->raw_Add(_Settings.m_IPMediator, &contact);
-
-			if (SUCCEEDED(hr))
-			{
-				_Jabber->Message(contact, NULL, "HELO", "");
-				contact->Release();
-			}
-			contacts->Release();
-		}
-#else
-	void *ct = NULL;
-	CComBSTR2 md = _Settings.m_IPMediator;
-	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(wodXMPP, md.ToString(), &ct);
-		if (!ct)
-			WODXMPPCOMLib::XMPP_ContactsAdd(wodXMPP, md.ToString(), &ct);
-		if (ct)
-		{
-			_Jabber->Message(ct, NULL, "HELO", "");
-			WODXMPPCOMLib::XMPP_Contacts_Free(ct);
-		}
-#endif
-	}
-//	if (_MainDlg.IsWindow())
-//		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, TRUE);
-//		_MainDlg.m_UserList.Refresh(NULL);
 	_MainDlg.m_UserList.RefreshUser(NULL);
 }
 #ifdef _WODXMPPLIB

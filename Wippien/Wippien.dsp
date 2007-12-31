@@ -387,6 +387,14 @@ SOURCE=.\SettingsDlg.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\SimpleHttpRequest.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\SimpleXmlParser.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\StdAfx.h
 # End Source File
 # Begin Source File

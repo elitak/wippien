@@ -36,6 +36,7 @@ extern UINT WM_TASKBARCREATEDMESSAGE;
 #define _DEBUGWNDMSG
 
 class CBalloonHelp;
+class CSimpleHttpRequest;
 
 class CMainDlg : public CAxDialogImpl<CMainDlg>, /*public CUpdateUI<CMainDlg>,*/
 		public CMessageFilter, public CIdleHandler
@@ -88,6 +89,7 @@ public:
 	BOOL m_IMove, m_IMinimized;
 	HWND m_EmptyWin;
 	HMODULE m_User32Module;
+	CSimpleHttpRequest *m_SimpleHttpRequest;
 
 	void ShowStatusText(char *text);
 

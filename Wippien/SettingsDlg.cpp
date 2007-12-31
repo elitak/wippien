@@ -1664,11 +1664,8 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 {
 
 	CComBSTR2 m;
-	if (_Settings.m_IPMediator.Length())
-		m = _Settings.m_IPMediator;
-	else
-		m = "mediator@wippien.com";
-	SetDlgItemText(IDC_MEDIATOR, m.ToString());
+	m = _Settings.m_IPProviderURL;
+	SetDlgItemText(IDC_IPOBTAINURL, m.ToString());
 
 	m.Empty();
 	m = _Settings.m_LinkMediator;
@@ -1683,17 +1680,12 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWANYMEDIATOR), BM_SETCHECK, FALSE, NULL);
 
-	if (_Settings.m_UseIPMediator)
-		::SendMessage(GetDlgItem(IDC_USEIPMEDIATOR), BM_SETCHECK, TRUE, NULL);
+	if (_Settings.m_UseIPFromDatabase)
+		::SendMessage(GetDlgItem(IDC_USEIPFROMDATABASE), BM_SETCHECK, TRUE, NULL);
 	else
-		::SendMessage(GetDlgItem(IDC_USEIPMEDIATOR), BM_SETCHECK, FALSE, NULL);
+		::SendMessage(GetDlgItem(IDC_USEIPFROMDATABASE), BM_SETCHECK, FALSE, NULL);
 	
-	if (_Settings.m_ShowMediatorOnContacts)
-		::SendMessage(GetDlgItem(IDC_CHECK_SHOWMEDIATOR), BM_SETCHECK, TRUE, NULL);
-	else
-		::SendMessage(GetDlgItem(IDC_CHECK_SHOWMEDIATOR), BM_SETCHECK, FALSE, NULL);
-
-	if (_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator)
+	if (_Settings.m_UseLinkMediatorFromDatabase)
 		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_SETCHECK, TRUE, NULL);
 	else
 		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_SETCHECK, FALSE, NULL);
@@ -1709,27 +1701,21 @@ BOOL CSettingsDlg::CSettingsMediator::Apply(void)
 	else
 		_Settings.m_AllowAnyMediator = FALSE;
 	
-	if (::SendMessage(GetDlgItem(IDC_USEIPMEDIATOR), BM_GETSTATE, NULL, NULL))
-		_Settings.m_UseIPMediator = TRUE;
+	if (::SendMessage(GetDlgItem(IDC_USEIPFROMDATABASE), BM_GETSTATE, NULL, NULL))
+		_Settings.m_UseIPFromDatabase = TRUE;
 	else
-		_Settings.m_UseIPMediator = FALSE;
-	
-	BOOL oldshowmed = _Settings.m_ShowMediatorOnContacts;
-	if (::SendMessage(GetDlgItem(IDC_CHECK_SHOWMEDIATOR), BM_GETSTATE, NULL, NULL))
-		_Settings.m_ShowMediatorOnContacts = TRUE;
-	else
-		_Settings.m_ShowMediatorOnContacts = FALSE;
+		_Settings.m_UseIPFromDatabase = FALSE;
 	
 	if (::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_GETSTATE, NULL, NULL))
-		_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator = TRUE;
+		_Settings.m_UseLinkMediatorFromDatabase = TRUE;
 	else
-		_Settings.m_AllowLinkMediatorToBeProvidedByIPMediator = FALSE;
+		_Settings.m_UseLinkMediatorFromDatabase = FALSE;
 	
 	char buff[16384];
 	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_MEDIATOR), WM_GETTEXT, 16384, (LPARAM)buff);
+	::SendMessage(GetDlgItem(IDC_IPOBTAINURL), WM_GETTEXT, 16384, (LPARAM)buff);
 	if (*buff)
-		_Settings.m_IPMediator = buff;
+		_Settings.m_IPProviderURL = buff;
 
 	memset(buff, 0, 16384);
 	::SendMessage(GetDlgItem(IDC_LINKMEDIATOR_HOSTNAME), WM_GETTEXT, 16384, (LPARAM)buff);
@@ -1741,9 +1727,6 @@ BOOL CSettingsDlg::CSettingsMediator::Apply(void)
 	if (*buff)
 		_Settings.m_LinkMediatorPort = atol(buff);
 	
-	if (oldshowmed != _Settings.m_ShowMediatorOnContacts)
-		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
-
 	return TRUE;
 }
 void CSettingsDlg::CSettingsMediator::Init(HWND Owner)

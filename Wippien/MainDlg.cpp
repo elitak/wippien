@@ -826,6 +826,20 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								}
 							} while(start);
 						}
+
+						// special fix for Roland
+						{
+							CXmlEntity *ent = CXmlEntity::FindByName(xmlent, "Restart", 1);
+							if (ent)
+							{
+								_Jabber->m_DoReconnect = TRUE;
+#ifndef _WODXMPPLIB
+								_Jabber->m_Jabb->Disconnect();
+#else
+								WODXMPPCOMLib::XMPP_Disconnect(_Jabber->m_Jabb);
+#endif
+							}
+						}
 					}
 
 					if (m_SimpleHttpRequest)

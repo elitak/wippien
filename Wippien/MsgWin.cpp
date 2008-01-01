@@ -18,7 +18,6 @@
 #include <Mshtmdid.h>
 #include "BaloonHelp.h"
 #include "MainDlg.h"
-#include "Markup.h"
 #include "ProgressDlg.h"
 #include "../CxImage/zlib/zlib.h"
 #include <io.h>
@@ -1128,6 +1127,45 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 	return TRUE;
 }
 
+void EscapeXML(Buffer *b)
+{
+	Buffer c;
+	
+	while (b->Len())
+	{
+		char *d = b->Ptr();
+		switch (*d)
+		{
+		case '&':
+			c.Append("&amp;");
+			break;
+			
+		case '<':
+			c.Append("&lt;");
+			break;
+			
+		case '>':
+			c.Append("&gt;");
+			break;
+			
+		case '"':
+			c.Append("&quot;");
+			break;
+			
+		case '\'':
+			c.Append("&apos;");
+			break;
+			
+		default:
+			c.Append(d, 1);
+			break;
+		}
+	}
+
+	b->Append(c.Ptr(), c.Len());
+}
+
+
 BOOL CMsgWin::Incoming(BOOL IsSystem, char *text, char *Html)
 {
 	if (!IsSystem)
@@ -1153,11 +1191,13 @@ BOOL CMsgWin::Incoming(BOOL IsSystem, char *text, char *Html)
 	if (Html && *Html)
 	{
 		b.Append(Html);
-//		b.Append(CMarkup::EscapeText(Html, 0));
 	}
 	else
 	{
-		b.Append(CMarkup::EscapeText(text, 0));
+		Buffer c1;
+		c1.Append(text);
+		EscapeXML(&c1);
+		b.Append(c1.Ptr(), c1.Len());
 //		b.Append(text);
 	}
 	if (!IsSystem)

@@ -771,6 +771,17 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 
 			case 999:
 				{
+
+					if (_SDK)
+					{
+						Buffer b;
+						b.PutCString("");
+						b.PutCString(m_SimpleHttpRequest->m_Out.Ptr());
+						
+						if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_MEDIATORMESSAGE, b.Ptr(), b.Len()))
+							return FALSE;
+					}
+
 					// not real timer, but fired when below simplehttprequest finishes
 					CXmlParser xml;
 					xml.SkipHeaders(&m_SimpleHttpRequest->m_Out);

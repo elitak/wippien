@@ -91,6 +91,30 @@ public:
 	int GetBignum(BIGNUM *);
 	int GetBignum2(BIGNUM *);
 	int GetBignumSSH(BIGNUM *);
+
+
+	void AddChildElem(char *Name, int Value)
+	{
+		char buff[16384];
+		sprintf(buff, "<%s>%d</%s>\r\n", Name, Value, Name);
+		Append(buff);
+	}
+	void AddChildElem(char *Name, char * Value)
+	{
+		char buff[16384];
+		if (strlen(Value))
+			sprintf(buff, "<%s>%s</%s>\r\n", Name, Value, Name);
+		else	
+			sprintf(buff, "<%s/>\r\n", Name);
+		Append(buff);
+	}
+	void AddChildAttrib(char *Name, char * Value, char *AttrName, char *AttrValue)
+	{
+		char buff[16384];
+		sprintf(buff, "<%s %s=\"%s\">%s</%s>\r\n", Name, AttrName, AttrValue, Value, Name);
+		Append(buff);
+	}
+
 };
 #endif 
 

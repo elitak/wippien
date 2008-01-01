@@ -139,7 +139,7 @@ public:
 	// window stuff
 	BOOL m_IsAligned, m_IsTopMost, m_DoAlign;
 	RECT m_RosterRect;
-	char m_RosterSnap;
+	int m_RosterSnap;
 
 	BOOL m_CheckUpdate, m_CheckUpdateSilently,m_PasswordProtectAll, m_NowProtected, m_UsePowerOptions;
 	BOOL m_CheckUpdateConnect, m_CheckUpdateTimed, m_ShowUpdaterMessages;
@@ -151,12 +151,12 @@ public:
 
 	CComBSTR m_PasswordProtectPassword;
 
-	void ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value, BOOL default_value);
-	void ReadSettingsCfg(CXmlEntity *own, char *Name, long *Value, long default_value);
-	void ReadSettingsCfg(CXmlEntity *own, char *Name, unsigned long *Value, unsigned long default_value);
-	void ReadSettingsCfg(CXmlEntity *own, char *Name, CComBSTR &Value, char *default_value);
-	void ReadSettingsCfg(CXmlEntity *own, char *Name, Buffer *Value);
-
+	CXmlEntity *ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value, BOOL default_value);
+	CXmlEntity *ReadSettingsCfg(CXmlEntity *own, char *Name, long *Value, long default_value);
+	CXmlEntity *ReadSettingsCfg(CXmlEntity *own, char *Name, unsigned long *Value, unsigned long default_value);
+	CXmlEntity *ReadSettingsCfg(CXmlEntity *own, char *Name, CComBSTR &Value, char *default_value);
+	CXmlEntity *ReadSettingsCfg(CXmlEntity *own, char *Name, Buffer *Value);
+	CXmlEntity *ReadSettingsCfg(CXmlEntity *own, char *Name, char *Value, char *default_value);
 
 };
 

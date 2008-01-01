@@ -156,7 +156,7 @@ public:
 	Buffer m_RemoteIPList;
 	
 	IPADDRESSLIST m_AllowedRemoteIPs;
-	VARIANT_BOOL m_AllowedRemoteAny, m_AllowedRemoteMediator;
+	BOOL m_AllowedRemoteAny, m_AllowedRemoteMediator;
 	
 	
 	BOOL LoadUserImage(CxImage &img);

@@ -10,7 +10,6 @@
 #include "Settings.h"
 #include "Ethernet.h"
 #include "MainDlg.h"
-#include "Markup.h"
 #include "ExtWndShadow.h"
 #include "Notify.h"
 #include <io.h>

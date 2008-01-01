@@ -202,10 +202,6 @@ SOURCE=.\MainDlg.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Markup.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\MsgWin.cpp
 # End Source File
 # Begin Source File
@@ -332,10 +328,6 @@ SOURCE=.\Jabber.h
 # Begin Source File
 
 SOURCE=.\MainDlg.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Markup.h
 # End Source File
 # Begin Source File
 

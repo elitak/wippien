@@ -979,7 +979,7 @@ void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlTex
 #else
 	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)1);
 	WODXMPPCOMLib::XMPP_Message_SetText(msg, MessageText);
-	if (sendhtml)
+	if (/*sendhtml*/0)
 	{
 		WODXMPPCOMLib::XMPP_Message_SetHTMLText(msg, HtmlText);
 	}

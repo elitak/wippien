@@ -185,7 +185,10 @@ public:
 								CXmlEntity *ent = new CXmlEntity();
 								ent->Parent = parent;
 								ent->Name = tagname;
-								ent->Value = escapequotes(tagvalue);
+								if (tagvalue)
+									ent->Value = escapequotes(tagvalue);
+								else
+									ent->Value = "";
 								parent->Attributes.push_back(ent);
 
 
@@ -215,7 +218,10 @@ public:
 			CXmlEntity *ent = new CXmlEntity();
 			ent->Parent = parent;
 			ent->Name = tagname;
-			ent->Value = escapequotes(tagvalue);
+			if (tagvalue)
+				ent->Value = escapequotes(tagvalue);
+			else
+				ent->Value = "";
 			parent->Attributes.push_back(ent);
 		}
 

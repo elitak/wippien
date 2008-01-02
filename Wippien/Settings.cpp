@@ -679,6 +679,7 @@ int CSettings::Load(void)
 
 
 	}
+	delete start; // delete cxmlentity
 	
 	// also, read users
 	// also read users
@@ -794,6 +795,7 @@ int CSettings::Load(void)
 					}
 				} while (ent);
 			}
+			delete start; // delete cxmlentity
 		}
 	}
 	return TRUE;

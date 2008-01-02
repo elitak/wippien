@@ -811,6 +811,8 @@ CJabber::~CJabber()
 	Disconnect();
 #ifndef _WODXMPPLIB
 	m_Jabb.Release();
+#else
+	WODXMPPCOMLib::_XMPP_Destroy(m_Jabb);
 #endif
 }
 
@@ -1006,6 +1008,9 @@ void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlTex
 	{
 		ShowError();
 	}
+#ifdef _WODXMPPLIB
+	WODXMPPCOMLib::XMPP_Message_Free(msg);
+#endif
 }
 
 void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
@@ -1088,6 +1093,11 @@ void CJabber::ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text)
 	{
 		ShowError();
 	}
+
+#ifdef _WODXMPPLIB
+	WODXMPPCOMLib::XMPP_Message_Free(msg);
+#endif
+
 }
 
 void CJabber::ShowError(void)

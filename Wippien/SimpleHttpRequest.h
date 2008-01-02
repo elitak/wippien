@@ -94,8 +94,6 @@ public:
 	}
 	void FdConnect(int err, CSimpleSocketCallback<CSimpleHttpRequest> *Socket)
 	{
-		if (err)
-			delete this;
 	}
 	void FdReceive(int err, CSimpleSocketCallback<CSimpleHttpRequest> *Socket)
 	{

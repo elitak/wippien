@@ -1136,30 +1136,31 @@ void EscapeXML(Buffer *b)
 		char *d = b->Ptr();
 		switch (*d)
 		{
-		case '&':
-			c.Append("&amp;");
-			break;
-			
-		case '<':
-			c.Append("&lt;");
-			break;
-			
-		case '>':
-			c.Append("&gt;");
-			break;
-			
-		case '"':
-			c.Append("&quot;");
-			break;
-			
-		case '\'':
-			c.Append("&apos;");
-			break;
-			
-		default:
-			c.Append(d, 1);
-			break;
+			case '&':
+				c.Append("&amp;");
+				break;
+				
+			case '<':
+				c.Append("&lt;");
+				break;
+				
+			case '>':
+				c.Append("&gt;");
+				break;
+				
+			case '"':
+				c.Append("&quot;");
+				break;
+				
+			case '\'':
+				c.Append("&apos;");
+				break;
+				
+			default:
+				c.Append(d, 1);
+				break;
 		}
+		b->Consume(1);
 	}
 
 	b->Append(c.Ptr(), c.Len());

@@ -522,7 +522,7 @@ void CUserList::RefreshUser(void *cntc)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = FALSE;
 
-									user->ReInit(/*FALSE*/TRUE);
+									user->ReInit(FALSE/*TRUE*/);
 								}
 							
 							}
@@ -536,12 +536,6 @@ void CUserList::RefreshUser(void *cntc)
 							s = stbuf;
 #endif
 							{
-/*								if (!user->m_Online)
-								{
-									s.Empty();
-									s = "Offline";
-								}
-*/
 								char *s1 = s.ToString();
 								if (strcmp(user->m_StatusText, s1))
 								{
@@ -649,7 +643,11 @@ void CUserList::RefreshView(BOOL updateonly)
 			if (!p->m_Hidden && !isblocked)
 			{
 				p->SetSubtext();
-				if (!p->m_Online && p->m_WippienState!=WipConnected)
+				BOOL ison = p->m_Online;
+				if (!ison && p->m_WippienState==WipConnected)
+					ison = TRUE;
+
+				if (!ison && p->m_WippienState!=WipConnected)
 				{
 					if (!p->m_TreeItem)
 					{
@@ -804,7 +802,10 @@ void CUserList::RefreshView(BOOL updateonly)
 				if (!user->m_Hidden && !_Settings.IsHiddenContact(user->m_JID))
 				{
 					tg->TotalCount++;
-					if (user->m_Online)
+					BOOL ison = user->m_Online;
+					if (!ison && user->m_WippienState==WipConnected)
+						ison = TRUE;
+					if (ison)
 						tg->Count++;
 					else
 						offlinecount++;

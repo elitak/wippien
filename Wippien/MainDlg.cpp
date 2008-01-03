@@ -697,14 +697,6 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						CUser *user = (CUser *)m_UserList.GetItemData(hitTarget);
 						if (user)
 						{
-/*							char buff[1024];
-							if (user->m_WippienState == WipConnected)
-							{
-								sprintf(buff, "%s\r\n%s:%d", user->m_JID, inet_ntoa(user->m_RemoteAddr.sin_addr), ntohs(user->m_RemoteAddr.sin_port));
-							}
-							else
-								sprintf(buff, "%s", user->m_JID);
-*/
 							char buff[1024];
 							if (user->m_WippienState == WipConnected)
 							{

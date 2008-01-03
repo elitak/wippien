@@ -74,6 +74,8 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 //	KillTimer(2);
 //	m_WippienState = WipDisconnected;	
 	me->SetSubtext();
+	me->m_Changed = TRUE;
+	_MainDlg.m_UserList.PostMessage(WM_REFRESH, 0, (LPARAM)me);
 
 	return S_OK;
 }
@@ -298,25 +300,24 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
-
-	m_WippienState = WipWaitingInitRequest;
-	m_RemoteWippienState = WipUndefined;
-	EnterCriticalSection(&m_CritCS);
-#ifndef _WODVPNLIB
-	m_wodVPN->raw_Stop();
-#else
-	WODVPNCOMLib::VPN_Stop(m_wodVPN);
-#endif
-	LeaveCriticalSection(&m_CritCS);
-
 	if (WithDirect)
 	{
+		m_WippienState = WipWaitingInitRequest;
+		m_RemoteWippienState = WipUndefined;
+		EnterCriticalSection(&m_CritCS);
+#ifndef _WODVPNLIB
+		m_wodVPN->raw_Stop();
+#else
+		WODVPNCOMLib::VPN_Stop(m_wodVPN);
+#endif
+		LeaveCriticalSection(&m_CritCS);
+
 		memset(&m_RemoteAddr, 0, sizeof(m_RemoteAddr));
 	
 		KillTimer(1);
 		KillTimer(2);
 		int oldst = m_WippienState;
-		//m_WippienState = WipDisconnected;
+
 		if (_SDK && oldst != m_WippienState)
 		{
 			Buffer b;
@@ -330,9 +331,6 @@ void CUser::ReInit(BOOL WithDirect)
 
 	m_MTU = 0;
 	m_DetectMTU = NULL;
-//	if (m_RSA)
-//		RSA_free(m_RSA);
-//	m_RSA = NULL;
 	SetSubtext();
 	m_Hidden = FALSE;
 
@@ -670,7 +668,11 @@ void CUser::SetSubtext(void)
 	struct in_addr in;
 	in.S_un.S_addr  = m_HisVirtualIP;
 
-	if (m_Online)
+	BOOL ison = m_Online;
+	if (!ison && m_WippienState==WipConnected)
+		ison = TRUE;
+		
+	if (ison && m_HisVirtualIP)
 	{
 		sprintf(m_SubText, "%s", m_StatusText);
 	}
@@ -709,7 +711,7 @@ void CUser::SetSubtext(void)
 
 		sprintf(m_SubText, "%s %s", m_StatusText, howlong);
 	}
-	if (m_HisVirtualIP && m_Online)
+	if (ison && m_HisVirtualIP)
 	{
 //		sprintf(m_IPText, " (%s)", inet_ntoa(in));
 		sprintf(m_IPText, "(%s)", inet_ntoa(in));

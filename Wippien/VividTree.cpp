@@ -168,7 +168,10 @@ void CVividTree::DrawItems(CDC *pDC)
 							pDC->SetTextColor(RGB(255,32,32));
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
-						pDC->SetTextColor(cf);
+						if (!user->m_Online && user->m_WippienState==WipConnected)
+							pDC->SetTextColor(RGB(127,127,127));
+						else
+							pDC->SetTextColor(cf);
 						rc_item.top += 12;
 						rc_item.left += 3;
 						pDC->SelectFont(m_hSubFont);
@@ -189,7 +192,10 @@ void CVividTree::DrawItems(CDC *pDC)
 								switch (user->m_WippienState)
 								{
 									case WipConnected:
-										pDC->SetTextColor(RGB(0,0,0));
+										if (user->m_Online)
+											pDC->SetTextColor(RGB(0,0,0));
+										else
+											pDC->SetTextColor(RGB(127,127,127));
 										break;
 
 									case WipConnecting:
@@ -245,7 +251,10 @@ void CVividTree::DrawItems(CDC *pDC)
 							pDC->SetTextColor(RGB(255,32,32));
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
-						pDC->SetTextColor(cf);
+						if (!user->m_Online && user->m_WippienState==WipConnected)
+							pDC->SetTextColor(RGB(127,127,127));
+						else
+							pDC->SetTextColor(cf);
 						rc_item.top += 12;
 						rc_item.left += 3;
 						pDC->SelectFont(m_hSubFont);
@@ -266,7 +275,10 @@ void CVividTree::DrawItems(CDC *pDC)
 								switch (user->m_WippienState)
 								{
 									case WipConnected:
-										pDC->SetTextColor(RGB(0,0,0));
+										if (user->m_Online)
+											pDC->SetTextColor(RGB(0,0,0));
+										else
+											pDC->SetTextColor(RGB(127,127,127));
 										break;
 
 									case WipConnecting:

@@ -119,114 +119,6 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 }
 
 #ifdef _WODXMPPLIB
-void XMPPConnected(void *wodXMPP)
-#else
-void __stdcall CJabberEvents::DispConnected ()
-#endif
-{
-	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-	_Jabber->m_ConnectTime = GetTickCount();
-//		_MainDlg.ShowStatusText("Connected.");
-#ifndef _WODXMPPLIB
-/*	WODXMPPCOMLib::IXMPPServices *serv = NULL;
-	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
-	{
-		serv->Discover(TRUE);
-		serv->Release();
-	}
-*/
-	// and request vcard
-	WODXMPPCOMLib::IXMPPVCard *vc;
-	if (SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc)))
-	{
-		vc->Receive();
-		vc->Release();
-	}
-	DispStateChange((WODXMPPCOMLib::StatesEnum)0);
-#else 
-//	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
-	WODXMPPCOMLib::XMPP_VCardReceive(_Jabber->m_Jabb);
-#endif
-
-	if (_Settings.m_DeleteContactsOnConnect)
-	{
-		_MainDlg.m_UserList.DeleteAllItems();
-		// we should now delete all our contacts
-		while (_MainDlg.m_UserList.m_Users.size())
-		{
-			CUser *user = _MainDlg.m_UserList.m_Users[0];
-			_MainDlg.m_UserList.m_Users.erase(_MainDlg.m_UserList.m_Users.begin());
-#ifdef _WODVPNLIB
-			delete user;
-#else
-			user->Release();
-#endif						
-		}
-	}
-
-	
-	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1], "Connected"); //online
-	if (_SDK)
-	{
-		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_CONNECTED,""))
-			return;
-	}
-
-}
-#ifdef _WODXMPPLIB
-void XMPPDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
-#else
-void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
-#endif
-{
-
-	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
-	_Jabber->m_Initial = TRUE;
-
-	if (_SDK)
-	{
-		Buffer b;
-		b.PutCString(ErrorText);
-
-		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_DISCONNECTED, b.Ptr(), b.Len()))
-			return;
-	}
-
-
-	CComBSTR2 b;
-	if (ErrorCode)
-	{
-		b = ErrorText;
-		_MainDlg.ShowStatusText(b.ToString());
-	
-	}
-	else
-		_MainDlg.ShowStatusText("Disconnected.");
-
-	if (_Jabber->m_DoReconnect)
-	{
-		_MainDlg.m_ReconnectWait = 15;
-		if (_MainDlg.IsWindow())
-			_MainDlg.SetTimer(106,1000);
-	}
-
-
-
-	if (_MainDlg.IsWindow())
-	{
-		for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
-		{
-			CUser *us = (CUser *)_MainDlg.m_UserList.m_Users[i];
-			us->m_Online = FALSE;
-			us->m_Changed = TRUE;
-		}
-		_MainDlg.m_UserList.RefreshUser(NULL);
-//		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
-	}
-	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0], "Disconnected"); //offline
-
-}
-#ifdef _WODXMPPLIB
 void XMPPStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState)
 #else
 void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState)
@@ -294,6 +186,129 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 		}
 	}
 	
+}
+
+#ifdef _WODXMPPLIB
+void XMPPDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
+#else
+void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
+#endif
+{
+	
+	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
+	_Jabber->m_Initial = TRUE;
+	
+	if (_SDK)
+	{
+		Buffer b;
+		b.PutCString(ErrorText);
+		
+		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_DISCONNECTED, b.Ptr(), b.Len()))
+			return;
+	}
+	
+	
+	CComBSTR2 b;
+	if (ErrorCode)
+	{
+		b = ErrorText;
+		_MainDlg.ShowStatusText(b.ToString());
+		
+	}
+	else
+		_MainDlg.ShowStatusText("Disconnected.");
+	
+	if (_Jabber->m_DoReconnect)
+	{
+		_MainDlg.m_ReconnectWait = 15;
+		if (_MainDlg.IsWindow())
+			_MainDlg.SetTimer(106,1000);
+	}
+	
+	
+	
+	if (_MainDlg.IsWindow())
+	{
+		for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+		{
+			CUser *us = (CUser *)_MainDlg.m_UserList.m_Users[i];
+			us->m_Online = FALSE;
+			us->m_Changed = TRUE;
+		}
+		_MainDlg.m_UserList.RefreshUser(NULL);
+		//		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
+	}
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0], "Disconnected"); //offline
+	
+	
+#ifdef _WODXMPPLIB
+	XMPPStateChange(wodXMPP, (WODXMPPCOMLib::StatesEnum)1);
+#else
+	DispStateChange((WODXMPPCOMLib::StatesEnum)1)
+#endif
+}
+
+#ifdef _WODXMPPLIB
+void XMPPConnected(void *wodXMPP)
+#else
+void __stdcall CJabberEvents::DispConnected ()
+#endif
+{
+	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
+	_Jabber->m_ConnectTime = GetTickCount();
+//		_MainDlg.ShowStatusText("Connected.");
+#ifndef _WODXMPPLIB
+/*	WODXMPPCOMLib::IXMPPServices *serv = NULL;
+	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
+	{
+		serv->Discover(TRUE);
+		serv->Release();
+	}
+*/
+	// and request vcard
+	WODXMPPCOMLib::IXMPPVCard *vc;
+	if (SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc)))
+	{
+		vc->Receive();
+		vc->Release();
+	}
+	DispStateChange((WODXMPPCOMLib::StatesEnum)0);
+#else 
+//	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
+	WODXMPPCOMLib::XMPP_VCardReceive(_Jabber->m_Jabb);
+#endif
+
+	if (_Settings.m_DeleteContactsOnConnect)
+	{
+		_MainDlg.m_UserList.DeleteAllItems();
+		// we should now delete all our contacts
+		while (_MainDlg.m_UserList.m_Users.size())
+		{
+			CUser *user = _MainDlg.m_UserList.m_Users[0];
+			_MainDlg.m_UserList.m_Users.erase(_MainDlg.m_UserList.m_Users.begin());
+#ifdef _WODVPNLIB
+			delete user;
+#else
+			user->Release();
+#endif						
+		}
+	}
+
+	
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1], "Connected"); //online
+	if (_SDK)
+	{
+		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_CONNECTED,""))
+			return;
+	}
+
+
+#ifdef _WODXMPPLIB
+	XMPPStateChange(wodXMPP, (WODXMPPCOMLib::StatesEnum)0);
+#else
+	DispStateChange((WODXMPPCOMLib::StatesEnum)0)
+#endif
+
 }
 #ifdef _WODXMPPLIB
 void XMPPContactStatusChange(void *wodXMPP, void  *Contact, WODXMPPCOMLib::StatusEnum OldStatus)

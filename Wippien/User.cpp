@@ -672,7 +672,7 @@ void CUser::SetSubtext(void)
 	if (!ison && m_WippienState==WipConnected)
 		ison = TRUE;
 		
-	if (ison && m_HisVirtualIP)
+	if (ison /*&& m_HisVirtualIP*/)
 	{
 		sprintf(m_SubText, "%s", m_StatusText);
 	}

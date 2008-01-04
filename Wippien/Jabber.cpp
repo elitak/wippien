@@ -553,6 +553,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									memcpy(src, out.Ptr(), 128);
 									if (RSA_private_decrypt(128, (unsigned char *)src, (unsigned char *)dst,  _Settings.m_RSA, RSA_PKCS1_PADDING) < 0)
 									{
+										user->m_WippienState = WipDisconnected;
+										user->NotifyDisconnect();
 										return;
 									}
 

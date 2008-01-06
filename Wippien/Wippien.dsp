@@ -61,8 +61,8 @@ LINK32=link.exe
 
 # PROP BASE Use_MFC 1
 # PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "Wippien___Win32_Release"
-# PROP BASE Intermediate_Dir "Wippien___Win32_Release"
+# PROP BASE Output_Dir "Release"
+# PROP BASE Intermediate_Dir "Release"
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 0
@@ -86,8 +86,8 @@ LINK32=link.exe
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
-# PROP BASE Output_Dir "Wippien___Win32_LibDebug"
-# PROP BASE Intermediate_Dir "Wippien___Win32_LibDebug"
+# PROP BASE Output_Dir "Debug"
+# PROP BASE Intermediate_Dir "Debug"
 # PROP BASE Ignore_Export_Lib 0
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
@@ -113,8 +113,8 @@ LINK32=link.exe
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "Wippien___Win32_LibRelease"
-# PROP BASE Intermediate_Dir "Wippien___Win32_LibRelease"
+# PROP BASE Output_Dir "Release"
+# PROP BASE Intermediate_Dir "Release"
 # PROP BASE Ignore_Export_Lib 0
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0

@@ -1098,7 +1098,6 @@ void CUser::NotifyConnect(void)
 			out.Append("\0", 1);
 			CComBSTR t1 = out.Ptr();
 			msg->put_Text(t1);
-			WODXMPPCOMLib::XMPP_Message_SetText(msg, out.Ptr());
 
 			HRESULT hr = ct->raw_SendMessage(msg);
 			if (FAILED(hr))

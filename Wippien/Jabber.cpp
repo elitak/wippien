@@ -244,7 +244,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 #ifdef _WODXMPPLIB
 	XMPPStateChange(wodXMPP, (WODXMPPCOMLib::StatesEnum)1);
 #else
-	DispStateChange((WODXMPPCOMLib::StatesEnum)1)
+	DispStateChange((WODXMPPCOMLib::StatesEnum)1);
 #endif
 }
 
@@ -306,7 +306,7 @@ void __stdcall CJabberEvents::DispConnected ()
 #ifdef _WODXMPPLIB
 	XMPPStateChange(wodXMPP, (WODXMPPCOMLib::StatesEnum)0);
 #else
-	DispStateChange((WODXMPPCOMLib::StatesEnum)0)
+	DispStateChange((WODXMPPCOMLib::StatesEnum)0);
 #endif
 
 }

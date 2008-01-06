@@ -1419,7 +1419,7 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	CComBSTR2 k;
 	VARIANT var;
 	var.vt = VT_ERROR;
-	if (SUCCEEDED(_Jabber->m_Jabb->get_StatusText(var, &j)))
+	if (SUCCEEDED(_Jabber->m_Jabb->get_StatusText(var, &k)))
 	{
 		st = k.ToString();
 	}

@@ -697,14 +697,23 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						CUser *user = (CUser *)m_UserList.GetItemData(hitTarget);
 						if (user)
 						{
+							Buffer textbuff;
 							char buff[1024];
+							textbuff.Append(user->m_SubText);
+							textbuff.Append("\r\n\r\n");
+
+
 							if (user->m_WippienState == WipConnected)
 							{
 								CComBSTR2 ra = user->m_RemoteAddr;
 								sprintf(buff, "%s (%d)\r\nMTU: %d", ra.ToString(), user->m_RemotePort, user->m_MTU);
+								textbuff.Append(buff);
 							}
 							else
+							{
 								sprintf(buff, "<< VPN not established yet >>");
+								textbuff.Append(buff);
+							}
 
 							if (m_pBalloon)
 							{
@@ -730,7 +739,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								b1.Append(")");
 							}
 							b1.Append("\0",1);
-							m_pBalloon->Create(m_hWnd, b1.Ptr(), buff, &img, &p,	
+							m_pBalloon->Create(m_hWnd, b1.Ptr(), textbuff.Ptr(), &img, &p,	
 							CBalloonHelp::BallonOptions::BOCloseOnButtonDown | 
 							CBalloonHelp::BallonOptions::BOCloseOnButtonUp | 
 							CBalloonHelp::BallonOptions::BOCloseOnMouseMove | 

@@ -258,13 +258,13 @@ void __stdcall CJabberEvents::DispConnected ()
 	_Jabber->m_ConnectTime = GetTickCount();
 //		_MainDlg.ShowStatusText("Connected.");
 #ifndef _WODXMPPLIB
-/*	WODXMPPCOMLib::IXMPPServices *serv = NULL;
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
 	{
 		serv->Discover(TRUE);
 		serv->Release();
 	}
-*/
+
 	// and request vcard
 	WODXMPPCOMLib::IXMPPVCard *vc;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_VCard(&vc)))
@@ -274,7 +274,7 @@ void __stdcall CJabberEvents::DispConnected ()
 	}
 	DispStateChange((WODXMPPCOMLib::StatesEnum)0);
 #else 
-//	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
+	WODXMPPCOMLib::XMPP_ServicesDiscover(_Jabber->m_Jabb, TRUE);
 	WODXMPPCOMLib::XMPP_VCardReceive(_Jabber->m_Jabb);
 #endif
 
@@ -311,7 +311,7 @@ void __stdcall CJabberEvents::DispConnected ()
 
 }
 #ifdef _WODXMPPLIB
-void XMPPContactStatusChange(void *wodXMPP, void  *Contact, WODXMPPCOMLib::StatusEnum OldStatus)
+void XMPPContactStatusChange(void *wodXMPP, void  *Contact, void *ChatRoom, WODXMPPCOMLib::StatusEnum NewStatus, WODXMPPCOMLib::StatusEnum OldStatus)
 #else
 void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::StatusEnum OldStatus)
 #endif
@@ -373,7 +373,7 @@ void __stdcall CJabberEvents::DispIncomingNotification(WODXMPPCOMLib::IXMPPConta
 	_MainDlg.OnIncomingNotification(jd1, (int)NotifyID, Data);
 }
 #ifdef _WODXMPPLIB
-void XMPPIncomingMessage(void *wodXMPP, void  *Contact, void  *Message)
+void XMPPIncomingMessage(void *wodXMPP, void  *Contact, void *ChatRoom, void  *Message)
 #else
 void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message)
 #endif

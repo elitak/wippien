@@ -1250,8 +1250,9 @@ void CMainDlg::RecalcInternalItems(void)
 
 	HWND hBtn4 = GetDlgItem(IDC_MYSTATUS);
 	HWND hBtn5 = GetDlgItem(IDC_MYCONTACTS);
-	HWND hBtn6 = GetDlgItem(IDC_SMALLMUTE);
-	HWND hBtn7 = GetDlgItem(IDC_MYAUTHDLG);
+	HWND hBtn6 = GetDlgItem(IDC_CHATROOMS);
+	HWND hBtn7 = GetDlgItem(IDC_SMALLMUTE);
+	HWND hBtn8 = GetDlgItem(IDC_MYAUTHDLG);
 
 
 	int size = rc.right/3;
@@ -1281,6 +1282,7 @@ void CMainDlg::RecalcInternalItems(void)
 	::SetWindowPos(hBtn5, NULL, rc.left + 20, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
 	::SetWindowPos(hBtn6, NULL, rc.left + 40, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
 	::SetWindowPos(hBtn7, NULL, rc.left + 60, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
+	::SetWindowPos(hBtn8, NULL, rc.left + 80, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
 }
 
 
@@ -1687,6 +1689,9 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	int mutimg = _Settings.m_SoundOn?ID_PNG1_MUTEON:ID_PNG1_MUTEOFF;
 	m_btnSmallMute.LoadPNG(mutimg);
 
+	m_btnChatRooms.SubclassWindow(GetDlgItem(IDC_CHATROOMS));
+	m_btnChatRooms.LoadPNG(ID_PNG1_CHATROOMS);
+	
 	m_btnAuthDlg.SubclassWindow(GetDlgItem(IDC_MYAUTHDLG));
 	m_btnAuthDlg.LoadPNG(IDC_MYAUTHDLG);
 	
@@ -2297,8 +2302,19 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 
 LRESULT CMainDlg::OnBtnSmallMute(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-	DumpDebug("*MainDlg::OnBtnSmallMute\r\n");
-	_MainDlg.ToggleMute();
+	return 0;
+}
+
+LRESULT CMainDlg::OnBtnChatRooms(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	CSettingsDlg dlg(TRUE);
+	CSettingsDlg::_CSettingsTemplate *pgchat = NULL;
+	pgchat = new CSettingsDlg::CSettingsChatRooms();
+	dlg.m_Dialogs.push_back(pgchat);
+	
+	dlg.DoModal();
+	delete pgchat;
+
 	return 0;
 }
 
@@ -2312,29 +2328,12 @@ LRESULT CMainDlg::OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	HMENU h = GetSubMenu(hm, 0);
 
 
-/*	MENUITEMINFO lpmii = {0};
-	lpmii.cbSize = sizeof(lpmii);
-	lpmii.fMask = MIIM_STATE;
-
-	GetMenuItemInfo(h, ID_POPUP3_ONLINE, FALSE, &lpmii);
-	lpmii.fState = MFS_ENABLED;
-	SetMenuItemInfo(h, ID_POPUP3_ONLINE, FALSE, &lpmii);
-*/
-
 	m_CanTooltip = FALSE;
 	m_UserList.m_SetupPopupMenu->AttachMenu(hm);
 	int i = m_UserList.m_SetupPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
 	m_CanTooltip = TRUE;
 	DestroyMenu(hm);
 
-/*
-	RECT rt;
-	::GetWindowRect(GetDlgItem(IDC_MYCONTACTS), &rt);
-
-	m_CanTooltip = FALSE;
-	int i = m_UserList.m_SetupPopupMenu->TrackPopupMenu(GetSubMenu(m_UserList.m_SetupPopupMenu->m_hMenu, 0), TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
-	m_CanTooltip = TRUE;
-*/
 
 	switch (i)
 	{

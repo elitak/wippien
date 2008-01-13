@@ -67,6 +67,7 @@ CUserList::CUserList()
 	m_ListboxSubFont = NULL;
 	m_UserPopupMenu = NULL;
 	m_SetupPopupMenu = NULL;
+	m_ChatRoomPopupMenu = NULL;
 	m_AwayPopupMenu = NULL;
 	m_SortedUser = NULL;
 	InitializeCriticalSection(&m_UserCS);
@@ -88,6 +89,8 @@ CUserList::~CUserList()
 		delete m_UserPopupMenu;
 	if (m_SetupPopupMenu)
 		delete m_SetupPopupMenu;
+	if (m_ChatRoomPopupMenu)
+		delete m_ChatRoomPopupMenu;
 	if (m_AwayPopupMenu)
 		delete m_AwayPopupMenu;
 	if (m_ListboxFont)
@@ -145,6 +148,9 @@ void CUserList::Init(CMainDlg *Owner, HWND Parent)
 	m_AwayPopupMenu = new CCommandBarCtrlXP();
 	m_AwayPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
 //	m_AwayPopupMenu->AttachMenu(LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_AWAYPOPUP)));
+
+	m_ChatRoomPopupMenu = new CCommandBarCtrlXP();
+	m_ChatRoomPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
 
 }
 
@@ -486,29 +492,53 @@ void CUserList::RefreshUser(void *cntc)
 									{
 										// is this wippien dude?
 										CComBSTR2 r;
+										BOOL isWippien = FALSE;
+
+
 #ifndef _WODXMPPLIB
-										if (SUCCEEDED(contact->get_Resource(&r)))
+										if (SUCCEEDED(contact->get_Capabilities(&r)))
 #else
-										char rsbuf[1024];
+										char rsbuf[1024] = {0};
 										int rsbuflen = sizeof(rsbuf);
-										WODXMPPCOMLib::XMPP_Contact_GetResource(contact, rsbuf, &rsbuflen);
+										WODXMPPCOMLib::XMPP_Contact_GetCapabilities(contact, rsbuf, &rsbuflen);
 										r = rsbuf;
 #endif
+										if (strstr(r.ToString(), WIPPIENIM))
+											isWippien = TRUE;
+
+										// also check by resource (obsolete!)
+										if (!isWippien)
 										{
-											Buffer b;
-											b.Append(r.ToString());
-											b.Append("\r\n");
-											char *line;
-											do 
+#ifndef _WODXMPPLIB
+											if (SUCCEEDED(contact->get_Resource(&r)))
+#else
+											rsbuflen = sizeof(rsbuf);
+											rsbuf[0] = 0;
+											WODXMPPCOMLib::XMPP_Contact_GetResource(contact, rsbuf, &rsbuflen);
+											r = rsbuf;
+#endif
 											{
-												line = b.GetNextLine();
-												if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
+												Buffer b;
+												b.Append(r.ToString());
+												b.Append("\r\n");
+												char *line;
+												do 
 												{
-													// yes he is, request init details
-													user->SetTimer(rand()%1000, 3);
-													break;
-												}
-											}while (line);	
+													line = b.GetNextLine();
+													if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
+													{
+														// yes he is, request init details
+														user->SetTimer(rand()%1000, 3);
+														break;
+													}
+												}while (line);	
+											}	
+										}
+
+										if (isWippien)
+										{
+											// yes he is, request init details
+											user->SetTimer(rand()%1000, 3);
 										}
 									}
 								}

@@ -14,6 +14,8 @@
 #define IDD_ABOUTBOX                    901
 #define IDB_SETUP                       1001
 #define IDC_LIST1                       1002
+#define IDC_MSGWIN_USERS                1002
+#define IDC_CHATROOM_ROOMLIST           1002
 #define IDC_LISTREGISTEREDGATEWAYS      1003
 #define IDC_INTERFACELIST               1004
 #define IDC_SKINLIST                    1005
@@ -21,6 +23,7 @@
 #define IDC_STATUS                      1007
 #define IDD_SETTINGS_JID                1008
 #define IDC_BUTTON1                     1009
+#define IDC_CHATROOM_JOIN               1009
 #define IDC_ADDNEW                      1010
 #define IDC_SETTINGS_USER4_RESETALL     1011
 #define IDC_UPDATE_CHECKNOW             1012
@@ -153,6 +156,7 @@
 #define IDC_TREEBITMAP                  1140
 #define IDC_MYAUTHDLG                   1141
 #define IDC_MOREWAITING                 1142
+#define IDC_CHATROOMS                   1142
 #define IDC_SMALLMUTE                   1143
 #define IDC_APPLYTOALL                  1144
 #define IDC_DETAILS                     1145
@@ -170,6 +174,7 @@
 #define IDC_PERSONAL_JID                1157
 #define IDC_EDIT1                       1158
 #define IDC_IPADDRESS                   1158
+#define IDC_CHATROOM_NICKNAME           1158
 #define IDC_SETTINGS_USER3_ADDRESS      1159
 #define IDC_IPADDRESSNETMASK            1159
 #define IDC_NETMASK_ETHERNET            1159
@@ -181,7 +186,9 @@
 #define IDC_WODAPPUPDATE_VERSION        1165
 #define IDC_EDIT2                       1166
 #define IDC_WODVPN_VERSION              1166
+#define IDC_CHATROOM_ROOMNAME           1166
 #define IDC_SETTINGS_USER3_ADDRESSEXT   1167
+#define IDC_CHATROOM_ROOMPASS           1167
 #define IDC_EXTENDEDAWAYMINUTES         1168
 #define IDC_EMAIL                       1169
 #define IDC_FUNCTIONDELETEMB            1170
@@ -240,7 +247,9 @@
 #define IDC_ALWAYSONTOP2                1223
 #define IDC_CHECKUPDATE_CONNECT         1224
 #define IDC_COMBO1                      1225
+#define IDC_CHATROOM_GATEWAYLIST        1225
 #define IDC_CONTACTLIST                 1226
+#define IDC_CHATROOM_GATEWAY2           1226
 #define IDB_MORESKINS                   1227
 #define IDC_VOICE_PLAYBACKDEVICE        1228
 #define IDC_STATICIP                    1229
@@ -386,6 +395,9 @@
 #define IDB_HUMAN36                     1374
 #define IDB_HUMAN37                     1375
 #define IDD_APPUPDPROGRESS              1376
+#define ID_PNG1_CHATROOMS               1380
+#define IDD_CHATROOMS_DLG               1382
+#define IDD_SETTINGS_CHATROOMS          1382
 #define IDC_USEIPFROMDATABASE           1476
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
@@ -422,14 +434,16 @@
 #define ID_POPUP4_CHANGEPICTURE         32792
 #define ID_POPUP4_YOUR_DETAILS          32793
 #define ID_POPUP1_VOICECHAT             32794
+#define ID_POPUP_LISTCHATROOMS          32795
+#define ID_POPUP_JOINACHATROOM          32796
 #define ID_APP_ABOUT                    0xE140
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        1380
-#define _APS_NEXT_COMMAND_VALUE         32795
+#define _APS_NEXT_RESOURCE_VALUE        1383
+#define _APS_NEXT_COMMAND_VALUE         32797
 #define _APS_NEXT_CONTROL_VALUE         1491
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif

@@ -604,6 +604,10 @@ SOURCE=.\BushBaby.png
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\chatrooms.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\clear_history.png
 # End Source File
 # Begin Source File

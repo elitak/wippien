@@ -241,8 +241,9 @@ void SystimeToTm(struct tm *tm, SYSTEMTIME *st)
 	tm->tm_sec = st->wSecond;
 }
 
-CMsgWin::CMsgWin(CUser *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)
+CMsgWin::CMsgWin(CUser *Owner, BOOL IsMultiChat) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)
 {
+	m_IsMultiChat = /*IsMultiChat*/1;
 	LOGBRUSH brush;
 	
 	// drawing button separators 
@@ -875,13 +876,21 @@ BOOL CMsgWin::ArrangeLayout()
 		HWND hMuteOnOff = GetDlgItem(ID_PNG1_MUTEONOFF);
 		HWND hHumanHead = GetDlgItem(IDC_PERSON);
 		HWND hClearHistory = GetDlgItem(ID_PNG1_CLEARHISTORY);
+
+		HWND hContactList = GetDlgItem(IDC_MSGWIN_USERS);
 		
 		//main elements
 		HWND hList = GetDlgItem(IDC_LIST);
 		HWND hEdit = GetDlgItem(IDC_EDITOR);
 		HWND hBtn = GetDlgItem(IDB_SEND);
 		
-		::MoveWindow(hList,  rc.left, rc.top+50, rc.right , rc.bottom - 132, TRUE);
+		if (m_IsMultiChat)
+		{
+			::MoveWindow(hContactList,  rc.right-100, rc.top+50, rc.right, rc.bottom - 132, TRUE);
+			::MoveWindow(hList,  rc.left, rc.top+50, rc.right-100, rc.bottom - 132, TRUE);
+		}
+		else
+			::MoveWindow(hList,  rc.left, rc.top+50, rc.right , rc.bottom - 132, TRUE);
 		::MoveWindow(hEdit,  rc.left, rc.bottom-50, rc.right-50, 50, TRUE);
 		::MoveWindow(hBtn,  rc.right-50, rc.bottom-50, 50, 50, TRUE);
 
@@ -1239,6 +1248,11 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 	
 	SetIcon(LoadIcon(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_MSGWINICON)));
 
+	HWND hContactList = GetDlgItem(IDC_MSGWIN_USERS);
+	if (m_IsMultiChat)
+		::ShowWindow(hContactList, SW_SHOW);
+	else
+		::ShowWindow(hContactList, SW_HIDE);
 
 	// Send button
 	m_btnSend.SetCaption("Send");

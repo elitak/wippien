@@ -781,6 +781,26 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		void Init(HWND Owner);
 		BOOL Apply(void);
 	};
+	class CSettingsChatRooms   : public CDialogImpl<CSettingsChatRooms>, public _CSettingsTemplate
+	{
+		
+	public:
+		enum { IDD = IDD_SETTINGS_CHATROOMS};
+		
+		CSettingsChatRooms();
+		~CSettingsChatRooms();
+		
+		CComboBox m_ServicesList, m_NewRoomServicesList;
+
+		BEGIN_MSG_MAP(CSettingsChatRooms)
+			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+		END_MSG_MAP()
+			
+		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+		void Show(BOOL Show, RECT *rc);
+		void Init(HWND Owner);
+		BOOL Apply(void);
+	};
 	class CSettingsAutoAway   : public CDialogImpl<CSettingsAutoAway>, public _CSettingsTemplate
 	{
 

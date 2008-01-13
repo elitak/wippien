@@ -809,7 +809,7 @@ void CUser::OpenMsgWindow(BOOL WithFocus)
 {
 	if (!m_MessageWin)
 	{
-		m_MessageWin = new CMsgWin(this);
+		m_MessageWin = new CMsgWin(this, FALSE);
 //		m_MessageWin->m_HumanHead = &m_Icon;
 
 	}

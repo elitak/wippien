@@ -450,67 +450,87 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 
 							// save this for user
 							CComBSTR j;
+							CComBSTR2 capa;
 #ifndef _WODXMPPLIB
+							Contact->get_Capabilities(&capa);
 							if (SUCCEEDED(Contact->get_JID(&j)))
 #else
+							subjbufflen = sizeof(subjbuff);
+							subjbuff[0] = 0;
+							WODXMPPCOMLib::XMPP_Contact_GetCapabilities(Contact, subjbuff, &subjbufflen);
+							capa = subjbuff;
+
 							subjbufflen = sizeof(subjbuff);
 							WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, subjbuff, &subjbufflen);
 							j = subjbuff;
 #endif
 							{
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
+								ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
 								if (user)
 								{
-									ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
-									Buffer b;
-									b.Append(user->m_Resource);
-									b.Append("\r\n");
-									char *line;
-									do 
+									BOOL isWippien = FALSE;
+									if (strstr(capa.ToString(), WIPPIENIM))
+										isWippien = TRUE;
+	
+									if (!isWippien)
 									{
-										line = b.GetNextLine();
-										if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
-										{	
-											if (out.Len()>=4)
-											{
-												user->m_HisVirtualIP = out.GetInt();
-												if (out.Len()>=6)
-												{
-													memcpy(user->m_MAC, out.Ptr(), 6);
-													out.Consume(6);
-												}
-												else
-												{
-													// calculate MAC too
-													if (!memcmp(user->m_MAC, "\0\0\0\0\0\0", 6))
-													{
-														user->m_MAC[0] = _Settings.m_MAC[0];
-														user->m_MAC[1] = _Settings.m_MAC[1];
-														memcpy(&user->m_MAC[2], &user->m_HisVirtualIP, 4);
-													}
-												}
-
-												//  also private key
-												if (user->m_RSA)
-													RSA_free(user->m_RSA);
-												user->m_RSA = RSA_new();
-
-												user->m_RSA->e = BN_new();
-												out.GetBignum2(user->m_RSA->e);
-												user->m_RSA->n = BN_new();
-												out.GetBignum2(user->m_RSA->n);
-
-												if (out.Len())
-													user->m_RemoteWippienState = (WippienState)out.GetChar();
-
-												user->m_Changed = TRUE;
-
+										// check also resource
+										Buffer b;
+										b.Append(user->m_Resource);
+										b.Append("\r\n");
+										char *line;
+										do 
+										{
+											line = b.GetNextLine();
+											if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
+											{	
+												isWippien = TRUE;
+												break;
 											}
-											user->m_WippienState = WipWaitingInitResponse;
-											user->SetTimer(rand()%100, 3);
-											break;
-										}	
-									} while (line);
+										} while (line);
+									}
+
+									if (isWippien)
+									{
+										if (out.Len()>=4)
+										{
+											user->m_HisVirtualIP = out.GetInt();
+											if (out.Len()>=6)
+											{
+												memcpy(user->m_MAC, out.Ptr(), 6);
+												out.Consume(6);
+											}
+											else
+											{
+												// calculate MAC too
+												if (!memcmp(user->m_MAC, "\0\0\0\0\0\0", 6))
+												{
+													user->m_MAC[0] = _Settings.m_MAC[0];
+													user->m_MAC[1] = _Settings.m_MAC[1];
+													memcpy(&user->m_MAC[2], &user->m_HisVirtualIP, 4);
+												}
+											}
+
+											//  also private key
+											if (user->m_RSA)
+												RSA_free(user->m_RSA);
+											user->m_RSA = RSA_new();
+
+											user->m_RSA->e = BN_new();
+											out.GetBignum2(user->m_RSA->e);
+											user->m_RSA->n = BN_new();
+											out.GetBignum2(user->m_RSA->n);
+
+											if (out.Len())
+												user->m_RemoteWippienState = (WippienState)out.GetChar();
+
+											user->m_Changed = TRUE;
+
+										}
+										user->m_WippienState = WipWaitingInitResponse;
+										user->SetTimer(rand()%100, 3);
+									}
 								}
 							}
 						}
@@ -854,6 +874,13 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 //	l += buff;
 
 #ifndef _WODXMPPLIB
+	CComBSTR caps;
+	m_Jabb->get_Capabilities(&caps);
+	if (caps.Length())
+		caps += " ";
+	caps += "Wippien";
+	m_Jabb->put_Capabilities(caps);
+
 	m_Jabb->put_Login(l);
 	m_Jabb->put_Password(p);
 	if (prt)
@@ -864,6 +891,14 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)1);
 
 #else
+	char buff[1024] = {0};
+	int bflen = sizeof(buff);
+	WODXMPPCOMLib::XMPP_GetCapabilities(m_Jabb, buff, &bflen);
+	if (strlen(buff))
+		strcat(buff, " ");
+	strcat(buff, WIPPIENIM);
+	WODXMPPCOMLib::XMPP_SetCapabilities(m_Jabb, buff);
+
 	CComBSTR2 l1 = l;
 	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
 	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
@@ -967,15 +1002,32 @@ void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlTex
 	if (c)
 	{
 #ifndef _WODXMPPLIB
+		// also check capabilities
+		c->get_Capabilities(&res);
+		if (strstr(res.ToString(), WIPPIENIM))
+			sendhtml = TRUE;
+
 		c->get_Resource(&res);
 		if (strstr(res.ToString(), WIPPIENIM))
 			sendhtml = TRUE;
+		
 #else
-		char tb[1024];
+		char tb[1024] = {0};
 		int tblen = sizeof(tb);
-		WODXMPPCOMLib::XMPP_Contact_GetResource(c, tb, &tblen);
+		WODXMPPCOMLib::XMPP_Contact_GetCapabilities(c, tb, &tblen);
 		if (strstr(tb, WIPPIENIM))
 			sendhtml = TRUE;
+
+		if (!sendhtml)
+		{
+			tb[0] = 0;
+			tblen = sizeof(tb);
+			WODXMPPCOMLib::XMPP_Contact_GetResource(c, tb, &tblen);
+			if (strstr(tb, WIPPIENIM))
+				sendhtml = TRUE;
+		}
+
+		
 		WODXMPPCOMLib::XMPP_Contacts_Free(c);
 #endif
 	}

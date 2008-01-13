@@ -843,7 +843,7 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 
 LRESULT CSettingsDlg::CSettingsJID::OnBtnSearch(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	ShellExecute(NULL, "open", "http://www.xmpp.net/bycountry.shtml", "", "", 0);
+	ShellExecute(NULL, "open", "http://www.jabber.org/user/publicservers.shtml", "", "", 0);
 	return 0;
 }
 
@@ -6318,6 +6318,159 @@ void CSettingsDlg::CSettingsContactsSort::Init(HWND Owner)
 }
 
 void CSettingsDlg::CSettingsContactsSort::Show(BOOL Show, RECT *rc)
+{
+	if (IsWindow())
+	{
+		if (Show)
+		{
+			::SetWindowPos(m_hWnd, NULL, rc->left, rc->top, rc->right, rc->bottom, SWP_NOZORDER);
+			ShowWindow(SW_SHOW);
+			SetFocus();
+		}
+		else
+			ShowWindow(SW_HIDE);
+	}
+}
+
+
+CSettingsDlg::CSettingsChatRooms::CSettingsChatRooms() : _CSettingsTemplate()
+{
+	PATH = "ChatRooms";
+	TEXT1 = "Browse or create chat rooms.";
+	TEXT2 = "Specify or browse for a room to join or create new one.";
+}
+
+CSettingsDlg::CSettingsChatRooms::~CSettingsChatRooms()
+{
+}
+
+LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+
+	m_ServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAYLIST));
+	m_NewRoomServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAY2));
+	m_ServicesList.InsertString(-1, "- All gateways -");
+
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
+	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
+	{
+		short count;
+		if (SUCCEEDED(serv->get_Count(&count)))
+		{
+#else
+	short count = 0;
+	WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+	{
+		{
+#endif
+			for (int i=0;i<count;i++)
+			{
+#ifndef _WODXMPPLIB
+				WODXMPPCOMLib::IXMPPService *s = NULL;
+				VARIANT var;
+				var.vt = VT_I2;
+				var.iVal = i;
+				if (SUCCEEDED(serv->get_Item(var, &s)))
+#else
+				void *s = NULL;
+				WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
+#endif
+				{
+					short ct;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPIdentities *idents;
+					if (SUCCEEDED(s->get_Identity(&idents)))
+					{
+						if (SUCCEEDED(idents->get_Count(&ct)))
+						{
+#else
+					WODXMPPCOMLib::XMPP_Service_GetIdentitiesCount(s, &ct);
+					{
+						{
+#endif
+							for (int c=0;c<ct;c++)
+							{
+#ifndef _WODXMPPLIB
+								WODXMPPCOMLib::IXMPPIdentity *idty;
+								var.iVal = c;
+								if (SUCCEEDED(idents->get_Item(var, &idty)))
+								{
+									WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+									idty->get_Category(&id);
+									if (id == (WODXMPPCOMLib::IdentityCategoryEnum)/*::CatConference*/7)
+									{
+										
+										// get name
+										CComBSTR2 type;
+										idty->get_Type(&type);
+										char *t = type.ToString();
+										strlwr(t);
+
+										idty->Release();
+
+#else					
+								WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
+								void *idty = NULL;
+								WODXMPPCOMLib::XMPP_Service_GetIdentity(s, c, &idty);
+								if (idty)
+								{
+									WODXMPPCOMLib::XMPP_Identity_GetCategory(idty, &id);
+									if (id == (WODXMPPCOMLib::IdentityCategoryEnum)/*::CatConference*/7)
+									{
+										char t[1024];
+										int tlen = sizeof(t);
+										WODXMPPCOMLib::XMPP_Identity_GetType(idty, t, &tlen);
+										strlwr(t);
+
+										WODXMPPCOMLib::XMPP_Identity_Free(idty);
+#endif
+
+										CComBSTR2 b;
+#ifndef _WODXMPPLIB
+										if (SUCCEEDED(s->get_JID(&b)))
+#else
+										char jd[1024];
+										tlen = sizeof(jd);
+										WODXMPPCOMLib::XMPP_Service_GetJID(s, jd, &tlen);
+										b = jd;
+#endif
+										m_ServicesList.InsertString(-1, b.ToString());
+										m_NewRoomServicesList.InsertString(-1, b.ToString());
+										}
+									}
+								}
+							}
+						}
+					}
+#ifndef _WODXMPPLIB
+					s->Release();
+#else
+					WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
+				}
+			}
+		}
+
+					
+return TRUE;
+}
+
+
+BOOL CSettingsDlg::CSettingsChatRooms::Apply(void)
+{
+	
+	
+	return TRUE;
+}
+
+void CSettingsDlg::CSettingsChatRooms::Init(HWND Owner)
+{
+	m_Owner = Owner;
+	Create(Owner);
+}
+
+void CSettingsDlg::CSettingsChatRooms::Show(BOOL Show, RECT *rc)
 {
 	if (IsWindow())
 	{

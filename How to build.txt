@@ -12,6 +12,9 @@ Prerequirements: download and install
 * WeOnlyDo wodVPN Component - used for P2P
 http://www.weonlydo.com/index.asp?showform=VPN
 
+* WeOnlyDo wodXMPP Component - used for XMPP/Jabber protocol
+http://www.weonlydo.com/index.asp?showform=XMPP
+
 * WeOnlyDo wodAppUpdate Component - used for auto-update
 http://www.weonlydo.com/index.asp?showform=AppUpdate
 

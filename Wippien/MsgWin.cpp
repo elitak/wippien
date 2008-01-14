@@ -3031,6 +3031,8 @@ void CMsgWin::CWEmoticon::CalcBalloonRect(HDC dc, SIZE *rect, SIZE *text)
 
 //
 	RECT rc = {0};
+	if (!str)
+		str = "";
 	DrawText(dc, str, strlen(str), &rc, DT_CALCRECT | DT_CENTER);
 
 	text->cx = rc.right;

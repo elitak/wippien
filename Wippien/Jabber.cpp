@@ -34,6 +34,7 @@ extern CContactAuthDlg *_ContactAuthDlg;
 extern CSDKMessageLink *_SDK;
 
 int uuencode(unsigned char *src, unsigned int srclength,char *target, size_t targsize);
+void PopulateChatRoomListview(void);
 
 #ifndef _WODXMPPLIB
 
@@ -808,6 +809,14 @@ void __stdcall CJabberEvents::DispVCardDetails(WODXMPPCOMLib::IXMPPContact *Cont
 //	}
 }
 
+void XMPPChatRoomListDone(void *wodXMPP, void *Service)
+{
+	if (!Service)
+		return;
+
+	PopulateChatRoomListview();
+}
+
 CJabber::CJabber(void)
 {
 #ifdef _WODXMPPLIB
@@ -824,6 +833,7 @@ CJabber::CJabber(void)
 	m_Events.ServiceStatusChange = XMPPServiceStatusChange;
 	m_Events.ContactAuthRequest = XMPPContactAuthRequest;
 	m_Events.VCardDetails = XMPPVCardDetails;
+	m_Events.ChatRoomListDone = XMPPChatRoomListDone;
 
 		
 	m_Jabb = WODXMPPCOMLib::_XMPP_Create(&m_Events);

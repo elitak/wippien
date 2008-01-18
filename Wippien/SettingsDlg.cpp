@@ -32,6 +32,7 @@ extern CNotify _Notify;
 
 void ResampleImageIfNeeded(CxImage *img, int size);
 void ResampleImageIfNeeded(CxImage *img, int sizeX, int sizeY);
+void PopulateChatRoomListview(void);
 char *trim(char *text);
 
 
@@ -6338,6 +6339,10 @@ CSettingsDlg::CSettingsChatRooms::CSettingsChatRooms() : _CSettingsTemplate()
 	PATH = "ChatRooms";
 	TEXT1 = "Browse or create chat rooms.";
 	TEXT2 = "Specify or browse for a room to join or create new one.";
+
+	_Jabber->m_ServiceRegisterHwnd = NULL;
+	_Jabber->m_ServiceRefreshHwnd = NULL;
+
 }
 
 CSettingsDlg::CSettingsChatRooms::~CSettingsChatRooms()
@@ -6348,112 +6353,128 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 {
 
 	m_ServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAYLIST));
+	m_RoomList.Attach(GetDlgItem(IDC_CHATROOM_ROOMLIST));
 	m_NewRoomServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAY2));
 	m_ServicesList.InsertString(-1, "- All gateways -");
 
+	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_BORDERSELECT | LVS_EX_FULLROWSELECT); 
+	LV_COLUMN lvcol = {0};
+	lvcol.mask=LVCF_TEXT | LVCF_WIDTH;
+	lvcol.pszText="Service gateway";
+	lvcol.cx = 165;	
+	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+	lvcol.pszText = "Room name";
+	lvcol.cx = 210;
+	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+
+
+	_Jabber->m_ServiceRegisterHwnd = GetDlgItem(IDC_CHATROOM_ROOMLIST);
+
+
 #ifndef _WODXMPPLIB
-	WODXMPPCOMLib::IXMPPServices *serv = NULL;
-	if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
-	{
-		short count;
-		if (SUCCEEDED(serv->get_Count(&count)))
-		{
+#error TODO
 #else
 	short count = 0;
-	WODXMPPCOMLib::XMPP_ServicesGetCount(_Jabber->m_Jabb, &count);
+	WODXMPPCOMLib::XMPP_ChatRooms_ServicesGetCount(_Jabber->m_Jabb, &count);
+	for (int i=0;i<count;i++)
 	{
+		void *s = NULL;
+		WODXMPPCOMLib::XMPP_ChatRooms_ServicesGetService(_Jabber->m_Jabb, i, &s);
+		if (s)
 		{
-#endif
-			for (int i=0;i<count;i++)
+			char jid[1024] = {0};
+			int jlen = sizeof(jid);
+			WODXMPPCOMLib::XMPP_Service_GetJID(s, jid, &jlen);
+			if (jlen>0 && jid[0])
 			{
-#ifndef _WODXMPPLIB
-				WODXMPPCOMLib::IXMPPService *s = NULL;
-				VARIANT var;
-				var.vt = VT_I2;
-				var.iVal = i;
-				if (SUCCEEDED(serv->get_Item(var, &s)))
+				m_ServicesList.InsertString(-1, jid);
+			}	
+			WODXMPPCOMLib::XMPP_Service_Free(s);
+		}
+	}
+#endif
+
+	PopulateChatRoomListview();
+	return TRUE;
+}
+
+void PopulateChatRoomListview(void)
+{
+	if (_Jabber->m_ServiceRegisterHwnd)
+	{
+		SendMessage(_Jabber->m_ServiceRegisterHwnd, LVM_DELETEALLITEMS, 0, 0);
+#ifndef _WODXMPPLIB	
+#error TODO
 #else
+		long count = 0;
+		WODXMPPCOMLib::XMPP_ChatRooms_GetCount(_Jabber->m_Jabb, &count);
+		for (int i=0;i<count;i++)
+		{
+			void *c = NULL;
+			WODXMPPCOMLib::XMPP_GetChatRoom(_Jabber->m_Jabb, i, &c);
+			if (c)
+			{
 				void *s = NULL;
-				WODXMPPCOMLib::XMPP_ServicesGetService(_Jabber->m_Jabb, i, &s);
-#endif
+				WODXMPPCOMLib::XMPP_ChatRoom_GetService(c, &s);
+				char buff[1024] = {0};
+				int blen = sizeof(buff);
+				if(s)
 				{
-					short ct;
-#ifndef _WODXMPPLIB
-					WODXMPPCOMLib::IXMPPIdentities *idents;
-					if (SUCCEEDED(s->get_Identity(&idents)))
-					{
-						if (SUCCEEDED(idents->get_Count(&ct)))
-						{
-#else
-					WODXMPPCOMLib::XMPP_Service_GetIdentitiesCount(s, &ct);
-					{
-						{
-#endif
-							for (int c=0;c<ct;c++)
-							{
-#ifndef _WODXMPPLIB
-								WODXMPPCOMLib::IXMPPIdentity *idty;
-								var.iVal = c;
-								if (SUCCEEDED(idents->get_Item(var, &idty)))
-								{
-									WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
-									idty->get_Category(&id);
-									if (id == (WODXMPPCOMLib::IdentityCategoryEnum)/*::CatConference*/7)
-									{
-										
-										// get name
-										CComBSTR2 type;
-										idty->get_Type(&type);
-										char *t = type.ToString();
-										strlwr(t);
-
-										idty->Release();
-
-#else					
-								WODXMPPCOMLib::IdentityCategoryEnum id = (WODXMPPCOMLib::IdentityCategoryEnum)0;
-								void *idty = NULL;
-								WODXMPPCOMLib::XMPP_Service_GetIdentity(s, c, &idty);
-								if (idty)
-								{
-									WODXMPPCOMLib::XMPP_Identity_GetCategory(idty, &id);
-									if (id == (WODXMPPCOMLib::IdentityCategoryEnum)/*::CatConference*/7)
-									{
-										char t[1024];
-										int tlen = sizeof(t);
-										WODXMPPCOMLib::XMPP_Identity_GetType(idty, t, &tlen);
-										strlwr(t);
-
-										WODXMPPCOMLib::XMPP_Identity_Free(idty);
-#endif
-
-										CComBSTR2 b;
-#ifndef _WODXMPPLIB
-										if (SUCCEEDED(s->get_JID(&b)))
-#else
-										char jd[1024];
-										tlen = sizeof(jd);
-										WODXMPPCOMLib::XMPP_Service_GetJID(s, jd, &tlen);
-										b = jd;
-#endif
-										m_ServicesList.InsertString(-1, b.ToString());
-										m_NewRoomServicesList.InsertString(-1, b.ToString());
-										}
-									}
-								}
-							}
-						}
-					}
-#ifndef _WODXMPPLIB
-					s->Release();
-#else
+					WODXMPPCOMLib::XMPP_Service_GetJID(s, buff, &blen);
 					WODXMPPCOMLib::XMPP_Service_Free(s);
-#endif
 				}
+				
+				
+				char bf[1024] = {0};
+				blen = sizeof(bf);
+				WODXMPPCOMLib::XMPP_ChatRoom_GetName(c, bf, &blen);
+				if (*bf)
+				{
+					LVITEM it = {0};
+					it.mask = LVIF_TEXT;
+					it.pszText = bf;
+					it.cchTextMax = strlen(it.pszText);
+					
+					int res = SendMessage(_Jabber->m_ServiceRegisterHwnd, LVM_INSERTITEM, 0, (LPARAM)&it);
+					it.iItem = res;
+					it.iSubItem = 1;
+					it.mask = LVIF_TEXT;
+					it.pszText = buff;
+					it.cchTextMax = strlen(it.pszText);
+					
+					SendMessage(_Jabber->m_ServiceRegisterHwnd, LVM_SETITEM, 0, (LPARAM)&it);
+				}
+				WODXMPPCOMLib::XMPP_ChatRoom_Free(c);
 			}
 		}
+#endif
+		
+	}
+}
 
-					
-return TRUE;
+
+LRESULT CSettingsDlg::CSettingsChatRooms::OnListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{
+	ATLTRACE("code = %x\r\n", wNotifyCode);
+	if (wNotifyCode == CBN_CLOSEUP)
+	{
+		char buff[1024];
+		if (GetDlgItemText(IDC_CHATROOM_GATEWAYLIST, buff, 1024))
+		{
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+			void *s = NULL;
+			if (*buff)
+				WODXMPPCOMLib::XMPP_ServicesGetServiceByJID(_Jabber->m_Jabb, buff, &s);
+			
+			WODXMPPCOMLib::XMPP_ChatRooms_List(_Jabber->m_Jabb, s);
+			if (s)
+				WODXMPPCOMLib::XMPP_Service_Free(s);
+#endif
+		}
+	}
+	return TRUE;
 }
 
 

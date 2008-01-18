@@ -791,12 +791,15 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		~CSettingsChatRooms();
 		
 		CComboBox m_ServicesList, m_NewRoomServicesList;
+		CListBox m_RoomList;
 
 		BEGIN_MSG_MAP(CSettingsChatRooms)
 			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+			COMMAND_ID_HANDLER(IDC_CHATROOM_GATEWAYLIST, OnListClick);
 		END_MSG_MAP()
 			
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+		LRESULT OnListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		void Show(BOOL Show, RECT *rc);
 		void Init(HWND Owner);
 		BOOL Apply(void);

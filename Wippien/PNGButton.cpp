@@ -49,7 +49,7 @@ LRESULT CPNGButton::OnMouseLeave(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 
 LRESULT CPNGButton::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	if (*m_ToolTip)
+	if (m_ToolTip)
 	{
 		POINT p;
 		p.x = GET_X_LPARAM(lParam); 

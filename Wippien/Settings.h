@@ -48,7 +48,7 @@ public:
 	CSettings();
 	virtual ~CSettings();
 
-	CComBSTR m_JID, m_Password, m_ServerHost;
+	CComBSTR m_JID, m_Password, m_ServerHost, m_Nick;
 	CComBSTR m_LinkMediator;
 	long	m_LinkMediatorPort, m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFile, m_FunctionDebugFile;

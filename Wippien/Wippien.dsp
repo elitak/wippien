@@ -214,6 +214,10 @@ SOURCE=.\Ping.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\PNGButton.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\ProgressDlg.cpp
 # End Source File
 # Begin Source File

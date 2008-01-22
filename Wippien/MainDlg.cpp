@@ -103,7 +103,7 @@ CMainDlg::CMainDlg()
 	m_EmoticonsInstance.hInst = NULL;
 	m_SettingsDlg = NULL;
 	m_pBalloon = NULL;
-	memset(&m_ToolTipPosition, 0, sizeof(m_ToolTipPosition));
+//	memset(&m_ToolTipPosition, 0, sizeof(m_ToolTipPosition));
 	memset(&m_DefChatWindowRect, 0, sizeof(m_DefChatWindowRect));
 
 	m_LastUpdateMin = 0;
@@ -2576,15 +2576,16 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	DumpDebug("*MainDlg::OnMouseMove \r\n");
-	
-	m_TooltipPoint.x = GET_X_LPARAM(lParam); 
-	m_TooltipPoint.y = GET_Y_LPARAM(lParam); 	
+
+	POINT p;
+	p.x = GET_X_LPARAM(lParam); 
+	p.y = GET_Y_LPARAM(lParam); 	
 	if (m_CanTooltip && !m_pBalloon)
 	{
-		if (m_TooltipPoint.x != m_ToolTipPosition.x || m_TooltipPoint.y != m_ToolTipPosition.y)
+		if (p.x != m_TooltipPoint.x || p.y != m_TooltipPoint.y)
 		{
-			m_ToolTipPosition.x = m_TooltipPoint.x;
-			m_ToolTipPosition.y = m_TooltipPoint.y;
+			m_TooltipPoint.x = p.x;
+			m_TooltipPoint.y = p.y;
 			::SetTimer(m_hWnd, 103, 500, NULL); // TOOLTIP timer
 		}
 	}

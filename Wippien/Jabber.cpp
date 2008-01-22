@@ -379,6 +379,10 @@ void XMPPIncomingMessage(void *wodXMPP, void  *Contact, void *ChatRoom, void  *M
 void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message)
 #endif
 {
+	if (ChatRoom)
+	{
+		MessageBeep(-1);
+	}
 	if (Contact)
 	{
 		WODXMPPCOMLib::MessageTypesEnum msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
@@ -809,13 +813,27 @@ void __stdcall CJabberEvents::DispVCardDetails(WODXMPPCOMLib::IXMPPContact *Cont
 //	}
 }
 
+#ifdef _WODXMPPLIB
 void XMPPChatRoomListDone(void *wodXMPP, void *Service)
+#else
+#error TODO
+#endif
 {
 	if (!Service)
 		return;
 
 	PopulateChatRoomListview();
 }
+
+#ifdef _WODXMPPLIB
+void XMPPError(void *wodXMPP, void *Contact, void *ChatRoom, void *Service, long ErrorCode, char *ErrorText)
+#else
+#error TODO
+#endif
+{
+	MessageBox(NULL, ErrorText, "XMPP Error", MB_OK | MB_ICONHAND);
+}
+
 
 CJabber::CJabber(void)
 {
@@ -834,6 +852,7 @@ CJabber::CJabber(void)
 	m_Events.ContactAuthRequest = XMPPContactAuthRequest;
 	m_Events.VCardDetails = XMPPVCardDetails;
 	m_Events.ChatRoomListDone = XMPPChatRoomListDone;
+	m_Events.Error = XMPPError;
 
 		
 	m_Jabb = WODXMPPCOMLib::_XMPP_Create(&m_Events);

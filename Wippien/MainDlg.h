@@ -68,7 +68,7 @@ public:
 	HFONT m_Identity_NameFont, m_Identity_IPFont, m_Identity_StatusFont;
 	POINT m_TooltipPoint;
 	BOOL m_CanTooltip, m_GoAppbar, m_WearSkin, m_DidGoAutoAway;
-	POINT m_ToolTipPosition;
+//	POINT m_ToolTipPosition;
 	int m_ReconnectWait;
 	CSettingsDlg *m_SettingsDlg;
 	CBalloonHelp* m_pBalloon;

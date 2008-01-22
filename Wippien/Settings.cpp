@@ -479,6 +479,12 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "VoiceChatPlaybackDevice", &m_VoiceChatPlaybackDevice, -1);
 			ReadSettingsCfg(wip, "LastOperatorMessageID", &m_LastOperatorMessageID, LASTOPERATORMSGID);
 			ReadSettingsCfg(wip, "JID", m_JID, "");
+			CComBSTR2 mj = m_JID;
+			char *mj2 = mj.ToString();
+			char *mj3 = strchr(mj2, '@');
+			if (mj3)
+				*mj3 = NULL;
+			ReadSettingsCfg(wip, "Nick", m_Nick, mj2);
 			if (!m_Password.Length())
 			{
 				ReadSettingsCfg(wip, "Password", m_Password, "");
@@ -888,34 +894,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 	if (!UserOnly)
 	{
 		Buffer x;
-		x.Append("<Wippien>\r\n");
-		
-/*		xml.AddChildElem("ShowInTaskbar", m_ShowInTaskbar?"1":"0");
-		xml.AddChildElem("SoundOn", m_SoundOn?"1":"0");
-		xml.AddChildElem("DeleteContactsOnStartup", m_DeleteContactsOnStartup?"1":"0");
-		xml.AddChildElem("DeleteContactsOnConnect", m_DeleteContactsOnConnect?"1":"0");
-		xml.AddChildElem("AuthContacts", m_AuthContacts);
-		xml.AddChildElem("AutoConnectVPNOnNetwork", m_AutoConnectVPNOnNetwork?"1":"0");
-		xml.AddChildElem("AutoConnectVPNOnStartup", m_AutoConnectVPNOnStartup?"1":"0");
-		xml.AddChildElem("VoiceChat", m_EnableVoiceChat?"1":"0");
-		xml.AddChildElem("CheckUpdate", m_CheckUpdate?"1":"0");
-		xml.AddChildElem("CheckUpdateConnect", m_CheckUpdateConnect?"1":"0");
-		xml.AddChildElem("CheckUpdateTimed", m_CheckUpdateTimed?"1":"0");
-		xml.AddChildElem("CheckUpdateTimedNum", m_CheckUpdateTimedNum);
-		xml.AddChildElem("CheckUpdateSilently", m_CheckUpdateSilently?"1":"0");
-		xml.AddChildElem("ShowUpdaterMessages", m_ShowUpdaterMessages?"1":"0");
-		xml.AddChildElem("UsePowerOptions", m_UsePowerOptions?"1":"0");
-		xml.AddChildElem("FixedMTU", m_FixedMTU?"1":"0");
-		xml.AddChildElem("FixedMTUNum", m_FixedMTUNum);
-		xml.AddChildElem("SortContacts", m_SortContacts);
-		xml.AddChildElem("VoiceChatRecordingDevice", m_VoiceChatRecordingDevice);
-		xml.AddChildElem("VoiceChatPlaybackDevice", m_VoiceChatPlaybackDevice);
-		xml.AddChildElem("LastOperatorMessageID", m_LastOperatorMessageID);
-
-		CComBSTR2 j = m_JID;
-		xml.AddChildElem("JID", j.ToString());
-		xml.AddChildElem("UseSSLWrapper", m_UseSSLWrapper?"1":"0");
-*/
+		x.Append("<Wippien>\r\n");	
 
 		x.AddChildElem("ShowInTaskbar", m_ShowInTaskbar?"1":"0");
 		x.AddChildElem("SoundOn", m_SoundOn?"1":"0");
@@ -941,6 +920,9 @@ BOOL CSettings::Save(BOOL UserOnly)
 		
 		CComBSTR2 j = m_JID;
 		x.AddChildElem("JID", j.ToString());
+		j.Empty();
+		j = m_Nick;
+		x.AddChildElem("Nick", j.ToString());
 		x.AddChildElem("UseSSLWrapper", m_UseSSLWrapper?"1":"0");
 
 
@@ -963,44 +945,6 @@ BOOL CSettings::Save(BOOL UserOnly)
 		AESWrite(&aes);
 
 		Buffer in, out;
-/*			in.Append((char *)&_Settings.m_MAC, sizeof(MACADDR));
-		ToHex(&in, &out);
-		out.Append("\0",1);
-		xml.AddChildElem("MAC", out.Ptr());
-*/
-
-/*		
-		CComBSTR2 msh = m_ServerHost;
-		xml.AddChildElem("ServerHost", msh.ToString());
-		xml.AddChildElem("ServerPort", m_ServerPort);
-		xml.AddChildElem("UDPPort", m_UDPPort);
-
-		CComBSTR2 m = m_IPProviderURL;
-		xml.AddChildElem("IPProviderURL", m.ToString());
-		m.Empty();
-		m = m_LinkMediator;
-		CComBSTR2 uurl = m_UpdateURL;
-		xml.AddChildElem("UpdateURL", uurl.ToString());
-		xml.AddChildElem("LinkMediator", m.ToString());
-		xml.AddChildElem("LinkMediatorPort", m_LinkMediatorPort);
-		xml.AddChildElem("ObtainIPAddress", m_ObtainIPAddress);
-		xml.AddChildElem("AllowAnyMediator", m_AllowAnyMediator?"1":"0");
-		xml.AddChildElem("UseLinkMediatorFromDatabase", m_UseLinkMediatorFromDatabase?"1":"0");
-		xml.AddChildElem("UseIPFromDatabase", m_UseIPFromDatabase?"1":"0");
-		xml.AddChildElem("ShowContactPicture", m_ShowContactPicture?"1":"0");
-		xml.AddChildElem("ShowContactLastOnline", m_ShowContactLastOnline?"1":"0");
-//		xml.AddChildElem("ShowContactName", m_ShowContactName?"1":"0");
-		xml.AddChildElem("ShowContactIP", m_ShowContactIP?"1":"0");
-		xml.AddChildElem("ShowContactStatus", m_ShowContactStatus?"1":"0");
-		xml.AddChildElem("ShowMyPicture", m_ShowMyPicture?"1":"0");
-		xml.AddChildElem("ShowMyName", m_ShowMyName?"1":"0");
-		xml.AddChildElem("ShowMyIP", m_ShowMyIP?"1":"0");
-		xml.AddChildElem("ShowMyStatus", m_ShowMyStatus?"1":"0");		
-		xml.AddChildElem("TimestampMessages", m_TimestampMessages?"1":"0");
-		xml.AddChildElem("SnapToBorder", m_SnapToBorder?"1":"0");
-		xml.AddChildElem("ShowMessageHistory", m_ShowMessageHistory?"1":"0");
-*/
-
 		
 		CComBSTR2 msh = m_ServerHost;
 		x.AddChildElem("ServerHost", msh.ToString());
@@ -1030,17 +974,8 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("ShowMyStatus", m_ShowMyStatus?"1":"0");		
 		x.AddChildElem("TimestampMessages", m_TimestampMessages?"1":"0");
 		x.AddChildElem("SnapToBorder", m_SnapToBorder?"1":"0");
-		x.AddChildElem("ShowMessageHistory", m_ShowMessageHistory?"1":"0");
-		
+		x.AddChildElem("ShowMessageHistory", m_ShowMessageHistory?"1":"0");		
 
-
-
-/*		out.Clear();
-		in.Append(m_Icon.Ptr(), m_Icon.Len());
-		ToHex(&in, &out);
-		out.Append("\0", 1);
-		x.AddChildElem("Icon", out.Ptr());
-*/
 		char icobuf[1024];
 		strcpy(icobuf, m_CfgFilename);
 		strcat(icobuf, ".png");
@@ -1059,29 +994,15 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("LastNetwork", mip);
 		memcpy(&mip, &m_MyLastNetmask, sizeof(long));
 		x.AddChildElem("LastNetmask", mip);
-
-/*		if (m_RSA)
-		{
-			in.Clear();
-			KeyToBlob(&in, TRUE);
-			out.Clear();
-			ToHex(&in, &out);
-			out.Append("\0", 1);
-			x.AddChildElem("Key", out.Ptr());
-		}
-*/		
 		
 		CComBSTR2 mssk = m_Skin;
 		x.AddChildElem("Skin", mssk.ToString());
 
 		x.Append("<Roster>\r\n");
-//		x.AddChildElem("Roster");
-//		x.IntoElem();
 
 		for (int i=0;i<m_Groups.size();i++)
 		{
 			TreeGroup *tg = m_Groups[i];
-//			x.AddChildElem("Group", tg->Name);
 			BOOL exp = FALSE;
 			if (_MainDlg.IsWindow())
 			{
@@ -1096,52 +1017,39 @@ BOOL CSettings::Save(BOOL UserOnly)
 			if (tg->Open)
 				exp = TRUE;
 
-//			if (exp)
-//				x.AddChildAttrib("Open", "true");
-
 			if (exp)
 				x.AddChildAttrib("Group", tg->Name, "Open", "true");
 			else
 				x.AddChildElem("Group", tg->Name);
 		}
-//		x.OutOfElem();
 		x.Append("</Roster>\r\n");
 
 		x.Append("<HiddenContacts>\r\n");
-//		x.AddChildElem("HiddenContacts");
-//		x.IntoElem();
 		char *cb = m_HiddenContactsBuffer.Ptr();
 		for (i=0;i<m_HiddenContacts.size();i++)
 		{
 			x.AddChildElem("JID", cb + m_HiddenContacts[i]);
 		}
 		x.Append("</HiddenContacts>\r\n");
-//		x.OutOfElem();
 
 		// sounds
 		x.Append("<Sounds>\r\n");
-//		x.AddChildElem("Sounds");
-//		x.IntoElem();
 
 		x.AddChildElem("ContactOnline", ((CComBSTR2)_Notify.m_Online).ToString());
 		x.AddChildElem("ContactOffline", ((CComBSTR2)_Notify.m_Offline).ToString());
 		x.AddChildElem("MessageIn", ((CComBSTR2)_Notify.m_MsgIn).ToString());
 		x.AddChildElem("MessageOut", ((CComBSTR2)_Notify.m_MsgOut).ToString());
 		x.AddChildElem("Error", ((CComBSTR2)_Notify.m_Error).ToString());
-//		x.OutOfElem();
 		x.Append("</Sounds>\r\n");
 
 
 		x.Append("<AuthRequests>\r\n");
-//		x.AddChildElem("AuthRequests");
-//		x.IntoElem();
 		for (i=0;i<m_AuthRequests.size();i++)
 		{
 			CComBSTR2 b = m_AuthRequests[i];
 			x.AddChildElem("JID", b.ToString());
 		}
 		x.Append("</AuthRequests>\r\n");
-//		x.OutOfElem();
 
 		CComBSTR2 dbf1 = m_JabberDebugFile;
 		x.AddChildElem("JabberDebugFile", dbf1.ToString());
@@ -1168,11 +1076,8 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("AutoSetBack", m_AutoSetBack?"1":"0");
 
 //		CComBSTR2 pp2 = m_PasswordProtectPassword;
-//		x.AddChildElem("PasswordProtect", pp2.ToString());
-//		x.AddChildElem("PasswordProtectAll", m_PasswordProtectAll?"1":"0");
 		x.Append("</Wippien>\r\n");
 		x.Append("<Message_Dialog_Window>\r\n");
-//		x.AddElem("Message_Dialog_Window");
 		x.AddChildElem("Left", m_RosterRect.left);
 		x.AddChildElem("Top", m_RosterRect.top);
 		x.AddChildElem("Right", m_RosterRect.right);
@@ -1198,20 +1103,10 @@ BOOL CSettings::Save(BOOL UserOnly)
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
 
 		CComBSTR j = user->m_JID;
-//		x.AddElem("User");
-//		x.IntoElem();
 		x.Append("<User>\r\n");
 		x.AddChildElem("Name", user->m_JID);
 		x.AddChildElem("VisibleName", user->m_VisibleName);
-//			out.Clear();
-//			Buffer in;
-//			in.Append(user->m_Icon.Ptr(), user->m_Icon.Len());
-//			ToHex(&in, &out);
-//			out.Append("\0", 1);
-//			x.AddChildElem("Icon", out.Ptr());
 		x.AddChildElem("Block", user->m_Block?"1":"0");
-//			if (user->m_StaticIP)
-//				x.AddChildElem("StaticIP", user->m_HisDHCPAddressOffset);
 		
 		long mip;
 		memcpy(&mip, &user->m_GotVCard, sizeof(long));
@@ -1221,7 +1116,6 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("Email", user->m_Email);
 		x.AddChildElem("LastOnline", user->m_LastOnline);
 
-//		x.AddChildElem("Chat_Dialog_Window");
 		x.Append("<Chat_Dialog_Window>\r\n");
 		x.AddChildElem("Left", user->m_ChatWindowRect.left);
 		x.AddChildElem("Top", user->m_ChatWindowRect.top);
@@ -1231,7 +1125,6 @@ BOOL CSettings::Save(BOOL UserOnly)
 
 		x.AddChildElem("AllowMediatorIP", user->m_AllowedRemoteMediator?"1":"0");
 		x.AddChildElem("AllowAnyIP", user->m_AllowedRemoteAny?"1":"0");
-//		x.AddChildElem("Allowed_IPs");
 		x.Append("<Allowed_IPs>\r\n");
 		struct in_addr sa;
 		for (int x1=0;x1<user->m_AllowedRemoteIPs.size();x1++)
@@ -1250,10 +1143,6 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.Append("</Allowed_IPs>\r\n");
 		x.Append("</User>\r\n");
 
-/*
-		x.AddChildElem("Time", user->m_Time);
-*/
-//		x.OutOfElem();
 	}
 
 	if (x.Len()>10) // if there's anything inside at all

@@ -6370,6 +6370,10 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 
 	_Jabber->m_ServiceRegisterHwnd = GetDlgItem(IDC_CHATROOM_ROOMLIST);
 
+	CComBSTR2 j = _Settings.m_Nick;
+	SendMessage(GetDlgItem(IDC_CHATROOM_NICKNAME), WM_SETTEXT, 0, (LPARAM)j.ToString());
+
+
 
 #ifndef _WODXMPPLIB
 #error TODO
@@ -6388,6 +6392,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 			if (jlen>0 && jid[0])
 			{
 				m_ServicesList.InsertString(-1, jid);
+				m_NewRoomServicesList.InsertString(-1, jid);
 			}	
 			WODXMPPCOMLib::XMPP_Service_Free(s);
 		}
@@ -6411,7 +6416,7 @@ void PopulateChatRoomListview(void)
 		for (int i=0;i<count;i++)
 		{
 			void *c = NULL;
-			WODXMPPCOMLib::XMPP_GetChatRoom(_Jabber->m_Jabb, i, &c);
+			WODXMPPCOMLib::XMPP_GetChatRoomByID(_Jabber->m_Jabb, i, &c);
 			if (c)
 			{
 				void *s = NULL;
@@ -6452,8 +6457,65 @@ void PopulateChatRoomListview(void)
 	}
 }
 
+LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{	
+	// let's join the room!
+#ifndef _WODXMPPLIB
+#error TODO
+#else
 
-LRESULT CSettingsDlg::CSettingsChatRooms::OnListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+	char buff[1024] = {0};
+	SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+	if (*buff)
+	{
+		char buff2[1024] = {0};
+		SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, WM_GETTEXT, sizeof(buff2), (LPARAM)buff2);
+		if (*buff2)
+		{
+			strcat(buff, "@");
+			strcat(buff, buff2);
+
+			void *chatroom = NULL;
+			char buff1[1024] = {0}, buff2[1024] = {0};
+			WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, buff, &chatroom);
+			if (chatroom)
+			{
+				char buff[1024] = {0};
+				SendDlgItemMessage(IDC_CHATROOM_ROOMPASS, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+
+				WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
+				WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
+				WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
+			}			
+		}
+	}			
+#endif
+
+	return TRUE;
+}
+
+LRESULT CSettingsDlg::CSettingsChatRooms::OnChatRoom2Change(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{	
+	return OnChange(wNotifyCode, wID, hWndCtl, bHandled);
+}
+LRESULT CSettingsDlg::CSettingsChatRooms::OnChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{
+	BOOL enable = FALSE;
+
+	char buff[1024] = {0};
+	SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+	if (*buff)
+	{
+		*buff = 0;
+		SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+		if (*buff)
+			enable = TRUE;	
+	}
+	::EnableWindow(GetDlgItem(IDC_CHATROOM_JOIN), enable);
+	return TRUE;
+}
+
+LRESULT CSettingsDlg::CSettingsChatRooms::OnGatewayListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
 	ATLTRACE("code = %x\r\n", wNotifyCode);
 	if (wNotifyCode == CBN_CLOSEUP)
@@ -6477,6 +6539,38 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnListClick(WORD wNotifyCode, WORD wID
 	return TRUE;
 }
 
+LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnmh, BOOL& /*bHandled*/)
+{
+	NMLISTVIEW *nm = (NMLISTVIEW *)pnmh;
+	
+	switch (pnmh->code)
+	{
+		case NM_CLICK:
+		case NM_DBLCLK:
+		{
+			int i = SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_GETNEXTITEM, -1,LVNI_SELECTED); // return item selected
+			if (i!=LB_ERR)
+			{
+				char room[1024] = {0}, service[1024] = {0};
+				LVITEM lv = {0};
+				lv.mask = LVIF_TEXT;
+				lv.pszText = room;
+				lv.cchTextMax = sizeof(room);
+				SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_GETITEM, 0,(LPARAM)(LPLVITEM)&lv);
+				lv.pszText = service;
+				lv.cchTextMax = sizeof(service);
+				lv.iSubItem = 1;
+				SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_GETITEM, 0,(LPARAM)(LPLVITEM)&lv);
+
+
+				SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, CB_SELECTSTRING, -1, (LPARAM)service);
+				SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_SETTEXT, 0, (LPARAM)room);
+			}
+		}
+		break;
+	}
+	return 0;
+}
 
 BOOL CSettingsDlg::CSettingsChatRooms::Apply(void)
 {

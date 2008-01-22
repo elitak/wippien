@@ -795,11 +795,19 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 
 		BEGIN_MSG_MAP(CSettingsChatRooms)
 			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
-			COMMAND_ID_HANDLER(IDC_CHATROOM_GATEWAYLIST, OnListClick);
+			COMMAND_ID_HANDLER(IDC_CHATROOM_GATEWAYLIST, OnGatewayListClick);
+			COMMAND_ID_HANDLER(IDC_CHATROOM_GATEWAY2, OnChatRoom2Change);
+			COMMAND_HANDLER(IDC_CHATROOM_ROOMNAME, EN_CHANGE, OnChange);
+			NOTIFY_ID_HANDLER(IDC_CHATROOM_ROOMLIST, OmRoomList)				
+			COMMAND_ID_HANDLER(IDC_CHATROOM_JOIN, OnButtonClick);
 		END_MSG_MAP()
 			
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
-		LRESULT OnListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnGatewayListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnButtonClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnChatRoom2Change(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OmRoomList(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/);
 		void Show(BOOL Show, RECT *rc);
 		void Init(HWND Owner);
 		BOOL Apply(void);

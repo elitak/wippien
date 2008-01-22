@@ -758,7 +758,8 @@ BEGIN
     LTEXT           "Gateway:",IDC_STATIC,5,169,31,8
     COMBOBOX        IDC_CHATROOM_GATEWAY2,99,169,109,46,CBS_DROPDOWNLIST | 
                     CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "Join room",IDC_CHATROOM_JOIN,4,181,48,13
+    PUSHBUTTON      "Join or Create room",IDC_CHATROOM_JOIN,4,181,88,13,
+                    WS_DISABLED
 END
 
 
@@ -1235,8 +1236,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,8,3,224
- PRODUCTVERSION 1,8,3,224
+ FILEVERSION FILEVER
+ PRODUCTVERSION FILEVER
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -1253,12 +1254,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "Wippien Module\0"
-            VALUE "FileVersion", "1, 8, 3, 224\0"
+            VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "Wippien\0"
             VALUE "LegalCopyright", "Copyright 2006-2007\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
-            VALUE "ProductVersion", "1, 8, 3, 224\0"
+            VALUE "ProductVersion", STRFILEVER
             VALUE "OLESelfRegister", "\0"
         END
     END

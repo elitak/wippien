@@ -16,7 +16,6 @@
 #include <atlctrlx.h>
 #include "atlgdix.h"
 
-class CBalloonHelp;
 #pragma once
 
 #define PBS_UNDERLINE 1
@@ -42,9 +41,6 @@ public:
 	HFONT m_hCaptionFont;
 	HFONT m_hCaptionUnderlineFont;
 	DWORD m_dwButtonStyle;
-	POINT m_TooltipPoint;
-	CBalloonHelp* m_pBalloon;
-	char *m_ToolTip;
 
 	// added border style (auto3d_single)
 	CPNGButton(DWORD dwExtendedStyle = BMPBTN_AUTO3D_SINGLE |BMPBTN_HOVER, BOOL DrawBorders = TRUE) : 
@@ -64,9 +60,7 @@ public:
 		::ReleaseDC(NULL, hdc);
 
 		m_strCaption = "";
-		memset(&m_TooltipPoint, 0, sizeof(m_TooltipPoint));
-		m_pBalloon = NULL;
-		m_ToolTip = NULL;
+
 	}
 	virtual ~CPNGButton()
 	{
@@ -78,17 +72,10 @@ public:
 	}
 	
 	BEGIN_MSG_MAP(CPNGButton)
-		MESSAGE_HANDLER(WM_TIMER, OnTimer2)
 		CHAIN_MSG_MAP(COffscreenDraw<CPNGButton>)
 		CHAIN_MSG_MAP(CBitmapButtonImpl<CPNGButton>)
-		MESSAGE_HANDLER(WM_MOUSEMOVE, OnMouseMove)
-		MESSAGE_HANDLER(WM_MOUSELEAVE, OnMouseLeave)
 	END_MSG_MAP()
 	
-	LRESULT OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-	LRESULT OnMouseLeave(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-	LRESULT OnTimer2(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-
 	void SetStyle(DWORD dwStyle)
 	{
 		m_dwButtonStyle = dwStyle;

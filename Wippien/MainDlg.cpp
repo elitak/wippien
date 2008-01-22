@@ -151,7 +151,12 @@ CMainDlg::~CMainDlg()
 	}
 
 	if (m_pBalloon)
+	{
+		if (m_pBalloon->IsWindow())
+			m_pBalloon->DestroyWindow();
 		delete m_pBalloon;
+	}
+
 #ifdef _SKINMAGICKEY
 	ExitSkinMagicLib();
 #endif
@@ -1669,29 +1674,38 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	
 //	UIAddChildWindowContainer(m_hWnd);
 	
+//	m_btnOK.m_ToolTip = "Exits Wippien";
 	m_btnOK.SetCaption("E&xit");
+	m_btnOK.SetToolTipText("Exit Wippien");
 	m_btnOK.SetStyle(PBS_UNDERLINE);
 	m_btnOK.SubclassWindow(GetDlgItem(ID_EXIT));
 	
+	m_btnSettings.SetToolTipText("Open settings");
 	m_btnSettings.SetCaption("&Settings");
 	m_btnSettings.SubclassWindow(GetDlgItem(IDB_SETUP));
 	
+	m_btnAbout.SetToolTipText("Show AboutBox");
 	m_btnAbout.SetCaption("&About");
 	m_btnAbout.SubclassWindow(GetDlgItem(ID_APP_ABOUT));
 
+	m_btnMyStatus.SetToolTipText("Set your status\r\nAway, Invisible, Free for chat...");
 	m_btnMyStatus.SubclassWindow(GetDlgItem(IDC_MYSTATUS));
 	m_btnMyStatus.LoadPNG(IDC_MYSTATUS);
 
+	m_btnMyContacts.SetToolTipText("Add contacts and alien accounts");
 	m_btnMyContacts.SubclassWindow(GetDlgItem(IDC_MYCONTACTS));
 	m_btnMyContacts.LoadPNG(IDC_MYCONTACTS);
 
+	m_btnSmallMute.SetToolTipText("Mute sound");
 	m_btnSmallMute.SubclassWindow(GetDlgItem(IDC_SMALLMUTE));
 	int mutimg = _Settings.m_SoundOn?ID_PNG1_MUTEON:ID_PNG1_MUTEOFF;
 	m_btnSmallMute.LoadPNG(mutimg);
 
+	m_btnChatRooms.SetToolTipText("Open chat room");
 	m_btnChatRooms.SubclassWindow(GetDlgItem(IDC_CHATROOMS));
 	m_btnChatRooms.LoadPNG(ID_PNG1_CHATROOMS);
 	
+	m_btnAuthDlg.SetToolTipText("Authorize your friends");
 	m_btnAuthDlg.SubclassWindow(GetDlgItem(IDC_MYAUTHDLG));
 	m_btnAuthDlg.LoadPNG(IDC_MYAUTHDLG);
 	
@@ -2576,7 +2590,7 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	DumpDebug("*MainDlg::OnMouseMove \r\n");
-
+	
 	POINT p;
 	p.x = GET_X_LPARAM(lParam); 
 	p.y = GET_Y_LPARAM(lParam); 	

@@ -236,7 +236,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 			us->m_Online = FALSE;
 			us->m_Changed = TRUE;
 		}
-		_MainDlg.m_UserList.RefreshUser(NULL);
+		_MainDlg.m_UserList.RefreshUser(NULL, NULL);
 		//		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
 	}
 	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0], "Disconnected"); //offline
@@ -329,7 +329,7 @@ void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContac
 		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tbjid, &tblen);
 #endif
 		_MainDlg.OnIncomingMessage(tbchatroom, tbjid, "", "");
-		_MainDlg.m_UserList.RefreshUser(Contact);
+		_MainDlg.m_UserList.RefreshUser(Contact, ChatRoom);
 
 		return;
 	}
@@ -362,7 +362,7 @@ void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContac
 				return;
 		}
 		
-		_MainDlg.m_UserList.RefreshUser(Contact);
+		_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 	}
 }
 #ifdef _WODXMPPLIB
@@ -799,7 +799,7 @@ void __stdcall CJabberEvents::DispContactList()
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	_Jabber->m_Initial = FALSE;
-	_MainDlg.m_UserList.RefreshUser(NULL);
+	_MainDlg.m_UserList.RefreshUser(NULL, NULL);
 }
 #ifdef _WODXMPPLIB
 void XMPPServiceRegister(void *wodXMPP, void  *Service, BOOL Success, char *Instructions)

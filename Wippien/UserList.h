@@ -34,7 +34,7 @@ public:
 	HFONT m_ListboxFont, m_ListboxSubFont;
 	CCommandBarCtrlXP *m_UserPopupMenu, *m_SetupPopupMenu, *m_AwayPopupMenu, *m_ChatRoomPopupMenu;
 	void RefreshView(BOOL updateonly);
-	void RefreshUser(void *cntc);
+	void RefreshUser(void *cntc, void *chatroom);
 
 	void Init(CMainDlg *Owner, HWND Parent);
 	HTREEITEM FindRoot(char *RootName);

@@ -5264,7 +5264,7 @@ LRESULT CSettingsDlg::CSettingsSystem::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	if (_Settings.m_UsePowerOptions)
 		::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_SETCHECK, TRUE, NULL);
 	else
-		::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_SETCHECK, TRUE, NULL);
+		::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_SETCHECK, FALSE, NULL);
 	
 
 	CComBSTR2 j = _Settings.m_PasswordProtectPassword;
@@ -5306,10 +5306,10 @@ BOOL CSettingsDlg::CSettingsSystem::Apply(void)
 	else
 		_Settings.m_DoNotShow[DONOTSHOW_NOALLOWEXIT] = '1';
 
-	if (::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_GETSTATE, NULL, NULL))
-		_Settings.m_UsePowerOptions = 0;
-	else
+	if (::SendMessage(GetDlgItem(IDC_USEPOWEROPTIONS), BM_GETCHECK, NULL, NULL))
 		_Settings.m_UsePowerOptions = 1;
+	else
+		_Settings.m_UsePowerOptions = 0;
 	
 	if (_MainDlg.m_EmptyWin)
 	{
@@ -6468,30 +6468,37 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 	SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
 	if (*buff)
 	{
-		char buff2[1024] = {0};
-		SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, WM_GETTEXT, sizeof(buff2), (LPARAM)buff2);
-		if (*buff2)
+		if (!strchr(buff, '@'))
 		{
-			strcat(buff, "@");
-			strcat(buff, buff2);
-
-			void *chatroom = NULL;
-			char buff1[1024] = {0}, buff2[1024] = {0};
-			WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, buff, &chatroom);
-			if (chatroom)
+			char buff2[1024] = {0};
+			SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, WM_GETTEXT, sizeof(buff2), (LPARAM)buff2);
+			if (*buff2)
 			{
-				char buff[1024] = {0};
-				SendDlgItemMessage(IDC_CHATROOM_ROOMPASS, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
-
-				WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
-				WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
-				WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
-				::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
-
-				WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
-			}			
+				strcat(buff, "@");
+				strcat(buff, buff2);
+			}
 		}
-	}			
+
+		void *chatroom = NULL;
+		char buff1[1024] = {0}, buff2[1024] = {0};
+		WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, buff, &chatroom);
+		if (!chatroom)
+		{
+			WODXMPPCOMLib::XMPP_ChatRooms_Add(_Jabber->m_Jabb, buff, &chatroom);
+		}
+		if (chatroom)
+		{
+			char buff[1024] = {0};
+			SendDlgItemMessage(IDC_CHATROOM_ROOMPASS, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+
+			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
+			WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
+			WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
+			::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
+
+			WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
+		}			
+	}
 #endif
 
 	return TRUE;
@@ -6509,10 +6516,15 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnChange(WORD wNotifyCode, WORD wID, H
 	SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
 	if (*buff)
 	{
-		*buff = 0;
-		SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
-		if (*buff)
-			enable = TRUE;	
+		if (strchr(buff, '@'))
+			enable = TRUE;
+		else
+		{
+			*buff = 0;
+			SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+			if (*buff)
+				enable = TRUE;	
+		}
 	}
 	::EnableWindow(GetDlgItem(IDC_CHATROOM_JOIN), enable);
 	return TRUE;

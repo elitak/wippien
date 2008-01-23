@@ -361,7 +361,7 @@ void CUserList::SortUsers(void)
 	}
 }
 
-void CUserList::RefreshUser(void *cntc)
+void CUserList::RefreshUser(void *cntc, void *chatroom)
 {
 #ifndef _WODXMPPLIB
 	WODXMPPCOMLib::IXMPPContacts *contacts;
@@ -1936,7 +1936,7 @@ void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL
 //							vc->Release();
 						}
 //						::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0, (LPARAM)Contact);
-						RefreshUser(Contact);
+						RefreshUser(Contact, NULL);
 					}
 				}
 				else

@@ -2678,6 +2678,8 @@ LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 
 LRESULT CMainDlg::OnPowerBroadcast(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
 {
+	ATLTRACE("powerbroadcast %d\r\n", wParam);
+
 	DumpDebug("*MainDlg::OnPowerBroadcast \r\n");
 	if (wParam == PBT_APMRESUMEAUTOMATIC || wParam == PBT_APMRESUMECRITICAL || wParam == PBT_APMRESUMESUSPEND)
 	{
@@ -2695,7 +2697,7 @@ LRESULT CMainDlg::OnPowerBroadcast(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 				_MainDlg.SetTimer(106,200);
 		}
 	}
-	if (wParam == PBT_APMSUSPEND)
+	if (wParam == PBT_APMSUSPEND || wParam == PBT_APMSTANDBY)
 	{
 		if (_Settings.m_UsePowerOptions)
 		{

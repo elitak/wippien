@@ -76,11 +76,12 @@ void CChatRoom::CloseMsgWindow(void)
 	}
 }
 
-void CChatRoom::PrintMsgWindow(BOOL IsSystem, char *Text, char *Html)
+void CChatRoom::PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html)
 {
 	OpenMsgWindow(FALSE);
 	if (!IsSystem)
 		FlashWindow(m_MessageWin->m_hWnd, TRUE);
 
-	m_MessageWin->Incoming("room", IsSystem, Text, Html);
+	if ((Text && *Text) || (Html && *Html))
+		m_MessageWin->Incoming(Nick, IsSystem, Text, Html);
 }

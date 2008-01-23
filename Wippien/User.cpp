@@ -231,6 +231,8 @@ CUser::CUser()
 	for (int i = 0; i < 16; i++)
 		m_MyKey[i] = rand();
 
+
+	m_ChatRoomName = NULL;
 }
 
 CUser::~CUser()

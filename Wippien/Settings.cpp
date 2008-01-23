@@ -569,6 +569,7 @@ int CSettings::Load(void)
 							tg->Item = NULL;
 							tg->Open = FALSE;
 							tg->Name = a;
+							tg->Temporary = FALSE;
 							if (CXmlEntity::FindAttrByName(ent, "Open"))
 								tg->Open = TRUE;
 							if (!strcmp(a, GROUP_GENERAL))
@@ -587,6 +588,7 @@ int CSettings::Load(void)
 					tg->Item = NULL;
 					tg->Open = FALSE;
 					tg->Name = a;
+					tg->Temporary = FALSE;
 					PushGroupSorted(tg);
 					//				m_Groups.push_back(tg);
 				}
@@ -594,6 +596,7 @@ int CSettings::Load(void)
 				memcpy(a, GROUP_OFFLINE, strlen(GROUP_OFFLINE)+1);
 				TreeGroup *tg = new TreeGroup;
 				tg->Item = NULL;
+				tg->Temporary = FALSE;
 				tg->Open = OffOpen;
 				tg->Name = a;
 				m_Groups.push_back(tg);
@@ -1003,24 +1006,27 @@ BOOL CSettings::Save(BOOL UserOnly)
 		for (int i=0;i<m_Groups.size();i++)
 		{
 			TreeGroup *tg = m_Groups[i];
-			BOOL exp = FALSE;
-			if (_MainDlg.IsWindow())
+			if (!tg->Temporary)
 			{
-				TVITEM tv = {0};
-				tv.hItem = tg->Item;
-				tv.mask = TVIF_STATE;
-				_MainDlg.m_UserList.GetItem(&tv);
-				if (tv.state & TVIS_EXPANDED)
+				BOOL exp = FALSE;
+				if (_MainDlg.IsWindow())
+				{
+					TVITEM tv = {0};
+					tv.hItem = tg->Item;
+					tv.mask = TVIF_STATE;
+					_MainDlg.m_UserList.GetItem(&tv);
+					if (tv.state & TVIS_EXPANDED)
+						exp = TRUE;
+				}
+				else
+				if (tg->Open)
 					exp = TRUE;
-			}
-			else
-			if (tg->Open)
-				exp = TRUE;
 
-			if (exp)
-				x.AddChildAttrib("Group", tg->Name, "Open", "true");
-			else
-				x.AddChildElem("Group", tg->Name);
+				if (exp)
+					x.AddChildAttrib("Group", tg->Name, "Open", "true");
+				else
+					x.AddChildElem("Group", tg->Name);
+			}	
 		}
 		x.Append("</Roster>\r\n");
 
@@ -1101,48 +1107,49 @@ BOOL CSettings::Save(BOOL UserOnly)
 	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
-
-		CComBSTR j = user->m_JID;
-		x.Append("<User>\r\n");
-		x.AddChildElem("Name", user->m_JID);
-		x.AddChildElem("VisibleName", user->m_VisibleName);
-		x.AddChildElem("Block", user->m_Block?"1":"0");
-		
-		long mip;
-		memcpy(&mip, &user->m_GotVCard, sizeof(long));
-		x.AddChildElem("VCard", mip);
-
-		x.AddChildElem("Group", user->m_Group);
-		x.AddChildElem("Email", user->m_Email);
-		x.AddChildElem("LastOnline", user->m_LastOnline);
-
-		x.Append("<Chat_Dialog_Window>\r\n");
-		x.AddChildElem("Left", user->m_ChatWindowRect.left);
-		x.AddChildElem("Top", user->m_ChatWindowRect.top);
-		x.AddChildElem("Right", user->m_ChatWindowRect.right);
-		x.AddChildElem("Bottom", user->m_ChatWindowRect.bottom);
-		x.Append("</Chat_Dialog_Window>\r\n");
-
-		x.AddChildElem("AllowMediatorIP", user->m_AllowedRemoteMediator?"1":"0");
-		x.AddChildElem("AllowAnyIP", user->m_AllowedRemoteAny?"1":"0");
-		x.Append("<Allowed_IPs>\r\n");
-		struct in_addr sa;
-		for (int x1=0;x1<user->m_AllowedRemoteIPs.size();x1++)
+		if (!user->m_ChatRoomName) // we do not dump temporary users
 		{
-			IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[x1];
-			if (!ips->Ignored)
+			CComBSTR j = user->m_JID;
+			x.Append("<User>\r\n");
+			x.AddChildElem("Name", user->m_JID);
+			x.AddChildElem("VisibleName", user->m_VisibleName);
+			x.AddChildElem("Block", user->m_Block?"1":"0");
+			
+			long mip;
+			memcpy(&mip, &user->m_GotVCard, sizeof(long));
+			x.AddChildElem("VCard", mip);
+
+			x.AddChildElem("Group", user->m_Group);
+			x.AddChildElem("Email", user->m_Email);
+			x.AddChildElem("LastOnline", user->m_LastOnline);
+
+			x.Append("<Chat_Dialog_Window>\r\n");
+			x.AddChildElem("Left", user->m_ChatWindowRect.left);
+			x.AddChildElem("Top", user->m_ChatWindowRect.top);
+			x.AddChildElem("Right", user->m_ChatWindowRect.right);
+			x.AddChildElem("Bottom", user->m_ChatWindowRect.bottom);
+			x.Append("</Chat_Dialog_Window>\r\n");
+
+			x.AddChildElem("AllowMediatorIP", user->m_AllowedRemoteMediator?"1":"0");
+			x.AddChildElem("AllowAnyIP", user->m_AllowedRemoteAny?"1":"0");
+			x.Append("<Allowed_IPs>\r\n");
+			struct in_addr sa;
+			for (int x1=0;x1<user->m_AllowedRemoteIPs.size();x1++)
 			{
-				sa.S_un.S_addr = ips->Address;
-				if (ips->Allowed)
-					x.AddChildAttrib("IP", inet_ntoa(sa), "Allowed", "1");
-				else
-					x.AddChildElem("IP", inet_ntoa(sa));
+				IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[x1];
+				if (!ips->Ignored)
+				{
+					sa.S_un.S_addr = ips->Address;
+					if (ips->Allowed)
+						x.AddChildAttrib("IP", inet_ntoa(sa), "Allowed", "1");
+					else
+						x.AddChildElem("IP", inet_ntoa(sa));
 
+				}
 			}
+			x.Append("</Allowed_IPs>\r\n");
+			x.Append("</User>\r\n");
 		}
-		x.Append("</Allowed_IPs>\r\n");
-		x.Append("</User>\r\n");
-
 	}
 
 	if (x.Len()>10) // if there's anything inside at all

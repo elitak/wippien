@@ -318,7 +318,19 @@ void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContac
 #endif
 {
 	if (ChatRoom)
+	{
+		char tbchatroom[1024] = {0}, tbjid[1024];
+		int tblen = sizeof(tbchatroom);
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+		WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tbchatroom, &tblen);
+		tblen = sizeof(tbjid);
+		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tbjid, &tblen);
+#endif
+		_MainDlg.OnIncomingMessage(tbchatroom, tbjid, "", "");
 		return;
+	}
 
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	if (!_Jabber->m_Initial)
@@ -399,15 +411,23 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 		ht = tb;
 #endif
 
+		CComBSTR2 contactjid;
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+		tblen = sizeof(tb);
+		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
+		contactjid = tb;
+#endif
 		
 #ifndef _WODXMPPLIB
 #error TODO
 #else
 		tblen = sizeof(tb);
 		WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tb, &tblen);
-#endif
-		
-		_MainDlg.OnIncomingMessage(tb, NULL, t.ToString(), ht.ToString());
+#endif		
+
+		_MainDlg.OnIncomingMessage(tb, contactjid.ToString(), t.ToString(), ht.ToString());
 		
 		return;
 	}

@@ -105,12 +105,12 @@ public:
 	} MenuTool;
 	typedef struct TreeGroup
 	{
-//		CComBSTR2 Name;
 		char *Name;
 		BOOL Open;
 		HTREEITEM Item;
 		int Count;
 		int TotalCount;
+		BOOL Temporary;
 	} TreeGroup;
 
 	typedef std::vector<TreeGroup *> GROUPS;

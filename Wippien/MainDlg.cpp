@@ -2408,9 +2408,38 @@ void CMainDlg::ShowStatusText(char *text)
 
 void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, char *HtmlMessage)
 {
-	if (Contact)
+	DumpDebug("*MainDlg::OnIncomingMessage\r\n");
+	if (ChatRoom)
 	{
-		DumpDebug("*MainDlg::OnIncomingMessage\r\n");
+		int j = strlen(Contact);
+		char *j1 = strchr(Contact, '/');
+		if (j1)
+		{	
+			*j1 = 0;
+			j1++;
+		}	
+		else
+			j1 = "";
+
+		for (int i = 0; i < m_ChatRooms.size(); i++)
+		{
+			CChatRoom *room = m_ChatRooms[i];
+			if (!stricmp(room->m_JID, ChatRoom))
+			{
+				room->PrintMsgWindow(j1, FALSE, Message, HtmlMessage);
+				return;
+			}
+		}
+		
+		// none found? Add new!
+		CChatRoom *room = new CChatRoom();
+		strcpy(room->m_JID, ChatRoom);
+		m_ChatRooms.push_back(room);
+		room->PrintMsgWindow(j1, FALSE, Message, HtmlMessage);
+		return;
+	}
+	else
+	{
 		int j = strlen(Contact);
 		char *j1 = strchr(Contact, '/');
 		if (j1)
@@ -2436,25 +2465,6 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 				return;
 			}
 		}
-	}
-	if (ChatRoom)
-	{
-		for (int i = 0; i < m_ChatRooms.size(); i++)
-		{
-			CChatRoom *room = m_ChatRooms[i];
-			if (!stricmp(room->m_JID, ChatRoom))
-			{
-				room->PrintMsgWindow(FALSE, Message, HtmlMessage);
-				return;
-			}
-		}
-
-		// none found? Add new!
-		CChatRoom *room = new CChatRoom();
-		strcpy(room->m_JID, ChatRoom);
-		m_ChatRooms.push_back(room);
-		room->PrintMsgWindow(FALSE, Message, HtmlMessage);
-		return;
 	}
 }
 

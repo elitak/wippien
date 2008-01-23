@@ -143,6 +143,7 @@ public:
 
 	BOOL m_Changed, m_ChangeNotify, m_Online, m_Hidden;
 	unsigned long m_LastOnline;
+	char *m_ChatRoomName;
 
 
 	void SetSubtext(void);

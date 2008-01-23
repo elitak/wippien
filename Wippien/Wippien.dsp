@@ -166,6 +166,10 @@ SOURCE=.\Buffer.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\ChatRoom.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\ComBSTR2.cpp
 # End Source File
 # Begin Source File
@@ -288,6 +292,10 @@ SOURCE=.\BaloonTip.h
 # Begin Source File
 
 SOURCE=.\Buffer.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ChatRoom.h
 # End Source File
 # Begin Source File
 

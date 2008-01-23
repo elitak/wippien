@@ -21,7 +21,7 @@
 #include "MsgWin.h"
 #include "SimpleHttpRequest.h"
 #include "SimpleXmlParser.h"
-
+#include "ChatRoom.h"
 
 #ifdef _SKINMAGICKEY
 #include "SkinMagicLib.h"
@@ -117,6 +117,13 @@ CMainDlg::CMainDlg()
 
 CMainDlg::~CMainDlg()
 {
+	while (m_ChatRooms.size())
+	{
+		CChatRoom *room = m_ChatRooms[0];
+		m_ChatRooms.erase(m_ChatRooms.begin());
+		delete room;
+	}
+
 	if (m_SimpleHttpRequest)
 		delete m_SimpleHttpRequest;
 	DumpDebug("*MainDlg::~MainDlg\r\n");
@@ -2399,33 +2406,55 @@ void CMainDlg::ShowStatusText(char *text)
 		PostMessage(WM_STATUSMESSAGE, 0);
 }
 
-void CMainDlg::OnIncomingMessage(char *Contact, char *Message, char *HtmlMessage)
+void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, char *HtmlMessage)
 {
-	DumpDebug("*MainDlg::OnIncomingMessage\r\n");
-	int j = strlen(Contact);
-	char *j1 = strchr(Contact, '/');
-	if (j1)
-		*j1 = 0;
-	
-	if (_SDK)
+	if (Contact)
 	{
-		Buffer b;
-		b.PutCString(Contact);
-		b.PutCString(Message);
-		b.PutCString(HtmlMessage);
-
-		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_INCOMINGMESSAGE, b.Ptr(), b.Len()))
-			return;
-	}
-
-	for (int i = 0; i < m_UserList.m_Users.size(); i++)
-	{
-		CUser *user = m_UserList.m_Users[i];
-		if (!strnicmp(user->m_JID, Contact, j))
+		DumpDebug("*MainDlg::OnIncomingMessage\r\n");
+		int j = strlen(Contact);
+		char *j1 = strchr(Contact, '/');
+		if (j1)
+			*j1 = 0;
+		
+		if (_SDK)
 		{
-			user->PrintMsgWindow(FALSE, Message, HtmlMessage);
-			return;
+			Buffer b;
+			b.PutCString(Contact);
+			b.PutCString(Message);
+			b.PutCString(HtmlMessage);
+
+			if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_INCOMINGMESSAGE, b.Ptr(), b.Len()))
+				return;
 		}
+
+		for (int i = 0; i < m_UserList.m_Users.size(); i++)
+		{
+			CUser *user = m_UserList.m_Users[i];
+			if (!strnicmp(user->m_JID, Contact, j))
+			{
+				user->PrintMsgWindow(FALSE, Message, HtmlMessage);
+				return;
+			}
+		}
+	}
+	if (ChatRoom)
+	{
+		for (int i = 0; i < m_ChatRooms.size(); i++)
+		{
+			CChatRoom *room = m_ChatRooms[i];
+			if (!stricmp(room->m_JID, ChatRoom))
+			{
+				room->PrintMsgWindow(FALSE, Message, HtmlMessage);
+				return;
+			}
+		}
+
+		// none found? Add new!
+		CChatRoom *room = new CChatRoom();
+		strcpy(room->m_JID, ChatRoom);
+		m_ChatRooms.push_back(room);
+		room->PrintMsgWindow(FALSE, Message, HtmlMessage);
+		return;
 	}
 }
 

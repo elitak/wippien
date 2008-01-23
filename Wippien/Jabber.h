@@ -96,6 +96,13 @@ public:
 #else
 	void Message(void *Contact, char *JID, char *MessateText, char *HtmlText);
 #endif
+
+#ifndef _WODXMPPLIB
+	void ChatRoomMessage(WODXMPPCOMLib::IXMPPChatRoom *Contact, char *MessageText, char *HtmlText);
+#else
+	void ChatRoomMessage(void *ChatRoom, char *MessateText, char *HtmlText);
+#endif
+	
 	void ShowError(void);
 	HWND	m_ServiceRegisterHwnd, m_ServiceRefreshHwnd;
 

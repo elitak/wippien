@@ -12,7 +12,6 @@
 #include "MsgWin.h"
 #include "SettingsDlg.h"
 #include "ping.h"
-//#include "wodvpn.h"
 #include "SDKMessageLink.h"
 #include <io.h>
 #include <fcntl.h>
@@ -809,7 +808,7 @@ void CUser::OpenMsgWindow(BOOL WithFocus)
 {
 	if (!m_MessageWin)
 	{
-		m_MessageWin = new CMsgWin(this, FALSE);
+		m_MessageWin = new CMsgWin(this);
 //		m_MessageWin->m_HumanHead = &m_Icon;
 
 	}
@@ -867,7 +866,7 @@ void CUser::PrintMsgWindow(BOOL IsSystem, char *Text, char *Html)
 	if (!IsSystem)
 		FlashWindow(m_MessageWin->m_hWnd, TRUE);
 
-	m_MessageWin->Incoming(IsSystem, Text, Html);
+	m_MessageWin->Incoming(m_VisibleName, IsSystem, Text, Html);
 }
 
 Buffer *CUser::ExpandArgs(char *Text)

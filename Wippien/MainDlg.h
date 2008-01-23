@@ -33,10 +33,17 @@ typedef int EMOTICONS_API (WINAPI* FdGetHtml)(int Index, char **Text);
 
 extern UINT WM_TASKBARCREATEDMESSAGE;
 
+
+
 #define _DEBUGWNDMSG
 
 class CBalloonHelp;
 class CSimpleHttpRequest;
+class CChatRoom;
+
+#include <vector>
+typedef std::vector<CChatRoom *> CHATROOMLIST;
+
 
 class CMainDlg : public CAxDialogImpl<CMainDlg>, /*public CUpdateUI<CMainDlg>,*/
 		public CMessageFilter, public CIdleHandler
@@ -57,6 +64,7 @@ public:
 	CMainDlg();
 	virtual ~CMainDlg();
 
+	CHATROOMLIST m_ChatRooms;
 
 	CPNGButton m_btnOK, m_btnSettings, m_btnAbout;
 	CPNGButton m_btnMyStatus, m_btnMyContacts, m_btnAuthDlg, m_btnSmallMute, m_btnChatRooms;
@@ -207,7 +215,7 @@ public:
 	void CloseDialog(int nVal);
 	void RegisterAppBar(BOOL isregister, int style);
 	void RegisterAppBar(BOOL isregister, RECT *rc, int style);
-	void OnIncomingMessage(char *Contact, char *Message, char *HtmlMessage);
+	void OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, char *HtmlMessage);
 	void OnIncomingNotification(char *Contact, int NotID, VARIANT Data);
 	void ShellIcon(int Message, HICON Icon, char *Tip);
 	LRESULT CalcSizeXSizeY(void);

@@ -6486,6 +6486,8 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 				WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
 				WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
 				WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
+				::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
+
 			}			
 		}
 	}			
@@ -6539,7 +6541,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnGatewayListClick(WORD wNotifyCode, W
 	return TRUE;
 }
 
-LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnmh, BOOL& /*bHandled*/)
+LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnmh, BOOL& bHandled)
 {
 	NMLISTVIEW *nm = (NMLISTVIEW *)pnmh;
 	
@@ -6565,6 +6567,9 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnm
 
 				SendDlgItemMessage(IDC_CHATROOM_GATEWAY2, CB_SELECTSTRING, -1, (LPARAM)service);
 				SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_SETTEXT, 0, (LPARAM)room);
+
+				if (pnmh->code == NM_DBLCLK)
+					OnButtonClick(0, 0,0,bHandled);
 			}
 		}
 		break;

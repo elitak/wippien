@@ -317,6 +317,9 @@ void XMPPContactStatusChange(void *wodXMPP, void  *Contact, void *ChatRoom, WODX
 void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::StatusEnum OldStatus)
 #endif
 {
+	if (ChatRoom)
+		return;
+
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	if (!_Jabber->m_Initial)
 	{
@@ -346,10 +349,7 @@ void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContac
 		}
 		
 		_MainDlg.m_UserList.RefreshUser(Contact);
-//		_MainDlg.m_UserList.PostMessage(WM_REFRESH, 0, (LPARAM)Contact);
-//		m_UserList.PostMessage(, NULL, 0);
 	}
-//		m_pJ->m_Owner->ParseUsers(m_pJ->m_Jabb);
 }
 #ifdef _WODXMPPLIB
 void XMPPIncomingNotification(void *wodXMPP, void  *Contact, WODXMPPCOMLib::ContactNotifyEnum NotifyID, VARIANT Data)
@@ -381,7 +381,35 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 {
 	if (ChatRoom)
 	{
-		MessageBeep(-1);
+		CComBSTR2 t;
+#ifndef _WODXMPPLIB
+		Message->get_Text(&t);
+#else
+		char tb[8192];
+		int tblen = sizeof(tb);
+		WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
+		t = tb;
+#endif
+		CComBSTR2 ht;
+#ifndef _WODXMPPLIB
+		Message->get_HTMLText(&ht);
+#else
+		tblen = sizeof(tb);
+		WODXMPPCOMLib::XMPP_Message_GetHTMLText(Message, tb, &tblen);
+		ht = tb;
+#endif
+
+		
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+		tblen = sizeof(tb);
+		WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tb, &tblen);
+#endif
+		
+		_MainDlg.OnIncomingMessage(tb, NULL, t.ToString(), ht.ToString());
+		
+		return;
 	}
 	if (Contact)
 	{
@@ -679,31 +707,6 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							if (user && !user->m_Block)
 							{
 								user->SendConnectionRequest(FALSE);
-
-/*								switch (user->m_WippienState)
-								{	
-									case WipDisconnected:	
-										if (user->m_DidSendRequest && user->m_DidSendResponse)
-										{
-											user->SendConnectionRequest(FALSE);
-											break;
-										} // intentionally left break
-
-									case WipWaitingInitRequest:
-									case WipWaitingInitResponse:
-										user->SetTimer(rand()%100, 3);
-										break;
-										
-									case WipConnecting:
-										break; // in the process
-
-									case WipConnected:
-										break;
-
-//									default:
-//										MessageBeep(-1);
-								}
-*/
 							}
 						}
 					}			
@@ -737,7 +740,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 						{
 							char *j2 = j1.ToString();
 							if (strcmp(j2, WIPPIENDETAILSTHREAD))
-								_MainDlg.OnIncomingMessage(j.ToString(), "Could not deliver message.", "");
+								_MainDlg.OnIncomingMessage(NULL, j.ToString(), "Could not deliver message.", "");
 						}
 					}
 				}
@@ -759,7 +762,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 					WODXMPPCOMLib::XMPP_Message_GetHTMLText(Message, tb, &tblen);
 					ht = tb;
 #endif
-					_MainDlg.OnIncomingMessage(j.ToString(), t.ToString(), ht.ToString());
+					_MainDlg.OnIncomingMessage(NULL, j.ToString(), t.ToString(), ht.ToString());
 				}
 			}
 		}
@@ -831,7 +834,21 @@ void XMPPError(void *wodXMPP, void *Contact, void *ChatRoom, void *Service, long
 #error TODO
 #endif
 {
-	MessageBox(NULL, ErrorText, "XMPP Error", MB_OK | MB_ICONHAND);
+	CComBSTR t = "XMPP Error";
+	if (Contact)
+	{
+#ifdef _WODXMPPLIB
+		char buff[1024];
+		int buflen = sizeof(buff);
+		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, buff, &buflen);
+		t += ": ";
+		t = buff;
+#else
+#error TODO
+#endif
+	}
+	CComBSTR2 t1 = t;
+	MessageBox(NULL, ErrorText, t1.ToString(), MB_OK | MB_ICONHAND);
 }
 
 
@@ -1102,6 +1119,51 @@ void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlTex
 #endif
 	}
 
+	if (FAILED(hr))
+	{
+		ShowError();
+	}
+#ifdef _WODXMPPLIB
+	WODXMPPCOMLib::XMPP_Message_Free(msg);
+#endif
+}
+
+#ifndef _WODXMPPLIB
+void CJabber::ChatRoomMessage(WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, char *MessageText, char *HtmlText)
+#else
+void CJabber::ChatRoomMessage(void *ChatRoom, char *MessageText, char *HtmlText)
+#endif
+{
+#ifndef _WODXMPPLIB
+	CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
+	msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
+#else
+	void *msg = WODXMPPCOMLib::XMPP_Message_New();
+
+#endif
+
+#ifndef _WODXMPPLIB
+	CComBSTR t = MessageText;
+	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)2/*MsgGroupChat*/);
+	msg->put_Text(t);
+	CComBSTR ht = HtmlText;
+	msg->put_HTMLText(ht);
+
+#else
+	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)2);
+	WODXMPPCOMLib::XMPP_Message_SetText(msg, MessageText);
+	WODXMPPCOMLib::XMPP_Message_SetHTMLText(msg, HtmlText);
+#endif
+
+	HRESULT hr = E_FAIL;
+	if (ChatRoom)
+	{
+#ifndef _WODXMPPLIB
+		hr = ChatRoom->raw_SendMessage(msg);
+#else
+		hr = WODXMPPCOMLib::XMPP_ChatRoom_SendMessage(ChatRoom, msg);
+#endif
+	}
 	if (FAILED(hr))
 	{
 		ShowError();

@@ -139,18 +139,14 @@ public:
 	CRITICAL_SECTION m_CritCS;
 	int m_BlinkTimerCounter, m_BlinkConnectingCounter;
 	HTREEITEM m_TreeItem;
-//	unsigned long m_MyDHCPAddress, m_HisDHCPAddress;
-//	unsigned char m_MyDHCPAddressOffset, m_HisDHCPAddressOffset;
 	unsigned long m_HisVirtualIP;
 
 	BOOL m_Changed, m_ChangeNotify, m_Online, m_Hidden;
 	unsigned long m_LastOnline;
 
 
-//	void SaveRemoteWippienInfo(Buffer *data);
 	void SetSubtext(void);
 
-	//SOCKADDR_IN m_RemoteAddr;
 	CComBSTR m_RemoteAddr;
 	int m_RemotePort;//, /*m_LocalPort, */;
 	RSA *m_RSA;
@@ -167,21 +163,15 @@ public:
 	void NotifyUserIsTyping(BOOL IsTyping);
 	void ReInit(BOOL WithDirect);
 	Buffer *ExpandArgs(char *Text);
-	//void StartUDP(void);
 	void SendConnectionRequest(BOOL Notify);
 	BOOL ExchangeWippienDetails(void);
 	void FdTimer(int timerid);
 	void FdMTU(int MTU);
-//	void StartConnecting(void);
-//	void SendHelo(void);
-//	void SendHeloMediator(SOCKADDR *sock, int socksize);
 	BOOL SendNetworkPacket(char *data, int len);
-	//void FdReceive(SOCKADDR_IN *FromSocket, char *buf, int len);
 	void ProcessNetworkData(char *buff, int len);
 	void NotifyBlock(void);
 	void NotifyConnect(void);
 	void NotifyDisconnect(void);
-//	void ProcessPacket(SOCKADDR_IN *FromSocket, PktHeaderRemote *pktin, char *buff);
 
 
 	// GUI

@@ -6,6 +6,7 @@
 #include <atlcrack.h>
 #include "MsgWin.h"
 #include "User.h"
+#include "ChatRoom.h"
 #include "Notify.h"
 #include "colors.h"
 #include "Jabber.h"
@@ -241,30 +242,42 @@ void SystimeToTm(struct tm *tm, SYSTEMTIME *st)
 	tm->tm_sec = st->wSecond;
 }
 
-CMsgWin::CMsgWin(CUser *Owner, BOOL IsMultiChat) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)
+CMsgWin::CMsgWin(CUser *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)
 {
-	m_IsMultiChat = /*IsMultiChat*/1;
+	Init();
+	m_User = Owner;
+}
+
+CMsgWin::CMsgWin(CChatRoom *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)
+{
+	Init();
+	m_Room = Owner;
+}
+
+
+void CMsgWin::Init(void)
+{
+	m_Room = NULL;
+	m_User = NULL;
+
 	LOGBRUSH brush;
 	
 	// drawing button separators 
 	brush.lbStyle = BS_SOLID;
 	brush.lbColor = RGB(156, 160, 156);
-
+	
 	m_hSeparatorPen =	NULL;
-	m_User = Owner;
-//	m_Text = new Buffer();
     
 	CComBSTR b("<body></body>");
 	m_EmptyBody = b.Copy();
-
+	
 	m_BackBrush = CreateSolidBrush(RGB(209,226,251));
-
+	
 	m_hSeparatorPen = ExtCreatePen(PS_COSMETIC | PS_ALTERNATE, 1, &brush, 0, 0 );
-//	m_HumanHead = NULL;
 	m_ImagesLoaded = FALSE;
 	m_ListLoaded = FALSE;
 	m_EmoticonList = NULL;
-//	m_hwndEmoticonList = NULL;
+
 }
 
 CMsgWin::~CMsgWin()
@@ -281,6 +294,8 @@ CMsgWin::~CMsgWin()
 	DeleteObject(m_BackBrush);
 	if (IsWindow() && m_User)
 		GetWindowRect(&m_User->m_ChatWindowRect);
+	if (IsWindow() && m_Room)
+		GetWindowRect(&m_Room->m_ChatWindowRect);
 //	delete m_Text;
 }
 
@@ -578,6 +593,8 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 
 	if (m_User)
 		GetWindowRect(&m_User->m_ChatWindowRect);
+	if (m_Room)
+		GetWindowRect(&m_Room->m_ChatWindowRect);
 
 	if (m_ChatBox.m_Events)
 		delete m_ChatBox.m_Events;
@@ -803,51 +820,6 @@ LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 	return TRUE;
 }
 
-/*LRESULT CMsgWin::OnButtonChar(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	::SendMessage(m_Edit.m_hWnd, uMsg, wParam, lParam);
-	m_Edit.SetFocus();
-	return TRUE;
-}
-*/
-//LRESULT CMsgWin::OnEditChar(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& bHandled)
-/*{
-	if (wParam == 13)
-	{
-		char buff[16384];
-
-		memset(buff, 0, sizeof(buff));
-		sprintf(buff, "%s: ", m_User->m_Owner->m_Settings->m_Settings.Nickname);
-		int i = strlen(buff);
-		int willsend = ::GetWindowText(m_Edit.m_hWnd, buff+i, 16384-i);
-
-		if (willsend)
-			::SendMessage(m_List.m_hWnd, LB_INSERTSTRING, -1, (LPARAM)buff);
-
-		::SetWindowText(m_Edit.m_hWnd, "");
-
-		if (willsend)
-		{
-			Buffer b;
-			b.PutChar(PIPE_MESSAGE);
-			b.PutCString(m_User->m_Name);
-			b.PutCString(buff+i);
-			m_User->m_Owner->m_Pipe->Write(&b);
-			if (m_User->m_State == CSettings::UserState::UserOffline)
-			{
-				::SendMessage(m_List.m_hWnd, LB_INSERTSTRING, -1, (LPARAM)"User is currently offline");
-			}
-			if (Notification) Notification->DoEvent(NotificationMsgOut);
-		}
-		m_Edit.SetFocus();
-		bHandled = TRUE;
-		return TRUE;
-	}
-	bHandled = FALSE;
-	return FALSE;
-}
-*/
-
 BOOL CMsgWin::ArrangeLayout()
 {
 
@@ -884,7 +856,7 @@ BOOL CMsgWin::ArrangeLayout()
 		HWND hEdit = GetDlgItem(IDC_EDITOR);
 		HWND hBtn = GetDlgItem(IDB_SEND);
 		
-		if (m_IsMultiChat)
+		if (m_Room)
 		{
 			::MoveWindow(hContactList,  rc.right-100, rc.top+50, rc.right, rc.bottom - 132, TRUE);
 			::MoveWindow(hList,  rc.left, rc.top+50, rc.right-100, rc.bottom - 132, TRUE);
@@ -984,34 +956,21 @@ LRESULT CMsgWin::OnSizing(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*b
 BOOL CMsgWin::Show(void)
 {
 	char buff[1024];
-	sprintf(buff, "%s (%s)", m_User->m_VisibleName, m_User->m_JID);
+	if (m_User)
+		sprintf(buff, "%s (%s)", m_User->m_VisibleName, m_User->m_JID);
+	else
+		sprintf(buff, "%s", m_Room->m_JID);
 	SetWindowText(buff);
-//	m_List.SubclassWindow ( GetDlgItem(IDC_LIST) );
-//	m_Edit.SubclassWindow ( GetDlgItem(IDC_EDITOR) );
 	m_Button.SubclassWindow ( GetDlgItem(IDB_SEND) );
 
 
 	if (m_User && m_User->m_ChatWindowRect.right > m_User->m_ChatWindowRect.left)
 		SetWindowPos(NULL, &m_User->m_ChatWindowRect, SWP_NOZORDER);
-/*	else
-	{
-		RECT rcOwner;
-		::GetWindowRect(_MainDlg.m_hWnd, &rcOwner);
-		RECT rc;
-		::GetWindowRect(m_hWnd, &rc);
-		rc.left = rcOwner.left - 500;
-		rc.top = rcOwner.top + 100;
-		rc.right = 450;
-		rc.bottom = 400;
-	
-		::SetWindowPos(m_hWnd, NULL, rc.left, rc.top, rc.right, rc.bottom , SWP_NOZORDER);
-	}
-*/
+	if (m_Room && m_Room->m_ChatWindowRect.right > m_Room->m_ChatWindowRect.left)
+		SetWindowPos(NULL, &m_Room->m_ChatWindowRect, SWP_NOZORDER);
+
 	::ShowWindow(m_hWnd, SW_SHOWNOACTIVATE); 
 	
-//	::CreateCaret(GetDlgItem(IDC_EDITOR), (HBITMAP) NULL, 2, 10); 
-//	::SetCaretPos(0,0);
-//	::ShowCaret(GetDlgItem(IDC_EDITOR));
 	return TRUE;
 }
 
@@ -1072,7 +1031,7 @@ BOOL CMsgWin::SaveHistory(BOOL Mine, char *Text)
 
 BOOL CMsgWin::LoadHistory(Buffer *c)
 {
-	if (_Settings.m_ShowMessageHistory)
+	if (m_User && _Settings.m_ShowMessageHistory)
 	{
 		char buff[32768];
 		int handle = open(m_HistoryPath, O_BINARY | O_RDONLY , S_IREAD | S_IWRITE);
@@ -1114,12 +1073,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 					FILETIME ft;
 					DosDateTimeToFileTime(d2, d1, &ft);
 					FileTimeToSystemTime(&ft, &st);
-//						t = localtime(&tim);
-//						if (t)
 					{
-//							TmToSystime(&st, t);	
-
-//							sprintf(buff, "[%d:%d] <b>%s</b>:", st.wHour, st.wMinute, mine?j1:m_User->m_VisibleName);
 						sprintf(buff, "[%d:%d] <b>%s</b>:", st.wHour, st.wMinute, mine?j1:m_User->m_VisibleName);
 						c->Append(buff);
 						c->Append(a);
@@ -1180,7 +1134,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 }
 */
 
-BOOL CMsgWin::Incoming(BOOL IsSystem, char *text, char *Html)
+BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 {
 	if (!IsSystem)
 		SaveHistory(FALSE, text);
@@ -1195,7 +1149,7 @@ BOOL CMsgWin::Incoming(BOOL IsSystem, char *text, char *Html)
 	if (!IsSystem)
 	{
 		b.Append("<b>");
-		b.Append(m_User->m_VisibleName);
+		b.Append(User);
 		b.Append("</b>");
 		b.Append("</font>: <font color=#000000>");
 	}
@@ -1226,13 +1180,7 @@ BOOL CMsgWin::Incoming(BOOL IsSystem, char *text, char *Html)
 	if (!IsSystem && !didplayemoticonsound)
 		_Notify.DoEvent(NotificationMsgIn);
 	::ShowWindow(GetDlgItem(IDC_ISTYPING),  SW_HIDE);
-/*
-	if (m_User && m_User->m_MessageWin && m_User->m_MessageWin->m_hWnd == GetActiveWindow())
-	{
-		if (m_InputBox.IsWindow())
-			m_InputBox.SetFocus();
-	}
-*/
+
 	return TRUE;
 }
 
@@ -1249,7 +1197,7 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 	SetIcon(LoadIcon(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_MSGWINICON)));
 
 	HWND hContactList = GetDlgItem(IDC_MSGWIN_USERS);
-	if (m_IsMultiChat)
+	if (m_Room)
 		::ShowWindow(hContactList, SW_SHOW);
 	else
 		::ShowWindow(hContactList, SW_HIDE);
@@ -1354,24 +1302,47 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 //	if (!m_InputBox.Init(this)) MessageBox(":(");
 //	if (!m_ChatBox.Init(this)) MessageBox(":(");
 
-	if (m_User && m_User->m_ChatWindowRect.right > m_User->m_ChatWindowRect.left)
+	if (m_User)
 	{
+		if (m_User && m_User->m_ChatWindowRect.right > m_User->m_ChatWindowRect.left)
+		{
+			if (_MainDlg.m_DefChatWindowRect.right == _MainDlg.m_DefChatWindowRect.left && !_MainDlg.m_DefChatWindowRect.right)
+				memcpy(&_MainDlg.m_DefChatWindowRect, &m_User->m_ChatWindowRect, sizeof(_MainDlg.m_DefChatWindowRect));
 
-		if (_MainDlg.m_DefChatWindowRect.right == _MainDlg.m_DefChatWindowRect.left && !_MainDlg.m_DefChatWindowRect.right)
-			memcpy(&_MainDlg.m_DefChatWindowRect, &m_User->m_ChatWindowRect, sizeof(_MainDlg.m_DefChatWindowRect));
-
-		SetWindowPos(NULL, &m_User->m_ChatWindowRect, SWP_NOZORDER);
+			SetWindowPos(NULL, &m_User->m_ChatWindowRect, SWP_NOZORDER);
+		}
+		else
+			if (_MainDlg.m_DefChatWindowRect.right > _MainDlg.m_DefChatWindowRect.left)
+			{
+				memcpy(&m_User->m_ChatWindowRect, &_MainDlg.m_DefChatWindowRect, sizeof(_MainDlg.m_DefChatWindowRect));
+				_MainDlg.m_DefChatWindowRect.left -= 40;
+				_MainDlg.m_DefChatWindowRect.right -= 40;
+				_MainDlg.m_DefChatWindowRect.top += 40;
+				_MainDlg.m_DefChatWindowRect.bottom += 40;
+				SetWindowPos(NULL, &_MainDlg.m_DefChatWindowRect, SWP_NOZORDER);
+			}
 	}
-	else
+	if (m_Room)
+	{
+		if (m_Room && m_Room->m_ChatWindowRect.right > m_Room->m_ChatWindowRect.left)
+		{
+			
+			if (_MainDlg.m_DefChatWindowRect.right == _MainDlg.m_DefChatWindowRect.left && !_MainDlg.m_DefChatWindowRect.right)
+				memcpy(&_MainDlg.m_DefChatWindowRect, &m_Room->m_ChatWindowRect, sizeof(_MainDlg.m_DefChatWindowRect));
+			
+			SetWindowPos(NULL, &m_Room->m_ChatWindowRect, SWP_NOZORDER);
+		}
+		else
 		if (_MainDlg.m_DefChatWindowRect.right > _MainDlg.m_DefChatWindowRect.left)
 		{
-			memcpy(&m_User->m_ChatWindowRect, &_MainDlg.m_DefChatWindowRect, sizeof(_MainDlg.m_DefChatWindowRect));
+			memcpy(&m_Room->m_ChatWindowRect, &_MainDlg.m_DefChatWindowRect, sizeof(_MainDlg.m_DefChatWindowRect));
 			_MainDlg.m_DefChatWindowRect.left -= 40;
 			_MainDlg.m_DefChatWindowRect.right -= 40;
 			_MainDlg.m_DefChatWindowRect.top += 40;
 			_MainDlg.m_DefChatWindowRect.bottom += 40;
 			SetWindowPos(NULL, &_MainDlg.m_DefChatWindowRect, SWP_NOZORDER);
 		}
+	}
 
 	HWND m_hwndEmoticonList = CreateWindowEx(WS_EX_TOOLWINDOW, "LISTBOX",NULL, WS_POPUP | WS_BORDER | LBS_OWNERDRAWFIXED | LBS_NOTIFY | LBS_MULTICOLUMN | LBS_NOINTEGRALHEIGHT | LBS_HASSTRINGS | WS_HSCROLL,0,0,0,0,m_hWnd,NULL,_Module.GetModuleInstance(),NULL);
 	if (!m_EmoticonList)
@@ -1380,9 +1351,12 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 //	m_IconList.Attach(hwndList);
 
 
-	strcpy(m_HistoryPath, _Settings.m_HistoryPath);
-	strcat(m_HistoryPath, m_User->m_JID); 
-	strcat(m_HistoryPath, ".history");
+	if (m_User)
+	{
+		strcpy(m_HistoryPath, _Settings.m_HistoryPath);
+		strcat(m_HistoryPath, m_User->m_JID); 
+		strcat(m_HistoryPath, ".history");
+	}
 
 	return TRUE;
 }
@@ -2164,55 +2138,75 @@ HRESULT CMsgWin::CInputBox::Send()
 					}
 				}
 */
-				m_ParentDlg->m_ChatBox.AddLine(&b1, TRUE);
 
 				CComBSTR2 b3(bstr2);
 				CComBSTR2 b2(bstr);
 							
 
-				m_ParentDlg->SaveHistory(TRUE, b3.ToString());
-				_Jabber->Message(NULL, m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
-				//CUser * user = _MainDlg.m_UserList.GetUserByJID(m_ParentDlg->m_User->m_JID);
+				if (m_ParentDlg->m_User)
+				{
+					m_ParentDlg->m_ChatBox.AddLine(&b1, TRUE);
+					m_ParentDlg->SaveHistory(TRUE, b3.ToString());
+					_Jabber->Message(NULL, m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
+				}
 
-				BOOL online = FALSE;
+				if (m_ParentDlg->m_Room)
+				{
+					char room[1024];
+					sprintf(room, "%s/%s", m_ParentDlg->m_Room->m_JID, m_ParentDlg->m_Room->m_Nick);
+
 #ifndef _WODXMPPLIB
-				WODXMPPCOMLib::IXMPPContact *cnt;
-				WODXMPPCOMLib::IXMPPContacts *cnts;
-				if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cnts)))
-				{
-					VARIANT var;
-					var.vt = VT_BSTR;
-					var.bstrVal = T2BSTR(m_ParentDlg->m_User->m_JID);
-					if (SUCCEEDED(cnts->get_Item(var, &cnt)))
-					{					
-						WODXMPPCOMLib::StatusEnum stat;
-						if (SUCCEEDED(cnt->get_Status(&stat)))
-						{
-							if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
-								online = TRUE;
-						}
-						cnt->Release();
-					}
-					cnts->Release();
-				}
+#error TODO
 #else
-				void *cnt = NULL;
-				WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, m_ParentDlg->m_User->m_JID, &cnt);
-				if (cnt)
-				{
-					WODXMPPCOMLib::StatusEnum stat;
-					WODXMPPCOMLib::XMPP_Contact_GetStatus(cnt, &stat);
-					if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
-						online = TRUE;
-					WODXMPPCOMLib::XMPP_Contacts_Free(cnt);
-				}
+					void *croom = NULL;
+					WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, room, &croom);
 #endif
 
-				if (!online)
+					_Jabber->ChatRoomMessage(croom, b3.ToString(), b2.ToString());
+				}
+
+				if (m_ParentDlg->m_User)
 				{
-					Buffer b2;
-					b2.Append("<font color=#CC00CC><i>User is currently offline.</i></font>");
-					m_ParentDlg->m_ChatBox.AddLine(&b2, TRUE);
+					BOOL online = FALSE;
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPContact *cnt;
+					WODXMPPCOMLib::IXMPPContacts *cnts;
+					if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cnts)))
+					{
+						VARIANT var;
+						var.vt = VT_BSTR;
+						var.bstrVal = T2BSTR(m_ParentDlg->m_User->m_JID);
+						if (SUCCEEDED(cnts->get_Item(var, &cnt)))
+						{					
+							WODXMPPCOMLib::StatusEnum stat;
+							if (SUCCEEDED(cnt->get_Status(&stat)))
+							{
+								if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
+									online = TRUE;
+							}
+							cnt->Release();
+						}
+						cnts->Release();
+					}
+#else
+					void *cnt = NULL;
+					WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, m_ParentDlg->m_User->m_JID, &cnt);
+					if (cnt)
+					{
+						WODXMPPCOMLib::StatusEnum stat;
+						WODXMPPCOMLib::XMPP_Contact_GetStatus(cnt, &stat);
+						if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
+							online = TRUE;
+						WODXMPPCOMLib::XMPP_Contacts_Free(cnt);
+					}
+#endif
+
+					if (!online)
+					{
+						Buffer b2;
+						b2.Append("<font color=#CC00CC><i>User is currently offline.</i></font>");
+						m_ParentDlg->m_ChatBox.AddLine(&b2, TRUE);
+					}
 				}
 				_Notify.DoEvent(NotificationMsgOut);
 
@@ -2257,8 +2251,8 @@ HRESULT CMsgWin::CInputBox::Send()
 
 HRESULT CMsgWin::CInputBox::NotifyTyping()
 {
-//	_Jabber->Message(m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
-//	CUser * user = _MainDlg.m_UserList.GetUserByJID(m_ParentDlg->m_User->m_JID);
+	if (!m_ParentDlg->m_User)
+		return S_OK;
 
 #ifndef _WODXMPPLIB
 	WODXMPPCOMLib::IXMPPContact *cnt;
@@ -2555,8 +2549,6 @@ HRESULT STDMETHODCALLTYPE CMsgWin::CMyHTMLEditDesigner::PreHandleEvent(DISPID in
 				{
 					p->m_InputBox.NotifyTyping();
 				}
-//				p->m_User->
-//				m_User->NULL;
 			}
 		}
 	}

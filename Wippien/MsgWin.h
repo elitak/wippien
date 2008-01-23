@@ -25,6 +25,7 @@ extern BOOL isClose(int x, int y);
 
 
 class CUser;
+class CChatRoom;
 class Buffer;
 class wWebEvents;
 
@@ -37,15 +38,17 @@ public:
 	virtual BOOL OnIdle();
 
 
-	CMsgWin(CUser *m_Owner, BOOL IsMultiChat);
+	CMsgWin(CUser *Owner);
+	CMsgWin(CChatRoom *Owner);
+	void Init(void);
 	virtual ~CMsgWin();
 	CContainedWindow /*m_List, m_Edit, */m_Button;
 	CUser *m_User;
-	BOOL m_IsMultiChat;
+	CChatRoom *m_Room;
 
 	BOOL ArrangeLayout();
 	BOOL Show(void);
-	BOOL Incoming(BOOL IsSystem, char *Text, char *Html);
+	BOOL Incoming(char *User, BOOL IsSystem, char *Text, char *Html);
 	BOOL SaveHistory(BOOL Mine, char *Text);
 	BOOL AddTimestamp(Buffer *b);
 	BOOL LoadHistory(Buffer *out);

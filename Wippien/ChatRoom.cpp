@@ -6,6 +6,7 @@
 #include "ChatRoom.h"
 #include "MsgWin.h"
 #include "Settings.h"
+#include "Jabber.h"
 
 
 //////////////////////////////////////////////////////////////////////
@@ -13,6 +14,7 @@
 //////////////////////////////////////////////////////////////////////
 
 extern CSettings _Settings;
+extern CJabber *_Jabber;
 
 CChatRoom::CChatRoom()
 {
@@ -85,3 +87,21 @@ void CChatRoom::PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html
 	if ((Text && *Text) || (Html && *Html))
 		m_MessageWin->Incoming(Nick, IsSystem, Text, Html);
 }
+
+void CChatRoom::Leave(void)
+{
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+		void *chatroom = NULL;
+		WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, m_JID, &chatroom);
+		if (chatroom)
+		{
+			WODXMPPCOMLib::XMPP_ChatRoom_Leave(chatroom);
+
+		}	
+#endif
+
+
+}
+

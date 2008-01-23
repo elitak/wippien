@@ -6488,6 +6488,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 				WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
 				::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
 
+				WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
 			}			
 		}
 	}			

@@ -23,6 +23,7 @@ public:
 	BOOL IsMsgWindowOpen(void);
 	void CloseMsgWindow(void);
 	void PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html);
+	void Leave(void);
 
 	char m_JID[1024];
 	char m_Nick[1024];

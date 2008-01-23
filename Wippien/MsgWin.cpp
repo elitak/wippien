@@ -488,6 +488,11 @@ LRESULT CMsgWin::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BO
 	DestroyWindow();
 	
 	bHandled = TRUE;
+
+	if (m_Room)
+	{
+		m_Room->Leave();
+	}
 	return TRUE;
 }
 
@@ -1177,7 +1182,7 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 	b.ConsumeEnd(1);
 //	CComBSTR t(b.Ptr());
 	BOOL didplayemoticonsound = m_ChatBox.AddLine(&b, FALSE);
-	if (!IsSystem && !didplayemoticonsound)
+	if (!IsSystem && !didplayemoticonsound && !m_Room)
 		_Notify.DoEvent(NotificationMsgIn);
 	::ShowWindow(GetDlgItem(IDC_ISTYPING),  SW_HIDE);
 
@@ -2163,6 +2168,13 @@ HRESULT CMsgWin::CInputBox::Send()
 #endif
 
 					_Jabber->ChatRoomMessage(croom, b3.ToString(), b2.ToString());
+
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+					WODXMPPCOMLib::XMPP_ChatRoom_Free(croom);
+#endif
+				
 				}
 
 				if (m_ParentDlg->m_User)
@@ -2208,7 +2220,8 @@ HRESULT CMsgWin::CInputBox::Send()
 						m_ParentDlg->m_ChatBox.AddLine(&b2, TRUE);
 					}
 				}
-				_Notify.DoEvent(NotificationMsgOut);
+				if (!m_ParentDlg->m_Room)
+					_Notify.DoEvent(NotificationMsgOut);
 
 
 				CComBSTR b = m_ParentDlg->m_EmptyBody;

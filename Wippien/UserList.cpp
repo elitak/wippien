@@ -430,7 +430,7 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 						for (int k=0;!found && k<m_Users.size();k++)
 						{
 							user = (CUser *)m_Users[k];
-							if (!stricmp(user->m_JID, j))
+							if (!stricmp(user->m_JID, j) || !stricmp(user->m_JID, jd.ToString()))
 							 found = TRUE;
 						}
 						WODXMPPCOMLib::StatusEnum stat = (WODXMPPCOMLib::StatusEnum)0/*Offline*/;
@@ -447,7 +447,14 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 
 						if (!found)
 						{
-							user = AddNewUser(j, contact);
+							if (chatroom)
+							{
+								user = AddNewUser(jd.ToString(), contact);
+								strcpy(user->m_VisibleName, jd2);
+								user->m_ChatRoomName = j;
+							}
+							else
+								user = AddNewUser(j, contact);
 						}
 
 						if (user)
@@ -455,7 +462,7 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 							if (res && strlen(res)<sizeof(user->m_Resource))
 								strcpy(user->m_Resource, res);
 
-							// if unsubsrcibed
+							// if unsubscripted
 							if (stat == /*Unsubscribed*/8)
 							{
 								user->m_Hidden = TRUE;

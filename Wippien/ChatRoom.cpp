@@ -28,6 +28,12 @@ CChatRoom::CChatRoom()
 
 CChatRoom::~CChatRoom()
 {
+	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	{
+		CUser *us = _MainDlg.m_UserList.m_Users[i];
+		if (us->m_ChatRoomPtr == this)
+			us->m_ChatRoomPtr = NULL;
+	}
 	if (m_MessageWin)
 	{
 		if (m_MessageWin->IsWindow())

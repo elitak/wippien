@@ -363,23 +363,9 @@ void CUserList::SortUsers(void)
 }
 
 void CUserList::RefreshUser(void *cntc, char *chatroom1)
-{
-	CChatRoom *chatroom = NULL;
-	if (chatroom1)
-	{
-		for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
-		{
-			CChatRoom *room = _MainDlg.m_ChatRooms[i];
-			if (!strcmp(room->m_JID, chatroom1))
-			{					
-				chatroom = room;
-				break;
-			}	
-		}
-		if (!chatroom)
-			return; // should not happen
+{	
 
-	}	
+
 #ifndef _WODXMPPLIB
 	WODXMPPCOMLib::IXMPPContacts *contacts;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&contacts)))
@@ -464,15 +450,35 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 						if (!found)
 						{
-							if (chatroom && jd2)
+							if (chatroom1 && jd2)
 							{
+
 								user = AddNewUser(jd.ToString(), contact);
 								strcpy(user->m_VisibleName, jd2);
-								user->m_ChatRoomPtr = chatroom;
+								
 							}
 							else
 								user = AddNewUser(j, contact);
 						}
+
+						if (user)
+						{
+							if (chatroom1 && !user->m_ChatRoomPtr)
+							{
+								for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+								{
+										CChatRoom *room = _MainDlg.m_ChatRooms[i];
+										if (!strcmp(room->m_JID, chatroom1))
+										{					
+											user->m_ChatRoomPtr = room;
+											break;
+										}	
+										
+										if (!user->m_ChatRoomPtr)
+											return; // should not happen									
+									}	
+							}	
+						}	
 
 						if (user)
 						{
@@ -576,7 +582,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = FALSE;
 
-									if (!chatroom)
+									if (!chatroom1)
 										user->ReInit(FALSE/*TRUE*/);
 								}
 							
@@ -604,7 +610,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								user->m_Changed = TRUE;
 						}
 
-						if (chatroom)
+						if (chatroom1)
 						{
 							// let's remove this user 
 							if (!user->m_Online)

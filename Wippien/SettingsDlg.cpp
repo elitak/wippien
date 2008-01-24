@@ -6356,7 +6356,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	m_RoomList.Attach(GetDlgItem(IDC_CHATROOM_ROOMLIST));
 	m_NewRoomServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAY2));
 	m_ServicesList.InsertString(-1, "- All gateways -");
-	::EnableWindow(::GetDlgItem(m_Owner, IDOK), FALSE);
+//	::EnableWindow(::GetDlgItem(m_Owner, IDOK), FALSE);
 	::EnableWindow(::GetDlgItem(m_Owner, IDC_NEXT), FALSE);
 	::EnableWindow(::GetDlgItem(m_Owner, IDC_BACK), FALSE);
 
@@ -6496,6 +6496,13 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 			SendDlgItemMessage(IDC_CHATROOM_ROOMPASS, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
 
 			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
+
+			char nickbuff[1024] = {0};
+			SendDlgItemMessage(IDC_CHATROOM_NICKNAME, WM_GETTEXT, sizeof(nickbuff), (LPARAM)nickbuff);
+
+
+			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
+			WODXMPPCOMLib::XMPP_ChatRoom_SetNick(chatroom, nickbuff);
 			WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
 			WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
 			::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
@@ -6596,8 +6603,12 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnm
 
 BOOL CSettingsDlg::CSettingsChatRooms::Apply(void)
 {
-	
-	
+	char buff[1024] = {0};
+	SendDlgItemMessage(IDC_CHATROOM_NICKNAME, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
+	if (*buff)
+	{
+		_Settings.m_Nick = buff;
+	}		
 	return TRUE;
 }
 

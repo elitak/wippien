@@ -481,7 +481,14 @@ void CUser::SendConnectionRequest(BOOL Notify)
 
 			CComBSTR hisid = m_JID;
 			hisid += "_";
-			hisid += _Settings.m_JID;
+			if (m_ChatRoomPtr)
+			{
+				hisid += m_ChatRoomPtr->m_JID;
+				hisid += "@";
+				hisid += m_ChatRoomPtr->m_Nick;
+			}
+			else
+				hisid += _Settings.m_JID;
 			hisid.ToLower();
 	
 

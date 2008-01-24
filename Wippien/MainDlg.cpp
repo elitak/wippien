@@ -2435,6 +2435,8 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 		// none found? Add new!
 		CChatRoom *room = new CChatRoom();
 		strcpy(room->m_JID, ChatRoom);
+		CComBSTR2 n = _Settings.m_Nick;
+		strcpy(room->m_Nick, n.ToString());
 		m_ChatRooms.push_back(room);
 		room->PrintMsgWindow(j1, FALSE, Message, HtmlMessage);
 		return;

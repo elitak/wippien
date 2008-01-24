@@ -1688,7 +1688,7 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	m_btnAbout.SetCaption("&About");
 	m_btnAbout.SubclassWindow(GetDlgItem(ID_APP_ABOUT));
 
-	m_btnMyStatus.SetToolTipText("Set your status\r\nAway, Invisible, Free for chat...");
+	m_btnMyStatus.SetToolTipText("Set your status (Away,Invisible...");
 	m_btnMyStatus.SubclassWindow(GetDlgItem(IDC_MYSTATUS));
 	m_btnMyStatus.LoadPNG(IDC_MYSTATUS);
 

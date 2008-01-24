@@ -463,7 +463,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 						if (user)
 						{
-							if (chatroom1 && !user->m_ChatRoomPtr)
+							if (chatroom1 && cntc && !user->m_ChatRoomPtr)
 							{
 								for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
 								{

@@ -454,7 +454,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			if (m_ChatRoomPtr)
 			{
 				myid = m_ChatRoomPtr->m_JID;
-				myid += "@";
+				myid += "/";
 				myid += m_ChatRoomPtr->m_Nick;
 			}
 			else
@@ -484,7 +484,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			if (m_ChatRoomPtr)
 			{
 				hisid += m_ChatRoomPtr->m_JID;
-				hisid += "@";
+				hisid += "/";
 				hisid += m_ChatRoomPtr->m_Nick;
 			}
 			else

@@ -10,6 +10,7 @@
 #include "MainDlg.h"
 #include "Ethernet.h"
 #include "MsgWin.h"
+#include "ChatRoom.h"
 #include "SettingsDlg.h"
 #include "ping.h"
 #include "SDKMessageLink.h"
@@ -232,7 +233,7 @@ CUser::CUser()
 		m_MyKey[i] = rand();
 
 
-	m_ChatRoomName = NULL;
+	m_ChatRoomPtr = NULL;
 }
 
 CUser::~CUser()
@@ -449,7 +450,15 @@ void CUser::SendConnectionRequest(BOOL Notify)
 #else
 			m_wodVPN->raw_Stop();
 #endif
-			CComBSTR myid = _Settings.m_JID;
+			CComBSTR myid;
+			if (m_ChatRoomPtr)
+			{
+				myid = m_ChatRoomPtr->m_JID;
+				myid += "@";
+				myid += m_ChatRoomPtr->m_Nick;
+			}
+			else
+				myid = _Settings.m_JID;
 			myid += "_";
 			myid += m_JID;
 

@@ -1107,7 +1107,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
-		if (!user->m_ChatRoomName) // we do not dump temporary users
+		if (!user->m_ChatRoomPtr) // we do not dump temporary users
 		{
 			CComBSTR j = user->m_JID;
 			x.Append("<User>\r\n");

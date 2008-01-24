@@ -329,7 +329,7 @@ void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContac
 		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tbjid, &tblen);
 #endif
 		_MainDlg.OnIncomingMessage(tbchatroom, tbjid, "", "");
-		_MainDlg.m_UserList.RefreshUser(Contact, ChatRoom);
+		_MainDlg.m_UserList.RefreshUser(Contact, tbchatroom);
 
 		return;
 	}

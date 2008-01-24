@@ -10,6 +10,7 @@
 #include "Notify.h"
 #include "SettingsDlg.h"
 #include "MsgWin.h"
+#include "ChatRoom.h"
 
 extern CSettings _Settings;
 extern CJabber *_Jabber;
@@ -361,8 +362,24 @@ void CUserList::SortUsers(void)
 	}
 }
 
-void CUserList::RefreshUser(void *cntc, void *chatroom)
+void CUserList::RefreshUser(void *cntc, char *chatroom1)
 {
+	CChatRoom *chatroom = NULL;
+	if (chatroom1)
+	{
+		for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+		{
+			CChatRoom *room = _MainDlg.m_ChatRooms[i];
+			if (!strcmp(room->m_JID, chatroom1))
+			{					
+				chatroom = room;
+				break;
+			}	
+		}
+		if (!chatroom)
+			return; // should not happen
+
+	}	
 #ifndef _WODXMPPLIB
 	WODXMPPCOMLib::IXMPPContacts *contacts;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&contacts)))
@@ -451,7 +468,7 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 							{
 								user = AddNewUser(jd.ToString(), contact);
 								strcpy(user->m_VisibleName, jd2);
-								user->m_ChatRoomName = j;
+								user->m_ChatRoomPtr = chatroom;
 							}
 							else
 								user = AddNewUser(j, contact);
@@ -683,7 +700,7 @@ void CUserList::RefreshView(BOOL updateonly)
 	for (int i=0;i<m_Users.size();i++)
 	{
 		CUser *p = m_Users[m_SortedUser[i]];
-		if (p->m_ChatRoomName)
+		if (p->m_ChatRoomPtr)
 			TreeItem.itemex.iIntegral = 17;
 		else
 			TreeItem.itemex.iIntegral = integralsize;

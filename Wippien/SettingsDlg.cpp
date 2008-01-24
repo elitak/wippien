@@ -6356,6 +6356,10 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	m_RoomList.Attach(GetDlgItem(IDC_CHATROOM_ROOMLIST));
 	m_NewRoomServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAY2));
 	m_ServicesList.InsertString(-1, "- All gateways -");
+	::EnableWindow(::GetDlgItem(m_Owner, IDOK), FALSE);
+	::EnableWindow(::GetDlgItem(m_Owner, IDC_NEXT), FALSE);
+	::EnableWindow(::GetDlgItem(m_Owner, IDC_BACK), FALSE);
+
 
 	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_BORDERSELECT | LVS_EX_FULLROWSELECT); 
 	LV_COLUMN lvcol = {0};

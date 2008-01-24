@@ -31,6 +31,7 @@ typedef std::vector<void *> PACKETLIST;
 class CxImage;
 class CMsgWin;
 class CSettingsDlg;
+class CChatRoom;
 
 typedef enum WippienState
 {
@@ -143,7 +144,7 @@ public:
 
 	BOOL m_Changed, m_ChangeNotify, m_Online, m_Hidden;
 	unsigned long m_LastOnline;
-	char *m_ChatRoomName;
+	CChatRoom *m_ChatRoomPtr;
 
 
 	void SetSubtext(void);

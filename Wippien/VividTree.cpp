@@ -113,7 +113,7 @@ void CVividTree::DrawItems(CDC *pDC)
 				{
 					user = (CUser *)GetItemData(show_item);
 
-					if (_Settings.m_ShowContactPicture)
+					if (_Settings.m_ShowContactPicture && !user->m_ChatRoomName)
 					{
 						if (user && user->m_Image)	
 						{
@@ -157,7 +157,7 @@ void CVividTree::DrawItems(CDC *pDC)
 					else
 					{
 						user = (CUser *)GetItemData(show_item);
-						if (_Settings.m_ShowContactPicture)
+						if (_Settings.m_ShowContactPicture && !user->m_ChatRoomName)
 							rc_item.left += 5;
 						else
 							rc_item.left -= 20;
@@ -178,7 +178,7 @@ void CVividTree::DrawItems(CDC *pDC)
 						RECT rc1;
 						rc_item.right-=2;
 						memcpy(&rc1,&rc_item, sizeof(RECT));
-						if (_Settings.m_ShowContactStatus)
+						if (_Settings.m_ShowContactStatus && !user->m_ChatRoomName)
 						{
 							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
 							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
@@ -240,7 +240,7 @@ void CVividTree::DrawItems(CDC *pDC)
 					}
 					else
 					{
-						if (_Settings.m_ShowContactPicture)
+						if (_Settings.m_ShowContactPicture && !user->m_ChatRoomName)
 							rc_item.left += 5;
 						else
 							rc_item.left -= 20;
@@ -261,7 +261,7 @@ void CVividTree::DrawItems(CDC *pDC)
 						RECT rc1;
 						rc_item.right-=2;
 						memcpy(&rc1,&rc_item, sizeof(RECT));
-						if (_Settings.m_ShowContactStatus)
+						if (_Settings.m_ShowContactStatus && !user->m_ChatRoomName)
 						{
 							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
 							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);

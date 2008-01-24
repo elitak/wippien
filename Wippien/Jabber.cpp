@@ -393,46 +393,6 @@ void XMPPIncomingMessage(void *wodXMPP, void  *Contact, void *ChatRoom, void  *M
 void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message)
 #endif
 {
-	if (ChatRoom)
-	{
-		CComBSTR2 t;
-#ifndef _WODXMPPLIB
-		Message->get_Text(&t);
-#else
-		char tb[8192];
-		int tblen = sizeof(tb);
-		WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
-		t = tb;
-#endif
-		CComBSTR2 ht;
-#ifndef _WODXMPPLIB
-		Message->get_HTMLText(&ht);
-#else
-		tblen = sizeof(tb);
-		WODXMPPCOMLib::XMPP_Message_GetHTMLText(Message, tb, &tblen);
-		ht = tb;
-#endif
-
-		CComBSTR2 contactjid;
-#ifndef _WODXMPPLIB
-#error TODO
-#else
-		tblen = sizeof(tb);
-		WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
-		contactjid = tb;
-#endif
-		
-#ifndef _WODXMPPLIB
-#error TODO
-#else
-		tblen = sizeof(tb);
-		WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tb, &tblen);
-#endif		
-
-		_MainDlg.OnIncomingMessage(tb, contactjid.ToString(), t.ToString(), ht.ToString());
-		
-		return;
-	}
 	if (Contact)
 	{
 		WODXMPPCOMLib::MessageTypesEnum msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
@@ -459,9 +419,12 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 			if (_Settings.IsHiddenContact(jd1))
 				return;
 
-			char *jd2 = strchr(jd1, '/');
-			if (jd2)
-				*jd2 = 0;
+			if (!ChatRoom)
+			{
+				char *jd2 = strchr(jd1, '/');
+				if (jd2)
+					*jd2 = 0;
+			}
 			jid = jd1;
 
 		}
@@ -521,9 +484,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #endif
 							{
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
-								ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
 								if (user)
 								{
+									ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
 									BOOL isWippien = FALSE;
 									if (strstr(capa.ToString(), WIPPIENIM))
 										isWippien = TRUE;
@@ -736,6 +699,50 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 			}
 			else
 			{
+
+				if (ChatRoom)
+				{
+					CComBSTR2 t;
+#ifndef _WODXMPPLIB
+					Message->get_Text(&t);
+#else
+					char tb[8192];
+					int tblen = sizeof(tb);
+					WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
+					t = tb;
+#endif
+					CComBSTR2 ht;
+#ifndef _WODXMPPLIB
+					Message->get_HTMLText(&ht);
+#else
+					tblen = sizeof(tb);
+					WODXMPPCOMLib::XMPP_Message_GetHTMLText(Message, tb, &tblen);
+					ht = tb;
+#endif
+
+					CComBSTR2 contactjid;
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+					tblen = sizeof(tb);
+					WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
+					contactjid = tb;
+#endif
+					
+#ifndef _WODXMPPLIB
+#error TODO
+#else
+					tblen = sizeof(tb);
+					WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tb, &tblen);
+#endif		
+
+					_MainDlg.OnIncomingMessage(tb, contactjid.ToString(), t.ToString(), ht.ToString());
+					
+					return;
+				}
+
+				// not chatroom
+
 				CComBSTR2 j;
 #ifndef _WODXMPPLIB
 				Contact->get_JID(&j);
@@ -1197,38 +1204,6 @@ void CJabber::ChatRoomMessage(void *ChatRoom, char *MessageText, char *HtmlText)
 
 void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 {
-#ifndef _WODXMPPLIB
-	CComBSTR j = JID;
-	VARIANT var;
-	var.vt = VT_BSTR;
-	var.bstrVal = j;
-	WODXMPPCOMLib::IXMPPContacts *cts = NULL;
-	WODXMPPCOMLib::IXMPPContact *ct = NULL;
-
-	if (SUCCEEDED(m_Jabb->get_Contacts(&cts)))
-	{
-		if (SUCCEEDED(cts->get_Item(var, &ct)))
-		{
-			ExchangeWippienDetails(ct, Subj, Text);
-			ct->Release();
-		}
-		cts->Release();
-	}
-#else
-	void *ct = NULL;
-	WODXMPPCOMLib::XMPP_ContactsGetContactByJID(m_Jabb, JID, &ct);
-	ExchangeWippienDetails(ct, Subj, Text);
-	WODXMPPCOMLib::XMPP_Contacts_Free(ct);
-#endif
-}
-
-
-#ifndef _WODXMPPLIB
-void CJabber::ExchangeWippienDetails(WODXMPPCOMLib::IXMPPContact *Contact, char *Subj, Buffer *Text)
-#else
-void CJabber::ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text)
-#endif
-{
 
 #ifndef _WODXMPPLIB
 	CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
@@ -1265,11 +1240,13 @@ void CJabber::ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text)
 #endif
 	}
 
+
 //	Contact->SendMessage(msg);
 #ifndef _WODXMPPLIB
-	HRESULT hr = Contact->raw_SendMessage(msg);
+#error TODO
+//	HRESULT hr = raw_SendMessage(msg);
 #else
-	HRESULT hr = WODXMPPCOMLib::XMPP_Contact_SendMessage(Contact, msg);
+	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, JID, msg);
 #endif
 	if (FAILED(hr))
 	{
@@ -1279,6 +1256,7 @@ void CJabber::ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text)
 #ifdef _WODXMPPLIB
 	WODXMPPCOMLib::XMPP_Message_Free(msg);
 #endif
+
 
 }
 

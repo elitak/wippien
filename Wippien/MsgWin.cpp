@@ -593,6 +593,8 @@ LRESULT CMsgWin::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BO
 
 LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	_Module.GetMessageLoop()->RemoveMessageFilter(this);
+
 	m_ChatBox.Free();
 	m_InputBox.Free();
 
@@ -612,12 +614,7 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 		if (m_EmoticonList->m_BalloonHwnd)
 			::DestroyWindow(m_EmoticonList->m_BalloonHwnd);
 	}
-//	m_EmoticonList->DestroyWindow();
-//	if (m_hwndEmoticonList)
-//		::DestroyWindow(m_hwndEmoticonList);
 	
-	_Module.GetMessageLoop()->RemoveMessageFilter(this);
-
 
 	bHandled = TRUE;
 	m_hWnd = NULL;
@@ -2340,31 +2337,6 @@ LRESULT CMsgWin::CInputBox::OnClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*l
 	bHandled = TRUE;
 	return 0;
 }
-
-LRESULT CMsgWin::CInputBox::OnParentNotify(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-/*	if (wParam == WM_CREATE)
-	{	
-		HWND hChild = (HWND) lParam;
-		char strClassName[256];
-
-		if (::GetClassName(hChild, strClassName, 255))
-		{
-			strlwr(strClassName);
-			
-			if (strstr(strClassName, "internet") && strstr(strClassName, "explorer") && strstr(strClassName, "server"))
-			{
-				UnsubclassWindow();
-				SubclassWindow(hChild);
-				m_fDocWindow = TRUE;
-			}
-		}
-		bHandled = FALSE;
-	}
-*/
-		return 0;
-}
-
 
 LRESULT CMsgWin::CInputBox::OnCharacter(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {

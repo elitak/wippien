@@ -207,14 +207,12 @@ public:
 		IHTMLDocument2* m_htmlInputBox;
 
 		BEGIN_MSG_MAP(CInputBox)
-			MESSAGE_HANDLER(WM_PARENTNOTIFY, OnParentNotify)
 			MESSAGE_HANDLER(WM_RBUTTONUP, OnClick)
 			MESSAGE_HANDLER(WM_KILLFOCUS, OnLostFocus)
 			MESSAGE_HANDLER(WM_CHAR, OnCharacter)
 		END_MSG_MAP()
 
 		LRESULT OnClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
-		LRESULT OnParentNotify(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 		LRESULT OnCharacter(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 		LRESULT OnLostFocus(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 

@@ -108,11 +108,6 @@ public:
 
 
 	void ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text);
-#ifndef _WODXMPPLIB
-	void ExchangeWippienDetails(WODXMPPCOMLib::IXMPPContact *Contact, char *Subj, Buffer *Text);
-#else
-	void ExchangeWippienDetails(void *Contact, char *Subj, Buffer *Text);
-#endif
 
 #ifndef _WODXMPPLIB
 	CJabberEvents *m_Events;

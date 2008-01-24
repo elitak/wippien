@@ -29,8 +29,8 @@ CChatRoom::~CChatRoom()
 {
 	if (m_MessageWin)
 	{
-		if (m_MessageWin->m_hWnd)
-			::DestroyWindow(m_MessageWin->m_hWnd);
+		if (m_MessageWin->IsWindow())
+			m_MessageWin->DestroyWindow();
 		delete m_MessageWin;
 	}
 }

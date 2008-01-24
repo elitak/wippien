@@ -655,10 +655,15 @@ void CUserList::RefreshView(BOOL updateonly)
 		return;
 
 
+	int integralsize = TreeItem.itemex.iIntegral;
 	// finally show users
 	for (int i=0;i<m_Users.size();i++)
 	{
 		CUser *p = m_Users[m_SortedUser[i]];
+		if (p->m_ChatRoomName)
+			TreeItem.itemex.iIntegral = 17;
+		else
+			TreeItem.itemex.iIntegral = integralsize;
 //		ATLTRACE("Testing %s: tree=%x, changed=%d\r\n", p->m_JID, p->m_TreeItem, p->m_Changed);
 		if (!p->m_TreeItem || p->m_Changed)
 		{
@@ -954,7 +959,7 @@ CUser *CUserList::GetUserByJID(char *JID)
 	for (int i=0;i<m_Users.size();i++)
 	{
 		CUser *user = (CUser *)m_Users[i];
-		if (!stricmp(user->m_JID, a1))
+		if (!stricmp(user->m_JID, a1) || !stricmp(user->m_JID, JID))
 			return user;
 	}
 

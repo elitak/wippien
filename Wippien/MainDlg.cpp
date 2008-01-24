@@ -117,13 +117,6 @@ CMainDlg::CMainDlg()
 
 CMainDlg::~CMainDlg()
 {
-	while (m_ChatRooms.size())
-	{
-		CChatRoom *room = m_ChatRooms[0];
-		m_ChatRooms.erase(m_ChatRooms.begin());
-		delete room;
-	}
-
 	if (m_SimpleHttpRequest)
 		delete m_SimpleHttpRequest;
 	DumpDebug("*MainDlg::~MainDlg\r\n");
@@ -1892,6 +1885,14 @@ LRESULT CMainDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 			user->Release();
 #endif						
 		}
+
+		while (m_ChatRooms.size())
+		{
+			CChatRoom *room = m_ChatRooms[0];
+			m_ChatRooms.erase(m_ChatRooms.begin());
+			delete room;
+		}
+
 
 //		PostQuitMessage(0);
 	}

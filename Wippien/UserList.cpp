@@ -450,7 +450,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 						if (!found)
 						{
-							if (chatroom1 && jd2)
+							if (chatroom1 && cntc && jd2)
 							{
 
 								user = AddNewUser(jd.ToString(), contact);
@@ -478,6 +478,12 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											return; // should not happen									
 									}	
 							}	
+						}
+						
+						if (user && !found && chatroom1 && cntc)
+						{
+							// new chatroom user was added
+							user->m_ChatRoomPtr->m_MessageWin->AddUserToContactList(user->m_JID, FALSE);
 						}	
 
 						if (user)
@@ -610,7 +616,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								user->m_Changed = TRUE;
 						}
 
-						if (chatroom1)
+						if (chatroom1 && cntc)
 						{
 							// let's remove this user 
 							if (!user->m_Online)
@@ -621,6 +627,8 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									CUser *us = m_Users[i];
 									if (us == user)
 									{
+										if (user->m_ChatRoomPtr)
+											user->m_ChatRoomPtr->m_MessageWin->RemoveUserFromContactList(user->m_JID);
 										m_Users.erase(m_Users.begin() + i);
 										delete user;
 										break;

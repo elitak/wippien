@@ -78,6 +78,10 @@ public:
 	//void ShowEditText(void);
 	//Buffer *m_Text;
 
+	void RemoveUserFromContactList(char *JID);
+	void AddUserToContactList(char *JID, BOOL isadmin);
+
+
 	class CWEmoticon: public CWindowImpl< CWindow>  
 	{
 	public:
@@ -104,7 +108,6 @@ public:
 		HFONT m_Font;
 
 		void CalcBalloonRect(HDC dc, SIZE *rect, SIZE *text);
-
 
 //		LRESULT OnEmoticonCaptureMouseCommand(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/);
 //		LRESULT OnEmoticonCaptureKeyCommand(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/);

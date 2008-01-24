@@ -1363,6 +1363,48 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 	return TRUE;
 }
 
+//IDC_MSGWIN_USERS
+void CMsgWin::RemoveUserFromContactList(char *JID)
+{
+	char *a = strchr(JID, '/');
+	if (a)
+	{	
+		JID = a;
+		JID++;
+	}
+	a = strchr(JID, '@');
+	if (a)
+	{
+		JID = a;
+		JID++;
+	}
+
+	int res = SendDlgItemMessage(IDC_MSGWIN_USERS, LB_FINDSTRING, 0, (LPARAM)JID);
+	if (res >= 0)
+		SendDlgItemMessage(IDC_MSGWIN_USERS, LB_DELETESTRING, 0, res);
+
+}
+void CMsgWin::AddUserToContactList(char *JID, BOOL isadmin)
+{
+	char *a = strchr(JID, '/');
+	if (a)
+	{	
+		JID = a;
+		JID++;
+	}
+	a = strchr(JID, '@');
+	if (a)
+	{
+		JID = a;
+		JID++;
+	}
+
+	RemoveUserFromContactList(JID);
+
+	int res = SendDlgItemMessage(IDC_MSGWIN_USERS, LB_ADDSTRING, 0, (LPARAM)JID);
+}
+
+
 LRESULT CMsgWin::OnTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CComQIPtr<IHTMLElement, &IID_IHTMLElement> htmlElement;

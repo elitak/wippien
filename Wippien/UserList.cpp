@@ -447,7 +447,7 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 
 						if (!found)
 						{
-							if (chatroom)
+							if (chatroom && jd2)
 							{
 								user = AddNewUser(jd.ToString(), contact);
 								strcpy(user->m_VisibleName, jd2);
@@ -559,7 +559,8 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = FALSE;
 
-									user->ReInit(FALSE/*TRUE*/);
+									if (!chatroom)
+										user->ReInit(FALSE/*TRUE*/);
 								}
 							
 							}
@@ -585,6 +586,28 @@ void CUserList::RefreshUser(void *cntc, void *chatroom)
 							if (cntc)
 								user->m_Changed = TRUE;
 						}
+
+						if (chatroom)
+						{
+							// let's remove this user 
+							if (!user->m_Online)
+							{
+								// and remove contact from list of users
+								for (int i=0;i<m_Users.size();i++)
+								{
+									CUser *us = m_Users[i];
+									if (us == user)
+									{
+										m_Users.erase(m_Users.begin() + i);
+										delete user;
+										break;
+									}
+								}
+//								m_SortedUsersBuffer.Clear();
+//								PostMessage(WM_REFRESH, NULL, FALSE);
+							}
+						}
+
 					}
 #ifndef _WODXMPPLIB
 					if (!cntc)

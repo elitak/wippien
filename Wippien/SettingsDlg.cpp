@@ -6582,6 +6582,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnm
 				lv.mask = LVIF_TEXT;
 				lv.pszText = room;
 				lv.cchTextMax = sizeof(room);
+				lv.iItem = i;
 				SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_GETITEM, 0,(LPARAM)(LPLVITEM)&lv);
 				lv.pszText = service;
 				lv.cchTextMax = sizeof(service);

@@ -448,9 +448,15 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 //						stat = stat;
 
 
+						BOOL isuserinchatroom = FALSE;
 						if (!found)
 						{
-							if (chatroom1 && cntc && jd2)
+							if (chatroom1 && jd2)
+							{
+								if (!strncmp(chatroom1, jd1, strlen(chatroom1)))
+									isuserinchatroom = TRUE;
+							}
+							if (isuserinchatroom)
 							{
 
 								user = AddNewUser(jd.ToString(), contact);
@@ -463,7 +469,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 						if (user)
 						{
-							if (chatroom1 && cntc && !user->m_ChatRoomPtr)
+							if (chatroom1 && isuserinchatroom && !user->m_ChatRoomPtr)
 							{
 								for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
 								{
@@ -474,13 +480,13 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											break;
 										}	
 										
-										if (!user->m_ChatRoomPtr)
-											return; // should not happen									
 									}	
+									if (!user->m_ChatRoomPtr)
+										return; // should not happen									
 							}	
 						}
 						
-						if (user && !found && chatroom1 && cntc)
+						if (user && !found && chatroom1 && isuserinchatroom)
 						{
 							// new chatroom user was added
 							user->m_ChatRoomPtr->m_MessageWin->AddUserToContactList(user->m_JID, FALSE);

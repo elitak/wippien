@@ -1079,27 +1079,27 @@ void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlTex
 #ifndef _WODXMPPLIB
 		// also check capabilities
 		c->get_Capabilities(&res);
-		if (strstr(res.ToString(), WIPPIENIM))
-			sendhtml = TRUE;
+//		if (strstr(res.ToString(), WIPPIENIM))
+//			sendhtml = TRUE;
 
 		c->get_Resource(&res);
-		if (strstr(res.ToString(), WIPPIENIM))
-			sendhtml = TRUE;
+//		if (strstr(res.ToString(), WIPPIENIM))
+//			sendhtml = TRUE;
 		
 #else
 		char tb[1024] = {0};
 		int tblen = sizeof(tb);
 		WODXMPPCOMLib::XMPP_Contact_GetCapabilities(c, tb, &tblen);
-		if (strstr(tb, WIPPIENIM))
-			sendhtml = TRUE;
+//		if (strstr(tb, WIPPIENIM))
+//			sendhtml = TRUE;
 
 		if (!sendhtml)
 		{
 			tb[0] = 0;
 			tblen = sizeof(tb);
 			WODXMPPCOMLib::XMPP_Contact_GetResource(c, tb, &tblen);
-			if (strstr(tb, WIPPIENIM))
-				sendhtml = TRUE;
+//			if (strstr(tb, WIPPIENIM))
+//				sendhtml = TRUE;
 		}
 
 		
@@ -1115,7 +1115,7 @@ void CJabber::Message(void *Contact, char *JID, char *MessageText, char *HtmlTex
 	CComBSTR t = MessageText;
 	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)1/*MsgChat*/);
 	msg->put_Text(t);
-	if (sendhtml)
+	if (/*sendhtml*/0)
 	{
 		CComBSTR ht = HtmlText;
 		msg->put_HTMLText(ht);
@@ -1175,13 +1175,19 @@ void CJabber::ChatRoomMessage(void *ChatRoom, char *MessageText, char *HtmlText)
 	CComBSTR t = MessageText;
 	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)2/*MsgGroupChat*/);
 	msg->put_Text(t);
-	CComBSTR ht = HtmlText;
-	msg->put_HTMLText(ht);
+	if (0)
+	{
+		CComBSTR ht = HtmlText;
+		msg->put_HTMLText(ht);
+	}
 
 #else
 	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)2);
 	WODXMPPCOMLib::XMPP_Message_SetText(msg, MessageText);
-	WODXMPPCOMLib::XMPP_Message_SetHTMLText(msg, HtmlText);
+	if (0)
+	{
+		WODXMPPCOMLib::XMPP_Message_SetHTMLText(msg, HtmlText);
+	}
 #endif
 
 	HRESULT hr = E_FAIL;

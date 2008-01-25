@@ -1086,7 +1086,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						for (int i=0;i<m_UserList.m_Users.size();i++)
 						{
 							CUser *us = (CUser *)m_UserList.m_Users[i];
-							if (us->m_Online)
+							if (us->m_Online && !us->m_ChatRoomPtr)
 							{
 								if ((now - REFRESHUSERDETAILS) > us->m_GotVCard)
 									intcol.push_back(i);
@@ -1097,8 +1097,11 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							for (int i=0;i<m_UserList.m_Users.size();i++)
 							{
 								CUser *us = (CUser *)m_UserList.m_Users[i];
-								if (now - REFRESHUSERDETAILS > us->m_GotVCard)
-									intcol.push_back(i);
+								if (!us->m_ChatRoomPtr)
+								{
+									if (now - REFRESHUSERDETAILS > us->m_GotVCard)
+										intcol.push_back(i);
+								}
 							}
 						}
 

@@ -1381,7 +1381,7 @@ void CMsgWin::RemoveUserFromContactList(char *JID)
 
 	int res = SendDlgItemMessage(IDC_MSGWIN_USERS, LB_FINDSTRING, 0, (LPARAM)JID);
 	if (res >= 0)
-		SendDlgItemMessage(IDC_MSGWIN_USERS, LB_DELETESTRING, 0, res);
+		SendDlgItemMessage(IDC_MSGWIN_USERS, LB_DELETESTRING, res, 0);
 
 }
 void CMsgWin::AddUserToContactList(char *JID, BOOL isadmin)

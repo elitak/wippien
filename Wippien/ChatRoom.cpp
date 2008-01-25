@@ -24,6 +24,7 @@ CChatRoom::CChatRoom()
 	CComBSTR2 n = _Settings.m_Nick;
 	strcpy(m_Nick, n.ToString());
 	memset(&m_ChatWindowRect, 0, sizeof(m_ChatWindowRect));
+	m_Block = FALSE;
 }
 
 CChatRoom::~CChatRoom()
@@ -32,14 +33,39 @@ CChatRoom::~CChatRoom()
 	{
 		CUser *us = _MainDlg.m_UserList.m_Users[i];
 		if (us->m_ChatRoomPtr == this)
-			us->m_ChatRoomPtr = NULL;
+		{
+			_MainDlg.m_UserList.m_Users.erase(_MainDlg.m_UserList.m_Users.begin() + i);
+			delete us;
+			i--;
+		}
 	}
+
+	CComBSTR2 j = m_JID;
+	char *j1 = j.ToString();
+	char *j2 = strchr(j1, '@');
+	if (j2)
+		*j2 = 0;
+
+	for (i=0;i<_Settings.m_Groups.size();i++)
+	{
+		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
+		if (tg->Temporary && !strcmp(tg->Name, j1))
+		{
+			_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
+			free(tg->Name);
+			delete tg;
+			break;
+		}
+	}
+
 	if (m_MessageWin)
 	{
 		if (m_MessageWin->IsWindow())
 			m_MessageWin->DestroyWindow();
 		delete m_MessageWin;
 	}
+
+	::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0,FALSE);
 }
 
 BOOL CChatRoom::IsMsgWindowOpen(void)
@@ -108,28 +134,17 @@ void CChatRoom::Leave(void)
 		}	
 #endif
 
-		// immediately remove all users too
-		int s = strlen(m_JID);
-		for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+/*		for (i=0;i<_MainDlg.m_ChatRooms.size();i++)
 		{
-			CUser *us = _MainDlg.m_UserList.m_Users[i];
-			if (!strncmp(us->m_JID, m_JID, s))
+			CChatRoom *room = _MainDlg.m_ChatRooms[i];
+			if (room == this)
 			{
-				_MainDlg.m_UserList.m_Users.erase(_MainDlg.m_UserList.m_Users.begin() + i);
-				delete us;
-				i--;
-			}
-		}
-
-		for (i=0;i<_Settings.m_Groups.size();i++)
-		{
-			CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-			if (tg->Temporary && !strcmp(tg->Name, m_JID))
-			{
-				_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
+				_MainDlg.m_ChatRooms.erase(_MainDlg.m_ChatRooms.begin()+i);
+//				delete this;
 				break;
 			}
 		}
-
+*/
+		
 		::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0,FALSE);
 }

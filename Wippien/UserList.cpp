@@ -237,7 +237,7 @@ CUser *CUserList::AddNewUser(char *j, void *contact)
 
 		CxImage img;
 //							if (!user->m_Icon.Len())
-		if (!user->LoadUserImage(img))
+		if (!user->LoadUserImage(&img))
 		{
 			// KRESOFIX, get user REAL icon
 			int hm = (rand() % 37);
@@ -421,6 +421,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							res = jd2;
 						}
 						jid = jd1;
+						ATLTRACE("user=%s \r\n", jd.ToString());
+						if (res)
+							ATLTRACE("res=%s \r\n", res);
 
 
 						char *j = jid.ToString();						
@@ -461,7 +464,6 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 								user = AddNewUser(jd.ToString(), contact);
 								strcpy(user->m_VisibleName, jd2);
-								
 							}
 							else
 								user = AddNewUser(j, contact);
@@ -477,6 +479,15 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										if (!strcmp(room->m_JID, chatroom1))
 										{					
 											user->m_ChatRoomPtr = room;
+											user->m_Block = room->m_Block; 
+											CComBSTR2 g = user->m_Group;
+											char *g1 = g.ToString();
+											char *g2 = strchr(g1, '@');
+											if (g2)
+											{
+												*g2 = 0;
+												strcpy(user->m_Group, g1);
+											}
 											break;
 										}	
 										
@@ -815,7 +826,7 @@ void CUserList::RefreshView(BOOL updateonly)
 				if (!p->m_Image/* && p->m_Icon.Len()*/)
 				{
 					CxImage img;
-					if (p->LoadUserImage(img))
+					if (p->LoadUserImage(&img))
 					{
 						p->m_Image = new CxImage(img);
 //						p->m_Image->Copy(img);

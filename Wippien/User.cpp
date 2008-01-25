@@ -833,7 +833,7 @@ void CUser::OpenMsgWindow(BOOL WithFocus)
 	if (!m_MessageWin->m_hWnd)
 	{
 //		HWND act = GetActiveWindow();
-		LoadUserImage(m_MessageWin->m_HumanHead);
+		LoadUserImage(&m_MessageWin->m_HumanHead);
 		m_MessageWin->Create(NULL);
 //		Buffer b;
 //		m_MessageWin->LoadHistory();
@@ -976,14 +976,14 @@ Buffer *CUser::ExpandArgs(char *Text)
 	return o;
 }
 
-BOOL CUser::LoadUserImage(CxImage &img)
+BOOL CUser::LoadUserImage(CxImage *img)
 {
 	char buff[MAX_PATH*2];
 	strcpy(buff, _Settings.m_UserImagePath);
 	strcat(buff, m_JID); 
 	strcat(buff, ".png");
-	img.Clear();
-	if (img.Load(buff, CXIMAGE_FORMAT_PNG))
+	img->Clear();
+	if (img->Load(buff, CXIMAGE_FORMAT_PNG))
 		return TRUE;
 
 // otherwise get something from the resource
@@ -1000,8 +1000,8 @@ BOOL CUser::LoadUserImage(CxImage &img)
 			if (lpVoid)
 			{
 				CxMemFile fTmp((BYTE*)lpVoid,rsize);
-				img.Decode(&fTmp, CXIMAGE_FORMAT_PNG);
-				return SaveUserImage(img);
+				img->Decode(&fTmp, CXIMAGE_FORMAT_PNG);
+				return SaveUserImage(*img);
 			}
 //			DeleteObject(hMem); // this does not need to be deleted
 		}

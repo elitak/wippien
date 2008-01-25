@@ -489,10 +489,6 @@ LRESULT CMsgWin::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BO
 	
 	bHandled = TRUE;
 
-	if (m_Room)
-	{
-		m_Room->Leave();
-	}
 	return TRUE;
 }
 
@@ -615,6 +611,12 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 			::DestroyWindow(m_EmoticonList->m_BalloonHwnd);
 	}
 	
+
+	if (m_Room)
+	{
+		m_Room->Leave();
+	}
+
 
 	bHandled = TRUE;
 	m_hWnd = NULL;
@@ -1184,6 +1186,30 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 	::ShowWindow(GetDlgItem(IDC_ISTYPING),  SW_HIDE);
 
 	return TRUE;
+}
+
+void CMsgWin::OnFinalMessage(HWND /*hWnd*/)
+{
+	if (m_User)
+	{
+		// delete user window...
+		// do nothing actually
+	}
+	if (m_Room)
+	{
+		// delete this room
+		m_Room->m_MessageWin = NULL;
+		for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+		{
+			CChatRoom *room = _MainDlg.m_ChatRooms[i];
+			if (room == m_Room)
+			{
+				_MainDlg.m_ChatRooms.erase(_MainDlg.m_ChatRooms.begin()+i);
+				delete m_Room;
+				break;
+			}
+		}
+	}
 }
 
 LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)

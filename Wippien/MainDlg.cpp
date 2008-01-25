@@ -727,12 +727,16 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								delete m_pBalloon;
 							}
 							m_pBalloon =new CBalloonHelp;
-							CxImage img;
+							CxImage* img = NULL;
 //							if (user->m_Icon.Len())
-							if (user->LoadUserImage(img))
+							if (!user->m_ChatRoomPtr)
 							{
-//								img->Decode((unsigned char *)user->m_Icon.Ptr(), user->m_Icon.Len(), CXIMAGE_FORMAT_PNG);
-								ResampleImageIfNeeded(&img, 100);
+								CxImage *im = new CxImage();
+								if (user->LoadUserImage(im))
+								{
+									ResampleImageIfNeeded(im, 100);
+									img = im;
+								}
 							}
 
 							Buffer b1;
@@ -744,7 +748,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								b1.Append(")");
 							}
 							b1.Append("\0",1);
-							m_pBalloon->Create(m_hWnd, b1.Ptr(), textbuff.Ptr(), &img, &p,	
+							m_pBalloon->Create(m_hWnd, b1.Ptr(), textbuff.Ptr(), img, &p,	
 							CBalloonHelp::BallonOptions::BOCloseOnButtonDown | 
 							CBalloonHelp::BallonOptions::BOCloseOnButtonUp | 
 							CBalloonHelp::BallonOptions::BOCloseOnMouseMove | 
@@ -755,6 +759,8 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							/*CBalloonHelp::BallonOptions::BODeleteThisOnClose, // delete pBalloon on close */
 							NULL,
 							0);
+							if (img)
+								delete img;
 //							delete img;
 							SetTimer(108, 7000);
 						}
@@ -2745,6 +2751,20 @@ void CMainDlg::ToggleMute(void)
 			//m_btnMuteOnOff.m_cxImage.Resample(24,24);
 //			ResampleImageIfNeeded(&us->m_MessageWin->m_btnMuteOnOff.m_cxImage, 32);
 			us->m_MessageWin->m_btnMuteOnOff.Invalidate();
+		}
+	}
+	// redraw anywhere
+	for (i=0;i<m_ChatRooms.size();i++)
+	{
+		CChatRoom *room = (CChatRoom *)m_ChatRooms[i];
+		if (room->IsMsgWindowOpen())
+		{
+			// toggle their button too
+			mutimg = _Settings.m_SoundOn?ID_PNG2_MUTEON:ID_PNG2_MUTEOFF;
+			room->m_MessageWin->m_btnMuteOnOff.LoadPNG(mutimg);
+			//m_btnMuteOnOff.m_cxImage.Resample(24,24);
+			//			ResampleImageIfNeeded(&us->m_MessageWin->m_btnMuteOnOff.m_cxImage, 32);
+			room->m_MessageWin->m_btnMuteOnOff.Invalidate();
 		}
 	}
 	return;

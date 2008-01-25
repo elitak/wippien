@@ -80,6 +80,7 @@ public:
 
 	void RemoveUserFromContactList(char *JID);
 	void AddUserToContactList(char *JID, BOOL isadmin);
+	void OnFinalMessage(HWND /*hWnd*/);
 
 
 	class CWEmoticon: public CWindowImpl< CWindow>  

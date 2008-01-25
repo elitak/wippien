@@ -28,6 +28,7 @@ public:
 	char m_JID[1024];
 	char m_Nick[1024];
 	RECT m_ChatWindowRect;
+	BOOL m_Block;
 
 };
 

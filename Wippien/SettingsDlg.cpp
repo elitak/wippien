@@ -11,6 +11,7 @@
 #include "Ethernet.h"
 #include "MainDlg.h"
 #include "ExtWndShadow.h"
+#include "ChatRoom.h"
 #include "Notify.h"
 #include <io.h>
 #include <fcntl.h>
@@ -3471,7 +3472,7 @@ void CSettingsDlg::CSettingsUser1::InitData(void *card)
 		{
 			CxImage img;
 //			if (user->m_Icon.Len())
-			if (user->LoadUserImage(img))
+			if (user->LoadUserImage(&img))
 			{
 				m_Image.Clear();
 				m_Image.Copy(img);
@@ -6492,12 +6493,24 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 		}
 		if (chatroom)
 		{
-			char buff[1024] = {0};
+
+			// none found? Add new!
+			CChatRoom *room = new CChatRoom();
+			strcpy(room->m_JID, buff);
+			_MainDlg.m_ChatRooms.push_back(room);
+
+			*buff = 0;
 			SendDlgItemMessage(IDC_CHATROOM_ROOMPASS, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
 
 			char nickbuff[1024] = {0};
 			SendDlgItemMessage(IDC_CHATROOM_NICKNAME, WM_GETTEXT, sizeof(nickbuff), (LPARAM)nickbuff);
+			strcpy(room->m_Nick, nickbuff);
 
+			if (::SendMessage(GetDlgItem(IDC_CHATROOM_BLOCKUSERSATSTARTUP), BM_GETCHECK, NULL, NULL)) 
+				room->m_Block = TRUE;
+			else
+				room->m_Block = FALSE;
+				
 
 			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
 			WODXMPPCOMLib::XMPP_ChatRoom_SetNick(chatroom, nickbuff);
@@ -6506,6 +6519,9 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 			::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
 
 			WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
+
+
+
 		}			
 	}
 #endif

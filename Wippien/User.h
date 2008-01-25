@@ -158,7 +158,7 @@ public:
 	BOOL m_AllowedRemoteAny, m_AllowedRemoteMediator;
 	
 	
-	BOOL LoadUserImage(CxImage &img);
+	BOOL LoadUserImage(CxImage *img);
 	BOOL SaveUserImage(CxImage &img);
 	BOOL SaveUserImage(char *data, int len);
 	BOOL IsIPAllowed(unsigned long IP);

@@ -854,6 +854,7 @@ CSize CBalloonHelp::DrawHeader(HDC hdc, bool bDraw)
 			//dc.SetTextColor(OleTranslateColor(m_clrForeground));
 			dc.SetTextColor(RGB(0,0,0));
 			rcClient.left += 5;
+			rcClient.right += 5;
 			dc.DrawText(strTitle,-1, rcClient, DT_LEFT | DT_NOPREFIX | DT_EXPANDTABS /*| DT_SINGLELINE*/);
 		}
 

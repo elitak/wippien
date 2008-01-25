@@ -6495,8 +6495,6 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 			char buff[1024] = {0};
 			SendDlgItemMessage(IDC_CHATROOM_ROOMPASS, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
 
-			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
-
 			char nickbuff[1024] = {0};
 			SendDlgItemMessage(IDC_CHATROOM_NICKNAME, WM_GETTEXT, sizeof(nickbuff), (LPARAM)nickbuff);
 

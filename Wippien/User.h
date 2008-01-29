@@ -123,6 +123,8 @@ public:
 	char m_SubText[256];
 	char m_IPText[128];
 	char m_Group[128];	
+	char m_CurrentMediator[256];
+	int m_CurrentMediatorPort, m_CurrentMediatorChoice;
 	RECT m_ChatWindowRect;
 	BOOL m_Block;//, m_StaticIP;
 	unsigned long m_GotVCard;
@@ -182,9 +184,6 @@ public:
 	BOOL IsMsgWindowOpen(void);
 	void CloseMsgWindow(void);
 	void PrintMsgWindow(BOOL IsSystem, char *Text, char *Html);
-
-
-
 };
 
 #endif // !defined(AFX_USER_H__1D9D46E0_DE56_40D8_B139_5A49DF83F8D8__INCLUDED_)

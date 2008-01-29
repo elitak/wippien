@@ -543,8 +543,25 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											if (out.Len())
 												user->m_RemoteWippienState = (WippienState)out.GetChar();
 
-											user->m_Changed = TRUE;
+											if (out.Len())
+											{
+												int olen = out.GetInt();
+												if (olen)
+												{
+													while (out.Len())
+													{
+														int ij = out.GetInt();
+														char buff[1024];
+														memset(buff, 0, sizeof(buff));
+														memcpy(buff, out.Ptr(), ij);
+														out.Consume(ij);
+														if (out.Len() && _Settings.m_AllowAnyMediator)
+															CSettings::LinkMediatorStruct *st = _Settings.AddLinkMediator(buff, out.GetInt());
+													}
+												}
+											}
 
+											user->m_Changed = TRUE;
 										}
 										user->m_WippienState = WipWaitingInitResponse;
 										user->SetTimer(rand()%100, 3);
@@ -599,6 +616,30 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									out.Consume(128);
 									if (out.Len())
 										user->m_RemoteWippienState = (WippienState)out.GetChar();
+
+									if (out.Len())
+									{
+										// user sent us his choice of mediators
+										char *med = out.GetString(NULL);
+										if (med)
+										{
+											int port = out.GetInt();
+											if (port)
+											{
+												int random_number = out.GetInt();
+												random_number += user->m_CurrentMediatorChoice;
+												random_number %= 2;
+												if (random_number == 0 && strcmp(med, user->m_CurrentMediator)<0)
+												{
+													strcpy(user->m_CurrentMediator, med);
+													user->m_CurrentMediatorPort = port;
+												} // otherwise leave as is
+												user->m_CurrentMediatorChoice = 0;
+											}
+
+											free(med);
+										}
+									}
 
 									// and XOR with ours
 									for (int i = 0; i < 16; i++)

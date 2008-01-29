@@ -66,11 +66,8 @@ CSettings::CSettings()
 
 	m_MyLastNetwork = m_MyLastNetmask = 0;
 	m_AllowAnyMediator = TRUE;
-	m_UseLinkMediatorFromDatabase = TRUE;
-	m_UseIPFromDatabase = TRUE;
 	m_IPProviderURL = "http://wippien.com/ip/?jid=";
-	m_LinkMediator = "mediator.wippien.com";
-	m_LinkMediatorPort = 8000;
+	AddLinkMediator("mediator.wippien.com", 8000);
 	m_ObtainIPAddress = 1;
 
 	m_AutoAwayMinutes = 10;
@@ -495,12 +492,14 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
 			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://wippien.com/ip/?jid=");
 			ReadSettingsCfg(wip, "UpdateURL", m_UpdateURL, "http://wippien.com/Download/update.php");
-			ReadSettingsCfg(wip, "LinkMediator", m_LinkMediator, "mediator.wippien.com");
-			ReadSettingsCfg(wip, "LinkMediatorPort", &m_LinkMediatorPort, 8000);
+			CComBSTR2 mlm;
+			int mlmport = 0;
+			ReadSettingsCfg(wip, "LinkMediator", mlm, "mediator.wippien.com");
+			ReadSettingsCfg(wip, "LinkMediatorPort", &mlmport, 8000);
+			AddLinkMediator(mlm.ToString(), mlmport);
+
 			ReadSettingsCfg(wip, "ObtainIPAddress", &m_ObtainIPAddress, 1);
 			ReadSettingsCfg(wip, "AllowMediator", &m_AllowAnyMediator, TRUE);
-			ReadSettingsCfg(wip, "UseLinkMediatorFromDatabase", &m_UseLinkMediatorFromDatabase, TRUE);
-			ReadSettingsCfg(wip, "UseIPFromDatabase", &m_UseIPFromDatabase, TRUE);
 			ReadSettingsCfg(wip, "ShowContactPicture", &m_ShowContactPicture, TRUE);
 			ReadSettingsCfg(wip, "ShowContactLastOnline", &m_ShowContactLastOnline, TRUE);
 			ReadSettingsCfg(wip, "ShowContactIP", &m_ShowContactIP, TRUE);
@@ -603,6 +602,28 @@ int CSettings::Load(void)
 
 			}
 
+			CXmlEntity *lnm = NULL;
+			do 
+			{
+				lnm = CXmlEntity::FindByName(wip, "Mediator", 1);
+				if (lnm)
+				{
+					CComBSTR2 h;
+					ReadSettingsCfg(lnm, "Host", h, "");
+					if (h.ToString())
+					{
+						int port = 0, valid = 1;
+						ReadSettingsCfg(lnm, "Port", &port, 0);
+						ReadSettingsCfg(lnm, "Valid", &valid, 1);
+						if (h.Length() && port)
+						{
+							LinkMediatorStruct *st = AddLinkMediator(h.ToString(), port);
+							st->Valid = valid;
+						}
+					}
+					lnm->Name[0] = 0;
+				}
+			} while (lnm);
 
 			m_HiddenContactsBuffer.Clear();
 			CXmlEntity *hid = CXmlEntity::FindByName(wip, "HiddenContacts", 1);
@@ -956,16 +977,10 @@ BOOL CSettings::Save(BOOL UserOnly)
 		
 		CComBSTR2 m = m_IPProviderURL;
 		x.AddChildElem("IPProviderURL", m.ToString());
-		m.Empty();
-		m = m_LinkMediator;
 		CComBSTR2 uurl = m_UpdateURL;
 		x.AddChildElem("UpdateURL", uurl.ToString());
-		x.AddChildElem("LinkMediator", m.ToString());
-		x.AddChildElem("LinkMediatorPort", m_LinkMediatorPort);
 		x.AddChildElem("ObtainIPAddress", m_ObtainIPAddress);
 		x.AddChildElem("AllowAnyMediator", m_AllowAnyMediator?"1":"0");
-		x.AddChildElem("UseLinkMediatorFromDatabase", m_UseLinkMediatorFromDatabase?"1":"0");
-		x.AddChildElem("UseIPFromDatabase", m_UseIPFromDatabase?"1":"0");
 		x.AddChildElem("ShowContactPicture", m_ShowContactPicture?"1":"0");
 		x.AddChildElem("ShowContactLastOnline", m_ShowContactLastOnline?"1":"0");
 		//		x.AddChildElem("ShowContactName", m_ShowContactName?"1":"0");
@@ -1029,6 +1044,16 @@ BOOL CSettings::Save(BOOL UserOnly)
 			}	
 		}
 		x.Append("</Roster>\r\n");
+
+		for (i=0;i<m_LinkMediators.size();i++)
+		{
+			x.Append("<Mediator>\r\n");
+			LinkMediatorStruct *st =(LinkMediatorStruct *)m_LinkMediators[i];
+			x.AddChildElem("Host", st->Host);
+			x.AddChildElem("Port", st->Port);
+			x.AddChildElem("Valid", st->Valid);
+			x.Append("</Mediator>\r\n");
+		}
 
 		x.Append("<HiddenContacts>\r\n");
 		char *cb = m_HiddenContactsBuffer.Ptr();
@@ -1443,4 +1468,28 @@ char *trim(char *text)
 	}
 	
 	return text;
+}
+
+CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
+{
+	LinkMediatorStruct *st = NULL;
+	for (int i=0;!st && i<m_LinkMediators.size();i++)
+	{
+		LinkMediatorStruct *st1 = (LinkMediatorStruct *)m_LinkMediators[i];
+		if (!stricmp(Host, st1->Host) && Port == st1->Port)
+			st = st1;
+	}
+
+	if (!st)
+	{
+		st = new LinkMediatorStruct();
+		memset(st, 0, sizeof(LinkMediatorStruct));
+		st->Host = (char *)malloc(strlen(Host)+1);
+		strcpy(st->Host, Host);
+		st->Port = Port;
+		st->Valid = TRUE;
+		m_LinkMediators.push_back(st);
+	}
+
+	return st;
 }

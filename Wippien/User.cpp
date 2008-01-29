@@ -234,6 +234,8 @@ CUser::CUser()
 
 
 	m_ChatRoomPtr = NULL;
+	memset(m_CurrentMediator, 0, sizeof(m_CurrentMediator));
+	m_CurrentMediatorPort = 0;
 }
 
 CUser::~CUser()
@@ -473,9 +475,11 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			varhost.vt = VT_BSTR;
 			USES_CONVERSION;
 			//varhost.bstrVal = _Settings.m_MediatorAddr;
-			varhost.bstrVal = _Settings.m_LinkMediator;
+			CComBSTR mlm;
+			mlm = m_CurrentMediator;
+			varhost.bstrVal = mlm;
 			varport.vt = VT_I4;
-			varport.lVal = _Settings.m_LinkMediatorPort;
+			varport.lVal = m_CurrentMediatorPort;
 			VARIANT varempty;
 			varempty.vt = VT_ERROR;
 
@@ -624,6 +628,41 @@ void CUser::FdTimer(int TimerID)
 				b.Append((char *)_Settings.m_MAC, 6);
 				_Settings.KeyToBlob(&b, FALSE);
 				b.PutChar((char)m_WippienState);
+				// let's add our mediators
+				Buffer b1;
+				int total = 0;
+				for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
+				{
+					CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
+					if (st->Valid)
+					{
+						total++;
+						b1.PutCString(st->Host);
+						b1.PutInt(st->Port);
+					}
+				}
+				if (b1.Len())
+				{
+					b.PutString(b1.Ptr(), b1.Len());
+
+					// there are mediators to select, pick one
+					m_CurrentMediatorChoice = rand()%total;
+					int j = 0;
+					for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
+					{
+						CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
+						if (st->Valid)
+						{
+							strcpy(m_CurrentMediator, st->Host);
+							m_CurrentMediatorPort = st->Port;
+							if (j++ == m_CurrentMediatorChoice)
+							{
+								ATLTRACE("Offering mediator %s\r\n", st->Host);
+								break;
+							}
+						}
+					}
+				}
 
 				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
 			}
@@ -642,6 +681,9 @@ void CUser::FdTimer(int TimerID)
 				RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, m_RSA, RSA_PKCS1_PADDING);
 				b.Append(dst, 128);
 				b.PutChar((char)m_WippienState);
+				b.PutCString(m_CurrentMediator);
+				b.PutInt(m_CurrentMediatorPort);
+				b.PutInt(m_CurrentMediatorChoice);
 
 				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
 			}

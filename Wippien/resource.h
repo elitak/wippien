@@ -398,12 +398,12 @@
 #define ID_PNG1_CHATROOMS               1380
 #define IDD_CHATROOMS_DLG               1382
 #define IDD_SETTINGS_CHATROOMS          1382
-#define IDC_USEIPFROMDATABASE           1476
+#define IDI_ICON_YES                    1383
+#define IDI_ICON_NO                     1384
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
 #define IDC_ETHERNET_IP                 1480
-#define IDC_CHECK_ALLOWLINKMEDIATOR     1481
 #define IDC_USESSLWRAPPER               1482
 #define IDC_LOG_VPNSOCKET               1483
 #define IDI_STATUS_ONLINE               1484
@@ -414,6 +414,7 @@
 #define IDI_STATUS_INVISIBLE            1489
 #define IDI_STATUS_FFC                  1490
 #define IDC_CHATROOM_BLOCKUSERSATSTARTUP 1491
+#define IDC_MEDIATORLIST                1492
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -443,9 +444,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        1383
+#define _APS_NEXT_RESOURCE_VALUE        1385
 #define _APS_NEXT_COMMAND_VALUE         32797
-#define _APS_NEXT_CONTROL_VALUE         1492
+#define _APS_NEXT_CONTROL_VALUE         1494
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

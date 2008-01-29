@@ -352,6 +352,9 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 
 	public:
 		enum { IDD = IDD_SETTINGS_MEDIATOR};
+		CListBox m_MediatorList;
+		CImageList m_ImageList;
+
 
 		CSettingsMediator();
 		~CSettingsMediator();

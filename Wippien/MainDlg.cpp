@@ -817,7 +817,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							}
 						}
 
-						if (_Settings.m_UseLinkMediatorFromDatabase)
+//						if (_Settings.m_UseLinkMediatorFromDatabase)
 						{
 							CXmlEntity *start = NULL;
 							do 
@@ -827,12 +827,10 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								{
 									CXmlEntity *medip = CXmlEntity::FindByName(start, "IP", 1);
 									CXmlEntity *medport = CXmlEntity::FindByName(start, "UDPPort", 1);
-									if (medip && medport)
+									if (medip && medport && _Settings.m_AllowAnyMediator)
 									{
-										_Settings.m_LinkMediator = medip->Value;
-										_Settings.m_LinkMediatorPort = atol(medport->Value);
+										_Settings.AddLinkMediator(medip->Value, atol(medport->Value));
 										_Settings.Save(FALSE);
-										break; //TODO REMOVE THIS!
 									}
 									start->Name[0] = 0; // to disable this mediator from future search
 								}
@@ -875,7 +873,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						KillTimer(106);
 						CComBSTR2 j = _Settings.m_JID, p = _Settings.m_Password, s = _Settings.m_ServerHost;
 
-						if (_Settings.m_UseLinkMediatorFromDatabase || _Settings.m_ObtainIPAddress == 1)
+//						if (_Settings.m_ObtainIPAddress == 1) // send this request always
 						{
 							// send request to obtain our IP address
 							if (m_SimpleHttpRequest)

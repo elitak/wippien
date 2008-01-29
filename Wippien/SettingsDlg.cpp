@@ -1544,6 +1544,8 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 		::SendMessage(GetDlgItem(IDC_IPADDRESSSTATIC), BM_SETCHECK, BST_CHECKED, NULL);
 
 //	CComBSTR2 m = _Settings
+	CComBSTR2 m = _Settings.m_IPProviderURL;
+	SetDlgItemText(IDC_IPOBTAINURL, m.ToString());
 
 	char buff[1024];
 	itoa(_Settings.m_UDPPort, buff, 10);
@@ -1601,7 +1603,12 @@ BOOL CSettingsDlg::CSettingsEthernet::Apply(void)
 	{
 		_Settings.m_UDPPort = atoi(buff);
 	}
-
+	
+	if (::SendMessage(GetDlgItem(IDC_IPOBTAINURL), WM_GETTEXT, 1024, (LPARAM)buff))
+	{
+		_Settings.m_IPProviderURL = buff;
+	}
+	
 
 	if (changed)
 	{
@@ -1648,15 +1655,12 @@ CSettingsDlg::CSettingsMediator::~CSettingsMediator()
 LRESULT CSettingsDlg::CSettingsMediator::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
+	
 	CRect rc;
 	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_MEDIATOR);
-	DRAWSHADOW(IDC_LINKMEDIATOR_HOSTNAME);
-	DRAWSHADOW(IDC_LINKMEDIATOR_PORT);
-		
+	
+	
+	DRAWSHADOW(IDC_MEDIATORLIST);
 	return TRUE;
 }
 
@@ -1664,33 +1668,73 @@ LRESULT CSettingsDlg::CSettingsMediator::OnPaint(UINT uMsg, WPARAM wParam, LPARA
 LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
 
-	CComBSTR2 m;
-	m = _Settings.m_IPProviderURL;
-	SetDlgItemText(IDC_IPOBTAINURL, m.ToString());
-
-	m.Empty();
-	m = _Settings.m_LinkMediator;
-	SetDlgItemText(IDC_LINKMEDIATOR_HOSTNAME, m.ToString());
-
-	char buff[1024];
-	sprintf(buff, "%lu", _Settings.m_LinkMediatorPort);
-	SetDlgItemText(IDC_LINKMEDIATOR_PORT, buff);
-
 	if (_Settings.m_AllowAnyMediator)
 		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWANYMEDIATOR), BM_SETCHECK, TRUE, NULL);
 	else
 		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWANYMEDIATOR), BM_SETCHECK, FALSE, NULL);
 
-	if (_Settings.m_UseIPFromDatabase)
-		::SendMessage(GetDlgItem(IDC_USEIPFROMDATABASE), BM_SETCHECK, TRUE, NULL);
-	else
-		::SendMessage(GetDlgItem(IDC_USEIPFROMDATABASE), BM_SETCHECK, FALSE, NULL);
-	
-	if (_Settings.m_UseLinkMediatorFromDatabase)
-		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_SETCHECK, TRUE, NULL);
-	else
-		::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_SETCHECK, FALSE, NULL);
-	
+	m_MediatorList.Attach(GetDlgItem(IDC_MEDIATORLIST));
+	m_ImageList.Create(16,16, ILC_COLOR24|ILC_MASK, 2, 0);
+	m_ImageList.AddIcon(LoadIcon(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDI_ICON_NO)));
+	m_ImageList.AddIcon(LoadIcon(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDI_ICON_YES)));
+	m_MediatorList.SendMessage(LVM_SETIMAGELIST , LVSIL_NORMAL , (LPARAM)(HIMAGELIST)m_ImageList); 
+	m_MediatorList.SendMessage(LVM_SETIMAGELIST , LVSIL_SMALL , (LPARAM)(HIMAGELIST)m_ImageList); 
+
+
+	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_BORDERSELECT | LVS_EX_FULLROWSELECT); 
+	LV_COLUMN lvcol = {0};
+	lvcol.mask=LVCF_TEXT | LVCF_WIDTH;
+	lvcol.pszText="Last check";
+	lvcol.cchTextMax = sizeof(lvcol.pszText);
+	lvcol.cx = 110;	
+	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+	lvcol.pszText="Port";
+	lvcol.cchTextMax = sizeof(lvcol.pszText);
+	lvcol.cx = 60;	
+	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+	lvcol.pszText = "Hostname";
+	lvcol.cchTextMax = sizeof(lvcol.pszText);
+	lvcol.cx = 160;
+	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+	lvcol.pszText = "";
+	lvcol.cchTextMax = sizeof(lvcol.pszText);
+	lvcol.cx = 20;
+	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+
+
+	for (int i=0;i<_Settings.m_LinkMediators.size();i++)
+	{
+		CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
+
+		LVITEM it = {0};
+		it.mask = LVIF_IMAGE;
+		it.iItem = i;
+		if (st->Valid)
+			it.iImage = 1;
+		else
+			it.iImage = 0;
+		it.iItem = SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_INSERTITEM, 0, (LPARAM)&it);
+
+		it.mask = LVIF_TEXT;
+		it.iSubItem = 1;
+		it.pszText = st->Host;
+		it.cchTextMax = strlen(it.pszText);
+		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);
+
+		char buff[1024];
+		sprintf(buff, "%d", st->Port);
+		it.iSubItem = 2;
+		it.pszText = buff;
+		it.cchTextMax = strlen(it.pszText);
+					
+		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);
+
+		it.iSubItem = 3;
+		it.pszText = "N/A";
+		it.cchTextMax = strlen(it.pszText);
+		
+		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);	
+	}
 
 	return TRUE;
 }
@@ -1701,32 +1745,6 @@ BOOL CSettingsDlg::CSettingsMediator::Apply(void)
 		_Settings.m_AllowAnyMediator = TRUE;
 	else
 		_Settings.m_AllowAnyMediator = FALSE;
-	
-	if (::SendMessage(GetDlgItem(IDC_USEIPFROMDATABASE), BM_GETSTATE, NULL, NULL))
-		_Settings.m_UseIPFromDatabase = TRUE;
-	else
-		_Settings.m_UseIPFromDatabase = FALSE;
-	
-	if (::SendMessage(GetDlgItem(IDC_CHECK_ALLOWLINKMEDIATOR), BM_GETSTATE, NULL, NULL))
-		_Settings.m_UseLinkMediatorFromDatabase = TRUE;
-	else
-		_Settings.m_UseLinkMediatorFromDatabase = FALSE;
-	
-	char buff[16384];
-	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_IPOBTAINURL), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (*buff)
-		_Settings.m_IPProviderURL = buff;
-
-	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_LINKMEDIATOR_HOSTNAME), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (*buff)
-		_Settings.m_LinkMediator = buff;
-
-	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_LINKMEDIATOR_PORT), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (*buff)
-		_Settings.m_LinkMediatorPort = atol(buff);
 	
 	return TRUE;
 }
@@ -6338,7 +6356,7 @@ void CSettingsDlg::CSettingsContactsSort::Show(BOOL Show, RECT *rc)
 CSettingsDlg::CSettingsChatRooms::CSettingsChatRooms() : _CSettingsTemplate()
 {
 	PATH = "ChatRooms";
-	TEXT1 = "Browse or create chat rooms.";
+	TEXT1 = "Browse or create chat rooms. (STILL IN BETA!!)";
 	TEXT2 = "Specify or browse for a room to join or create new one.";
 
 	_Jabber->m_ServiceRegisterHwnd = NULL;

@@ -98,23 +98,24 @@ BEGIN
                     7,12,176,10
     LTEXT           "UDP port fort for outoing and incoming packets (0 for auto select)",
                     IDC_STATIC,7,35,206,8
-    EDITTEXT        IDC_UDP_PORT,216,33,28,12,ES_NUMBER
+    EDITTEXT        IDC_UDP_PORT,216,33,28,12,ES_NUMBER | WS_DISABLED
     GROUPBOX        "IP address for Wippien network adapter ",IDC_STATIC,3,
-                    65,255,68
+                    65,255,94
     CONTROL         "Ignore. IP will be set outside of this program.",
                     IDC_IPADDRESSIGNORE,"Button",BS_AUTORADIOBUTTON,6,77,154,
                     10
-    CONTROL         "Obtained by IP provider database",
+    CONTROL         "Obtained from IP provider database, on URL",
                     IDC_IPADDRESSBYIPMEDIATOR,"Button",BS_AUTORADIOBUTTON,6,
-                    90,121,10
+                    103,156,10
+    EDITTEXT        IDC_IPOBTAINURL,16,113,226,13,ES_AUTOHSCROLL
     CONTROL         "Use following static address:",IDC_IPADDRESSSTATIC,
-                    "Button",BS_AUTORADIOBUTTON,6,102,105,10
+                    "Button",BS_AUTORADIOBUTTON,6,131,105,10
     CONTROL         "IPAddress1",IDC_ETHERNET_IP,"SysIPAddress32",WS_TABSTOP,
-                    153,102,88,11
+                    153,131,88,11
     CONTROL         "IPAddress1",IDC_NETMASK_ETHERNET,"SysIPAddress32",
-                    WS_TABSTOP,153,113,88,11
-    LTEXT           "IP address",IDC_STATIC,114,104,34,8
-    LTEXT           "Netmask",IDC_STATIC,113,116,34,8
+                    WS_TABSTOP,153,142,88,11
+    LTEXT           "IP address",IDC_STATIC,114,133,34,8
+    LTEXT           "Netmask",IDC_STATIC,113,145,34,8
 END
 
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
@@ -347,25 +348,14 @@ IDD_SETTINGS_MEDIATOR DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "Obtain IP from main Wippien IP database",
-                    IDC_USEIPFROMDATABASE,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,9,12,145,10
-    LTEXT           "Enter URL below. We can provide IP address for you, and details about current LINK mediators available. You can of course ignore our settings and use your own.",
-                    IDC_LABEL_ETHERNET2,16,23,228,23
-    LTEXT           "URL to obtain IP:",IDC_STATIC,16,49,56,8
-    EDITTEXT        IDC_IPOBTAINURL,16,60,226,13,ES_AUTOHSCROLL
-    LTEXT           "Choose LINK mediator. It can be obtained from IP provider",
-                    IDC_STATIC,15,96,184,8
-    LTEXT           "Hostname:",IDC_STATIC,15,113,35,8
-    EDITTEXT        IDC_LINKMEDIATOR_HOSTNAME,52,111,81,13,ES_AUTOHSCROLL
-    LTEXT           "Port:",IDC_STATIC,147,113,16,8
-    EDITTEXT        IDC_LINKMEDIATOR_PORT,165,111,35,13,ES_AUTOHSCROLL | 
-                    ES_NUMBER
-    CONTROL         "Update LINK Mediator with address received from IP provider",
-                    IDC_CHECK_ALLOWLINKMEDIATOR,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,14,128,221,10
-    GROUPBOX        "",IDC_STATIC,7,3,245,84
-    GROUPBOX        "",IDC_STATIC,7,85,245,64
+    LTEXT           "Following mediators can be used:",IDC_STATIC,7,9,106,8
+    CONTROL         "List1",IDC_MEDIATORLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOLABELWRAP | LVS_AUTOARRANGE | 
+                    LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,8,25,249,118
+    CONTROL         "Allow new mediators to be added",
+                    IDC_CHECK_ALLOWANYMEDIATOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,138,9,120,10
 END
 
 IDD_SETTINGS_MSGWIN DIALOG DISCARDABLE  0, 0, 262, 160
@@ -470,7 +460,7 @@ BEGIN
     LTEXT           "Click on first column to change values.",IDC_STATIC,0,
                     16,122,8
     LTEXT           "If you choose 'not specified' value, then same value is used as in 'all other' setting.",
-                    IDC_STATIC,0,138,182,16,0,WS_EX_TRANSPARENT
+                    IDC_STATIC,0,141,182,16,0,WS_EX_TRANSPARENT
 END
 
 IDD_SETTINGS_SKINS DIALOG DISCARDABLE  0, 0, 262, 175
@@ -1140,6 +1130,8 @@ IDI_STATUS_DND          ICON    DISCARDABLE     "..\\gfx\\do_not_disturb.ico"
 IDI_STATUS_INVISIBLE    ICON    DISCARDABLE     "..\\gfx\\invisible.ico"
 IDI_STATUS_XA           ICON    DISCARDABLE     "..\\gfx\\extended_away.ico"
 IDI_STATUS_FFC          ICON    DISCARDABLE     "..\\gfx\\free_for_chat.ico"
+IDI_ICON_YES            ICON    DISCARDABLE     "..\\gfx\\yes.ico"
+IDI_ICON_NO             ICON    DISCARDABLE     "..\\gfx\\no.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1259,7 +1251,7 @@ BEGIN
             VALUE "FileDescription", "Wippien Module\0"
             VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "Wippien\0"
-            VALUE "LegalCopyright", "Copyright 2006-2007\0"
+            VALUE "LegalCopyright", "Copyright 2006-2008\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
             VALUE "ProductVersion", STRFILEVER

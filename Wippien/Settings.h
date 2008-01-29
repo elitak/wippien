@@ -49,11 +49,10 @@ public:
 	virtual ~CSettings();
 
 	CComBSTR m_JID, m_Password, m_ServerHost, m_Nick;
-	CComBSTR m_LinkMediator;
-	long	m_LinkMediatorPort, m_ObtainIPAddress;
+	long	m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFile, m_FunctionDebugFile;
 	CComBSTR m_Skin, m_UpdateURL, m_IPProviderURL;
-	BOOL m_UseIPFromDatabase, m_UseLinkMediatorFromDatabase, m_AllowAnyMediator, m_SoundOn, m_LoadSuccess;
+	BOOL m_AllowAnyMediator, m_SoundOn, m_LoadSuccess;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
 	BOOL	m_UseSSLWrapper;
@@ -112,11 +111,21 @@ public:
 		int TotalCount;
 		BOOL Temporary;
 	} TreeGroup;
+	typedef struct LinkMediatorStruct
+	{
+		char *Host;
+		int Port;
+		unsigned long LastCheck;
+		unsigned long LastSuccess;		
+		BOOL Valid;
+	};
 
 	typedef std::vector<TreeGroup *> GROUPS;
 	typedef std::vector<MenuTool *> MENUTOOLS;
+	typedef std::vector<LinkMediatorStruct *> LINKMEDIATORS;
 	GROUPS m_Groups;
 	MENUTOOLS m_MenuTools;
+	LINKMEDIATORS m_LinkMediators;
 //	DHCPLIST m_DHCPAddress;
 //	CUser *m_DHCPAddress[256];
 
@@ -135,6 +144,7 @@ public:
 	void AESWrite(Buffer *out);
 	void AESRead(Buffer *out);
 	BOOL IsHiddenContact(char *contact);
+	LinkMediatorStruct *AddLinkMediator(char *text, int Port);
 
 	// window stuff
 	BOOL m_IsAligned, m_IsTopMost, m_DoAlign;

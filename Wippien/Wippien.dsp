@@ -483,6 +483,10 @@ SOURCE=..\Gfx\invisible.ico
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\no.ico
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\offline.ico
 # End Source File
 # Begin Source File
@@ -504,6 +508,10 @@ SOURCE=.\Wippien.rgs
 # Begin Source File
 
 SOURCE=..\Gfx\WizardImage.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\yes.ico
 # End Source File
 # End Group
 # Begin Source File

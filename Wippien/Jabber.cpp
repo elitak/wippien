@@ -635,6 +635,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 													user->m_CurrentMediatorPort = port;
 												} // otherwise leave as is
 												user->m_CurrentMediatorChoice = 0;
+												ATLTRACE("Selected mediator %s for %s\r\n", user->m_CurrentMediator, user->m_JID);
 											}
 
 											free(med);

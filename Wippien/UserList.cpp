@@ -408,11 +408,11 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 					char jdbuff[1024];
 					int jdlen = sizeof(jdbuff);
 					WODXMPPCOMLib::XMPP_Contact_GetJID(contact, jdbuff, &jdlen);
-					CComBSTR2 jid, jd = jdbuff;
+					CComBSTR2 jid, jd = jdbuff, jdnew = jdbuff;
 					{
 #endif
 						char *res = NULL;
-						char *jd1 = jd.ToString();
+						char *jd1 = jdnew.ToString();
 						char *jd2 = strchr(jd1, '/');
 						if (jd2)
 						{
@@ -421,9 +421,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							res = jd2;
 						}
 						jid = jd1;
-						ATLTRACE("user=%s \r\n", jd.ToString());
-						if (res)
-							ATLTRACE("res=%s \r\n", res);
+//						ATLTRACE("user=%s \r\n", jd.ToString());
+//						if (res)
+//							ATLTRACE("res=%s \r\n", res);
 
 
 						char *j = jid.ToString();						

@@ -104,6 +104,7 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 	else
 	{
 		me->m_WippienState = WipDisconnected;	
+		me->m_MyMediatorChoice = (-1); // pick different mediator next time, ok?
 	}
 	me->SetSubtext();
 
@@ -152,7 +153,7 @@ STDMETHODIMP CUser::raw_IncomingData(WODVPNCOMLib::IwodVPNCom * Owner, VARIANT D
 #endif
 	if (count>0)
 	{		
-		ATLTRACE("Got %d bytes from %s\r\n", count, me->m_JID);		
+//		ATLTRACE("Got %d bytes from %s\r\n", count, me->m_JID);		
 		me->ProcessNetworkData((char *)data, count);
 	}
 #ifndef _WODVPNLIB
@@ -234,8 +235,17 @@ CUser::CUser()
 
 
 	m_ChatRoomPtr = NULL;
-	memset(m_CurrentMediator, 0, sizeof(m_CurrentMediator));
-	m_CurrentMediatorPort = 0;
+	memset(m_MyMediatorOffer, 0, sizeof(m_MyMediatorOffer));
+	m_MyMediatorPort = 0;
+
+	CSettings::LinkMediatorStruct *st = _Settings.m_LinkMediators[0];
+	if (st)
+	{
+		strcpy(m_HisMediatorOffer,st->Host);
+		m_HisMediatorPort = st->Port;
+		
+	}
+	m_MyMediatorChoice = (-1);
 }
 
 CUser::~CUser()
@@ -306,6 +316,7 @@ void CUser::ReInit(BOOL WithDirect)
 {
 	if (WithDirect)
 	{
+		m_MyMediatorOffer[0] = 0;
 		m_WippienState = WipWaitingInitRequest;
 		m_RemoteWippienState = WipUndefined;
 		EnterCriticalSection(&m_CritCS);
@@ -332,7 +343,7 @@ void CUser::ReInit(BOOL WithDirect)
 				return;
 		}
 	}
-
+	m_MyMediatorChoice = (-1);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
 	SetSubtext();
@@ -476,10 +487,10 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			USES_CONVERSION;
 			//varhost.bstrVal = _Settings.m_MediatorAddr;
 			CComBSTR mlm;
-			mlm = m_CurrentMediator;
+			mlm = m_HisMediatorOffer;
 			varhost.bstrVal = mlm;
 			varport.vt = VT_I4;
-			varport.lVal = m_CurrentMediatorPort;
+			varport.lVal = m_HisMediatorPort;
 			VARIANT varempty;
 			varempty.vt = VT_ERROR;
 
@@ -533,6 +544,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 				}
 			}
 
+			ATLTRACE("Using mediator %s for %s\r\n", m_HisMediatorOffer, m_JID);
 			WODVPNCOMLib::VPN_Start(m_wodVPN, &port);
 			CComBSTR2 hisid2 = hisid;
 			WODVPNCOMLib::VPN_Search(m_wodVPN, (WODVPNCOMLib::SearchEnum)0, hisid2.ToString(), varhost, varport, varempty);
@@ -645,20 +657,24 @@ void CUser::FdTimer(int TimerID)
 				{
 					b.PutString(b1.Ptr(), b1.Len());
 
-					// there are mediators to select, pick one
-					m_CurrentMediatorChoice = rand()%total;
-					int j = 0;
-					for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
+					if (!*m_MyMediatorOffer)
 					{
-						CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
-						if (st->Valid)
+						// there are mediators to select, pick one
+						if (m_MyMediatorChoice<0)
+							m_MyMediatorChoice = rand()%total;
+						int j = 0;
+						for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
 						{
-							strcpy(m_CurrentMediator, st->Host);
-							m_CurrentMediatorPort = st->Port;
-							if (j++ == m_CurrentMediatorChoice)
+							CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
+							if (st->Valid)
 							{
-								ATLTRACE("Offering mediator %s\r\n", st->Host);
-								break;
+								strcpy(m_MyMediatorOffer, st->Host);
+								m_MyMediatorPort = st->Port;
+								if (j++ == m_MyMediatorChoice)
+								{
+									ATLTRACE("Offering mediator %s to %s\r\n", st->Host, m_JID);
+									break;
+								}
 							}
 						}
 					}
@@ -681,9 +697,9 @@ void CUser::FdTimer(int TimerID)
 				RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, m_RSA, RSA_PKCS1_PADDING);
 				b.Append(dst, 128);
 				b.PutChar((char)m_WippienState);
-				b.PutCString(m_CurrentMediator);
-				b.PutInt(m_CurrentMediatorPort);
-				b.PutInt(m_CurrentMediatorChoice);
+				b.PutCString(m_MyMediatorOffer);
+				b.PutInt(m_MyMediatorPort);
+				b.PutInt(m_MyMediatorChoice);
 
 				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
 			}

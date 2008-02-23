@@ -12,6 +12,15 @@
 #include "ContactAuthDlg.h"
 #include "SDKMessageLink.h"
 
+#ifndef MIN
+#define  MIN(a, b)   ((a)<(b)?(a):(b)) 
+#endif
+#ifndef MAX
+#define  MAX(a, b)   ((a)>(b)?(a):(b)) 
+#endif
+
+
+
 #ifdef _WODVPNLIB
 namespace WODVPNCOMLib
 {
@@ -604,6 +613,12 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								if (user)
 								{
 									ATLTRACE("Got WIPPIENINITRESPONSE from %s\r\n", user->m_JID);
+
+									// if we're trying to connect now..
+									if (user->m_WippienState >= WipConnecting)
+										return;
+
+
 									char src[8192], dst[8192];
 									memcpy(src, out.Ptr(), 128);
 									if (RSA_private_decrypt(128, (unsigned char *)src, (unsigned char *)dst,  _Settings.m_RSA, RSA_PKCS1_PADDING) < 0)
@@ -617,30 +632,46 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									if (out.Len())
 										user->m_RemoteWippienState = (WippienState)out.GetChar();
 
-									if (out.Len())
+									if (out.Len()/* && user->m_MyMediatorOffer[0]*/)
 									{
 										// user sent us his choice of mediators
 										char *med = out.GetString(NULL);
 										if (med)
 										{
+											ATLTRACE("Got mediator offer for %s from %s\r\n", med, user->m_JID);
+											
 											int port = out.GetInt();
 											if (port)
 											{
-												int random_number = out.GetInt();
-												random_number += user->m_CurrentMediatorChoice;
-												random_number %= 2;
-												if (random_number == 0 && strcmp(med, user->m_CurrentMediator)<0)
+												user->m_HisMediatorChoice = out.GetInt();
+												int ch = 0;
+												if ((user->m_HisMediatorChoice + user->m_MyMediatorChoice) % 2 != 0)
 												{
-													strcpy(user->m_CurrentMediator, med);
-													user->m_CurrentMediatorPort = port;
-												} // otherwise leave as is
-												user->m_CurrentMediatorChoice = 0;
-												ATLTRACE("Selected mediator %s for %s\r\n", user->m_CurrentMediator, user->m_JID);
-											}
-
+													ATLTRACE("selecting MAX\r\n");
+													ch = MAX(user->m_HisMediatorChoice, user->m_MyMediatorChoice);
+												}
+												else
+												{
+													ATLTRACE("selecting MIN\r\n");
+													ch = MIN(user->m_HisMediatorChoice, user->m_MyMediatorChoice);
+												}
+												if (ch == user->m_HisMediatorChoice)
+												{
+													strcpy(user->m_HisMediatorOffer, med);
+													user->m_HisMediatorPort = port;
+												} 
+												else
+												{
+													strcpy(user->m_HisMediatorOffer, user->m_MyMediatorOffer);
+													user->m_HisMediatorPort = user->m_MyMediatorPort;
+												}
+//												user->m_MyMediatorOffer[0] = 0;
+												ATLTRACE("Selected mediator %s for %s\r\n", user->m_HisMediatorOffer, user->m_JID);
+											}											
 											free(med);
 										}
 									}
+
 
 									// and XOR with ours
 									for (int i = 0; i < 16; i++)
@@ -705,6 +736,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 							if (user)
 							{
+								if (user->m_Block)
+									return;
+
 								ATLTRACE("Got CONNECT message from %s\r\n", user->m_JID);
 								Buffer in, out;
 								CComBSTR2 r;

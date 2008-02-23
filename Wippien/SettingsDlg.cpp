@@ -772,6 +772,8 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SetDlgItemText(IDC_EDIT_JID4, buff);
 
 	BOOL regnew = ::SendMessage(GetDlgItem(IDC_RADIO1_JID), BM_SETCHECK, BST_CHECKED, NULL);
+	if (_Settings.m_UseSSLWrapper)
+		::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_SETCHECK, BST_CHECKED, NULL);
 
 
 	::EnableWindow(GetDlgItem(IDC_TEST_JID), FALSE);
@@ -834,11 +836,11 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 			_Settings.m_ServerPort = 5222;
 	}
 
-	int i = ::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETSTATE, NULL, NULL);
-	if (i&BST_CHECKED == BST_CHECKED)
+
+	if (::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETCHECK, NULL, NULL))
 		_Settings.m_UseSSLWrapper = TRUE;
 	else
-		_Settings.m_UseSSLWrapper = FALSE;
+		_Settings.m_UseSSLWrapper= 0;
 
 	return TRUE;
 }
@@ -909,12 +911,8 @@ LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND h
 		port = 5222;
 
 	BOOL usessl = FALSE;
-	int ssl = ::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETSTATE, NULL, NULL);
-	if (ssl&BST_CHECKED == BST_CHECKED)
+	if (::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETCHECK, NULL, NULL))
 		usessl = TRUE;
-
-
-
 	
 	BOOL regnew = ::SendMessage(GetDlgItem(IDC_RADIO2_JID), BM_GETSTATE, NULL, NULL);
 
@@ -930,8 +928,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND h
 
 LRESULT CSettingsDlg::CSettingsJID::OnBtnUseSSLWrapper(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	int i = ::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETSTATE, NULL, NULL);
-	if (i&BST_CHECKED == BST_CHECKED)
+	if (::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_GETCHECK, NULL, NULL))
 		::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_SETTEXT, 0, (LPARAM)"443");
 	else
 		::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_SETTEXT, 0, (LPARAM)"5222");

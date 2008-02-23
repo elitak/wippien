@@ -486,7 +486,7 @@ int CSettings::Load(void)
 			{
 				ReadSettingsCfg(wip, "Password", m_Password, "");
 			}
-			ReadSettingsCfg(wip, "m_UseSSLWrapper", &m_UseSSLWrapper, FALSE);
+			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);

@@ -246,6 +246,8 @@ CUser::CUser()
 		
 	}
 	m_MyMediatorChoice = (-1);
+	m_LastSent = m_LastReceive = 0;
+	m_TotalReceived = m_TotalSent = 0;
 }
 
 CUser::~CUser()
@@ -565,7 +567,11 @@ void CUser::SendConnectionRequest(BOOL Notify)
 
 void CUser::ProcessNetworkData(char *buffreal, int len)
 {
-		_Ethernet.InjectPacket(buffreal, len);
+	m_LastReceive = GetTickCount();
+	m_TotalReceived += len;
+	_MainDlg.m_UserList.SetTimer(0, 500);
+	_MainDlg.m_UserList.Invalidate();
+	_Ethernet.InjectPacket(buffreal, len);
 }
 
 void CUser::FdMTU(int MTU)
@@ -842,6 +848,10 @@ BOOL CUser::SendNetworkPacket(char *data, int len)
 //				data[-1] = app;
 //				m_LastSend = 0;
 
+				m_LastSent = GetTickCount();
+				m_TotalSent += len;
+				_MainDlg.m_UserList.SetTimer(0, 500);
+				_MainDlg.m_UserList.Invalidate();
 				EnterCriticalSection(&m_CritCS);
 #ifdef _WODVPNLIB
 				if (m_wodVPN)

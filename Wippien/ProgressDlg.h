@@ -23,7 +23,6 @@ public:
 	BOOL DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL updateprogress);
 	static DWORD WINAPI DownloadSkinThreadProc(LPVOID lpParam);
 	BOOL InitDownloadSkin(Buffer *data);
-	void ShowNiceByteCount(int value, char *buff);
 	Buffer *m_SkinBuffer;
 
 	void DoEvents(void);

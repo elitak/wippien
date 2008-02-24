@@ -4,6 +4,7 @@
 
 void CVividTree::DrawItems(CDC *pDC)
 {
+	unsigned long tick = GetTickCount();
 	// draw items
 	HTREEITEM show_item, parent;
 	CRect rc_item;
@@ -16,6 +17,7 @@ void CVividTree::DrawItems(CDC *pDC)
 	BOOL selected, highlited;
 	bool has_children;
 	CUser *user = NULL;
+	char LastReceiveBuff[4] = "<>\0";
 	
 	
 	show_item = GetFirstVisibleItem();
@@ -164,6 +166,23 @@ void CVividTree::DrawItems(CDC *pDC)
 						RECT rcc;
 						memcpy(&rcc, rc_item, sizeof(rcc));
 						COLORREF cf = pDC->GetTextColor();
+
+						if (_Settings.m_ShowContactPicture)
+						{
+							// show activity
+							rc_item.top += 20;
+							if (user->m_LastReceive + 500 > tick)
+								LastReceiveBuff[1] = '.';
+							else
+								LastReceiveBuff[1] = ' ';
+							if (user->m_LastSent + 500 > tick)
+								LastReceiveBuff[0] = '.';
+							else
+								LastReceiveBuff[0] = ' ';
+							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
+							rc_item.top -= 20;
+						}
+
 						if (user->m_Block)
 							pDC->SetTextColor(RGB(255,32,32));
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
@@ -247,6 +266,23 @@ void CVividTree::DrawItems(CDC *pDC)
 						RECT rcc;
 						memcpy(&rcc, rc_item, sizeof(rcc));
 						COLORREF cf = pDC->GetTextColor();
+
+						if (_Settings.m_ShowContactPicture)
+						{
+							// show activity
+							rc_item.top += 20;
+							if (user->m_LastReceive + 500 > tick)
+								LastReceiveBuff[1] = '.';
+							else
+								LastReceiveBuff[1] = ' ';
+							if (user->m_LastSent + 500 > tick)
+								LastReceiveBuff[0] = '.';
+							else
+								LastReceiveBuff[0] = ' ';
+							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
+							rc_item.top -= 20;
+						}
+
 						if (user->m_Block)
 							pDC->SetTextColor(RGB(255,32,32));
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);

@@ -134,6 +134,7 @@ public:
 	_cryptoAES128 m_AES;
 	int m_MTU;
 	CDetectMTU *m_DetectMTU;
+	unsigned long m_LastSent, m_LastReceive, m_TotalReceived, m_TotalSent;
 
 	char m_StatusText[128];
 	WippienState m_WippienState, m_RemoteWippienState;

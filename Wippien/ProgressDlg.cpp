@@ -20,6 +20,7 @@
 
 extern CSettings _Settings;
 extern CMainDlg _MainDlg;
+void ShowNiceByteCount(int value, char *buff);
 
 CProgressDlg::CProgressDlg()
 {
@@ -232,27 +233,6 @@ DWORD WINAPI CProgressDlg::DownloadSkinThreadProc(LPVOID lpParam)
 	}
 	delete me;
 	return 0;
-}
-
-void CProgressDlg::ShowNiceByteCount(int value, char *buff)
-{
-	if (value>1048576L)
-	{
-		value /= 10240;
-		float b = value;
-		b /= 100;
-		sprintf(buff, "%0.2f MB", b);
-	}
-	else
-	if (value > 1024)
-	{
-		value /= 10;
-		float b = value;
-		b /= 100;
-		sprintf(buff, "%0.2f KB", b);
-	}
-	else
-		sprintf(buff, "%d", value);
 }
 
 BOOL CProgressDlg::DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL updateprogress)

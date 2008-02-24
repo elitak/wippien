@@ -162,13 +162,14 @@ protected:
 			CUser *user = (CUser *)GetItemData(Item);
 			if (!user)
 			{
+				Invalidate();
 				::KillTimer(m_hWnd, wParam);
 			}
 			else
 			{				
 				if (user->m_BlinkTimerCounter++<50)
 				{
-				Invalidate(FALSE);
+					Invalidate(FALSE);
 				}
 				else
 				{

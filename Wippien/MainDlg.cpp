@@ -563,6 +563,27 @@ DWORD WINAPI UpdateThreadProc(LPVOID lpParameter)
 	return 0;
 }
 
+void ShowNiceByteCount(int value, char *buff)
+{
+	if (value>1048576L)
+	{
+		value /= 10240;
+		float b = (float)value;
+		b /= 100;
+		sprintf(buff, "%0.2f MB", b);
+	}
+	else
+		if (value > 1024)
+		{
+			value /= 10;
+			float b = (float)value;
+			b /= 100;
+			sprintf(buff, "%0.2f KB", b);
+		}
+		else
+			sprintf(buff, "%d bytes", value);
+}
+
 
 LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
@@ -711,7 +732,10 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							if (user->m_WippienState == WipConnected)
 							{
 								CComBSTR2 ra = user->m_RemoteAddr;
-								sprintf(buff, "%s (%d)\r\nMTU: %d", ra.ToString(), user->m_RemotePort, user->m_MTU);
+								char totalin[128], totalout[128];
+								ShowNiceByteCount(user->m_TotalReceived, totalin);
+								ShowNiceByteCount(user->m_TotalSent, totalout);
+								sprintf(buff, "%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s", ra.ToString(), user->m_RemotePort, user->m_MTU, totalout, totalin);
 								textbuff.Append(buff);
 							}
 							else

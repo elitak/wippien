@@ -6132,6 +6132,11 @@ LRESULT CSettingsDlg::CSettingsAppearance::OnInitDialog(UINT /*uMsg*/, WPARAM /*
 	else
 		::SendMessage(GetDlgItem(IDC_SHOWCONTACTLASTONLINE), BM_SETCHECK, FALSE, NULL);
 
+	if (_Settings.m_ShowContactActivity)
+		::SendMessage(GetDlgItem(IDC_SHOWCONTACTACTIVITYMONITOR), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_SHOWCONTACTACTIVITYMONITOR), BM_SETCHECK, FALSE, NULL);
+	
 	//	if (_Settings.m_ShowContactName)
 		::SendMessage(GetDlgItem(IDC_SHOWCONTACTNAME), BM_SETCHECK, TRUE, NULL);
 //	else
@@ -6210,6 +6215,12 @@ BOOL CSettingsDlg::CSettingsAppearance::Apply(void)
 	else
 		_Settings.m_ShowContactLastOnline = FALSE;
 
+	BOOL lastactivity = _Settings.m_ShowContactActivity;
+	if (::SendMessage(GetDlgItem(IDC_SHOWCONTACTACTIVITYMONITOR), BM_GETSTATE, NULL, NULL))
+		_Settings.m_ShowContactActivity= TRUE;
+	else
+		_Settings.m_ShowContactActivity = FALSE;
+	
 /*	BOOL oldname = _Settings.m_ShowContactName;
 	if (::SendMessage(GetDlgItem(IDC_SHOWCONTACTNAME), BM_GETSTATE, NULL, NULL))
 		_Settings.m_ShowContactName = TRUE;
@@ -6228,10 +6239,10 @@ BOOL CSettingsDlg::CSettingsAppearance::Apply(void)
 	else
 		_Settings.m_ShowContactStatus = FALSE;
 
-	if (oldip != _Settings.m_ShowContactIP /*|| oldname != _Settings.m_ShowContactName */|| oldpic != _Settings.m_ShowContactPicture || oldstatus != _Settings.m_ShowContactStatus || oldlastonline != _Settings.m_ShowContactLastOnline)
+	if (oldip != _Settings.m_ShowContactIP /*|| oldname != _Settings.m_ShowContactName */|| oldpic != _Settings.m_ShowContactPicture || oldstatus != _Settings.m_ShowContactStatus || oldlastonline != _Settings.m_ShowContactLastOnline || lastactivity != _Settings.m_ShowContactActivity)
 		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
 
-	if (oldmystatus != _Settings.m_ShowMyStatus || oldmypic != _Settings.m_ShowMyPicture || oldmyname != _Settings.m_ShowMyName || oldmyip != _Settings.m_ShowMyIP)
+	if (oldmystatus != _Settings.m_ShowMyStatus || oldmypic != _Settings.m_ShowMyPicture || oldmyname != _Settings.m_ShowMyName || oldmyip != _Settings.m_ShowMyIP || lastactivity != _Settings.m_ShowContactActivity)
 		_MainDlg.RecalcInternalItems();
 
 	return TRUE;

@@ -167,7 +167,7 @@ void CVividTree::DrawItems(CDC *pDC)
 						memcpy(&rcc, rc_item, sizeof(rcc));
 						COLORREF cf = pDC->GetTextColor();
 
-						if (_Settings.m_ShowContactPicture)
+						if (_Settings.m_ShowContactActivity)
 						{
 							// show activity
 							rc_item.top += 20;
@@ -267,7 +267,7 @@ void CVividTree::DrawItems(CDC *pDC)
 						memcpy(&rcc, rc_item, sizeof(rcc));
 						COLORREF cf = pDC->GetTextColor();
 
-						if (_Settings.m_ShowContactPicture)
+						if (_Settings.m_ShowContactActivity)
 						{
 							// show activity
 							rc_item.top += 20;

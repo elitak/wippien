@@ -226,7 +226,7 @@ CSettings::CSettings()
 	m_FixedMTUNum = 1200;
 
 
-	m_ShowContactPicture = m_ShowContactName = m_ShowContactIP = m_ShowContactStatus = m_ShowContactLastOnline = TRUE;
+	m_ShowContactPicture = m_ShowContactName = m_ShowContactIP = m_ShowContactStatus = m_ShowContactLastOnline = m_ShowContactActivity = TRUE;
 	m_ShowMyPicture = m_ShowMyName = m_ShowMyIP = m_ShowMyStatus = TRUE;
 
 	m_SortContacts = 1;
@@ -502,6 +502,7 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "AllowMediator", &m_AllowAnyMediator, TRUE);
 			ReadSettingsCfg(wip, "ShowContactPicture", &m_ShowContactPicture, TRUE);
 			ReadSettingsCfg(wip, "ShowContactLastOnline", &m_ShowContactLastOnline, TRUE);
+			ReadSettingsCfg(wip, "ShowContactActivity", &m_ShowContactActivity, TRUE);
 			ReadSettingsCfg(wip, "ShowContactIP", &m_ShowContactIP, TRUE);
 			ReadSettingsCfg(wip, "ShowContactStatus", &m_ShowContactStatus, TRUE);
 			ReadSettingsCfg(wip, "ShowMyPicture", &m_ShowMyPicture, TRUE);
@@ -983,6 +984,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("AllowAnyMediator", m_AllowAnyMediator?"1":"0");
 		x.AddChildElem("ShowContactPicture", m_ShowContactPicture?"1":"0");
 		x.AddChildElem("ShowContactLastOnline", m_ShowContactLastOnline?"1":"0");
+		x.AddChildElem("ShowContactActivity", m_ShowContactActivity?"1":"0");
 		//		x.AddChildElem("ShowContactName", m_ShowContactName?"1":"0");
 		x.AddChildElem("ShowContactIP", m_ShowContactIP?"1":"0");
 		x.AddChildElem("ShowContactStatus", m_ShowContactStatus?"1":"0");

@@ -300,6 +300,7 @@
 #define IDC_SHOWSTATUS                  1277
 #define IDC_SHOWCONTACTLASTONLINE       1278
 #define IDC_SORTBYNAME                  1279
+#define IDC_SHOWCONTACTACTIVITYMONITOR  1279
 #define IDC_SORTBYJID                   1280
 #define IDC_CONTACTS_AUTH0              1281
 #define IDC_CONTACTS_AUTH1              1282

@@ -704,6 +704,8 @@ BEGIN
                     WS_TABSTOP,11,83,49,10
     CONTROL         "Status text",IDC_SHOWCONTACTSTATUS,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,85,83,49,10
+    CONTROL         "Activity Monitor",IDC_SHOWCONTACTACTIVITYMONITOR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,146,84,64,10
     GROUPBOX        "Visible details ",IDC_STATIC,7,7,247,44
     GROUPBOX        "Contact's visible details",IDC_STATIC,7,55,248,44
 END

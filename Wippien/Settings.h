@@ -79,7 +79,7 @@ public:
 	typedef std::vector<long> HIDDENCONTACTS;
 	HIDDENCONTACTS m_HiddenContacts;
 
-	BOOL m_ShowContactPicture, m_ShowContactName, m_ShowContactIP, m_ShowContactStatus, m_ShowContactLastOnline;
+	BOOL m_ShowContactPicture, m_ShowContactName, m_ShowContactIP, m_ShowContactStatus, m_ShowContactLastOnline, m_ShowContactActivity;
 	BOOL m_ShowMyPicture, m_ShowMyName, m_ShowMyIP, m_ShowMyStatus;
 
 	int  m_SortContacts;

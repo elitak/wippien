@@ -2506,7 +2506,11 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 void CMainDlg::OnIncomingNotification(char *Contact, int NotID, VARIANT Data)
 {
 	DumpDebug("*MainDlg::OnIncomingNotification\r\n");
+	char *c = strchr(Contact, '/');
+	if (*c)
+		*c = 0;
 	int j = strlen(Contact);
+
 	for (int i = 0; i < m_UserList.m_Users.size(); i++)
 	{
 		CUser *user = m_UserList.m_Users[i];

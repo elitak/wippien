@@ -1786,6 +1786,8 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	
 	SetTimer(110, 10000); // each 10 seconds check MTU if it's changed
 
+	BOOL bHandled;
+	OnSizeImpl(WM_SIZE, /*wParam*/0, 0, bHandled);
 
 	return TRUE;
 }
@@ -2667,6 +2669,14 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 
 LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+
+	if (m_pBalloon)
+	{
+		if (m_pBalloon->IsWindow())
+			m_pBalloon->DestroyWindow();
+		delete m_pBalloon;
+	}
+
 	DumpDebug("*MainDlg::OnMouseMove \r\n");
 	
 	POINT p;

@@ -187,15 +187,9 @@ CBalloonHelp::CBalloonHelp():
 	m_ptMouseOrg(0,0),
 	m_uCloseState(0),
 	m_uTimeout(0),
-	m_hKeybHook(NULL),
-	m_hMouseHook(NULL),
-	m_hCallWndRetHook(NULL),
 	m_rcScreen(0,0,0,0)
 {
 	DumpDebug("*CBalloonHelp::CBalloonHelp\r\n");
-	KeybHook::InitThunk((TMFP)KeyboardHookProc, this);
-	MouseHook::InitThunk((TMFP)MouseHookProc, this);
-	CallWndRetHook::InitThunk((TMFP)CallWndRetProc, this);
 	m_Image = NULL;
 	m_Owner = NULL;
 }
@@ -382,15 +376,10 @@ BOOL CBalloonHelp::Create(
 
 	::GetCursorPos(&m_ptMouseOrg);
 	
-	if(m_dwOptions & (BOCloseOnButtonDown|BOCloseOnButtonUp|BOCloseOnMouseMove))
-		SetMouseHook();
-
-	if(m_dwOptions & BOCloseOnKeyDown)
-		SetKeyboardHook();
-	
 	if(m_uTimeout>0)
 		SetTimer(IdTimerClose,m_uTimeout);
 
+	SetCapture();
 	if(!(m_dwOptions&BONoShow))
 	{
 		ShowWindow();
@@ -623,11 +612,6 @@ void CBalloonHelp::SetAnchorPoint(CPoint ptAnchor)
 	DumpDebug("*CBalloonHelp::SetAnchorPoint\r\n");
 	m_Anchor.SetAnchorPoint(ptAnchor);
 
-	if(m_Anchor.IsFollowMeMode())
-		SetCallWndRetHook();
-	else
-		RemoveCallWndRetHook();
-
 	PositionWindow();
 }
 
@@ -638,11 +622,6 @@ void CBalloonHelp::SetAnchorPoint(HWND hWndAnchor)
 {
 	DumpDebug("*CBalloonHelp::SetAnchorPoint\r\n");
 	m_Anchor.SetAnchorPoint(hWndAnchor);
-
-	if(m_Anchor.IsFollowMeMode())
-		SetCallWndRetHook();
-	else
-		RemoveCallWndRetHook();
 
 	PositionWindow();
 }
@@ -660,11 +639,6 @@ void CBalloonHelp::SetFollowMe(HWND hWndFollow, POINT* pptAnchor)
 {
 	DumpDebug("*CBalloonHelp::SetFollowMe\r\n");
 	m_Anchor.SetFollowMe(hWndFollow, pptAnchor);
-
-	if(m_Anchor.IsFollowMeMode())
-		SetCallWndRetHook();
-	else
-		RemoveCallWndRetHook();
 
 	PositionWindow();
 }
@@ -935,9 +909,6 @@ CSize CBalloonHelp::CalcWindowSize()
 void CBalloonHelp::OnDestroy()
 {
 	DumpDebug("*CBalloonHelp::OnDestroy\r\n");
-	RemoveMouseHook();
-	RemoveKeyboardHook();
-	RemoveCallWndRetHook();
 }
 
 //
@@ -1337,6 +1308,15 @@ void CBalloonHelp::OnCaptureChanged(HWND)
 //
 void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 {
+	POINT p;
+	GetCursorPos(&p);
+	RECT r;
+	GetWindowRect(&r);
+	if (p.x < r.left || p.x > r.right)
+		DestroyWindow();
+	if (p.y < r.top || p.y > r.bottom)
+		DestroyWindow();
+
 	DumpDebug("*CBalloonHelp::OnMouseMove\r\n");
 	if(m_dwOptions & BOShowCloseButton)
 	{
@@ -1523,190 +1503,6 @@ void CBalloonHelp::OnFinalMessage(HWND)
 	}
 	if (m_Owner && ::IsWindow(m_Owner))
 		::PostMessage(m_Owner, WM_TIMER, 108,0);
-}
-
-//
-//
-//
-void CBalloonHelp::SetKeyboardHook()
-{
-	DumpDebug("*CBalloonHelp::SetKeyboardHook\r\n");
-	if(NULL==m_hKeybHook)
-	{
-		m_hKeybHook=::SetWindowsHookEx(
-			WH_KEYBOARD,
-			(HOOKPROC)KeybHook::GetThunk(),
-			NULL,
-			::GetCurrentThreadId());
-	}
-}
-
-//
-//
-//
-void CBalloonHelp::RemoveKeyboardHook()
-{
-	DumpDebug("*CBalloonHelp::RemoveKeyboardHook\r\n");
-	if(NULL!=m_hKeybHook)
-	{
-		::UnhookWindowsHookEx(m_hKeybHook);
-		m_hKeybHook=NULL;
-	}
-}
-
-//
-//
-//
-LRESULT CBalloonHelp::KeyboardHookProc( int code, WPARAM wParam, LPARAM lParam)
-{
-	DumpDebug("*CBalloonHelp::KeyboardHookProc\r\n");
-	// Skip if the key was released or if it's a repeat
-	// Bit 31:	Specifies the transition state. The value is 0 if the key  
-	//			is being pressed and 1 if it is being released (see MSDN).
-	if(code>=0 && !(lParam&0x80000000))
-	{
-		CloseWindow();
-	}
-	return ::CallNextHookEx(GetKeybHookHandle(), code, wParam, lParam);
-}
-
-
-//
-//
-//
-void CBalloonHelp::SetMouseHook()
-{
-	DumpDebug("*CBalloonHelp::SetMouseHook\r\n");
-	if(NULL==m_hMouseHook)
-	{
-		m_hMouseHook=::SetWindowsHookEx(
-			WH_MOUSE,
-			(HOOKPROC)MouseHook::GetThunk(),
-			NULL,
-			::GetCurrentThreadId());
-	}
-}
-
-//
-//
-//
-void CBalloonHelp::RemoveMouseHook()
-{
-	DumpDebug("*CBalloonHelp::RemoteMouseHook\r\n");
-	if(NULL!=m_hMouseHook)
-	{
-		::UnhookWindowsHookEx(m_hMouseHook);
-		m_hMouseHook=NULL;
-	}
-}
-//
-//
-//
-LRESULT CBalloonHelp::MouseHookProc(int code, WPARAM wParam, LPARAM lParam)
-{
-	DumpDebug("*CBalloonHelp::MouseHookProc\r\n");
-	if(code>=0)
-	{
-		const UINT uMsg=(UINT)wParam;
-
-		if( (uMsg==WM_MOUSEMOVE) )
-		{
-			if((m_dwOptions & BOCloseOnMouseMove))
-			{
-				CPoint pt;
-				::GetCursorPos(&pt);
-				if((abs(pt.x-m_ptMouseOrg.x) > m_nMouseMoveTolerance || abs(pt.y-m_ptMouseOrg.y) > m_nMouseMoveTolerance) )
-					CloseWindow();
-			}
-		}
-		else if( (uMsg==WM_NCLBUTTONDOWN || uMsg==WM_LBUTTONDOWN) )
-		{
-			if((m_dwOptions & BOCloseOnLButtonDown))
-				CloseWindow();
-		}
-		else if( (uMsg==WM_NCMBUTTONDOWN || uMsg==WM_MBUTTONDOWN) )
-		{
-			if((m_dwOptions & BOCloseOnMButtonDown))
-				CloseWindow();
-		}
-		else if( (uMsg==WM_NCRBUTTONDOWN || uMsg==WM_RBUTTONDOWN) )
-		{
-			if((m_dwOptions& BOCloseOnRButtonDown))
-				CloseWindow();
-		}
-		else if( (uMsg==WM_NCLBUTTONUP || uMsg==WM_LBUTTONUP) )
-		{
-			if((m_dwOptions & BOCloseOnLButtonUp))
-				CloseWindow();
-		}
-		else if( (uMsg==WM_NCMBUTTONUP || uMsg==WM_MBUTTONUP) )
-		{
-			if((m_dwOptions & BOCloseOnMButtonUp))
-				CloseWindow();
-		}
-		else if( (uMsg==WM_NCRBUTTONUP || uMsg==WM_RBUTTONUP) )
-		{
-			if((m_dwOptions & BOCloseOnRButtonUp))
-				CloseWindow();
-		}
-	}
-
-	return ::CallNextHookEx(GetMouseHookHandle(), code, wParam, lParam);
-}
-
-//
-//
-//
-void CBalloonHelp::SetCallWndRetHook()
-{
-	DumpDebug("*CBalloonHelp::SetCalWndRetHook\r\n");
-	if(NULL==m_hCallWndRetHook)
-	{
-		m_hCallWndRetHook=::SetWindowsHookEx(
-			WH_CALLWNDPROCRET,
-			(HOOKPROC)CallWndRetHook::GetThunk(),
-			NULL,
-			::GetCurrentThreadId());
-	}
-}
-
-//
-//
-//
-void CBalloonHelp::RemoveCallWndRetHook()
-{
-	DumpDebug("*CBalloonHelp::RemoveCallWndRetHook\r\n");
-	if(NULL!=m_hCallWndRetHook)
-	{
-		::UnhookWindowsHookEx(m_hCallWndRetHook);
-		m_hCallWndRetHook=NULL;
-	}
-}
-
-//
-//
-//	
-LRESULT CBalloonHelp::CallWndRetProc(int code, WPARAM wParam, LPARAM lParam)
-{
-	DumpDebug("*CBalloonHelp::CallWndRetProc\r\n");
-	if(code>=0)
-	{
-		static BOOL bInCall=FALSE;
-
-		CWPRETSTRUCT* pcwpr=(CWPRETSTRUCT*)lParam;
-		
-		if(WM_MOVE==pcwpr->message && !bInCall)
-		{
-			bInCall=TRUE;
-
-			if(m_Anchor.AnchorPointChanged())
-				PositionWindow();
-
-			bInCall=FALSE;
-		}
-	}
-	
-	return ::CallNextHookEx(GetCallWndRetHandle(), code, wParam, lParam);
 }
 
 #ifndef BALLOON_HELP_NO_NAMESPACE

@@ -109,18 +109,6 @@ protected:
 #pragma pack(pop) // _ThunkImpl
 
 
-// we need these two dummy classes so we can 
-// derive more than once from _ThunkImpl
-template <class T>
-class _MouseHookThunk: public _ThunkImpl<T> {};
-
-template <class T>
-class _KeybHookThunk: public _ThunkImpl<T> {};
-
-template <class T>
-class _CallWndRetHookThunk: public _ThunkImpl<T> {};
-
-
 //
 //			class CBalloonAnchor
 //
@@ -151,18 +139,12 @@ protected:
 //			class CBalloonHelp (WTL version)
 //
 class CBalloonHelp:
-	public CWindowImpl<CBalloonHelp>,
-	public _KeybHookThunk<CBalloonHelp>,
-	public _MouseHookThunk<CBalloonHelp>,
-	public _CallWndRetHookThunk<CBalloonHelp>
+	public CWindowImpl<CBalloonHelp>
 {
 private:
 	
 	typedef CBalloonHelp thisClass;
 	typedef CWindowImpl<CBalloonHelp>		WindowBase;
-	typedef _KeybHookThunk<thisClass>		KeybHook;
-	typedef _MouseHookThunk<thisClass>		MouseHook;
-	typedef _CallWndRetHookThunk<thisClass>	CallWndRetHook;
 
 public:
 
@@ -314,37 +296,6 @@ protected:
 	void OnFinalMessage(HWND);
 	void OnPrint(HDC hdc,UINT);
 
-	//
-	//			Hook related functions
-	//
-
-	//			WH_KEYBOARD
-	void SetKeyboardHook();
-	void RemoveKeyboardHook();
-	HHOOK GetKeybHookHandle(){return m_hKeybHook;}
-	
-	LRESULT KeyboardHookProc(int code, WPARAM wParam, LPARAM lParam);
-
-	//			WH_MOUSE
-	void SetMouseHook();
-	void RemoveMouseHook();
-	HHOOK GetMouseHookHandle(){return m_hMouseHook;}
-	
-	LRESULT MouseHookProc(int code, WPARAM wParam, LPARAM lParam);
-	
-	//			WH_CALLWNDPROCRET
-	void SetCallWndRetHook();
-	void RemoveCallWndRetHook();
-	HHOOK GetCallWndRetHandle(){return m_hCallWndRetHook;}
-	
-	LRESULT CallWndRetProc(int code, WPARAM wParam, LPARAM lParam);
-	
-private:
-	
-	HHOOK m_hKeybHook;
-	HHOOK m_hMouseHook;
-	HHOOK m_hCallWndRetHook;
-	
 protected:
 	
 	DWORD			m_dwOptions;

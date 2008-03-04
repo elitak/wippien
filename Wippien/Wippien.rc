@@ -20,6 +20,7 @@
 //
 
 
+
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -256,17 +257,19 @@ STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Authorization request"
 FONT 8, "MS Sans Serif"
 BEGIN
-    CTEXT           "Do you allow",IDC_AUTHSTATICTEXT,103,5,42,8
     DEFPUSHBUTTON   "&Yes",IDYES,11,44,50,14
-    PUSHBUTTON      "&Details",IDC_DETAILS,192,44,50,14
-    CONTROL         "&Apply to all",IDC_APPLYTOALL,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,123,45,50,10
-    PUSHBUTTON      "<<",IDC_BACK,7,61,16,13
-    PUSHBUTTON      ">>",IDC_NEXT,229,61,16,13
-    LTEXT           "more requests waiting...",IDC_MOREREQUESTSWAITING,105,
-                    65,75,8
-    RTEXT           "15",IDC_MOREWAITING,82,65,21,8
     PUSHBUTTON      "&No",IDNO,65,45,50,14
+    PUSHBUTTON      "&Details",IDC_DETAILS,192,44,50,14
+    RTEXT           "15",IDC_MOREWAITING,17,65,21,8
+    CONTROL         "&Apply to all",IDC_APPLYTOALL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,120,64,50,10
+    CONTROL         "&Block user(s)",IDC_BLOCKUSER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,175,64,57,10
+    PUSHBUTTON      ">>",IDC_NEXT,229,61,16,13
+    CTEXT           "Do you allow",IDC_AUTHSTATICTEXT,103,5,42,8
+    PUSHBUTTON      "<<",IDC_BACK,7,61,16,13
+    LTEXT           "more requests waiting...",IDC_MOREREQUESTSWAITING,40,65,
+                    75,8
     CTEXT           "to add you to his contact list?",IDC_AUTHSTATICTEXT2,82,
                     30,93,8
     CTEXT           "JOE@USA.NET?",IDC_CONTACTJID,0,16,251,12

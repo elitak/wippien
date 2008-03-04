@@ -162,6 +162,7 @@
 #define IDC_DETAILS                     1145
 #define IDC_CONTACTJID                  1146
 #define IDC_LOG_JABBER                  1147
+#define IDC_BLOCKUSER                   1147
 #define IDC_LOG_SOCKET                  1148
 #define IDC_VISIBLEDATA                 1149
 #define IDC_UDP_PORT                    1150

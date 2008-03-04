@@ -306,6 +306,17 @@ LRESULT CContactAuthDlg::OnYes(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/,
 	// and remove this from the list
 	_Settings.m_AuthRequests.erase(_Settings.m_AuthRequests.begin() + m_Pos);
 
+	CUser *user = _MainDlg.m_UserList.GetUserByJID(m_JID);
+	if (user)
+	{
+		BOOL toall = FALSE;
+		if (::SendMessage(GetDlgItem(IDC_BLOCKUSER), BM_GETSTATE, NULL, NULL))
+			user->m_Block = TRUE;
+		else
+			user->m_Block = FALSE;
+	}
+
+
 	BOOL toall = FALSE;
 	if (::SendMessage(GetDlgItem(IDC_APPLYTOALL), BM_GETSTATE, NULL, NULL))
 		toall = TRUE;

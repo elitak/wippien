@@ -167,10 +167,19 @@ void CVividTree::DrawItems(CDC *pDC)
 						memcpy(&rcc, rc_item, sizeof(rcc));
 						COLORREF cf = pDC->GetTextColor();
 
+						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 						if (_Settings.m_ShowContactActivity)
 						{
+							int l = rc_item.left;
 							// show activity
-							rc_item.top += 20;
+							if (_Settings.m_ShowContactPicture)
+							{
+								rc_item.top += 20;
+							}
+							else
+							{
+								rc_item.left = rcc.right + 2;
+							}
 							if (user->m_LastReceive + 500 > tick)
 								LastReceiveBuff[1] = '.';
 							else
@@ -180,12 +189,19 @@ void CVividTree::DrawItems(CDC *pDC)
 							else
 								LastReceiveBuff[0] = ' ';
 							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
-							rc_item.top -= 20;
+							if (_Settings.m_ShowContactPicture)
+							{
+								rc_item.top -= 20;
+							}
+							else
+							{
+								rc_item.left = l;
+							}
+
 						}
 
 						if (user->m_Block)
 							pDC->SetTextColor(RGB(255,32,32));
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 						if (!user->m_Online && user->m_WippienState==WipConnected)
 							pDC->SetTextColor(RGB(127,127,127));
@@ -267,10 +283,19 @@ void CVividTree::DrawItems(CDC *pDC)
 						memcpy(&rcc, rc_item, sizeof(rcc));
 						COLORREF cf = pDC->GetTextColor();
 
+						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 						if (_Settings.m_ShowContactActivity)
 						{
+							int l = rc_item.left;
 							// show activity
-							rc_item.top += 20;
+							if (_Settings.m_ShowContactPicture)
+							{
+								rc_item.top += 20;
+							}
+							else
+							{
+								rc_item.left = rcc.right + 2;
+							}
 							if (user->m_LastReceive + 500 > tick)
 								LastReceiveBuff[1] = '.';
 							else
@@ -280,12 +305,20 @@ void CVividTree::DrawItems(CDC *pDC)
 							else
 								LastReceiveBuff[0] = ' ';
 							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
-							rc_item.top -= 20;
+							if (_Settings.m_ShowContactPicture)
+							{
+								rc_item.top -= 20;
+							}
+							else
+							{
+								rc_item.left = l;
+							}
+							
 						}
 
 						if (user->m_Block)
 							pDC->SetTextColor(RGB(255,32,32));
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
+//						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 						if (!user->m_Online && user->m_WippienState==WipConnected)
 							pDC->SetTextColor(RGB(127,127,127));

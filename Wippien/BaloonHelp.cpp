@@ -1356,27 +1356,45 @@ void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 	}
 }
 
+void CBalloonHelp::OnRButtonDown(UINT, CPoint pt) 
+{
+/*	RECT r;
+	GetWindowRect(&r);
+	pt.x += r.left;
+	pt.y += r.top;
+	HWND h = WindowFromPoint(pt);
+	DestroyWindow();
+	if (h != m_hWnd)
+	{
+		::GetWindowRect(h, &r);
+		pt.x -= r.left;
+		pt.y -= r.top;
+		::PostMessage(h, WM_RBUTTONDOWN, NULL, MAKELONG(pt.x, pt.y));
+	}
+*/
+	DestroyWindow();
+}
+
 //
 //	Close button handler
 //
 void CBalloonHelp::OnLButtonDown(UINT, CPoint pt) 
 {
-	DumpDebug("*CBalloonHelp::OnLButtonDown\r\n");
-	if(m_dwOptions & BOShowCloseButton)
+/*	RECT r;
+	GetWindowRect(&r);
+	pt.x += r.left;
+	pt.y += r.top;
+	HWND h = WindowFromPoint(pt);
+	DestroyWindow();
+	if (h != m_hWnd)
 	{
-		CRect rcClient;
-		GetClientRect(&rcClient);
-
-		rcClient.left  = rcClient.right-nCXCloseBtn;
-		rcClient.bottom= rcClient.top+nCYCloseBtn;
-
-		if(rcClient.PtInRect(pt))
-		{
-			m_uCloseState|=DFCS_PUSHED;
-			SetCapture();
-			OnMouseMove(0, pt);
-		}
+		::GetWindowRect(h, &r);
+		pt.x -= r.left;
+		pt.y -= r.top;
+		::PostMessage(h, WM_LBUTTONDOWN, NULL, MAKELONG(pt.x, pt.y));
 	}
+*/
+	DestroyWindow();
 }
 
 

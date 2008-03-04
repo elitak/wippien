@@ -3944,6 +3944,9 @@ BOOL CSettingsDlg::CSettingsUser2::Apply(void)
 			n.Empty();
 			n = buff;
 			vc->put_HomeCountry(n);
+#else
+			WODXMPPCOMLib::XMPP_VCard_SetHomeCountry(vc, buff);
+#endif
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_PHONE, WM_GETTEXT, 1024, (LPARAM)buff);
 #ifndef _WODXMPPLIB
@@ -3956,6 +3959,7 @@ BOOL CSettingsDlg::CSettingsUser2::Apply(void)
 			
 
 			SendDlgItemMessage(IDC_SETTINGS_USER2_FAX, WM_GETTEXT, 1024, (LPARAM)buff);
+#ifndef _WODXMPPLIB
 			n.Empty();
 			n = buff;
 			vc->put_HomeFax(n);

@@ -108,7 +108,7 @@ public:
 
 	BOOL Init(void);
 	BOOL Start(unsigned long IP, unsigned long Netmask);
-	void GetMyIP(void);
+	BOOL CheckIfIPRangeIsFree(unsigned long IP, unsigned long Netmask, char *buff);
 	char m_Guid[1024], m_RegistryKey[1024];
 
 	BOOL GetAdapterGuid(void);

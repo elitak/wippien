@@ -833,8 +833,8 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								CXmlEntity *virtmask = CXmlEntity::FindByName(xmlent, "VirtualMask", 1);
 								if (virtmask)
 								{
-									_Settings.m_MyLastNetwork = 0;
-									_Settings.m_MyLastNetmask = 0;
+//									_Settings.m_MyLastNetwork = 0;
+//									_Settings.m_MyLastNetmask = 0;
 									_Ethernet.Start(inet_addr(virtip->Value), inet_addr(virtmask->Value));
 									_Settings.Save(FALSE);
 								}

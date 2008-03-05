@@ -802,10 +802,22 @@ void CUserList::RefreshView(BOOL updateonly)
 						{
 							if (p->m_ChangeNotify)
 							{
-								_Notify.DoEvent(NotificationOnline);
-								if (p->IsMsgWindowOpen())
+								// fix for going offline but VPN leave connected
+								if (p->m_Online)
 								{
-									p->PrintMsgWindow(TRUE, "User is now online.", NULL);
+									_Notify.DoEvent(NotificationOnline);
+									if (p->IsMsgWindowOpen())
+									{
+										p->PrintMsgWindow(TRUE, "User is now online.", NULL);
+									}
+								}
+								else
+								{
+									if (p->IsMsgWindowOpen())
+									{
+										p->PrintMsgWindow(TRUE, "User is now offline.", NULL);
+									}
+									_Notify.DoEvent(NotificationOffline);
 								}
 								doblink = TRUE;
 							}

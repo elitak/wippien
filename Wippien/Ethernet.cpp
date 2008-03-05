@@ -261,6 +261,10 @@ BOOL CEthernet::Start(unsigned long IP, unsigned long Netmask)
 {
 	if ((_Settings.m_MyLastNetwork) != IP || _Settings.m_MyLastNetmask != Netmask)
 	{
+		char buff[1024];
+		if (!CheckIfIPRangeIsFree(htonl(IP), htonl(Netmask), buff))
+			MessageBox(NULL, buff, "Warning", MB_OK);
+
 		// let's store these values	
 		_Settings.m_MyLastNetwork = IP;
 		_Settings.m_MyLastNetmask = Netmask;
@@ -370,8 +374,13 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 	return 0;
 }
 
-void CEthernet::GetMyIP(void) 
+BOOL CheckedIfIPRangeIsFree = FALSE;
+BOOL CEthernet::CheckIfIPRangeIsFree(unsigned long IP, unsigned long Netmask, char *buf)
 {
+	if (CheckedIfIPRangeIsFree)
+		return TRUE;
+	CheckedIfIPRangeIsFree = TRUE;
+
 	DWORD len = 0;
 	DWORD result = GetAdaptersInfo(NULL, &len);
 	if (result == ERROR_BUFFER_OVERFLOW)
@@ -384,34 +393,41 @@ void CEthernet::GetMyIP(void)
 			int cnt = len/sizeof(IP_ADAPTER_INFO);
 			for (int i=0;i<cnt;i++)
 			{
-				if (!strcmp(ad_info->AdapterName, m_Guid))
+//				if (!strcmp(ad_info->AdapterName, m_Guid))
+				IP_ADDR_STRING* pNext = NULL;
+				pNext = &(ad_info->IpAddressList);
+				while(pNext) 
 				{
-					// is it set to DHCP?
-					if (!ad_info->DhcpEnabled)
-					{
-						_Settings.m_MyLastNetwork = 0;
-						_Settings.m_MyLastNetmask = 0;
-						return;
-					}
 
-					// does it contain our IP address?
-					IP_ADDR_STRING* pNext = NULL;
-					pNext = &(ad_info->IpAddressList);
-					while(pNext) 
-					{
-						_Settings.m_MyLastNetwork = inet_addr(pNext->IpAddress.String);
-						_Settings.m_MyLastNetmask = inet_addr(pNext->IpMask.String);
-						pNext = pNext->Next;
-					}
+					unsigned long _ip = htonl(inet_addr(pNext->IpAddress.String));
+					unsigned long _mask = htonl(inet_addr(pNext->IpMask.String));
 
-					// found
-					cnt = 0;
+					if (_mask)
+					{
+						if ((_mask & IP) == (_mask & _ip))
+						{
+							if (strcmp(ad_info->AdapterName, m_Guid))
+							{
+								in_addr _IP;
+								_IP.S_un.S_addr = htonl(IP);
+								
+								sprintf(buf, "Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.", ad_info->Description, pNext->IpAddress.String, inet_ntoa(_IP));
+								free(newmem);
+								return FALSE;
+							}
+						}
+					}
+					// let's check if IP is in the same range
+					pNext = pNext->Next;
 				}
+					
 				ad_info++;
 			}
 		}
 		free(newmem);
 	}
+		
+	return TRUE;
 }
 
 BOOL CEthernet::GetAdapterGuid(void)

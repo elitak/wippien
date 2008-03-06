@@ -1730,23 +1730,28 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	m_btnMyStatus.SetToolTipText("Set your status (Away,Invisible...");
 	m_btnMyStatus.SubclassWindow(GetDlgItem(IDC_MYSTATUS));
 	m_btnMyStatus.LoadPNG(IDC_MYSTATUS);
+	m_btnMyStatus.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 
 	m_btnMyContacts.SetToolTipText("Add contacts and alien accounts");
 	m_btnMyContacts.SubclassWindow(GetDlgItem(IDC_MYCONTACTS));
 	m_btnMyContacts.LoadPNG(IDC_MYCONTACTS);
+	m_btnMyContacts.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 
 	m_btnSmallMute.SetToolTipText("Mute sound");
 	m_btnSmallMute.SubclassWindow(GetDlgItem(IDC_SMALLMUTE));
 	int mutimg = _Settings.m_SoundOn?ID_PNG1_MUTEON:ID_PNG1_MUTEOFF;
 	m_btnSmallMute.LoadPNG(mutimg);
+	m_btnSmallMute.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 
 	m_btnChatRooms.SetToolTipText("Open chat room");
 	m_btnChatRooms.SubclassWindow(GetDlgItem(IDC_CHATROOMS));
 	m_btnChatRooms.LoadPNG(ID_PNG1_CHATROOMS);
+	m_btnChatRooms.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 	
 	m_btnAuthDlg.SetToolTipText("Authorize your friends");
 	m_btnAuthDlg.SubclassWindow(GetDlgItem(IDC_MYAUTHDLG));
 	m_btnAuthDlg.LoadPNG(IDC_MYAUTHDLG);
+	m_btnAuthDlg.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 	
 		
 	ShowWindow(SW_HIDE);

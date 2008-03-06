@@ -29,7 +29,7 @@ public:
 
 	//PNG picture and caption
 	CString m_strCaption;
-	CxImage m_cxImage;
+	CxImage m_cxImage, *m_cxBack;
 	
 	// button properties
 	BOOL m_DrawBorders, m_DropDown;
@@ -60,10 +60,13 @@ public:
 		::ReleaseDC(NULL, hdc);
 
 		m_strCaption = "";
+		m_cxBack = NULL;
 
 	}
 	virtual ~CPNGButton()
 	{
+		if (m_cxBack)
+			delete m_cxBack;
 		DeleteObject((HGDIOBJ)m_hHotBorderPen);
 		DeleteObject((HGDIOBJ)m_hClickedBorderPen);
 		DeleteObject((HGDIOBJ)m_BackBrush);
@@ -145,13 +148,17 @@ public:
 
 	}
 	// override of CBitmapButtonImpl DoPaint(). Adds fillrect
-	void DoPaint(CDCHandle dc)
+	void DoPaint(CDCHandle cdc)
 	{
+		CMemDC dc(cdc);
 		CxImage img = m_cxImage;
 	
 		RECT rc;
 		GetClientRect(&rc);
-		dc.FillRect(&rc, m_BackBrush);
+		if (m_cxBack)
+			m_cxBack->Tile(dc, &rc);
+		else
+			dc.FillRect(&rc, m_BackBrush);
 			
 		RECT rt;
 		rt.left = rt.top = 0;
@@ -283,6 +290,13 @@ public:
 	void LoadPNG(WORD wID)
 	{	
 		_LoadIconFromResource(&m_cxImage, "PNG", CXIMAGE_FORMAT_PNG, wID);
+	}
+	void LoadBack(WORD wID)
+	{	
+		if (m_cxBack)
+			delete m_cxBack;
+		m_cxBack = new CxImage();
+		_LoadIconFromResource(m_cxBack, "PNG", CXIMAGE_FORMAT_PNG, wID);
 	}
 };
 

@@ -429,6 +429,8 @@
 #define IDC_ICMP                        1498
 #define IDC_RULES                       1499
 #define IDC_STATICBLOCK                 1500
+#define IDB_BANNER_TOP_BACKGROUND		1501
+#define IDB_BANNER_TOP_BACKGROUND2		1502
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772

@@ -38,6 +38,7 @@ public:
 
 	void Init(CMainDlg *Owner, HWND Parent);
 	HTREEITEM FindRoot(char *RootName);
+	HTREEITEM FindRoot(char *RootName, BOOL canaddnew);
 	CUser *GetUserByJID(char *JID);
 	CUser *GetUserByVirtualIP(unsigned long IP);
 	CUser *GetUserByJID(BSTR JID);

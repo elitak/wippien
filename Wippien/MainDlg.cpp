@@ -38,6 +38,7 @@ namespace WODVPNCOMLib
 #endif
 
 void XMPPStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState);
+BOOL _LoadIconFromResource(CxImage *img, char *restype, int imgformat, int resid);
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -1411,6 +1412,12 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	bm_old = dc_ff.SelectBitmap(bm_ff);
 	
 	FillRect(dc_ff, &rt, m_LightBlueBrush);
+	CRect tilerc(rt);
+	tilerc.bottom = /*rt.top + m_MainWndTopBannerBack.GetHeight()*/58;
+	m_MainWndTopBannerBack.Tile(dc_ff, tilerc);
+	tilerc.top = 58;
+	tilerc.bottom = 78;
+	m_MainWndTopBannerBack2.Tile(dc_ff, tilerc);
 
 	if (_Settings.m_ShowMyPicture)
 	{
@@ -1420,6 +1427,7 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	
 	// draw user nickname
 	HGDIOBJ oldfont = SelectObject(dc_ff, m_Identity_NameFont);
+	::SetBkMode(dc_ff, TRANSPARENT);
 	::SetTextColor(dc_ff, WIP_IDENTITYNAMETEXT);
 	::SetBkColor(dc_ff, WIP_LIGHTBLUE);
 	if (_Settings.m_ShowMyPicture)
@@ -1539,6 +1547,8 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
     m_Identity_IPFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "Arial");
 	m_Identity_StatusFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
 
+	_LoadIconFromResource(&m_MainWndTopBannerBack, "PNG", CXIMAGE_FORMAT_PNG, IDB_BANNER_TOP_BACKGROUND);
+	_LoadIconFromResource(&m_MainWndTopBannerBack2, "PNG", CXIMAGE_FORMAT_PNG, IDB_BANNER_TOP_BACKGROUND2);
 
 	// center the dialog on the screen
 //	CenterWindow();
@@ -2714,7 +2724,7 @@ LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 			if (!user)
 			{
 				::SendMessage(m_UserList.m_hWndParent, TVM_SELECTITEM, TVGN_DROPHILITE, (LPARAM)hitTarget); // highlight it
-				m_UserList.Expand(hitTarget);
+//				m_UserList.Expand(hitTarget);
 			}
 		}
 		

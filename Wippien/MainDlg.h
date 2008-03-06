@@ -82,6 +82,7 @@ public:
 	CBalloonHelp* m_pBalloon;
 	RECT m_DefChatWindowRect;
 	int m_LastUpdateMin;
+	CxImage m_MainWndTopBannerBack, m_MainWndTopBannerBack2;
 
 //	CComPtr<WODVCHATComLib::IwodVChatCom> m_VoiceChat;
 

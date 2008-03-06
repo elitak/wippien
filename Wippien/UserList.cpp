@@ -795,8 +795,12 @@ void CUserList::RefreshView(BOOL updateonly)
 					// set initial group
 					if (!p->m_TreeItem)
 					{
-
-							TreeItem.hParent = FindRoot(p->m_Group);
+							TreeItem.hParent = FindRoot(p->m_Group, FALSE);
+							if (!TreeItem.hParent)
+							{
+								::PostMessage(m_hWnd, WM_REFRESH, 0, FALSE);
+								 TreeItem.hParent = FindRoot(p->m_Group);
+							}
 							TreeItem.hInsertAfter = TVI_LAST;
 					}
 					
@@ -982,6 +986,11 @@ void CUserList::RefreshView(BOOL updateonly)
 
 HTREEITEM CUserList::FindRoot(char *RootName)
 {
+	return FindRoot(RootName, TRUE);
+}
+
+HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
+{
 	if (!RootName || !*RootName)
 		RootName = (char *)GROUP_GENERAL;
 
@@ -1002,6 +1011,9 @@ HTREEITEM CUserList::FindRoot(char *RootName)
 		root = /*m_Tree.*/GetNextItem(root, TVGN_NEXT);
 	} while (root);
 
+	if (!canaddnew)
+		return NULL;
+
 	// otherwise, add this to root
 	TV_INSERTSTRUCT TreeItem;
 	TreeItem.hParent = NULL; 
@@ -1019,6 +1031,7 @@ HTREEITEM CUserList::FindRoot(char *RootName)
 		CSettings::TreeGroup *tg = new CSettings::TreeGroup;
 		tg->Item = hi;
 		tg->Open = TRUE;
+		tg->Temporary = FALSE;
 		char *a = (char *)malloc(strlen(RootName)+1);
 		memset(a, 0, strlen(RootName)+1);
 		memcpy(a, RootName, strlen(RootName));

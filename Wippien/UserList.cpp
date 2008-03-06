@@ -66,6 +66,7 @@ CUserList::CUserList()
 
 	m_ListboxFont = NULL;
 	m_ListboxSubFont = NULL;
+	m_ListboxGroupFont = NULL;
 	m_UserPopupMenu = NULL;
 	m_SetupPopupMenu = NULL;
 	m_ChatRoomPopupMenu = NULL;
@@ -98,6 +99,8 @@ CUserList::~CUserList()
 		DeleteObject(m_ListboxFont);
 	if (m_ListboxSubFont)
 		DeleteObject(m_ListboxSubFont);
+	if (m_ListboxGroupFont)
+		DeleteObject(m_ListboxGroupFont);
 	DeleteCriticalSection(&m_UserCS);
 }
 
@@ -109,22 +112,24 @@ void CUserList::InitIcons(void)
 {
 //	LoadIconFromResource(&m_StaticImage, IDB_HUMAN);
 	LoadIconFromResource(&m_BlinkImage, IDB_BELL);
-	LoadIconFromResource(&m_TreeOpened, IDB_TREEOPENED);
-	LoadIconFromResource(&m_TreeClosed, IDB_TREECLOSED);
+	LoadIconFromResource(&m_GroupOpened, IDB_GROUPOPENED);
+	LoadIconFromResource(&m_GroupClosed, IDB_GROUPCLOSED);
 }
 void CUserList::Init(CMainDlg *Owner, HWND Parent)
 {
 	m_Owner = Owner;
 	m_hWndParent = Parent;
-	long lfHeightSub, lfHeight;
+	long lfHeightSub, lfHeight, lfHeightGroup;
 
 	HDC hdc = ::GetDC(NULL);
-	lfHeight = -MulDiv(7, GetDeviceCaps(hdc, LOGPIXELSY), 72);
+	lfHeight = -MulDiv(8, GetDeviceCaps(hdc, LOGPIXELSY), 72);
 	lfHeightSub = -MulDiv(7, GetDeviceCaps(hdc, LOGPIXELSY), 72);
+	lfHeightGroup = -MulDiv(11, GetDeviceCaps(hdc, LOGPIXELSY), 72);
 	::ReleaseDC(NULL, hdc);
 
-	m_ListboxFont = CreateFont(lfHeight, 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Verdana");
+	m_ListboxFont = CreateFont(lfHeight, 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
 	m_ListboxSubFont = CreateFont(lfHeightSub, 0, 0, 0, 0, FALSE, 0, 0, 0, 0, 0, 0, 0, "Arial");
+	m_ListboxGroupFont = CreateFont(lfHeightGroup, 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Sans Serif");
 
 	/*m_Tree.*/SubclassWindow(m_hWndParent);
 	/*m_Tree.*/SetItemHeight(1);
@@ -133,6 +138,7 @@ void CUserList::Init(CMainDlg *Owner, HWND Parent)
 
 	/*m_Tree.*/SetFont(m_ListboxFont);
 	/*m_Tree.*/SetSmallFont(m_ListboxSubFont);
+	/*m_Tree.*/SetGroupFont(m_ListboxGroupFont);
 
 
 
@@ -686,7 +692,7 @@ void CUserList::RefreshView(BOOL updateonly)
 	TreeItem.hParent = NULL; 
 	TreeItem.hInsertAfter = TVI_LAST ;
 	TreeItem.itemex.mask = TVIF_TEXT | TVIF_CHILDREN | TVIF_INTEGRAL; 
-	TreeItem.itemex.iIntegral=20;
+	TreeItem.itemex.iIntegral=30;
 	TreeItem.itemex.cChildren = 1;
 
 	// if initial populate, add groups
@@ -710,7 +716,7 @@ void CUserList::RefreshView(BOOL updateonly)
 //	else
 //		OnVCard((WODXMPPCOMLib::IXMPPContact *)cntc, FALSE, FALSE);
 	if (_Settings.m_ShowContactPicture)
-		TreeItem.itemex.iIntegral=40;
+		TreeItem.itemex.iIntegral=34;
 	else
 		if (_Settings.m_ShowContactStatus)
 			TreeItem.itemex.iIntegral=30;
@@ -943,7 +949,7 @@ void CUserList::RefreshView(BOOL updateonly)
 
 	for (j=0;j<_Settings.m_Groups.size();j++)
 	{
-		char buff[1024];
+//		char buff[1024];
 		CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 
 		memset(&TreeItem.item, 0, sizeof(TVITEM));
@@ -953,12 +959,12 @@ void CUserList::RefreshView(BOOL updateonly)
 		{
 			TreeItem.item.hItem = tg->Item;
 			if (strcmp(tg->Name, GROUP_OFFLINE))
-				sprintf(buff, "%s (%d/%d)", tg->Name, tg->Count, tg->TotalCount);
+				sprintf(tg->CountBuff, "%d/%d", tg->Count, tg->TotalCount);
 			else
-				sprintf(buff, "%s (%d)", tg->Name, offlinecount);
+				sprintf(tg->CountBuff, "%d", offlinecount);
 
-			TreeItem.item.pszText = buff;
-			TreeItem.item.cchTextMax = strlen(buff);
+			TreeItem.item.pszText = tg->Name;
+//			TreeItem.item.cchTextMax = strlen(buff);
 			SetItem(&TreeItem.item);
 		}
 	}

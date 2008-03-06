@@ -22,8 +22,8 @@ public:
 	DECLARE_WND_SUPERCLASS(NULL, TBase::GetWndClassName())
 
 		
-	CxImage m_StaticImage, m_BlinkImage, m_TreeOpened, m_TreeClosed;
-	HFONT m_hSubFont, m_hFont;
+	CxImage m_StaticImage, m_BlinkImage, m_GroupOpened, m_GroupClosed;
+	HFONT m_hSubFont, m_hFont, m_hGroupFont;
 
 	CVividTreeImpl()
 	{
@@ -36,6 +36,7 @@ public:
 		
 		m_icon = NULL;	
 		m_hSubFont = NULL;
+		m_hGroupFont = NULL;
 		m_hFont = NULL;
 	}
 	virtual ~CVividTreeImpl()
@@ -74,6 +75,14 @@ public:
 		ATLASSERT(::IsWindow(m_hWnd));
 		HFONT hOldFont = m_hSubFont;
 		m_hSubFont = hFont;
+		Invalidate(FALSE);
+		return hOldFont;
+	}
+	HFONT SetGroupFont(HFONT hFont)
+	{
+		ATLASSERT(::IsWindow(m_hWnd));
+		HFONT hOldFont = m_hGroupFont;
+		m_hGroupFont = hFont;
 		Invalidate(FALSE);
 		return hOldFont;
 	}
@@ -128,7 +137,10 @@ protected:
 	
 	//	void DrawBackGround( CDC* pDC );	// Background Paint code
 	virtual void DrawItems( CDC* pDC );  // Item Paint Code
-	
+#if _OWNER_DRAWN
+	virtual LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
+#endif
+
 protected:
 	//	BOOL OnEraseBkgnd(CDC* pDC);
 	//	void OnPaint();
@@ -219,71 +231,6 @@ protected:
 		bHandled = TRUE;
 		return TRUE;
 	}
-#if _OWNER_DRAWN
-	LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
-	{
-		CPaintDC dc(m_hWnd);	// Device context for painting
-		CDC dc_ff;			// Memory base device context for flicker free painting
-		CBitmap bm_ff;		// The bitmap we paint into
-		HBITMAP bm_old;
-		//HFONT font, old_font;
-		//CFont fontDC;
-		int old_mode;
-		
-		GetClientRect(&m_rect);
-		SCROLLINFO scroll_info;
-		// Determine window portal to draw into taking into account
-		// scrolling position
-		scroll_info.fMask = SIF_POS | SIF_RANGE;
-		if (GetScrollInfo(SB_HORZ, &scroll_info/*, SIF_POS | SIF_RANGE*/))
-		{
-			m_h_offset = -scroll_info.nPos;
-			m_h_size = max(scroll_info.nMax + 1, m_rect.Width());
-		}
-		else
-		{
-			m_h_offset = m_rect.left;
-			m_h_size = m_rect.Width();
-		}
-		scroll_info.fMask = SIF_POS | SIF_RANGE;
-		if (GetScrollInfo(SB_VERT, &scroll_info/*, SIF_POS | SIF_RANGE */))
-		{
-			if (scroll_info.nMin == 0 && scroll_info.nMax == 100) 
-				scroll_info.nMax = 0;
-			m_v_offset = -scroll_info.nPos * GetItemHeight();
-			m_v_size = max((scroll_info.nMax + 2)* ((int)GetItemHeight() + 1), m_rect.Height());
-		}
-		else
-		{
-			m_v_offset = m_rect.top;
-			m_v_size = m_rect.Height();
-		}
-		
-		// Create an offscreen dc to paint with (prevents flicker issues)
-		dc_ff.CreateCompatibleDC(dc);
-		bm_ff.CreateCompatibleBitmap(dc, m_rect.Width(), m_rect.Height());
-		// Select the bitmap into the off-screen DC.
-		bm_old = dc_ff.SelectBitmap(bm_ff);
-		// Default font in the DC is not the font used by 
-		// the tree control, so grab it and select it in.
-		//font = GetFont();
-		//old_font = dc_ff.SelectFont(font);
-		// We're going to draw text transparently
-		old_mode = dc_ff.SetBkMode(TRANSPARENT);
-		
-		DrawBackGround(&dc_ff);
-		DrawItems(&dc_ff);
-		
-		// Now Blt the changes to the real device context - this prevents flicker.
-		dc.BitBlt(m_rect.left, m_rect.top, m_rect.Width(), m_rect.Height(), dc_ff, 0, 0, SRCCOPY);
-		
-		//dc_ff.SelectFont(old_font);
-		dc_ff.SetBkMode(old_mode);
-		dc_ff.SelectBitmap(bm_old);
-		
-		return TRUE;
-	}
-#endif
 	
 	// Draw TreeCtrl Background - 
 	void DrawBackGround(CDC* pDC)
@@ -441,6 +388,9 @@ public:
 	DECLARE_WND_SUPERCLASS(_T("WTL_VTree"), GetWndClassName())  
 
 	void DrawItems( CDC* pDC );  // Item Paint Code
+#if _OWNER_DRAWN
+	LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
+#endif
 
 };
 

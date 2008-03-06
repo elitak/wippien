@@ -112,6 +112,7 @@ public:
 	typedef struct TreeGroup
 	{
 		char *Name;
+		char CountBuff[128];
 		BOOL Open;
 		HTREEITEM Item;
 		int Count;
@@ -133,9 +134,6 @@ public:
 	GROUPS m_Groups;
 	MENUTOOLS m_MenuTools;
 	LINKMEDIATORS m_LinkMediators;
-//	DHCPLIST m_DHCPAddress;
-//	CUser *m_DHCPAddress[256];
-
 
 	int Load(void);
 	int LoadTools(void);
@@ -152,6 +150,7 @@ public:
 	void AESRead(Buffer *out);
 	BOOL IsHiddenContact(char *contact);
 	LinkMediatorStruct *AddLinkMediator(char *text, int Port);
+	CSettings::TreeGroup *CSettings::GetGroupByName(char *Name);
 
 	// window stuff
 	BOOL m_IsAligned, m_IsTopMost, m_DoAlign;

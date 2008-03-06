@@ -78,8 +78,8 @@
 #define IDD_MAINDLG                     1057
 #define IDR_PROGRAMICON                 1058
 #define IDB_BELL                        1060
-#define IDB_TREEOPENED                  1061
-#define IDB_TREECLOSED                  1062
+#define IDB_GROUPOPENED                 1061
+#define IDB_GROUPCLOSED                 1062
 #define IDB_DRAGDROP                    1063
 #define IDD_MSGDLG                      1064
 #define IDR_USERLISTPOPUP               1065

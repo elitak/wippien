@@ -1547,3 +1547,15 @@ CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
 
 	return st;
 }
+
+CSettings::TreeGroup *CSettings::GetGroupByName(char *Name)
+{
+	for (int j=0;j<_Settings.m_Groups.size();j++)
+	{
+		TreeGroup *tg = m_Groups[j];
+		if (!strcmp(tg->Name, Name))
+			return tg;
+	}
+
+	return NULL;
+}

@@ -24,8 +24,11 @@
 #define IDD_SETTINGS_JID                1008
 #define IDC_BUTTON1                     1009
 #define IDC_CHATROOM_JOIN               1009
+#define IDC_FIREWALLRULE_ADD            1009
 #define IDC_ADDNEW                      1010
 #define IDC_SETTINGS_USER4_RESETALL     1011
+#define IDC_BUTTON3                     1011
+#define IDC_FIREWALLRULE_REMOVE         1011
 #define IDC_UPDATE_CHECKNOW             1012
 #define IDB_PLAY                        1013
 #define IDC_BUTTON2                     1014
@@ -402,6 +405,7 @@
 #define IDD_SETTINGS_CHATROOMS          1382
 #define IDI_ICON_YES                    1383
 #define IDI_ICON_NO                     1384
+#define IDD_SETTINGS_NETWORK_FIREWALL   1385
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
@@ -417,6 +421,14 @@
 #define IDI_STATUS_FFC                  1490
 #define IDC_CHATROOM_BLOCKUSERSATSTARTUP 1491
 #define IDC_MEDIATORLIST                1492
+#define IDC_ALLOWTRAFFIC                1494
+#define IDC_BLOCKTRAFFIC                1495
+#define IDC_TCP                         1496
+#define IDC_UDP                         1497
+#define IDC_PING                        1498
+#define IDC_ICMP                        1498
+#define IDC_RULES                       1499
+#define IDC_STATICBLOCK                 1500
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -446,9 +458,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        1385
+#define _APS_NEXT_RESOURCE_VALUE        1386
 #define _APS_NEXT_COMMAND_VALUE         32797
-#define _APS_NEXT_CONTROL_VALUE         1494
+#define _APS_NEXT_CONTROL_VALUE         1501
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

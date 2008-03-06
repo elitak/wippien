@@ -1313,9 +1313,11 @@ void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 	RECT r;
 	GetWindowRect(&r);
 	if (p.x < r.left || p.x > r.right)
-		DestroyWindow();
+		if (IsWindow())
+			DestroyWindow();
 	if (p.y < r.top || p.y > r.bottom)
-		DestroyWindow();
+		if (IsWindow())
+			DestroyWindow();
 
 	DumpDebug("*CBalloonHelp::OnMouseMove\r\n");
 	if(m_dwOptions & BOShowCloseButton)

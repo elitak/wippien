@@ -1619,8 +1619,6 @@ void CSettingsDlg::CSettingsEthernet::Init(HWND Owner)
 {
 	m_Owner = Owner;
 	Create(Owner);
-	long AHA = GetLastError();
-	AHA = AHA;
 }
 
 void CSettingsDlg::CSettingsEthernet::Show(BOOL Show, RECT *rc)

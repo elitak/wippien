@@ -21,6 +21,11 @@
 
 
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -683,6 +688,28 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,38,32,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,96,32,50,14
     LTEXT           "Enter contact JID:",IDC_STATIC,7,7,58,8
+END
+
+IDD_SETTINGS_NETWORK_FIREWALL DIALOG DISCARDABLE  0, 0, 266, 201
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Allow all traffic",IDC_ALLOWTRAFFIC,"Button",
+                    BS_AUTORADIOBUTTON,13,21,61,10
+    CONTROL         "Block all traffic",IDC_BLOCKTRAFFIC,"Button",
+                    BS_AUTORADIOBUTTON,13,34,62,10
+    LTEXT           "But block these ports:",IDC_STATICBLOCK,82,5,70,8
+    LISTBOX         IDC_RULES,82,15,118,129,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT1,205,16,44,14,ES_AUTOHSCROLL
+    CONTROL         "TCP",IDC_TCP,"Button",BS_AUTORADIOBUTTON | WS_GROUP,205,
+                    32,30,10
+    CONTROL         "UDP",IDC_UDP,"Button",BS_AUTORADIOBUTTON,205,42,30,10
+    CONTROL         "ICMP",IDC_ICMP,"Button",BS_AUTORADIOBUTTON,205,53,30,10
+    PUSHBUTTON      "&Add",IDC_FIREWALLRULE_ADD,205,63,46,14,WS_DISABLED
+    PUSHBUTTON      "&Remove",IDC_FIREWALLRULE_REMOVE,205,131,46,14,
+                    WS_DISABLED
+    LTEXT           "Default rule:",IDC_STATIC,13,10,39,8
 END
 
 IDD_SETTINGS_APPEARANCE DIALOG DISCARDABLE  0, 0, 262, 175

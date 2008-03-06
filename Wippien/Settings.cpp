@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "Settings.h"
 #include "MainDlg.h"
+#include "Ethernet.h"
 #include "Buffer.h"
 #include "SimpleXmlParser.h"
 #include "ComBSTR2.h"
@@ -26,6 +27,7 @@ const char *EXTAWAY_MESSAGE = "Away for a loooong time.";
 
 extern CMainDlg _MainDlg;
 extern CNotify	_Notify;
+extern CEthernet _Ethernet;
 
 char *trim(char *text);
 
@@ -235,6 +237,8 @@ CSettings::CSettings()
 	m_UsePowerOptions = TRUE;
 
 	m_UpdateURL = "http://wippien.com/Download/update.php";
+
+	m_FirewallDefaultAllowRule = TRUE;
 }	
 
 CSettings::~CSettings()
@@ -512,6 +516,7 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "TimestampMessages", &m_TimestampMessages, TRUE);
 			ReadSettingsCfg(wip, "SnapToBorder", &m_SnapToBorder, FALSE);
 			ReadSettingsCfg(wip, "ShowMessageHistory", &m_ShowMessageHistory, TRUE);
+			ReadSettingsCfg(wip, "FirewallDefaultAllowRule", &m_FirewallDefaultAllowRule, TRUE);		
 			ReadSettingsCfg(wip, "Skin", m_Skin, "");
 			CComBSTR2 donotshow;
 			ReadSettingsCfg(wip, "DoNotShow", donotshow, "00000000");
@@ -647,6 +652,42 @@ int CSettings::Load(void)
 				} while (ent);
 			}
 
+			CXmlEntity *fwr = CXmlEntity::FindByName(wip, "FirewallRules", 1);
+			if (fwr)
+			{
+				while (m_FirewallRules.size())
+				{
+					FirewallStruct *fs = (FirewallStruct *)m_FirewallRules[0];
+					delete fs;
+					m_FirewallRules.erase(m_FirewallRules.begin());
+				}
+				CXmlEntity *ent = NULL;
+				do 
+				{
+					ent = CXmlEntity::FindByName(fwr, "Rule", 1);
+					if (ent)
+					{
+						int proto = 0, port = 0;
+						CXmlEntity *attr = CXmlEntity::FindAttrByName(ent, "Proto");
+						if (attr)
+							proto = atol(attr->Value);
+						attr = CXmlEntity::FindAttrByName(ent, "Port");
+						if (attr)
+							port = atol(attr->Value);
+						ent->Name[0] = 0;
+						if (port && proto || proto == IPPROTO_ICMP)
+						{
+							FirewallStruct *fs = new FirewallStruct();
+							fs->Port = port;
+							fs->Proto = proto;
+							m_FirewallRules.push_back(fs);
+						}
+					}
+				} while (ent);
+				_Ethernet.m_FirewallRulesChanged = TRUE;
+			}
+
+			
 			CXmlEntity *snd = CXmlEntity::FindByName(wip, "Sounds", 1);
 			if (snd)
 			{
@@ -995,6 +1036,7 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("TimestampMessages", m_TimestampMessages?"1":"0");
 		x.AddChildElem("SnapToBorder", m_SnapToBorder?"1":"0");
 		x.AddChildElem("ShowMessageHistory", m_ShowMessageHistory?"1":"0");		
+		x.AddChildElem("FirewallDefaultAllowRule", m_FirewallDefaultAllowRule?"1":"0");		
 
 		char icobuf[1024];
 		strcpy(icobuf, m_CfgFilename);
@@ -1064,6 +1106,16 @@ BOOL CSettings::Save(BOOL UserOnly)
 			x.AddChildElem("JID", cb + m_HiddenContacts[i]);
 		}
 		x.Append("</HiddenContacts>\r\n");
+
+		x.Append("<FirewallRules>\r\n");
+		FirewallStruct *fw = NULL;
+		for (i=0;i<m_FirewallRules.size();i++)
+		{
+			fw = (FirewallStruct *)m_FirewallRules[i];
+			x.AddChildAttrib("Rule", cb + m_HiddenContacts[i], "Proto", fw->Proto, "Port", fw->Port);
+		}
+		x.Append("</FirewallRules>\r\n");
+		
 
 		// sounds
 		x.Append("<Sounds>\r\n");

@@ -67,6 +67,7 @@ CEthernet::CEthernet()
 //	m_Started = FALSE;
 
 	m_Guid[0] = m_RegistryKey[0];
+	m_FirewallRulesChanged = FALSE;
 }
 
 CEthernet::~CEthernet()
@@ -520,6 +521,8 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 {
 	CEthernet *eth = (CEthernet *)lpParam;
 	
+	typedef std::vector<FirewallStruct *> FIREWALLSTRUCT;
+	FIREWALLSTRUCT FirewallRules;
 
 	OVERLAPPED overlap;
 	memset(&overlap, 0, sizeof(OVERLAPPED));
@@ -545,6 +548,24 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 			}
 		}
 
+		if (eth->m_FirewallRulesChanged)
+		{
+			eth->m_FirewallRulesChanged = FALSE;
+			while (FirewallRules.size())
+			{
+				FirewallStruct *fs = (FirewallStruct *)FirewallRules[0];
+				delete fs;
+				FirewallRules.erase(FirewallRules.begin());
+			}
+			for (int i=0;i<_Settings.m_FirewallRules.size();i++)
+			{
+				FirewallStruct *orgfs = (FirewallStruct *)_Settings.m_FirewallRules[i];
+				FirewallStruct *fs = new FirewallStruct;
+				fs->Port = htons(orgfs->Port);
+				fs->Proto = orgfs->Proto;
+				FirewallRules.push_back(fs);
+			}
+		}
 		if (eth->m_Alive && eth->m_Enabled && /*eth->WriteBuffer.Len()*/ eth->m_EthWriteEnd!=eth->m_EthWriteStart)
 		{
 
@@ -564,14 +585,46 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 					a = (char *)ed;
 					a += sizeof(EthWriteData);
 
-//					EnterCriticalSection(&eth->WriteCS);
-//					if (eth->WriteBuffer.Len())
-//						a = eth->WriteBuffer.GetString(&len);
-//					LeaveCriticalSection(&eth->WriteCS);
 					if (ed->DataLen && a)
 					{
+
+						// should we write?
+						ETH_HEADER *ethr = (ETH_HEADER *) a;
+						IPHDR *ip = (IPHDR *)(a + sizeof(ETH_HEADER));
+						UDPHDR *udp = (UDPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
+						//		ICMPHDR *icmp = (ICMPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
+						TCPHDR *tcp = (TCPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
+						ARP_PACKET *p = (ARP_PACKET *)a;
+						
+						BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
+						for (int i=0;i<FirewallRules.size();i++)
+						{
+							FirewallStruct *fs = (FirewallStruct *)FirewallRules[i];
+							if (fs->Proto == ip->protocol)
+							{
+								switch (fs->Proto)
+								{
+								case IPPROTO_ICMP:
+									cansend = !cansend;
+									break;
+									
+								case IPPROTO_UDP:
+									if (udp->dest == fs->Port/* || udp->source == fs->Port*/)
+										cansend = !cansend;
+									break;
+									
+								case IPPROTO_TCP:
+									if (tcp->dest == fs->Port/* || tcp->source == fs->Port*/)
+										cansend = !cansend;
+									break;
+								}
+							}
+						}
+						
+
+
 						DWORD nwrite = ed->DataLen;
-						if (ed->DataLen>0 && eth->m_AdapterHandle)
+						if (cansend && ed->DataLen>0 && eth->m_AdapterHandle)
 						{
 							if (!WriteFile(eth->m_AdapterHandle, a, ed->DataLen, &nwrite, &overlap))
 							{
@@ -645,12 +698,6 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 }
 void CEthernet::InjectPacket(char *packet, int len)
 {
-#if	GETFREQ
-	__int64 pNow;
-	QueryPerformanceCounter((LARGE_INTEGER *)&pNow);
-	ATLTRACE("Before Inject packet at %f, %f\r\n", (float)pNow/(float)pFreq, ((float)(pNow - pPrev))/pFreq);
-	pPrev = pNow;
-#endif
 
 //	if (len > ETH_MAX_PACKET)
 //		MessageBeep(-1);
@@ -677,20 +724,6 @@ void CEthernet::InjectPacket(char *packet, int len)
 
 	SetEvent(WriteHandle);
 
-
-#if	GETFREQ
-	QueryPerformanceCounter((LARGE_INTEGER *)&pNow);
-	ATLTRACE("After Inject packet at %f, %f\r\n", (float)pNow/(float)pFreq, ((float)(pNow - pPrev))/pFreq);
-	pPrev = pNow;
-#endif
-
-
-//	if (!writectr)
-//		CreateThread(NULL, 0, WriteThreadFunc, this, 0, &WriteThreadId);
-
-//	DWORD nwrite = len;
-//	if (m_AdapterHandle != INVALID_HANDLE_VALUE)
-//		WriteFile(m_AdapterHandle, packet, len, &nwrite, /*&overlap*/NULL);
 
 }
 
@@ -792,138 +825,84 @@ DWORD WINAPI CEthernet::ReadThreadFunc(LPVOID lpParam)
 } 
 void CEthernet::ProcPacket(char *packet, int len)
 {
+
 		ETH_HEADER *ethr = (ETH_HEADER *) packet;
 		IPHDR *ip = (IPHDR *)(packet + sizeof(ETH_HEADER));
 		UDPHDR *udp = (UDPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
 //		ICMPHDR *icmp = (ICMPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
-//		TCPHDR *tcp = (TCPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
+		TCPHDR *tcp = (TCPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
 		ARP_PACKET *p = (ARP_PACKET *)packet;
 
 		// let's see if this is DHCP request
-/*		BOOL IsDHCP = FALSE;
-		if ((sizeof(ETH_HEADER) + sizeof(IPHDR) + sizeof(UDPHDR) + sizeof(CDHCP::DHCP)) <= len)
+		BOOL IsARP = FALSE;
+		// is it ARP packet?
+		if (len == sizeof(ARP_PACKET) && ethr->proto == 1544 && p->m_PROTO_AddressType==8 && p->m_ARP_Operation == 256)
 		{
-			if (ethr->proto == htons(ETH_P_IP) && ip->version_len == 0x45 && ip->protocol == IPPROTO_UDP && udp->dest == htons(BOOTPS_PORT))
+			IsARP = TRUE;
+			//-----------------------------------------------
+			// Is this the kind of packet we are looking for?
+			//-----------------------------------------------
+
+			for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 			{
-				const CDHCP::DHCP *dhcp = (CDHCP::DHCP *)(packet  + sizeof(ETH_HEADER) + sizeof(IPHDR) + sizeof(UDPHDR));
-				const int optlen = len - sizeof(ETH_HEADER) - sizeof(IPHDR) - sizeof(UDPHDR) - sizeof(CDHCP::DHCP);		
-				
-				IsDHCP = TRUE;
-				if (optlen > 0 && _Settings.m_MyLastNetwork && _Settings.m_MyLastNetmask)
+				CUser *user = _MainDlg.m_UserList.m_Users[i];
+//					if (user->m_WippienState == WipConnected)
 				{
-					if (_Ethernet.m_StaticSet)
+					if (p->m_Proto == htons(ETH_P_ARP)
+						&& MAC_EQUAL(p->m_MAC_Source, m_MAC)
+						&& MAC_EQUAL(p->m_ARP_MAC_Source, m_MAC)
+						&& MAC_EQUAL(p->m_MAC_Destination, MAC_BROADCAST)
+						&& p->m_ARP_Operation == htons(ARP_REQUEST)
+						&& p->m_MAC_AddressType == htons(MAC_ADDR_TYPE)
+						&& p->m_MAC_AddressSize == sizeof(MACADDR)
+						&& p->m_PROTO_AddressType == htons(ETH_P_IP)
+						&& p->m_PROTO_AddressSize == sizeof(IPADDR)
+						&& p->m_ARP_IP_Source == (_Settings.m_MyLastNetwork)
+						&& p->m_ARP_IP_Destination == user->m_HisVirtualIP)
 					{
-						DoRenewRelease(TRUE);
+						ARP_PACKET arp;
+						//----------------------------------------------
+						// Initialize ARP reply fields
+						//----------------------------------------------
+						arp.m_Proto = htons(ETH_P_ARP);
+						arp.m_MAC_AddressType = htons(MAC_ADDR_TYPE);
+						arp.m_PROTO_AddressType = htons(ETH_P_IP);
+						arp.m_MAC_AddressSize = sizeof(MACADDR);
+						arp.m_PROTO_AddressSize = sizeof(IPADDR);
+						arp.m_ARP_Operation = htons(ARP_REPLY);
+						
+						//----------------------------------------------
+						// ARP addresses
+						//----------------------------------------------      
+						COPY_MAC(arp.m_MAC_Source, user->m_MAC);
+						COPY_MAC(arp.m_MAC_Destination, m_MAC);
+						COPY_MAC(arp.m_ARP_MAC_Source, user->m_MAC);
+						COPY_MAC(arp.m_ARP_MAC_Destination, m_MAC);
+						arp.m_ARP_IP_Source = user->m_HisVirtualIP;
+						arp.m_ARP_IP_Destination = (_Settings.m_MyLastNetwork);												
+						InjectPacket((char *)&arp, sizeof(ARP_PACKET));
 					}
-					if (!m_DHCP)
-						m_DHCP = new CDHCP(this);
-					m_DHCPCounter = 0;
-					m_DHCP->ProcessDHCP(ethr, ip, udp, dhcp, optlen);
 				}
 			}
 		}
 
-		if (!IsDHCP)
-*/		{
-			BOOL IsARP = FALSE;
-			// is it ARP packet?
-			if (len == sizeof(ARP_PACKET) && ethr->proto == 1544 && p->m_PROTO_AddressType==8 && p->m_ARP_Operation == 256)
+		if (!IsARP)
+		{
+			if (len >= sizeof(ETH_HEADER))
 			{
-				IsARP = TRUE;
-				//-----------------------------------------------
-				// Is this the kind of packet we are looking for?
-				//-----------------------------------------------
-
 				for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[i];
 //					if (user->m_WippienState == WipConnected)
 					{
-						if (p->m_Proto == htons(ETH_P_ARP)
-							&& MAC_EQUAL(p->m_MAC_Source, m_MAC)
-							&& MAC_EQUAL(p->m_ARP_MAC_Source, m_MAC)
-							&& MAC_EQUAL(p->m_MAC_Destination, MAC_BROADCAST)
-							&& p->m_ARP_Operation == htons(ARP_REQUEST)
-							&& p->m_MAC_AddressType == htons(MAC_ADDR_TYPE)
-							&& p->m_MAC_AddressSize == sizeof(MACADDR)
-							&& p->m_PROTO_AddressType == htons(ETH_P_IP)
-							&& p->m_PROTO_AddressSize == sizeof(IPADDR)
-							&& p->m_ARP_IP_Source == (_Settings.m_MyLastNetwork)
-							&& p->m_ARP_IP_Destination == user->m_HisVirtualIP)
+						if (!memcmp(user->m_MAC, ethr->dest, sizeof(MACADDR)) || !memcmp(ethr->dest, MAC_BROADCAST, sizeof(MACADDR)))
 						{
-							ARP_PACKET arp;
-							//----------------------------------------------
-							// Initialize ARP reply fields
-							//----------------------------------------------
-							arp.m_Proto = htons(ETH_P_ARP);
-							arp.m_MAC_AddressType = htons(MAC_ADDR_TYPE);
-							arp.m_PROTO_AddressType = htons(ETH_P_IP);
-							arp.m_MAC_AddressSize = sizeof(MACADDR);
-							arp.m_PROTO_AddressSize = sizeof(IPADDR);
-							arp.m_ARP_Operation = htons(ARP_REPLY);
-							
-							//----------------------------------------------
-							// ARP addresses
-							//----------------------------------------------      
-							COPY_MAC(arp.m_MAC_Source, user->m_MAC);
-							COPY_MAC(arp.m_MAC_Destination, m_MAC);
-							COPY_MAC(arp.m_ARP_MAC_Source, user->m_MAC);
-							COPY_MAC(arp.m_ARP_MAC_Destination, m_MAC);
-							arp.m_ARP_IP_Source = user->m_HisVirtualIP;
-							arp.m_ARP_IP_Destination = (_Settings.m_MyLastNetwork);												
-							InjectPacket((char *)&arp, sizeof(ARP_PACKET));
+							user->SendNetworkPacket(packet, len);
 						}
 					}
-				}
+				}			
 			}
-			if (!IsARP)
-			{
-				if (len >= sizeof(ETH_HEADER))
-				{
-					BOOL tot = 0;
-					for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
-					{
-						CUser *user = _MainDlg.m_UserList.m_Users[i];
-//						if (user->m_WippienState == WipConnected)
-						{
-							if (!memcmp(user->m_MAC, ethr->dest, sizeof(MACADDR)) || !memcmp(ethr->dest, MAC_BROADCAST, sizeof(MACADDR)))
-							{
-/*								if (m_DHCP)
-								{
-									m_DHCPCounter++;
-									if (m_DHCPCounter>10)
-									{
-										delete m_DHCP;
-										m_DHCP = NULL;
-									}
-								}
-*/
-								tot++;
-//								switch (user->m_State)
-//								{
-//									case CSettings::UserState::UserConnected:								
-										user->SendNetworkPacket(packet, len);
-//										break;
-
-//									case CSettings::UserState::UserOnline:
-//										user->SendConnectRequest();
-//										break;
-//								}
-							}
-						}
-					}			
-					if (!tot)
-						ATLTRACE("Unknown MAC\r\n");
-
-//						ATLTRACE("no recipient??\r\n");
-
-				}
-//				else
-//					ATLTRACE("Unknown packet\r\n");
-			}
-
 		}
-			
 }
 
 

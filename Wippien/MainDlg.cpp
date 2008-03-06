@@ -70,9 +70,7 @@ UINT WM_TASKBARCREATEDMESSAGE = 0;
 
 
 void ResampleImageIfNeeded(CxImage *img, int size);
-BOOL ChangeWindowMessageFilter(          UINT message,
-    DWORD dwFlag
-);
+BOOL ChangeWindowMessageFilter(UINT message,DWORD dwFlag);
 
 CMainDlg::CMainDlg()
 {
@@ -2050,6 +2048,9 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		m_SettingsDlg->m_Dialogs.push_back(pg);
 		
 		pg = new CSettingsDlg::CSettingsMediator();
+		m_SettingsDlg->m_Dialogs.push_back(pg);
+		
+		pg = new CSettingsDlg::CSettingsNetworkFirewall();
 		m_SettingsDlg->m_Dialogs.push_back(pg);
 		
 		pg = new CSettingsDlg::CSettingsMTU();

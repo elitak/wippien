@@ -18,6 +18,8 @@
 #include "openssl/rsa.h"
 #include "ComBSTR2.h"
 #include "CwodWinSocket.h"
+#include "Settings.h"
+
 
 #ifdef _WODXMPPLIB
 namespace WODXMPPCOMLib
@@ -341,6 +343,44 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 //		LRESULT OnBtnTest(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 //		LRESULT OnBtnSearch(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 //		LRESULT OnEthernetChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+		void Show(BOOL Show, RECT *rc);
+		void Init(HWND Owner);
+		BOOL Apply(void);
+		void DoDefault(void);
+	};
+	class CSettingsNetworkFirewall   : public CDialogImpl<CSettingsNetworkFirewall>, public _CSettingsTemplate
+	{
+		
+	public:
+		enum { IDD = IDD_SETTINGS_NETWORK_FIREWALL};
+		
+		CSettingsNetworkFirewall();
+		~CSettingsNetworkFirewall();
+		CListBox m_Rules;
+
+		typedef std::vector<FirewallStruct *> FIREWALLSTRUCT;
+		FIREWALLSTRUCT m_FirewallRules;
+		
+		BEGIN_MSG_MAP(CSettingsNetworkFirewall)
+			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+			COMMAND_ID_HANDLER(IDC_FIREWALLRULE_ADD, OnAddNewRule)
+			COMMAND_ID_HANDLER(IDC_FIREWALLRULE_REMOVE, OnRemoveRule)
+			COMMAND_CODE_HANDLER(LBN_SELCHANGE, OnChange)
+			COMMAND_CODE_HANDLER(EN_CHANGE, OnChange)
+			COMMAND_CODE_HANDLER(BN_CLICKED, OnChange)
+		END_MSG_MAP()
+			
+			
+		// Handler prototypes (uncomment arguments if needed):
+		//	LRESULT MessageHandler(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+		//	LRESULT CommandHandler(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+		//	LRESULT NotifyHandler(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/)
+		
+		void PopulateList(void);
+		LRESULT OnChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnAddNewRule(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnRemoveRule(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		void Show(BOOL Show, RECT *rc);
 		void Init(HWND Owner);

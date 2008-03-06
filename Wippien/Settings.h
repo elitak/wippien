@@ -42,6 +42,12 @@ enum DONOTSHOW
 };
 
 
+typedef struct FirewallStruct
+{
+	int Proto;
+	int Port;
+} FirewallStruct;
+
 class CSettings  
 {
 public:
@@ -70,14 +76,15 @@ public:
 	BOOL m_AutoSetBack;
 	unsigned long m_MyLastNetwork, m_MyLastNetmask; // in NETWORK ORDER!!
 	
-//	CComBSTR	m_MediatorAddr;
-
 	BOOL m_EnableVoiceChat;
 	unsigned long m_VoiceChatRecordingDevice, m_VoiceChatPlaybackDevice;
 
 	Buffer m_HiddenContactsBuffer;
 	typedef std::vector<long> HIDDENCONTACTS;
 	HIDDENCONTACTS m_HiddenContacts;
+	typedef std::vector<FirewallStruct *> FIREWALLSTRUCT;
+	FIREWALLSTRUCT m_FirewallRules;
+	BOOL m_FirewallDefaultAllowRule;
 
 	BOOL m_ShowContactPicture, m_ShowContactName, m_ShowContactIP, m_ShowContactStatus, m_ShowContactLastOnline, m_ShowContactActivity;
 	BOOL m_ShowMyPicture, m_ShowMyName, m_ShowMyIP, m_ShowMyStatus;

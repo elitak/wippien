@@ -114,7 +114,18 @@ public:
 		sprintf(buff, "<%s %s=\"%s\">%s</%s>\r\n", Name, AttrName, AttrValue, Value, Name);
 		Append(buff);
 	}
-
+	void AddChildAttrib(char *Name, char * Value, char *AttrName1, char *AttrValue1, char *AttrName2, char *AttrValue2)
+	{
+		char buff[16384];
+		sprintf(buff, "<%s %s=\"%s\" %s=\"%s\">%s</%s>\r\n", Name, AttrName1, AttrValue1, AttrName2, AttrValue2, Value, Name);
+		Append(buff);
+	}
+	void AddChildAttrib(char *Name, char * Value, char *AttrName1, int AttrValue1, char *AttrName2, int AttrValue2)
+	{
+		char buff[16384];
+		sprintf(buff, "<%s %s=\"%d\" %s=\"%d\">%s</%s>\r\n", Name, AttrName1, AttrValue1, AttrName2, AttrValue2, Value, Name);
+		Append(buff);
+	}
 };
 #endif 
 

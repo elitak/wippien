@@ -13,6 +13,7 @@
 
 #include "proto.h"
 #include "Buffer.h"
+#include "Settings.h"
 
 #endif
 
@@ -82,7 +83,7 @@ public:
 //	CRITICAL_SECTION WriteCS, ReadCS;
 	HANDLE m_AdapterHandle;
 	BOOL m_Alive, m_Available, m_Enabled;
-//	int m_MTU;
+	BOOL m_FirewallRulesChanged;
 
 	HANDLE Handles[3];
 	#define DieHandle	Handles[0]

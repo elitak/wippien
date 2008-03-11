@@ -2807,6 +2807,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewGroup(WORD wNotifyCode
 			tg->Item = NULL;
 			tg->Open = FALSE;
 			tg->Name = a;
+			tg->CountBuff[0] = 0;
 			tg->Temporary = FALSE;
 			_Settings.PushGroupSorted(tg);
 //			_Settings.m_Groups.push_back(tg);
@@ -3029,6 +3030,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 							tg->Item = NULL;
 							tg->Open = TRUE;
 							tg->Temporary = FALSE;
+							tg->CountBuff[0] = 0;
 							char *a = (char *)malloc(strlen(grp)+1);
 							memset(a, 0, strlen(grp)+1);
 							memcpy(a, grp, strlen(grp));

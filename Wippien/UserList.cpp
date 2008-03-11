@@ -1032,6 +1032,7 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 		tg->Item = hi;
 		tg->Open = TRUE;
 		tg->Temporary = FALSE;
+		tg->CountBuff[0] = 0;
 		char *a = (char *)malloc(strlen(RootName)+1);
 		memset(a, 0, strlen(RootName)+1);
 		memcpy(a, RootName, strlen(RootName));

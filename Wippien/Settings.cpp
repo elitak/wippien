@@ -575,6 +575,7 @@ int CSettings::Load(void)
 							tg->Open = FALSE;
 							tg->Name = a;
 							tg->Temporary = FALSE;
+							tg->CountBuff[0] = 0;
 							if (CXmlEntity::FindAttrByName(ent, "Open"))
 								tg->Open = TRUE;
 							if (!strcmp(a, GROUP_GENERAL))
@@ -593,6 +594,7 @@ int CSettings::Load(void)
 					tg->Item = NULL;
 					tg->Open = FALSE;
 					tg->Name = a;
+					tg->CountBuff[0] = 0;
 					tg->Temporary = FALSE;
 					PushGroupSorted(tg);
 					//				m_Groups.push_back(tg);
@@ -604,6 +606,7 @@ int CSettings::Load(void)
 				tg->Temporary = FALSE;
 				tg->Open = OffOpen;
 				tg->Name = a;
+				tg->CountBuff[0] = 0;
 				m_Groups.push_back(tg);
 
 			}

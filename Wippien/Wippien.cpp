@@ -52,6 +52,7 @@ int CheckSettingsWizard(void)
 			tg->Item = NULL;
 			tg->Open = FALSE;
 			tg->Name = a;
+			tg->CountBuff[0] = 0;
 			_Settings.m_Groups.push_back(tg);
 			
 			a = (char *)malloc(strlen(GROUP_OFFLINE)+1);
@@ -59,6 +60,7 @@ int CheckSettingsWizard(void)
 			tg = new CSettings::TreeGroup;
 			tg->Item = NULL;
 			tg->Open = FALSE;
+			tg->CountBuff[0] = 0;
 			tg->Name = a;
 			_Settings.m_Groups.push_back(tg);
 

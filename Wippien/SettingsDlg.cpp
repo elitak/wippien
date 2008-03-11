@@ -5268,6 +5268,15 @@ LRESULT CSettingsDlg::CSettingsSystem::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	else
 		::SendMessage(GetDlgItem(IDC_SNAPTOBORDER), BM_SETCHECK, FALSE, NULL);
 
+	if (_Settings.m_AutoHide)
+		::SendMessage(GetDlgItem(IDC_AUTHOHIDEONINACTIVITY), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_AUTHOHIDEONINACTIVITY), BM_SETCHECK, FALSE, NULL);
+	
+	char buff[1024];
+	sprintf(buff, "%d", _Settings.m_AutoHideSeconds);
+	SetDlgItemText(IDC_AUTHOHIDEONINACTIVITYSECONDS, buff);
+	
 	if (_Settings.m_IsTopMost)
 		::SendMessage(GetDlgItem(IDC_ALWAYSONTOP), BM_SETCHECK, TRUE, NULL);
 	else
@@ -5317,6 +5326,18 @@ BOOL CSettingsDlg::CSettingsSystem::Apply(void)
 		_Settings.m_SnapToBorder = TRUE;
 	else
 		_Settings.m_SnapToBorder = FALSE;
+
+	if (::SendMessage(GetDlgItem(IDC_AUTHOHIDEONINACTIVITY), BM_GETSTATE, NULL, NULL))
+		_Settings.m_AutoHide = TRUE;
+	else
+		_Settings.m_AutoHide = FALSE;
+	
+	char buff[16384];
+	memset(buff, 0, 16384);
+	::SendMessage(GetDlgItem(IDC_AUTHOHIDEONINACTIVITYSECONDS), WM_GETTEXT, 16384, (LPARAM)buff);
+	_Settings.m_AutoHideSeconds = atoi(buff);
+	if (!_Settings.m_AutoHideSeconds)
+		_Settings.m_AutoHide = FALSE;
 
 	if (::SendMessage(GetDlgItem(IDC_ALWAYSONTOP), BM_GETSTATE, NULL, NULL))
 		_Settings.m_IsTopMost = TRUE;
@@ -5373,8 +5394,7 @@ BOOL CSettingsDlg::CSettingsSystem::Apply(void)
 	else
 		_Settings.m_PasswordProtectAll = TRUE;
 
-	char buff[16384];
-	memset(buff, 0, 16384);
+	buff[0] = 0;
 	::SendMessage(GetDlgItem(IDC_PASSWORDPROTECTPASSWORD), WM_GETTEXT, 16384, (LPARAM)buff);
 	_Settings.m_PasswordProtectPassword = buff;
 	if (!_Settings.m_PasswordProtectPassword.Length())

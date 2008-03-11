@@ -111,6 +111,7 @@ CMainDlg::CMainDlg()
 
 	m_User32Module =::LoadLibrary(_T("User32.dll"));
 	m_SimpleHttpRequest = NULL;
+	m_InactiveTimer = 0;
 
 }
 
@@ -170,6 +171,7 @@ CMainDlg::~CMainDlg()
 
 BOOL CMainDlg::PreTranslateMessage(MSG* pMsg)
 {
+	_MainDlg.CheckIfAntiInactivityMessage(pMsg->message);
 //	DumpDebug("*MainDlg::PreTranslatMessage\r\n");
 	return CWindow::IsDialogMessage(pMsg);
 }
@@ -601,6 +603,22 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 			m_AuthDlgBlinker++;
 			if (m_AuthDlgBlinker >= 10)
 				m_AuthDlgBlinker = 0;
+			break;
+
+		case 112:
+			{
+				// check if we must hide it
+				m_InactiveTimer++;
+				if (m_InactiveTimer && _Settings.m_AutoHide && m_InactiveTimer> _Settings.m_AutoHideSeconds)
+				{
+					m_InactiveTimer = 0;
+					WINDOWPLACEMENT wp = {0};
+					GetWindowPlacement(&wp);
+					if (wp.showCmd == 1)
+						ShowWindow(SW_HIDE);
+				}
+//				ATLTRACE("Inactivity tier = %d\r\n", m_InactiveTimer);
+			}
 			break;
 
 		case 102:
@@ -1704,6 +1722,7 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	SetTimer(105, 600000L); // to request images and details each 10 minutes
 	SetTimer(109, 60000L); // update timer
 	SetTimer(106, 10L);
+	SetTimer(112, 1000); // check inactivity timer
 
 	// register object for message filtering and idle updates
 	CMessageLoop* pLoop = _Module.GetMessageLoop();
@@ -2637,6 +2656,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 
 LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 	DumpDebug("*MainDlg::OnLButtonup\r\n");
 	if (m_UserList.m_Dragging)
 	{	
@@ -2685,6 +2705,7 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 
 LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	m_InactiveTimer = 0;
 
 	if (m_pBalloon)
 	{
@@ -2856,4 +2877,21 @@ void DumpDebug(char *text,...)
 
 
 
+}
+void CMainDlg::CheckIfAntiInactivityMessage(int msg)
+{
+	switch (msg)
+	{
+		case WM_MOUSEMOVE:
+		case WM_LBUTTONDOWN:
+		case WM_LBUTTONUP:
+		case WM_RBUTTONDOWN:
+		case WM_RBUTTONUP:
+		case WM_KEYDOWN:
+		case WM_KEYUP:
+		case WM_CHAR:
+		case WM_LBUTTONDBLCLK:
+			m_InactiveTimer	 = 0;
+			break;
+	}
 }

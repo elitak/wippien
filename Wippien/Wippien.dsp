@@ -776,6 +776,14 @@ SOURCE=..\Gfx\google.png
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\group_down.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\group_up.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\Avatars\HopelesslyAddicted.png
 # End Source File
 # Begin Source File
@@ -857,6 +865,14 @@ SOURCE=..\Gfx\Avatars\MacZealot.png
 # Begin Source File
 
 SOURCE=..\Gfx\MacZealot.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\mainwnd_banner_2back.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\mainwnd_banner_back.png
 # End Source File
 # Begin Source File
 

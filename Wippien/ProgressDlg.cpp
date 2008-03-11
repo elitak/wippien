@@ -39,6 +39,7 @@ CProgressDlg::~CProgressDlg()
 
 BOOL CProgressDlg::PreTranslateMessage(MSG* pMsg)
 {
+	_MainDlg.CheckIfAntiInactivityMessage(pMsg->message);
 	return CWindow::IsDialogMessage(pMsg);
 }
 

@@ -33,7 +33,7 @@ void CVividTree::DrawItems(CDC *pDC)
 	CBrush brush;brush.CreateSolidBrush(RGB(231,240,254));
 	CPen pen;pen.CreatePen(PS_SOLID, 1, RGB(187,195,215));
 
-	ATLTRACE("Invalidate %lu\r\n", GetTickCount());
+//	ATLTRACE("Invalidate %lu\r\n", GetTickCount());
 	EnterCriticalSection(&m_UserCS);
 	do
 	{

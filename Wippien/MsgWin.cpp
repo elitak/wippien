@@ -320,6 +320,7 @@ LRESULT CMsgWin::OnGotFocus(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 BOOL CMsgWin::PreTranslateMessage(MSG* pMsg)
 {
+	_MainDlg.CheckIfAntiInactivityMessage(pMsg->message);
 
 	HWND hWndCtl = ::GetFocus();
 	
@@ -1688,6 +1689,7 @@ LRESULT CMsgWin::CChatBox::OnParentNotify(UINT /*uMsg*/, WPARAM wParam, LPARAM l
 
 LRESULT CMsgWin::CChatBox::OnLButtonUp(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 	::CallWindowProc(m_pfnSuperWindowProc, m_hWnd, uMsg, wParam, lParam);
 
 	IHTMLSelectionObject *sel;
@@ -2408,6 +2410,7 @@ LRESULT CMsgWin::CInputBox::OnClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*l
 
 LRESULT CMsgWin::CInputBox::OnCharacter(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 //	CComQIPtr<IHTMLElement, &IID_IHTMLElement> htmlElement;
 //	CMsgWin *dlg = (CMsgWin *) m_ParentDlg;
 
@@ -2453,6 +2456,7 @@ CMsgWin::CInsertHyperlinkDlg::~CInsertHyperlinkDlg()
 
 BOOL CMsgWin::CInsertHyperlinkDlg::PreTranslateMessage(MSG* pMsg)
 {
+	_MainDlg.CheckIfAntiInactivityMessage(pMsg->message);
 	return CWindow::IsDialogMessage(pMsg);
 }
 
@@ -3096,6 +3100,7 @@ void CMsgWin::CWEmoticon::CalcBalloonRect(HDC dc, SIZE *rect, SIZE *text)
 
 LRESULT CMsgWin::CWEmoticon::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 	static const char *classname = "CWEmoticonWindowClass";
 
 	// is class registred?

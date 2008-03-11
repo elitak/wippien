@@ -7,9 +7,10 @@
 #include "ComBSTR2.h"
 #include "Buffer.h"
 #include "Settings.h"
-
+#include "MainDlg.h"
 
 extern CSettings _Settings;
+extern CMainDlg _MainDlg;
 
 _ATL_FUNC_INFO BaloonTipBeforeNavigate2Info = {CC_STDCALL, VT_EMPTY, 7, {VT_DISPATCH,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_BOOL}};
 
@@ -40,6 +41,7 @@ CBalloonTipDlg::~CBalloonTipDlg()
 
 BOOL CBalloonTipDlg::PreTranslateMessage(MSG* pMsg)
 {
+	_MainDlg.CheckIfAntiInactivityMessage(pMsg->message);
 	return CWindow::IsDialogMessage(pMsg);
 }
 
@@ -65,6 +67,7 @@ BOOL CBalloonTipDlg::OnIdle()
 
 LRESULT CBalloonTipDlg::OnLButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 //	m_Down = TRUE;
 //	GetCursorPos(&m_DownPoint);
 	SendMessage(WM_NCLBUTTONDOWN, HTCAPTION, 0);
@@ -73,12 +76,14 @@ LRESULT CBalloonTipDlg::OnLButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /
 
 LRESULT CBalloonTipDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 //	m_Down = UP;
 	return TRUE;
 }
 
 LRESULT CBalloonTipDlg::OnMouseMove(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 {
+	_MainDlg.m_InactiveTimer = 0;
 	if (m_Down)
 	{
 		POINT p;

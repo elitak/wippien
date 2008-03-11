@@ -34,7 +34,6 @@ typedef int EMOTICONS_API (WINAPI* FdGetHtml)(int Index, char **Text);
 extern UINT WM_TASKBARCREATEDMESSAGE;
 
 
-
 #define _DEBUGWNDMSG
 
 class CBalloonHelp;
@@ -83,6 +82,7 @@ public:
 	RECT m_DefChatWindowRect;
 	int m_LastUpdateMin;
 	CxImage m_MainWndTopBannerBack, m_MainWndTopBannerBack2;
+	int m_InactiveTimer;
 
 //	CComPtr<WODVCHATComLib::IwodVChatCom> m_VoiceChat;
 
@@ -101,6 +101,8 @@ public:
 	CSimpleHttpRequest *m_SimpleHttpRequest;
 
 	void ShowStatusText(char *text);
+	void CheckIfAntiInactivityMessage(int msg);
+
 
 	typedef struct EmoticonsStruct
 	{

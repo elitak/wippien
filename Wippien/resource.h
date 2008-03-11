@@ -247,6 +247,7 @@
 #define IDB_SKINPREVIEW                 1219
 #define IDC_SNAPTOBORDER                1220
 #define IDC_CHECKUPDATE_TIMED           1221
+#define IDC_AUTHOHIDEONINACTIVITY       1221
 #define IDB_APPLY                       1222
 #define IDC_ALWAYSONTOP2                1223
 #define IDC_CHECKUPDATE_CONNECT         1224
@@ -429,8 +430,9 @@
 #define IDC_ICMP                        1498
 #define IDC_RULES                       1499
 #define IDC_STATICBLOCK                 1500
-#define IDB_BANNER_TOP_BACKGROUND		1501
-#define IDB_BANNER_TOP_BACKGROUND2		1502
+#define IDB_BANNER_TOP_BACKGROUND       1501
+#define IDC_AUTHOHIDEONINACTIVITYSECONDS 1501
+#define IDB_BANNER_TOP_BACKGROUND2      1502
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -462,7 +464,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1386
 #define _APS_NEXT_COMMAND_VALUE         32797
-#define _APS_NEXT_CONTROL_VALUE         1501
+#define _APS_NEXT_CONTROL_VALUE         1502
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

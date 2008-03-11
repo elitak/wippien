@@ -1308,6 +1308,7 @@ void CBalloonHelp::OnCaptureChanged(HWND)
 //
 void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 {
+	_MainDlg.m_InactiveTimer = 0;
 	POINT p;
 	GetCursorPos(&p);
 	RECT r;
@@ -1382,6 +1383,7 @@ void CBalloonHelp::OnRButtonDown(UINT, CPoint pt)
 //
 void CBalloonHelp::OnLButtonDown(UINT, CPoint pt) 
 {
+	_MainDlg.m_InactiveTimer = 0;
 /*	RECT r;
 	GetWindowRect(&r);
 	pt.x += r.left;
@@ -1405,6 +1407,7 @@ void CBalloonHelp::OnLButtonDown(UINT, CPoint pt)
 //
 void CBalloonHelp::OnLButtonUp(UINT, CPoint pt) 
 {
+	_MainDlg.m_InactiveTimer = 0;
 	DumpDebug("*CBalloonHelp::OnLButtonUp\r\n");
 	if( (m_dwOptions & BOShowCloseButton) && (m_uCloseState & DFCS_PUSHED))
 	{

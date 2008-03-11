@@ -218,6 +218,8 @@ CSettings::CSettings()
 	m_CheckUpdateTimedNum = 60;
 	m_NowProtected = FALSE;
 	m_SnapToBorder = FALSE;
+	m_AutoHide = FALSE;
+	m_AutoHideSeconds = 10;
 
 	m_DeleteContactsOnStartup = FALSE;
 	m_DeleteContactsOnConnect = FALSE;
@@ -515,6 +517,8 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "ShowMyStatus", &m_ShowMyStatus, TRUE);
 			ReadSettingsCfg(wip, "TimestampMessages", &m_TimestampMessages, TRUE);
 			ReadSettingsCfg(wip, "SnapToBorder", &m_SnapToBorder, FALSE);
+			ReadSettingsCfg(wip, "AutoHideOnInactivity", &m_AutoHide, FALSE);
+			ReadSettingsCfg(wip, "AutoHideOnInactivirySeconds", &m_AutoHideSeconds, 10);
 			ReadSettingsCfg(wip, "ShowMessageHistory", &m_ShowMessageHistory, TRUE);
 			ReadSettingsCfg(wip, "FirewallDefaultAllowRule", &m_FirewallDefaultAllowRule, TRUE);		
 			ReadSettingsCfg(wip, "Skin", m_Skin, "");
@@ -1038,6 +1042,8 @@ BOOL CSettings::Save(BOOL UserOnly)
 		x.AddChildElem("ShowMyStatus", m_ShowMyStatus?"1":"0");		
 		x.AddChildElem("TimestampMessages", m_TimestampMessages?"1":"0");
 		x.AddChildElem("SnapToBorder", m_SnapToBorder?"1":"0");
+		x.AddChildElem("AutoHideOnInactivity", m_AutoHide?"1":"0");
+		x.AddChildElem("AutoHideOnInactivitySeconds", m_AutoHideSeconds);
 		x.AddChildElem("ShowMessageHistory", m_ShowMessageHistory?"1":"0");		
 		x.AddChildElem("FirewallDefaultAllowRule", m_FirewallDefaultAllowRule?"1":"0");		
 

@@ -19,13 +19,6 @@
 // Dialog
 //
 
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -521,13 +514,18 @@ BEGIN
                     7,33,211,10
     CONTROL         "Snap to desktop border",IDC_SNAPTOBORDER,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,7,48,90,10
+    CONTROL         "Auto hide if inactive for ",IDC_AUTHOHIDEONINACTIVITY,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,62,90,10
+    EDITTEXT        IDC_AUTHOHIDEONINACTIVITYSECONDS,98,61,43,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "seconds",IDC_STATIC,145,63,28,8
     CONTROL         "Always on top",IDC_ALWAYSONTOP,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,62,60,10
+                    WS_TABSTOP,7,76,60,10
     CONTROL         "Confirm exit from application",IDC_CONFIRMEXIT,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,76,103,10
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,90,103,10
     CONTROL         "Disconnect on computer Sleep/Hibernate, Connect on Resume",
                     IDC_USEPOWEROPTIONS,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,90,216,10
+                    WS_TABSTOP,7,104,216,10
     LTEXT           "Password protect",IDC_STATIC,7,127,56,8
     CONTROL         "Settings only",IDC_PASSWORDPROTECTSETTINGS,"Button",
                     BS_AUTORADIOBUTTON,67,127,56,10
@@ -1094,8 +1092,8 @@ IDB_HUMAN35             PNG     DISCARDABLE     "..\\gfx\\Avatars\\wi0153-48.png
 IDB_HUMAN36             PNG     DISCARDABLE     "..\\gfx\\Avatars\\wi0155-48.png"
 IDB_HUMAN37             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Windows Zealot.png"
 IDB_BELL                PNG     DISCARDABLE     "..\\gfx\\bell.png"
-IDB_BANNER_TOP_BACKGROUND PNG   DISCARDABLE     "..\\gfx\\mainwnd_banner_back.png"
-IDB_BANNER_TOP_BACKGROUND2 PNG  DISCARDABLE     "..\\gfx\\mainwnd_banner_2back.png"
+IDB_BANNER_TOP_BACKGROUND PNG     DISCARDABLE     "..\\gfx\\mainwnd_banner_back.png"
+IDB_BANNER_TOP_BACKGROUND2 PNG     DISCARDABLE     "..\\gfx\\mainwnd_banner_2back.png"
 IDB_GROUPOPENED         PNG     DISCARDABLE     "..\\gfx\\group_up.png"
 IDB_GROUPCLOSED         PNG     DISCARDABLE     "..\\gfx\\group_down.png"
 ID_PNG1_CHAT            PNG     DISCARDABLE     "..\\gfx\\RightClick\\ac0038-16.png"

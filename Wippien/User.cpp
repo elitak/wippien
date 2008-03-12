@@ -1108,106 +1108,26 @@ BOOL CUser::SaveUserImage(CxImage &img)
 
 void CUser::NotifyDisconnect(void)
 {
-
-#ifndef _WODXMPPLIB	
-	CComBSTR t = WIPPIENDISCONNECT;
-	CComBSTR j = m_JID;
-	VARIANT var;
-	var.vt = VT_BSTR;
-	var.bstrVal = j;
-	WODXMPPCOMLib::IXMPPContacts *cts = NULL;
-	WODXMPPCOMLib::IXMPPContact *ct = NULL;
-
-	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
-	{
-		if (SUCCEEDED(cts->get_Item(var, &ct)))
-		{
-
-
-			// send DISCONNECT message
-			CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
-			msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
-
-			msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
-			msg->put_Subject(t);
-
-			HRESULT hr = ct->raw_SendMessage(msg);
-			if (FAILED(hr))
-			{
-//					ShowError();
-			}
-
-			
-			ct->Release();
-		}
-		cts->Release();
-	}
-#else
-	void *msg = WODXMPPCOMLib::XMPP_Message_New();
-	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
-	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, WIPPIENDISCONNECT);
-	WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, m_JID, msg);
-	WODXMPPCOMLib::XMPP_Message_Free(msg);
-#endif
-	ReInit(TRUE);
-}
-
-void CUser::NotifyConnect(void)
-{	
-#ifndef _WODXMPPLIB	
-	CComBSTR t = WIPPIENDISCONNECT;
-	CComBSTR j = m_JID;
-	VARIANT var;
-	var.vt = VT_BSTR;
-	var.bstrVal = j;
-	WODXMPPCOMLib::IXMPPContacts *cts = NULL;
-	WODXMPPCOMLib::IXMPPContact *ct = NULL;
-	
-	if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
-	{
-		if (SUCCEEDED(cts->get_Item(var, &ct)))
-		{
-			
-			
-			// send DISCONNECT message
-			CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
-			msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
-			
-			msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
-			msg->put_Subject(t);
-
-			Buffer t;
-			Buffer out;
-			t.PutChar((char)m_WippienState);
-			_Settings.ToHex(&t, &out);
-			out.Append("\0", 1);
-			CComBSTR t1 = out.Ptr();
-			msg->put_Text(t1);
-
-			HRESULT hr = ct->raw_SendMessage(msg);
-			if (FAILED(hr))
-			{
-				//					ShowError();
-			}
-			
-			
-			ct->Release();
-		}
-		cts->Release();
-	}
-#else
-	void *msg = WODXMPPCOMLib::XMPP_Message_New();
-	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
-	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, WIPPIENCONNECT);
 	Buffer t;
 	Buffer out;
 	t.PutChar((char)m_WippienState);
 	_Settings.ToHex(&t, &out);
 	out.Append("\0", 1);
-	WODXMPPCOMLib::XMPP_Message_SetText(msg, out.Ptr());
-	WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, m_JID, msg);
-	WODXMPPCOMLib::XMPP_Message_Free(msg);
-#endif
+	_Jabber->ExchangeWippienDetails(m_JID, WIPPIENDISCONNECT, &out);
+
+
+	ReInit(TRUE);
+}
+
+void CUser::NotifyConnect(void)
+{	
+	Buffer t;
+	Buffer out;
+	t.PutChar((char)m_WippienState);
+	_Settings.ToHex(&t, &out);
+	out.Append("\0", 1);
+	_Jabber->ExchangeWippienDetails(m_JID, WIPPIENCONNECT, &out);
+
 }
 
 void CUser::NotifyBlock(void)

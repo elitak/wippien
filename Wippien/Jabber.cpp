@@ -1322,13 +1322,23 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 #endif
 	}
 
+	// let's fix JID so it *always* sends WIPPIENIM3 resource
+	CComBSTR2 jid1 = JID;
+	char *jid2 = jid1.ToString();
+	char *jid3 = strchr(jid2, '/');
+	if (jid3)
+	{
+		*jid3 = 0;
+	}
+	char jid4[1024];
+	sprintf(jid4, "%s/%s", jid2, WIPPIENIM);
 
 //	Contact->SendMessage(msg);
 #ifndef _WODXMPPLIB
 #error TODO
 //	HRESULT hr = raw_SendMessage(msg);
 #else
-	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, JID, msg);
+	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, jid4, msg);
 #endif
 	if (FAILED(hr))
 	{

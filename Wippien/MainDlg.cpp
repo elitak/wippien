@@ -2902,7 +2902,9 @@ void CMainDlg::CheckIfAntiInactivityMessage(int msg)
 				if (wp.showCmd == 1)
 				{
 					m_WasInactiveTimer = FALSE;
+					HWND foc = ::GetFocus();
 					ShowWindow(SW_SHOW);
+					::SetFocus(foc);
 				}
 			}
 			break;

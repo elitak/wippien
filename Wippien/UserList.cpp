@@ -1101,7 +1101,7 @@ BOOL CUserList::ConnectIfPossible(CUser *user, BOOL perform)
 
 LRESULT CUserList::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 	TVHITTESTINFO ht;
 	ht.pt.x = GET_X_LPARAM(lParam); 
 	ht.pt.y = GET_Y_LPARAM(lParam); 
@@ -1147,7 +1147,7 @@ LRESULT CUserList::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 
 LRESULT CUserList::OnLButtonDblClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 /*	if (m_InlineEdit)
 	{
 		DisableInlineEdit();
@@ -1754,13 +1754,13 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 
 LRESULT CUserList::OnMouseMove(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 	return _MainDlg.OnMouseMove(uMsg, wParam, lParam, bHandled);
 }
 
 LRESULT CUserList::OnKeyDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 	if (wParam == VK_DELETE)
 	{
 		HTREEITEM hitem = GetSelectedItem();

@@ -112,7 +112,7 @@ CMainDlg::CMainDlg()
 	m_User32Module =::LoadLibrary(_T("User32.dll"));
 	m_SimpleHttpRequest = NULL;
 	m_InactiveTimer = 0;
-
+	m_WasInactiveTimer = FALSE;
 }
 
 CMainDlg::~CMainDlg()
@@ -615,7 +615,10 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					WINDOWPLACEMENT wp = {0};
 					GetWindowPlacement(&wp);
 					if (wp.showCmd == 1)
+					{
+						m_WasInactiveTimer = TRUE;
 						ShowWindow(SW_HIDE);
+					}
 				}
 //				ATLTRACE("Inactivity tier = %d\r\n", m_InactiveTimer);
 			}
@@ -2656,7 +2659,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 
 LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	CheckIfAntiInactivityMessage(WM_CHAR);
 	DumpDebug("*MainDlg::OnLButtonup\r\n");
 	if (m_UserList.m_Dragging)
 	{	
@@ -2705,7 +2708,7 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 
 LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	m_InactiveTimer = 0;
+	CheckIfAntiInactivityMessage(WM_CHAR);
 
 	if (m_pBalloon)
 	{
@@ -2892,6 +2895,16 @@ void CMainDlg::CheckIfAntiInactivityMessage(int msg)
 		case WM_CHAR:
 		case WM_LBUTTONDBLCLK:
 			m_InactiveTimer	 = 0;
+			if (m_WasInactiveTimer)
+			{
+				WINDOWPLACEMENT wp = {0};
+				GetWindowPlacement(&wp);
+				if (wp.showCmd == 1)
+				{
+					m_WasInactiveTimer = FALSE;
+					ShowWindow(SW_SHOW);
+				}
+			}
 			break;
 	}
 }

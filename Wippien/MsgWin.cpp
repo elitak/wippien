@@ -1689,7 +1689,7 @@ LRESULT CMsgWin::CChatBox::OnParentNotify(UINT /*uMsg*/, WPARAM wParam, LPARAM l
 
 LRESULT CMsgWin::CChatBox::OnLButtonUp(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 	::CallWindowProc(m_pfnSuperWindowProc, m_hWnd, uMsg, wParam, lParam);
 
 	IHTMLSelectionObject *sel;
@@ -2410,7 +2410,7 @@ LRESULT CMsgWin::CInputBox::OnClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*l
 
 LRESULT CMsgWin::CInputBox::OnCharacter(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 //	CComQIPtr<IHTMLElement, &IID_IHTMLElement> htmlElement;
 //	CMsgWin *dlg = (CMsgWin *) m_ParentDlg;
 
@@ -3100,7 +3100,7 @@ void CMsgWin::CWEmoticon::CalcBalloonRect(HDC dc, SIZE *rect, SIZE *text)
 
 LRESULT CMsgWin::CWEmoticon::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 	static const char *classname = "CWEmoticonWindowClass";
 
 	// is class registred?

@@ -67,7 +67,7 @@ BOOL CBalloonTipDlg::OnIdle()
 
 LRESULT CBalloonTipDlg::OnLButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 //	m_Down = TRUE;
 //	GetCursorPos(&m_DownPoint);
 	SendMessage(WM_NCLBUTTONDOWN, HTCAPTION, 0);
@@ -76,14 +76,14 @@ LRESULT CBalloonTipDlg::OnLButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /
 
 LRESULT CBalloonTipDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 //	m_Down = UP;
 	return TRUE;
 }
 
 LRESULT CBalloonTipDlg::OnMouseMove(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 {
-	_MainDlg.m_InactiveTimer = 0;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
 	if (m_Down)
 	{
 		POINT p;

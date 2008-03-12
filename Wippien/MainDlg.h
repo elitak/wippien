@@ -83,6 +83,7 @@ public:
 	int m_LastUpdateMin;
 	CxImage m_MainWndTopBannerBack, m_MainWndTopBannerBack2;
 	int m_InactiveTimer;
+	BOOL m_WasInactiveTimer;
 
 //	CComPtr<WODVCHATComLib::IwodVChatCom> m_VoiceChat;
 

@@ -340,12 +340,11 @@ BOOL isClose(int x, int y)
 		return FALSE;
 
 	int ab = abs(x-y);
-	BOOL dosnap = TRUE;
+	BOOL dosnap = FALSE;
 
 	if (_Settings.m_SnapToBorder)
 		dosnap = (ab < SNAPWIDTH);
-	else
-		dosnap = (ab < 1);
+
 	return dosnap;
 }
 

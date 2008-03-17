@@ -631,7 +631,10 @@ int CSettings::Load(void)
 						if (h.Length() && port)
 						{
 							LinkMediatorStruct *st = AddLinkMediator(h.ToString(), port);
-							st->Valid = valid;
+							if (st)
+							{
+								st->Valid = valid;
+							}
 						}
 					}
 					lnm->Name[0] = 0;
@@ -1542,6 +1545,9 @@ CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
 		if (!stricmp(Host, st1->Host) && Port == st1->Port)
 			st = st1;
 	}
+
+	if (!stricmp(Host, "vpntest"))
+		return NULL;
 
 	if (!st)
 	{

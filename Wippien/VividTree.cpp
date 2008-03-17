@@ -113,9 +113,9 @@ void CVividTree::DrawItems(CDC *pDC)
 					{
 						// Draw an Open/Close button
 						if (state & TVIS_EXPANDED)
-							m_GroupOpened.Draw(pDC->m_hDC, rc_item.right - 12, rc_item.top+15);
+							m_GroupOpened.Draw(pDC->m_hDC, rc_item.left - 14, rc_item.top+15);
 						else
-							m_GroupClosed.Draw(pDC->m_hDC, rc_item.right - 12, rc_item.top+15);
+							m_GroupClosed.Draw(pDC->m_hDC, rc_item.left - 14, rc_item.top+15);
 					}
 				}
 				if (!has_children)
@@ -160,7 +160,7 @@ void CVividTree::DrawItems(CDC *pDC)
 							HFONT oldfont = pDC->SelectFont(m_hGroupFont);
 							pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
 							pDC->SelectFont(m_hSubFont);
-							rc.right -= 20;
+							rc.right -= 10;
 							rc.top += 5;
 							pDC->SetTextColor(RGB(128,128,128));
 							pDC->DrawText(tg->CountBuff, strlen(tg->CountBuff), &rc, DT_RIGHT);
@@ -286,12 +286,12 @@ void CVividTree::DrawItems(CDC *pDC)
 							RECT rc;
 							memcpy(&rc, &rc_item, sizeof(rc));
 							pDC->SetTextColor(RGB(0,128,255));
-							rc.left -= 15;
+							rc.left -= 8;
 							rc.top += 10;
 							HFONT oldfont = pDC->SelectFont(m_hGroupFont);
 							pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
 							pDC->SelectFont(m_hSubFont);
-							rc.right -= 20;
+							rc.right -= 10;
 							rc.top += 5;
 							pDC->SetTextColor(RGB(128,128,128));
 							pDC->DrawText(tg->CountBuff, strlen(tg->CountBuff), &rc, DT_RIGHT);

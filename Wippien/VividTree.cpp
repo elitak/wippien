@@ -155,7 +155,7 @@ void CVividTree::DrawItems(CDC *pDC)
 							RECT rc;
 							memcpy(&rc, &rc_item, sizeof(rc));
 							pDC->SetTextColor(RGB(0,128,255));
-							rc.left -= 15;
+							rc.left -= 8;
 							rc.top += 10;
 							HFONT oldfont = pDC->SelectFont(m_hGroupFont);
 							pDC->DrawText(name, strlen(name), &rc, DT_LEFT);

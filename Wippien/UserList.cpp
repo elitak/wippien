@@ -687,6 +687,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 void CUserList::RefreshView(BOOL updateonly)
 {
 //	::LockWindowUpdate(m_hWndParent);
+	SendMessage(WM_SETREDRAW, FALSE, 0);
 
 	TV_INSERTSTRUCT TreeItem;
 	TreeItem.hParent = NULL; 
@@ -728,259 +729,259 @@ void CUserList::RefreshView(BOOL updateonly)
 //		updateonly = FALSE;
 		SortUsers();
 	}
-	if (!m_SortedUsersBuffer.Len())
-		return;
-
-
-	int integralsize = TreeItem.itemex.iIntegral;
-	// finally show users
-	for (int i=0;i<m_Users.size();i++)
+	if (m_SortedUsersBuffer.Len())
 	{
-		CUser *p = m_Users[m_SortedUser[i]];
-		if (p->m_ChatRoomPtr)
-			TreeItem.itemex.iIntegral = 17;
-		else
-			TreeItem.itemex.iIntegral = integralsize;
-//		ATLTRACE("Testing %s: tree=%x, changed=%d\r\n", p->m_JID, p->m_TreeItem, p->m_Changed);
-		if (!p->m_TreeItem || p->m_Changed)
+		int integralsize = TreeItem.itemex.iIntegral;
+		// finally show users
+		for (int i=0;i<m_Users.size();i++)
 		{
-			// this one is new
-			memset(&TreeItem.item, 0, sizeof(TVITEM));
-			TreeItem.item.mask = TVIF_TEXT |/* TVIF_IMAGE | */TVIF_PARAM /*| TVIF_STATE*/ | TVIF_INTEGRAL;
-
-			if (p->m_TreeItem) // this is old user
+			CUser *p = m_Users[m_SortedUser[i]];
+			if (p->m_ChatRoomPtr)
+				TreeItem.itemex.iIntegral = 17;
+			else
+				TreeItem.itemex.iIntegral = integralsize;
+	//		ATLTRACE("Testing %s: tree=%x, changed=%d\r\n", p->m_JID, p->m_TreeItem, p->m_Changed);
+			if (!p->m_TreeItem || p->m_Changed)
 			{
-				TreeItem.item.hItem = p->m_TreeItem;
-				GetItem(&TreeItem.item);
-			}
+				// this one is new
+				memset(&TreeItem.item, 0, sizeof(TVITEM));
+				TreeItem.item.mask = TVIF_TEXT |/* TVIF_IMAGE | */TVIF_PARAM /*| TVIF_STATE*/ | TVIF_INTEGRAL;
 
-//			TreeItem.item.pszText = "12345678901234567890";
-//			TreeItem.item.cchTextMax = 32;
-
-			BOOL doblink = FALSE;
-			BOOL isblocked = _Settings.IsHiddenContact(p->m_JID);
-			if (!p->m_Hidden && !isblocked)
-			{
-				p->SetSubtext();
-				BOOL ison = p->m_Online;
-				if (!ison && p->m_WippienState==WipConnected)
-					ison = TRUE;
-
-				if (!ison && p->m_WippienState!=WipConnected)
+				if (p->m_TreeItem) // this is old user
 				{
-					if (!p->m_TreeItem)
-					{
-							TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
-							TreeItem.hInsertAfter = TVI_LAST;
-					}
-					if (p->m_TreeItem && updateonly) // only for old users that go offline
-					{
-						TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
-						if (GetTickCount() - _Jabber->m_ConnectTime  > CONNECTQUIET)
-						{
-							if (p->m_ChangeNotify)
-							{
-								doblink = TRUE;
-								if (p->IsMsgWindowOpen())
-								{
-									p->PrintMsgWindow(TRUE, "User is now offline.", NULL);
-								}
-								_Notify.DoEvent(NotificationOffline);
-							}
-						}
-					}
+					TreeItem.item.hItem = p->m_TreeItem;
+					GetItem(&TreeItem.item);
 				}
-				else
-				{				
-					// set initial group
-					if (!p->m_TreeItem)
+
+	//			TreeItem.item.pszText = "12345678901234567890";
+	//			TreeItem.item.cchTextMax = 32;
+
+				BOOL doblink = FALSE;
+				BOOL isblocked = _Settings.IsHiddenContact(p->m_JID);
+				if (!p->m_Hidden && !isblocked)
+				{
+					p->SetSubtext();
+					BOOL ison = p->m_Online;
+					if (!ison && p->m_WippienState==WipConnected)
+						ison = TRUE;
+
+					if (!ison && p->m_WippienState!=WipConnected)
 					{
-							TreeItem.hParent = FindRoot(p->m_Group, FALSE);
-							if (!TreeItem.hParent)
-							{
-								::PostMessage(m_hWnd, WM_REFRESH, 0, FALSE);
-								 TreeItem.hParent = FindRoot(p->m_Group);
-							}
-							TreeItem.hInsertAfter = TVI_LAST;
-					}
-					
-					if (p->m_TreeItem && updateonly) // only for old users that go offline
-					{
-						TreeItem.hInsertAfter = TVI_FIRST;
-						TreeItem.hParent = FindRoot(p->m_Group);
-						if (GetTickCount() - _Jabber->m_ConnectTime  > CONNECTQUIET)
+						if (!p->m_TreeItem)
 						{
-							if (p->m_ChangeNotify)
+								TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
+								TreeItem.hInsertAfter = TVI_LAST;
+						}
+						if (p->m_TreeItem && updateonly) // only for old users that go offline
+						{
+							TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
+							if (GetTickCount() - _Jabber->m_ConnectTime  > CONNECTQUIET)
 							{
-								// fix for going offline but VPN leave connected
-								if (p->m_Online)
+								if (p->m_ChangeNotify)
 								{
-									_Notify.DoEvent(NotificationOnline);
-									if (p->IsMsgWindowOpen())
-									{
-										p->PrintMsgWindow(TRUE, "User is now online.", NULL);
-									}
-								}
-								else
-								{
+									doblink = TRUE;
 									if (p->IsMsgWindowOpen())
 									{
 										p->PrintMsgWindow(TRUE, "User is now offline.", NULL);
 									}
 									_Notify.DoEvent(NotificationOffline);
 								}
-								doblink = TRUE;
 							}
 						}
 					}
-				
-				}
-
-				TreeItem.item.pszText = "123456789012345";
-				TreeItem.item.cchTextMax = 15;		
-
-
-				if (p->m_Image)
-				{
-					delete p->m_Image;
-					p->m_Image = NULL;
-				}
-				if (!p->m_Image/* && p->m_Icon.Len()*/)
-				{
-					CxImage img;
-					if (p->LoadUserImage(&img))
-					{
-						p->m_Image = new CxImage(img);
-//						p->m_Image->Copy(img);
-						ResampleImageIfNeeded(p->m_Image, 32);
-					}
-//					p->m_Image = new CxImage();
-//					p->m_Image->Decode((unsigned char *)p->m_Icon.Ptr(), p->m_Icon.Len(), CXIMAGE_FORMAT_PNG);
-				}
-			}
-
-			TreeItem.item.lParam = (long)p;
-//			ATLTRACE("changed to %d %s\r\n", p->m_Online, p->m_JID);
-			if (p->m_Changed && p->m_TreeItem)
-			{
-//				if (TreeItem.hParent != (HTREEITEM)SendMessage(TVM_GETNEXTITEM, TVGN_PARENT, (LPARAM)TreeItem.item.hItem) || p->m_Hidden)
-				{
-					p->m_BlinkTimerCounter = 0;
-//					ATLTRACE("Deleting %s\r\n", p->m_JID);
-					DeleteItem(p->m_TreeItem);
-					p->m_TreeItem = 0;
-				}
-			}
-			if (!p->m_Hidden && !isblocked)
-			{
-				if (!p->m_TreeItem) // this is new user
-				{
-					p->m_BlinkTimerCounter = 0;
-					TreeItem.hInsertAfter = TVI_FIRST;
-//					if (p->m_Online)
-//						ATLTRACE("%s goes first\r\n", p->m_JID);
-					for (int jk=0;jk<m_Users.size() && m_Users[m_SortedUser[jk]]!=p;jk++)
-					{
-						CUser *us1 = (CUser *)m_Users[m_SortedUser[jk]];
-						if (!stricmp((*us1->m_Group)?us1->m_Group:GROUP_GENERAL, (*p->m_Group)?p->m_Group:GROUP_GENERAL) && p->m_Online == us1->m_Online)
+					else
+					{				
+						// set initial group
+						if (!p->m_TreeItem)
 						{
-//							if (p->m_Online)
-//								ATLTRACE("%s goes after %s\r\n", p->m_JID, us1->m_JID);
-							TreeItem.hInsertAfter = us1->m_TreeItem;
+								TreeItem.hParent = FindRoot(p->m_Group, FALSE);
+								if (!TreeItem.hParent)
+								{
+									::PostMessage(m_hWnd, WM_REFRESH, 0, FALSE);
+									 TreeItem.hParent = FindRoot(p->m_Group);
+								}
+								TreeItem.hInsertAfter = TVI_LAST;
 						}
+						
+						if (p->m_TreeItem && updateonly) // only for old users that go offline
+						{
+							TreeItem.hInsertAfter = TVI_FIRST;
+							TreeItem.hParent = FindRoot(p->m_Group);
+							if (GetTickCount() - _Jabber->m_ConnectTime  > CONNECTQUIET)
+							{
+								if (p->m_ChangeNotify)
+								{
+									// fix for going offline but VPN leave connected
+									if (p->m_Online)
+									{
+										_Notify.DoEvent(NotificationOnline);
+										if (p->IsMsgWindowOpen())
+										{
+											p->PrintMsgWindow(TRUE, "User is now online.", NULL);
+										}
+									}
+									else
+									{
+										if (p->IsMsgWindowOpen())
+										{
+											p->PrintMsgWindow(TRUE, "User is now offline.", NULL);
+										}
+										_Notify.DoEvent(NotificationOffline);
+									}
+									doblink = TRUE;
+								}
+							}
+						}
+					
 					}
-//					if (p->m_Online)
-//						ATLTRACE("Inserting item %s\r\n", p->m_JID);
-					p->m_TreeItem = /*m_Tree.*/InsertItem(&TreeItem);
+
+					TreeItem.item.pszText = "123456789012345";
+					TreeItem.item.cchTextMax = 15;		
+
+
+					if (p->m_Image)
+					{
+						delete p->m_Image;
+						p->m_Image = NULL;
+					}
+					if (!p->m_Image/* && p->m_Icon.Len()*/)
+					{
+						CxImage img;
+						if (p->LoadUserImage(&img))
+						{
+							p->m_Image = new CxImage(img);
+	//						p->m_Image->Copy(img);
+							ResampleImageIfNeeded(p->m_Image, 32);
+						}
+	//					p->m_Image = new CxImage();
+	//					p->m_Image->Decode((unsigned char *)p->m_Icon.Ptr(), p->m_Icon.Len(), CXIMAGE_FORMAT_PNG);
+					}
 				}
-				else
+
+				TreeItem.item.lParam = (long)p;
+	//			ATLTRACE("changed to %d %s\r\n", p->m_Online, p->m_JID);
+				if (p->m_Changed && p->m_TreeItem)
 				{
-//					ATLTRACE("Setting item %s\r\n", p->m_JID);
-					/*m_Tree.*/SetItem(&TreeItem.item); // this is old user
+	//				if (TreeItem.hParent != (HTREEITEM)SendMessage(TVM_GETNEXTITEM, TVGN_PARENT, (LPARAM)TreeItem.item.hItem) || p->m_Hidden)
+					{
+						p->m_BlinkTimerCounter = 0;
+	//					ATLTRACE("Deleting %s\r\n", p->m_JID);
+						DeleteItem(p->m_TreeItem);
+						p->m_TreeItem = 0;
+					}
 				}
-				if (doblink && updateonly && p->m_TreeItem && (GetTickCount() - _Jabber->m_ConnectTime > CONNECTQUIET))
-					BlinkItem(p->m_TreeItem);
-			}
-		}	
-	}
+				if (!p->m_Hidden && !isblocked)
+				{
+					if (!p->m_TreeItem) // this is new user
+					{
+						p->m_BlinkTimerCounter = 0;
+						TreeItem.hInsertAfter = TVI_FIRST;
+	//					if (p->m_Online)
+	//						ATLTRACE("%s goes first\r\n", p->m_JID);
+						for (int jk=0;jk<m_Users.size() && m_Users[m_SortedUser[jk]]!=p;jk++)
+						{
+							CUser *us1 = (CUser *)m_Users[m_SortedUser[jk]];
+							if (!stricmp((*us1->m_Group)?us1->m_Group:GROUP_GENERAL, (*p->m_Group)?p->m_Group:GROUP_GENERAL) && p->m_Online == us1->m_Online)
+							{
+	//							if (p->m_Online)
+	//								ATLTRACE("%s goes after %s\r\n", p->m_JID, us1->m_JID);
+								TreeItem.hInsertAfter = us1->m_TreeItem;
+							}
+						}
+	//					if (p->m_Online)
+	//						ATLTRACE("Inserting item %s\r\n", p->m_JID);
+						p->m_TreeItem = /*m_Tree.*/InsertItem(&TreeItem);
+					}
+					else
+					{
+	//					ATLTRACE("Setting item %s\r\n", p->m_JID);
+						/*m_Tree.*/SetItem(&TreeItem.item); // this is old user
+					}
+					if (doblink && updateonly && p->m_TreeItem && (GetTickCount() - _Jabber->m_ConnectTime > CONNECTQUIET))
+						BlinkItem(p->m_TreeItem);
+				}
+			}	
+		}
 
 
-	// expand
-	for (i=0;i<_Settings.m_Groups.size();i++)
-	{
-		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-		if (tg->Open && tg->Item)
-			/*m_Tree.*/Expand(tg->Item);
-	}
+		// expand
+		for (i=0;i<_Settings.m_Groups.size();i++)
+		{
+			CSettings::TreeGroup *tg = _Settings.m_Groups[i];
+			if (tg->Open && tg->Item)
+				/*m_Tree.*/Expand(tg->Item);
+		}
 
-	_Settings.Save(TRUE);
-
-
-	for (int j=0;j<_Settings.m_Groups.size();j++)
-	{
-		CSettings::TreeGroup *tg = _Settings.m_Groups[j];
-		tg->Count = 0;
-		tg->TotalCount = 0;
-	}
+		_Settings.Save(TRUE);
 
 
-	// now just enumerate users in groups
-	int offlinecount = 0;
-	for (i=0;i<m_Users.size();i++)
-	{
-		CUser *user = (CUser *)m_Users[i];
 		for (int j=0;j<_Settings.m_Groups.size();j++)
 		{
 			CSettings::TreeGroup *tg = _Settings.m_Groups[j];
-			if (!strcmp(tg->Name, user->m_Group) || (!*user->m_Group && !strcmp(tg->Name, GROUP_GENERAL)))
-			{
-				if (!user->m_Hidden && !_Settings.IsHiddenContact(user->m_JID))
-				{
-					tg->TotalCount++;
-					BOOL ison = user->m_Online;
-					if (!ison && user->m_WippienState==WipConnected)
-						ison = TRUE;
-					if (ison)
-						tg->Count++;
-					else
-						offlinecount++;
+			tg->Count = 0;
+			tg->TotalCount = 0;
+		}
 
+
+		// now just enumerate users in groups
+		int offlinecount = 0;
+		for (i=0;i<m_Users.size();i++)
+		{
+			CUser *user = (CUser *)m_Users[i];
+			for (int j=0;j<_Settings.m_Groups.size();j++)
+			{
+				CSettings::TreeGroup *tg = _Settings.m_Groups[j];
+				if (!strcmp(tg->Name, user->m_Group) || (!*user->m_Group && !strcmp(tg->Name, GROUP_GENERAL)))
+				{
+					if (!user->m_Hidden && !_Settings.IsHiddenContact(user->m_JID))
+					{
+						tg->TotalCount++;
+						BOOL ison = user->m_Online;
+						if (!ison && user->m_WippienState==WipConnected)
+							ison = TRUE;
+						if (ison)
+							tg->Count++;
+						else
+							offlinecount++;
+
+					}
+					j = _Settings.m_Groups.size()+1;
 				}
-				j = _Settings.m_Groups.size()+1;
 			}
 		}
-	}
 
-	for (j=0;j<_Settings.m_Groups.size();j++)
-	{
-//		char buff[1024];
-		CSettings::TreeGroup *tg = _Settings.m_Groups[j];
-
-		memset(&TreeItem.item, 0, sizeof(TVITEM));
-		TreeItem.item.mask = TVIF_TEXT;
-
-		if (tg->Item) // this is old user
+		for (j=0;j<_Settings.m_Groups.size();j++)
 		{
-			TreeItem.item.hItem = tg->Item;
-			if (strcmp(tg->Name, GROUP_OFFLINE))
-				sprintf(tg->CountBuff, "%d/%d", tg->Count, tg->TotalCount);
-			else
-				sprintf(tg->CountBuff, "%d", offlinecount);
+	//		char buff[1024];
+			CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 
-			TreeItem.item.pszText = tg->Name;
-//			TreeItem.item.cchTextMax = strlen(buff);
-			SetItem(&TreeItem.item);
+			memset(&TreeItem.item, 0, sizeof(TVITEM));
+			TreeItem.item.mask = TVIF_TEXT;
+
+			if (tg->Item) // this is old user
+			{
+				TreeItem.item.hItem = tg->Item;
+				if (strcmp(tg->Name, GROUP_OFFLINE))
+					sprintf(tg->CountBuff, "%d/%d", tg->Count, tg->TotalCount);
+				else
+					sprintf(tg->CountBuff, "%d", offlinecount);
+
+				TreeItem.item.pszText = tg->Name;
+	//			TreeItem.item.cchTextMax = strlen(buff);
+				SetItem(&TreeItem.item);
+			}
+		}
+
+
+		// clear out...
+		for (i=0;i<m_Users.size();i++)
+		{
+			CUser *user = m_Users[i];
+			user->m_Changed = FALSE;
+			user->m_ChangeNotify = FALSE;
 		}
 	}
-
-
-	// clear out...
-	for (i=0;i<m_Users.size();i++)
-	{
-		CUser *user = m_Users[i];
-		user->m_Changed = FALSE;
-		user->m_ChangeNotify = FALSE;
-	}
+	SendMessage(WM_SETREDRAW, TRUE, 0);
 //	::LockWindowUpdate(NULL);
 }
 

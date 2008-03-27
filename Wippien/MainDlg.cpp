@@ -2546,7 +2546,7 @@ void CMainDlg::OnIncomingNotification(char *Contact, int NotID, VARIANT Data)
 {
 	DumpDebug("*MainDlg::OnIncomingNotification\r\n");
 	char *c = strchr(Contact, '/');
-	if (*c)
+	if (c)
 		*c = 0;
 	int j = strlen(Contact);
 

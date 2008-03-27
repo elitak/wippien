@@ -407,6 +407,7 @@
 #define IDI_ICON_YES                    1383
 #define IDI_ICON_NO                     1384
 #define IDD_SETTINGS_NETWORK_FIREWALL   1385
+#define IDB_AVATARFRAME                 1386
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
@@ -462,7 +463,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        1386
+#define _APS_NEXT_RESOURCE_VALUE        1387
 #define _APS_NEXT_COMMAND_VALUE         32797
 #define _APS_NEXT_CONTROL_VALUE         1502
 #define _APS_NEXT_SYMED_VALUE           1576

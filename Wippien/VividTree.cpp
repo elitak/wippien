@@ -84,7 +84,7 @@ void CVividTree::DrawItems(CDC *pDC)
 						RECT rc;
 						memcpy(&rc,&rect, sizeof(rc));
 						InflateRect(&rc, -1, -1);
-						rc.left -= 15;
+						rc.left -= 16;
 						rc.top += 9;
 						Rectangle(pDC->m_hDC, rc.left, rc.top, rc.right, rc.bottom);
 					}
@@ -143,274 +143,146 @@ void CVividTree::DrawItems(CDC *pDC)
 
 				rc_item.DeflateRect(0, 1, 0, 1);
 				HFONT hOldFont = pDC->SelectFont(m_hFont);
+
+				COLORREF col = pDC->GetBkColor();
 				if (selected)
-				{
-//					if (!has_children)
-					COLORREF col = pDC->GetBkColor();
 					pDC->SetBkColor(GetSysColor(COLOR_HIGHLIGHT));
-					if (!user)
+
+				if (!user)
+				{
+					if (tg)
 					{
-						if (tg)
-						{
-							RECT rc;
-							memcpy(&rc, &rc_item, sizeof(rc));
-							pDC->SetTextColor(RGB(0,128,255));
-							rc.left -= 8;
-							rc.top += 10;
-							HFONT oldfont = pDC->SelectFont(m_hGroupFont);
-							pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
-							pDC->SelectFont(m_hSubFont);
-							rc.right -= 10;
-							rc.top += 5;
-							pDC->SetTextColor(RGB(128,128,128));
-							pDC->DrawText(tg->CountBuff, strlen(tg->CountBuff), &rc, DT_RIGHT);
-							pDC->SelectFont(oldfont);
-							HPEN hOldPen = pDC->SelectPen(groupline);
-							pDC->MoveTo(rc_item.left-15, rc_item.bottom-2);
-							pDC->LineTo(rc_item.right-3, rc_item.bottom-2);
-							pDC->SelectPen(hOldPen);
-						}
-					}
-					else
-					{
-						if (_Settings.m_ShowContactPicture && !user->m_ChatRoomPtr)
-							rc_item.left += 5;
-						else
-							rc_item.left -= 20;
-						RECT rcc;
-						memcpy(&rcc, rc_item, sizeof(rcc));
-						COLORREF cf = /*pDC->GetTextColor();*/RGB(0,0,0);
-
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
-						if (_Settings.m_ShowContactActivity)
-						{
-							int l = rc_item.left;
-							// show activity
-							if (_Settings.m_ShowContactPicture)
-							{
-								rc_item.top += 20;
-							}
-							else
-							{
-								rc_item.left = rcc.right + 2;
-							}
-							if (user->m_LastReceive + 500 > tick)
-								LastReceiveBuff[1] = '.';
-							else
-								LastReceiveBuff[1] = ' ';
-							if (user->m_LastSent + 500 > tick)
-								LastReceiveBuff[0] = '.';
-							else
-								LastReceiveBuff[0] = ' ';
-							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
-							if (_Settings.m_ShowContactPicture)
-							{
-								rc_item.top -= 20;
-							}
-							else
-							{
-								rc_item.left = l;
-							}
-
-						}
-
-						if (user->m_Block)
-							pDC->SetTextColor(RGB(255,32,32));
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
-						if (!user->m_Online && user->m_WippienState==WipConnected)
-							pDC->SetTextColor(RGB(127,127,127));
-						else
-							pDC->SetTextColor(cf);
-						rc_item.top += 12;
-						rc_item.left += 3;
+						RECT rc;
+						memcpy(&rc, &rc_item, sizeof(rc));
+						pDC->SetTextColor(RGB(0,128,255));
+						rc.left -= 8;
+						rc.top += 10;
+						HFONT oldfont = pDC->SelectFont(m_hGroupFont);
+						pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
 						pDC->SelectFont(m_hSubFont);
-						RECT rc1;
-						rc_item.right-=2;
-						memcpy(&rc1,&rc_item, sizeof(RECT));
-						if (_Settings.m_ShowContactStatus && !user->m_ChatRoomPtr)
-						{
-							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
-							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
-						}
-						if (_Settings.m_ShowContactIP)
-						{
-							if (user->m_IPText[0])
-							{
-								rc_item.top -= 10;
-								rc_item.right -= 3;
-								switch (user->m_WippienState)
-								{
-									case WipConnected:
-										if (user->m_Online)
-											pDC->SetTextColor(RGB(0,0,0));
-										else
-											pDC->SetTextColor(RGB(127,127,127));
-										break;
-
-									case WipConnecting:
-										if (user->m_BlinkConnectingCounter%2)
-											pDC->SetTextColor(RGB(127,127,255));
-										else
-											pDC->SetTextColor(RGB(255,255,255));
-										break;
-
-//									case WipDisconnected:
-									default:
-										pDC->SetTextColor(RGB(127,127,255));
-										break;
-
-								}
-								rc_item.left = rcc.right + 10;
-								// let's calculate clipping
-								memcpy(&rcc, &rc_item, sizeof(RECT));
-
-								pDC->DrawText(user->m_IPText, strlen(user->m_IPText), &rcc, DT_RIGHT | DT_CALCRECT);
-								if (rcc.right > rc_item.right)
-								{
-									pDC->DrawText("(...", 4, rc_item, DT_LEFT);
-									rc_item.left += 10;
-								}
-								pDC->DrawText(user->m_IPText, strlen(user->m_IPText), rc_item, DT_RIGHT);
-							}
-						}
+						rc.right -= 10;
+						rc.top += 5;
+						pDC->SetTextColor(RGB(128,128,128));
+						pDC->DrawText(tg->CountBuff, strlen(tg->CountBuff), &rc, DT_RIGHT);
+						pDC->SelectFont(oldfont);
+						HPEN hOldPen = pDC->SelectPen(groupline);
+						pDC->MoveTo(rc_item.left-15, rc_item.bottom-2);
+						pDC->LineTo(rc_item.right-3, rc_item.bottom-2);
+						pDC->SelectPen(hOldPen);
 					}
-					pDC->SetTextColor(color);
-					pDC->SetBkColor(col);
 				}
 				else
 				{
-					if (!user)
-					{
-						if (tg)
-						{
-							RECT rc;
-							memcpy(&rc, &rc_item, sizeof(rc));
-							pDC->SetTextColor(RGB(0,128,255));
-							rc.left -= 8;
-							rc.top += 10;
-							HFONT oldfont = pDC->SelectFont(m_hGroupFont);
-							pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
-							pDC->SelectFont(m_hSubFont);
-							rc.right -= 10;
-							rc.top += 5;
-							pDC->SetTextColor(RGB(128,128,128));
-							pDC->DrawText(tg->CountBuff, strlen(tg->CountBuff), &rc, DT_RIGHT);
-							pDC->SelectFont(oldfont);
-							HPEN hOldPen = pDC->SelectPen(groupline);
-							pDC->MoveTo(rc_item.left-15, rc_item.bottom-2);
-							pDC->LineTo(rc_item.right-3, rc_item.bottom-2);
-							pDC->SelectPen(hOldPen);
-						}
-					}
+					if (_Settings.m_ShowContactPicture && !user->m_ChatRoomPtr)
+						rc_item.left += 5;
 					else
-					{
-						if (_Settings.m_ShowContactPicture && !user->m_ChatRoomPtr)
-							rc_item.left += 5;
-						else
-							rc_item.left -= 20;
-						RECT rcc;
-						memcpy(&rcc, rc_item, sizeof(rcc));
-						COLORREF cf = RGB(96,96,96);
+						rc_item.left -= 20;
+					RECT rcc;
+					memcpy(&rcc, rc_item, sizeof(rcc));
+					COLORREF cf;
+					if (selected)
+						cf = RGB(0,0,0);
+					else
+						cf = RGB(96,96,96);
 
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
-						if (_Settings.m_ShowContactActivity)
+					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
+					if (_Settings.m_ShowContactActivity)
+					{
+						int l = rc_item.left;
+						// show activity
+						if (_Settings.m_ShowContactPicture)
 						{
-							int l = rc_item.left;
-							// show activity
-							if (_Settings.m_ShowContactPicture)
-							{
-								rc_item.top += 20;
-							}
-							else
-							{
-								rc_item.left = rcc.right + 2;
-							}
-							if (user->m_LastReceive + 500 > tick)
-								LastReceiveBuff[1] = '.';
-							else
-								LastReceiveBuff[1] = ' ';
-							if (user->m_LastSent + 500 > tick)
-								LastReceiveBuff[0] = '.';
-							else
-								LastReceiveBuff[0] = ' ';
-							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
-							if (_Settings.m_ShowContactPicture)
-							{
-								rc_item.top -= 20;
-							}
-							else
-							{
-								rc_item.left = l;
-							}
-							
+							rc_item.top += 20;
+						}
+						else
+						{
+							rc_item.left = rcc.right + 2;
+						}
+						if (user->m_LastReceive + 500 > tick)
+							LastReceiveBuff[1] = '.';
+						else
+							LastReceiveBuff[1] = ' ';
+						if (user->m_LastSent + 500 > tick)
+							LastReceiveBuff[0] = '.';
+						else
+							LastReceiveBuff[0] = ' ';
+						pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
+						if (_Settings.m_ShowContactPicture)
+						{
+							rc_item.top -= 20;
+						}
+						else
+						{
+							rc_item.left = l;
 						}
 
-						if (user->m_Block)
-							pDC->SetTextColor(RGB(255,32,32));
-						else
+					}
+
+					if (user->m_Block)
+						pDC->SetTextColor(RGB(255,32,32));
+					else
+						if (!selected)
 							pDC->SetTextColor(RGB(56,56,56));
 
-//						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
-						if (!user->m_Online && user->m_WippienState==WipConnected)
-							pDC->SetTextColor(RGB(127,127,127));
-						else
-							pDC->SetTextColor(cf);
-						rc_item.top += 12;
-						rc_item.left += 3;
-						pDC->SelectFont(m_hSubFont);
-						RECT rc1;
-						rc_item.right-=2;
-						memcpy(&rc1,&rc_item, sizeof(RECT));
-						if (_Settings.m_ShowContactStatus && !user->m_ChatRoomPtr)
+					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
+					if (!user->m_Online && user->m_WippienState==WipConnected)
+						pDC->SetTextColor(RGB(127,127,127));
+					else
+						pDC->SetTextColor(cf);
+					rc_item.top += 12;
+					rc_item.left += 3;
+					pDC->SelectFont(m_hSubFont);
+					RECT rc1;
+					rc_item.right-=2;
+					memcpy(&rc1,&rc_item, sizeof(RECT));
+					if (_Settings.m_ShowContactStatus && !user->m_ChatRoomPtr)
+					{
+						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
+						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
+					}
+					if (_Settings.m_ShowContactIP)
+					{
+						if (user->m_IPText[0])
 						{
-							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
-							pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
-						}
-						if (_Settings.m_ShowContactIP)
-						{
-							if (user->m_IPText[0])
+							rc_item.top -= 10;
+							rc_item.right -= 3;
+							switch (user->m_WippienState)
 							{
-								rc_item.top -= 10;
-								rc_item.right -= 3;
-								switch (user->m_WippienState)
-								{
-									case WipConnected:
-										if (user->m_Online)
-											pDC->SetTextColor(RGB(0,0,0));
-										else
-											pDC->SetTextColor(RGB(127,127,127));
-										break;
+								case WipConnected:
+									if (user->m_Online)
+										pDC->SetTextColor(RGB(0,0,0));
+									else
+										pDC->SetTextColor(RGB(127,127,127));
+									break;
 
-									case WipConnecting:
-										if (user->m_BlinkConnectingCounter%2)
-											pDC->SetTextColor(RGB(127,127,255));
-										else
-											pDC->SetTextColor(RGB(255,255,255));
-										break;
-
-									//case WipDisconnected:
-									default:
+								case WipConnecting:
+									if (user->m_BlinkConnectingCounter%2)
 										pDC->SetTextColor(RGB(127,127,255));
-										break;
+									else
+										pDC->SetTextColor(RGB(255,255,255));
+									break;
 
-								}
+								default:
+									pDC->SetTextColor(RGB(127,127,255));
+									break;
 
-								rc_item.left = rcc.right + 10;
-								// let's calculate clipping
-								memcpy(&rcc, &rc_item, sizeof(RECT));
-								pDC->DrawText(user->m_IPText, strlen(user->m_IPText), &rcc, DT_RIGHT | DT_CALCRECT);
-								if (rcc.right > rc_item.right)
-								{
-									pDC->DrawText("(...", 4, rc_item, DT_LEFT);
-									rc_item.left += 10;
-								}
-								pDC->DrawText(user->m_IPText, strlen(user->m_IPText), rc_item, DT_RIGHT);
 							}
+							rc_item.left = rcc.right + 10;
+							// let's calculate clipping
+							memcpy(&rcc, &rc_item, sizeof(RECT));
+
+							pDC->DrawText(user->m_IPText, strlen(user->m_IPText), &rcc, DT_RIGHT | DT_CALCRECT);
+							if (rcc.right > rc_item.right)
+							{
+								pDC->DrawText("(...", 4, rc_item, DT_LEFT);
+								rc_item.left += 10;
+							}
+							pDC->DrawText(user->m_IPText, strlen(user->m_IPText), rc_item, DT_RIGHT);
 						}
 					}
-					pDC->SetTextColor(color);
 				}
+				pDC->SetTextColor(color);
+				pDC->SetBkColor(col);
 				pDC->SelectFont(hOldFont);
 				// if ( state & TVIS_BOLD )
 				//	pDC->SelectObject( font );

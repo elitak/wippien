@@ -1519,22 +1519,6 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 					PostMessage(WM_REFRESH, NULL, TRUE);
 				}
 			}
-
-/*			h = ::GetDlgItem(m_Owner->m_hWnd, IDC_RENAMEEDIT);
-			*(HTREEITEM*)&rc = ht;
-			SendMessage(TVM_GETITEMRECT, FALSE, (LPARAM)&rc);
-			GetClientRect(&rc2);
-			rc.top += rc2.top+62;
-			rc.left += rc2.left + 33;
-			rc.bottom = rc.top+32;
-			rc.right = rc2.right-10;
-//			m_InlineEdit = TRUE;
-			m_Edit.SetSelAll();
-			SetCapture();
-			::SetWindowPos(h, HWND_TOP, rc.left, rc.top, rc.right-rc.left, rc.bottom-rc.top, SWP_SHOWWINDOW);
-			::SetWindowText(h, user->m_VisibleName);
-			::SetFocus(h);
-*/
 			break;
 
 		case ID_POPUP1_DELETE:

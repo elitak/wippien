@@ -192,6 +192,7 @@ CBalloonHelp::CBalloonHelp():
 	DumpDebug("*CBalloonHelp::CBalloonHelp\r\n");
 	m_Image = NULL;
 	m_Owner = NULL;
+	m_TreeItem = NULL;
 }
 
 //
@@ -379,14 +380,33 @@ BOOL CBalloonHelp::Create(
 	if(m_uTimeout>0)
 		SetTimer(IdTimerClose,m_uTimeout);
 
-	SetCapture();
+	ATLTRACE("SETCAPTURE\r\n");
 	if(!(m_dwOptions&BONoShow))
 	{
 		ShowWindow();
 		UpdateWindow();
 	}
+	SetCapture();
+	m_TreeItem = FindItemUnderCursor();
+
 
 	return TRUE;
+}
+
+HTREEITEM CBalloonHelp::FindItemUnderCursor(void)
+{
+	TVHITTESTINFO tv ={0};
+	::GetCursorPos(&tv.pt);
+
+
+	RECT rc;
+	_MainDlg.m_UserList.GetWindowRect(&rc);
+	tv.pt.x	-= rc.left;
+	tv.pt.y -= rc.top;
+
+	_MainDlg.m_UserList.SendMessage(TVM_HITTEST, 0, (LPARAM)&tv);
+
+	return tv.hItem;
 }
 
 //
@@ -1297,6 +1317,7 @@ void CBalloonHelp::OnCaptureChanged(HWND)
 		
 		dc.DrawFrameControl(rcCloseBtn, DFC_CAPTION, DFCS_CAPTIONCLOSE|DFCS_FLAT);
 	}
+	DestroyWindow();
 
 }// OnCaptureChanged
 
@@ -1309,7 +1330,7 @@ void CBalloonHelp::OnCaptureChanged(HWND)
 void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 {
 	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
-	POINT p;
+/*	POINT p;
 	GetCursorPos(&p);
 	RECT r;
 	GetWindowRect(&r);
@@ -1319,44 +1340,9 @@ void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 	if (p.y < r.top || p.y > r.bottom)
 		if (IsWindow())
 			DestroyWindow();
-
-	DumpDebug("*CBalloonHelp::OnMouseMove\r\n");
-	if(m_dwOptions & BOShowCloseButton)
-	{
-		CRect rcCloseBtn;
-		GetClientRect(&rcCloseBtn);
-		rcCloseBtn.left	  = rcCloseBtn.right-nCXCloseBtn;
-		rcCloseBtn.bottom = rcCloseBtn.top  +nCYCloseBtn;
-
-		UINT uState = DFCS_CAPTIONCLOSE;
-		BOOL bPushed= m_uCloseState&DFCS_PUSHED;
-
-		m_uCloseState &= ~DFCS_PUSHED;
-
-		if(rcCloseBtn.PtInRect(pt))
-		{
-			uState |= DFCS_HOT;
-
-			if(bPushed)
-				uState |= DFCS_PUSHED;
-
-			SetTimer(IdTimerHotTrack, TimerHotTrackElapse);
-		}
-		else
-		{
-			uState |= DFCS_FLAT;
-		}
-
-		if(uState!=m_uCloseState )
-		{
-			CClientDC dc(m_hWnd);
-			dc.DrawFrameControl(rcCloseBtn, DFC_CAPTION, uState);
-			m_uCloseState = uState;
-		}
-
-		if(bPushed)
-			m_uCloseState |= DFCS_PUSHED;
-	}
+*/
+	if (FindItemUnderCursor() != m_TreeItem)
+		DestroyWindow();
 }
 
 void CBalloonHelp::OnRButtonDown(UINT, CPoint pt) 
@@ -1472,7 +1458,6 @@ void CBalloonHelp::OnActivateApp(BOOL bActivate, DWORD dwTask)
 	if(!bActivate && (m_dwOptions & BOCloseOnAppDeactivate))
 		CloseWindow();
 }
-
 
 //
 //	AnimateWindow needs this

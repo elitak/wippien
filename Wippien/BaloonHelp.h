@@ -207,6 +207,8 @@ public:
 	HWND m_Owner;
 	enum{OleSysColorBits=0x80000000};
 
+	HTREEITEM m_TreeItem;
+	HTREEITEM FindItemUnderCursor(void);
 	void SetTitleFont(HFONT hFont);
 	void SetContentFont(HFONT hFont);
 //	void SetIcon(LPCTSTR pszIcon);
@@ -297,7 +299,6 @@ protected:
 	void OnActivateApp(BOOL bActivate, DWORD dwTask);
 	void OnFinalMessage(HWND);
 	void OnPrint(HDC hdc,UINT);
-
 protected:
 	
 	DWORD			m_dwOptions;

@@ -801,6 +801,18 @@ void CUserList::RefreshView(BOOL updateonly)
 									 TreeItem.hParent = FindRoot(p->m_Group);
 								}
 								TreeItem.hInsertAfter = TVI_LAST;
+
+								// let's find this group
+								for (int it = 0; it < _Settings.m_Groups.size(); it++)
+								{
+									CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[it];
+									if (!stricmp(tg->Name, p->m_Group))
+									{
+										if (p->m_ChatRoomPtr)
+											tg->Temporary = TRUE;
+									}
+								}
+
 						}
 						
 						if (p->m_TreeItem && updateonly) // only for old users that go offline

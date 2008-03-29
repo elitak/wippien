@@ -1504,11 +1504,11 @@ void CBalloonHelp::OnPrint(HDC hdc,UINT Flags)
 //
 void CBalloonHelp::OnFinalMessage(HWND)
 {
-	DumpDebug("*CBalloonHelp::OnFinalMessage\r\n");
-	if(m_dwOptions & BODeleteThisOnClose)
-	{
-		delete this;
-	}
+//	DumpDebug("*CBalloonHelp::OnFinalMessage\r\n");
+//	if(m_dwOptions & BODeleteThisOnClose)
+//	{
+//		delete this;
+//	}
 	if (m_Owner && ::IsWindow(m_Owner))
 		::PostMessage(m_Owner, WM_TIMER, 108,0);
 }

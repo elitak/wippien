@@ -27,7 +27,7 @@ public:
 
 
 	BEGIN_MSG_MAP(CAboutDlg)
-		ATLTRACE("Msg = %x\r\n", uMsg);
+//		ATLTRACE("Msg = %x\r\n", uMsg);
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		MESSAGE_HANDLER(WM_PAINT, OnPaint)
 		MESSAGE_HANDLER(WM_CTLCOLORSTATIC, OnCtlColorStatic)

@@ -647,12 +647,12 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 												int ch = 0;
 												if ((user->m_HisMediatorChoice + user->m_MyMediatorChoice) % 2 != 0)
 												{
-													ATLTRACE("selecting MAX\r\n");
+//													ATLTRACE("selecting MAX\r\n");
 													ch = MAX(user->m_HisMediatorChoice, user->m_MyMediatorChoice);
 												}
 												else
 												{
-													ATLTRACE("selecting MIN\r\n");
+//													ATLTRACE("selecting MIN\r\n");
 													ch = MIN(user->m_HisMediatorChoice, user->m_MyMediatorChoice);
 												}
 												if (ch == user->m_HisMediatorChoice)

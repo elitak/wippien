@@ -5061,7 +5061,7 @@ LRESULT CSettingsDlg::CSettingsSkins::OnMoreSkins(WORD wNotifyCode, WORD wID, HW
 
 LRESULT CSettingsDlg::CSettingsSkins::OnSkinList(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	ATLTRACE("wNotifyCode = %d, wID = %x\r\n", wNotifyCode, wID);
+//	ATLTRACE("wNotifyCode = %d, wID = %x\r\n", wNotifyCode, wID);
 	if (wNotifyCode == LBN_SELCHANGE)
 	{
 		::EnableWindow(GetDlgItem(IDB_APPLY), TRUE);
@@ -5951,7 +5951,7 @@ LRESULT CSettingsDlg::CSettingsSound::OnPlayCmd(WORD wNotifyCode, WORD wID, HWND
 
 LRESULT CSettingsDlg::CSettingsSound::OnSoundList(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	ATLTRACE("wNotifyCode = %d, wID = %x\r\n", wNotifyCode, wID);
+//	ATLTRACE("wNotifyCode = %d, wID = %x\r\n", wNotifyCode, wID);
 	if (wNotifyCode == LBN_SELCHANGE)
 	{
 		m_IChange = TRUE;
@@ -6609,7 +6609,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnChange(WORD wNotifyCode, WORD wID, H
 
 LRESULT CSettingsDlg::CSettingsChatRooms::OnGatewayListClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	ATLTRACE("code = %x\r\n", wNotifyCode);
+//	ATLTRACE("code = %x\r\n", wNotifyCode);
 	if (wNotifyCode == CBN_CLOSEUP)
 	{
 		char buff[1024];

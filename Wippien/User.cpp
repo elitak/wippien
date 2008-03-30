@@ -275,7 +275,7 @@ CUser::~CUser()
 	}
 	ReInit(TRUE);
 
-	ATLTRACE("Destroying user\r\n");
+//	ATLTRACE("Destroying user\r\n");
 	
 	if (m_RSA)
 		RSA_free(m_RSA);

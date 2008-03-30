@@ -3133,7 +3133,7 @@ LRESULT CMsgWin::CWEmoticon::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lP
 	}
 	RECT rc;
 	GetWindowRect(&rc);
-	ATLTRACE("Balloon over %d\r\n", bal);
+//	ATLTRACE("Balloon over %d\r\n", bal);
 	if (bal != m_LastBalloon)
 	{
 		m_LastBalloon = bal;
@@ -3161,7 +3161,7 @@ LRESULT CMsgWin::CWEmoticon::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lP
 			::SetWindowPos(m_BalloonHwnd, HWND_TOP, xp + rc.left, yp+ rc.top, rcbal.cx+5, rcbal.cy+5, SWP_NOACTIVATE);
 			::ShowWindow(m_BalloonHwnd, SW_SHOW);
 			::InvalidateRect(m_BalloonHwnd, NULL, TRUE);
-			ATLTRACE("m_LastBalloon = %d\r\n", m_LastBalloon);
+//			ATLTRACE("m_LastBalloon = %d\r\n", m_LastBalloon);
 		}
 	}
 	return FALSE;

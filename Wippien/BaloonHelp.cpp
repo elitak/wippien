@@ -380,7 +380,7 @@ BOOL CBalloonHelp::Create(
 	if(m_uTimeout>0)
 		SetTimer(IdTimerClose,m_uTimeout);
 
-	ATLTRACE("SETCAPTURE\r\n");
+//	ATLTRACE("SETCAPTURE\r\n");
 	if(!(m_dwOptions&BONoShow))
 	{
 		ShowWindow();

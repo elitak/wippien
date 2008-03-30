@@ -31,7 +31,7 @@ public:
 //	HBRUSH m_Brush, m_Back;
 
 	BEGIN_MSG_MAP(CProgressDlg)
-		ATLTRACE("Msg = %x\r\n", uMsg);
+//		ATLTRACE("Msg = %x\r\n", uMsg);
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 //		MESSAGE_HANDLER(WM_PAINT, OnPaint)
 //	    MESSAGE_HANDLER(WM_ERASEBKGND, OnEraseBackground)

@@ -155,6 +155,7 @@ CMainDlg::~CMainDlg()
 		if (m_pBalloon->IsWindow())
 			m_pBalloon->DestroyWindow();
 		delete m_pBalloon;
+		m_pBalloon = NULL;
 	}
 
 #ifdef _SKINMAGICKEY
@@ -768,6 +769,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								if (m_pBalloon->IsWindow())
 									m_pBalloon->DestroyWindow();
 								delete m_pBalloon;
+								m_pBalloon = NULL;
 							}
 							m_pBalloon =new CBalloonHelp;
 							CxImage* img = NULL;
@@ -2714,6 +2716,7 @@ LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 		if (m_pBalloon->IsWindow())
 			m_pBalloon->DestroyWindow();
 		delete m_pBalloon;
+		m_pBalloon = NULL;
 	}
 
 	DumpDebug("*MainDlg::OnMouseMove \r\n");

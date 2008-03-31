@@ -351,6 +351,7 @@ void CUser::ReInit(BOOL WithDirect)
 	m_DetectMTU = NULL;
 	SetSubtext();
 	m_Hidden = FALSE;
+	m_Resource[0] = 0;
 
 
 }

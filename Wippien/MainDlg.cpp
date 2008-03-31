@@ -2683,6 +2683,16 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 						if (user)
 						{
 							strcpy(user->m_Group, tg->Name);
+							
+							void *ct = NULL;
+							WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+							if (ct)
+							{
+								if (!strcmp(user->m_Group, GROUP_GENERAL)) // is this general group?
+									WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, "");
+								else
+									WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, user->m_Group);;
+							}
 							user->m_Changed = TRUE;
 							m_UserList.m_SortedUsersBuffer.Clear();
 //							m_UserList.Refresh(NULL);

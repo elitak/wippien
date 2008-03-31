@@ -2845,6 +2845,12 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnRemoveGroup(WORD wNotifyCode
 						// move user to different group
 						user->m_Group[0] = 0;
 //						strcpy(user->m_Group, GROUP_GENERAL);
+
+						void *ct = NULL;
+						WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+						if (ct)
+							WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, "");
+
 					}
 				}
 

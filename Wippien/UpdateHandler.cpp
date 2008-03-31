@@ -105,7 +105,7 @@ public:
 					WODAPPUPDCOMLib::AppUpd_Messages_GetCount(wodAppUpd, &count);
 #endif
 					short min = 32000;
-					for (int i=0;i<count;i++)
+					for (int i=0;i<count && !showmsg;i++)
 					{
 #ifndef _APPUPDLIB
 						if (SUCCEEDED(msgs->get_Item(i, &msg)))

@@ -415,6 +415,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 					int jdlen = sizeof(jdbuff);
 					WODXMPPCOMLib::XMPP_Contact_GetJID(contact, jdbuff, &jdlen);
 					CComBSTR2 jid, jd = jdbuff, jdnew = jdbuff;
+
 					{
 #endif
 						char *res = NULL;
@@ -565,6 +566,17 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										if (strstr(r.ToString(), WIPPIENIM))
 											isWippien = TRUE;
 
+										// if group isn't set remotely, but is locally, set it
+										char grp[1024];
+										int grplen = sizeof(grp);
+										WODXMPPCOMLib::XMPP_Contact_GetGroup(contact, grp, &grplen);
+										
+										if (grp[0]) // if server provides group, override ours
+											strcpy(user->m_Group, grp);
+										else
+											if (user->m_Group[0] && strcmp(user->m_Group, GROUP_GENERAL)) // set remote group for future
+												WODXMPPCOMLib::XMPP_Contact_SetGroup(contact, user->m_Group);											
+
 										// also check by resource (obsolete!)
 										if (!isWippien)
 										{
@@ -605,6 +617,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								{
 									if (user->m_Online)
 									{
+
 										user->m_Changed = TRUE;
 										user->m_ChangeNotify = TRUE;
 									}

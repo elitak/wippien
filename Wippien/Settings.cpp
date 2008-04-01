@@ -741,9 +741,9 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "ExtendedAwayMinutes", &m_ExtendedAwayMinutes, 20);
 			ReadSettingsCfg(wip, "AutoDisconnectMinutes", &m_AutoDisconnectMinutes, 0);
 			ReadSettingsCfg(wip, "AutoAwayMessage", m_AutoAwayMessage, "");
-			if (m_AutoAwayMessage.Length()) m_AutoAwayMessage =AWAY_MESSAGE;
+			if (!m_AutoAwayMessage.Length()) m_AutoAwayMessage =AWAY_MESSAGE;
 			ReadSettingsCfg(wip, "ExtendedAwayMessage", m_ExtendedAwayMessage, "");
-			if (m_ExtendedAwayMessage.Length()) m_ExtendedAwayMessage= EXTAWAY_MESSAGE;
+			if (!m_ExtendedAwayMessage.Length()) m_ExtendedAwayMessage= EXTAWAY_MESSAGE;
 			ReadSettingsCfg(wip, "AutoSetBack", &m_AutoSetBack, TRUE);
 		}
 		CXmlEntity *wnd = CXmlEntity::FindByName(start, "Message_Dialog_Window", 1);

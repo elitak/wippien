@@ -24,8 +24,11 @@ public:
 	void CloseMsgWindow(void);
 	void PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html);
 	void Leave(void);
+	void CreateGroup(void);
+	void RemoveGroup(void);
 	
 	char m_JID[1024];
+	char m_ShortName[128];
 	char m_Nick[1024];
 	RECT m_ChatWindowRect;
 	BOOL m_Block;

@@ -486,21 +486,15 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										if (!strcmp(room->m_JID, chatroom1))
 										{					
 											user->m_ChatRoomPtr = room;
+											room->CreateGroup();
 											user->m_Block = room->m_Block; 
-											CComBSTR2 g = user->m_Group;
-											char *g1 = g.ToString();
-											char *g2 = strchr(g1, '@');
-											if (g2)
-											{
-												*g2 = 0;
-												strcpy(user->m_Group, g1);
-											}
+											strcpy(user->m_Group, room->m_ShortName);
 											break;
 										}	
 										
 									}	
 									if (!user->m_ChatRoomPtr)
-										return; // should not happen									
+										return; // should not happen										
 							}	
 						}
 						
@@ -811,10 +805,17 @@ void CUserList::RefreshView(BOOL updateonly)
 								if (!TreeItem.hParent)
 								{
 									::PostMessage(m_hWnd, WM_REFRESH, 0, FALSE);
-									 TreeItem.hParent = FindRoot(p->m_Group);
+									if (p->m_ChatRoomPtr)
+									{
+										p->m_ChatRoomPtr->CreateGroup();
+										strcpy(p->m_Group, p->m_ChatRoomPtr->m_ShortName);
+									}
+									TreeItem.hParent = FindRoot(p->m_Group);
+
 								}
 								TreeItem.hInsertAfter = TVI_LAST;
 
+/*
 								// let's find this group
 								for (int it = 0; it < _Settings.m_Groups.size(); it++)
 								{
@@ -825,7 +826,7 @@ void CUserList::RefreshView(BOOL updateonly)
 											tg->Temporary = TRUE;
 									}
 								}
-
+*/
 						}
 						
 						if (p->m_TreeItem && updateonly) // only for old users that go offline
@@ -1053,6 +1054,13 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 
 	if (hi)
 	{
+		for (int i = 0; i < _Settings.m_Groups.size(); i++)
+		{
+			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+			if (!strcmp(tg->Name, RootName))
+				return hi;
+		}
+
 		// add it to groups collection
 		CSettings::TreeGroup *tg = new CSettings::TreeGroup;
 		tg->Item = hi;

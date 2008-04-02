@@ -2504,6 +2504,7 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 				return;
 			}
 		}
+
 		
 		// none found? Add new!
 		CChatRoom *room = new CChatRoom();

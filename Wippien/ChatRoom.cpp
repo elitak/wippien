@@ -24,10 +24,31 @@ CChatRoom::CChatRoom()
 	CComBSTR2 n = _Settings.m_Nick;
 	strcpy(m_Nick, n.ToString());
 	memset(&m_ChatWindowRect, 0, sizeof(m_ChatWindowRect));
+	memset(m_ShortName, 0, sizeof(m_ShortName));
 	m_Block = FALSE;
 }
 
 CChatRoom::~CChatRoom()
+{
+
+	if (m_MessageWin)
+	{
+		if (m_MessageWin->IsWindow())
+			m_MessageWin->DestroyWindow();
+		delete m_MessageWin;
+	}
+	RemoveGroup();
+}
+
+BOOL CChatRoom::IsMsgWindowOpen(void)
+{
+	if (m_MessageWin && m_MessageWin->m_hWnd && IsWindow(m_MessageWin->m_hWnd))
+		return TRUE;
+
+	return FALSE;
+}
+
+void CChatRoom::RemoveGroup(void)
 {
 	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 	{
@@ -39,17 +60,12 @@ CChatRoom::~CChatRoom()
 			i--;
 		}
 	}
-
-	CComBSTR2 j = m_JID;
-	char *j1 = j.ToString();
-	char *j2 = strchr(j1, '@');
-	if (j2)
-		*j2 = 0;
+	
 
 	for (i=0;i<_Settings.m_Groups.size();i++)
 	{
 		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-		if (tg->Temporary && (!strcmp(tg->Name, j1) || !strcmp(tg->Name, m_JID)))
+		if (tg->Temporary && !strcmp(tg->Name, m_ShortName))
 		{
 			_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
 			free(tg->Name);
@@ -58,22 +74,39 @@ CChatRoom::~CChatRoom()
 		}
 	}
 
-	if (m_MessageWin)
-	{
-		if (m_MessageWin->IsWindow())
-			m_MessageWin->DestroyWindow();
-		delete m_MessageWin;
-	}
-
 	::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0,FALSE);
 }
 
-BOOL CChatRoom::IsMsgWindowOpen(void)
-{
-	if (m_MessageWin && m_MessageWin->m_hWnd && IsWindow(m_MessageWin->m_hWnd))
-		return TRUE;
 
-	return FALSE;
+void CChatRoom::CreateGroup(void)
+{
+	char buff[1024];
+	buff[0] = '[';
+	strcpy(buff+1, m_JID);
+	char *j2 = strchr(buff, '@');
+	if (j2)
+	{
+		*j2 = ']';
+		j2++;
+		*j2 = 0;
+	}
+
+	for (int i = 0; i < _Settings.m_Groups.size(); i++)
+	{
+		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+		if (!strcmp(tg->Name, buff))
+			return;
+	}
+
+	strcpy(m_ShortName, buff);
+	// let's create group for this, if there isn't any...
+	CSettings::TreeGroup *grp = new CSettings::TreeGroup;
+	memset(grp, 0, sizeof(CSettings::TreeGroup));
+	grp->Name = (char *)malloc(strlen(buff)+1);
+	strcpy(grp->Name, buff);
+	grp->Open = TRUE;
+	grp->Temporary = TRUE;
+	_Settings.PushGroupSorted(grp);
 }
 
 void CChatRoom::OpenMsgWindow(BOOL WithFocus)
@@ -113,6 +146,7 @@ void CChatRoom::CloseMsgWindow(void)
 
 void CChatRoom::PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html)
 {
+	CreateGroup();
 	OpenMsgWindow(FALSE);
 	if (!IsSystem)
 		FlashWindow(m_MessageWin->m_hWnd, TRUE);
@@ -146,5 +180,6 @@ void CChatRoom::Leave(void)
 		}
 */
 		
+		RemoveGroup();
 		::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0,FALSE);
 }

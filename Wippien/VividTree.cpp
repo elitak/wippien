@@ -93,7 +93,11 @@ void CVividTree::DrawItems(CDC *pDC)
 						// Draw round-rect selection
 						RECT rc;
 						memcpy(&rc,&rect, sizeof(rc));
-						rc.left += 4;
+
+						if (_Settings.m_ShowContactPicture && !user->m_ChatRoomPtr)
+							rc.left += 4;
+						else
+							rc.left -= 22;
 						rc.top += 1;
 						rc.bottom += 1;
 						pDC->FillSolidRect(&rc, ::GetSysColor(COLOR_WINDOW));

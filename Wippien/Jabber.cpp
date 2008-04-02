@@ -1322,6 +1322,8 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 #endif
 	}
 
+#if 0
+
 	// let's fix JID so it *always* sends WIPPIENIM3 resource
 	CComBSTR2 jid1 = JID;
 	char *jid2 = jid1.ToString();
@@ -1332,7 +1334,9 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 	}
 	char jid4[1024];
 	sprintf(jid4, "%s/%s", jid2, WIPPIENIM);
-
+#else
+	char *jid4 = JID;
+#endif
 //	Contact->SendMessage(msg);
 #ifndef _WODXMPPLIB
 #error TODO

@@ -488,6 +488,7 @@ int CSettings::Load(void)
 			if (mj3)
 				*mj3 = NULL;
 			ReadSettingsCfg(wip, "Nick", m_Nick, mj2);
+			if (!m_Nick.Length()) m_Nick = mj2;
 			if (!m_Password.Length())
 			{
 				ReadSettingsCfg(wip, "Password", m_Password, "");
@@ -1243,14 +1244,12 @@ BOOL CSettings::Save(BOOL UserOnly)
 		}
 	}
 
-	if (x.Len()>10) // if there's anything inside at all
+	handle = open(m_UsrFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+	if (handle != (-1))
 	{
-		handle = open(m_UsrFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
-		if (handle != (-1))
-		{
+		if (x.Len()>10) // if there's anything inside at all
 			write(handle, x.Ptr(), x.Len());
-			close(handle);
-		}
+		close(handle);
 	}
 	return TRUE;
 }

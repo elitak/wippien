@@ -49,7 +49,7 @@ CChatRoom::~CChatRoom()
 	for (i=0;i<_Settings.m_Groups.size();i++)
 	{
 		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-		if (tg->Temporary && !strcmp(tg->Name, j1))
+		if (tg->Temporary && (!strcmp(tg->Name, j1) || !strcmp(tg->Name, m_JID)))
 		{
 			_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
 			free(tg->Name);

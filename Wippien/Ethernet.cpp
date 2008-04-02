@@ -68,6 +68,7 @@ CEthernet::CEthernet()
 
 	m_Guid[0] = m_RegistryKey[0];
 	m_FirewallRulesChanged = FALSE;
+	m_Activity = FALSE;
 }
 
 CEthernet::~CEthernet()

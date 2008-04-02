@@ -571,8 +571,7 @@ void CUser::ProcessNetworkData(char *buffreal, int len)
 {
 	m_LastReceive = GetTickCount();
 	m_TotalReceived += len;
-	_MainDlg.m_UserList.SetTimer(0, 500);
-	_MainDlg.m_UserList.Invalidate();
+	_Ethernet.m_Activity = TRUE;
 	_Ethernet.InjectPacket(buffreal, len);
 }
 
@@ -852,8 +851,7 @@ BOOL CUser::SendNetworkPacket(char *data, int len)
 
 				m_LastSent = GetTickCount();
 				m_TotalSent += len;
-				_MainDlg.m_UserList.SetTimer(0, 500);
-				_MainDlg.m_UserList.Invalidate();
+				_Ethernet.m_Activity = TRUE;
 				EnterCriticalSection(&m_CritCS);
 #ifdef _WODVPNLIB
 				if (m_wodVPN)

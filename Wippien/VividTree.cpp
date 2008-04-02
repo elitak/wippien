@@ -195,13 +195,10 @@ void CVividTree::DrawItems(CDC *pDC)
 						int l = rc_item.left;
 						// show activity
 						if (_Settings.m_ShowContactPicture)
-						{
 							rc_item.top += 20;
-						}
 						else
-						{
 							rc_item.left = rcc.right + 2;
-						}
+
 						if (user->m_LastReceive + 500 > tick)
 							LastReceiveBuff[1] = '.';
 						else

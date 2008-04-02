@@ -84,6 +84,7 @@ public:
 	HANDLE m_AdapterHandle;
 	BOOL m_Alive, m_Available, m_Enabled;
 	BOOL m_FirewallRulesChanged;
+	BOOL m_Activity;
 
 	HANDLE Handles[3];
 	#define DieHandle	Handles[0]

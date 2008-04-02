@@ -624,6 +624,15 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 			}
 			break;
 
+		case 113:
+			if (_Ethernet.m_Activity)
+			{
+				m_UserList.Invalidate();
+//				_Ethernet.m_Activity = FALSE;
+			}
+			break;
+
+
 		case 102:
 			{
 				// if no auto then go out
@@ -1727,6 +1736,7 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	SetTimer(109, 60000L); // update timer
 	SetTimer(106, 10L);
 	SetTimer(112, 1000); // check inactivity timer
+	SetTimer(113, 250); // data active
 
 	// register object for message filtering and idle updates
 	CMessageLoop* pLoop = _Module.GetMessageLoop();

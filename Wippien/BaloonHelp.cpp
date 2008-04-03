@@ -1347,21 +1347,19 @@ void CBalloonHelp::OnMouseMove(UINT, CPoint pt)
 
 void CBalloonHelp::OnRButtonDown(UINT, CPoint pt) 
 {
-/*	RECT r;
-	GetWindowRect(&r);
-	pt.x += r.left;
-	pt.y += r.top;
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
+	
+	GetCursorPos(&pt);
 	HWND h = WindowFromPoint(pt);
 	DestroyWindow();
 	if (h != m_hWnd)
 	{
+		RECT r;
 		::GetWindowRect(h, &r);
 		pt.x -= r.left;
 		pt.y -= r.top;
 		::PostMessage(h, WM_RBUTTONDOWN, NULL, MAKELONG(pt.x, pt.y));
 	}
-*/
-	DestroyWindow();
 }
 
 //
@@ -1370,21 +1368,36 @@ void CBalloonHelp::OnRButtonDown(UINT, CPoint pt)
 void CBalloonHelp::OnLButtonDown(UINT, CPoint pt) 
 {
 	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
-/*	RECT r;
-	GetWindowRect(&r);
-	pt.x += r.left;
-	pt.y += r.top;
+
+	GetCursorPos(&pt);
 	HWND h = WindowFromPoint(pt);
 	DestroyWindow();
 	if (h != m_hWnd)
 	{
+		RECT r;
 		::GetWindowRect(h, &r);
 		pt.x -= r.left;
 		pt.y -= r.top;
 		::PostMessage(h, WM_LBUTTONDOWN, NULL, MAKELONG(pt.x, pt.y));
 	}
-*/
+
+}
+void CBalloonHelp::OnLButtonDblClick(UINT, CPoint pt) 
+{
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
+	
+	GetCursorPos(&pt);
+	HWND h = WindowFromPoint(pt);
 	DestroyWindow();
+	if (h != m_hWnd)
+	{
+		RECT r;
+		::GetWindowRect(h, &r);
+		pt.x -= r.left;
+		pt.y -= r.top;
+		::PostMessage(h, WM_LBUTTONDBLCLK, NULL, MAKELONG(pt.x, pt.y));
+	}
+	
 }
 
 

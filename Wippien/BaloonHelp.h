@@ -268,6 +268,7 @@ protected:
 		MSG_WM_CAPTURECHANGED(OnCaptureChanged)
 		MSG_WM_MOUSEMOVE(OnMouseMove)
 		MSG_WM_LBUTTONDOWN(OnLButtonDown)
+		MSG_WM_LBUTTONDBLCLK(OnLButtonDblClick)
 		MSG_WM_LBUTTONUP(OnLButtonUp)
 		MSG_WM_RBUTTONDOWN(OnRButtonDown)
 		MSG_WM_MOUSEACTIVATE(OnMouseActivate)
@@ -286,6 +287,7 @@ protected:
 	void OnCaptureChanged(HWND);
 	void OnMouseMove(UINT, CPoint pt);
 	void OnLButtonDown(UINT, CPoint pt);
+	void OnLButtonDblClick(UINT, CPoint pt);
 	void OnRButtonDown(UINT, CPoint pt);
 	void OnLButtonUp(UINT, CPoint pt);
 	int	 OnMouseActivate(HWND hWnd, UINT nHitTest,UINT nMsg){return MA_NOACTIVATE;}

@@ -120,8 +120,6 @@ CMainDlg::~CMainDlg()
 	if (m_SimpleHttpRequest)
 		delete m_SimpleHttpRequest;
 	DumpDebug("*MainDlg::~MainDlg\r\n");
-	if (_Settings.m_LoadSuccess)
-		_Settings.Save(FALSE);
 	DeleteObject(m_IconSmall);
 	DeleteObject(m_Icon);
 	DeleteObject(m_WhiteBrush);
@@ -442,8 +440,6 @@ LRESULT CMainDlg::OnExitSizeMove(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 //	ATLTRACE("OnExitSizeMove\r\n");
 //	m_IMove=FALSE;
 	CheckAppbar();
-
-
 	
 	bHandled = FALSE;
 	return FALSE;

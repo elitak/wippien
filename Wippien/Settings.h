@@ -58,7 +58,7 @@ public:
 	long	m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFile, m_FunctionDebugFile;
 	CComBSTR m_Skin, m_UpdateURL, m_IPProviderURL;
-	BOOL m_AllowAnyMediator, m_SoundOn, m_LoadSuccess;
+	BOOL m_AllowAnyMediator, m_SoundOn;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
 	BOOL	m_UseSSLWrapper, m_AutoHide;

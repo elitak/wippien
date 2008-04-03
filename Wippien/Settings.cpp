@@ -40,8 +40,6 @@ char *REGISTRYKEY = "Software\\Kresimir Petric\\Wippien";
 
 CSettings::CSettings()
 {
-	m_LoadSuccess = FALSE;
-
 	m_TimestampMessages = TRUE;
 	m_ShowMessageHistory = TRUE;
 	m_SoundOn = TRUE;
@@ -218,8 +216,8 @@ CSettings::CSettings()
 	m_CheckUpdateTimedNum = 60;
 	m_NowProtected = FALSE;
 	m_SnapToBorder = FALSE;
-	m_AutoHide = FALSE;
-	m_AutoHideSeconds = 10;
+	m_AutoHide = TRUE;
+	m_AutoHideSeconds = 20;
 
 	m_DeleteContactsOnStartup = FALSE;
 	m_DeleteContactsOnConnect = FALSE;
@@ -391,8 +389,6 @@ int CSettings::Load(void)
 {
 	char buff[32768];
 
-	m_LoadSuccess = FALSE;
-
 	Buffer pout;
 	AESRead(&pout);
 	if (pout.Len())
@@ -446,9 +442,6 @@ int CSettings::Load(void)
 			b.Append(buff, i);
 	} while (i>0);
 	close(handle);
-
-	if (b.Len())
-		m_LoadSuccess = TRUE;
 
 	b.Append("\0",1);
 
@@ -518,8 +511,8 @@ int CSettings::Load(void)
 			ReadSettingsCfg(wip, "ShowMyStatus", &m_ShowMyStatus, TRUE);
 			ReadSettingsCfg(wip, "TimestampMessages", &m_TimestampMessages, TRUE);
 			ReadSettingsCfg(wip, "SnapToBorder", &m_SnapToBorder, FALSE);
-			ReadSettingsCfg(wip, "AutoHideOnInactivity", &m_AutoHide, FALSE);
-			ReadSettingsCfg(wip, "AutoHideOnInactivirySeconds", &m_AutoHideSeconds, 10);
+			ReadSettingsCfg(wip, "AutoHideOnInactivity", &m_AutoHide, TRUE);
+			ReadSettingsCfg(wip, "AutoHideOnInactivitySeconds", &m_AutoHideSeconds, 20);
 			ReadSettingsCfg(wip, "ShowMessageHistory", &m_ShowMessageHistory, TRUE);
 			ReadSettingsCfg(wip, "FirewallDefaultAllowRule", &m_FirewallDefaultAllowRule, TRUE);		
 			ReadSettingsCfg(wip, "Skin", m_Skin, "");

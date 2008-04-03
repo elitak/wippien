@@ -70,9 +70,9 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 {
 	CUser *me = (CUser *)this;
 #endif
+//	me->m_WippienState = WipDisconnected;	
+//	me->KillTimer(2);
 	me->ReInit(TRUE);
-//	KillTimer(2);
-//	m_WippienState = WipDisconnected;	
 	me->SetSubtext();
 	me->m_Changed = TRUE;
 	_MainDlg.m_UserList.PostMessage(WM_REFRESH, 0, (LPARAM)me);
@@ -92,7 +92,6 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 	CUser *me = (CUser *)this;
 #endif
 
-	me->KillTimer(2);
 	if (!ErrorCode)
 	{
 #ifdef _WODVPNLIB
@@ -319,6 +318,10 @@ void CUser::ReInit(BOOL WithDirect)
 {
 	if (WithDirect)
 	{
+		int oldst = m_WippienState;
+		KillTimer(1);
+		KillTimer(2);
+
 		m_MyMediatorOffer[0] = 0;
 		m_WippienState = WipWaitingInitRequest;
 		m_RemoteWippienState = WipUndefined;
@@ -332,9 +335,6 @@ void CUser::ReInit(BOOL WithDirect)
 
 		memset(&m_RemoteAddr, 0, sizeof(m_RemoteAddr));
 	
-		KillTimer(1);
-		KillTimer(2);
-		int oldst = m_WippienState;
 
 		if (_SDK && oldst != m_WippienState)
 		{
@@ -346,6 +346,9 @@ void CUser::ReInit(BOOL WithDirect)
 				return;
 		}
 	}
+	m_BlinkConnectingCounter = 0;
+	m_BlinkTimerCounter = 0;
+
 	m_MyMediatorChoice = (-1);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
@@ -451,6 +454,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 				if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_USERVPNCHANGE, b.Ptr(), b.Len()))
 					return;
 			}
+
 			m_BlinkConnectingCounter = 0;
 			SetTimer(1000, 1);
 			SetTimer(150, 2);
@@ -1134,6 +1138,7 @@ void CUser::NotifyBlock(void)
 {
 	if (m_Block && _Jabber)
 	{
+		m_WippienState = WipDisconnected;
 		NotifyDisconnect();
 	}
 }

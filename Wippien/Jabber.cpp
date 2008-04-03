@@ -490,6 +490,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							subjbufflen = sizeof(subjbuff);
 							WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, subjbuff, &subjbufflen);
 							j = subjbuff;
+
 #endif
 							{
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
@@ -500,6 +501,18 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									if (strstr(capa.ToString(), WIPPIENIM))
 										isWippien = TRUE;
 	
+									if (!isWippien)
+									{
+										// check JID
+										char *j1 = strchr(subjbuff, '/');
+										if (j1)
+										{
+											j1++;
+											if (!strcmp(j1, WIPPIENIM))
+												isWippien = TRUE;
+										}
+									}
+
 									if (!isWippien)
 									{
 										// check also resource

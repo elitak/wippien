@@ -2228,16 +2228,28 @@ HRESULT CMsgWin::CInputBox::Send()
 					sprintf(room, "%s/%s", m_ParentDlg->m_Room->m_JID, m_ParentDlg->m_Room->m_Nick);
 
 #ifndef _WODXMPPLIB
-#error TODO
+					WODXMPPCOMLib::IXMPPChatRoom *croom = NULL;
+					WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;
+					_Jabber->m_Jabb->get_ChatRooms(&rs);
+					if (rs)
+					{
+						CComBSTR n = room;
+						VARIANT var;
+						var.vt = VT_BSTR;
+						var.bstrVal = n;
+						rs->get_Room(var, &croom);
+					}
 #else
 					void *croom = NULL;
 					WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, room, &croom);
 #endif
 
-					_Jabber->ChatRoomMessage(croom, b3.ToString(), b2.ToString());
+					if (croom)
+						_Jabber->ChatRoomMessage(croom, b3.ToString(), b2.ToString());
 
 #ifndef _WODXMPPLIB
-#error TODO
+					if (croom)
+						croom->Release();
 #else
 					WODXMPPCOMLib::XMPP_ChatRoom_Free(croom);
 #endif

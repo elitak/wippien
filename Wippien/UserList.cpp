@@ -395,8 +395,10 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 				if (SUCCEEDED(hr))
 				{					
 					CComBSTR2 jid, jd;
+					CComBSTR2 jdnew;
 					if (SUCCEEDED(contact->get_JID(&jd)))
 					{
+						jdnew = jd;
 #else
 	short count = 0;
 	WODXMPPCOMLib::XMPP_ContactsGetCount(_Jabber->m_Jabb, &count);
@@ -560,16 +562,29 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										if (strstr(r.ToString(), WIPPIENIM))
 											isWippien = TRUE;
 
+#ifndef _WODXMPPLIB
+										CComBSTR2 gpr3;
+										contact->get_Group(&gpr3);
+										char *grp = gpr3.ToString();
+#else
 										// if group isn't set remotely, but is locally, set it
 										char grp[1024];
 										int grplen = sizeof(grp);
 										WODXMPPCOMLib::XMPP_Contact_GetGroup(contact, grp, &grplen);
+#endif
 										
 										if (grp[0]) // if server provides group, override ours
 											strcpy(user->m_Group, grp);
 										else
 											if (user->m_Group[0] && strcmp(user->m_Group, GROUP_GENERAL)) // set remote group for future
+#ifndef _WODXMPPLIB
+											{
+												CComBSTR gpr4 = user->m_Group;
+												contact->put_Group(gpr4);
+											}
+#else
 												WODXMPPCOMLib::XMPP_Contact_SetGroup(contact, user->m_Group);											
+#endif
 
 										// also check by resource (obsolete!)
 										if (!isWippien)

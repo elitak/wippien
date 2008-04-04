@@ -52,14 +52,16 @@ void PopulateChatRoomListview(void);
 _ATL_FUNC_INFO ConnectedInfo = {CC_STDCALL, VT_EMPTY, 0};
 _ATL_FUNC_INFO DisconnectedInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_I4,VT_BSTR}};
 _ATL_FUNC_INFO StateChangeInfo = {CC_STDCALL, VT_EMPTY, 1, {VT_I4}};
-_ATL_FUNC_INFO ContactStatusChangeInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_DISPATCH, VT_I4}};
-_ATL_FUNC_INFO IncomingMessageInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_DISPATCH, VT_DISPATCH}};
+_ATL_FUNC_INFO ContactStatusChangeInfo = {CC_STDCALL, VT_EMPTY, 4, {VT_DISPATCH, VT_DISPATCH, VT_I4, VT_I4}};
+_ATL_FUNC_INFO IncomingMessageInfo = {CC_STDCALL, VT_EMPTY, 3, {VT_DISPATCH, VT_DISPATCH, VT_DISPATCH}};
 _ATL_FUNC_INFO IncomingNotificationInfo = {CC_STDCALL, VT_EMPTY, 3, {VT_DISPATCH, VT_I4, VT_VARIANT}};
 _ATL_FUNC_INFO ContactListInfo = {CC_STDCALL, VT_EMPTY, 0};
 _ATL_FUNC_INFO ServiceRegisterInfo = {CC_STDCALL, VT_EMPTY, 3, {VT_DISPATCH, VT_BOOL, VT_BSTR}};
 _ATL_FUNC_INFO ServiceStatusChangeInfo = {CC_STDCALL, VT_EMPTY, 1, {VT_DISPATCH}};
 _ATL_FUNC_INFO ContactAuthRequestInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_DISPATCH, VT_I4|VT_BYREF}};
 _ATL_FUNC_INFO VCardDetailsInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_DISPATCH,VT_BOOL}};
+_ATL_FUNC_INFO ChatRoomListDoneInfo = {CC_STDCALL, VT_EMPTY, 2, {VT_DISPATCH}};
+_ATL_FUNC_INFO ErrorInfo = {CC_STDCALL, VT_EMPTY, 5, {VT_DISPATCH, VT_DISPATCH, VT_DISPATCH, VT_I4, VT_BSTR}};
 
 CJabberEvents::CJabberEvents (CJabber * ppJ)
 {
@@ -324,15 +326,22 @@ void __stdcall CJabberEvents::DispConnected ()
 #ifdef _WODXMPPLIB
 void XMPPContactStatusChange(void *wodXMPP, void  *Contact, void *ChatRoom, WODXMPPCOMLib::StatusEnum NewStatus, WODXMPPCOMLib::StatusEnum OldStatus)
 #else
-void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::StatusEnum OldStatus)
+void __stdcall CJabberEvents::DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, WODXMPPCOMLib::StatusEnum NewStatus, WODXMPPCOMLib::StatusEnum OldStatus)
 #endif
 {
 	if (ChatRoom)
 	{
-		char tbchatroom[1024] = {0}, tbjid[1024];
+		char tbchatroom[1024] = {0}, tbjid[1024] = {0};
 		int tblen = sizeof(tbchatroom);
 #ifndef _WODXMPPLIB
-#error TODO
+		CComBSTR2 jcontact, jchatroom;
+		ChatRoom->get_JID(&jchatroom);
+		strcpy(tbchatroom, jchatroom.ToString());
+		if (Contact)
+		{
+			Contact->get_JID(&jcontact);
+			strcpy(tbjid, jcontact.ToString());
+		}
 #else
 		WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tbchatroom, &tblen);
 		tblen = sizeof(tbjid);
@@ -400,7 +409,7 @@ void __stdcall CJabberEvents::DispIncomingNotification(WODXMPPCOMLib::IXMPPConta
 #ifdef _WODXMPPLIB
 void XMPPIncomingMessage(void *wodXMPP, void  *Contact, void *ChatRoom, void  *Message)
 #else
-void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message)
+void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, WODXMPPCOMLib::IXMPPMessage *Message)
 #endif
 {
 	if (Contact)
@@ -448,15 +457,18 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 			{
 				ATLTRACE("Got message from remote peer\r\n");
 				CComBSTR subj;
-#ifndef _WODXMPPLIB
-				if (SUCCEEDED(Message->get_Subject(&subj)))
-#else
 				char subjbuff[1024];
 				int subjbufflen = sizeof(subjbuff);
+#ifndef _WODXMPPLIB
+				if (SUCCEEDED(Message->get_Subject(&subj)))
+				{
+					CComBSTR2 s1 = subj;
+					strcpy(subjbuff, s1.ToString());
+#else
 				WODXMPPCOMLib::XMPP_Message_GetSubject(Message, subjbuff, &subjbufflen);
 				subj = subjbuff;
-#endif
 				{
+#endif
 					if (subj == WIPPIENINITREQUEST && Contact)
 					{
 						if (!_Ethernet.m_Available) return; // ignore if ethernet is not available
@@ -793,11 +805,11 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 				if (ChatRoom)
 				{
 					CComBSTR2 t;
+					char tb[8192];
+					int tblen = sizeof(tb);
 #ifndef _WODXMPPLIB
 					Message->get_Text(&t);
 #else
-					char tb[8192];
-					int tblen = sizeof(tb);
 					WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
 					t = tb;
 #endif
@@ -812,7 +824,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 
 					CComBSTR2 contactjid;
 #ifndef _WODXMPPLIB
-#error TODO
+					Contact->get_JID(&contactjid);
 #else
 					tblen = sizeof(tb);
 					WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, tb, &tblen);
@@ -820,7 +832,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #endif
 					
 #ifndef _WODXMPPLIB
-#error TODO
+					CComBSTR2 tb2;
+					ChatRoom->get_JID(&tb2);
+					strcpy(tb, tb2.ToString());
 #else
 					tblen = sizeof(tb);
 					WODXMPPCOMLib::XMPP_ChatRoom_GetJID(ChatRoom, tb, &tblen);
@@ -928,7 +942,9 @@ void __stdcall CJabberEvents::DispServiceStatusChange (WODXMPPCOMLib::IXMPPServi
 #ifdef _WODXMPPLIB
 	WODXMPPCOMLib::XMPP_Service_GetJID(Service, jid, &l);
 #else
-#error todo
+	CComBSTR2 j_1;
+	Service->get_JID(&j_1);
+	strcpy(jid, j_1.ToString());
 #endif
 
 
@@ -946,6 +962,62 @@ void __stdcall CJabberEvents::DispServiceStatusChange (WODXMPPCOMLib::IXMPPServi
 					r->m_DoOpen = FALSE;
 					// attempt to open
 					
+
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPChatRoom *croom = NULL;
+					WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;
+					_Jabber->m_Jabb->get_ChatRooms(&rs);
+					if (rs)
+					{
+						CComBSTR n = r->m_JID;
+						VARIANT var;
+						var.vt = VT_BSTR;
+						var.bstrVal = n;
+						rs->get_Room(var, &croom);
+						if (!croom)
+						{
+
+							WODXMPPCOMLib::IXMPPServices *serv = NULL;
+							if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
+							{
+								CComBSTR2 n1 = n;
+								char *n2 = n1.ToString();
+								char *n3 = strchr(n2, '@');
+								if (n3)
+								{
+									*n3 = 0;
+									n3++;
+									CComBSTR n4 = n3;
+									CComBSTR n5 = n2;
+
+									var.vt = VT_BSTR;
+									var.bstrVal = n4;
+									WODXMPPCOMLib::IXMPPService *s = NULL;
+									serv->get_Item(var, &s);
+
+
+									var.vt = VT_DISPATCH;
+									var.pdispVal = s;
+									rs->raw_Add(n5, var, &croom);
+
+									if (s)
+										s->Release();
+								}
+								serv->Release();
+							}
+						}
+						if (croom)
+						{
+							CComBSTR p = r->m_Password;
+							croom->put_Password(p);
+							CComBSTR2 n1 = r->m_Nick;
+							croom->put_Nick(n1);
+							croom->put_ShowMyself(VARIANT_FALSE);
+							croom->Join();
+							croom->Release();
+						}
+					}
+#else
 					void *chatroom = NULL;
 					char buff[1024] = {0};
 					strcpy(buff, r->m_JID);
@@ -964,6 +1036,7 @@ void __stdcall CJabberEvents::DispServiceStatusChange (WODXMPPCOMLib::IXMPPServi
 						WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
 						WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
 					}
+#endif
 				}
 			}
 		}
@@ -984,7 +1057,7 @@ void __stdcall CJabberEvents::DispVCardDetails(WODXMPPCOMLib::IXMPPContact *Cont
 #ifdef _WODXMPPLIB
 void XMPPChatRoomListDone(void *wodXMPP, void *Service)
 #else
-#error TODO
+void __stdcall CJabberEvents::DispChatRoomListDone(WODXMPPCOMLib::IXMPPService *Service)
 #endif
 {
 	if (!Service)
@@ -996,10 +1069,13 @@ void XMPPChatRoomListDone(void *wodXMPP, void *Service)
 #ifdef _WODXMPPLIB
 void XMPPError(void *wodXMPP, void *Contact, void *ChatRoom, void *Service, long ErrorCode, char *ErrorText)
 #else
-#error TODO
+void __stdcall CJabberEvents::DispError(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, WODXMPPCOMLib::IXMPPMessage *Message, long ErrorCode, BSTR ErrorText)
 #endif
 {
 	CComBSTR t = "XMPP Error";
+	CComBSTR2 e = ErrorText;
+	char *err = e.ToString();
+
 	if (Contact)
 	{
 #ifdef _WODXMPPLIB
@@ -1009,11 +1085,14 @@ void XMPPError(void *wodXMPP, void *Contact, void *ChatRoom, void *Service, long
 		t += ": ";
 		t = buff;
 #else
-#error TODO
+		CComBSTR t2;
+		Contact->get_JID(&t2);
+		t += ": ";
+		t += t2;
 #endif
 	}
 	CComBSTR2 t1 = t;
-	MessageBox(NULL, ErrorText, t1.ToString(), MB_OK | MB_ICONHAND);
+	MessageBox(NULL, err, t1.ToString(), MB_OK | MB_ICONHAND);
 }
 
 
@@ -1399,8 +1478,8 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 #endif
 //	Contact->SendMessage(msg);
 #ifndef _WODXMPPLIB
-#error TODO
-//	HRESULT hr = raw_SendMessage(msg);
+	CComBSTR j5 = jid4;
+	HRESULT hr = _Jabber->m_Jabb->raw_SendMessage(j5, msg);
 #else
 	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, jid4, msg);
 #endif

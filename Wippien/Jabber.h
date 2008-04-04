@@ -28,7 +28,9 @@ ContactListInfo,
 ServiceRegisterInfo,
 ServiceStatusChangeInfo,
 ContactAuthRequestInfo,
-VCardDetailsInfo;
+VCardDetailsInfo,
+ChatRoomListDoneInfo,
+ErrorInfo;
 
 #endif
 
@@ -46,13 +48,15 @@ public:
     void __stdcall DispConnected ();
     void __stdcall DispDisconnected (long ErrorCode, BSTR ErrorText);
     void __stdcall DispStateChange(WODXMPPCOMLib::StatesEnum OldState);
-    void __stdcall DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::StatusEnum OldStatus);
+    void __stdcall DispContactStatusChange(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, WODXMPPCOMLib::StatusEnum NewStatus, WODXMPPCOMLib::StatusEnum OldStatus);
 	void __stdcall DispIncomingNotification(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::ContactNotifyEnum NotifyID, VARIANT Data);
-    void __stdcall DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPMessage *Message);
+    void __stdcall DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, WODXMPPCOMLib::IXMPPMessage *Message);
     void __stdcall DispContactList();
     void __stdcall DispServiceRegister (WODXMPPCOMLib::IXMPPService *Service, VARIANT_BOOL Success, BSTR Instructions);
     void __stdcall DispServiceStatusChange (WODXMPPCOMLib::IXMPPService *Service);
     void __stdcall DispVCardDetails(WODXMPPCOMLib::IXMPPContact *Contact, VARIANT_BOOL Partial);
+    void __stdcall DispChatRoomListDone(WODXMPPCOMLib::IXMPPService *Service);
+    void __stdcall DispError(WODXMPPCOMLib::IXMPPContact *Contact, WODXMPPCOMLib::IXMPPChatRoom *ChatRoom, WODXMPPCOMLib::IXMPPMessage *Message, long ErrorCode, BSTR ErrorText);
     
     BEGIN_SINK_MAP (CJabberEvents)
         SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),0,DispConnected,&ConnectedInfo)
@@ -66,6 +70,9 @@ public:
         SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),11,DispIncomingNotification,&IncomingNotificationInfo)
         SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),12,DispContactList,&ContactListInfo)
         SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),13,DispVCardDetails,&VCardDetailsInfo)
+		// pong...
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),15,DispChatRoomListDone,&ChatRoomListDoneInfo)
+        SINK_ENTRY_INFO (1,__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents),16,DispError,&ErrorInfo)
         END_SINK_MAP ()
 private:
 	CJabber * m_pJ;

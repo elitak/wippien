@@ -1282,15 +1282,18 @@ BOOL CSettings::SaveRooms(void)
 	for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
 	{
 		CChatRoom *room = (CChatRoom *)_MainDlg.m_ChatRooms[i];
-		x.Append("<ChatRoom>\r\n");
-		x.AddChildElem("Name", room->m_JID);
-		x.AddChildElem("Nick", room->m_Nick);
-		x.AddChildElem("Block", room->m_Block);
-		Buffer in, out;
-		in.Append(room->m_Password);
-		AESEncrypt(&in, &out);
-		x.AddChildElem("Password", out.Ptr());
-		x.Append("</ChatRoom>\r\n");
+		if (room->m_DoSave)
+		{
+			x.Append("<ChatRoom>\r\n");
+			x.AddChildElem("Name", room->m_JID);
+			x.AddChildElem("Nick", room->m_Nick);
+			x.AddChildElem("Block", room->m_Block);
+			Buffer in, out;
+			in.Append(room->m_Password);
+			AESEncrypt(&in, &out);
+			x.AddChildElem("Password", out.Ptr());
+			x.Append("</ChatRoom>\r\n");
+		}
 	}		
 	int handle = open(m_ChatRoomFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	if (handle != (-1))

@@ -32,7 +32,7 @@ public:
 	char m_Password[1024];
 	char m_Nick[1024];
 	RECT m_ChatWindowRect;
-	BOOL m_Block, m_DoOpen;
+	BOOL m_Block, m_DoOpen, m_DoSave;
 
 };
 

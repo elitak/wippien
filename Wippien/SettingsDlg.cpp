@@ -2846,10 +2846,34 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnRemoveGroup(WORD wNotifyCode
 						user->m_Group[0] = 0;
 //						strcpy(user->m_Group, GROUP_GENERAL);
 
+#ifndef _WODXMPPLIB
+						WODXMPPCOMLib::IXMPPContacts *cts;
+						WODXMPPCOMLib::IXMPPContact *ct = NULL;
+						
+						if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
+						{
+							VARIANT var;
+							var.vt = VT_BSTR;
+							CComBSTR j = user->m_JID;
+							var.bstrVal = j;
+							
+							cts->get_Item(var, &ct);
+							{
+								CComBSTR g = "";
+								ct->put_Group(g);
+								ct->Release();
+							}
+							cts->Release();
+						}
+#else
 						void *ct = NULL;
 						WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
 						if (ct)
+						{
 							WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, "");
+							WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+						}
+#endif
 
 					}
 				}
@@ -6439,7 +6463,37 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 
 
 #ifndef _WODXMPPLIB
-#error TODO
+	WODXMPPCOMLib::IXMPPServices *serv = NULL;
+	WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;
+	_Jabber->m_Jabb->get_ChatRooms(&rs);
+	if (rs)
+	{
+		if (SUCCEEDED(rs->get_Services(&serv)))
+		{
+			short count;
+			if (SUCCEEDED(serv->get_Count(&count)))
+			{
+				for (int i=0;i<count;i++)
+				{
+					WODXMPPCOMLib::IXMPPService *s = NULL;
+					VARIANT var;
+					var.vt = VT_I2;
+					var.iVal = i;
+					if (SUCCEEDED(serv->get_Item(var, &s)))
+					{
+						CComBSTR2 j;
+						s->get_JID(&j);
+						m_ServicesList.InsertString(-1, j.ToString());
+						m_NewRoomServicesList.InsertString(-1, j.ToString());
+
+						s->Release();
+					}
+				}
+			}
+			serv->Release();
+		}
+		rs->Release();
+	}
 #else
 	short count = 0;
 	WODXMPPCOMLib::XMPP_ChatRooms_ServicesGetCount(_Jabber->m_Jabb, &count);
@@ -6472,7 +6526,53 @@ void PopulateChatRoomListview(void)
 	{
 		SendMessage(_Jabber->m_ServiceRegisterHwnd, LVM_DELETEALLITEMS, 0, 0);
 #ifndef _WODXMPPLIB	
-#error TODO
+		WODXMPPCOMLib::IXMPPChatRooms *rooms = NULL;
+		if (SUCCEEDED(_Jabber->m_Jabb->get_ChatRooms(&rooms)))
+		{
+			long count;
+			VARIANT var;
+			var.vt = VT_I4;
+			if (SUCCEEDED(rooms->get_Count(&count)))
+			{
+				for (int i=0;i<count;i++)
+				{
+					CComBSTR srv, name;
+					var.llVal = i;
+					WODXMPPCOMLib::IXMPPChatRoom *room = NULL;
+					rooms->get_Room(var, &room);
+					if (room)
+					{
+						WODXMPPCOMLib::IXMPPService *svc = NULL;
+						room->get_Service(&svc);
+						if (svc)
+						{
+							svc->get_JID(&srv);
+							svc->Release();
+						}
+						room->get_Name(&name);
+
+						LVITEM it = {0};
+						it.mask = LVIF_TEXT;
+						CComBSTR2 bf = name;
+						it.pszText = bf.ToString();
+						it.cchTextMax = strlen(it.pszText);
+						
+						int res = SendMessage(_Jabber->m_ServiceRegisterHwnd, LVM_INSERTITEM, 0, (LPARAM)&it);
+						it.iItem = res;
+						it.iSubItem = 1;
+						it.mask = LVIF_TEXT;
+						CComBSTR2 j = srv;
+						it.pszText = j.ToString();
+						it.cchTextMax = strlen(it.pszText);
+						
+						SendMessage(_Jabber->m_ServiceRegisterHwnd, LVM_SETITEM, 0, (LPARAM)&it);
+						room->Release();
+					}
+
+				}
+			}
+			rooms->Release();
+		}
 #else
 		long count = 0;
 		WODXMPPCOMLib::XMPP_ChatRooms_GetCount(_Jabber->m_Jabb, &count);
@@ -6523,9 +6623,6 @@ void PopulateChatRoomListview(void)
 LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {	
 	// let's join the room!
-#ifndef _WODXMPPLIB
-#error TODO
-#else
 
 	char buff[1024] = {0};
 	SendDlgItemMessage(IDC_CHATROOM_ROOMNAME, WM_GETTEXT, sizeof(buff), (LPARAM)buff);
@@ -6542,6 +6639,26 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 			}
 		}
 
+#ifndef _WODXMPPLIB
+		WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;
+		WODXMPPCOMLib::IXMPPChatRoom *chatroom = NULL;
+		_Jabber->m_Jabb->get_ChatRooms(&rs);
+		if (rs)
+		{
+			CComBSTR n = buff;
+			VARIANT var;
+			var.vt = VT_BSTR;
+			var.bstrVal = n;
+			rs->get_Room(var, &chatroom);
+			if (!chatroom)
+			{
+				VARIANT v;
+				v.vt = VT_ERROR;
+				rs->raw_Add(n, v, &chatroom);
+			}
+		}
+
+#else
 		void *chatroom = NULL;
 		char buff1[1024] = {0}, buff2[1024] = {0};
 		strcpy(buff1, buff);
@@ -6551,9 +6668,9 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 			strcpy(buff1, buff);
 			WODXMPPCOMLib::XMPP_ChatRooms_Add(_Jabber->m_Jabb, buff1, &chatroom);
 		}
+#endif
 		if (chatroom)
 		{
-
 			// none found? Add new!
 			CChatRoom *room = new CChatRoom();
 			strcpy(room->m_JID, buff);
@@ -6572,20 +6689,30 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 				room->m_Block = FALSE;
 				
 
+#ifndef _WODXMPPLIB
+			CComBSTR p = room->m_Password;
+			chatroom->put_Password(p);
+			CComBSTR2 n1 = room->m_Nick;
+			chatroom->put_Nick(n1);
+			chatroom->put_ShowMyself(VARIANT_FALSE);
+			chatroom->Join();
+			chatroom->Release();
+#else
 			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
 			strcpy(room->m_Password, buff);
 			WODXMPPCOMLib::XMPP_ChatRoom_SetNick(chatroom, nickbuff);
 			WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
 			WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
-			::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
-
 			WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
-
-
-
-		}			
-	}
 #endif
+			::PostMessage(m_Owner, WM_COMMAND, IDOK, IDOK);
+		}
+
+#ifndef _WODXMPPLIB
+		if (rs)
+			rs->Release();
+#endif
+	}			
 
 	return TRUE;
 }
@@ -6625,7 +6752,36 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnGatewayListClick(WORD wNotifyCode, W
 		if (GetDlgItemText(IDC_CHATROOM_GATEWAYLIST, buff, 1024))
 		{
 #ifndef _WODXMPPLIB
-#error TODO
+			WODXMPPCOMLib::IXMPPServices *serv = NULL;
+			if (SUCCEEDED(_Jabber->m_Jabb->get_Services(&serv)))
+			{
+				VARIANT var;
+				var.vt = VT_BSTR;
+				CComBSTR sn = buff;
+				var.bstrVal = sn;
+				WODXMPPCOMLib::IXMPPService *s = NULL;
+				serv->get_Item(var, &s);
+
+				WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;	
+				_Jabber->m_Jabb->get_ChatRooms(&rs);
+				if (rs)
+				{
+					VARIANT var;
+					if (s)
+					{
+						var.vt = VT_DISPATCH;
+						var.pdispVal = s;
+					}
+					else
+						var.vt = VT_ERROR;
+
+					rs->List(var);
+					rs->Release();
+				}
+				if (s)
+					s->Release();
+				serv->Release();
+			}
 #else
 			void *s = NULL;
 			if (*buff)

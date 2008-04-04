@@ -28,6 +28,8 @@ CChatRoom::CChatRoom()
 	memset(m_Password, 0, sizeof(m_Password));
 	m_Block = FALSE;
 	m_DoOpen = FALSE;
+	m_DoSave = FALSE;
+
 }
 
 CChatRoom::~CChatRoom()
@@ -137,6 +139,7 @@ void CChatRoom::OpenMsgWindow(BOOL WithFocus)
 
 void CChatRoom::CloseMsgWindow(void)
 {
+	m_DoSave = FALSE;
 	if (m_MessageWin)
 	{
 		if (::IsWindow(m_MessageWin->m_hWnd))
@@ -148,6 +151,7 @@ void CChatRoom::CloseMsgWindow(void)
 
 void CChatRoom::PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html)
 {
+	m_DoSave = TRUE;
 	CreateGroup();
 	OpenMsgWindow(FALSE);
 	if (!IsSystem)
@@ -160,7 +164,23 @@ void CChatRoom::PrintMsgWindow(char *Nick, BOOL IsSystem, char *Text, char *Html
 void CChatRoom::Leave(void)
 {
 #ifndef _WODXMPPLIB
-#error TODO
+		WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;
+		_Jabber->m_Jabb->get_ChatRooms(&rs);
+		if (rs)
+		{
+			WODXMPPCOMLib::IXMPPChatRoom *r = NULL;
+			CComBSTR n = m_JID;
+			VARIANT var;
+			var.vt = VT_BSTR;
+			var.bstrVal = n;
+			rs->get_Room(var, &r);
+			if (r)
+			{
+				r->Leave();
+				r->Release();
+			}
+			rs->Release();
+		}
 #else
 		void *chatroom = NULL;
 		WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, m_JID, &chatroom);

@@ -114,6 +114,12 @@ public:
 	STDMETHOD(raw_MediatorDisconnected)(WODVPNCOMLib::IwodVPNCom * Owner, BSTR FromID, BSTR ToID){return E_NOTIMPL;}
 	STDMETHOD(raw_MediatorExchangeData)(WODVPNCOMLib::IwodVPNCom * Owner, BSTR FromID, BSTR ToID){return E_NOTIMPL;}
 	STDMETHOD(raw_UPnPMapping)(WODVPNCOMLib::IwodVPNCom *Owner, BSTR IntIP, long IntPort, BSTR ExtIP, long ExtPort){return E_NOTIMPL;}
+	STDMETHOD(raw_DownloadFile)(WODVPNCOMLib::IwodVPNCom * Owner, BSTR *LocalFile, VARIANT_BOOL *Allow){return E_NOTIMPL;}
+	STDMETHOD(raw_UploadFile)(WODVPNCOMLib::IwodVPNCom * Owner, BSTR *LocalFile, VARIANT_BOOL *Allow){return E_NOTIMPL;}
+	STDMETHOD(raw_TransferProgress)(WODVPNCOMLib::IwodVPNCom * Owner, long Position, long Total){return E_NOTIMPL;}
+	STDMETHOD(raw_Done)(WODVPNCOMLib::IwodVPNCom * Owner, BSTR RemotePath, long ErrorCode, BSTR ErrorText){return E_NOTIMPL;}
+
+
 #endif //WODVPNLIB
 
 	char m_JID[256];

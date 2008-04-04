@@ -29,9 +29,10 @@ public:
 	
 	char m_JID[1024];
 	char m_ShortName[128];
+	char m_Password[1024];
 	char m_Nick[1024];
 	RECT m_ChatWindowRect;
-	BOOL m_Block;
+	BOOL m_Block, m_DoOpen;
 
 };
 

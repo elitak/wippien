@@ -11,6 +11,7 @@
 #include "Ethernet.h"
 #include "ContactAuthDlg.h"
 #include "SDKMessageLink.h"
+#include "ChatRoom.h"
 
 #ifndef MIN
 #define  MIN(a, b)   ((a)<(b)?(a):(b)) 
@@ -920,6 +921,52 @@ void __stdcall CJabberEvents::DispServiceStatusChange (WODXMPPCOMLib::IXMPPServi
 	if (_Jabber->m_ServiceRefreshHwnd)
 	{
 		PostMessage(_Jabber->m_ServiceRefreshHwnd, WM_REFRESH, 0, 0);
+	}
+
+	char jid[1024] = {0};
+	int l = sizeof(jid);
+#ifdef _WODXMPPLIB
+	WODXMPPCOMLib::XMPP_Service_GetJID(Service, jid, &l);
+#else
+#error todo
+#endif
+
+
+	for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+	{
+		CChatRoom *r = (CChatRoom *)_MainDlg.m_ChatRooms[i];
+		if (r->m_DoOpen)
+		{
+			char *j1 = strchr(r->m_JID, '@');
+			if (j1)
+			{
+				j1++;
+				if (!strcmp(j1, jid))
+				{
+					r->m_DoOpen = FALSE;
+					// attempt to open
+					
+					void *chatroom = NULL;
+					char buff[1024] = {0};
+					strcpy(buff, r->m_JID);
+					WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, buff, &chatroom);
+					if (!chatroom)
+					{
+						strcpy(buff, r->m_JID);
+						WODXMPPCOMLib::XMPP_ChatRooms_Add(_Jabber->m_Jabb, buff, &chatroom);
+					}
+					if (chatroom)
+					{
+						WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, r->m_Password);
+						CComBSTR2 n = r->m_Nick;
+						WODXMPPCOMLib::XMPP_ChatRoom_SetNick(chatroom, n.ToString());
+						WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
+						WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);
+						WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
+					}
+				}
+			}
+		}
 	}
 }
 #ifdef _WODXMPPLIB

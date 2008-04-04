@@ -97,6 +97,7 @@ public:
 	char m_UserImagePath[MAX_PATH];
 	char m_HistoryPath[MAX_PATH];
 	char m_UsrFilename[MAX_PATH];
+	char m_ChatRoomFilename[MAX_PATH];
 	char m_MyPath[MAX_PATH];
 	char m_DoNotShow[MAXDONOTSHOWANYMORESETTINGS+1];
 
@@ -137,8 +138,14 @@ public:
 	LINKMEDIATORS m_LinkMediators;
 
 	int Load(void);
+	int LoadConfig(void);
+	int LoadUsers(void);
+	int LoadRooms(void);
 	int LoadTools(void);
-	BOOL CSettings::Save(BOOL UserOnly);
+	BOOL SaveConfig(void);
+	BOOL SaveUsers(void);
+	BOOL SaveRooms(void);
+	BOOL Save(void);
 	void ToHex(Buffer *in, Buffer *out);
 	void FromHex(Buffer *in, Buffer *out);
 	void KeyToBlob(Buffer *out, BOOL withprivate);

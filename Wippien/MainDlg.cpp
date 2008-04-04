@@ -455,7 +455,7 @@ void CMainDlg::CheckAppbar(void)
 		{
 //				m_GoAppbar = TRUE;
 			REGISTERAPPBAR(&m_AppbarRect, _Settings.m_RosterSnap);
-			_Settings.Save(FALSE);
+			_Settings.SaveConfig();
 		}
 		SetWindowPos(NULL, 0, 0, m_AppbarRect.right-m_AppbarRect.left, m_AppbarRect.bottom-m_AppbarRect.top, SWP_NOMOVE  | SWP_NOZORDER);
 	}
@@ -463,7 +463,7 @@ void CMainDlg::CheckAppbar(void)
 	{
 		m_GoAppbar = FALSE;
 		UNREGISTERAPPBAR();
-		_Settings.Save(FALSE);
+		_Settings.SaveConfig();
 	}
 }
 
@@ -862,7 +862,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 //									_Settings.m_MyLastNetwork = 0;
 //									_Settings.m_MyLastNetmask = 0;
 									_Ethernet.Start(inet_addr(virtip->Value), inet_addr(virtmask->Value));
-									_Settings.Save(FALSE);
+									_Settings.SaveConfig();
 								}
 							}
 						}
@@ -880,7 +880,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 									if (medip && medport && _Settings.m_AllowAnyMediator)
 									{
 										_Settings.AddLinkMediator(medip->Value, atol(medport->Value));
-										_Settings.Save(FALSE);
+										_Settings.SaveConfig();
 									}
 									start->Name[0] = 0; // to disable this mediator from future search
 								}
@@ -1023,7 +1023,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 //								sprintf(bf4, "netsh interface ip set interface \"Wippien\" MTU=%d store=persistent", _Settings.m_FixedMTUNum);
 //								if (_Ethernet.ExecNETSH(bf4))
 								{
-									_Settings.Save(FALSE);
+									_Settings.SaveConfig();
 									// specify new one and change to 10 seconds
 									SetTimer(110, 10000L);
 								}
@@ -2013,7 +2013,7 @@ LRESULT CMainDlg::OnExit(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL&
 
 	ShellIcon(NIM_DELETE, m_IconSmall, "");
 	UNREGISTERAPPBAR();
-	_Settings.Save(FALSE);
+	_Settings.Save();
 
 	CloseDialog(wID);
 	return TRUE;
@@ -2511,7 +2511,6 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 			}
 		}
 
-		
 		// none found? Add new!
 		CChatRoom *room = new CChatRoom();
 		strcpy(room->m_JID, ChatRoom);

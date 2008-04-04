@@ -370,7 +370,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 			{
 				if (lParam)
 				{
-					_Settings.Save(FALSE);
+					_Settings.Save();
 				}
 				return TRUE;
 			}
@@ -1052,7 +1052,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 											_MainDlg.m_UserList.m_Users.erase(_MainDlg.m_UserList.m_Users.begin() + i);
 				//							delete user;
 											//Refresh(NULL);
-											_Settings.Save(TRUE);
+											_Settings.SaveUsers();
 											_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
 											return TRUE;
 										}

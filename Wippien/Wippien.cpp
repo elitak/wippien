@@ -43,7 +43,7 @@ int CheckSettingsWizard(void)
 		CSettingsDlg dlg(TRUE);
 		needwizard = FALSE;
 
-		if (!_Settings.Load())
+		if (!_Settings.LoadConfig())
 		{
 			// add some defaults
 			char *a = (char *)malloc(strlen(GROUP_GENERAL)+1);
@@ -149,7 +149,7 @@ int CheckSettingsWizard(void)
 
 		if (needwizard)
 		{
-			_Settings.Save(FALSE);
+			_Settings.SaveConfig();
 		}
 
 
@@ -165,6 +165,9 @@ int CheckSettingsWizard(void)
 //			delete dlg;
 
 	} while(needwizard);
+
+	_Settings.LoadUsers();
+	_Settings.LoadRooms();
 
 	return 1;
 }
@@ -205,7 +208,7 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 		_Ethernet.Start(myip, mynetmask);
 
 	memcpy(_Settings.m_MAC, _Ethernet.m_MAC, sizeof(MACADDR));
-	_Settings.Save(FALSE);
+	_Settings.SaveConfig();
 
 	// loop through all users and fix MACs
 	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)

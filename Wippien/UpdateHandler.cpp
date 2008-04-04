@@ -154,7 +154,7 @@ public:
 							WODAPPUPDCOMLib::AppUpd_Message_GetID(showmsg, &ID);
 #endif
 							_Settings.m_LastOperatorMessageID = ID;
-							_Settings.Save(FALSE);
+							_Settings.SaveConfig();
 
 							// spawn new thread to show the message
 #ifndef _APPUPDLIB

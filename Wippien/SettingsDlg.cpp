@@ -477,7 +477,7 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 	}
 	ShowWindow(SW_HIDE);
 
-	_Settings.Save(FALSE);
+	_Settings.Save();
 
 	if (m_VCardChanged)
 	{
@@ -847,7 +847,7 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 
 LRESULT CSettingsDlg::CSettingsJID::OnBtnSearch(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	ShellExecute(NULL, "open", "http://www.jabber.org/user/publicservers.shtml", "", "", 0);
+	ShellExecute(NULL, "open", "http://www.jabber.org/im-services", "", "", 0);
 	return 0;
 }
 
@@ -6544,10 +6544,12 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 
 		void *chatroom = NULL;
 		char buff1[1024] = {0}, buff2[1024] = {0};
-		WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, buff, &chatroom);
+		strcpy(buff1, buff);
+		WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, buff1, &chatroom);
 		if (!chatroom)
 		{
-			WODXMPPCOMLib::XMPP_ChatRooms_Add(_Jabber->m_Jabb, buff, &chatroom);
+			strcpy(buff1, buff);
+			WODXMPPCOMLib::XMPP_ChatRooms_Add(_Jabber->m_Jabb, buff1, &chatroom);
 		}
 		if (chatroom)
 		{
@@ -6571,6 +6573,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnButtonClick(WORD wNotifyCode, WORD w
 				
 
 			WODXMPPCOMLib::XMPP_ChatRoom_SetPassword(chatroom, buff);
+			strcpy(room->m_Password, buff);
 			WODXMPPCOMLib::XMPP_ChatRoom_SetNick(chatroom, nickbuff);
 			WODXMPPCOMLib::XMPP_ChatRoom_SetShowMyself(chatroom, FALSE);
 			WODXMPPCOMLib::XMPP_ChatRoom_Join(chatroom);

@@ -938,7 +938,7 @@ void CUserList::RefreshView(BOOL updateonly)
 				/*m_Tree.*/Expand(tg->Item);
 		}
 
-		_Settings.Save(TRUE);
+		_Settings.SaveUsers();
 
 
 		for (int j=0;j<_Settings.m_Groups.size();j++)
@@ -1163,7 +1163,10 @@ LRESULT CUserList::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 			}
 		}
 		if (save)
-			_Settings.Save(FALSE);
+		{
+			_Settings.SaveConfig();
+			_Settings.SaveUsers();
+		}
 		bHandled = TRUE;
 		return TRUE;
 	}
@@ -1269,7 +1272,7 @@ LRESULT CUserList::OnListNotify(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
 				}
 			}
 			if (save)
-				_Settings.Save(FALSE);
+				_Settings.SaveConfig();
 			return TRUE;
 
 		case TVN_BEGINDRAG:
@@ -1548,7 +1551,7 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 					user->m_Changed = TRUE;
 //					user->m_TreeItem = (HTREEITEM)-1;
 					m_SortedUsersBuffer.Clear();
-					_Settings.Save(TRUE);
+					_Settings.SaveUsers();
 					PostMessage(WM_REFRESH, NULL, TRUE);
 				}
 			}
@@ -1604,7 +1607,7 @@ BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command
 							m_Users.erase(m_Users.begin() + i);
 //							delete user;
 							//Refresh(NULL);
-							_Settings.Save(TRUE);
+							_Settings.SaveUsers();
 							PostMessage(WM_REFRESH, NULL, FALSE);
 							return TRUE;
 						}

@@ -25,7 +25,9 @@ CChatRoom::CChatRoom()
 	strcpy(m_Nick, n.ToString());
 	memset(&m_ChatWindowRect, 0, sizeof(m_ChatWindowRect));
 	memset(m_ShortName, 0, sizeof(m_ShortName));
+	memset(m_Password, 0, sizeof(m_Password));
 	m_Block = FALSE;
+	m_DoOpen = FALSE;
 }
 
 CChatRoom::~CChatRoom()

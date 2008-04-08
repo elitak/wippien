@@ -19,6 +19,7 @@
 // Dialog
 //
 
+
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -300,7 +301,7 @@ BEGIN
     EDITTEXT        IDC_RENAMEEDIT,7,18,172,12,ES_AUTOHSCROLL
     DEFPUSHBUTTON   "OK",IDOK,38,32,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,96,32,50,14
-    LTEXT           "Enter new contact name:",IDC_STATIC,7,7,80,8
+    LTEXT           "Enter new contact name:",IDC_STATICCONTACTNAME,7,7,80,8
 END
 
 IDD_SETTINGS DIALOGEX 0, 0, 390, 270
@@ -1096,6 +1097,7 @@ IDB_BANNER_TOP_BACKGROUND PNG     DISCARDABLE     "..\\gfx\\mainwnd_banner_back.
 IDB_BANNER_TOP_BACKGROUND2 PNG     DISCARDABLE     "..\\gfx\\mainwnd_banner_2back.png"
 IDB_GROUPOPENED         PNG     DISCARDABLE     "..\\gfx\\group_up.png"
 IDB_GROUPCLOSED         PNG     DISCARDABLE     "..\\gfx\\group_down.png"
+IDB_LOCKCONTACT         PNG     DISCARDABLE     "..\\gfx\\lock.png"
 ID_PNG1_CHAT            PNG     DISCARDABLE     "..\\gfx\\RightClick\\ac0038-16.png"
 ID_PNG1_SENDFILE        PNG     DISCARDABLE     "..\\gfx\\RightClick\\wi0041-16.png"
 ID_PNG2_SENDFILE        PNG     DISCARDABLE     "..\\gfx\\wi0041-24.png"
@@ -1219,6 +1221,16 @@ BEGIN
     BEGIN
         MENUITEM "Change &Picture",             ID_POPUP4_CHANGEPICTURE
         MENUITEM "Your &Details",               ID_POPUP4_YOUR_DETAILS
+    END
+END
+
+IDR_GROUPLISTPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup5"
+    BEGIN
+        MENUITEM "&Block",                      ID_POPUP1_BLOCK
+        MENUITEM "&Rename",                     ID_POPUP1_RENAME
+        MENUITEM "&Delete",                     ID_POPUP1_DELETE
     END
 END
 

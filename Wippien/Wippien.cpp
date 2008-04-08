@@ -52,6 +52,7 @@ int CheckSettingsWizard(void)
 			tg->Item = NULL;
 			tg->Open = FALSE;
 			tg->Name = a;
+			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			_Settings.m_Groups.push_back(tg);
 			
@@ -60,6 +61,7 @@ int CheckSettingsWizard(void)
 			tg = new CSettings::TreeGroup;
 			tg->Item = NULL;
 			tg->Open = FALSE;
+			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			tg->Name = a;
 			_Settings.m_Groups.push_back(tg);

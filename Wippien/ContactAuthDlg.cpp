@@ -289,7 +289,7 @@ LRESULT CContactAuthDlg::OnDetails(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 		CUser *us = (CUser *)_MainDlg.m_UserList.m_Users[i];
 		if (!strcmp(us->m_JID, m))
 		{
-			_MainDlg.m_UserList.ExecuteRButtonCommand(/*NULL, */us, ID_POPUP1_DETAILS);
+			_MainDlg.m_UserList.ExecuteRButtonUserCommand(/*NULL, */us, ID_POPUP1_DETAILS);
 			break;
 		}
 	}

@@ -116,6 +116,7 @@ public:
 		char *Name;
 		char CountBuff[128];
 		BOOL Open;
+		BOOL Block;
 		HTREEITEM Item;
 		int Count;
 		int TotalCount;

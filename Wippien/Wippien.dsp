@@ -852,6 +852,10 @@ SOURCE=".\Linux Zealot.png"
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\lock.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\Avatars\Lurker.png
 # End Source File
 # Begin Source File

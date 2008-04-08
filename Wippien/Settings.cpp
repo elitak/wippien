@@ -568,13 +568,15 @@ int CSettings::LoadConfig(void)
 					ent = CXmlEntity::FindByName(rst, "Group", 1);
 					if (ent)
 					{
+						CXmlEntity *entf = NULL;
 						char *a = (char *)malloc(strlen(ent->Value)+1);
 						memset(a, 0, strlen(ent->Value)+1);
 						memcpy(a, ent->Value, strlen(ent->Value));
 						if (!strcmp(a, GROUP_OFFLINE))
 						{
 
-							if (CXmlEntity::FindAttrByName(ent, "Open"))
+							entf = CXmlEntity::FindAttrByName(ent, "Open");
+							if (entf && !strcmp(entf->Value, "true"))
 								OffOpen = TRUE;
 							foundOff = TRUE;
 							free(a);
@@ -584,11 +586,16 @@ int CSettings::LoadConfig(void)
 							TreeGroup *tg = new TreeGroup;
 							tg->Item = NULL;
 							tg->Open = FALSE;
+							tg->Block = FALSE;
 							tg->Name = a;
 							tg->Temporary = FALSE;
 							tg->CountBuff[0] = 0;
-							if (CXmlEntity::FindAttrByName(ent, "Open"))
+							entf = CXmlEntity::FindAttrByName(ent, "Open");
+							if (entf && !strcmp(entf->Value, "true"))
 								tg->Open = TRUE;
+							entf = CXmlEntity::FindAttrByName(ent, "Block");
+							if (entf && !strcmp(entf->Value, "true"))
+								tg->Block = TRUE;
 							if (!strcmp(a, GROUP_GENERAL))
 								foundGen = TRUE;
 							PushGroupSorted(tg);						
@@ -604,6 +611,7 @@ int CSettings::LoadConfig(void)
 					TreeGroup *tg = new TreeGroup;
 					tg->Item = NULL;
 					tg->Open = FALSE;
+					tg->Block = FALSE;
 					tg->Name = a;
 					tg->CountBuff[0] = 0;
 					tg->Temporary = FALSE;
@@ -615,6 +623,7 @@ int CSettings::LoadConfig(void)
 				TreeGroup *tg = new TreeGroup;
 				tg->Item = NULL;
 				tg->Temporary = FALSE;
+				tg->Block = FALSE;
 				tg->Open = OffOpen;
 				tg->Name = a;
 				tg->CountBuff[0] = 0;
@@ -1170,10 +1179,7 @@ BOOL CSettings::SaveConfig(void)
 			if (tg->Open)
 				exp = TRUE;
 
-			if (exp)
-				x.AddChildAttrib("Group", tg->Name, "Open", "true");
-			else
-				x.AddChildElem("Group", tg->Name);
+			x.AddChildAttrib("Group", tg->Name, "Open", exp?"true":"false", "Block", tg->Block?"true":"false");
 		}	
 	}
 	x.Append("</Roster>\r\n");

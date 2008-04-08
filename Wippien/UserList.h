@@ -32,7 +32,7 @@ public:
 	CMainDlg *m_Owner;
 	HWND m_hWndParent;
 	HFONT m_ListboxFont, m_ListboxSubFont, m_ListboxGroupFont;
-	CCommandBarCtrlXP *m_UserPopupMenu, *m_SetupPopupMenu, *m_AwayPopupMenu, *m_ChatRoomPopupMenu;
+	CCommandBarCtrlXP *m_UserPopupMenu, *m_SetupPopupMenu, *m_AwayPopupMenu, *m_ChatRoomPopupMenu, *m_GroupPopupMenu;
 	void RefreshView(BOOL updateonly);
 	void RefreshUser(void *cntc, char *chatroom);
 
@@ -65,18 +65,22 @@ public:
 	LRESULT OnListNotify(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/);
 	LRESULT OnMouseMove(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
 	LRESULT OnKeyDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-	BOOL ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command);
+	BOOL ExecuteRButtonGroupCommand(CSettings::TreeGroup *Group, int Command);
+	BOOL ExecuteRButtonUserCommand(CUser *user, int Command);
 	LRESULT OnRefresh(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	BOOL DeleteGroup(char *GroupName);
 
 	class CRenameContact : public CDialogImpl<CRenameContact>
 	{
 	public:
 		enum { IDD = IDD_RENAMECONTACT };
 		char m_VisibleName[1024];
+		BOOL m_IsGroupEdit;
 
 		CRenameContact()
 		{
 			memset(m_VisibleName, 0, 1024);
+			m_IsGroupEdit = FALSE;
 		}
 
 		BEGIN_MSG_MAP(CRenameContact)
@@ -88,6 +92,11 @@ public:
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 		{
 			SetDlgItemText(IDC_RENAMEEDIT, m_VisibleName);
+			if (m_IsGroupEdit)
+			{
+				SetWindowText("Rename group");
+				SetDlgItemText(IDC_STATICCONTACTNAME, "Enter new group name:");
+			}
 			CenterWindow(GetParent());
 			return TRUE;
 		}

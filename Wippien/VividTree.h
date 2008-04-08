@@ -22,7 +22,7 @@ public:
 	DECLARE_WND_SUPERCLASS(NULL, TBase::GetWndClassName())
 
 		
-	CxImage m_StaticImage, m_BlinkImage, m_GroupOpened, m_GroupClosed;
+	CxImage m_StaticImage, m_BlinkImage, m_GroupOpened, m_GroupClosed, m_LockContact;
 	HFONT m_hSubFont, m_hFont, m_hGroupFont;
 
 	CVividTreeImpl()

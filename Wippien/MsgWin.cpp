@@ -789,9 +789,7 @@ LRESULT CMsgWin::OnFontBackcolorBtnClicked(WORD /*wNotifyCode*/, WORD wID, HWND 
 LRESULT CMsgWin::OnBtnDetails(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	if (m_User)
-	{
-		_MainDlg.m_UserList.ExecuteRButtonCommand(/*NULL, */m_User, ID_POPUP1_DETAILS);
-	}
+		_MainDlg.m_UserList.ExecuteRButtonUserCommand(/*NULL, */m_User, ID_POPUP1_DETAILS);
 	return TRUE;
 }
 

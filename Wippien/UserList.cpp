@@ -68,6 +68,7 @@ CUserList::CUserList()
 	m_ListboxSubFont = NULL;
 	m_ListboxGroupFont = NULL;
 	m_UserPopupMenu = NULL;
+	m_GroupPopupMenu = NULL;
 	m_SetupPopupMenu = NULL;
 	m_ChatRoomPopupMenu = NULL;
 	m_AwayPopupMenu = NULL;
@@ -89,6 +90,8 @@ CUserList::~CUserList()
 	}
 	if (m_UserPopupMenu)
 		delete m_UserPopupMenu;
+	if (m_GroupPopupMenu)
+		delete m_GroupPopupMenu;
 	if (m_SetupPopupMenu)
 		delete m_SetupPopupMenu;
 	if (m_ChatRoomPopupMenu)
@@ -114,6 +117,7 @@ void CUserList::InitIcons(void)
 	LoadIconFromResource(&m_BlinkImage, IDB_BELL);
 	LoadIconFromResource(&m_GroupOpened, IDB_GROUPOPENED);
 	LoadIconFromResource(&m_GroupClosed, IDB_GROUPCLOSED);
+	LoadIconFromResource(&m_LockContact, IDB_LOCKCONTACT);
 }
 void CUserList::Init(CMainDlg *Owner, HWND Parent)
 {
@@ -146,15 +150,15 @@ void CUserList::Init(CMainDlg *Owner, HWND Parent)
 
 	m_UserPopupMenu = new CCommandBarCtrlXP();
 	m_UserPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
-//	m_UserPopupMenu->AttachMenu(LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_USERLISTPOPUP)));
 
+	m_GroupPopupMenu = new CCommandBarCtrlXP();
+	m_GroupPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
+	
 	m_SetupPopupMenu = new CCommandBarCtrlXP();
 	m_SetupPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
-//	m_SetupPopupMenu->AttachMenu(LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_SETUPPOPUP)));
 
 	m_AwayPopupMenu = new CCommandBarCtrlXP();
 	m_AwayPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
-//	m_AwayPopupMenu->AttachMenu(LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_AWAYPOPUP)));
 
 	m_ChatRoomPopupMenu = new CCommandBarCtrlXP();
 	m_ChatRoomPopupMenu->Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
@@ -1081,6 +1085,7 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 		tg->Item = hi;
 		tg->Open = TRUE;
 		tg->Temporary = FALSE;
+		tg->Block = FALSE;
 		tg->CountBuff[0] = 0;
 		char *a = (char *)malloc(strlen(RootName)+1);
 		memset(a, 0, strlen(RootName)+1);
@@ -1364,148 +1369,337 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 		return FALSE;
 
 	SendMessage(TVM_SELECTITEM,TVGN_CARET, (LPARAM)ht.hItem);
-
-	CUser *user = (CUser *)GetItemData(ht.hItem);
-	if (!user)
-		return FALSE;
-
 	ClientToScreen(&ht.pt);
 
-	MENUITEMINFO lpmii = {0};
-	lpmii.cbSize = sizeof(lpmii);
-	lpmii.fMask = MIIM_STATE;
-
-	HMENU hm = LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_USERLISTPOPUP));
-	HMENU h = GetSubMenu(hm, 0);
-
-	int ctr = 0;
-	for (int i=0;i<_Settings.m_MenuTools.size();i++)
+	CUser *user = (CUser *)GetItemData(ht.hItem);
+	if (user) // clicked on user
 	{
-		CSettings::MenuTool *mt = _Settings.m_MenuTools[i];
-		BOOL add = TRUE;
-		if (mt->State == 1 && user->m_Online) // only offline
-			add = FALSE;
-		if (mt->State == 2 && !user->m_Online && user->m_WippienState == WipConnected) // only online
-			add = FALSE;		
-		if (mt->State == 3 && !user->m_Online) // online or connected
-			add = FALSE;		
-		if (mt->State == 4 && (!user->m_Online || !user->m_HisVirtualIP)) // online or connected
-			add = FALSE;
-		if (mt->State == 5 && user->m_WippienState != WipConnected) // online or connected
-			add = FALSE;
 
-//m_HisDHCPAddress
-	
-		if (mt->FilterGroup)
-			if (!wildmat(user->m_Group, mt->FilterGroup))
-				add = FALSE;
-		if (mt->FilterJID)
-			if (!wildmat(user->m_JID, mt->FilterJID))
-				add = FALSE;
-		if (mt->FilterVisibleName)
-			if (!wildmat(user->m_VisibleName, mt->FilterVisibleName))
-				add = FALSE;
+		CSettings::TreeGroup *tg = NULL;
 
-		if (add)
+		BOOL save = FALSE;
+		for (int i=0;i<_Settings.m_Groups.size();i++)
 		{
-			MENUITEMINFO mit;
-			memset(&mit, 0, sizeof(mit));
-			mit.cbSize = sizeof(mit);
-			mit.fMask = MIIM_STRING | MIIM_ID;
-			mit.dwTypeData = mt->Menu;
-			mit.cch = strlen(mt->Menu);
-			mit.fType = MFT_STRING;
-			mit.wID = (UINT)mt;
-			if (*mt->IconPath)
+			CSettings::TreeGroup *tg1 = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+			if (!strcmp(tg1->Name, user->m_Group))
 			{
-				Buffer *b = user->ExpandArgs(mt->IconPath);
-				HICON hic = ExtractIcon(_Module.GetModuleInstance(), b->Ptr(), mt->IconID);
-				delete b;
-				if (hic && (int)hic!=1)
-				{			
-					CxImage *img = new CxImage();
-					if (img->CreateFromHICON(hic))
-					{
-						ResampleImageIfNeeded(img, 16);
-//						img->Resample(16, 16);
-						img->pUserData = (void *)mt;
-						_Settings.m_MenuImages.push_back(img);
-					}
-					else
-						delete img;
-					DestroyIcon(hic);
-				}
+				tg = tg1;
+				break;
 			}
-			InsertMenuItem(h, 2+ctr, 2+ctr, &mit);
-//			InsertMenu(h, 4, MF_BYPOSITION, (UINT)mt, mt->Menu);
-			ctr++;
 		}
-	} 
-	if (ctr)
-		InsertMenu(h, 2+ctr, MF_BYPOSITION | MF_SEPARATOR, NULL, NULL);
 
-	BOOL canconnect = (user->m_WippienState == WipConnected?TRUE:ConnectIfPossible(user, FALSE));
+		MENUITEMINFO lpmii = {0};
+		lpmii.cbSize = sizeof(lpmii);
+		lpmii.fMask = MIIM_STATE;
 
-	GetMenuItemInfo(h, ID_POPUP1_COPYADDRESS, FALSE, &lpmii);
-	if (canconnect)
-		lpmii.fState = MFS_ENABLED;
+		HMENU hm = LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_USERLISTPOPUP));
+		HMENU h = GetSubMenu(hm, 0);
+
+		int ctr = 0;
+		for (i=0;i<_Settings.m_MenuTools.size();i++)
+		{
+			CSettings::MenuTool *mt = _Settings.m_MenuTools[i];
+			BOOL add = TRUE;
+			if (mt->State == 1 && user->m_Online) // only offline
+				add = FALSE;
+			if (mt->State == 2 && !user->m_Online && user->m_WippienState == WipConnected) // only online
+				add = FALSE;		
+			if (mt->State == 3 && !user->m_Online) // online or connected
+				add = FALSE;		
+			if (mt->State == 4 && (!user->m_Online || !user->m_HisVirtualIP)) // online or connected
+				add = FALSE;
+			if (mt->State == 5 && user->m_WippienState != WipConnected) // online or connected
+				add = FALSE;
+
+	//m_HisDHCPAddress
+		
+			if (mt->FilterGroup)
+				if (!wildmat(user->m_Group, mt->FilterGroup))
+					add = FALSE;
+			if (mt->FilterJID)
+				if (!wildmat(user->m_JID, mt->FilterJID))
+					add = FALSE;
+			if (mt->FilterVisibleName)
+				if (!wildmat(user->m_VisibleName, mt->FilterVisibleName))
+					add = FALSE;
+
+			if (add)
+			{
+				MENUITEMINFO mit;
+				memset(&mit, 0, sizeof(mit));
+				mit.cbSize = sizeof(mit);
+				mit.fMask = MIIM_STRING | MIIM_ID;
+				mit.dwTypeData = mt->Menu;
+				mit.cch = strlen(mt->Menu);
+				mit.fType = MFT_STRING;
+				mit.wID = (UINT)mt;
+				if (*mt->IconPath)
+				{
+					Buffer *b = user->ExpandArgs(mt->IconPath);
+					HICON hic = ExtractIcon(_Module.GetModuleInstance(), b->Ptr(), mt->IconID);
+					delete b;
+					if (hic && (int)hic!=1)
+					{			
+						CxImage *img = new CxImage();
+						if (img->CreateFromHICON(hic))
+						{
+							ResampleImageIfNeeded(img, 16);
+	//						img->Resample(16, 16);
+							img->pUserData = (void *)mt;
+							_Settings.m_MenuImages.push_back(img);
+						}
+						else
+							delete img;
+						DestroyIcon(hic);
+					}
+				}
+				InsertMenuItem(h, 2+ctr, 2+ctr, &mit);
+	//			InsertMenu(h, 4, MF_BYPOSITION, (UINT)mt, mt->Menu);
+				ctr++;
+			}
+		} 
+		if (ctr)
+			InsertMenu(h, 2+ctr, MF_BYPOSITION | MF_SEPARATOR, NULL, NULL);
+
+		BOOL canconnect = (user->m_WippienState == WipConnected?TRUE:ConnectIfPossible(user, FALSE));
+
+		GetMenuItemInfo(h, ID_POPUP1_COPYADDRESS, FALSE, &lpmii);
+		if (canconnect)
+			lpmii.fState = MFS_ENABLED;
+		else
+			lpmii.fState = MFS_DISABLED;
+		SetMenuItemInfo(h, ID_POPUP1_COPYADDRESS, FALSE, &lpmii);
+		AddMenuImage(ID_PNG1_COPYADDRESS, ID_POPUP1_COPYADDRESS);
+
+
+		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
+		GetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
+		if (user->m_Block)
+			lpmii.dwTypeData = "Unblock";
+		else
+			lpmii.dwTypeData = "Block";
+		if (tg && tg->Block) // disable block/unblock
+			lpmii.fState = MFS_DISABLED;
+		SetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
+		AddMenuImage(ID_PNG1_BLOCK, ID_POPUP1_BLOCK);
+
+		// nije dovrseno
+		lpmii.fMask = MIIM_STATE;
+		GetMenuItemInfo(h, ID_POPUP1_SENDFILE, FALSE, &lpmii);
+			lpmii.fState = MFS_DISABLED;
+		SetMenuItemInfo(h, ID_POPUP1_SENDFILE, FALSE, &lpmii);
+		AddMenuImage(ID_PNG1_SENDFILE, ID_POPUP1_SENDFILE);
+
+		// nije dovrseno
+		lpmii.fMask = MIIM_STATE;
+		GetMenuItemInfo(h, ID_POPUP1_VOICECHAT, FALSE, &lpmii);
+			lpmii.fState = MFS_DISABLED;
+		SetMenuItemInfo(h, ID_POPUP1_VOICECHAT, FALSE, &lpmii);
+	//	AddMenuImage(ID_PNG1_SENDFILE, ID_POPUP1_VOICECHAT);
+
+		GetMenuItemInfo(h, ID_POPUP1_SENDEMAIL, FALSE, &lpmii);
+		if (*user->m_Email)
+			lpmii.fState = MFS_ENABLED;
+		else
+			lpmii.fState = MFS_DISABLED;
+		SetMenuItemInfo(h, ID_POPUP1_SENDEMAIL, FALSE, &lpmii);
+		AddMenuImage(ID_PNG1_SENDEMAIL, ID_POPUP1_SENDEMAIL);
+		
+	//	GetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
+	//		lpmii.fState = MFS_DISABLED;
+	//	SetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
+		AddMenuImage(ID_PNG1_DETAILS, ID_POPUP1_DETAILS);
+
+		AddMenuImage(ID_PNG1_CHAT, ID_POPUP1_CHAT);
+		AddMenuImage(ID_PNG1_RENAME, ID_POPUP1_RENAME);
+		AddMenuImage(ID_PNG1_DELETE, ID_POPUP1_DELETE);
+
+
+		m_UserPopupMenu->AttachMenu(hm);
+		_MainDlg.m_CanTooltip = FALSE;
+		i = m_UserPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, ht.pt.x, ht.pt.y, 0);
+		_MainDlg.m_CanTooltip = TRUE;
+		DestroyMenu(hm);
+
+		return ExecuteRButtonUserCommand(/*ht.hItem, */user, i);
+	}
 	else
-		lpmii.fState = MFS_DISABLED;
-	SetMenuItemInfo(h, ID_POPUP1_COPYADDRESS, FALSE, &lpmii);
-	AddMenuImage(ID_PNG1_COPYADDRESS, ID_POPUP1_COPYADDRESS);
+	{
+		BOOL save = FALSE;
+		for (int i=0;i<_Settings.m_Groups.size();i++)
+		{
+			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+			if (tg->Item == ht.hItem)
+			{
+
+				MENUITEMINFO lpmii = {0};
+				lpmii.cbSize = sizeof(lpmii);
+				lpmii.fMask = MIIM_STATE;
+				
+				HMENU hm = LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_GROUPLISTPOPUP));
+				HMENU h = GetSubMenu(hm, 0);
+				// gotcha! open popup menu
+				lpmii.fMask = MIIM_STRING | MIIM_DATA;
+				GetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
+				if (tg->Block)
+					lpmii.dwTypeData = "Unblock";
+				else
+					lpmii.dwTypeData = "Block";
+				SetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
+				AddMenuImage(ID_PNG1_BLOCK, ID_POPUP1_BLOCK);
 
 
-	lpmii.fMask = MIIM_STRING | MIIM_DATA;
-	GetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
-	if (user->m_Block)
-		lpmii.dwTypeData = "Unblock";
-	else
-		lpmii.dwTypeData = "Block";
-	SetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
-	AddMenuImage(ID_PNG1_BLOCK, ID_POPUP1_BLOCK);
+				if (!strcmp(tg->Name, GROUP_GENERAL) || !strcmp(tg->Name, GROUP_OFFLINE))
+				{
+					lpmii.fMask = MIIM_STATE;
+					GetMenuItemInfo(h, ID_POPUP1_RENAME, FALSE, &lpmii);
+					lpmii.fState = MFS_DISABLED;
+					SetMenuItemInfo(h, ID_POPUP1_RENAME, FALSE, &lpmii);
 
-	// nije dovrseno
-	lpmii.fMask = MIIM_STATE;
-	GetMenuItemInfo(h, ID_POPUP1_SENDFILE, FALSE, &lpmii);
-		lpmii.fState = MFS_DISABLED;
-	SetMenuItemInfo(h, ID_POPUP1_SENDFILE, FALSE, &lpmii);
-	AddMenuImage(ID_PNG1_SENDFILE, ID_POPUP1_SENDFILE);
+					lpmii.fMask = MIIM_STATE;
+					GetMenuItemInfo(h, ID_POPUP1_DELETE, FALSE, &lpmii);
+					lpmii.fState = MFS_DISABLED;
+					SetMenuItemInfo(h, ID_POPUP1_DELETE, FALSE, &lpmii);
+				
+				}
 
-	// nije dovrseno
-	lpmii.fMask = MIIM_STATE;
-	GetMenuItemInfo(h, ID_POPUP1_VOICECHAT, FALSE, &lpmii);
-		lpmii.fState = MFS_DISABLED;
-	SetMenuItemInfo(h, ID_POPUP1_VOICECHAT, FALSE, &lpmii);
-//	AddMenuImage(ID_PNG1_SENDFILE, ID_POPUP1_VOICECHAT);
+				AddMenuImage(ID_PNG1_RENAME, ID_POPUP1_RENAME);
+				AddMenuImage(ID_PNG1_DELETE, ID_POPUP1_DELETE);
 
-	GetMenuItemInfo(h, ID_POPUP1_SENDEMAIL, FALSE, &lpmii);
-	if (*user->m_Email)
-		lpmii.fState = MFS_ENABLED;
-	else
-		lpmii.fState = MFS_DISABLED;
-	SetMenuItemInfo(h, ID_POPUP1_SENDEMAIL, FALSE, &lpmii);
-	AddMenuImage(ID_PNG1_SENDEMAIL, ID_POPUP1_SENDEMAIL);
-	
-//	GetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
-//		lpmii.fState = MFS_DISABLED;
-//	SetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
-	AddMenuImage(ID_PNG1_DETAILS, ID_POPUP1_DETAILS);
+				m_GroupPopupMenu->AttachMenu(hm);
+				_MainDlg.m_CanTooltip = FALSE;
+				i = m_GroupPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, ht.pt.x, ht.pt.y, 0);
+				_MainDlg.m_CanTooltip = TRUE;
+				DestroyMenu(hm);
 
-	AddMenuImage(ID_PNG1_CHAT, ID_POPUP1_CHAT);
-	AddMenuImage(ID_PNG1_RENAME, ID_POPUP1_RENAME);
-	AddMenuImage(ID_PNG1_DELETE, ID_POPUP1_DELETE);
-
-
-	m_UserPopupMenu->AttachMenu(hm);
-	_MainDlg.m_CanTooltip = FALSE;
-	i = m_UserPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, ht.pt.x, ht.pt.y, 0);
-	_MainDlg.m_CanTooltip = TRUE;
-	DestroyMenu(hm);
-
-	return ExecuteRButtonCommand(/*ht.hItem, */user, i);
+				return ExecuteRButtonGroupCommand(tg, i);
+			}
+		}
+	}
+	return 0;
 }
 
-BOOL CUserList::ExecuteRButtonCommand(/*HTREEITEM ht, */CUser *user, int Command)
+BOOL CUserList::ExecuteRButtonGroupCommand(CSettings::TreeGroup *tg, int Command)
+{
+	switch (Command)
+	{
+	case ID_POPUP1_RENAME:
+		{
+			CRenameContact ndlg;
+			ndlg.m_IsGroupEdit = TRUE;
+			strcpy(ndlg.m_VisibleName, tg->Name);
+			ndlg.DoModal();
+			if (ndlg.m_VisibleName[0])
+			{
+				free(tg->Name);
+				tg->Name = (char *)malloc(strlen(ndlg.m_VisibleName)+1);
+				strcpy(tg->Name, ndlg.m_VisibleName);
+				_Settings.Save();
+				PostMessage(WM_REFRESH, NULL, TRUE);
+			}
+		}
+		break;
+		
+	case ID_POPUP1_DELETE:
+		{
+			char buff[1024];
+			sprintf(buff, "Are you sure you want to remove group %s", tg->Name);
+			int i = MessageBox(buff, "Remove group?", MB_YESNO | MB_ICONQUESTION);
+			if (i == IDYES)
+			{
+				DeleteGroup(tg->Name);
+				PostMessage(WM_REFRESH, NULL, FALSE);
+			}
+		}
+		break;
+		
+	case ID_POPUP1_BLOCK:
+		{
+			
+			tg->Block = !tg->Block;
+
+			// loop through all users and (un)block them
+			for (int j=0;j<_MainDlg.m_UserList.m_Users.size();j++)
+			{
+				CUser *user = _MainDlg.m_UserList.m_Users[j];
+				if (!stricmp(user->m_Group, tg->Name))
+				{
+					user->m_Block = tg->Block;
+				}
+			}
+			PostMessage(WM_REFRESH, NULL, FALSE);
+		}
+		break;
+	}
+	return TRUE;
+}
+
+BOOL CUserList::DeleteGroup(char *GroupName)
+{
+
+	CSettings::TreeGroup *tg = NULL;
+	BOOL found = FALSE;
+	// do we have this already?
+	for (int i=0;i<_Settings.m_Groups.size();i++)
+	{
+		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
+		if (!stricmp(tg->Name, GroupName))
+		{
+			found = TRUE;
+			// delete it
+			// loop through all users and move them to General
+			for (int j=0;j<_MainDlg.m_UserList.m_Users.size();j++)
+			{
+				CUser *user = _MainDlg.m_UserList.m_Users[j];
+				if (!stricmp(user->m_Group, tg->Name))
+				{
+					// move user to different group
+					user->m_Group[0] = 0;
+					//						strcpy(user->m_Group, GROUP_GENERAL);
+					
+#ifndef _WODXMPPLIB
+					WODXMPPCOMLib::IXMPPContacts *cts;
+					WODXMPPCOMLib::IXMPPContact *ct = NULL;
+					
+					if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
+					{
+						VARIANT var;
+						var.vt = VT_BSTR;
+						CComBSTR j = user->m_JID;
+						var.bstrVal = j;
+						
+						cts->get_Item(var, &ct);
+						{
+							CComBSTR g = "";
+							ct->put_Group(g);
+							ct->Release();
+						}
+						cts->Release();
+					}
+#else
+					void *ct = NULL;
+					WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+					if (ct)
+					{
+						WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, "");
+						WODXMPPCOMLib::XMPP_Contacts_Free(ct);
+					}
+#endif
+					
+
+					free(tg->Name);
+					delete tg;
+					_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
+					return TRUE;
+				}
+			}
+		}
+	}
+
+	return FALSE;
+}
+		
+BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Command)
 {
 	char buff[1024];
 	in_addr ar;
@@ -1804,9 +1998,7 @@ LRESULT CUserList::OnKeyDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHan
 		{
 			CUser *user = (CUser *)GetItemData(hitem);
 			if (user)
-			{
-				ExecuteRButtonCommand(/*NULL, */user, ID_POPUP1_DELETE);
-			}
+				ExecuteRButtonUserCommand(/*NULL, */user, ID_POPUP1_DELETE);
 		}
 		// this is like REMOVE
 	}

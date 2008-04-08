@@ -408,6 +408,7 @@
 #define IDI_ICON_NO                     1384
 #define IDD_SETTINGS_NETWORK_FIREWALL   1385
 #define IDB_AVATARFRAME                 1386
+#define IDR_GROUPLISTPOPUP              1388
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
@@ -432,8 +433,10 @@
 #define IDC_RULES                       1499
 #define IDC_STATICBLOCK                 1500
 #define IDB_BANNER_TOP_BACKGROUND       1501
-#define IDC_AUTHOHIDEONINACTIVITYSECONDS 1501
-#define IDB_BANNER_TOP_BACKGROUND2      1502
+#define IDC_AUTHOHIDEONINACTIVITYSECONDS 1502
+#define IDC_STATICCONTACTNAME           1502
+#define IDB_BANNER_TOP_BACKGROUND2      1503
+#define IDB_LOCKCONTACT                 1504
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -463,9 +466,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        1387
+#define _APS_NEXT_RESOURCE_VALUE        1389
 #define _APS_NEXT_COMMAND_VALUE         32797
-#define _APS_NEXT_CONTROL_VALUE         1502
+#define _APS_NEXT_CONTROL_VALUE         1503
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

@@ -2807,6 +2807,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewGroup(WORD wNotifyCode
 			tg->Item = NULL;
 			tg->Open = FALSE;
 			tg->Name = a;
+			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			tg->Temporary = FALSE;
 			_Settings.PushGroupSorted(tg);
@@ -2825,65 +2826,10 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnRemoveGroup(WORD wNotifyCode
 	char buff[1024];
 	if (GetDlgItemText(IDC_GROUPLIST, buff, 1024))
 	{
-		BOOL found = FALSE;
-		// do we have this already?
-		for (int i=0;i<_Settings.m_Groups.size();i++)
+		if (!_MainDlg.m_UserList.DeleteGroup(buff))
 		{
-			CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-			if (!stricmp(tg->Name, buff))
-			{
-				found = TRUE;
-				// delete it
-				free(tg->Name);
-
-				// loop through all users and move them to General
-				for (int j=0;j<_MainDlg.m_UserList.m_Users.size();j++)
-				{
-					CUser *user = _MainDlg.m_UserList.m_Users[j];
-					if (!stricmp(user->m_Group, buff))
-					{
-						// move user to different group
-						user->m_Group[0] = 0;
-//						strcpy(user->m_Group, GROUP_GENERAL);
-
-#ifndef _WODXMPPLIB
-						WODXMPPCOMLib::IXMPPContacts *cts;
-						WODXMPPCOMLib::IXMPPContact *ct = NULL;
-						
-						if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
-						{
-							VARIANT var;
-							var.vt = VT_BSTR;
-							CComBSTR j = user->m_JID;
-							var.bstrVal = j;
-							
-							cts->get_Item(var, &ct);
-							{
-								CComBSTR g = "";
-								ct->put_Group(g);
-								ct->Release();
-							}
-							cts->Release();
-						}
-#else
-						void *ct = NULL;
-						WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
-						if (ct)
-						{
-							WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, "");
-							WODXMPPCOMLib::XMPP_Contacts_Free(ct);
-						}
-#endif
-
-					}
-				}
-
-				delete tg;
-				_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
-				RefreshGroupsList();
-				_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
-				return FALSE;
-			}
+			RefreshGroupsList();
+			_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
 		}
 	}
 	return FALSE;
@@ -3060,6 +3006,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 							tg->Item = NULL;
 							tg->Open = TRUE;
 							tg->Temporary = FALSE;
+							tg->Block = FALSE;
 							tg->CountBuff[0] = 0;
 							char *a = (char *)malloc(strlen(grp)+1);
 							memset(a, 0, strlen(grp)+1);

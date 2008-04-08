@@ -163,6 +163,12 @@ void CVividTree::DrawItems(CDC *pDC)
 						rc.top += 10;
 						HFONT oldfont = pDC->SelectFont(m_hGroupFont);
 						pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
+						if (tg->Block)
+						{
+							RECT rc2 = {0};
+							pDC->DrawText(name, strlen(name), &rc2, DT_LEFT | DT_CALCRECT);
+							m_LockContact.Draw(pDC->m_hDC, rc.left+rc2.right+2, rc.top+2);
+						}
 						pDC->SelectFont(m_hSubFont);
 						rc.right -= 10;
 						rc.top += 5;
@@ -219,11 +225,21 @@ void CVividTree::DrawItems(CDC *pDC)
 
 					}
 
+
+					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (user->m_Block)
-						pDC->SetTextColor(RGB(255,32,32));
-					else
-						if (!selected)
-							pDC->SetTextColor(RGB(56,56,56));
+					{
+						RECT rc2 = {0};
+						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rc2, DT_LEFT | DT_CALCRECT);
+//						rc2.left += rc_item.left;
+//						rc2.top += rc_item.top;
+						m_LockContact.Draw(pDC->m_hDC, rc_item.left+rc2.right+2, rc_item.top+2);
+
+//						pDC->SetTextColor(RGB(255,32,32));
+					}
+//					else
+//						if (!selected)
+//							pDC->SetTextColor(RGB(56,56,56));
 
 					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (!user->m_Online && user->m_WippienState==WipConnected)

@@ -978,6 +978,9 @@ void CUserList::RefreshView(BOOL updateonly)
 				CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 				if (!strcmp(tg->Name, user->m_Group) || (!*user->m_Group && !strcmp(tg->Name, GROUP_GENERAL)))
 				{
+					if (tg->Block)
+						user->m_Block = TRUE;
+
 					if (!user->m_Hidden && !_Settings.IsHiddenContact(user->m_JID))
 					{
 						tg->TotalCount++;

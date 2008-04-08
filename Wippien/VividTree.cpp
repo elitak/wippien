@@ -167,7 +167,7 @@ void CVividTree::DrawItems(CDC *pDC)
 						{
 							RECT rc2 = {0};
 							pDC->DrawText(name, strlen(name), &rc2, DT_LEFT | DT_CALCRECT);
-							m_LockContact.Draw(pDC->m_hDC, rc.left+rc2.right+2, rc.top+2);
+							m_LockContact.Draw(pDC->m_hDC, rc.left+rc2.right+2, rc.top+4);
 						}
 						pDC->SelectFont(m_hSubFont);
 						rc.right -= 10;

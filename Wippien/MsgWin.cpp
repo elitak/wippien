@@ -1093,7 +1093,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 	return TRUE;
 }
 
-/*void EscapeXML(Buffer *b)
+void EscapeXML(Buffer *b)
 {
 	Buffer c;
 	
@@ -1122,10 +1122,6 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 				c.Append("&quot;");
 				break;
 				
-			case '\'':
-				c.Append("&apos;");
-				break;
-				
 			default:
 				c.Append(d, 1);
 				break;
@@ -1135,7 +1131,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 
 	b->Append(c.Ptr(), c.Len());
 }
-*/
+
 
 BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 {
@@ -1165,11 +1161,11 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 	}
 	else
 	{
-//		Buffer c1;
-//		c1.Append(text);
-//		EscapeXML(&c1);
-//		b.Append(c1.Ptr(), c1.Len());
-		b.Append(text);
+		Buffer c1;
+		c1.Append(text);
+		EscapeXML(&c1);
+		b.Append(c1.Ptr(), c1.Len());
+//		b.Append(text);
 	}
 	if (!IsSystem)
 		b.Append("</font>");

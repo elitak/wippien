@@ -113,6 +113,7 @@ CMainDlg::CMainDlg()
 	m_SimpleHttpRequest = NULL;
 	m_InactiveTimer = 0;
 	m_WasInactiveTimer = FALSE;
+	m_WasConnectedBeforeSleep = FALSE;
 }
 
 CMainDlg::~CMainDlg()
@@ -2825,15 +2826,34 @@ LRESULT CMainDlg::OnPowerBroadcast(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 
 		if (_Settings.m_UsePowerOptions)
 		{
-			m_ReconnectWait = 1;
-			if (IsWindow())
-				_MainDlg.SetTimer(106,200);
+			if (m_WasConnectedBeforeSleep)
+			{
+				m_ReconnectWait = 1;
+				if (IsWindow())
+					_MainDlg.SetTimer(106,200);
+			}
 		}
 	}
 	if (wParam == PBT_APMSUSPEND || wParam == PBT_APMSTANDBY)
 	{
 		if (_Settings.m_UsePowerOptions)
 		{
+
+			m_WasConnectedBeforeSleep = FALSE;
+			
+			// get our state
+			WODXMPPCOMLib::StatesEnum stat;
+#ifndef _WODXMPPLIB					
+			if (_Jabber && SUCCEEDED(_Jabber->m_Jabb->get_State(&stat)))
+#else
+			if (_Jabber && SUCCEEDED(WODXMPPCOMLib::XMPP_GetState(_Jabber->m_Jabb, &stat)))
+#endif
+			{
+				if (stat != 0/*Disconnected*/)
+					m_WasConnectedBeforeSleep = TRUE;
+			}
+			
+			
 #ifndef _WODXMPPLIB
 			_Jabber->m_Jabb->Disconnect();
 #else

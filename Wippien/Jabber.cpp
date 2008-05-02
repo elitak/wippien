@@ -1092,7 +1092,7 @@ void __stdcall CJabberEvents::DispError(WODXMPPCOMLib::IXMPPContact *Contact, WO
 #endif
 	}
 	CComBSTR2 t1 = t;
-	MessageBox(NULL, err, t1.ToString(), MB_OK | MB_ICONHAND);
+//	MessageBox(NULL, err, t1.ToString(), MB_OK | MB_ICONHAND);
 }
 
 

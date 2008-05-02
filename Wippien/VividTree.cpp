@@ -238,8 +238,9 @@ void CVividTree::DrawItems(CDC *pDC)
 //						pDC->SetTextColor(RGB(255,32,32));
 					}
 //					else
-//						if (!selected)
-//							pDC->SetTextColor(RGB(56,56,56));
+
+					if (!selected)
+						pDC->SetTextColor(RGB(56,56,56));
 
 					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (!user->m_Online && user->m_WippienState==WipConnected)

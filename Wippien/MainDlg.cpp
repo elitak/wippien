@@ -2863,7 +2863,7 @@ LRESULT CMainDlg::OnPowerBroadcast(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 
 	}
 
-	return FALSE;
+	return TRUE;
 }
 
 void CMainDlg::ToggleMute(void)

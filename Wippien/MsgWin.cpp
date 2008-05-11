@@ -1102,10 +1102,10 @@ void EscapeXML(Buffer *b)
 		char *d = b->Ptr();
 		switch (*d)
 		{
-			case '\'':
-				c.Append("&apos;");
-				break;
-
+//			case '\'':
+//				c.Append("&apos;");
+//				break;
+//
 			case '&':
 				c.Append("&amp;");
 				break;

@@ -96,9 +96,11 @@ BEGIN
     CONTROL         "Show notification if ethernet adapter is unavailable.",
                     IDC_CHECK_ETHERNET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     7,12,176,10
+    CONTROL         "Disconnect adapter on exit",IDC_DISCONNECT_ETHERNET,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,25,101,10
     LTEXT           "UDP port fort for outoing and incoming packets (0 for auto select)",
-                    IDC_STATIC,7,35,206,8
-    EDITTEXT        IDC_UDP_PORT,216,33,28,12,ES_NUMBER | WS_DISABLED
+                    IDC_STATIC,7,42,206,8
+    EDITTEXT        IDC_UDP_PORT,216,40,28,12,ES_NUMBER | WS_DISABLED
     GROUPBOX        "IP address for Wippien network adapter ",IDC_STATIC,3,
                     65,255,94
     CONTROL         "Ignore. IP will be set outside of this program.",

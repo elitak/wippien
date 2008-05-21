@@ -106,7 +106,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
 # SUBTRACT BASE LINK32 /pdb:none
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
+# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "Wippien - Win32 LibRelease"
@@ -134,7 +134,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
 # SUBTRACT BASE LINK32 /debug
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
+# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib  Secur32.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
 # SUBTRACT LINK32 /debug
 
 !ENDIF 

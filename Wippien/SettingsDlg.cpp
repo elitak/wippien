@@ -1553,6 +1553,11 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		::SendMessage(GetDlgItem(IDC_CHECK_ETHERNET), BM_SETCHECK, TRUE, NULL);
 
+	if (_Settings.m_DisconnectEthernetOnExit)
+		::SendMessage(GetDlgItem(IDC_DISCONNECT_ETHERNET), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_DISCONNECT_ETHERNET), BM_SETCHECK, FALSE, NULL);
+
 	return TRUE;
 }
 
@@ -1593,6 +1598,12 @@ BOOL CSettingsDlg::CSettingsEthernet::Apply(void)
 		_Settings.m_DoNotShow[DONOTSHOW_NOETHERNET] = '0';
 	else
 		_Settings.m_DoNotShow[DONOTSHOW_NOETHERNET] = '1';
+
+
+	if (::SendMessage(GetDlgItem(IDC_DISCONNECT_ETHERNET), BM_GETSTATE, NULL, NULL))
+		_Settings.m_DisconnectEthernetOnExit = TRUE;
+	else
+		_Settings.m_DisconnectEthernetOnExit = FALSE;
 
 
 	char buff[1024];

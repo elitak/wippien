@@ -69,6 +69,7 @@ CEthernet::CEthernet()
 	m_Guid[0] = m_RegistryKey[0];
 	m_FirewallRulesChanged = FALSE;
 	m_Activity = FALSE;
+	memset(m_AdapterVersion, 0, sizeof(m_AdapterVersion));
 }
 
 CEthernet::~CEthernet()
@@ -76,6 +77,22 @@ CEthernet::~CEthernet()
 	// tell everyone to die
 	SetEvent(DieHandle);
 	
+	// should we disconnect?
+	if (m_AdapterVersion[0] > 2 || m_AdapterVersion[1] >= 4)
+	{
+		// in 2.4 we have add mediastatus
+		if (_Settings.m_DisconnectEthernetOnExit)
+		{
+			unsigned long len;
+			unsigned long mediaon = FALSE;
+			len = sizeof(mediaon);
+			if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
+			{
+//				MessageBeep(-1);
+			}
+		}
+	}
+
 	m_Alive = FALSE;
 	while (hReadThread != INVALID_HANDLE_VALUE || hWriteThread != INVALID_HANDLE_VALUE || hSetupThread != INVALID_HANDLE_VALUE)
 		Sleep(100);
@@ -169,11 +186,21 @@ BOOL CEthernet::Init(void)
 
 	m_Enabled = TRUE;
 
-    unsigned long info[3] = { 0, 0, 0};
 	unsigned long len;
-    if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_GET_VERSION, &info, sizeof(info), &info, sizeof(info), &len, NULL))
+    if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_GET_VERSION, &m_AdapterVersion, sizeof(m_AdapterVersion), &m_AdapterVersion, sizeof(m_AdapterVersion), &len, NULL))
 	{
-		// if wippien version doesn't match, go out
+		if (m_AdapterVersion[0] > 2 || m_AdapterVersion[1] >= 4)
+		{
+			// in 2.4 we have add status
+			unsigned long mediaon = TRUE;
+			len = sizeof(mediaon);
+			if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
+			{
+//				MessageBeep(-1);
+			}
+		}
+
+/*		// if wippien version doesn't match, go out
 		if (info[0] != WIPP_DRIVER_MAJOR_VERSION || info[1] != WIPP_DRIVER_MINOR_VERSION)
 		{
 			// close network adapter
@@ -181,7 +208,7 @@ BOOL CEthernet::Init(void)
 			m_AdapterHandle = INVALID_HANDLE_VALUE;
 			return FALSE;
 		}
-
+*/
 		// get our MAC address
 		if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_GET_MAC, &m_MAC, sizeof(MACADDR), &m_MAC, sizeof(MACADDR), &len, NULL))
 		{

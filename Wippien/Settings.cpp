@@ -243,6 +243,7 @@ CSettings::CSettings()
 	m_UpdateURL = "http://wippien.com/Download/update.php";
 
 	m_FirewallDefaultAllowRule = TRUE;
+	m_DisconnectEthernetOnExit = FALSE;
 }	
 
 CSettings::~CSettings()
@@ -481,6 +482,7 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "CheckUpdateSilently", &m_CheckUpdateSilently, FALSE);
 			ReadSettingsCfg(wip, "ShowUpdaterMessages", &m_ShowUpdaterMessages, TRUE);
 			ReadSettingsCfg(wip, "UsePowerOptions", &m_UsePowerOptions, TRUE);
+			ReadSettingsCfg(wip, "DisconnectEthernetOnExit", &m_DisconnectEthernetOnExit, FALSE);
 			ReadSettingsCfg(wip, "FixedMTU", &m_FixedMTU, FALSE);
 			ReadSettingsCfg(wip, "FixedMTUNum", &m_FixedMTUNum, 1200);
 			ReadSettingsCfg(wip, "SortContacts", &m_SortContacts, 1);
@@ -1073,6 +1075,7 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("CheckUpdateSilently", m_CheckUpdateSilently?"1":"0");
 	x.AddChildElem("ShowUpdaterMessages", m_ShowUpdaterMessages?"1":"0");
 	x.AddChildElem("UsePowerOptions", m_UsePowerOptions?"1":"0");
+	x.AddChildElem("DisconnectEthernetOnExit", m_DisconnectEthernetOnExit?"1":"0");
 	x.AddChildElem("FixedMTU", m_FixedMTU?"1":"0");
 	x.AddChildElem("FixedMTUNum", m_FixedMTUNum);
 	x.AddChildElem("SortContacts", m_SortContacts);

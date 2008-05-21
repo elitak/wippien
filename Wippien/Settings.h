@@ -61,7 +61,7 @@ public:
 	BOOL m_AllowAnyMediator, m_SoundOn;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
-	BOOL	m_UseSSLWrapper, m_AutoHide;
+	BOOL	m_UseSSLWrapper, m_AutoHide, m_DisconnectEthernetOnExit;
 	int m_AutoHideSeconds;
 	int m_ServerPort, m_UDPPort, m_LastOperatorMessageID;
 	long m_DeleteFunctionLogMb;

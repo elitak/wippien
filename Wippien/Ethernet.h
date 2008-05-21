@@ -18,7 +18,7 @@
 #endif
 
 #define WIPP_DRIVER_MAJOR_VERSION 2
-#define WIPP_DRIVER_MINOR_VERSION 2
+#define WIPP_DRIVER_MINOR_VERSION 4
 
 //======================
 // Filesystem prefixes
@@ -28,8 +28,8 @@
 #define SYSDEVICEDIR      "\\Device\\"
 #define USERDEVICEDIR     "\\DosDevices\\Global\\"
 #define WIPPSUFFIX        ".wip"
-#define WIPP_COMPONENT_ID "wip0203"
-#define WIPP_COMPONENT_ID_OLDER "wip0202"
+#define WIPP_COMPONENT_ID "wip0204"
+#define WIPP_COMPONENT_ID_OLDER "wip0203"
 
 //=================
 // Registry keys
@@ -52,9 +52,10 @@
 #define WIPP_IOCTL_GET_MTU               WIPP_CONTROL_CODE (15, METHOD_BUFFERED)
 #define WIPP_IOCTL_GET_INFO              WIPP_CONTROL_CODE (16, METHOD_BUFFERED)
 #define WIPP_IOCTL_GET_LOG_LINE          WIPP_CONTROL_CODE (17, METHOD_BUFFERED)
+#define WIPP_IOCTL_SET_MEDIA_STATUS      WIPP_CONTROL_CODE (18, METHOD_BUFFERED)
 
 /* Define to the version of this package. */
-#define VERSION "1.2.2"
+#define VERSION "1.2.4"
 
 #ifndef WIPPIENDRV
 #define ETH_MAX_PACKET	1520
@@ -102,6 +103,7 @@ public:
 	DWORD SetupThreadId;
 
 	Buffer ReadBuffer/*, WriteBuffer*/;
+	unsigned long m_AdapterVersion[3];
 
 
 	CEthernet();

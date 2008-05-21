@@ -63,6 +63,7 @@
 #define IDC_IP_ETHERNET                 1044
 #define IDC_CHECK_ETHERNET              1045
 #define IDR_SOUNDON                     1046
+#define IDC_DISCONNECT_ETHERNET         1046
 #define IDC_MEDIATOR                    1048
 #define IDC_IPOBTAINURL                 1048
 #define IDR_SOUNDOFF                    1049

@@ -1166,10 +1166,14 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 #ifndef _WODXMPPLIB
 	CComBSTR caps;
 	m_Jabb->get_Capabilities(&caps);
-	if (caps.Length())
-		caps += " ";
-	caps += "Wippien";
-	m_Jabb->put_Capabilities(caps);
+	CComBSTR2 caps2 = caps;
+	if (!strstr(caps2.ToString(), WIPPIENIM))
+	{
+		if (caps.Length())
+			caps += " ";
+		caps += "Wippien";
+		m_Jabb->put_Capabilities(caps);
+	}
 
 	m_Jabb->put_Login(l);
 	m_Jabb->put_Password(p);
@@ -1184,10 +1188,13 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	char buff[1024] = {0};
 	int bflen = sizeof(buff);
 	WODXMPPCOMLib::XMPP_GetCapabilities(m_Jabb, buff, &bflen);
-	if (strlen(buff))
-		strcat(buff, " ");
-	strcat(buff, WIPPIENIM);
-	WODXMPPCOMLib::XMPP_SetCapabilities(m_Jabb, buff);
+	if (!strstr(buff, WIPPIENIM))
+	{
+		if (strlen(buff))
+			strcat(buff, " ");
+		strcat(buff, WIPPIENIM);
+		WODXMPPCOMLib::XMPP_SetCapabilities(m_Jabb, buff);
+	}
 
 	CComBSTR2 l1 = l;
 	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());

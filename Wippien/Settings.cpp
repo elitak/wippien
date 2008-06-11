@@ -1210,7 +1210,7 @@ BOOL CSettings::SaveConfig(void)
 	for (i=0;i<m_FirewallRules.size();i++)
 	{
 		fw = (FirewallStruct *)m_FirewallRules[i];
-		x.AddChildAttrib("Rule", cb + m_HiddenContacts[i], "Proto", fw->Proto, "Port", fw->Port);
+		x.AddChildAttrib("Rule", "", "Proto", fw->Proto, "Port", fw->Port);
 	}
 	x.Append("</FirewallRules>\r\n");
 	

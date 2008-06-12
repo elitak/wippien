@@ -2985,6 +2985,9 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 											delete img;										
 										}
 
+										while (::SendMessage(em->m_Owner->m_EmoticonList->m_hWnd, LB_GETCOUNT, NULL, NULL))
+										::SendMessage(em->m_Owner->m_EmoticonList->m_hWnd, LB_DELETESTRING, 0, NULL);
+
 										_MainDlg.ReloadEmoticons(FALSE);
 
 										::MessageBox(NULL, "You can now click again on emoticon button to see new installed emoticons.", "Done!", MB_ICONASTERISK | MB_OK);

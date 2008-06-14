@@ -293,9 +293,19 @@ CMsgWin::~CMsgWin()
 	//m_InputBox.UnsubclassWindow(FALSE);
 	DeleteObject(m_BackBrush);
 	if (IsWindow() && m_User)
-		GetWindowRect(&m_User->m_ChatWindowRect);
+	{
+		WINDOWPLACEMENT wp = {0};
+		GetWindowPlacement(&wp);
+		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+			GetWindowRect(&m_User->m_ChatWindowRect);
+	}
 	if (IsWindow() && m_Room)
-		GetWindowRect(&m_Room->m_ChatWindowRect);
+	{
+		WINDOWPLACEMENT wp = {0};
+		GetWindowPlacement(&wp);
+		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+			GetWindowRect(&m_Room->m_ChatWindowRect);
+	}
 //	delete m_Text;
 }
 
@@ -596,9 +606,19 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 	m_InputBox.Free();
 
 	if (m_User)
-		GetWindowRect(&m_User->m_ChatWindowRect);
+	{
+		WINDOWPLACEMENT wp = {0};
+		GetWindowPlacement(&wp);
+		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+			GetWindowRect(&m_User->m_ChatWindowRect);
+	}
 	if (m_Room)
-		GetWindowRect(&m_Room->m_ChatWindowRect);
+	{
+		WINDOWPLACEMENT wp = {0};
+		GetWindowPlacement(&wp);
+		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+			GetWindowRect(&m_Room->m_ChatWindowRect);
+	}
 
 	if (m_ChatBox.m_Events)
 		delete m_ChatBox.m_Events;

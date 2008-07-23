@@ -1988,7 +1988,7 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 LRESULT CUserList::OnMouseMove(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
-	return _MainDlg.OnMouseMove(uMsg, wParam, lParam, bHandled);
+	return _MainDlg.OnMouseMove(m_hWnd, uMsg, wParam, lParam, bHandled);
 }
 
 LRESULT CUserList::OnKeyDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)

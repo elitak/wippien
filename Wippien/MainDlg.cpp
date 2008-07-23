@@ -114,6 +114,8 @@ CMainDlg::CMainDlg()
 	m_InactiveTimer = 0;
 	m_WasInactiveTimer = FALSE;
 	m_WasConnectedBeforeSleep = FALSE;
+	m_MouseOverStatus = FALSE;
+	m_MouseOverPoint.x = m_MouseOverPoint.y = 0;
 }
 
 CMainDlg::~CMainDlg()
@@ -172,7 +174,21 @@ CMainDlg::~CMainDlg()
 BOOL CMainDlg::PreTranslateMessage(MSG* pMsg)
 {
 	_MainDlg.CheckIfAntiInactivityMessage(pMsg->message);
-//	DumpDebug("*MainDlg::PreTranslatMessage\r\n");
+	if (m_MouseOverStatus && (pMsg->message == WM_KEYUP || pMsg->message == WM_KEYDOWN))
+	{
+		if (pMsg->wParam == 27)
+		{
+			if (pMsg->message == WM_KEYDOWN)
+				ChangeStatusFromEditBox(FALSE);
+			return TRUE;
+		}
+		if (pMsg->wParam == 13 || pMsg->wParam == 9)
+		{
+			if (pMsg->message == WM_KEYDOWN)
+				ChangeStatusFromEditBox(TRUE);
+			return TRUE;
+		}
+	}
 	return CWindow::IsDialogMessage(pMsg);
 }
 
@@ -1459,7 +1475,7 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	::SetTextColor(dc_ff, WIP_IDENTITYNAMETEXT);
 	::SetBkColor(dc_ff, WIP_LIGHTBLUE);
 	if (_Settings.m_ShowMyPicture)
-		rt.left += 60;
+		rt.left += 61;
 	else
 		rt.left += 10;
 
@@ -1514,9 +1530,21 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	{
 		SelectObject(dc_ff, m_Identity_StatusFont);
 		::SetTextColor(dc_ff, WIP_IDENTITYSTATUSTEXT);
-		if (_Settings.m_ShowMyIP)
-			::DrawText(dc_ff, st, strlen(st), &rt, DT_LEFT | DT_NOPREFIX); 
+
+/*		if (m_MouseOverStatus)
+		{
+			RECT rt1;
+			memcpy(&rt1, &rt, sizeof(RECT));
+			rt1.left-=2;
+			rt1.top-=2;
+			rt1.bottom= rt1.top + 30;
+			rt1.right -= 10;
+			FillRect(dc_ff, &rt1, CreateSolidBrush(RGB(192,192,192)));
+		}
+*/
+		::DrawText(dc_ff, st, strlen(st), &rt, DT_LEFT | DT_NOPREFIX); 
 		SelectObject(dc_ff, oldfont);
+
 	}	
 
 
@@ -1526,7 +1554,19 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	// Now Blt the changes to the real device context - this prevents flicker.
 	dc.BitBlt(rtorg.left, rtorg.top, rtorg.Width(), 80, dc_ff, 0, 0, SRCCOPY);
 	dc.BitBlt(0, rtorg.bottom - 51, rtorg.Width(), 51, dc_ff, 0, rtorg.bottom - 51, SRCCOPY);
-	
+
+/*	
+	if (m_MouseOverStatus)
+	{
+		HGDIOBJ oldpen = SelectObject(dc, m_MouseOverPen);
+		MoveToEx(dc, rt.left-2, rt.top-1, NULL);
+		LineTo(dc, rt.right-9, rt.top-1);
+		LineTo(dc, rt.right-9, rt.top+12);
+		LineTo(dc, rt.left-2, rt.top+12);
+		LineTo(dc, rt.left-2, rt.top-1);
+		SelectObject(dc, oldpen);
+	}
+*/
 	// dc_ff.SelectFont(old_font);
 	// dc_ff.SetBkMode(old_mode);
 	dc_ff.SelectBitmap(bm_old);
@@ -1832,6 +1872,8 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	BOOL bHandled;
 	OnSizeImpl(WM_SIZE, /*wParam*/0, 0, bHandled);
 
+	HWND hStatus = GetDlgItem(IDC_INLINESTATUSCHANGE);
+	::SendMessage(hStatus, WM_SETFONT, (LPARAM)m_Identity_StatusFont, 0);
 	return TRUE;
 }
 
@@ -2750,7 +2792,12 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 	return TRUE;
 }
 
-LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+LRESULT CMainDlg::OnMouseMove(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+	return OnMouseMove(m_hWnd, uMsg, wParam, lParam, bHandled);
+}
+
+LRESULT CMainDlg::OnMouseMove(HWND Owner, UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CheckIfAntiInactivityMessage(WM_CHAR);
 
@@ -2805,7 +2852,69 @@ LRESULT CMainDlg::OnMouseMove(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 		ImageList_DragShowNolock(TRUE); 	
 		return TRUE;
 	}
+
+	RECT rt;
+	GetClientRect(&rt);
+	if (_Settings.m_ShowMyPicture)
+		rt.left += 60;
+	else
+		rt.left += 10;
 	
+	rt.top += 2;
+	rt.right -= 10;
+	if (_Settings.m_ShowMyName)
+		rt.top += 20;
+	if (_Settings.m_ShowMyIP)
+		rt.top += 14;
+	rt.bottom = rt.top + 10;
+
+	if (p.x != m_MouseOverPoint.x && p.y != m_MouseOverPoint.y)
+	{
+		m_MouseOverPoint.x = p.x;
+		m_MouseOverPoint.y = p.y;
+
+		if (p.x >= rt.left && p.x <= rt.right && p.y >= rt.top && p.y <= rt.bottom && Owner == m_hWnd)
+		{
+			if (!m_MouseOverStatus)
+			{
+				m_MouseOverStatus = TRUE;
+				InvalidateRect(&rt, FALSE);
+				HWND h = GetDlgItem(IDC_INLINESTATUSCHANGE);
+
+				char *st = NULL;
+#ifndef _WODXMPPLIB
+				CComBSTR2 k;
+				VARIANT var;
+				var.vt = VT_ERROR;
+				if (SUCCEEDED(_Jabber->m_Jabb->get_StatusText(var, &k)))
+				{
+					st = k.ToString();
+				}
+#else
+				char stat[1024] = {0};	
+				int slen = 1024;
+				WODXMPPCOMLib::XMPP_GetStatusText(_Jabber->m_Jabb, stat, &slen);
+				st = stat;
+#endif
+				::SetWindowText(h, st);
+				::SetWindowPos(h, NULL, rt.left, rt.top, rt.right-rt.left, 14, SWP_FRAMECHANGED | SWP_NOZORDER);				
+				::SendMessage(h, EM_SETSEL, 0, strlen(st));
+				::ShowWindow(h, SW_SHOW);
+				::SetFocus(h);
+			}
+		}
+		else
+		{
+			if (m_MouseOverStatus)
+			{
+				m_MouseOverStatus = FALSE;
+				HWND h = GetDlgItem(IDC_INLINESTATUSCHANGE);
+				::ShowWindow(h, SW_HIDE);
+				//Invalidate(FALSE);
+			}
+		}
+	}
+
 	bHandled = FALSE;
 	return FALSE;
 }
@@ -2973,4 +3082,33 @@ void CMainDlg::CheckIfAntiInactivityMessage(int msg)
 			}
 			break;
 	}
+}
+
+void CMainDlg::ChangeStatusFromEditBox(BOOL dochange)
+{
+//	m_MouseOverStatus = FALSE;
+	HWND h = GetDlgItem(IDC_INLINESTATUSCHANGE);
+	::ShowWindow(h, SW_HIDE);
+	//Invalidate(FALSE);
+
+
+	if (dochange)
+	{
+		char buff[8192];
+		memset(buff, 0,sizeof(buff));
+		::GetWindowText(h, buff, 8192);
+	WODXMPPCOMLib::StatusEnum stat;
+#ifndef _WODXMPPLIB				
+	CComBSTR s = buff;
+	VARIANT var;
+	var.vt = VT_BSTR;
+	var.bstrVal = s;
+	if (_Jabber && SUCCEEDED(_Jabber->m_Jabb->get_Status(&stat)))
+		_Jabber->m_Jabb->SetStatus(stat, var);
+#else
+		if (_Jabber && SUCCEEDED(WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &stat)))
+			WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, stat,buff);
+#endif
+	}
+
 }

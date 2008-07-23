@@ -84,6 +84,8 @@ public:
 	CxImage m_MainWndTopBannerBack, m_MainWndTopBannerBack2;
 	int m_InactiveTimer;
 	BOOL m_WasInactiveTimer, m_WasConnectedBeforeSleep;
+	BOOL m_MouseOverStatus;
+	POINT m_MouseOverPoint;
 
 //	CComPtr<WODVCHATComLib::IwodVChatCom> m_VoiceChat;
 
@@ -212,6 +214,7 @@ public:
 	LRESULT OnLButtonUp(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnRButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnMouseMove(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	LRESULT OnMouseMove(HWND Owner, UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnAppBarNotify(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/);
 	LRESULT OnWindowPosChanged(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/);
 	LRESULT OnWindowPosChanging(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/);
@@ -227,6 +230,7 @@ public:
 	LRESULT CalcAlignment(RECT *rcin);
 	void ToggleMute(void);
 	BOOL ReloadEmoticons(BOOL ReleaseOnly);
+	void ChangeStatusFromEditBox(BOOL dochange);
 
 
 };

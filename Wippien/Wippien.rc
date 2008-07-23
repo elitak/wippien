@@ -1,6 +1,7 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
+#include "versionno.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -11,15 +12,6 @@
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
-
-/////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1283,8 +1275,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,1,2,283
- PRODUCTVERSION 2,1,2,283
+ FILEVERSION FILEVER
+ PRODUCTVERSION FILEVER
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -1301,12 +1293,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "Wippien Module\0"
-            VALUE "FileVersion", "2, 1, 2, 283\0"
+            VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "Wippien\0"
             VALUE "LegalCopyright", "Copyright 2006-2008\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
-            VALUE "ProductVersion", "2, 1, 2, 283\0"
+            VALUE "ProductVersion", STRFILEVER
             VALUE "OLESelfRegister", "\0"
         END
     END
@@ -1336,7 +1328,6 @@ BEGIN
     IDS_SERVICENAME         "Wippien"
 END
 
-#endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -659,6 +659,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									if (strlen(s1)> sizeof(user->m_StatusText))
 										s1[sizeof(user->m_StatusText)-1] = 0;								
 									strcpy(user->m_StatusText, s1);
+									user->SetSubtext();
 								}
 							}
 							if (cntc)

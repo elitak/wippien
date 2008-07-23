@@ -1416,74 +1416,113 @@ int CSettings::LoadTools(void)
 				tool = CXmlEntity::FindByName(start, "Tool", 1);
 				if (tool)
 				{
-					MenuTool *mt = new MenuTool;
-					
-					memset(mt, 0, sizeof(MenuTool));
-
 					char *buff = (char *)malloc(MAX_PATH+1);
 					memset(buff, 0, MAX_PATH+1);
-					ReadSettingsCfg(tool, "Menu", buff, "");	
-					mt->Menu = buff;
-
-					buff = (char *)malloc(MAX_PATH+1);
-					memset(buff, 0, MAX_PATH+1);
 					ReadSettingsCfg(tool, "Exec", buff, "");	
-					mt->Exec = buff;
+					
+					// does this exist?
+					Buffer in;
+					in.Append(buff);
+					Buffer *out = CUser::ExpandSystemArgs(&in);
 
-					buff = (char *)malloc(MAX_PATH+1);
-					memset(buff, 0, MAX_PATH+1);
-					ReadSettingsCfg(tool, "Icon", buff, "");	
-					char *j = strchr(buff, ',');
-					if (!j)
-						j = strchr(buff, ';');
-					if (j)
+					// let's find first space inside
+					char *os = out->Ptr();
+					char *o1 = out->Ptr();
+					BOOL inquote = FALSE;
+					while (o1 && *o1)
 					{
-						*j=0;
-						j++;
-						mt->IconID = atoi(j);
-					}	
-					mt->IconPath = buff;
-
-					CXmlEntity *t = NULL;
-					do 
-					{
-						buff = (char *)malloc(MAX_PATH+1);
-						memset(buff, 0, MAX_PATH+1);
-						t = ReadSettingsCfg(tool, "Filter", buff, "");
-						if (t)
+						if (*o1 == ' ' && inquote == FALSE)
 						{
-							CXmlEntity *t1 = CXmlEntity::FindAttrByName(t, "type");
-							if (t1)
+							*o1 = 0;
+							break;
+						}
+						if (*o1 == '\"')
+						{
+							if (!inquote)
 							{
-								if (!strcmp(t1->Value, "Group"))
-								{
-									if (mt->FilterGroup)
-										free(mt->FilterGroup);
-									mt->FilterGroup = buff;
-								}
-								else
-									if (!strcmp(t1->Value, "JID"))
-									{
-										if (mt->FilterJID)
-											free(mt->FilterJID);
-										mt->FilterJID = buff;
-									}
-									else
-									{
-										if (mt->FilterVisibleName)
-											free(mt->FilterVisibleName);
-										mt->FilterVisibleName = buff;
-									}
+								inquote = TRUE;
+								os++;
 							}
 							else
-								free(buff);
-
-							t->Name[0] = 0;
+							{
+								*o1 = 0;
+								break;
+							}
 						}
-					} while (t);
+						o1++;
+					}
+					int h2 = open(os,O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+					if (h2 ==(-1))
+						free(buff);
+					else
+					{
+						close(h2);
 
-					ReadSettingsCfg(tool, "State", &mt->State, 0);	
-					m_MenuTools.push_back(mt);
+						MenuTool *mt = new MenuTool;
+						memset(mt, 0, sizeof(MenuTool));
+						mt->Exec = buff;
+
+						buff = (char *)malloc(MAX_PATH+1);
+						memset(buff, 0, MAX_PATH+1);
+						ReadSettingsCfg(tool, "Menu", buff, "");	
+						mt->Menu = buff;
+
+
+						buff = (char *)malloc(MAX_PATH+1);
+						memset(buff, 0, MAX_PATH+1);
+						ReadSettingsCfg(tool, "Icon", buff, "");	
+						char *j = strchr(buff, ',');
+						if (!j)
+							j = strchr(buff, ';');
+						if (j)
+						{
+							*j=0;
+							j++;
+							mt->IconID = atoi(j);
+						}	
+						mt->IconPath = buff;
+
+						CXmlEntity *t = NULL;
+						do 
+						{
+							buff = (char *)malloc(MAX_PATH+1);
+							memset(buff, 0, MAX_PATH+1);
+							t = ReadSettingsCfg(tool, "Filter", buff, "");
+							if (t)
+							{
+								CXmlEntity *t1 = CXmlEntity::FindAttrByName(t, "type");
+								if (t1)
+								{
+									if (!strcmp(t1->Value, "Group"))
+									{
+										if (mt->FilterGroup)
+											free(mt->FilterGroup);
+										mt->FilterGroup = buff;
+									}
+									else
+										if (!strcmp(t1->Value, "JID"))
+										{
+											if (mt->FilterJID)
+												free(mt->FilterJID);
+											mt->FilterJID = buff;
+										}
+										else
+										{
+											if (mt->FilterVisibleName)
+												free(mt->FilterVisibleName);
+											mt->FilterVisibleName = buff;
+										}
+								}
+								else
+									free(buff);
+
+								t->Name[0] = 0;
+							}
+						} while (t);
+
+						ReadSettingsCfg(tool, "State", &mt->State, 0);	
+						m_MenuTools.push_back(mt);
+					}
 
 					tool->Name[0] = 0;
 				}

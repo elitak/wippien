@@ -964,11 +964,11 @@ Buffer *CUser::ExpandArgs(char *Text)
 	Buffer in;
 	in.Append(Text);
 	in.Append("\0", 1);
-
+	
 	Buffer b;
 	char *a = NULL;
 	char *t = in.Ptr();
-
+	
 	a = strstr(t, "{contact_virtual_ip}");
 	if (a)
 	{
@@ -995,56 +995,80 @@ Buffer *CUser::ExpandArgs(char *Text)
 		}
 		else
 		{
-			a = strstr(t, "{windows}");
+			a = strstr(t, "{contact_ip}");
 			if (a)
 			{
-				char buff[MAX_PATH];
-				if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_WINDOWS | CSIDL_FLAG_CREATE, NULL, 0, buff)))
-				{				
-					b.Append(t, a-t);
-					b.Append(buff);
-					b.Append(a+9);
-					b.Append("\0", 1);
-					return ExpandArgs(b.Ptr());
-				}
+				b.Append(t, a-t);
+				CComBSTR2 ra = m_RemoteAddr;
+				b.Append(ra.ToString());
+				b.Append(a+12);
+				b.Append("\0", 1);
+				return ExpandArgs(b.Ptr());
 			}
 			else
 			{
-				a = strstr(t, "{system32}");
-				if (a)
+				b.Append(in.Ptr(), in.Len());
+				return ExpandSystemArgs(&b);
+			}
+		}
+	}
+
+}
+
+Buffer *CUser::ExpandSystemArgs(Buffer *in)
+{
+	Buffer b;
+	char *a = NULL;
+	char *t = in->Ptr();
+
+	a = strstr(t, "{windows}");
+	if (a)
+	{
+		char buff[MAX_PATH];
+		if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_WINDOWS | CSIDL_FLAG_CREATE, NULL, 0, buff)))
+		{				
+			b.Append(t, a-t);
+			b.Append(buff);
+			b.Append(a+9);
+			b.Append("\0", 1);
+			return ExpandSystemArgs(&b);
+		}
+	}
+	else
+	{
+		a = strstr(t, "{system32}");
+		if (a)
+		{
+			char buff[MAX_PATH];
+			if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_SYSTEM | CSIDL_FLAG_CREATE, NULL, 0, buff)))
+			{
+				b.Append(t, a-t);
+				b.Append(buff);
+				b.Append(a+10);
+				b.Append("\0", 1);
+				return ExpandSystemArgs(&b);
+			}
+		}
+		else
+		{
+			a = strstr(t, "{program_files}");
+			if (a)
+			{
+				char buff[MAX_PATH];
+				if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES | CSIDL_FLAG_CREATE, NULL, 0, buff)))
 				{
-					char buff[MAX_PATH];
-					if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_SYSTEM | CSIDL_FLAG_CREATE, NULL, 0, buff)))
-					{
-						b.Append(t, a-t);
-						b.Append(buff);
-						b.Append(a+10);
-						b.Append("\0", 1);
-						return ExpandArgs(b.Ptr());
-					}
-				}
-				else
-				{
-					a = strstr(t, "{program_files}");
-					if (a)
-					{
-						char buff[MAX_PATH];
-						if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES | CSIDL_FLAG_CREATE, NULL, 0, buff)))
-						{
-							b.Append(t, a-t);
-							b.Append(buff);
-							b.Append(a+15);
-							b.Append("\0", 1);
-							return ExpandArgs(b.Ptr());
-						}
-					}
+					b.Append(t, a-t);
+					b.Append(buff);
+					b.Append(a+15);
+					b.Append("\0", 1);
+					return ExpandSystemArgs(&b);
 				}
 			}
 		}
 	}
 
 	Buffer *o = new Buffer();
-	o->Append(in.Ptr(), in.Len());
+	o->Append(in->Ptr(), in->Len());
 	return o;
 }
 

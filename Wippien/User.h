@@ -175,6 +175,7 @@ public:
 	void NotifyUserIsTyping(BOOL IsTyping);
 	void ReInit(BOOL WithDirect);
 	Buffer *ExpandArgs(char *Text);
+	static Buffer *ExpandSystemArgs(Buffer *in);
 	void SendConnectionRequest(BOOL Notify);
 	BOOL ExchangeWippienDetails(void);
 	void FdTimer(int timerid);

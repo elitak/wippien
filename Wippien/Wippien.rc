@@ -2,7 +2,10 @@
 //
 #include "resource.h"
 #include "versionno.h"
-
+#ifdef _APPUPDLIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
+#endif
+//////
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1344,3 +1347,7 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
+#ifdef _APPUPDLIB
+#define _LIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
+#endif

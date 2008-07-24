@@ -102,6 +102,7 @@ CMainDlg::CMainDlg()
 	m_EmoticonsInstance.hInst = NULL;
 	m_SettingsDlg = NULL;
 	m_pBalloon = NULL;
+	m_TrayBalloon = NULL;
 //	memset(&m_ToolTipPosition, 0, sizeof(m_ToolTipPosition));
 	memset(&m_DefChatWindowRect, 0, sizeof(m_DefChatWindowRect));
 
@@ -157,6 +158,13 @@ CMainDlg::~CMainDlg()
 			m_pBalloon->DestroyWindow();
 		delete m_pBalloon;
 		m_pBalloon = NULL;
+	}
+	if (m_TrayBalloon)
+	{
+		if (m_TrayBalloon->IsWindow())
+			m_TrayBalloon->DestroyWindow();
+		delete m_TrayBalloon;
+		m_TrayBalloon = NULL;
 	}
 
 #ifdef _SKINMAGICKEY
@@ -836,7 +844,6 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 			}
 			break;
 	
-	
 			case 108:
 				if (m_pBalloon)
 				{
@@ -846,6 +853,17 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					m_pBalloon = NULL;
 				}
 				KillTimer(108);
+				break;
+
+			case 114:
+				if (m_TrayBalloon)
+				{
+					if (m_TrayBalloon->IsWindow())
+						m_TrayBalloon->DestroyWindow();
+					delete m_TrayBalloon;
+					m_TrayBalloon = NULL;
+				}
+				KillTimer(114);
 				break;
 
 			case 999:

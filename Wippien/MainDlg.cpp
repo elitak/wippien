@@ -117,6 +117,7 @@ CMainDlg::CMainDlg()
 	m_WasConnectedBeforeSleep = FALSE;
 	m_MouseOverStatus = FALSE;
 	m_MouseOverPoint.x = m_MouseOverPoint.y = 0;
+	m_MyStatusText = new Buffer();
 }
 
 CMainDlg::~CMainDlg()
@@ -170,6 +171,7 @@ CMainDlg::~CMainDlg()
 		FreeLibrary(m_IcmpInst);
 	m_IcmpInst = NULL;
 	FreeLibrary(m_User32Module);
+	delete m_MyStatusText;
 }
 
 BOOL CMainDlg::PreTranslateMessage(MSG* pMsg)
@@ -680,11 +682,20 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							m_DidGoAutoAway = FALSE;
 							VARIANT var;
 							var.vt = VT_ERROR;
+							CComBSTR myst;
+							char *mysta = NULL;
+							if (m_MyStatusText->Len())
+							{
+								mysta = m_MyStatusText->Ptr();
+								myst = m_MyStatusText->Ptr();
+								var.vt = VT_BSTR;
+								var.bstrVal = myst;
+							}
 							if (stat == 2/*Away*/ || stat == 5/*ExtendedAway*/) // but now 1
 #ifndef _WODXMPPLIB
 								_Jabber->m_Jabb->SetStatus((WODXMPPCOMLib::StatusEnum)1/*Online*/, var);
 #else
-							WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)1,NULL);
+							WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)1,mysta);
 #endif
 						}
 						if (_Settings.m_AutoDisconnectMinutes && l > _Settings.m_AutoDisconnectMinutes)
@@ -2363,6 +2374,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #else
 					hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)1, NULL);
 #endif
+					m_MyStatusText->Clear();
 				}
 			break;
 
@@ -2373,6 +2385,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #else
 				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)2, NULL);
 #endif
+				m_MyStatusText->Clear();
 			break;
 
 		case ID_POPUP3_CHAT:
@@ -2382,6 +2395,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #else
 				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)3, NULL);
 #endif
+				m_MyStatusText->Clear();
 			break;
 
 		case ID_POPUP3_DONOTDISTURB:
@@ -2391,6 +2405,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #else
 				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)4, NULL);
 #endif
+				m_MyStatusText->Clear();
 			break;
 
 		case ID_POPUP3_EXTENDEDAWAY:
@@ -2400,6 +2415,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #else
 				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)5, NULL);
 #endif
+				m_MyStatusText->Clear();
 			break;
 
 		case ID_POPUP3_INVISIBLE:
@@ -2409,6 +2425,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #else
 				hr = WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, (WODXMPPCOMLib::StatusEnum)6, NULL);
 #endif
+				m_MyStatusText->Clear();
 			break;
 
 		case ID_POPUP3_OFFLINE:
@@ -2422,7 +2439,7 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 #endif
 					_Jabber->m_DoReconnect = TRUE;
 				}
-
+				m_MyStatusText->Clear();
 			break;
 
 	
@@ -3095,14 +3112,17 @@ void CMainDlg::ChangeStatusFromEditBox(BOOL dochange)
 		char buff[8192];
 		memset(buff, 0,sizeof(buff));
 		::GetWindowText(h, buff, 8192);
-	WODXMPPCOMLib::StatusEnum stat;
+		m_MyStatusText->Clear();
+		m_MyStatusText->Append(buff);
+
+		WODXMPPCOMLib::StatusEnum stat;
 #ifndef _WODXMPPLIB				
-	CComBSTR s = buff;
-	VARIANT var;
-	var.vt = VT_BSTR;
-	var.bstrVal = s;
-	if (_Jabber && SUCCEEDED(_Jabber->m_Jabb->get_Status(&stat)))
-		_Jabber->m_Jabb->SetStatus(stat, var);
+		CComBSTR s = buff;
+		VARIANT var;
+		var.vt = VT_BSTR;
+		var.bstrVal = s;
+		if (_Jabber && SUCCEEDED(_Jabber->m_Jabb->get_Status(&stat)))
+			_Jabber->m_Jabb->SetStatus(stat, var);
 #else
 		if (_Jabber && SUCCEEDED(WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &stat)))
 			WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, stat,buff);

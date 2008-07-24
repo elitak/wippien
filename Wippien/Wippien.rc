@@ -13,6 +13,7 @@
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
@@ -121,7 +122,7 @@ END
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_TOOLWINDOW
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+FONT 8, "MS Sans Serif"
 BEGIN
     CONTROL         "&Exit",ID_EXIT,"Button",BS_OWNERDRAW | WS_TABSTOP,6,243,
                     30,14
@@ -134,8 +135,8 @@ BEGIN
                     TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_NOTOOLTIPS | 
                     TVS_FULLROWSELECT | TVS_NONEVENHEIGHT | WS_TABSTOP,32,6,
                     70,142
-    EDITTEXT        IDC_INLINESTATUSCHANGE,42,165,77,8,NOT WS_VISIBLE | NOT 
-                    WS_BORDER | NOT WS_TABSTOP
+    EDITTEXT        IDC_INLINESTATUSCHANGE,42,165,77,8,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | NOT WS_BORDER | NOT WS_TABSTOP
     CONTROL         "+",IDC_MYSTATUS,"Button",BS_OWNERDRAW | WS_TABSTOP,119,
                     4,17,14
     CONTROL         "+",IDC_MYCONTACTS,"Button",BS_OWNERDRAW | WS_TABSTOP,

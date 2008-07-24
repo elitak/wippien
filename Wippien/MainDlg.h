@@ -69,6 +69,7 @@ public:
 	CPNGButton m_btnMyStatus, m_btnMyContacts, m_btnAuthDlg, m_btnSmallMute, m_btnChatRooms;
 	CUserList m_UserList;
 	char m_StatusMessage[256];
+	Buffer *m_MyStatusText;
 	//CStatic m_Status;
 	CxImage m_UserImage;
 	HBRUSH	m_WhiteBrush, m_LightBlueBrush;

@@ -22,6 +22,7 @@
 #include "SimpleHttpRequest.h"
 #include "SimpleXmlParser.h"
 #include "ChatRoom.h"
+#include "NotifyWindow.h"
 
 #ifdef _SKINMAGICKEY
 #include "SkinMagicLib.h"
@@ -102,7 +103,6 @@ CMainDlg::CMainDlg()
 	m_EmoticonsInstance.hInst = NULL;
 	m_SettingsDlg = NULL;
 	m_pBalloon = NULL;
-	m_TrayBalloon = NULL;
 //	memset(&m_ToolTipPosition, 0, sizeof(m_ToolTipPosition));
 	memset(&m_DefChatWindowRect, 0, sizeof(m_DefChatWindowRect));
 
@@ -158,13 +158,6 @@ CMainDlg::~CMainDlg()
 			m_pBalloon->DestroyWindow();
 		delete m_pBalloon;
 		m_pBalloon = NULL;
-	}
-	if (m_TrayBalloon)
-	{
-		if (m_TrayBalloon->IsWindow())
-			m_TrayBalloon->DestroyWindow();
-		delete m_TrayBalloon;
-		m_TrayBalloon = NULL;
 	}
 
 #ifdef _SKINMAGICKEY
@@ -853,17 +846,6 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					m_pBalloon = NULL;
 				}
 				KillTimer(108);
-				break;
-
-			case 114:
-				if (m_TrayBalloon)
-				{
-					if (m_TrayBalloon->IsWindow())
-						m_TrayBalloon->DestroyWindow();
-					delete m_TrayBalloon;
-					m_TrayBalloon = NULL;
-				}
-				KillTimer(114);
 				break;
 
 			case 999:
@@ -2052,10 +2034,8 @@ LRESULT CMainDlg::OnAppAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*
 {
 	DumpDebug("*MainDlg::OnAppAbout \r\n");
 	CAboutDlg dlg;
-//	CBalloonTipDlg dlg(NULL);
-//	dlg.SetText("Wippien will automatically update itself each time you start it.");
-//	dlg.SetCaption("Tip of the day");
 	dlg.DoModal();
+
 	return 0;
 }
 

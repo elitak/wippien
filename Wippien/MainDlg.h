@@ -78,7 +78,7 @@ public:
 //	POINT m_ToolTipPosition;
 	int m_ReconnectWait;
 	CSettingsDlg *m_SettingsDlg;
-	CBalloonHelp* m_pBalloon, *m_TrayBalloon;
+	CBalloonHelp* m_pBalloon;
 	RECT m_DefChatWindowRect;
 	int m_LastUpdateMin;
 	CxImage m_MainWndTopBannerBack, m_MainWndTopBannerBack2;

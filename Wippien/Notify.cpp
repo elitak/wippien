@@ -8,6 +8,7 @@
 #include "MainDlg.h"
 #include "BaloonHelp.h"
 #include "Buffer.h"
+#include "NotifyWindow.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -25,7 +26,13 @@ CNotify::CNotify()
 
 CNotify::~CNotify()
 {
-
+	if (m_NotifyWindow)
+	{
+		if (m_NotifyWindow->IsWindow())
+			m_NotifyWindow->DestroyWindow();
+		delete m_NotifyWindow;
+		m_NotifyWindow = NULL;
+	}
 }
 
 void CNotify::Init(CMainDlg *Owner)
@@ -35,33 +42,16 @@ void CNotify::Init(CMainDlg *Owner)
 
 void CNotify::ShowTrayNotify(char *Subject, char *Text)
 {
-	if (_MainDlg.m_TrayBalloon)
+	if (m_NotifyWindow)
 	{
-		if (_MainDlg.m_TrayBalloon->IsWindow())
-			_MainDlg.m_TrayBalloon->DestroyWindow();
-		delete _MainDlg.m_TrayBalloon;
-		_MainDlg.m_TrayBalloon = NULL;
+		if (m_NotifyWindow->IsWindow())
+			m_NotifyWindow->DestroyWindow();
+		delete m_NotifyWindow;
+		m_NotifyWindow = NULL;
 	}
-	
-	_MainDlg.m_TrayBalloon =new CBalloonHelp;
-	POINT p;
-	RECT rc;
-	GetClientRect(GetDesktopWindow(), &rc);
-	p.x = rc.right;
-	p.y	= rc.bottom;
-	Buffer b;
-	b.Append(Subject);
-	b.Append(" ");
-	b.Append(Text);
-	_MainDlg.m_TrayBalloon->Create(NULL, "Wippien notificiation", b.Ptr(), NULL, &p,	
-		CBalloonHelp::BallonOptions::BOCloseOnKeyDown | 
-		CBalloonHelp::BallonOptions::BOShowCloseButton | 
-		CBalloonHelp::BallonOptions::BOCloseOnAppDeactivate | 
-		CBalloonHelp::BallonOptions::BOShowTopMost | 
-		NULL,
-		0);
 
-	_MainDlg.SetTimer(114, 5000);
+	m_NotifyWindow = new CNotifyWindow();
+	m_NotifyWindow->Create(Subject, Text);
 }
 
 void CNotify::DoEvent(NotificationsEnum Event)

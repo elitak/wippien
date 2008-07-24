@@ -121,7 +121,7 @@ END
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_TOOLWINDOW
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     CONTROL         "&Exit",ID_EXIT,"Button",BS_OWNERDRAW | WS_TABSTOP,6,243,
                     30,14
@@ -1134,6 +1134,7 @@ ID_PNG_SKINBASE         PNG     DISCARDABLE     "..\\Gfx\\base_skin.png"
 ID_PNG_AVATARBASE       PNG     DISCARDABLE     "..\\Gfx\\base_avatar.png"
 ID_PNG_CLEARHISTORY     PNG     DISCARDABLE     "..\\Gfx\\clear_history.png"
 ID_PNG1_CHATROOMS       PNG     DISCARDABLE     "..\\gfx\\chatrooms.png"
+IDB_NOTIFYWINDOWBACK    PNG     DISCARDABLE     "..\\gfx\\notifywin.png"
 
 /////////////////////////////////////////////////////////////////////////////
 //

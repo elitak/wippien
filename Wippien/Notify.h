@@ -21,6 +21,7 @@ typedef enum NotificationsEnum
 } NotificationsEnum;
 
 class CMainDlg;
+class CNotifyWindow;
 
 class CNotify  
 {
@@ -28,6 +29,7 @@ public:
 	CNotify();
 	virtual ~CNotify();
 
+	CNotifyWindow *m_NotifyWindow;
 
 	CComBSTR m_Online, m_Offline, m_MsgIn, m_MsgOut, m_Error;
 	void Init(CMainDlg *Owner);

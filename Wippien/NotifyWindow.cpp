@@ -7,11 +7,13 @@
 #include "ShellApi.h"
 #include "NotifyWindow.h"
 #include "Buffer.h"
+#include "MainDlg.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 BOOL _LoadIconFromResource(CxImage *img, char *restype, int imgformat, int resid);
+extern CMainDlg _MainDlg;
 
 CNotifyWindow::CNotifyWindow()
 {
@@ -149,7 +151,16 @@ void CNotifyWindow::OnTimer(UINT id, TIMERPROC proc)
 			break;
 
 		default:
+			ShowWindow(SW_HIDE);
 			KillTimer(id);
 			break;
 	}
+}
+
+void CNotifyWindow::OnMouseMove(UINT wParam, CPoint p)
+{
+	_MainDlg.CheckIfAntiInactivityMessage(WM_CHAR);
+	ShowWindow(SW_HIDE);
+	m_State = 4;
+
 }

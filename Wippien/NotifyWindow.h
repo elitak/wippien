@@ -38,11 +38,13 @@ public:
 	int m_Timer;
 	void OnPaint(HDC dc);
 	void OnTimer(UINT id, TIMERPROC proc);
+	void OnMouseMove(UINT wParam, CPoint p);
 	Buffer *m_Subject, *m_Text;
 
 	BEGIN_MSG_MAP_EX(thisClass)
 		MSG_WM_PAINT(OnPaint)
 		MSG_WM_TIMER(OnTimer)
+		MSG_WM_MOUSEMOVE(OnMouseMove)
 	END_MSG_MAP()
 
 };

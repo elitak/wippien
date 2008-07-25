@@ -1179,12 +1179,14 @@ void EscapeXML(Buffer *b)
 	b->Append(c.Ptr(), c.Len());
 }
 
-Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color)
+Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char *BackColor)
 {
 	Html = "";
 	Buffer *b = new Buffer();
 	BOOL major = FALSE;
-	b->Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top>");
+	b->Append("<table cellspacing=0 cellpadding=0 bgcolor=\"");
+	b->Append(BackColor);
+	b->Append("\"><tr><td width=99% valign=top>");
 	if (!(m_LastSay == User))
 	{
 		b->Append("<br><font face=\"Tahoma\" size=\"2\" color=\"");
@@ -1246,7 +1248,7 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 		if (u2)
 			*u2 = 0;
 
-		Buffer *b = CreateMsg(User, text, Html, "559040");
+		Buffer *b = CreateMsg(User, text, Html, "559040", "EEEEEE");
 
 		BOOL didplayemoticonsound = m_ChatBox.AddLine(b, FALSE);
 		delete b;
@@ -2280,7 +2282,7 @@ HRESULT CMsgWin::CInputBox::Send()
 					*b7 = 0;
 				CComBSTR2 b3(bstr2);
 				CComBSTR2 b2(bstr);
-				Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000");
+				Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000", "FFFFFF");
 
 							
 

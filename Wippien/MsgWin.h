@@ -49,7 +49,7 @@ public:
 
 	BOOL ArrangeLayout();
 	BOOL Show(void);
-	Buffer *CreateMsg(char *User, char *Text, char *Html, char *Color);
+	Buffer *CreateMsg(char *User, char *Text, char *Html, char *Color, char *BackColor);
 	BOOL Incoming(char *User, BOOL IsSystem, char *Text, char *Html);
 	BOOL SaveHistory(BOOL Mine, char *Text);
 	BOOL AddTimestamp(Buffer *b);

@@ -108,9 +108,9 @@ public:
 		if (_Settings.m_ShowMessageHistory)
 		{
 			Buffer c;
-			c.Append("<body>");
+			c.Append("<html><head><style type=\"text/css\">body{padding: 0px;}td{line-height: 11px;}</style></head><body>");
 			m_ChatBox->m_ParentDlg->LoadHistory(&c);
-			c.Append("</body>");
+//			c.Append("</body>");
 			c.Append("\0", 1);
 			CComBSTR d(c.Ptr());
 			m_ChatBox->AddHtml(d);
@@ -268,7 +268,7 @@ void CMsgWin::Init(void)
 	
 	m_hSeparatorPen =	NULL;
     
-	CComBSTR b("<body></body>");
+	CComBSTR b("<html><head><style type=\"text/css\">body {padding: 0px;}td{line-height: 10px;}</style></head><body>");
 	m_EmptyBody = b.Copy();
 	
 	m_BackBrush = CreateSolidBrush(RGB(209,226,251));
@@ -277,7 +277,6 @@ void CMsgWin::Init(void)
 	m_ImagesLoaded = FALSE;
 	m_ListLoaded = FALSE;
 	m_EmoticonList = NULL;
-
 }
 
 CMsgWin::~CMsgWin()
@@ -499,6 +498,7 @@ LRESULT CMsgWin::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BO
 	DestroyWindow();
 	
 	bHandled = TRUE;
+	m_LastSay.Empty();
 
 	return TRUE;
 }
@@ -825,6 +825,7 @@ LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 	int i = ::MessageBox(m_hWnd, a.ToString(), "Delete history?", MB_ICONQUESTION | MB_YESNO);
 	if (i == 6)
 	{
+		m_LastSay.Empty();
 		unlink(m_HistoryPath);
 //		if (m_ChatBox.m_Events)
 //			delete m_ChatBox.m_Events;
@@ -1004,7 +1005,7 @@ BOOL CMsgWin::AddTimestamp(Buffer *b)
 		SYSTEMTIME st;
 		GetLocalTime(&st);
 		char buff[100];
-		sprintf(buff, "[%d:%2d]", st.wHour, st.wMinute);
+		sprintf(buff, "%d:%2d", st.wHour, st.wMinute);
 		char *a = buff;
 		while (*a)
 		{
@@ -1070,6 +1071,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 		};
 		close(handle);
 
+		CComBSTR last;
 		
 		CComBSTR2 j3 = _Settings.m_JID;
 		char *j1 = j3.ToString();
@@ -1077,9 +1079,6 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 		if (j2)
 			*j2 = 0;
 
-		c->Append("<font color=#c0c0c0>");
-
-//			struct tm *t;
 		SYSTEMTIME st;
 		while (b.Len())
 		{
@@ -1097,16 +1096,44 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 					DosDateTimeToFileTime(d2, d1, &ft);
 					FileTimeToSystemTime(&ft, &st);
 					{
-						sprintf(buff, "[%d:%d] <b>%s</b>:", st.wHour, st.wMinute, mine?j1:m_User->m_VisibleName);
-						c->Append(buff);
+						char *n = (mine?j1:m_User->m_VisibleName);
+						BOOL major = FALSE;
+
+						c->Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top>");
+						if (!(last == n))
+						{
+							c->Append("<font face=\"Tahoma\" size=\"2\" color=\"C0C0C0\"><br><b>");
+							last = n;
+							c->Append(n);
+							c->Append(" said:</b></b></font><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
+							c->Append("</td><td align=right width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
+							sprintf(buff, "%d:%d", st.wHour, st.wMinute);
+							c->Append(buff);
+							c->Append(")</font></td></tr><tr><td><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
+							major = TRUE;
+						}
+						else
+						{
+							c->Append("<font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
+						}
+						
 						c->Append(a);
-						c->Append("<br>");
+						if (major)
+						{
+							c->Append("</font></td><td> </td></tr></table>");
+						}
+						else
+						{
+							c->Append("</font></td><td valign=top align=right width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
+							sprintf(buff, "%d:%d", st.wHour, st.wMinute);
+							c->Append(buff);
+							c->Append(")</font></td></tr></table>");
+						}
 						free(a);
 					}
 				}
 			}
 		}
-		c->Append("</font>");
 		c->Append("\0", 1);
 		c->ConsumeEnd(1);
 	}
@@ -1152,52 +1179,89 @@ void EscapeXML(Buffer *b)
 	b->Append(c.Ptr(), c.Len());
 }
 
-
-BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
+Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color)
 {
-	if (!IsSystem)
-		SaveHistory(FALSE, text);
-	Buffer b;
-	b.Append("<font color=#");
-	if (!IsSystem)
-		b.Append("FF0000");
-	else
-		b.Append("CC00CC");
-	b.Append(">");
-	AddTimestamp(&b);
-	if (!IsSystem)
+	Html = "";
+	Buffer *b = new Buffer();
+	BOOL major = FALSE;
+	b->Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top>");
+	if (!(m_LastSay == User))
 	{
-		b.Append("<b>");
-		b.Append(User);
-		b.Append("</b>");
-		b.Append("</font>: <font color=#000000>");
+		b->Append("<br><font face=\"Tahoma\" size=\"2\" color=\"");
+		b->Append(Color);
+		b->Append("\"><b>");
+		m_LastSay = User;
+		b->Append(User);
+		b->Append(" says:</b></b></font><hr style=\"border: 1px dotted #CCCCCC;\" />");
+		b->Append("</td><td align=right width=1%><font face=\"Verdana\" size=\"1\">(");
+		AddTimestamp(b);
+		b->Append(")</font></td></tr><tr><td><font face=\"Verdana\" size=\"1\">");
+		major = TRUE;
 	}
 	else
-		b.Append("<i>");
+	{
+		b->Append("<font face=\"Verdana\" size=\"1\">");
+	}
 
 	if (Html && *Html)
 	{
-		b.Append(Html);
+		b->Append(Html);
 	}
 	else
 	{
 		Buffer c1;
-		c1.Append(text);
+		c1.Append(Text);
 		EscapeXML(&c1);
-		b.Append(c1.Ptr(), c1.Len());
-//		b.Append(text);
+		CString c2(c1.Ptr());
+		c2.Replace("\r","");
+		c2.Replace("\n","<BR>");
+		b->Append(c2.GetBuffer(0));
 	}
-	if (!IsSystem)
-		b.Append("</font>");
+	if (major)
+	{
+		b->Append("</font></td><td> </td></tr></table>");
+	}
 	else
-		b.Append("</i></font>");
+	{
+		b->Append("</font></td><td valign=top align=right width=1%><font face=\"Verdana\" size=\"1\">(");
+		AddTimestamp(b);
+		b->Append(")</font></td></tr></table>");
+	}
 
-	b.Append("\0",1);
-	b.ConsumeEnd(1);
-//	CComBSTR t(b.Ptr());
-	BOOL didplayemoticonsound = m_ChatBox.AddLine(&b, FALSE);
-	if (!IsSystem && !didplayemoticonsound && !m_Room)
-		_Notify.DoEvent(NotificationMsgIn);
+	b->Append("\0",1);
+	b->ConsumeEnd(1);
+
+	return b;
+}
+
+BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
+{
+	//todo check if IsSystem
+	if (!IsSystem)
+	{
+		SaveHistory(FALSE, text);
+		CComBSTR2 u = User;
+		char *u1 = u.ToString();
+		char *u2 = strchr(u1, '@');
+		if (u2)
+			*u2 = 0;
+
+		Buffer *b = CreateMsg(User, text, Html, "559040");
+
+		BOOL didplayemoticonsound = m_ChatBox.AddLine(b, FALSE);
+		delete b;
+		if (!IsSystem && !didplayemoticonsound && !m_Room)
+			_Notify.DoEvent(NotificationMsgIn);
+	}
+	else
+	{
+		m_LastSay.Empty();
+		Buffer c;
+		c.Append("<br><font face=\"Tahoma\" size=\"2\" color=\"800080\"><b>");
+		c.Append(text);
+		c.Append("</b></font>");
+		m_ChatBox.AddLine(&c, FALSE);
+	}
 	::ShowWindow(GetDlgItem(IDC_ISTYPING),  SW_HIDE);
 
 	return TRUE;
@@ -1565,7 +1629,7 @@ BOOL CMsgWin::CChatBox::AddLine(Buffer *Line, BOOL islocal)
 
 	
 	
-	b1.Append("<br>\0", 5);
+//	b1.Append("<br>\0", 5);
 //	CString str(Line);
 //	str+="<br>";
 //	CComBSTR bstr(str);
@@ -1649,14 +1713,14 @@ void CMsgWin::CChatBox::SetDefMargin(void)
 		IHTMLElement *body = NULL;
 		m_htmlChatBox->get_body(&body);
 		
-		if (body)
+/*		if (body)
 		{
 			IHTMLStyle *style = NULL;
-			CComVariant vfontSize(CString("10pt"));
+			CComVariant vfontSize(CString("1px"));
 			VARIANT v0;
 			v0.vt = VT_I2;
-			v0.intVal = 0;
-			CComBSTR2 b2 = "Arial";
+			v0.iVal = 0;
+			CComBSTR2 b2 = "Verdana";
 
 			body->get_style(&style);
 
@@ -1668,8 +1732,10 @@ void CMsgWin::CChatBox::SetDefMargin(void)
 				style->put_marginBottom(v0);
 				style->put_fontFamily(b2);
 				style->put_fontSize(vfontSize);
+				style->put_lineHeight(v0);
 			}
 		}
+*/
 }
 
 
@@ -2183,20 +2249,12 @@ HRESULT CMsgWin::CInputBox::Send()
 			
 			if (SUCCEEDED(hr) && bstr.Length())
 			{
+
+/*
 				Buffer b1;
 				b1.Append("<font color=#0000FF>");
 //				Buffer b10;
 				m_ParentDlg->AddTimestamp(&b1);
-/*				if (b10.Len())
-				{
-					b1.Append(b10.Ptr(), b10.Len());
-					b10.Append("
-					b10.Append("\0",1);
-					b1 += b10.Ptr();
-					b1 += "<b>";
-
-				}
-*/
 				b1.Append("<b>");
 				CComBSTR2 b5 = _Settings.m_JID;
 				char *b6 = b5.ToString();
@@ -2211,30 +2269,25 @@ HRESULT CMsgWin::CInputBox::Send()
 				CComBSTR2 b10 = bstr;
 				b1.Append(b10.ToString());
 				b1.Append("</font>");
-/*
-				// emoticons
-				Buffer b11;
-				for (int i=0;i<_MainDlg.m_EmoticonsInstance.size();i++)
-				{
-					CMainDlg::EmoticonsStruct *st = (CMainDlg::EmoticonsStruct *)_MainDlg.m_EmoticonsInstance[0];
-					if (st->Transform(&b1, &b11, TRUE))
-					{
-						b1.Clear();
-						b1.Append(b11.Ptr(), b11.Len());
-					}
-				}
 */
-
+				CComBSTR2 b5 = _Settings.m_JID;
+				char *b6 = b5.ToString();
+				char *b7 = strchr(b6, '@');
+				if (b7)
+					*b7 = 0;
 				CComBSTR2 b3(bstr2);
 				CComBSTR2 b2(bstr);
+				Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000");
+
 							
 
 				if (m_ParentDlg->m_User)
 				{
-					m_ParentDlg->m_ChatBox.AddLine(&b1, TRUE);
+					m_ParentDlg->m_ChatBox.AddLine(b1, TRUE);
 					m_ParentDlg->SaveHistory(TRUE, b3.ToString());
 					_Jabber->Message(NULL, m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
 				}
+				delete b1;
 
 				if (m_ParentDlg->m_Room)
 				{

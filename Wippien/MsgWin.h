@@ -45,9 +45,11 @@ public:
 	CContainedWindow /*m_List, m_Edit, */m_Button;
 	CUser *m_User;
 	CChatRoom *m_Room;
+	CComBSTR m_LastSay;
 
 	BOOL ArrangeLayout();
 	BOOL Show(void);
+	Buffer *CreateMsg(char *User, char *Text, char *Html, char *Color);
 	BOOL Incoming(char *User, BOOL IsSystem, char *Text, char *Html);
 	BOOL SaveHistory(BOOL Mine, char *Text);
 	BOOL AddTimestamp(Buffer *b);

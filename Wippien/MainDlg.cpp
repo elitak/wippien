@@ -1155,6 +1155,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						if (us->m_Online)
 						{
 							us->m_LastOnline = now;
+							us->m_IsAway = FALSE;
 							us->SetSubtext();
 						}
 					}

@@ -82,9 +82,9 @@ BOOL CNotifyWindow::Create(char *Subject, char *Text)
 
 	memcpy(&m_ShowRect, &m_Rect, sizeof(RECT));
 	m_ShowRect.top = m_Rect.bottom;
-	SetWindowPos(NULL, &m_ShowRect, SWP_SHOWWINDOW);
+	SetWindowPos(NULL, &m_ShowRect, SWP_SHOWWINDOW | SWP_NOACTIVATE);
 
-	SetTimer(1, 200);
+	SetTimer(1, 100);
 	return TRUE;
 }
 
@@ -113,7 +113,7 @@ void CNotifyWindow::OnTimer(UINT id, TIMERPROC proc)
 		case 0:
 			if (m_ShowRect.top != m_Rect.top)
 			{
-				m_ShowRect.top-=20;
+				m_ShowRect.top-=10;
 				if (m_ShowRect.top < m_Rect.top)
 					m_ShowRect.top = m_Rect.top;
 				MoveWindow(&m_ShowRect);
@@ -128,7 +128,7 @@ void CNotifyWindow::OnTimer(UINT id, TIMERPROC proc)
 
 		case 1:
 			m_Timer ++;
-			if (m_Timer>25)
+			if (m_Timer>50)
 			{
 				m_Timer = 0;
 				m_State = 2;

@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "UserList.h"
 #include "VividTree.h"
+#include "Jabber.h"
+
+extern CJabber *_Jabber;
+
 
 void CVividTree::DrawItems(CDC *pDC)
 {
@@ -132,6 +136,11 @@ void CVividTree::DrawItems(CDC *pDC)
 							int h1 = 3;
 							if (h< 34)
 								h1 = (34 - h)/2;
+
+//							if (user->m_IsAway)
+//								user->m_Image->AlphaSet(80);
+//							else
+//								user->m_Image->AlphaSet(256);
 							user->m_Image->Draw(pDC->m_hDC, rc_item.left-28, rc_item.top+h1);
 						}
 					}

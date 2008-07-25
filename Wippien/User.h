@@ -128,7 +128,8 @@ public:
 	char m_Email[128];
 	char m_SubText[256];
 	char m_IPText[128];
-	char m_Group[128];	
+	char m_Group[128];
+	BOOL m_IsAway;
 	char m_MyMediatorOffer[256], m_HisMediatorOffer[256];
 	int m_MyMediatorPort, m_HisMediatorPort;
 	int m_MyMediatorChoice, m_HisMediatorChoice;

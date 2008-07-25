@@ -546,7 +546,10 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = TRUE;	
 									time((long *)&user->m_LastOnline);
+									user->m_IsAway = FALSE;
 									user->SetSubtext();
+									if (stat >= 2 && stat <=5)
+										user->m_IsAway = TRUE;
 									
 									if (user->m_Changed)
 									{

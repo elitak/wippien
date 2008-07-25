@@ -73,6 +73,7 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 //	me->m_WippienState = WipDisconnected;	
 //	me->KillTimer(2);
 	me->ReInit(TRUE);
+	me->m_IsAway = FALSE;
 	me->SetSubtext();
 	me->m_Changed = TRUE;
 	_MainDlg.m_UserList.PostMessage(WM_REFRESH, 0, (LPARAM)me);
@@ -248,6 +249,7 @@ CUser::CUser()
 	m_MyMediatorChoice = (-1);
 	m_LastSent = m_LastReceive = 0;
 	m_TotalReceived = m_TotalSent = 0;
+	m_IsAway = FALSE;
 }
 
 CUser::~CUser()
@@ -352,6 +354,7 @@ void CUser::ReInit(BOOL WithDirect)
 	m_MyMediatorChoice = (-1);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
+	m_IsAway = FALSE;
 	SetSubtext();
 	m_Hidden = FALSE;
 	m_Resource[0] = 0;
@@ -700,6 +703,7 @@ void CUser::FdTimer(int TimerID)
 		{
 			if (_Settings.m_MyLastNetwork && m_RSA)
 			{
+				m_IsAway = FALSE;
 				SetSubtext();
 				Buffer b;
 
@@ -760,6 +764,13 @@ void CUser::SetSubtext(void)
 		
 	if (ison /*&& m_HisVirtualIP*/)
 	{
+		if (strcmp(m_StatusText, m_SubText) && IsMsgWindowOpen())
+		{
+			CComBSTR p = "Status changed: ";
+			p += m_StatusText;
+			CComBSTR2 p2 = p;
+			PrintMsgWindow(TRUE, p2.ToString(), NULL);
+		}
 		sprintf(m_SubText, "%s", m_StatusText);
 	}
 	else

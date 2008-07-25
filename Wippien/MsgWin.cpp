@@ -1106,7 +1106,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 							last = n;
 							c->Append(n);
 							c->Append(" said:</b></b></font><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
-							c->Append("</td><td align=right width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
+							c->Append("</td><td align=right valign=top width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
 							sprintf(buff, "%d:%d", st.wHour, st.wMinute);
 							c->Append(buff);
 							c->Append(")</font></td></tr><tr><td><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
@@ -1193,7 +1193,7 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color)
 		m_LastSay = User;
 		b->Append(User);
 		b->Append(" says:</b></b></font><hr style=\"border: 1px dotted #CCCCCC;\" />");
-		b->Append("</td><td align=right width=1%><font face=\"Verdana\" size=\"1\">(");
+		b->Append("</td><td align=right valign=top width=1%><font face=\"Verdana\" size=\"1\">(");
 		AddTimestamp(b);
 		b->Append(")</font></td></tr><tr><td><font face=\"Verdana\" size=\"1\">");
 		major = TRUE;
@@ -1257,9 +1257,11 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 	{
 		m_LastSay.Empty();
 		Buffer c;
-		c.Append("<br><font face=\"Tahoma\" size=\"2\" color=\"800080\"><b>");
+		c.Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top><font face=\"Tahoma\" size=\"2\" color=\"800080\">");
 		c.Append(text);
-		c.Append("</b></font>");
+		c.Append("</td><td align=right valign=top width=1%><font face=\"Verdana\" size=\"1\">(");
+		AddTimestamp(&c);
+		c.Append(")</font></td></tr></table>");
 		m_ChatBox.AddLine(&c, FALSE);
 	}
 	::ShowWindow(GetDlgItem(IDC_ISTYPING),  SW_HIDE);
@@ -1634,6 +1636,7 @@ BOOL CMsgWin::CChatBox::AddLine(Buffer *Line, BOOL islocal)
 //	str+="<br>";
 //	CComBSTR bstr(str);
 
+	b1.Append("\0");
 	CComBSTR bstr(b1.Ptr());
 	AddHtml(bstr);
 	return didplayemoticonsound;
@@ -2361,9 +2364,7 @@ HRESULT CMsgWin::CInputBox::Send()
 
 					if (!online)
 					{
-						Buffer b2;
-						b2.Append("<font color=#CC00CC><i>User is currently offline.</i></font>");
-						m_ParentDlg->m_ChatBox.AddLine(&b2, TRUE);
+						m_ParentDlg->Incoming(NULL, TRUE, "User is currently offline.", NULL);
 					}
 				}
 				if (!m_ParentDlg->m_Room)

@@ -30,7 +30,7 @@ long raw_Connected(void *wodVPN, char * PeerID, char * IP, long Port)
 {
 	void *tag = NULL;
 	WODVPNCOMLib::VPN_GetTag(wodVPN, &tag);
-	CUser *me = (CUser *)tag;;
+	CUser *me = (CUser *)tag;
 #else
 STDMETHODIMP CUser::raw_Connected(WODVPNCOMLib::IwodVPNCom * Owner, BSTR PeerID, BSTR IP, LONG Port)
 {
@@ -766,10 +766,26 @@ void CUser::SetSubtext(void)
 	{
 		if (strcmp(m_StatusText, m_SubText) && IsMsgWindowOpen())
 		{
-			CComBSTR p = "Status changed: ";
-			p += m_StatusText;
-			CComBSTR2 p2 = p;
-			PrintMsgWindow(TRUE, p2.ToString(), NULL);
+			if (!strcmp(m_StatusText, "Online") && !strcmp(m_StatusText, "Offline"))
+			{
+				// get our status
+				WODXMPPCOMLib::StatusEnum stat = (WODXMPPCOMLib::StatusEnum)0;
+#ifndef _WODXMPPLIB					
+				if (_Jabber)
+					_Jabber->m_Jabb->get_Status(&stat);
+#else
+				if (_Jabber)					
+					WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &stat);
+#endif
+						
+				if (stat)
+				{
+					CComBSTR p = "Status changed: ";
+					p += m_StatusText;
+					CComBSTR2 p2 = p;
+					PrintMsgWindow(TRUE, p2.ToString(), NULL);
+				}
+			}
 		}
 		sprintf(m_SubText, "%s", m_StatusText);
 	}

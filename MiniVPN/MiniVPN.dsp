@@ -53,7 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib gdi32.lib wsock32.lib iphlpapi.lib \WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Release\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Release\zlib.lib \WeOnlyDo\wodXMPP\Code\Component\ssleay32.lib \WeOnlyDo\wodXMPP\Code\Component\libeay32.lib Secur32.lib /nologo /subsystem:windows /machine:I386
+# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib gdi32.lib wsock32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Release\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Release\zlib.lib \WeOnlyDo\wodXMPP\Code\Component\ssleay32.lib \WeOnlyDo\wodXMPP\Code\Component\libeay32.lib Secur32.lib /nologo /subsystem:windows /machine:I386
 
 !ELSEIF  "$(CFG)" == "MiniVPN - Win32 Debug"
 
@@ -112,10 +112,6 @@ SOURCE=.\StdAfx.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Updater.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\User.cpp
 # End Source File
 # End Group
@@ -141,10 +137,6 @@ SOURCE=.\resource.h
 # Begin Source File
 
 SOURCE=.\StdAfx.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Updater.h
 # End Source File
 # Begin Source File
 

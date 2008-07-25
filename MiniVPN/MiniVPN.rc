@@ -27,7 +27,7 @@ CAPTION "MiniVPN"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     EDITTEXT        IDC_JID,197,182,95,12,ES_AUTOHSCROLL
-    EDITTEXT        IDC_PASSWORD,197,200,95,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASSWORD,197,200,95,12,ES_PASSWORD | ES_AUTOHSCROLL
     EDITTEXT        IDC_MEDIATOR,197,218,95,12,ES_AUTOHSCROLL
     DEFPUSHBUTTON   "&Connect",IDC_CONNECT,7,214,50,16
     PUSHBUTTON      "&Disconnect",IDC_DISCONNECT,83,214,50,16
@@ -66,8 +66,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,3
- PRODUCTVERSION 1,0,0,3
+ FILEVERSION 1,0,0,4
+ PRODUCTVERSION 1,0,0,4
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -84,12 +84,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Kresimir Petric\0"
             VALUE "FileDescription", "MiniVPN - mini Wippien\0"
-            VALUE "FileVersion", "1.0.0.3\0"
+            VALUE "FileVersion", "1.0.0.4\0"
             VALUE "InternalName", "MiniVPN.exe\0"
             VALUE "LegalCopyright", "(c) Kresimir Petric, 2007-2008.  All rights reserved.\0"
             VALUE "OriginalFilename", "MiniVPN.exe\0"
             VALUE "ProductName", "Mini VPN\0"
-            VALUE "ProductVersion", "1.0.0.3\0"
+            VALUE "ProductVersion", "1.0.0.4\0"
         END
     END
     BLOCK "VarFileInfo"

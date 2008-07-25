@@ -2685,7 +2685,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 						CComBSTR k = ndlg.m_Password;
 						_Jabber->m_Jabb->ChangePassword(k);
 #else
-						WODXMPPCOMLib::XMPP_ChangePassword(_Jabber->m_Jabb, ndlg.m_Password);
+//						WODXMPPCOMLib::XMPP_ChangePassword(_Jabber->m_Jabb, ndlg.m_Password);
 #endif
 					}
 				}

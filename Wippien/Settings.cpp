@@ -1404,10 +1404,26 @@ int CSettings::LoadTools(void)
 		} while (i>0);
 		close(handle);
 
-		b.Append("\0",1);
+		b.Append("\r\n\0",3);
+
+		Buffer c;
+		char *a = NULL;
+		do 
+		{
+			a = b.GetNextLine();
+			if (a)
+			{
+				if (*a != '#')
+				{
+					c.Append(a);
+					c.Append("\r\n");
+
+				}
+			}
+		} while (a);
 
 		CXmlParser xmlparser;
-		CXmlEntity *start = xmlparser.Parse(&b);
+		CXmlEntity *start = xmlparser.Parse(&c);
 		if (start)
 		{
 			CXmlEntity *tool = NULL;

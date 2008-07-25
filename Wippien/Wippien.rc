@@ -6,16 +6,10 @@
 #include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
 #endif
 //////
-#define APSTUDIO_READONLY_SYMBOLS
-/////////////////////////////////////////////////////////////////////////////
-//
-// Generated from the TEXTINCLUDE 2 resource.
-//
 #include "winres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -76,7 +70,8 @@ CAPTION "Enter Passphrase"
 FONT 8, "MS Sans Serif"
 BEGIN
     EDITTEXT        IDC_PASSWORD,7,19,172,15,ES_PASSWORD | ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "OK",IDOK,129,39,50,14
+    DEFPUSHBUTTON   "&OK",IDOK,76,39,50,14
+    DEFPUSHBUTTON   "&Cancel",IDCANCEL,129,39,50,14
     LTEXT           "Please enter key passphrase",IDC_ENTERPASSPHRASE,7,7,
                     100,11
 END
@@ -125,7 +120,7 @@ END
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_TOOLWINDOW
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     CONTROL         "&Exit",ID_EXIT,"Button",BS_OWNERDRAW | WS_TABSTOP,6,243,
                     30,14
@@ -1225,6 +1220,7 @@ BEGIN
     POPUP "Popup4"
     BEGIN
         MENUITEM "Change &Picture",             ID_POPUP4_CHANGEPICTURE
+        MENUITEM "Change Pa&ssword",            ID_POPUP4_CHANGEPASSWORD
         MENUITEM "Your &Details",               ID_POPUP4_YOUR_DETAILS
     END
 END
@@ -1346,6 +1342,7 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
+
 
 #ifdef _APPUPDLIB
 #define _LIB

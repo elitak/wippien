@@ -103,11 +103,19 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		CEnterPassDialog()
 		{
 			memset(m_Password, 0, 1024);
+			m_Success = FALSE;
+			m_Subject.Append("Enter password");
+			m_Text.Append("Please enter protect password:");
 		}
+
+		BOOL m_Success;
+		Buffer m_Subject;
+		Buffer m_Text;
 
 		BEGIN_MSG_MAP(CEnterPassDialog)
 			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 			COMMAND_ID_HANDLER(IDOK, OnCloseCmd)
+			COMMAND_ID_HANDLER(IDCANCEL, OnCancelCmd)
 		END_MSG_MAP()
 
 	// Handler prototypes (uncomment arguments if needed):
@@ -115,18 +123,32 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 	//	LRESULT CommandHandler(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 	//	LRESULT NotifyHandler(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/)
 
-
+		
+		void SetText(char *Subject, char *Text)
+		{
+			m_Subject.Clear();
+			m_Text.Clear();
+			m_Subject.Append(Subject);
+			m_Text.Append(Text);
+		}
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 		{
 			CenterWindow(GetDesktopWindow());
-			SetWindowText("Enter password");
-			SetDlgItemText(IDC_ENTERPASSPHRASE, "Please enter protect password:");
+			SetWindowText(m_Subject.Ptr());
+			SetDlgItemText(IDC_ENTERPASSPHRASE, m_Text.Ptr());
 			return TRUE;
 		}
 
 		LRESULT OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 		{
 			::SendMessage(GetDlgItem(IDC_PASSWORD), WM_GETTEXT, 1024, (LPARAM)m_Password);
+			m_Success = TRUE;
+			EndDialog(wID);
+			return 0;
+		}	
+		LRESULT OnCancelCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+		{
+			m_Success = FALSE;
 			EndDialog(wID);
 			return 0;
 		}	

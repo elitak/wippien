@@ -463,6 +463,7 @@
 #define ID_POPUP1_VOICECHAT             32794
 #define ID_POPUP_LISTCHATROOMS          32795
 #define ID_POPUP_JOINACHATROOM          32796
+#define ID_POPUP4_CHANGEPASSWORD        32797
 #define ID_APP_ABOUT                    0xE140
 
 // Next default values for new objects
@@ -470,7 +471,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1390
-#define _APS_NEXT_COMMAND_VALUE         32797
+#define _APS_NEXT_COMMAND_VALUE         32798
 #define _APS_NEXT_CONTROL_VALUE         1504
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif

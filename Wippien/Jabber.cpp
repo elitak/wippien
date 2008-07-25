@@ -1076,6 +1076,12 @@ void __stdcall CJabberEvents::DispError(WODXMPPCOMLib::IXMPPContact *Contact, WO
 	CComBSTR2 e = ErrorText;
 	char *err = e.ToString();
 
+	if (_MainDlg.m_NewPassword.Length())
+	{
+		_MainDlg.m_NewPassword.Empty();
+		_MainDlg.MessageBox(err, "Failed to change password", MB_OK);
+	}
+	else
 	if (Contact)
 	{
 #ifdef _WODXMPPLIB
@@ -1091,7 +1097,7 @@ void __stdcall CJabberEvents::DispError(WODXMPPCOMLib::IXMPPContact *Contact, WO
 		t += t2;
 #endif
 	}
-	CComBSTR2 t1 = t;
+//	CComBSTR2 t1 = t;
 //	MessageBox(NULL, err, t1.ToString(), MB_OK | MB_ICONHAND);
 }
 

@@ -87,6 +87,7 @@ public:
 	BOOL m_WasInactiveTimer, m_WasConnectedBeforeSleep;
 	BOOL m_MouseOverStatus;
 	POINT m_MouseOverPoint;
+	CComBSTR m_NewPassword;
 
 //	CComPtr<WODVCHATComLib::IwodVChatCom> m_VoiceChat;
 

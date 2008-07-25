@@ -1557,6 +1557,8 @@ BOOL CSettings::CheckPasswordProtect(void)
 		{
 			CSettingsDlg::CEnterPassDialog ndlg;
 			ndlg.DoModal();
+			if (!ndlg.m_Success)
+				return FALSE;
 			CComBSTR2 pp = m_PasswordProtectPassword;
 			if (!strcmp(pp.ToString(), ndlg.m_Password))
 				m_NowProtected = FALSE;

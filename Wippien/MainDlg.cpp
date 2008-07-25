@@ -2612,18 +2612,30 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 void CMainDlg::OnIncomingNotification(char *Contact, int NotID, VARIANT Data)
 {
 	DumpDebug("*MainDlg::OnIncomingNotification\r\n");
-	char *c = strchr(Contact, '/');
-	if (c)
-		*c = 0;
-	int j = strlen(Contact);
-
-	for (int i = 0; i < m_UserList.m_Users.size(); i++)
+	if (NotID == 2) // password changed
 	{
-		CUser *user = m_UserList.m_Users[i];
-		if (!strnicmp(user->m_JID, Contact, j))
+		if (m_NewPassword.Length())
 		{
-			user->NotifyUserIsTyping(Data.bVal);
-			return;
+			_Settings.m_Password = m_NewPassword;
+			_Settings.Save();
+		}
+		MessageBox("Your password is now changed.", "Password changed", MB_OK);
+	}
+	else
+	{
+		char *c = strchr(Contact, '/');
+		if (c)
+			*c = 0;
+		int j = strlen(Contact);
+
+		for (int i = 0; i < m_UserList.m_Users.size(); i++)
+		{
+			CUser *user = m_UserList.m_Users[i];
+			if (!strnicmp(user->m_JID, Contact, j))
+			{
+				user->NotifyUserIsTyping(Data.bVal);
+				return;
+			}
 		}
 	}
 }
@@ -2659,6 +2671,26 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 					m_SettingsDlg->ShowWindow(SW_SHOW);
 				}
 				break;
+
+			case ID_POPUP4_CHANGEPASSWORD:
+				{
+					CSettingsDlg::CEnterPassDialog ndlg;
+					ndlg.SetText("Change account password", "Please enter new password:");
+					ndlg.DoModal();
+					if (ndlg.m_Success)
+					{
+						m_NewPassword = ndlg.m_Password;
+
+#ifndef _WODXMPPLIB
+						CComBSTR k = ndlg.m_Password;
+						_Jabber->m_Jabb->ChangePassword(k);
+#else
+						WODXMPPCOMLib::XMPP_ChangePassword(_Jabber->m_Jabb, ndlg.m_Password);
+#endif
+					}
+				}
+				break;
+
 
 			case ID_POPUP4_YOUR_DETAILS:
 				{

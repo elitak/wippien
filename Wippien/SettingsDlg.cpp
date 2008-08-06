@@ -1715,7 +1715,7 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 		LVITEM it = {0};
 		it.mask = LVIF_IMAGE;
 		it.iItem = i;
-		if (st->Valid)
+		if (st->Permanent)
 			it.iImage = 1;
 		else
 			it.iImage = 0;
@@ -1736,7 +1736,10 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);
 
 		it.iSubItem = 3;
-		it.pszText = "N/A";
+		if (st->Permanent)
+			it.pszText = "Permanent";
+		else
+			it.pszText = "Temporary";
 		it.cchTextMax = strlen(it.pszText);
 		
 		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);	

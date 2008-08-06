@@ -68,7 +68,8 @@ CSettings::CSettings()
 	m_MyLastNetwork = m_MyLastNetmask = 0;
 	m_AllowAnyMediator = TRUE;
 	m_IPProviderURL = "http://wippien.com/ip/?jid=";
-	AddLinkMediator("mediator.wippien.com", 8000);
+	LinkMediatorStruct *st1 = AddLinkMediator("mediator.wippien.com", 8000);
+	st1->Permanent = TRUE;
 	m_ObtainIPAddress = 1;
 
 	m_AutoAwayMinutes = 10;
@@ -313,6 +314,15 @@ CSettings::~CSettings()
 		m_MenuImages.erase(m_MenuImages.begin());
 		delete img;
 	}
+	while (m_LinkMediators.size())
+	{
+		LinkMediatorStruct *lms = (LinkMediatorStruct *)m_LinkMediators[0];
+		free(lms->Host);
+		delete lms;
+		m_LinkMediators.erase(m_LinkMediators.begin());
+	}
+
+
 }
 
 CXmlEntity *CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value, BOOL default_value)
@@ -511,7 +521,8 @@ int CSettings::LoadConfig(void)
 			int mlmport = 0;
 			ReadSettingsCfg(wip, "LinkMediator", mlm, "mediator.wippien.com");
 			ReadSettingsCfg(wip, "LinkMediatorPort", &mlmport, 8000);
-			AddLinkMediator(mlm.ToString(), mlmport);
+			LinkMediatorStruct *st = AddLinkMediator(mlm.ToString(), mlmport);
+			st->Permanent = TRUE;
 
 			ReadSettingsCfg(wip, "ObtainIPAddress", &m_ObtainIPAddress, 1);
 			ReadSettingsCfg(wip, "AllowMediator", &m_AllowAnyMediator, TRUE);
@@ -649,10 +660,7 @@ int CSettings::LoadConfig(void)
 						if (h.Length() && port)
 						{
 							LinkMediatorStruct *st = AddLinkMediator(h.ToString(), port);
-							if (st)
-							{
-								st->Valid = valid;
-							}
+							st->Permanent = TRUE;
 						}
 					}
 					lnm->Name[0] = 0;
@@ -1189,12 +1197,15 @@ BOOL CSettings::SaveConfig(void)
 
 	for (i=0;i<m_LinkMediators.size();i++)
 	{
-		x.Append("<Mediator>\r\n");
 		LinkMediatorStruct *st =(LinkMediatorStruct *)m_LinkMediators[i];
-		x.AddChildElem("Host", st->Host);
-		x.AddChildElem("Port", st->Port);
-		x.AddChildElem("Valid", st->Valid);
-		x.Append("</Mediator>\r\n");
+		if (st->Permanent)
+		{
+			x.Append("<Mediator>\r\n");
+			x.AddChildElem("Host", st->Host);
+			x.AddChildElem("Port", st->Port);
+			x.AddChildElem("Valid", st->Permanent);
+			x.Append("</Mediator>\r\n");
+		}
 	}
 
 	x.Append("<HiddenContacts>\r\n");
@@ -1725,9 +1736,6 @@ CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
 			st = st1;
 	}
 
-	if (!stricmp(Host, "vpntest"))
-		return NULL;
-
 	if (!st)
 	{
 		st = new LinkMediatorStruct();
@@ -1735,7 +1743,7 @@ CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
 		st->Host = (char *)malloc(strlen(Host)+1);
 		strcpy(st->Host, Host);
 		st->Port = Port;
-		st->Valid = TRUE;
+		st->Permanent = FALSE;
 		m_LinkMediators.push_back(st);
 	}
 

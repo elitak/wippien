@@ -660,7 +660,7 @@ void CUser::FdTimer(int TimerID)
 				for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
 				{
 					CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
-					if (st->Valid)
+					if (st->Permanent)
 					{
 						total++;
 						b1.PutCString(st->Host);
@@ -680,7 +680,7 @@ void CUser::FdTimer(int TimerID)
 						for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
 						{
 							CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
-							if (st->Valid)
+							if (st->Permanent)
 							{
 								strcpy(m_MyMediatorOffer, st->Host);
 								m_MyMediatorPort = st->Port;

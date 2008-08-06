@@ -591,7 +591,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 														memcpy(buff, out.Ptr(), ij);
 														out.Consume(ij);
 														if (out.Len() && _Settings.m_AllowAnyMediator)
-															CSettings::LinkMediatorStruct *st = _Settings.AddLinkMediator(buff, out.GetInt());
+															_Settings.AddLinkMediator(buff, out.GetInt());															
 													}
 												}
 											}

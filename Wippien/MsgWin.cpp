@@ -630,6 +630,8 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 	{
 		if (m_EmoticonList->m_BalloonHwnd)
 			::DestroyWindow(m_EmoticonList->m_BalloonHwnd);
+
+		m_EmoticonList->m_BalloonHwnd = NULL;
 	}
 	
 

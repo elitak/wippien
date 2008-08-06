@@ -897,6 +897,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 
 //						if (_Settings.m_UseLinkMediatorFromDatabase)
 						{
+							BOOL deleted = FALSE;
 							CXmlEntity *start = NULL;
 							do 
 							{
@@ -905,9 +906,21 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								{
 									CXmlEntity *medip = CXmlEntity::FindByName(start, "IP", 1);
 									CXmlEntity *medport = CXmlEntity::FindByName(start, "UDPPort", 1);
-									if (medip && medport && _Settings.m_AllowAnyMediator)
+									if (medip && medport)
 									{
-										_Settings.AddLinkMediator(medip->Value, atol(medport->Value));
+										if (!deleted)
+										{
+											while (_Settings.m_LinkMediators.size())
+											{
+												CSettings::LinkMediatorStruct *lms = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[0];
+												free(lms->Host);
+												delete lms;
+												_Settings.m_LinkMediators.erase(_Settings.m_LinkMediators.begin());
+											}
+											deleted = TRUE;
+										}
+										CSettings::LinkMediatorStruct *st = _Settings.AddLinkMediator(medip->Value, atol(medport->Value));
+										st->Permanent = TRUE;
 										_Settings.SaveConfig();
 									}
 									start->Name[0] = 0; // to disable this mediator from future search

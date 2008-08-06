@@ -128,7 +128,7 @@ public:
 		int Port;
 		unsigned long LastCheck;
 		unsigned long LastSuccess;		
-		BOOL Valid;
+		BOOL Permanent;
 	};
 
 	typedef std::vector<TreeGroup *> GROUPS;

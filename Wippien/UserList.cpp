@@ -1186,10 +1186,23 @@ LRESULT CUserList::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 			if (tg->Item == ht.hItem)
 			{
-				if (SendMessage(TVM_GETITEMSTATE, (WPARAM)ht.hItem, TVIS_EXPANDED) & TVIS_EXPANDED)
-					tg->Open = TRUE;
-				else
-					tg->Open = FALSE;
+				BOOL found = FALSE;
+				for (int o=0;o<_MainDlg.m_ChatRooms.size();o++)
+				{
+					CChatRoom *room = _MainDlg.m_ChatRooms[o];
+					if (!strcmp(tg->Name, room->m_ShortName))
+					{
+						found = !(::ShowWindow(room->m_MessageWin->m_hWnd, SW_SHOWNORMAL));
+						room->OpenMsgWindow(TRUE);
+					}
+				}
+				if (!found)
+				{
+					if (SendMessage(TVM_GETITEMSTATE, (WPARAM)ht.hItem, TVIS_EXPANDED) & TVIS_EXPANDED)
+						tg->Open = TRUE;
+					else
+						tg->Open = FALSE;
+				}
 			}
 		}
 		if (save)

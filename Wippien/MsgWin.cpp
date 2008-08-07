@@ -924,6 +924,15 @@ BOOL CMsgWin::ArrangeLayout()
 
 LRESULT CMsgWin::OnSize(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
+	if (m_Room)
+	{
+		// this is chat room, is it minimized
+		WINDOWPLACEMENT wp;
+		GetWindowPlacement(&wp);
+		if (wp.showCmd & SW_SHOWMINIMIZED)
+			ShowWindow(SW_HIDE);
+
+	}
 
 /*	HWND hEmoticons = GetDlgItem(IDC_EMOTICONS);
 	RECT rc;

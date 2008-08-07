@@ -10,7 +10,6 @@
 #include "Settings.h"
 #include "Ethernet.h"
 #include "MainDlg.h"
-#include "ExtWndShadow.h"
 #include "ChatRoom.h"
 #include "Notify.h"
 #include <io.h>
@@ -678,16 +677,6 @@ LRESULT CSettingsDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/,
 }	
 
 
-#define DRAWSHADOW(x)\
-::GetWindowRect(GetDlgItem((x)), rc);\
-ScreenToClient(&rc);\
-rc.InflateRect( 2, 2, 0, 0 );\
-_shadow.Paint(dcPaint, rc,\
-5,\
-CExtWndShadow::DEF_BRIGHTNESS_MIN,\
-CExtWndShadow::DEF_BRIGHTNESS_MAX, FALSE);\
-
-
 CSettingsDlg::CSettingsJID::CSettingsJID() : _CSettingsTemplate()
 {
 //	PATH = "Identity\\JID";
@@ -740,15 +729,6 @@ LRESULT CSettingsDlg::CSettingsJID::OnChange(WORD wNotifyCode, WORD wID, HWND hW
 LRESULT CSettingsDlg::CSettingsJID::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-	DRAWSHADOW(IDC_EDIT_JID);
-	DRAWSHADOW(IDC_EDIT2_JID);
-	DRAWSHADOW(IDC_EDIT_JID3);
-	DRAWSHADOW(IDC_EDIT_JID4);
-	
 	return TRUE;
 }
 
@@ -1254,11 +1234,7 @@ int FindCxImageFormat(const CString& ext)
 LRESULT CSettingsDlg::CSettingsIcon::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
 	DrawNickIcon(dcPaint);
-	DRAWSHADOW(IDC_CHOOSEICON);
 	return TRUE;
 }
 
@@ -1507,15 +1483,6 @@ void CSettingsDlg::CSettingsEthernet::DoDefault(void)
 LRESULT CSettingsDlg::CSettingsEthernet::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-//	DRAWSHADOW(IDC_NETWORK_ETHERNET);
-//	DRAWSHADOW(IDC_NETMASK_ETHERNET);
-	DRAWSHADOW(IDC_UDP_PORT);
-		
 	return TRUE;
 }
 
@@ -1661,12 +1628,6 @@ CSettingsDlg::CSettingsMediator::~CSettingsMediator()
 LRESULT CSettingsDlg::CSettingsMediator::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-	
-	CRect rc;
-	CExtWndShadow _shadow;		
-	
-	
-	DRAWSHADOW(IDC_MEDIATORLIST);
 	return TRUE;
 }
 
@@ -1816,18 +1777,6 @@ CSettingsDlg::CSettingsAccounts::~CSettingsAccounts()
 LRESULT CSettingsDlg::CSettingsAccounts::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_LISTREGISTEREDGATEWAYS);
-	if (m_RegVisible)
-	{
-		DRAWSHADOW(IDC_EDIT_SCREENNAME);
-		DRAWSHADOW(IDC_EDIT_PASSWORD);
-	}
-		
 	return TRUE;
 }
 
@@ -2621,16 +2570,6 @@ CSettingsDlg::CSettingsContactsAddRemove::~CSettingsContactsAddRemove()
 LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_CONTACTID);
-	DRAWSHADOW(IDC_CONTACTTYPELIST);
-	DRAWSHADOW(IDC_VISIBLENAME);
-	DRAWSHADOW(IDC_GROUPLIST);
-		
 	return TRUE;
 }
 
@@ -3125,17 +3064,6 @@ CSettingsDlg::CSettingsLogging::~CSettingsLogging()
 LRESULT CSettingsDlg::CSettingsLogging::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_LOG_JABBER);
-	DRAWSHADOW(IDC_LOG_SOCKET);
-	DRAWSHADOW(IDC_LOG_VPNSOCKET);
-	DRAWSHADOW(IDC_LOG_FUNCTION);
-	DRAWSHADOW(IDC_FUNCTIONDELETEMB);
-		
 	return TRUE;
 }
 
@@ -3451,17 +3379,6 @@ LRESULT CSettingsDlg::CSettingsUser1::OnPaint(UINT uMsg, WPARAM wParam, LPARAM l
 		dc_ff.SelectBitmap(bm_old);
 	}
 
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_SETTINGS_USER1_NICKNAME);
-	DRAWSHADOW(IDC_SETTINGS_USER1_FIRSTNAME);
-	DRAWSHADOW(IDC_SETTINGS_USER1_LASTNAME);
-	DRAWSHADOW(IDC_SETTINGS_USER1_EMAIL);
-	DRAWSHADOW(IDC_SETTINGS_USER1_URL);
-	DRAWSHADOW(IDC_SETTINGS_USER1_DESCRIPTION);
-
 	return FALSE;
 }
 		
@@ -3688,21 +3605,6 @@ CSettingsDlg::CSettingsUser2::~CSettingsUser2()
 LRESULT CSettingsDlg::CSettingsUser2::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_SETTINGS_USER2_ADDRESS);
-	DRAWSHADOW(IDC_SETTINGS_USER2_ADDRESSEXT);
-	DRAWSHADOW(IDC_SETTINGS_USER2_CITY);
-	DRAWSHADOW(IDC_SETTINGS_USER2_STATE);
-	DRAWSHADOW(IDC_SETTINGS_USER2_ZIP);
-	DRAWSHADOW(IDC_SETTINGS_USER2_COUNTRY);
-	DRAWSHADOW(IDC_SETTINGS_USER2_PHONE);
-	DRAWSHADOW(IDC_SETTINGS_USER2_FAX);
-	DRAWSHADOW(IDC_SETTINGS_USER2_BDAY);
-		
 	return TRUE;
 }
 
@@ -4017,23 +3919,6 @@ CSettingsDlg::CSettingsUser3::~CSettingsUser3()
 LRESULT CSettingsDlg::CSettingsUser3::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_SETTINGS_USER3_ADDRESS);
-	DRAWSHADOW(IDC_SETTINGS_USER3_ADDRESSEXT);
-	DRAWSHADOW(IDC_SETTINGS_USER3_CITY);
-	DRAWSHADOW(IDC_SETTINGS_USER3_STATE);
-	DRAWSHADOW(IDC_SETTINGS_USER3_ZIP);
-	DRAWSHADOW(IDC_SETTINGS_USER3_COUNTRY);
-	DRAWSHADOW(IDC_SETTINGS_USER3_PHONE);
-	DRAWSHADOW(IDC_SETTINGS_USER3_FAX);
-	DRAWSHADOW(IDC_SETTINGS_USER3_TITLE);
-	DRAWSHADOW(IDC_SETTINGS_USER3_COMPANY);
-	DRAWSHADOW(IDC_SETTINGS_USER3_DEPARTMENT);
-		
 	return TRUE;
 }
 
@@ -4374,12 +4259,6 @@ CSettingsDlg::CSettingsUser4::~CSettingsUser4()
 LRESULT CSettingsDlg::CSettingsUser4::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_INTERFACELIST);
 	return TRUE;
 }
 
@@ -5434,15 +5313,6 @@ CSettingsDlg::CSettingsVoiceChat::~CSettingsVoiceChat()
 LRESULT CSettingsDlg::CSettingsVoiceChat::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_ENABLEVOICECHAT);
-	DRAWSHADOW(IDC_VOICE_PLAYBACKDEVICE);
-	DRAWSHADOW(IDC_VOICE_RECORDINGDEVICE);
-		
 	return TRUE;
 }
 
@@ -5727,13 +5597,6 @@ CSettingsDlg::CSettingsMTU::~CSettingsMTU()
 LRESULT CSettingsDlg::CSettingsMTU::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-//	DRAWSHADOW(IDC_MTU);
-		
 	return TRUE;
 }
 
@@ -5806,16 +5669,6 @@ CSettingsDlg::CSettingsSound::~CSettingsSound()
 LRESULT CSettingsDlg::CSettingsSound::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_SOUND);
-	DRAWSHADOW(IDC_SOUNDEVENTS);
-//	DRAWSHADOW(IDC_LOG_FUNCTION);
-//	DRAWSHADOW(IDC_FUNCTIONDELETEMB);
-		
 	return TRUE;
 }
 
@@ -5994,15 +5847,6 @@ CSettingsDlg::CSettingsContactsHide::~CSettingsContactsHide()
 LRESULT CSettingsDlg::CSettingsContactsHide::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-	CRect rc;
-	CExtWndShadow _shadow;		
-
-
-	DRAWSHADOW(IDC_HIDDENCONTACTS);
-	DRAWSHADOW(IDC_BLOCKNEWCONTACT);
-	DRAWSHADOW(IDC_UNBLOCKCONTACT);
-		
 	return TRUE;
 }
 
@@ -6301,13 +6145,6 @@ CSettingsDlg::CSettingsContactsSort::~CSettingsContactsSort()
 LRESULT CSettingsDlg::CSettingsContactsSort::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
-
-//	CRect rc;
-//	CExtWndShadow _shadow;		
-
-
-//	DRAWSHADOW(IDC_ContactsSort);
-		
 	return TRUE;
 }
 

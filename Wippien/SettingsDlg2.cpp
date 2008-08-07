@@ -10,7 +10,6 @@
 #include "Settings.h"
 #include "Ethernet.h"
 #include "MainDlg.h"
-#include "ExtWndShadow.h"
 #include "ChatRoom.h"
 #include "Notify.h"
 #include <io.h>
@@ -49,16 +48,6 @@ int b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize)
 #define IPS_ALLOW		"allow"
 #define IPS_DENY		"deny"
 #define IPS_UNKNOWN		"not specified"
-
-#define DRAWSHADOW(x)\
-	::GetWindowRect(GetDlgItem((x)), rc);\
-	ScreenToClient(&rc);\
-	rc.InflateRect( 2, 2, 0, 0 );\
-	_shadow.Paint(dcPaint, rc,\
-	5,\
-	CExtWndShadow::DEF_BRIGHTNESS_MIN,\
-	CExtWndShadow::DEF_BRIGHTNESS_MAX, FALSE);\
-
 
 CSettingsDlg::CSettingsNetworkFirewall::CSettingsNetworkFirewall() : _CSettingsTemplate()
 {

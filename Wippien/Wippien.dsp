@@ -194,10 +194,6 @@ SOURCE=.\Ethernet.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\ExtWndShadow.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\Jabber.cpp
 # End Source File
 # Begin Source File
@@ -328,10 +324,6 @@ SOURCE=.\DownloadSkinDlg.h
 # Begin Source File
 
 SOURCE=.\Ethernet.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\ExtWndShadow.h
 # End Source File
 # Begin Source File
 

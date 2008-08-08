@@ -1989,11 +1989,9 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnRemoveAccount(WORD wNotifyCode, WORD 
 		m_ServicesList.GetText(i, buff);
 		if (buff[0])
 		{
-			a = "Are you sure you want to delete '";
-			a += buff;
-			a += "' account?";
-			CComBSTR2 a1 = a;
-			int i = MessageBox(a1.ToString(), "Delete registered account?", MB_ICONQUESTION | MB_YESNO);
+			char buff2[1024];
+			sprintf(buff2, "Are you sure you want to delete account '%s'?", buff);
+			int i = MessageBox(buff2, "Delete registered account?", MB_ICONQUESTION | MB_YESNO);
 			if (i==6)
 			{
 

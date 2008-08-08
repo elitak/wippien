@@ -211,7 +211,13 @@ public:
 						return;
 
 					m_UpdateHandlerMsgBoxShown = TRUE;
-					answer = CBalloonTipDlg::Show(NULL, "<font face=Verdana size=2>New version of Wippien is available. Download?<br>\r\n<br>\r\n<a href=\"http://wippien.com/notes.php\">Click here to see what's new.</a>", "Wippien update", MB_YESNO);
+					CComBSTR nv = "<font face=Verdana size=2>";
+					nv += "New version of Wippien is available. Download?";
+					nv += "<br>\r\n<br>\r\n<a href=\"http://wippien.com/notes.php\">";
+					nv += "Click here to see what's new.";
+					nv += "</a>";
+					CComBSTR2 nv2 = nv;
+					answer = CBalloonTipDlg::Show(NULL, nv2.ToString(), "Wippien update", MB_YESNO);
 					m_UpdateHandlerMsgBoxShown = FALSE;
 
 //					m_UpdateHandlerMsgBoxShown = TRUE;
@@ -338,7 +344,7 @@ public:
 		m_UpdateHandlerMsgBoxShown = TRUE;
 		int i = 6;
 		if (!m_Owner->m_SilentCheck)
-			i = ::MessageBox(NULL, "New version found localy. Replace?", "New version", MB_ICONQUESTION | MB_YESNO);
+			i = ::MessageBox(NULL, "New version of Wippien found localy. Replace?", "New version", MB_ICONQUESTION | MB_YESNO);
 		m_UpdateHandlerMsgBoxShown = FALSE;
 		if (i==6)
 		{

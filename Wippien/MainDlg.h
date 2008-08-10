@@ -108,7 +108,6 @@ public:
 	void ShowStatusText(char *text);
 	void CheckIfAntiInactivityMessage(int msg);
 
-
 	typedef struct EmoticonsStruct
 	{
 		HINSTANCE hInst;

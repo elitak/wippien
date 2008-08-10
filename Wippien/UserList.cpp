@@ -812,9 +812,9 @@ void CUserList::RefreshView(BOOL updateonly)
 									doblink = TRUE;
 									if (p->IsMsgWindowOpen())
 									{
-										p->PrintMsgWindow(TRUE, "User is now offline.", NULL);
+										p->PrintMsgWindow(TRUE, _Settings.Translate("User is now offline."), NULL);
 									}
-									_Notify.ShowTrayNotify(p->m_VisibleName, "is now offline");
+									_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
 									_Notify.DoEvent(NotificationOffline);
 								}
 							}
@@ -864,20 +864,20 @@ void CUserList::RefreshView(BOOL updateonly)
 									// fix for going offline but VPN leave connected
 									if (p->m_Online)
 									{
-										_Notify.ShowTrayNotify(p->m_VisibleName, "is now online");
+										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now online"));
 										_Notify.DoEvent(NotificationOnline);
 										if (p->IsMsgWindowOpen())
 										{
-											p->PrintMsgWindow(TRUE, "User is now online.", NULL);
+											p->PrintMsgWindow(TRUE, _Settings.Translate("User is now online."), NULL);
 										}
 									}
 									else
 									{
 										if (p->IsMsgWindowOpen())
 										{
-											p->PrintMsgWindow(TRUE, "User is now offline.", NULL);
+											p->PrintMsgWindow(TRUE, _Settings.Translate("User is now offline."), NULL);
 										}
-										_Notify.ShowTrayNotify(p->m_VisibleName, "is now offline");
+										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
 										_Notify.DoEvent(NotificationOffline);
 									}
 									doblink = TRUE;
@@ -887,8 +887,8 @@ void CUserList::RefreshView(BOOL updateonly)
 					
 					}
 
-					TreeItem.item.pszText = "123456789012345";
-					TreeItem.item.cchTextMax = 15;		
+					TreeItem.item.pszText = "1234567890";
+					TreeItem.item.cchTextMax = 10;		
 
 
 					if (p->m_Image)
@@ -1249,7 +1249,7 @@ LRESULT CUserList::OnLButtonDblClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 	if (user->m_Block)
 	{	
 		_Notify.DoEvent(NotificationError);
-		_MainDlg.ShowStatusText("Contact is blocked.");
+		_MainDlg.ShowStatusText(_Settings.Translate("Contact is blocked."));
 
 	}
 	else
@@ -1258,7 +1258,7 @@ LRESULT CUserList::OnLButtonDblClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 		if (!user->m_Online)
 		{
 			_Notify.DoEvent(NotificationError);
-			_MainDlg.ShowStatusText("Contact is offline.");
+			_MainDlg.ShowStatusText(_Settings.Translate("Contact is offline."));
 			return FALSE;
 		}
 
@@ -1498,9 +1498,9 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
 		GetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
 		if (user->m_Block)
-			lpmii.dwTypeData = "Unblock";
+			lpmii.dwTypeData = _Settings.Translate("Unblock");
 		else
-			lpmii.dwTypeData = "Block";
+			lpmii.dwTypeData = _Settings.Translate("Block");
 		if (tg && tg->Block) // disable block/unblock
 			lpmii.fState = MFS_DISABLED;
 		SetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
@@ -1565,9 +1565,9 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 				lpmii.fMask = MIIM_STRING | MIIM_DATA;
 				GetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
 				if (tg->Block)
-					lpmii.dwTypeData = "Unblock";
+					lpmii.dwTypeData = _Settings.Translate("Unblock");
 				else
-					lpmii.dwTypeData = "Block";
+					lpmii.dwTypeData = _Settings.Translate("Block");
 				SetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
 				AddMenuImage(ID_PNG1_BLOCK, ID_POPUP1_BLOCK);
 
@@ -1626,8 +1626,8 @@ BOOL CUserList::ExecuteRButtonGroupCommand(CSettings::TreeGroup *tg, int Command
 	case ID_POPUP1_DELETE:
 		{
 			char buff[1024];
-			sprintf(buff, "Are you sure you want to remove group %s", tg->Name);
-			int i = MessageBox(buff, "Remove group?", MB_YESNO | MB_ICONQUESTION);
+			sprintf(buff, _Settings.Translate("Are you sure you want to remove group %s"), tg->Name);
+			int i = MessageBox(buff, _Settings.Translate("Remove group?"), MB_YESNO | MB_ICONQUESTION);
 			if (i == IDYES)
 			{
 				DeleteGroup(tg->Name);
@@ -1792,8 +1792,8 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 		case ID_POPUP1_DELETE:
 			{
 				CComBSTR2 b1 = user->m_JID;
-				sprintf(buff, "Are you sure you want to remove contact %s", b1.ToString());
-				int i = MessageBox(buff, "Remove contact?", MB_YESNO | MB_ICONQUESTION);
+				sprintf(buff, _Settings.Translate("Are you sure you want to remove contact %s"), b1.ToString());
+				int i = MessageBox(buff, _Settings.Translate("Remove contact?"), MB_YESNO | MB_ICONQUESTION);
 				if (i == IDYES)
 				{
 #ifndef _WODXMPPLIB
@@ -1940,7 +1940,7 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 							user->m_SettingsContactsDlg->m_Dialogs.push_back((CSettingsDlg::_CSettingsTemplate *)pg);
 																			
 							user->m_SettingsContactsDlg->Create(NULL, NULL);
-							::SetWindowText(user->m_SettingsContactsDlg->m_hWnd, "Contact details");
+							::SetWindowText(user->m_SettingsContactsDlg->m_hWnd, _Settings.Translate("Contact details"));
 
 							
 							us1->Lock(TRUE);
@@ -2032,49 +2032,9 @@ LRESULT CUserList::OnKeyDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHan
 
 LRESULT CUserList::OnRefresh(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-/*	// SAFE...
-	if (lParam)
-	{
-		if (_Jabber)
-		{
-			short count = 0;
-			WODXMPPCOMLib::IXMPPContacts *cts = NULL;
-			if (SUCCEEDED(_Jabber->m_Jabb->get_Contacts(&cts)))
-			{
-				if (SUCCEEDED(cts->get_Count(&count)))
-				{
-					WODXMPPCOMLib::IXMPPContact *ct;
-					VARIANT var;
-					var.vt = VT_I2;
-					for (var.iVal =0;var.iVal<count;var.iVal++)
-					{
-						if (SUCCEEDED(cts->get_Item(var, &ct)))
-						{
-							if ((LPARAM)ct == lParam)
-								Refresh(ct);
-							ct->Release();
-						}
-					}
-				}
-				cts->Release();
-			}
-		}
-	}
-	else
-		Refresh(NULL);
-//	Refresh((void *)lParam);
-*/
 	RefreshView((BOOL)lParam);
 	return 0;
 }
-
-/*void CUserList::DisableInlineEdit()
-{
-	HWND h = ::GetDlgItem(m_Owner->m_hWnd, IDC_RENAMEEDIT);
-	::ShowWindow(h, SW_HIDE);
-	m_InlineEdit = FALSE;
-	ReleaseCapture();
-}*/
 
 int GetPhotoType(Buffer *PhotoData)
 {
@@ -2202,39 +2162,6 @@ void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL
 							else
 								user->m_Image->Clear();
 
-/*							IPictureDisp *pic;
-							if (SUCCEEDED(vc->get_Photo(&pic)))
-							{							
-								if (pic)
-								{
-									ILockBytes *BFR = 0;
-									IStream    *FileStream = 0;
-									IStorage   *pStorage = 0;
-									long		OutStream;
-								
-									CreateILockBytesOnHGlobal(NULL, TRUE, &BFR); // Create ILockBytes Buffer
-									if (SUCCEEDED(::StgCreateDocfileOnILockBytes(BFR,STGM_SHARE_EXCLUSIVE | STGM_CREATE | STGM_READWRITE, 0, &pStorage)))
-									{
-										if (SUCCEEDED(pStorage->CreateStream(L"PICTURE", STGM_SHARE_EXCLUSIVE | STGM_CREATE | STGM_READWRITE, 0, 0, &FileStream)))
-										{			
-											IPicture *p = NULL;
-											if (SUCCEEDED(pic->QueryInterface(IID_IPicture, (void **)&p)))
-											{
-												if (SUCCEEDED(p->SaveAsFile(FileStream, TRUE, &OutStream)))
-												{
-													if (OutStream)
-													{
-														BFR->Flush();	
-
-														Buffer e;
-														char *f;
-														e.AppendSpace(&f, OutStream);
-
-														LARGE_INTEGER li = {0};
-														FileStream->Seek(li, STREAM_SEEK_SET, NULL);
-														if (SUCCEEDED(FileStream->Read(f, OutStream, NULL)))
-														{
-*/
 
 #ifndef _WODXMPPLIB
 														SAFEARRAY * psa = NULL;
@@ -2286,26 +2213,8 @@ void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL
 																CSettingsDlg::CSettingsUser1 *us1 = (CSettingsDlg::CSettingsUser1 *)user->m_SettingsContactsDlg->m_Dialogs[0];
 																us1->InitData(vc);
 															}
-															/*
-														}							
-													}
-												}
-										
-												FileStream->Release();
-												pStorage->Release();
-												p->Release();
-											}
-										}
-									}							
-							
-								}
-*/
 							}
-//							if (now - REFRESHUSERDETAILS > uservcard)
-//								vc->Receive();
-//							vc->Release();
 						}
-//						::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0, (LPARAM)Contact);
 						RefreshUser(Contact, NULL);
 					}
 				}
@@ -2327,129 +2236,5 @@ void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL
 				}
 			}
 		}
-	}
-	else // not contacts
-	{
-/*
-		if (received)
-				{
-					if (user->m_SettingsContactsDlg)
-					{
-						WODXMPPCOMLib::IXMPPVCard *vc;
-						if (SUCCEEDED(Contact->get_VCard(&vc)))
-						{
-							CSettingsDlg::CSettingsUser1 *us1 = (CSettingsDlg::CSettingsUser1 *)user->m_SettingsContactsDlg->m_Dialogs[0];
-							CSettingsDlg::CSettingsUser2 *us2 = (CSettingsDlg::CSettingsUser2 *)user->m_SettingsContactsDlg->m_Dialogs[1];
-							CSettingsDlg::CSettingsUser3 *us3 = (CSettingsDlg::CSettingsUser3 *)user->m_SettingsContactsDlg->m_Dialogs[2];
-//							CSettingsDlg::CSettingsUser4 *us4 = (CSettingsDlg::CSettingsUser4 *)user->m_SettingsContactsDlg->m_Dialogs[3];
-
-							us1->InitData(vc);
-							us2->InitData(vc);
-							us3->InitData(vc);
-//							us4->InitData();
-
-							vc->Release();
-						}
-					}
-					if (!user->m_GotVCard)
-					{
-						user->m_GotVCard = TRUE;
-						WODXMPPCOMLib::IXMPPVCard *vc;
-						if (SUCCEEDED(Contact->get_VCard(&vc)))
-						{
-							CComBSTR2 vis;
-							if (SUCCEEDED(vc->get_NickName(&vis)))
-							{
-								if (vis.Length()<sizeof(user->m_VisibleName))
-								{
-									strcpy(user->m_VisibleName , vis.ToString());
-								}
-							}
-							CComBSTR2 e;
-							if (SUCCEEDED(vc->get_Email(&e)))
-							{
-								if (e.Length()<sizeof(user->m_Email))
-								{
-									strcpy(user->m_Email , e.ToString());
-								}
-							}
-
-							IPictureDisp *pic;
-							if (SUCCEEDED(vc->get_Photo(&pic)))
-							{							
-								if (pic)
-								{
-									ILockBytes *BFR = 0;
-									IStream    *FileStream = 0;
-									IStorage   *pStorage = 0;
-									long		OutStream;
-								
-									CreateILockBytesOnHGlobal(NULL, TRUE, &BFR); // Create ILockBytes Buffer
-									if (SUCCEEDED(::StgCreateDocfileOnILockBytes(BFR,STGM_SHARE_EXCLUSIVE | STGM_CREATE | STGM_READWRITE, 0, &pStorage)))
-									{
-										if (SUCCEEDED(pStorage->CreateStream(L"PICTURE", STGM_SHARE_EXCLUSIVE | STGM_CREATE | STGM_READWRITE, 0, 0, &FileStream)))
-										{			
-											IPicture *p = NULL;
-											if (SUCCEEDED(pic->QueryInterface(IID_IPicture, (void **)&p)))
-											{
-												if (SUCCEEDED(p->SaveAsFile(FileStream, TRUE, &OutStream)))
-												{
-													if (OutStream)
-													{
-														BFR->Flush();	
-
-														Buffer e;
-														char *f;
-														e.AppendSpace(&f, OutStream);
-
-														LARGE_INTEGER li = {0};
-														FileStream->Seek(li, STREAM_SEEK_SET, NULL);
-														if (SUCCEEDED(FileStream->Read(f, OutStream, NULL)))
-														{
-															CxMemFile fTmp((BYTE*)f,OutStream);
-															user->m_Image->Clear();
-															user->m_Image->Decode(&fTmp, CXIMAGE_FORMAT_BMP);
-																										
-															CxMemFile fMem;
-															fMem.Open();
-															user->m_Image->Encode(&fMem, CXIMAGE_FORMAT_PNG);
-															user->m_Icon.Clear();
-															user->m_Icon.Append((char *)fMem.GetBuffer(), fMem.Size());
-															user->m_Image->Resample(32, 32);
-														}							
-													}
-												}
-										
-												FileStream->Release();
-												pStorage->Release();
-												p->Release();
-											}
-										}
-									}							
-							
-								}
-							}
-
-							vc->Receive();
-							vc->Release();
-						}
-						::PostMessage(_MainDlg.m_UserList.m_hWnd, WM_REFRESH, 0, (LPARAM)Contact);
-					}
-				}
-				else
-				{
-					if (!user->m_GotVCard)
-					{
-						WODXMPPCOMLib::IXMPPVCard *vc;
-						if (SUCCEEDED(Contact->get_VCard(&vc)))
-						{
-							vc->Receive();
-							vc->Release();
-						}
-					}
-				}
-			}
-		}
-*/
 	}
 }

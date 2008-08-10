@@ -766,7 +766,7 @@ void CUser::SetSubtext(void)
 	{
 		if (strcmp(m_StatusText, m_SubText) && IsMsgWindowOpen())
 		{
-			if (!strcmp(m_StatusText, "Online") && !strcmp(m_StatusText, "Offline"))
+			if (!strcmp(m_StatusText, _Settings.Translate("Online")) && !strcmp(m_StatusText, _Settings.Translate("Offline")))
 			{
 				// get our status
 				WODXMPPCOMLib::StatusEnum stat = (WODXMPPCOMLib::StatusEnum)0;
@@ -780,7 +780,7 @@ void CUser::SetSubtext(void)
 						
 				if (stat)
 				{
-					CComBSTR p = "Status changed: ";
+					CComBSTR p = _Settings.Translate("Status changed: ");
 					p += m_StatusText;
 					CComBSTR2 p2 = p;
 					PrintMsgWindow(TRUE, p2.ToString(), NULL);
@@ -801,23 +801,23 @@ void CUser::SetSubtext(void)
 				unsigned long t;
 				t = (now - m_LastOnline) / 86400L;//(60 *60 *24);
 				if (t>0)
-					sprintf(howlong, "%d day%s", t, t>1?"s":"");
+					sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("days"):_Settings.Translate("day"));
 				else
 				{
 					t = (now-m_LastOnline) / 3600L;//60 * 60;
 					if (t>0)
-						sprintf(howlong, "%d hour%s", t, t>1?"s":"");
+						sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("hours"):_Settings.Translate("hour"));
 					else
 					{
 						t = (now-m_LastOnline)/60;
 						if (!t)
 							t = 1;
-						sprintf(howlong, "%d minute%s", t, t>1?"s":"");
+						sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("minutes"):_Settings.Translate("minute"));
 					}
 				}
 			}
 			else
-				strcpy(howlong, "Last seen: never");
+				strcpy(howlong, _Settings.Translate("Last seen: never"));
 		}
 		else
 			howlong[0] = 0;

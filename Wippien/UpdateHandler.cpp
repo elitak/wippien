@@ -212,12 +212,12 @@ public:
 
 					m_UpdateHandlerMsgBoxShown = TRUE;
 					CComBSTR nv = "<font face=Verdana size=2>";
-					nv += "New version of Wippien is available. Download?";
+					nv += _Settings.Translate("New version of Wippien is available. Download?");
 					nv += "<br>\r\n<br>\r\n<a href=\"http://wippien.com/notes.php\">";
-					nv += "Click here to see what's new.";
+					nv += _Settings.Translate("Click here to see what's new.");
 					nv += "</a>";
 					CComBSTR2 nv2 = nv;
-					answer = CBalloonTipDlg::Show(NULL, nv2.ToString(), "Wippien update", MB_YESNO);
+					answer = CBalloonTipDlg::Show(NULL, nv2.ToString(), _Settings.Translate("Wippien update"), MB_YESNO);
 					m_UpdateHandlerMsgBoxShown = FALSE;
 
 //					m_UpdateHandlerMsgBoxShown = TRUE;
@@ -244,7 +244,7 @@ public:
 					if (m_UpdateHandlerMsgBoxShown)
 						return;
 					m_UpdateHandlerMsgBoxShown = TRUE;
-					MessageBox(NULL, "Your version of Wippien is up-to-date.", "Wippien update", MB_OK);
+					MessageBox(NULL, _Settings.Translate("Your version of Wippien is up-to-date."), _Settings.Translate("Wippien update"), MB_OK);
 					m_UpdateHandlerMsgBoxShown = FALSE;
 				}
 			}
@@ -255,7 +255,7 @@ public:
 				if (m_UpdateHandlerMsgBoxShown)
 					return;
 				m_UpdateHandlerMsgBoxShown = TRUE;
-				MessageBox(NULL, "Error connecting to remote server.", "Wippien update", MB_ICONERROR);
+				MessageBox(NULL, _Settings.Translate("Error connecting to remote server."), _Settings.Translate("Wippien update"), MB_ICONERROR);
 				m_UpdateHandlerMsgBoxShown = FALSE;
 			}
 	}
@@ -305,7 +305,7 @@ public:
 			if (m_Owner->m_SilentCheck)
 				i = 6;
 			else
-				i = ::MessageBox(NULL, "Download successful. Replace now?", "Wippien update", MB_ICONQUESTION | MB_YESNO);
+				i = ::MessageBox(NULL, _Settings.Translate("Download successful. Replace now?"), _Settings.Translate("Wippien update"), MB_ICONQUESTION | MB_YESNO);
 			m_UpdateHandlerMsgBoxShown = FALSE;
 			if (i == 6)
 			{
@@ -322,7 +322,7 @@ public:
 			if (!m_Owner->m_SilentCheck)
 			{
 				CComBSTR2 err = ErrorText;
-				MessageBox(NULL, err.ToString(), "Wippien update error!", MB_ICONERROR);
+				MessageBox(NULL, err.ToString(), _Settings.Translate("Wippien update error!"), MB_ICONERROR);
 			}
 
 		}
@@ -344,7 +344,7 @@ public:
 		m_UpdateHandlerMsgBoxShown = TRUE;
 		int i = 6;
 		if (!m_Owner->m_SilentCheck)
-			i = ::MessageBox(NULL, "New version of Wippien found localy. Replace?", "New version", MB_ICONQUESTION | MB_YESNO);
+			i = ::MessageBox(NULL, _Settings.Translate("New version of Wippien found localy. Replace?"), _Settings.Translate("New version"), MB_ICONQUESTION | MB_YESNO);
 		m_UpdateHandlerMsgBoxShown = FALSE;
 		if (i==6)
 		{

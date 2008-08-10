@@ -92,6 +92,11 @@ public:
 
 	int  m_SortContacts;
 
+	Buffer m_LanguageEnglish, m_LanguageOther;
+	Buffer m_LanguageEnglishIndex, m_LanguageOtherIndex;
+	unsigned int m_LanguageEnglishTotal;
+
+
 	CComBSTR m_SettingsFolder;
 	char m_CfgFilename[MAX_PATH];
 	char m_UserImagePath[MAX_PATH];
@@ -160,6 +165,8 @@ public:
 	BOOL IsHiddenContact(char *contact);
 	LinkMediatorStruct *AddLinkMediator(char *text, int Port);
 	CSettings::TreeGroup *CSettings::GetGroupByName(char *Name);
+	BOOL LoadLanguageFile(char *Language);
+	char *Translate(char *text);
 
 	// window stuff
 	BOOL m_IsAligned, m_IsTopMost, m_DoAlign;

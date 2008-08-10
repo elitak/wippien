@@ -47,43 +47,7 @@ BOOL CProgressDlg::OnIdle()
 {
 	return FALSE;
 }
-/*
-LRESULT CProgressDlg::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	CPaintDC dc(m_hWnd);
-	{
-//		CMemDC dcMem(dc);
 
-//		dc.FillRect(&dc.m_ps.rcPaint, m_Back);
-
-		if (m_Value>100)
-			m_Value = 100;
-
-		dc.m_ps.rcPaint.left += 10;
-		dc.m_ps.rcPaint.top += 50;
-		dc.m_ps.rcPaint.bottom = dc.m_ps.rcPaint.top + 17;
-		dc.m_ps.rcPaint.right = dc.m_ps.rcPaint.left + (m_Value*2.2);
-
-		dc.FillRect(&dc.m_ps.rcPaint, m_Brush);
-		dc.m_ps.rcPaint.left = dc.m_ps.rcPaint.right;
-		dc.m_ps.rcPaint.right = 180;
-		dc.FillRect(&dc.m_ps.rcPaint, m_Back);
-
-	}
-	return TRUE;
-}
-
-LRESULT CProgressDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	return (LRESULT)m_Back;
-}
-LRESULT CProgressDlg::OnEraseBackground(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-   return 1; // handled; no need to erase background; do it in DoPaint();
-}
-
-
-*/
 void CProgressDlg::DoEvents(void)
 {
 	MSG m;
@@ -149,17 +113,8 @@ DWORD WINAPI CProgressDlg::DownloadSkinThreadProc(LPVOID lpParam)
 				sprintf(fnamebuff, "%s.smf", a);
 				::ShowWindow(me->GetDlgItem(IDC_DOWNLOADINGFILE2), SW_HIDE);
 				me->SetDlgItemText(IDC_DOWNLOADINGFILE2, fnamebuff);
-//				long AHA = GetLastError();
-//				int res = ::SendMessage(me->GetDlgItem(IDC_PROGCTRL1), PBM_SETRANGE, 0, MAKELPARAM(0, 10000));
-//				AHA = GetLastError();
-//				res = ::SendMessage(me->GetDlgItem(IDC_PROGCTRL1), PBM_SETPOS, 0,0);
-//				AHA = GetLastError();
-//				res = res;
-//				AHA = AHA;
 				me->m_Value = 0;
 				me->m_Total = 10000;
-//				me->Invalidate();
-//				me->DoEvents();
 
 				//CComBSTR f1 = "http://wippien.com/skins/";
 				CComBSTR f1 = "/Skins/";
@@ -247,7 +202,7 @@ BOOL CProgressDlg::DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL upd
 	/*connect to the server*/
 	if (updateprogress)
 	{
-		::SetWindowText(GetDlgItem(IDC_DOWNLOADINGFILE), "Connecting");
+		::SetWindowText(GetDlgItem(IDC_DOWNLOADINGFILE), _Settings.Translate("Connecting"));
 		DoEvents();
 	}
 //	issecure = FALSE;
@@ -256,7 +211,7 @@ BOOL CProgressDlg::DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL upd
 	/*open up an HTTP request*/
 	if (updateprogress)
 	{
-		::SetWindowText(GetDlgItem(IDC_DOWNLOADINGFILE), "Requesting");
+		::SetWindowText(GetDlgItem(IDC_DOWNLOADINGFILE), _Settings.Translate("Requesting"));
 		DoEvents();
 	}
 	File = HttpOpenRequest(Connection,NULL,URL,NULL,NULL,NULL,INTERNET_FLAG_PRAGMA_NOCACHE | INTERNET_FLAG_NO_CACHE_WRITE | (issecure?INTERNET_FLAG_SECURE:0),0);
@@ -267,7 +222,7 @@ BOOL CProgressDlg::DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL upd
 	{
 		if (updateprogress)
 		{
-			::SetWindowText(GetDlgItem(IDC_DOWNLOADINGFILE), "Downloading");
+			::SetWindowText(GetDlgItem(IDC_DOWNLOADINGFILE), _Settings.Translate("Downloading"));
 			// setup name
 			int k = strlen(URL);
 			while (k>1 && URL[k-1]!='/')
@@ -283,7 +238,7 @@ BOOL CProgressDlg::DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL upd
 			{
 				*a1 = 0;
 				if (!strncmp(&URL[k], "update", 6))
-					a1 = "Configuration file";
+					a1 = _Settings.Translate("Configuration file");
 			}
 			else
 				a1 = &URL[k];

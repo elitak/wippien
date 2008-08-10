@@ -33,6 +33,10 @@ extern CEthernet _Ethernet;
 char *trim(char *text);
 
 char *REGISTRYKEY = "Software\\Kresimir Petric\\Wippien";
+extern const char * CONFIGURING_ADAPTER_TEXT;
+extern const char *IPS_ALLOW;
+extern const char *IPS_DENY;
+extern const char *IPS_UNKNOWN;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -245,6 +249,9 @@ CSettings::CSettings()
 
 	m_FirewallDefaultAllowRule = TRUE;
 	m_DisconnectEthernetOnExit = FALSE;
+	m_LanguageEnglishTotal = 0;
+
+	LoadLanguageFile("Croatian");
 }	
 
 CSettings::~CSettings()
@@ -960,7 +967,7 @@ int CSettings::LoadUsers(void)
 						user->m_ChangeNotify = FALSE;
 						user->m_Online = FALSE;
 						if (!strlen(user->m_StatusText))
-							strcpy(user->m_StatusText, "Offline");
+							strcpy(user->m_StatusText, _Settings.Translate("Offline"));
 
 						ent->Name[0] = 0;
 					}
@@ -1025,33 +1032,6 @@ void CSettings::KeyToBlob(Buffer *out, BOOL withprivate)
 		out->PutBignum2(m_RSA->d);
 	}
 }
-
-/*
-void CSettings::KeyFromBlob(Buffer *in)
-{
-	if (m_RSA)
-		RSA_free(m_RSA);
-	m_RSA = RSA_new();
-
-	m_RSA->e = BN_new();
-	in->GetBignum2(m_RSA->e);
-	m_RSA->n = BN_new();
-	in->GetBignum2(m_RSA->n);
-	m_RSA->p = BN_new();
-	in->GetBignum2(m_RSA->p);
-	m_RSA->q = BN_new();
-	in->GetBignum2(m_RSA->q);
-	m_RSA->dmp1 = BN_new();
-	in->GetBignum2(m_RSA->dmp1);
-	m_RSA->dmq1 = BN_new();
-	in->GetBignum2(m_RSA->dmq1);
-	m_RSA->iqmp = BN_new();
-	in->GetBignum2(m_RSA->iqmp);
-	m_RSA->d = BN_new();
-	in->GetBignum2(m_RSA->d);
-}
-
-*/
 
 BOOL CSettings::Save(void)
 {
@@ -1760,4 +1740,166 @@ CSettings::TreeGroup *CSettings::GetGroupByName(char *Name)
 	}
 
 	return NULL;
+}
+
+BOOL CSettings::LoadLanguageFile(char *Language)
+{
+	char buff[32768];
+	strcpy(buff, _Settings.m_MyPath);
+	strcat(buff, "Language\\English.txt");
+
+
+	m_LanguageEnglish.Clear();
+	m_LanguageEnglishIndex.Clear();
+
+	int i;
+	int handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+	if (handle >= 0)
+	{
+		do
+		{
+			i = read(handle, buff, sizeof(buff));
+			if (i>0)
+				m_LanguageEnglish.Append(buff, i);
+		} while (i>0);
+		close(handle);
+
+		m_LanguageEnglish.Append("\r\n", 2);
+		char *start = m_LanguageEnglish.Ptr();
+		char *p = start;
+		m_LanguageEnglishTotal = 0;
+		char *a;
+		do 
+		{
+			p = m_LanguageEnglish.Ptr();
+			a = m_LanguageEnglish.GetNextLine();
+			if (a && *a)
+			{
+				m_LanguageEnglishTotal++;
+				unsigned int ps = p-start;
+				m_LanguageEnglishIndex.Append((char *)&ps, sizeof(ps));
+			}
+		} while (a);
+
+
+
+
+
+
+
+
+		// foreign file
+		strcpy(buff, _Settings.m_MyPath);
+		strcat(buff, "Language\\");
+		strcat(buff, Language);
+		strcat(buff, ".txt");
+
+		m_LanguageOther.Clear();
+		m_LanguageOtherIndex.Clear();
+		Buffer temp;
+		unsigned int m_LanguageOtherTotal = 0;
+
+		handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+		if (handle >= 0)
+		{
+			BOOL initial = TRUE;
+			unsigned char *a1;
+			BOOL isunicode = FALSE;
+			do
+			{
+				a1 = (unsigned char *)buff;
+				i = read(handle, buff, sizeof(buff));
+				if (i>0)
+				{
+					if (initial && i>2)
+					{
+						initial = FALSE;
+						if (a1[0] == 239)
+						{
+//							isutf8 = TRUE;
+							a1 = (unsigned char *)(buff+3);
+							i-=3;
+						}
+						if (a1[0] == 254)
+						{
+//							isunicode = TRUE; // but ignore
+							a1 = (unsigned char *)(buff+2);
+							i-=2;
+						}
+						if (a1[0] == 255)
+						{
+							isunicode = TRUE;
+							a1 = (unsigned char *)(buff+2);
+							i-=2;
+						}
+					}
+					temp.Append((char *)a1, i);
+				}
+			} while (i>0);
+			close(handle);
+
+			if (isunicode)
+			{
+				int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), NULL, NULL, NULL, NULL);
+				if (ret>0)
+				{
+					char *a2 = NULL;
+					m_LanguageOther.AppendSpace(&a2, ret);
+					WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), a2, ret, NULL, NULL);
+				}
+				else
+					m_LanguageOther.Append(temp.Ptr(), temp.Len());
+			}
+			else
+				m_LanguageOther.Append(temp.Ptr(), temp.Len());
+			
+			m_LanguageOther.Append("\r\n", 2);
+			start = m_LanguageOther.Ptr();
+			do 
+			{
+				p = m_LanguageOther.Ptr();
+				a = m_LanguageOther.GetNextLine();
+				if (a && *a)
+				{
+					unsigned int ps = p-start;
+					m_LanguageOtherIndex.Append((char *)&ps, sizeof(ps));
+					m_LanguageOtherTotal++;
+				}
+			} while (a);
+
+			if (m_LanguageEnglishTotal>m_LanguageOtherTotal)
+				m_LanguageEnglishTotal = m_LanguageOtherTotal;
+
+			m_LanguageEnglish.m_offset = 0;
+			m_LanguageOther.m_offset = 0;
+
+			GROUP_GENERAL = Translate("General\0");;
+			GROUP_OFFLINE = Translate("Offline\0");
+			AWAY_MESSAGE = Translate("Away due to inactivity.");
+			EXTAWAY_MESSAGE = Translate("Away for a loooong time.");
+			CONFIGURING_ADAPTER_TEXT = Translate("Configuring Wippien network adapter...");
+			IPS_ALLOW=Translate("allow");
+			IPS_DENY=Translate("deny");
+			IPS_UNKNOWN=Translate("not specified");
+		}
+
+	}
+	return FALSE;
+}
+
+char *CSettings::Translate(char *text)
+{
+	char *orga = m_LanguageEnglish.Ptr();
+	unsigned int *orgp = (unsigned int *)m_LanguageEnglishIndex.Ptr();
+
+	char *dsta = m_LanguageOther.Ptr();
+	unsigned int *dstp = (unsigned int *)m_LanguageOtherIndex.Ptr();
+	
+	for (int i=0;i<m_LanguageEnglishTotal;i++)
+	{
+		if (!strcmp(text, orga+orgp[i]))
+			return dsta + dstp[i];
+	}
+
+	return text;
 }

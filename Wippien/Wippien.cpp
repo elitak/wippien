@@ -195,7 +195,7 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	{
 		if (_Settings.m_DoNotShow[DONOTSHOW_NOETHERNET] != '1')
 		{
-			int yesno = MessageBox(NULL, "Wippien network adapter not available. Proceed with IM only?", "Adapter error", MB_YESNO | MB_ICONQUESTION);
+			int yesno = MessageBox(NULL, _Settings.Translate("Wippien network adapter not available. Proceed with IM only?"), _Settings.Translate("Adapter error"), MB_YESNO | MB_ICONQUESTION);
 			if (yesno == IDNO)
 				return FALSE;
 		}

@@ -45,9 +45,9 @@ int uudecode(const char *src, u_char *target, size_t targsize);
 int b64_pton(char const *src, u_char *target, size_t targsize);
 int b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize);
 
-#define IPS_ALLOW		"allow"
-#define IPS_DENY		"deny"
-#define IPS_UNKNOWN		"not specified"
+const char *IPS_ALLOW="allow";
+const char *IPS_DENY="deny";
+const char *IPS_UNKNOWN="not specified";
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -188,53 +188,6 @@ LRESULT CSettingsDlg::OnTreeNotify(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
 	return FALSE;
 }
 
-/*
-LRESULT CSettingsDlg::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	BOOL wizard = FALSE;
-
-	if (m_Modal)
-		wizard = TRUE;
-
-
-
-	if (wizard)
-	{
-		RECT r;
-
-		GetClientRect(&r);
-		r.top = 10;
-		r.left = 10;
-		r.bottom = 60;
-		r.right -= 10;
-		::MoveWindow(GetDlgItem(IDC_BORDER1), r.left ,r.top, r.right-r.left, r.bottom-r.top, FALSE);
-
-		GetClientRect(&r);
-		r.top = 15;
-		r.left = 15;
-		r.bottom = 30;
-		r.right -= 60;
-		::MoveWindow(GetDlgItem(IDC_TEXT1), r.left ,r.top, r.right-r.left, r.bottom-r.top, FALSE);
-
-		GetClientRect(&r);
-		r.top = 30;
-		r.left = 17;
-		r.bottom = 50;
-		r.right -= 60;
-		::MoveWindow(GetDlgItem(IDC_TEXT2), r.left ,r.top, r.right-r.left, r.bottom-r.top, FALSE);
-
-		GetClientRect(&r);
-		r.top = 10;
-		r.left = r.right - 59;
-		r.bottom = 59;
-		r.right -= 10;
-		::MoveWindow(GetDlgItem(IDC_BITMAP), r.left ,r.top, r.right-r.left, r.bottom-r.top, FALSE);
-	}
-
-	return FALSE;
-}
-*/
-
 LRESULT CSettingsDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	m_OnInit = TRUE;
@@ -263,21 +216,6 @@ LRESULT CSettingsDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	CWindow w2 = GetDlgItem(IDC_TEXT2);
 	w2.SetFont(DlgTitle2);
 
-/*
-	RECT rc;
-
-	if (m_Modal)
-	{
-		::ShowWindow(GetDlgItem(IDC_TREE1), SW_HIDE);		
-		GetClientRect(&rc);
-		SetWindowPos(NULL, 0, 0, 450,400, SWP_NOMOVE | SWP_NOZORDER);
-	}
-	else
-	{
-		::ShowWindow(GetDlgItem(IDC_BACK), SW_HIDE);
-		::ShowWindow(GetDlgItem(IDC_NEXT), SW_HIDE);
-	}
-*/
 	for (int i=0;i<m_Dialogs.size();i++)
 	{
 		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[i];
@@ -367,12 +305,12 @@ void CSettingsDlg::ShowDialog(int Index)
 
 		if (Index == m_Dialogs.size()-1)
 		{
-			::SetWindowText(GetDlgItem(IDC_NEXT), "&Finish");
+			::SetWindowText(GetDlgItem(IDC_NEXT), _Settings.Translate("&Finish"));
 //			::EnableWindow(GetDlgItem(IDC_NEXT), FALSE);
 		}
 		else
 		{
-			::SetWindowText(GetDlgItem(IDC_NEXT), "&Next >");
+			::SetWindowText(GetDlgItem(IDC_NEXT), _Settings.Translate("&Next >"));
 //			::EnableWindow(GetDlgItem(IDC_NEXT), TRUE);
 		}
 	}
@@ -497,92 +435,6 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 //				CxImage cx;
 //				cx.Decode((unsigned char *)_Settings.m_Icon.Ptr(), _Settings.m_Icon.Len(), CXIMAGE_FORMAT_PNG);
 
-/*
-				// remove color 255,255,254
-				RGBQUAD fback = {254,240,231,0}, newback = {255,240,231,0};
-				RGBQUAD r1;
-				for (int i=0;i<cx.GetHeight();i++)
-					for (int o=0;o<cx.GetWidth();o++)
-					{
-						r1 = cx.GetPixelColor(o,i,FALSE);
-						if (!memcmp(&fback, &r1, sizeof(RGBQUAD)))
-						{
-							cx.SetPixelColor(o,i, newback, FALSE);
-						}
-					}
-
-
-				HDC dc = GetDC();
-				HDC hdc = ::CreateCompatibleDC(dc);
-				HBITMAP hb = ::CreateCompatibleBitmap(dc, cx.GetWidth(), cx.GetHeight());
-				BITMAP bm = {0};
-				GetObject(hb, sizeof(BITMAP), (LPSTR) &bm);
-				HGDIOBJ oldbm = ::SelectObject(hdc, hb);
-				RECT rc = {0};
-				rc.right = cx.GetWidth();
-				rc.bottom = cx.GetHeight();
-				HBRUSH hbr = CreateSolidBrush(RGB(231,240,254));
-				::FillRect(hdc, &rc, hbr);
-				DeleteObject(hbr);
-				cx.Draw(hdc, 0, 0, -1, -1, NULL, FALSE);
-				cx.Clear();
-				cx.CreateFromHBITMAP(hb);
-
-				// get all back
-				::SelectObject(hdc, oldbm);
-				DeleteObject(hb);
-				::DeleteDC(hdc);
-				ReleaseDC(dc);
-
-				// now replace 255,255,254 to 255,0,255
-				RGBQUAD trans = {255,0,255,0};
-				for (i=0;i<cx.GetHeight();i++)
-					for (int o=0;o<cx.GetWidth();o++)
-					{
-						r1 = cx.GetPixelColor(o,i,FALSE);
-						if (!memcmp(&fback, &r1, sizeof(RGBQUAD)))
-						{
-							cx.SetPixelColor(o,i, trans, FALSE);
-						}
-					}
-*/
-//				cx.Save("C:\\Documents and Settings\\Kreso\\Application Data\\Wippien\\Images\\zzz.bmp", CXIMAGE_FORMAT_BMP);
-/*
-				cx.IncreaseBpp(24);
-
-					RGBQUAD r = cx.GetTransColor();
-					RGBQUAD r1, trans = {255,0,255,0};
-*/
-/*
-//				cx.info.nBkgndIndex = 0;
-//				memset(&cx.info.nBkgndColor, 255, sizeof(RGBQUAD));
-				if (cx.IsTransparent())
-				{
-					RGBQUAD r = cx.GetTransColor();
-					RGBQUAD r1, trans = {255,0,255,0};
-					for (int i=0;i<cx.GetHeight();i++)
-						for (int o=0;o<cx.GetWidth();o++)
-						{
-							r1 = cx.GetPixelColor(o,i,FALSE);
-							if (!memcmp(&r, &r1, sizeof(RGBQUAD)))
-							{
-								cx.SetPixelColor(o,i, trans, FALSE);
-							}
-						}
-
-//					cx.SetTransColor(trans);
-//					cx.SetTransIndex(0);
-//					int rr = cx.GetPixelIndex(10,10);
-//					rr = rr;
-//					r = r;
-//					MessageBeep(-1);
-				}
-*/
-//				long s = 0;
-//				unsigned char *buffer = NULL;
-//				cx.Encode(buffer, s, CXIMAGE_FORMAT_BMP);
-//				cx.Save("C:\\Documents and Settings\\Kreso\\Application Data\\Wippien\\Images\\zzz.bmp", CXIMAGE_FORMAT_BMP);
-
 				if (_Settings.m_Icon.Len())
 				{
 
@@ -607,46 +459,7 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 					WODXMPPCOMLib::XMPP_VCard_SetPhotoData(vc, _Settings.m_Icon.Ptr(), _Settings.m_Icon.Len());
 #endif
 
-
-/*					LPVOID pvData = NULL;
-					// alloc memory based on file size
-					HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, s);
-					if (hGlobal)
-					{
-						pvData = GlobalLock(hGlobal);
-						if (pvData)
-						{
-							memcpy(pvData, buffer, s);
-						}
-						GlobalUnlock(hGlobal);
-
-						LPSTREAM pstm = NULL;
-						HRESULT hr = CreateStreamOnHGlobal(hGlobal,TRUE,&pstm);
-						if (SUCCEEDED(hr))
-						{
-							if (pstm)
-							{
-								IPicture *pPic = NULL;
-
-								hr = ::OleLoadPicture(pstm,s,FALSE,IID_IPicture,(void **)&pPic);
-								if (SUCCEEDED(hr))
-								{
-									if (pPic)
-									{
-										IPictureDisp *p = NULL;
-										if (SUCCEEDED(pPic->QueryInterface(IID_IPictureDisp, (void **)&p)))
-										{
-											vc->putref_Photo(p);
-										}
-									}
-								}									
-								pstm->Release();
-							}
-						}
-					}
-					*/
 				}
-//				free(buffer);
 
 #ifndef _WODXMPPLIB
 				vc->Send();
@@ -679,10 +492,9 @@ LRESULT CSettingsDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/,
 
 CSettingsDlg::CSettingsJID::CSettingsJID() : _CSettingsTemplate()
 {
-//	PATH = "Identity\\JID";
-	PATH = "Identity";
-	TEXT1 = "Please choose your logon information.";
-	TEXT2 = "This is shown on your friend's list.";
+	PATH = _Settings.Translate("Identity");
+	TEXT1 = _Settings.Translate("Please choose your logon information.");
+	TEXT2 = _Settings.Translate("This is shown on your friend's list.");
 
 	m_Jabber = NULL;
 	m_TestSuccess = FALSE;
@@ -779,14 +591,14 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 		else
 		{
 			::SetFocus(GetDlgItem(IDC_EDIT_JID));
-			MessageBox("JID should contain server name, formatted like user@server.com", "Invalid logon details", MB_OK);
+			MessageBox(_Settings.Translate("JID should contain server name, formatted like user@server.com"), _Settings.Translate("Invalid logon details"), MB_OK);
 			return FALSE;
 		}
 	}
 	else
 	{
 		::SetFocus(GetDlgItem(IDC_EDIT_JID));
-		MessageBox("You must enter your JID.", "Invalid logon details", MB_OK);
+		MessageBox(_Settings.Translate("You must enter your JID."), _Settings.Translate("Invalid logon details"), MB_OK);
 		return FALSE;
 	}			
 
@@ -797,7 +609,7 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 	else
 	{
 		::SetFocus(GetDlgItem(IDC_EDIT2_JID));
-		MessageBox("You must enter your password.", "Invalid logon details", MB_OK);
+		MessageBox(_Settings.Translate("You must enter your password."), _Settings.Translate("Invalid logon details"), MB_OK);
 
 		return FALSE;
 	}			
@@ -992,7 +804,7 @@ public:
 #endif
 		CComBSTR2 e = ErrorText;
 		if (ErrorCode)
-			::MessageBox(NULL, e.ToString(), "Jabber error", MB_OK);
+			::MessageBox(NULL, e.ToString(), _Settings.Translate("Jabber error"), MB_OK);
     }
 #ifdef _WODXMPPLIB
 	void XMPP_SettingsDLGStateChange(void *wodXMPP, WODXMPPCOMLib::StatesEnum OldState)
@@ -1107,7 +919,7 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 	{		
 		CComBSTR2 b;
 		m_Jabb->get_LastErrorText(&b);
-		::MessageBox(NULL, b.ToString(), "Jabber error", MB_OK);
+		::MessageBox(NULL, b.ToString(), _Settings.Translate("Jabber error"), MB_OK);
 	}
 
 #else
@@ -1134,7 +946,7 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 		char buff[1024];
 		int bflen = sizeof(buff);
 		WODXMPPCOMLib::XMPP_GetLastErrorText(m_Jabb, buff, &bflen);
-		::MessageBox(NULL, buff, "Jabber error", MB_OK);
+		::MessageBox(NULL, buff, _Settings.Translate("Jabber error"), MB_OK);
 	}
 #endif
 }
@@ -1150,9 +962,9 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Disconnect(void)
 
 CSettingsDlg::CSettingsIcon::CSettingsIcon() : _CSettingsTemplate()
 {
-	PATH = "Identity\\Icon";
-	TEXT1 = "Please choose your icon.";
-	TEXT2 = "This is usually visible to your contacts.";
+	PATH = _Settings.Translate("Identity\\Icon");
+	TEXT1 = _Settings.Translate("Please choose your icon.");
+	TEXT2 = _Settings.Translate("This is usually visible to your contacts.");
 
 	SelectedImage = NULL;
 	m_WasShown = FALSE;
@@ -1293,7 +1105,7 @@ LRESULT CSettingsDlg::CSettingsIcon::OnNickIcon(WORD wNotifyCode, WORD wID, HWND
 }
 LRESULT CSettingsDlg::CSettingsIcon::OnAddNewCmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	char *szFilter = "All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0";
+	char *szFilter = _Settings.Translate("All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0");
 	CFileDialog cf(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_ENABLESIZING  | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST, 
 		NULL, m_hWnd);
 
@@ -1445,9 +1257,9 @@ void CSettingsDlg::CSettingsIcon::Show(BOOL Show, RECT *rc)
 CSettingsDlg::CSettingsEthernet::CSettingsEthernet() : _CSettingsTemplate()
 {
 	//PATH = "Network\\Virtual LAN";
-	PATH = "Network";
-	TEXT1 = "Please choose your IP address and netmask.";
-	TEXT2 = "This defines network range to be used by wippien.";
+	PATH = _Settings.Translate("Network");
+	TEXT1 = _Settings.Translate("Please choose your IP address and netmask.");
+	TEXT2 = _Settings.Translate("This defines network range to be used by wippien.");
 
 	m_WasShown = FALSE;
 }
@@ -1615,9 +1427,9 @@ void CSettingsDlg::CSettingsEthernet::Show(BOOL Show, RECT *rc)
 }
 CSettingsDlg::CSettingsMediator::CSettingsMediator() : _CSettingsTemplate()
 {
-	PATH = "Network\\Mediator";
-	TEXT1 = "Please choose who will be your mediator.";
-	TEXT2 = "This defines people that mediate P2P connections.";
+	PATH = _Settings.Translate("Network\\Mediator");
+	TEXT1 = _Settings.Translate("Please choose who will be your mediator.");
+	TEXT2 = _Settings.Translate("This defines people that mediate P2P connections.");
 }
 
 CSettingsDlg::CSettingsMediator::~CSettingsMediator()
@@ -1651,15 +1463,15 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_BORDERSELECT | LVS_EX_FULLROWSELECT); 
 	LV_COLUMN lvcol = {0};
 	lvcol.mask=LVCF_TEXT | LVCF_WIDTH;
-	lvcol.pszText="Last check";
+	lvcol.pszText=_Settings.Translate("Last check");
 	lvcol.cchTextMax = sizeof(lvcol.pszText);
 	lvcol.cx = 110;	
 	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
-	lvcol.pszText="Port";
+	lvcol.pszText=_Settings.Translate("Port");
 	lvcol.cchTextMax = sizeof(lvcol.pszText);
 	lvcol.cx = 60;	
 	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
-	lvcol.pszText = "Hostname";
+	lvcol.pszText = _Settings.Translate("Hostname");
 	lvcol.cchTextMax = sizeof(lvcol.pszText);
 	lvcol.cx = 160;
 	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
@@ -1698,9 +1510,9 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 
 		it.iSubItem = 3;
 		if (st->Permanent)
-			it.pszText = "Permanent";
+			it.pszText = _Settings.Translate("Permanent");
 		else
-			it.pszText = "Temporary";
+			it.pszText = _Settings.Translate("Temporary");
 		it.cchTextMax = strlen(it.pszText);
 		
 		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);	
@@ -1742,9 +1554,9 @@ void CSettingsDlg::CSettingsMediator::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsAccounts::CSettingsAccounts() : _CSettingsTemplate()
 {
-	PATH = "Identity\\Accounts";
-	TEXT1 = "Enter all your accounts here.";
-	TEXT2 = "You can add any of accounts supported by your Jabber server (typically, ICQ, MSN, etc..)";
+	PATH = _Settings.Translate("Identity\\Accounts");
+	TEXT1 = _Settings.Translate("Enter all your accounts here.");
+	TEXT2 = _Settings.Translate("You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)");
 
 	AccRegister = 0;
 	AccRegisters[0] = 0;
@@ -1990,8 +1802,8 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnRemoveAccount(WORD wNotifyCode, WORD 
 		if (buff[0])
 		{
 			char buff2[1024];
-			sprintf(buff2, "Are you sure you want to delete account '%s'?", buff);
-			int i = MessageBox(buff2, "Delete registered account?", MB_ICONQUESTION | MB_YESNO);
+			sprintf(buff2, _Settings.Translate("Are you sure you want to delete account '%s'?"), buff);
+			int i = MessageBox(buff2, _Settings.Translate("Delete registered account?"), MB_ICONQUESTION | MB_YESNO);
 			if (i==6)
 			{
 
@@ -2125,7 +1937,7 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 #endif
 			HMENU h = CreateMenu();
 			HMENU hpop = CreatePopupMenu(); 
-			AppendMenu(h, MF_STRING | MF_POPUP, (UINT) hpop,  "Accounts"); 
+			AppendMenu(h, MF_STRING | MF_POPUP, (UINT) hpop,  _Settings.Translate("Accounts")); 
 
 
 			CCommandBarCtrlXP m_Menu;
@@ -2233,9 +2045,9 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 			// add separator
 			AppendMenu(hpop, MF_SEPARATOR, 0, NULL);
 			if (m_ShowAllServices)
-				AppendMenu(hpop, MF_STRING, 29999, "Show only gateways");
+				AppendMenu(hpop, MF_STRING, 29999, _Settings.Translate("Show only gateways"));
 			else
-				AppendMenu(hpop, MF_STRING, 29999, "Show all services");
+				AppendMenu(hpop, MF_STRING, 29999, _Settings.Translate("Show all services"));
 
 			_MainDlg.m_UserList.AddMenuImage(IDB_SERVICE_ICQ, IDB_SERVICE_ICQ+30000);
 			_MainDlg.m_UserList.AddMenuImage(IDB_SERVICE_AIM, IDB_SERVICE_AIM+30000);
@@ -2482,19 +2294,6 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnDrawItem(UINT uMsg, WPARAM wParam, LP
 			cxImage.Draw(lp->hDC, lp->rcItem.left+2,lp->rcItem.top+2);
 		}
 	}
-
-/*			
-
-	if (lParam->itemID >= m_Image.size())
-		return FALSE;
-	
-	long xpos, ypos, xwidth, xheight;
-	CalcRect(m_Image[lParam->itemID]->head.biWidth, m_Image[lParam->itemID]->head.biHeight, 
-		lParam->rcItem.right - lParam->rcItem.left, lParam->rcItem.bottom - lParam->rcItem.top,
-		&xpos, &ypos, &xwidth, &xheight);
-	
-	m_Image[lParam->itemID]->Draw(lParam->hDC, lParam->rcItem.left + xpos + 1, lParam->rcItem.top + ypos + 1, xwidth, xheight, NULL, FALSE);
-*/
 	return TRUE;
 }
 
@@ -2551,9 +2350,9 @@ void CSettingsDlg::CSettingsAccounts::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsContactsAddRemove::CSettingsContactsAddRemove() : _CSettingsTemplate()
 {
-	PATH = "Contacts\\Add/Remove";
-	TEXT1 = "Find new contacts.";
-	TEXT2 = "You can add new Jabber, ICQ, MSN... contacts";
+	PATH = _Settings.Translate("Contacts\\Add/Remove");
+	TEXT1 = _Settings.Translate("Find new contacts.");
+	TEXT2 = _Settings.Translate("You can add new Jabber, ICQ, MSN... contacts");
 
 
 	_Jabber->m_ServiceRegisterHwnd = NULL;
@@ -3047,10 +2846,9 @@ void CSettingsDlg::CSettingsContactsAddRemove::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsLogging::CSettingsLogging() : _CSettingsTemplate()
 {
-	PATH = "System\\Logging";
-	TEXT1 = "Setup log files and debug info.";
-	TEXT2 = "Specify paths below";
-
+	PATH = _Settings.Translate("System\\Logging");
+	TEXT1 = _Settings.Translate("Setup log files and debug info.");
+	TEXT2 = _Settings.Translate("Specify paths below");
 }
 
 CSettingsDlg::CSettingsLogging::~CSettingsLogging()
@@ -3194,7 +2992,7 @@ LRESULT CSettingsDlg::CSettingsLogging::OnBrowseCmd(WORD wNotifyCode, WORD wID, 
 
 LRESULT CSettingsDlg::CSettingsLogging::OnBrowse2Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	char *szFilter = "All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0";
+	char *szFilter = _Settings.Translate("All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0");
 	CFileDialog cf(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_ENABLESIZING  | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST, 
 		NULL, m_hWnd);
 
@@ -3210,7 +3008,7 @@ LRESULT CSettingsDlg::CSettingsLogging::OnBrowse2Cmd(WORD wNotifyCode, WORD wID,
 
 LRESULT CSettingsDlg::CSettingsLogging::OnBrowse3Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	char *szFilter = "All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0";
+	char *szFilter = _Settings.Translate("All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0");
 	CFileDialog cf(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_ENABLESIZING  | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST, 
 		NULL, m_hWnd);
 
@@ -3226,7 +3024,7 @@ LRESULT CSettingsDlg::CSettingsLogging::OnBrowse3Cmd(WORD wNotifyCode, WORD wID,
 
 LRESULT CSettingsDlg::CSettingsLogging::OnBrowse4Cmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	char *szFilter = "All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0";
+	char *szFilter = _Settings.Translate("All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0");
 	CFileDialog cf(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_ENABLESIZING  | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST, 
 		NULL, m_hWnd);
 	
@@ -3242,9 +3040,9 @@ LRESULT CSettingsDlg::CSettingsLogging::OnBrowse4Cmd(WORD wNotifyCode, WORD wID,
 
 CSettingsDlg::CSettingsMsgWin::CSettingsMsgWin() : _CSettingsTemplate()
 {
-	PATH = "System\\Messages";
-	TEXT1 = "Chat window settings.";
-	TEXT2 = "For all open chat windows.";
+	PATH = _Settings.Translate("System\\Messages");
+	TEXT1 = _Settings.Translate("Chat window settings.");
+	TEXT2 = _Settings.Translate("For all open chat windows.");
 }
 
 CSettingsDlg::CSettingsMsgWin::~CSettingsMsgWin()
@@ -3305,8 +3103,8 @@ void CSettingsDlg::CSettingsMsgWin::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsUser1::CSettingsUser1() : _CSettingsTemplate()
 {
-	PATH = "General info";
-	TEXT1 = "General information about";
+	PATH = _Settings.Translate("General info");
+	TEXT1 = _Settings.Translate("General information about");
 	TEXT2 = m_Text2;
 
 	m_IsContact = TRUE;
@@ -3589,8 +3387,8 @@ void CSettingsDlg::CSettingsUser1::Show(BOOL Show, RECT *rc)
 }
 CSettingsDlg::CSettingsUser2::CSettingsUser2() : _CSettingsTemplate()
 {
-	PATH = "Personal information";
-	TEXT1 = "Home details for";
+	PATH = _Settings.Translate("Personal information");
+	TEXT1 = _Settings.Translate("Home details for");
 	TEXT2 = m_Text2;
 	m_IsContact = TRUE;
 }
@@ -3902,8 +3700,8 @@ void CSettingsDlg::CSettingsUser2::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsUser3::CSettingsUser3() : _CSettingsTemplate()
 {
-	PATH = "Business information";
-	TEXT1 = "Work details for";
+	PATH = _Settings.Translate("Business information");
+	TEXT1 = _Settings.Translate("Work details for");
 	TEXT2 = m_Text2;
 
 	m_IsContact = TRUE;
@@ -4243,8 +4041,8 @@ void CSettingsDlg::CSettingsUser3::Show(BOOL Show, RECT *rc)
 }
 CSettingsDlg::CSettingsUser4::CSettingsUser4() : _CSettingsTemplate()
 {
-	PATH = "Network";
-	TEXT1 = "Network configuration for";
+	PATH = _Settings.Translate("Network");
+	TEXT1 = _Settings.Translate("Network configuration for");
 	TEXT2 = m_Text2;
 }
 
@@ -4302,9 +4100,9 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 		LVITEM it = {0};
 		it.mask = LVIF_TEXT;
 		if (user->m_AllowedRemoteAny)
-			it.pszText = IPS_ALLOW;
+			it.pszText = (char *)IPS_ALLOW;
 		else
-			it.pszText = IPS_DENY;
+			it.pszText = (char *)IPS_DENY;
 		it.cchTextMax = strlen(it.pszText);
 
 
@@ -4312,7 +4110,7 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 		it.iItem = res;
 		it.iSubItem = 1;
 		it.mask = LVIF_TEXT;
-		it.pszText = "all other";
+		it.pszText = _Settings.Translate("all other");
 		it.cchTextMax = strlen(it.pszText);
 
 		SendDlgItemMessage(IDC_INTERFACELIST, LVM_SETITEM, 0, (LPARAM)&it);
@@ -4330,13 +4128,13 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 			it.iSubItem = 0;
 			it.iItem = 0;
 			if (ips->Ignored)
-				it.pszText = IPS_UNKNOWN;
+				it.pszText = (char *)IPS_UNKNOWN;
 			else
 			{
 				if (ips->Allowed)
-					it.pszText = IPS_ALLOW;
+					it.pszText = (char *)IPS_ALLOW;
 				else
-					it.pszText = IPS_DENY;
+					it.pszText = (char *)IPS_DENY;
 			}
 			it.cchTextMax = strlen(it.pszText);
 
@@ -4352,16 +4150,16 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 		it.iSubItem = 0;
 		it.mask = LVIF_TEXT;
 		if (user->m_AllowedRemoteMediator)
-			it.pszText = IPS_ALLOW;
+			it.pszText = (char *)IPS_ALLOW;
 		else
-			it.pszText = IPS_DENY;
+			it.pszText = (char *)IPS_DENY;
 
 
 		res = SendDlgItemMessage(IDC_INTERFACELIST, LVM_INSERTITEM, 0, (LPARAM)&it);
 		it.mask = LVIF_TEXT;
 		it.iSubItem = 1;
 		it.iItem = res;
-		it.pszText = "address given by mediator";
+		it.pszText = _Settings.Translate("address given by mediator");
 		it.cchTextMax = strlen(it.pszText);
 		SendDlgItemMessage(IDC_INTERFACELIST, LVM_SETITEM, 0, (LPARAM)&it);
 	}
@@ -4440,18 +4238,6 @@ LRESULT CSettingsDlg::CSettingsUser4::OnBtnResetAll(WORD wNotifyCode, WORD wID, 
 	return 0;
 }
 
-/*
-LRESULT CSettingsDlg::CSettingsUser4::OnBtnDelete(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
-{
-	int i =SendDlgItemMessage(IDC_INTERFACELIST,LVM_GETNEXTITEM, -1,LVNI_SELECTED); // return item selected
-	if (i!=LB_ERR)
-	{
-		SendDlgItemMessage(IDC_INTERFACELIST, LVM_DELETEITEM, i, 0);
-	}
-	::EnableWindow(GetDlgItem(IDC_SETTINGS_USER4_DELETE), FALSE);
-	return 0;
-}
-*/
 void CSettingsDlg::CSettingsUser4::Lock(BOOL)
 {
 
@@ -4459,43 +4245,6 @@ void CSettingsDlg::CSettingsUser4::Lock(BOOL)
 
 BOOL CSettingsDlg::CSettingsUser4::Apply(void)
 {
-
-	/*
-	// ok, enumerate intefaces
-	CUser *user = _MainDlg.m_UserList.GetUserByJID(m_Text2);
-
-	if (user)
-	{
-		int count = SendDlgItemMessage(IDC_INTERFACELIST, LVM_GETITEMCOUNT, 0, 0);
-		for (int o=0;o<count;o++)
-		{
-			LVITEM it = {0};
-			it.mask = LVIF_TEXT | LVIF_STATE;
-			it.stateMask = LVIS_STATEIMAGEMASK;
-			it.iItem = o;
-			if (SendDlgItemMessage(IDC_INTERFACELIST,LVM_GETITEM, 0, (LPARAM)&it))
-			{
-				int i = count-o-1;
-				BOOL care = ((it.state&4096) == 4096);
-				BOOL allow = ((it.state&8192) == 8192);
-				if (i == 0)
-				{
-					user->m_AllowedRemoteAny = allow;
-				}
-				else
-				if (i == (count-1))
-				{
-					user->m_AllowedRemoteMediator = allow;
-				}
-				else
-				{
-					IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[i-1];										
-					ips->Allowed = allow;
-				}
-			}
-		}
-	}
-	*/
 
 	return TRUE;
 }
@@ -4619,9 +4368,9 @@ LRESULT CSettingsDlg::CSettingsUser4::OnDrawItem(UINT /*uMsg*/, WPARAM /*wParam*
 char m_SkinThreadBuffer[1024];
 CSettingsDlg::CSettingsSkins::CSettingsSkins() : _CSettingsTemplate()
 {
-	PATH = "Appearance\\Skins";
-	TEXT1 = "Choose skin from below list.";
-	TEXT2 = "What will Wippien wear?";
+	PATH = _Settings.Translate("Appearance\\Skins");
+	TEXT1 = _Settings.Translate("Choose skin from below list.");
+	TEXT2 = _Settings.Translate("What will Wippien wear?");
 	memset(m_SkinThreadBuffer, 0, sizeof(m_SkinThreadBuffer));
 
 	_LoadIconFromResource(&m_BaseImage, "PNG", CXIMAGE_FORMAT_PNG, ID_PNG_SKINBASE);
@@ -4703,7 +4452,7 @@ LRESULT CSettingsDlg::CSettingsSkins::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	}
 
 	m_Image.push_back(NULL);
-	m_SkinList.InsertString(0, ".. none ..");
+	m_SkinList.InsertString(0, _Settings.Translate(".. none .."));
 
 	char buff[MAX_PATH];
 	sprintf(buff, _Settings.m_MyPath);
@@ -4861,65 +4610,6 @@ LRESULT CSettingsDlg::CSettingsSkins::OnApplyBtn(WORD wNotifyCode, WORD wID, HWN
 	return TRUE;
 }
 
-/*
-void CSettingsDlg::CSettingsSkins::ShowSkinBitmap(char *filename)
-{
-	// first we erase previous one
-	RECT rc;
-	::GetWindowRect(GetDlgItem(IDB_SKINPREVIEW), &rc);
-//	HDC hdc = ::GetDC(GetDlgItem(IDB_SKINPREVIEW)); 
-
-	Buffer b;
-
-	m_Image.Destroy();
-	m_Select.Empty();
-	if (filename && *filename)
-	{
-		
-		char buff[32768];
-		sprintf(buff, _Settings.m_MyPath);
-		b.Append(buff);
-		b.Append("Skin\\");
-		b.Append(filename);
-		b.Append("\0", 1);
-
-		char *f = b.Ptr();
-		int i = strlen(f);
-		if (i>4)
-		{
-			f[i-4] = 0;
-			strcat(f, ".png");
-			// let's replace smf with BMP
-			int handle = open(f, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
-			if (handle != -1)
-			{
-				b.Clear();
-				int i = 0;
-				do
-				{
-					i = read(handle, buff, 32768);
-					if (i>0)
-						b.Append(buff, i);
-				} while (i>0);
-				
-				close(handle);
-
-				if (b.Len())
-				{
-					if (m_Image.Decode((unsigned char *)b.Ptr(), b.Len(), CXIMAGE_FORMAT_PNG))
-					{
-						m_Select = filename;
-						ResampleImageIfNeeded(&m_Image, rc.right-rc.left, rc.bottom-rc.top);
-					}							
-				}
-			}
-		}
-	}
-	Invalidate(TRUE);
-	::EnableWindow(GetDlgItem(IDB_APPLY), TRUE);
-
-}
-*/
 LRESULT CSettingsDlg::CSettingsSkins::OnMoreSkins(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
 	CDownloadSkinDlg dlg(m_hWnd);
@@ -4933,41 +4623,6 @@ LRESULT CSettingsDlg::CSettingsSkins::OnSkinList(WORD wNotifyCode, WORD wID, HWN
 	if (wNotifyCode == LBN_SELCHANGE)
 	{
 		::EnableWindow(GetDlgItem(IDB_APPLY), TRUE);
-/*
-		char buff[1024];
-		int i = m_SkinList.GetCurSel();
-		if (i>=0)
-		{
-
-			if (_MainDlg.m_WearSkin)
-				RemoveWindowSkin(_MainDlg.m_hWnd);
-			_MainDlg.m_WearSkin = FALSE;		
-
-			if (i)
-			{
-				m_SkinList.GetText(i, buff);
-				if (*buff)
-				{
-//					ShowSkinBitmap(buff);
-
-	//				// load the skin
-					
-					if (LoadSkinFile(buff))
-						_MainDlg.m_WearSkin = TRUE;
-
-					if (_MainDlg.m_WearSkin)
-						SetWindowSkin(_MainDlg.m_hWnd, "MainFrame");
-				}
-			}
-
-			_MainDlg.Invalidate();
-			_MainDlg.UpdateWindow();
-
-//			else
-//				ShowSkinBitmap(NULL);
-
-		}
-*/
 	}
 
 	return FALSE;
@@ -4975,47 +4630,14 @@ LRESULT CSettingsDlg::CSettingsSkins::OnSkinList(WORD wNotifyCode, WORD wID, HWN
 
 CSettingsDlg::CSettingsAutoAway::CSettingsAutoAway() : _CSettingsTemplate()
 {
-	PATH = "System\\Auto Away";
-	TEXT1 = "Auto away settings.";
-	TEXT2 = "Determines how will Wippien behave when system is inactive.";
+	PATH = _Settings.Translate("System\\Auto Away");
+	TEXT1 = _Settings.Translate("Auto away settings.");
+	TEXT2 = _Settings.Translate("Determines how will Wippien behave when system is inactive.");
 }
 
 CSettingsDlg::CSettingsAutoAway::~CSettingsAutoAway()
 {
 }
-
-/*
-LRESULT CSettingsDlg::CSettingsAutoAway::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	CPaintDC dcPaint(m_hWnd);
-
-	if (m_Bitmap)
-	{
-		CDC cCompatibleDC; 
-		HBITMAP hOldBitmap;
-
-		cCompatibleDC.CreateCompatibleDC(dcPaint);
-		hOldBitmap = (HBITMAP)SelectObject(cCompatibleDC.m_hDC, m_Bitmap);
-		
-		BITMAP bm;
-		GetObject(m_Bitmap, sizeof(bm), &bm);
-
-		dcPaint.BitBlt(0, 0, bm.bmWidth, bm.bmHeight, cCompatibleDC, 0,0 , SRCCOPY);
-
-        SelectObject(cCompatibleDC, hOldBitmap);
-        cCompatibleDC.DeleteDC();
-	}
-
-//	CRect rc;
-//	CExtWndShadow _shadow;		
-
-
-//	DRAWSHADOW(IDC_LOG_XMPP);
-//	DRAWSHADOW(IDC_LOG_SOCKET);
-//		
-	return TRUE;
-}
-*/
 
 LRESULT CSettingsDlg::CSettingsAutoAway::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
@@ -5110,9 +4732,9 @@ void CSettingsDlg::CSettingsAutoAway::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsSystem::CSettingsSystem() : _CSettingsTemplate()
 {
-	PATH = "System";
-	TEXT1 = "Basic system messages.";
-	TEXT2 = "Define Wippien application's behavior.";
+	PATH = _Settings.Translate("System");
+	TEXT1 = _Settings.Translate("Basic system messages.");
+	TEXT2 = _Settings.Translate("Define Wippien application's behavior.");
 }
 
 CSettingsDlg::CSettingsSystem::~CSettingsSystem()
@@ -5298,9 +4920,9 @@ void CSettingsDlg::CSettingsSystem::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsVoiceChat::CSettingsVoiceChat() : _CSettingsTemplate()
 {
-	PATH = "System\\Voice Chat";
-	TEXT1 = "Please setup your voice chat devices.";
-	TEXT2 = "Choose from list below.";
+	PATH = _Settings.Translate("System\\Voice Chat");
+	TEXT1 = _Settings.Translate("Please setup your voice chat devices.");
+	TEXT2 = _Settings.Translate("Choose from list below.");
 }
 
 CSettingsDlg::CSettingsVoiceChat::~CSettingsVoiceChat()
@@ -5322,7 +4944,7 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 
 
 	m_Combo1.ResetContent();
-	m_Combo1.AddString("<system default>");
+	m_Combo1.AddString(_Settings.Translate("<system default>"));
 
 	return TRUE;
 }
@@ -5356,8 +4978,8 @@ void CSettingsDlg::CSettingsVoiceChat::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsContacts::CSettingsContacts() : _CSettingsTemplate()
 {
-	PATH = "Contacts";
-	TEXT1 = "Contacts basic settings.";
+	PATH = _Settings.Translate("Contacts");
+	TEXT1 = _Settings.Translate("Contacts basic settings.");
 	TEXT2 = "";
 }
 
@@ -5458,9 +5080,9 @@ void CSettingsDlg::CSettingsContacts::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsSystemUpdate::CSettingsSystemUpdate() : _CSettingsTemplate()
 {
-	PATH = "System\\Updates";
-	TEXT1 = "Update definitions.";
-	TEXT2 = "Define when and how will Wippien update itself.";
+	PATH = _Settings.Translate("System\\Updates");
+	TEXT1 = _Settings.Translate("Update definitions.");
+	TEXT2 = _Settings.Translate("Define when and how will Wippien update itself.");
 }
 
 CSettingsDlg::CSettingsSystemUpdate::~CSettingsSystemUpdate()
@@ -5582,9 +5204,9 @@ void CSettingsDlg::CSettingsSystemUpdate::Show(BOOL Show, RECT *rc)
 }
 CSettingsDlg::CSettingsMTU::CSettingsMTU() : _CSettingsTemplate()
 {
-	PATH = "Network\\MTU";
-	TEXT1 = "Please determine maximum transfer unit.";
-	TEXT2 = "If some peer doesn't response to large packets...";
+	PATH = _Settings.Translate("Network\\MTU");
+	TEXT1 = _Settings.Translate("Please determine maximum transfer unit.");
+	TEXT2 = _Settings.Translate("If some peer doesn't respond to large packets...");
 }
 
 CSettingsDlg::CSettingsMTU::~CSettingsMTU()
@@ -5651,11 +5273,10 @@ void CSettingsDlg::CSettingsMTU::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsSound::CSettingsSound() : _CSettingsTemplate()
 {
-	PATH = "System\\Sounds";
-	TEXT1 = "Setup sounds to be played on various events.";
-	TEXT2 = "Choose internal ones, or browse for WAV files.";
+	PATH = _Settings.Translate("System\\Sounds");
+	TEXT1 = _Settings.Translate("Setup sounds to be played on various events.");
+	TEXT2 = _Settings.Translate("Choose internal ones, or browse for WAV files.");
 	m_IChange = FALSE;
-
 }
 
 CSettingsDlg::CSettingsSound::~CSettingsSound()
@@ -5677,11 +5298,11 @@ LRESULT CSettingsDlg::CSettingsSound::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	m_SoundList.ResetContent();
 
 
-	m_SoundList.InsertString(0, "Contact online");
-	m_SoundList.InsertString(1, "Contact offline");
-	m_SoundList.InsertString(2, "Message in");
-	m_SoundList.InsertString(3, "Message out");
-	m_SoundList.InsertString(4, "Error");
+	m_SoundList.InsertString(0, _Settings.Translate("Contact online"));
+	m_SoundList.InsertString(1, _Settings.Translate("Contact offline"));
+	m_SoundList.InsertString(2, _Settings.Translate("Message in"));
+	m_SoundList.InsertString(3, _Settings.Translate("Message out"));
+	m_SoundList.InsertString(4, _Settings.Translate("Error"));
 
 	strcpy(m_Sound[0], ((CComBSTR2)_Notify.m_Online).ToString());
 	strcpy(m_Sound[1], ((CComBSTR2)_Notify.m_Offline).ToString());
@@ -5738,7 +5359,7 @@ void CSettingsDlg::CSettingsSound::Show(BOOL Show, RECT *rc)
 
 LRESULT CSettingsDlg::CSettingsSound::OnBrowseCmd(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	char *szFilter = "WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0";
+	char *szFilter = _Settings.Translate("WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0");
 	CFileDialog cf(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_ENABLESIZING  | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST, 
 		NULL, m_hWnd);
 
@@ -5830,9 +5451,9 @@ LRESULT CSettingsDlg::CSettingsSound::OnEditSound(WORD wNotifyCode, WORD wID, HW
 
 CSettingsDlg::CSettingsContactsHide::CSettingsContactsHide() : _CSettingsTemplate()
 {
-	PATH = "Contacts\\Hide";
-	TEXT1 = "Hide contacts.";
-	TEXT2 = "You can hide some contacts from your sight.";
+	PATH = _Settings.Translate("Contacts\\Hide");
+	TEXT1 = _Settings.Translate("Hide contacts.");
+	TEXT2 = _Settings.Translate("You can hide some contacts from your sight.");
 
 	m_Changed = FALSE;
 }
@@ -5950,9 +5571,9 @@ LRESULT CSettingsDlg::CSettingsContactsHide::OnListClick(WORD wNotifyCode, WORD 
 
 CSettingsDlg::CSettingsAppearance::CSettingsAppearance() : _CSettingsTemplate()
 {
-	PATH = "Appearance";
-	TEXT1 = "Appearance settings.";
-	TEXT2 = "Define how will Wippien's GUI appear to you.";
+	PATH = _Settings.Translate("Appearance");
+	TEXT1 = _Settings.Translate("Appearance settings.");
+	TEXT2 = _Settings.Translate("Define how will Wippien's GUI appear to you.");
 }
 
 CSettingsDlg::CSettingsAppearance::~CSettingsAppearance()
@@ -6130,9 +5751,9 @@ void CSettingsDlg::CSettingsAppearance::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsContactsSort::CSettingsContactsSort() : _CSettingsTemplate()
 {
-	PATH = "Contacts\\Sort";
-	TEXT1 = "Sorts contacts.";
-	TEXT2 = "Pick one of sort options.";
+	PATH = _Settings.Translate("Contacts\\Sort");
+	TEXT1 = _Settings.Translate("Sorts contacts.");
+	TEXT2 = _Settings.Translate("Pick one of sort options.");
 }
 
 CSettingsDlg::CSettingsContactsSort::~CSettingsContactsSort()
@@ -6215,9 +5836,9 @@ void CSettingsDlg::CSettingsContactsSort::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsChatRooms::CSettingsChatRooms() : _CSettingsTemplate()
 {
-	PATH = "ChatRooms";
-	TEXT1 = "Browse or create chat rooms. (STILL IN BETA!!)";
-	TEXT2 = "Specify or browse for a room to join or create new one.";
+	PATH = _Settings.Translate("ChatRooms");
+	TEXT1 = _Settings.Translate("Browse or create chat rooms. (STILL IN BETA!!)");
+	TEXT2 = _Settings.Translate("Specify or browse for a room to join or create new one.");
 
 	_Jabber->m_ServiceRegisterHwnd = NULL;
 	_Jabber->m_ServiceRefreshHwnd = NULL;
@@ -6234,7 +5855,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	m_ServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAYLIST));
 	m_RoomList.Attach(GetDlgItem(IDC_CHATROOM_ROOMLIST));
 	m_NewRoomServicesList.Attach(GetDlgItem(IDC_CHATROOM_GATEWAY2));
-	m_ServicesList.InsertString(-1, "- All gateways -");
+	m_ServicesList.InsertString(-1, _Settings.Translate("- All gateways -"));
 //	::EnableWindow(::GetDlgItem(m_Owner, IDOK), FALSE);
 	::EnableWindow(::GetDlgItem(m_Owner, IDC_NEXT), FALSE);
 	::EnableWindow(::GetDlgItem(m_Owner, IDC_BACK), FALSE);
@@ -6243,10 +5864,10 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_BORDERSELECT | LVS_EX_FULLROWSELECT); 
 	LV_COLUMN lvcol = {0};
 	lvcol.mask=LVCF_TEXT | LVCF_WIDTH;
-	lvcol.pszText="Service gateway";
+	lvcol.pszText=_Settings.Translate("Service gateway");
 	lvcol.cx = 165;	
 	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
-	lvcol.pszText = "Room name";
+	lvcol.pszText = _Settings.Translate("Room name");
 	lvcol.cx = 210;
 	SendDlgItemMessage(IDC_CHATROOM_ROOMLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
 

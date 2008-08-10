@@ -823,8 +823,8 @@ LRESULT CMsgWin::OnBtnMuteOnOff(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 
 LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-	CComBSTR2 a = "Are you sure you want to delete the history?";
-	int i = ::MessageBox(m_hWnd, a.ToString(), "Delete history?", MB_ICONQUESTION | MB_YESNO);
+	CComBSTR2 a = _Settings.Translate("Are you sure you want to delete the history?");
+	int i = ::MessageBox(m_hWnd, a.ToString(), _Settings.Translate("Delete history?"), MB_ICONQUESTION | MB_YESNO);
 	if (i == 6)
 	{
 		m_LastSay.Empty();
@@ -1325,80 +1325,80 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 		::ShowWindow(hContactList, SW_HIDE);
 
 	// Send button
-	m_btnSend.SetCaption("Send");
-	m_btnSend.SetToolTipText("Send");
+	m_btnSend.SetCaption(_Settings.Translate("Send"));
+	m_btnSend.SetToolTipText(_Settings.Translate("Send"));
 	m_btnSend.SubclassWindow(GetDlgItem(IDB_SEND));
 	
 	//main toolbar buttons
-	m_btnSendFile.SetCaption("Send file");
+	m_btnSendFile.SetCaption(_Settings.Translate("Send file"));
 	m_btnSendFile.LoadPNG(ID_PNG2_SENDFILE);
 	//m_btnSendFile.m_cxImage.Resample(24,24);
 //	ResampleImageIfNeeded(&m_btnSendFile.m_cxImage, 32);
 	m_btnSendFile.SubclassWindow(GetDlgItem(ID_PNG1_SENDFILE));
-	m_btnSendFile.SetToolTipText("Send file");
+	m_btnSendFile.SetToolTipText(_Settings.Translate("Send file"));
 
-	m_btnDetails.SetCaption("Details");
+	m_btnDetails.SetCaption(_Settings.Translate("Details"));
 	m_btnDetails.LoadPNG(ID_PNG2_DETAILS);
 	//m_btnDetails.m_cxImage.Resample(24,24);
 //	ResampleImageIfNeeded(&m_btnDetails.m_cxImage, 32);
 	m_btnDetails.SubclassWindow(GetDlgItem(ID_PNG1_DETAILS));
-	m_btnDetails.SetToolTipText("Contact information");
+	m_btnDetails.SetToolTipText(_Settings.Translate("Contact information"));
 
-	m_btnMuteOnOff.SetCaption("Mute");
+	m_btnMuteOnOff.SetCaption(_Settings.Translate("Mute"));
 	int mutimg = _Settings.m_SoundOn?ID_PNG2_MUTEON:ID_PNG2_MUTEOFF;
 	m_btnMuteOnOff.LoadPNG(mutimg);
 	//m_btnMuteOnOff.m_cxImage.Resample(24,24);
 	ResampleImageIfNeeded(&m_btnMuteOnOff.m_cxImage, 32);
 	m_btnMuteOnOff.SubclassWindow(GetDlgItem(ID_PNG1_MUTEONOFF));
-	m_btnMuteOnOff.SetToolTipText("Mute sound");
+	m_btnMuteOnOff.SetToolTipText(_Settings.Translate("Mute sound"));
 
-	m_btnClearHistory.SetCaption("Clear");
+	m_btnClearHistory.SetCaption(_Settings.Translate("Clear"));
 	m_btnClearHistory.LoadPNG(ID_PNG_CLEARHISTORY);
 	//m_btnDetails.m_cxImage.Resample(24,24);
 //	ResampleImageIfNeeded(&m_btnDetails.m_cxImage, 32);
 	m_btnClearHistory.SubclassWindow(GetDlgItem(ID_PNG1_CLEARHISTORY));
-	m_btnClearHistory.SetToolTipText("Clear history");
+	m_btnClearHistory.SetToolTipText(_Settings.Translate("Clear history"));
 
 
 	// middle toolbar buttons
 	m_btnBold.LoadPNG(IDB_BOLD);
-	m_btnBold.SetToolTipText("Bold");
+	m_btnBold.SetToolTipText(_Settings.Translate("Bold"));
 	m_btnBold.SubclassWindow(GetDlgItem(IDC_BOLD));
 	
 	m_btnItalic.LoadPNG(IDB_ITALIC);
-	m_btnItalic.SetToolTipText("Italic");
+	m_btnItalic.SetToolTipText(_Settings.Translate("Italic"));
 	m_btnItalic.SubclassWindow(GetDlgItem(IDC_ITALIC));
 
 	m_btnUnderline.LoadPNG(IDB_UNDERLINE);
-	m_btnUnderline.SetToolTipText("Underline");
+	m_btnUnderline.SetToolTipText(_Settings.Translate("Underline"));
 	m_btnUnderline.SubclassWindow(GetDlgItem(IDC_UNDERLINE));
 
 	m_btnHyperlink.LoadPNG(IDB_HYPERLINK);
-	m_btnHyperlink.SetToolTipText("Insert hyperlink");
+	m_btnHyperlink.SetToolTipText(_Settings.Translate("Insert hyperlink"));
 	m_btnHyperlink.SubclassWindow(GetDlgItem(IDC_HYPERLINK));
 
 	m_btnFontSizeDown.LoadPNG(IDB_FONTSIZEDOWN);
-	m_btnFontSizeDown.SetToolTipText("Decrease font size");
+	m_btnFontSizeDown.SetToolTipText(_Settings.Translate("Decrease font size"));
 	m_btnFontSizeDown.SubclassWindow(GetDlgItem(IDC_FONTSIZEDOWN));
 
 	m_btnFontSizeNormal.LoadPNG(IDB_FONTSIZENORMAL);
-	m_btnFontSizeNormal.SetToolTipText("Reset font size");
+	m_btnFontSizeNormal.SetToolTipText(_Settings.Translate("Reset font size"));
 	m_btnFontSizeNormal.SubclassWindow(GetDlgItem(IDC_FONTSIZENORMAL));
 
 	m_btnFontSizeUp.LoadPNG(IDB_FONTSIZEUP);
-	m_btnFontSizeUp.SetToolTipText("Increase font size");
+	m_btnFontSizeUp.SetToolTipText(_Settings.Translate("Increase font size"));
 	m_btnFontSizeUp.SubclassWindow(GetDlgItem(IDC_FONTSIZEUP));
 	
 	m_btnFontForecolor.LoadPNG(IDB_FONTFORECOLOR);
-	m_btnFontForecolor.SetToolTipText("Set Foreground color");
+	m_btnFontForecolor.SetToolTipText(_Settings.Translate("Set Foreground color"));
 	m_btnFontForecolor.SubclassWindow(GetDlgItem(IDC_FONTFORECOLOR));
 
 	m_btnFontBackcolor.LoadPNG(IDB_FONTBACKCOLOR);
-	m_btnFontBackcolor.SetToolTipText("Set Background color");
+	m_btnFontBackcolor.SetToolTipText(_Settings.Translate("Set Background color"));
 	m_btnFontBackcolor.SubclassWindow(GetDlgItem(IDC_FONTBACKCOLOR));
 	
 	m_btnEmoticons.LoadPNG(IDB_EMOTICONS);
-	m_btnEmoticons.SetToolTipText("Emoticons");
+	m_btnEmoticons.SetToolTipText(_Settings.Translate("Emoticons"));
 	m_btnEmoticons.SubclassWindow(GetDlgItem(IDC_EMOTICONS));
 	m_btnEmoticons.SetDropDown(TRUE);
 	
@@ -2265,27 +2265,6 @@ HRESULT CMsgWin::CInputBox::Send()
 			
 			if (SUCCEEDED(hr) && bstr.Length())
 			{
-
-/*
-				Buffer b1;
-				b1.Append("<font color=#0000FF>");
-//				Buffer b10;
-				m_ParentDlg->AddTimestamp(&b1);
-				b1.Append("<b>");
-				CComBSTR2 b5 = _Settings.m_JID;
-				char *b6 = b5.ToString();
-				char *b7 = strchr(b6, '@');
-				if (b7)
-					*b7 = 0;
-				b7 = strchr(b6, '#');
-				if (b7)
-					*b7 = 0;
-				b1.Append(b6);
-				b1.Append("</b></font>: <font color=#000000>");
-				CComBSTR2 b10 = bstr;
-				b1.Append(b10.ToString());
-				b1.Append("</font>");
-*/
 				CComBSTR2 b5 = _Settings.m_JID;
 				char *b6 = b5.ToString();
 				char *b7 = strchr(b6, '@');
@@ -2377,7 +2356,7 @@ HRESULT CMsgWin::CInputBox::Send()
 
 					if (!online)
 					{
-						m_ParentDlg->Incoming(NULL, TRUE, "User is currently offline.", NULL);
+						m_ParentDlg->Incoming(NULL, TRUE, _Settings.Translate("User is currently offline."), NULL);
 					}
 				}
 				if (!m_ParentDlg->m_Room)
@@ -2800,130 +2779,6 @@ LRESULT CMsgWin::OnDrawItem(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHand
 }
 
 
-//	CResiEditDispatch
-/*HRESULT STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::QueryInterface(REFIID riid, void __RPC_FAR *__RPC_FAR *ppvObject)
-{
-	HRESULT hrRet = S_OK;
-
-	// Standard QI() initialization - set *ppv to NULL.
-	*ppvObject = NULL;
-
-	// If the client is requesting an interface we support, set *ppv.
-	if (IsEqualIID(riid, IID_IUnknown))
-		*ppvObject = (IUnknown *) this;
-	else if (IsEqualIID(riid, IID_IDispatch))
-		*ppvObject = (IDispatch *) this;
-	else
-		// We don't support the interface the client is asking for.
-		hrRet = E_NOINTERFACE;
-
-	// If we're returning an interface pointer, AddRef() it.
-	if (S_OK == hrRet)
-		((IUnknown *) *ppvObject)->AddRef();
-
-	return hrRet;
-}
-
-ULONG STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::AddRef(void)
-{
-	return ++m_uRefCount;
-}
-
-ULONG STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::Release(void)
-{
-	return --m_uRefCount;
-}
-
-HRESULT STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::GetTypeInfoCount(UINT *pctinfo)
-{
-	*pctinfo = 0;
-	return S_OK;
-}
-*/
-//HRESULT STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::GetTypeInfo(UINT /*iTInfo*/, LCID /*lcid*/, ITypeInfo ** /*ppTInfo*/)
-/*{
-	return DISP_E_BADINDEX;
-}
-*/
-//HRESULT STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::GetIDsOfNames(REFIID /*riid*/, LPOLESTR * /*rgszNames*/, UINT /*cNames*/, LCID /*lcid*/, DISPID * /*rgDispId*/)
-/*{
-	return DISP_E_UNKNOWNNAME;
-}
-*/
-//HRESULT STDMETHODCALLTYPE CMSHTMLDisableDragDispatch::Invoke(DISPID /*dispIdMember*/, REFIID /*riid*/, LCID /*lcid*/, WORD /*wFlags*/, DISPPARAMS * /*pDispParams*/, VARIANT *pVarResult, EXCEPINFO * /*pExcepInfo*/, UINT * /*puArgErr*/)
-/*{
-	//	If we were installed it means we should disable
-	//	dragging. So set the return value to false
-	pVarResult->vt = VT_BOOL;
-	pVarResult->boolVal = false;
-	return S_FALSE;
-}
-*/
-
-/*LRESULT CMsgWin::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	if ((HWND)lParam == m_EmoticonList->m_hWnd)
-	{
-		switch (HIWORD(wParam))
-		{
-			case LBN_DBLCLK:
-				{
-					int i = ::SendMessage(m_EmoticonList->m_hWnd, LB_GETCURSEL, 0, 0);
-					if (i != LB_ERR)
-					{
-						char *t = NULL;
-						_MainDlg.m_EmoticonsInstance.GetText(i, &t);
-						if (t)
-						{
-							m_EmoticonList->ShowWindow(SW_HIDE);
-							::ShowWindow(m_EmoticonList->m_BalloonHwnd, SW_HIDE);
-							CComBSTR b = t;
-							m_InputBox.AddHtml(b);
-						}
-					}
-				}
-				break;
-		}
-	}
-
-	bHandled = FALSE;
-	return FALSE;
-}
-*/
-/*LRESULT CMsgWin::OnEmoticonCaptureKeyCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	if (m_EmoticonListCapture)
-	{
-		if (wParam == VK_ESCAPE)
-		{
-			m_EmoticonListCapture = FALSE;
-			ReleaseCapture();
-		}
-
-	}
-	bHandled = FALSE;
-	return FALSE;
-}
-
-LRESULT CMsgWin::OnEmoticonCaptureMouseCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	if (m_EmoticonListCapture)
-	{
-		RECT rc;
-		::GetWindowRect(m_EmoticonList->m_hWnd, &rc);
-		
-		POINT p;
-		GetCursorPos(&p);
-		if (p.x<rc.left || p.x>rc.right || p.y<rc.top || p.y>rc.bottom)
-		{
-			m_EmoticonListCapture = FALSE;
-			ReleaseCapture();
-		}
-	}
-	bHandled = FALSE;
-	return FALSE;
-}
-*/
 CMsgWin::CWEmoticon::CWEmoticon(CMsgWin *Owner)
 {
 	m_Owner = Owner;
@@ -3015,7 +2870,7 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 //						dlg.SetText("New emoticons will be downloaded and installed. Proceed?");
 //						dlg.DoModal();
 //						int j = 0;
-						int j = ::MessageBox(NULL, "New emoticons will be downloaded and installed. Proceed?", "New emoticons", MB_ICONQUESTION | MB_YESNO);
+						int j = ::MessageBox(NULL, _Settings.Translate("New emoticons will be downloaded and installed. Proceed?"), _Settings.Translate("New emoticons"), MB_ICONQUESTION | MB_YESNO);
 						if (j == 6)
 						{
 							CProgressDlg *dlg = new CProgressDlg();
@@ -3077,7 +2932,7 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 
 										_MainDlg.ReloadEmoticons(FALSE);
 
-										::MessageBox(NULL, "You can now click again on emoticon button to see new installed emoticons.", "Done!", MB_ICONASTERISK | MB_OK);
+										::MessageBox(NULL, _Settings.Translate("You can now click again on emoticon button to see new installed emoticons."), _Settings.Translate("Done!"), MB_ICONASTERISK | MB_OK);
 									}
 								}
 							}

@@ -229,7 +229,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 		
 	}
 	else
-		_MainDlg.ShowStatusText("Disconnected.");
+		_MainDlg.ShowStatusText(_Settings.Translate("Disconnected."));
 	
 	if (_Jabber->m_DoReconnect)
 	{
@@ -251,7 +251,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 		_MainDlg.m_UserList.RefreshUser(NULL, NULL);
 		//		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
 	}
-	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0], "Disconnected"); //offline
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[0], _Settings.Translate("Disconnected")); //offline
 	
 	
 #ifdef _WODXMPPLIB
@@ -308,7 +308,7 @@ void __stdcall CJabberEvents::DispConnected ()
 	}
 
 	
-	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1], "Connected"); //online
+	_MainDlg.ShellIcon(NIM_MODIFY, _MainDlg.m_OnlineStatus[1], _Settings.Translate("Connected")); //online
 	if (_SDK)
 	{
 		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_CONNECTED,""))
@@ -873,7 +873,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 						{
 							char *j2 = j1.ToString();
 							if (strcmp(j2, WIPPIENDETAILSTHREAD))
-								_MainDlg.OnIncomingMessage(NULL, j.ToString(), "Could not deliver message.", "");
+								_MainDlg.OnIncomingMessage(NULL, j.ToString(), _Settings.Translate("Could not deliver message."), "");
 						}
 					}
 				}
@@ -1079,7 +1079,7 @@ void __stdcall CJabberEvents::DispError(WODXMPPCOMLib::IXMPPContact *Contact, WO
 	if (_MainDlg.m_NewPassword.Length())
 	{
 		_MainDlg.m_NewPassword.Empty();
-		_MainDlg.MessageBox(err, "Failed to change password", MB_OK);
+		_MainDlg.MessageBox(_Settings.Translate(err), _Settings.Translate("Failed to change password"), MB_OK);
 	}
 	else
 	if (Contact)

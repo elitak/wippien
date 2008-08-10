@@ -705,7 +705,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 #else
 							WODXMPPCOMLib::XMPP_Disconnect(_Jabber->m_Jabb);
 #endif
-							ShowStatusText("Disconnected due to inactivity rule");
+							ShowStatusText(_Settings.Translate("Disconnected due to inactivity rule"));
 						}
 						else
 						if (_Settings.m_ExtendedAwayMinutes && l > _Settings.m_ExtendedAwayMinutes)
@@ -789,12 +789,12 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								char totalin[128], totalout[128];
 								ShowNiceByteCount(user->m_TotalReceived, totalin);
 								ShowNiceByteCount(user->m_TotalSent, totalout);
-								sprintf(buff, "%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s", ra.ToString(), user->m_RemotePort, user->m_MTU, totalout, totalin);
+								sprintf(buff, _Settings.Translate("%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s"), ra.ToString(), user->m_RemotePort, user->m_MTU, totalout, totalin);
 								textbuff.Append(buff);
 							}
 							else
 							{
-								sprintf(buff, "<< VPN not established yet >>");
+								sprintf(buff, _Settings.Translate("<< VPN not established yet >>"));
 								textbuff.Append(buff);
 							}
 
@@ -955,7 +955,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					if (m_ReconnectWait)
 					{
 						char buff[1024];
-						sprintf(buff, "Reconnect in %d seconds.", m_ReconnectWait);
+						sprintf(buff, _Settings.Translate("Reconnect in %d seconds."), m_ReconnectWait);
 						ShowStatusText(buff);
 					}
 	
@@ -1809,41 +1809,41 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 //	UIAddChildWindowContainer(m_hWnd);
 	
 //	m_btnOK.m_ToolTip = "Exits Wippien";
-	m_btnOK.SetCaption("E&xit");
-	m_btnOK.SetToolTipText("Exit Wippien");
+	m_btnOK.SetCaption(_Settings.Translate("E&xit"));
+	m_btnOK.SetToolTipText(_Settings.Translate("Exit Wippien"));
 	m_btnOK.SetStyle(PBS_UNDERLINE);
 	m_btnOK.SubclassWindow(GetDlgItem(ID_EXIT));
 	
-	m_btnSettings.SetToolTipText("Open settings");
-	m_btnSettings.SetCaption("&Settings");
+	m_btnSettings.SetToolTipText(_Settings.Translate("Open settings"));
+	m_btnSettings.SetCaption(_Settings.Translate("&Settings"));
 	m_btnSettings.SubclassWindow(GetDlgItem(IDB_SETUP));
 	
-	m_btnAbout.SetToolTipText("Show AboutBox");
-	m_btnAbout.SetCaption("&About");
+	m_btnAbout.SetToolTipText(_Settings.Translate("Show AboutBox"));
+	m_btnAbout.SetCaption(_Settings.Translate("&About"));
 	m_btnAbout.SubclassWindow(GetDlgItem(ID_APP_ABOUT));
 
-	m_btnMyStatus.SetToolTipText("Set your status (Away,Invisible...");
+	m_btnMyStatus.SetToolTipText(_Settings.Translate("Set your status (Away,Invisible...)"));
 	m_btnMyStatus.SubclassWindow(GetDlgItem(IDC_MYSTATUS));
 	m_btnMyStatus.LoadPNG(IDC_MYSTATUS);
 	m_btnMyStatus.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 
-	m_btnMyContacts.SetToolTipText("Add contacts and alien accounts");
+	m_btnMyContacts.SetToolTipText(_Settings.Translate("Add contacts and alien accounts"));
 	m_btnMyContacts.SubclassWindow(GetDlgItem(IDC_MYCONTACTS));
 	m_btnMyContacts.LoadPNG(IDC_MYCONTACTS);
 	m_btnMyContacts.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 
-	m_btnSmallMute.SetToolTipText("Mute sound");
+	m_btnSmallMute.SetToolTipText(_Settings.Translate("Mute sound"));
 	m_btnSmallMute.SubclassWindow(GetDlgItem(IDC_SMALLMUTE));
 	int mutimg = _Settings.m_SoundOn?ID_PNG1_MUTEON:ID_PNG1_MUTEOFF;
 	m_btnSmallMute.LoadPNG(mutimg);
 	m_btnSmallMute.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 
-	m_btnChatRooms.SetToolTipText("Open chat room");
+	m_btnChatRooms.SetToolTipText(_Settings.Translate("Open chat room"));
 	m_btnChatRooms.SubclassWindow(GetDlgItem(IDC_CHATROOMS));
 	m_btnChatRooms.LoadPNG(ID_PNG1_CHATROOMS);
 	m_btnChatRooms.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 	
-	m_btnAuthDlg.SetToolTipText("Authorize your friends");
+	m_btnAuthDlg.SetToolTipText(_Settings.Translate("Authorize your friends"));
 	m_btnAuthDlg.SubclassWindow(GetDlgItem(IDC_MYAUTHDLG));
 	m_btnAuthDlg.LoadPNG(IDC_MYAUTHDLG);
 	m_btnAuthDlg.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
@@ -1982,7 +1982,7 @@ void CMainDlg::ShellIcon(int Message, HICON Icon, char *Tip)
 
 LRESULT CMainDlg::OnCreateTrayIcon(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	ShellIcon(NIM_ADD, m_IconSmall, "Idle");
+	ShellIcon(NIM_ADD, m_IconSmall, _Settings.Translate("Idle"));
 	return FALSE;
 }
 LRESULT CMainDlg::OnTrayIcon(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
@@ -2068,7 +2068,7 @@ LRESULT CMainDlg::OnExit(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL&
 {
 	if (_Settings.m_DoNotShow[DONOTSHOW_NOALLOWEXIT] != '1')
 	{
-		int yesno = ::MessageBox(NULL, "Really exit Wippien?", "Are you sure?", MB_YESNO | MB_ICONQUESTION);
+		int yesno = ::MessageBox(NULL, _Settings.Translate("Really exit Wippien?"), _Settings.Translate("Are you sure?"), MB_YESNO | MB_ICONQUESTION);
 			if (yesno == IDNO)
 				return TRUE;
 	}
@@ -2198,7 +2198,7 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		CSettingsDlg::CSettingsUser1 *us1 = new CSettingsDlg::CSettingsUser1();
 		CComBSTR2 b2 = _Settings.m_JID;
 		strcpy(us1->m_Text2, b2.ToString());		
-		sprintf(us1->m_Path, "Identity\\ID Card");
+		sprintf(us1->m_Path, _Settings.Translate("Identity\\ID Card"));
 		us1->PATH = us1->m_Path;
 		us1->m_IsContact = FALSE;
 		pg = us1;
@@ -2207,7 +2207,7 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		CSettingsDlg::CSettingsUser2 *us2 = new CSettingsDlg::CSettingsUser2();
 		b2 = _Settings.m_JID;
 		strcpy(us2->m_Text2, b2.ToString());		
-		sprintf(us2->m_Path, "Identity\\ID Card\\Home Address");
+		sprintf(us2->m_Path, _Settings.Translate("Identity\\ID Card\\Home Address"));
 		us2->PATH = us2->m_Path;
 		us2->m_IsContact = FALSE;
 		pg = us2;
@@ -2216,7 +2216,7 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		CSettingsDlg::CSettingsUser3 *us3 = new CSettingsDlg::CSettingsUser3();
 		b2 = _Settings.m_JID;
 		strcpy(us3->m_Text2, b2.ToString());		
-		sprintf(us3->m_Path, "Identity\\ID Card\\Work Address");
+		sprintf(us3->m_Path, _Settings.Translate("Identity\\ID Card\\Work Address"));
 		us3->PATH = us3->m_Path;
 		us3->m_IsContact = FALSE;
 		pg = us3;
@@ -2632,7 +2632,7 @@ void CMainDlg::OnIncomingNotification(char *Contact, int NotID, VARIANT Data)
 			_Settings.m_Password = m_NewPassword;
 			_Settings.Save();
 		}
-		MessageBox("Your password is now changed.", "Password changed", MB_OK);
+		MessageBox(_Settings.Translate("Your password is now changed."), _Settings.Translate("Password changed"), MB_OK);
 	}
 	else
 	{
@@ -2688,7 +2688,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 			case ID_POPUP4_CHANGEPASSWORD:
 				{
 					CSettingsDlg::CEnterPassDialog ndlg;
-					ndlg.SetText("Change account password", "Please enter new password:");
+					ndlg.SetText(_Settings.Translate("Change account password"), _Settings.Translate("Please enter new password:"));
 					ndlg.DoModal();
 					if (ndlg.m_Success)
 					{
@@ -2722,7 +2722,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 					CSettingsDlg::CSettingsUser1 *us1 = new CSettingsDlg::CSettingsUser1();
 					CComBSTR2 b2 = _Settings.m_JID;
 					strcpy(us1->m_Text2, b2.ToString());		
-					sprintf(us1->m_Path, "Identity\\ID Card");
+					sprintf(us1->m_Path, _Settings.Translate("Identity\\ID Card"));
 					us1->PATH = us1->m_Path;
 					us1->m_IsContact = FALSE;
 					pg = us1;
@@ -2731,7 +2731,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 					CSettingsDlg::CSettingsUser2 *us2 = new CSettingsDlg::CSettingsUser2();
 					b2 = _Settings.m_JID;
 					strcpy(us2->m_Text2, b2.ToString());		
-					sprintf(us2->m_Path, "Identity\\ID Card\\Home Address");
+					sprintf(us2->m_Path, _Settings.Translate("Identity\\ID Card\\Home Address"));
 					us2->PATH = us2->m_Path;
 					us2->m_IsContact = FALSE;
 					pg = us2;
@@ -2740,7 +2740,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 					CSettingsDlg::CSettingsUser3 *us3 = new CSettingsDlg::CSettingsUser3();
 					b2 = _Settings.m_JID;
 					strcpy(us3->m_Text2, b2.ToString());		
-					sprintf(us3->m_Path, "Identity\\ID Card\\Work Address");
+					sprintf(us3->m_Path, _Settings.Translate("Identity\\ID Card\\Work Address"));
 					us3->PATH = us3->m_Path;
 					us3->m_IsContact = FALSE;
 					pg = us3;

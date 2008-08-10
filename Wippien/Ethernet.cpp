@@ -270,7 +270,7 @@ BOOL CEthernet::Init(void)
 			m_Available = TRUE;
 
 			char buff[16384];
-			sprintf(buff, "Network adapter opened");
+			sprintf(buff, _Settings.Translate("Network adapter opened"));
 			_MainDlg.ShowStatusText(buff);
 			
 			return TRUE;
@@ -292,7 +292,7 @@ BOOL CEthernet::Start(unsigned long IP, unsigned long Netmask)
 	{
 		char buff[1024];
 		if (!CheckIfIPRangeIsFree(htonl(IP), htonl(Netmask), buff))
-			MessageBox(NULL, buff, "Warning", MB_OK);
+			MessageBox(NULL, buff, _Settings.Translate("Warning"), MB_OK);
 
 		// let's store these values	
 		_Settings.m_MyLastNetwork = IP;
@@ -440,7 +440,7 @@ BOOL CEthernet::CheckIfIPRangeIsFree(unsigned long IP, unsigned long Netmask, ch
 								in_addr _IP;
 								_IP.S_un.S_addr = htonl(IP);
 								
-								sprintf(buf, "Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.", ad_info->Description, pNext->IpAddress.String, inet_ntoa(_IP));
+								sprintf(buf, _Settings.Translate("Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter."), ad_info->Description, pNext->IpAddress.String, inet_ntoa(_IP));
 								free(newmem);
 								return FALSE;
 							}
@@ -829,7 +829,7 @@ DWORD WINAPI CEthernet::ReadThreadFunc(LPVOID lpParam)
 								if (GetLastError() == ERROR_OPERATION_ABORTED)
 								{
 									char buff[16384];
-									sprintf(buff, "Network adapter disabled!");
+									sprintf(buff, _Settings.Translate("Network adapter disabled!"));
 									_MainDlg.ShowStatusText(buff);
 									MessageBeep(-1);
 
@@ -996,7 +996,7 @@ BOOL CEthernet::ExecNETSH(char *text)
 					if(!EXEmessageboxshown)
 					{
 						EXEmessageboxshown = TRUE;
-						MessageBox(NULL, "Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.", "Admin privilege required!", MB_OK);
+						MessageBox(NULL, _Settings.Translate("Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions."), _Settings.Translate("Admin privilege required!"), MB_OK);
 					}
 /*
 					// let's run main app

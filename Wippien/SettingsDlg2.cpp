@@ -45,15 +45,15 @@ int uudecode(const char *src, u_char *target, size_t targsize);
 int b64_pton(char const *src, u_char *target, size_t targsize);
 int b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize);
 
-#define IPS_ALLOW		"allow"
-#define IPS_DENY		"deny"
-#define IPS_UNKNOWN		"not specified"
+extern const char *IPS_ALLOW;
+extern const char *IPS_DENY;
+extern const char *IPS_UNKNOWN;
 
 CSettingsDlg::CSettingsNetworkFirewall::CSettingsNetworkFirewall() : _CSettingsTemplate()
 {
-	PATH = "Network\\Firewall";
-	TEXT1 = "Set up firewall rules.";
-	TEXT2 = "You can set up which ports can be accessed by your contacts.";
+	PATH = _Settings.Translate("Network\\Firewall");
+	TEXT1 = _Settings.Translate("Set up firewall rules.");
+	TEXT2 = _Settings.Translate("You can set up which ports can be accessed by your contacts.");
 	
 }
 
@@ -107,7 +107,7 @@ void CSettingsDlg::CSettingsNetworkFirewall::PopulateList(void)
 				break;
 
 			case IPPROTO_ICMP:
-				strcpy(buff, "* All ICMP traffic");
+				strcpy(buff, _Settings.Translate("* All ICMP traffic"));
 				break;
 		}
 		int j = ::SendMessage(GetDlgItem(IDC_RULES), LB_ADDSTRING, NULL, (LPARAM)buff);
@@ -242,9 +242,9 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnChange(WORD wNotifyCode, WORD 
 		::EnableWindow(GetDlgItem(IDC_FIREWALLRULE_ADD), FALSE);
 
 	if (::SendMessage(GetDlgItem(IDC_ALLOWTRAFFIC), BM_GETSTATE, NULL, NULL))
-		SetDlgItemText(IDC_STATICBLOCK, "But block these ports:");
+		SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But block these ports:"));
 	else
-		SetDlgItemText(IDC_STATICBLOCK, "But allow these ports:");
+		SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But allow these ports:"));
 	
 	
 	return TRUE;

@@ -1,8 +1,10 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
-
-#define APSTUDIO_READONLY_SYMBOLS
+#include "versionno.h"
+#ifdef _APPUPDLIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
+#endif
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
@@ -13,18 +15,10 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Croatian resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)
-#ifdef _WIN32
-LANGUAGE LANG_CROATIAN, SUBLANG_DEFAULT
-#pragma code_page(1250)
-#endif //_WIN32
-
-/////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
+
 
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
@@ -1174,7 +1168,6 @@ IDI_STATUS_XA           ICON    DISCARDABLE     "..\\gfx\\extended_away.ico"
 IDI_STATUS_FFC          ICON    DISCARDABLE     "..\\gfx\\free_for_chat.ico"
 IDI_ICON_YES            ICON    DISCARDABLE     "..\\gfx\\yes.ico"
 IDI_ICON_NO             ICON    DISCARDABLE     "..\\gfx\\no.ico"
-IDI_ICON1               ICON    DISCARDABLE     "..\\gfx\\icon1.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1285,8 +1278,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,1,3,295
- PRODUCTVERSION 2,1,3,295
+ FILEVERSION FILEVER
+ PRODUCTVERSION FILEVER
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -1303,12 +1296,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "Wippien Module\0"
-            VALUE "FileVersion", "2, 1, 3, 295\0"
+            VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "Wippien\0"
             VALUE "LegalCopyright", "Copyright 2006-2008\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
-            VALUE "ProductVersion", "2, 1, 3, 295\0"
+            VALUE "ProductVersion", STRFILEVER
             VALUE "OLESelfRegister", "\0"
         END
     END
@@ -1338,7 +1331,6 @@ BEGIN
     IDS_SERVICENAME         "Wippien"
 END
 
-#endif    // Croatian resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -1353,3 +1345,7 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
+#ifdef _APPUPDLIB
+#define _LIB
+#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
+#endif

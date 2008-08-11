@@ -1,15 +1,25 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
-#include "versionno.h"
-#ifdef _APPUPDLIB
-#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
-#endif
-//////
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
 #include "winres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Croatian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)
+#ifdef _WIN32
+LANGUAGE LANG_CROATIAN, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -47,18 +57,18 @@ BEGIN
     PUSHBUTTON      "Test Account",IDC_TEST_JID,122,90,63,13
     EDITTEXT        IDC_EDIT_JID3,46,109,92,12
     EDITTEXT        IDC_EDIT_JID4,46,122,40,12,ES_NUMBER
-    PUSHBUTTON      "Search",IDB_BUTTON_JID1,226,25,35,26
+    PUSHBUTTON      "&Search",IDB_BUTTON_JID1,226,25,35,26
     LTEXT           "You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.",
                     IDC_LABEL_JID1,0,0,261,21
     LTEXT           "If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.",
                     IDC_LABEL_JID2,0,24,223,34
-    LTEXT           "JID:",IDC_STATIC,5,78,35,9
-    LTEXT           "Password:",IDC_STATIC,5,91,35,9
+    LTEXT           "JID",IDC_S1,5,78,35,9
+    LTEXT           "Password",IDC_S2,5,91,35,9
     LTEXT           "",IDC_JABBER_CONN_STATUS,3,152,145,11
-    LTEXT           "Server:",IDC_STATIC,5,110,35,9
-    LTEXT           "Port:",IDC_STATIC,5,122,35,9
-    LTEXT           "Please click on 'Test Account' to proceed.",IDC_STATIC,
-                    1,138,134,8
+    LTEXT           "Server",IDC_S3,5,110,35,9
+    LTEXT           "Port",IDC_S4,5,122,35,9
+    LTEXT           "Please click on 'Test Account' to proceed.",IDC_S5,1,
+                    138,134,8
     CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
                     IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     88,123,145,10
@@ -96,10 +106,10 @@ BEGIN
     CONTROL         "Disconnect adapter on exit",IDC_DISCONNECT_ETHERNET,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,25,101,10
     LTEXT           "UDP port fort for outoing and incoming packets (0 for auto select)",
-                    IDC_STATIC,7,42,206,8
+                    IDC_S1,7,42,206,8
     EDITTEXT        IDC_UDP_PORT,216,40,28,12,ES_NUMBER | WS_DISABLED
-    GROUPBOX        "IP address for Wippien network adapter",IDC_STATIC,3,65,
-                    255,94
+    GROUPBOX        "IP address for Wippien network adapter",IDC_S2,3,65,255,
+                    94
     CONTROL         "Ignore. IP will be set outside of this program.",
                     IDC_IPADDRESSIGNORE,"Button",BS_AUTORADIOBUTTON,6,77,154,
                     10
@@ -113,8 +123,8 @@ BEGIN
                     153,131,88,11
     CONTROL         "IPAddress1",IDC_NETMASK_ETHERNET,"SysIPAddress32",
                     WS_TABSTOP,153,142,88,11
-    LTEXT           "IP address",IDC_STATIC,114,133,34,8
-    LTEXT           "Netmask",IDC_STATIC,113,145,34,8
+    LTEXT           "IP address",IDC_S3,114,133,34,8
+    LTEXT           "Netmask",IDC_S4,113,145,34,8
 END
 
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
@@ -286,10 +296,10 @@ BEGIN
     PUSHBUTTON      "Add Group",IDC_ADDNEWGROUP,120,128,53,13
     PUSHBUTTON      "Remove Group",IDC_REMOVEGROUP,177,128,53,13
     PUSHBUTTON      "Add Contact",IDC_ADDNEWCONTACT,119,56,55,13
-    LTEXT           "Put contact to the group",IDC_STATIC,35,115,80,8
-    LTEXT           "Contact ID:",IDC_STATIC,8,16,37,8
-    LTEXT           "Contact Type:",IDC_STATIC,121,15,46,8
-    LTEXT           "Visible Name:",IDC_CONTACTVISIBLE,70,44,44,8
+    LTEXT           "Put contact to the group",IDC_S4,35,115,80,8
+    LTEXT           "Contact ID",IDC_S1,8,16,35,8
+    LTEXT           "Contact Type",IDC_S2,121,15,44,8
+    LTEXT           "Visible Name",IDC_CONTACTVISIBLE,70,44,42,8
 END
 
 IDD_RENAMECONTACT DIALOG DISCARDABLE  0, 0, 186, 52
@@ -335,21 +345,20 @@ BEGIN
     EDITTEXT        IDC_LOG_FUNCTION,7,129,227,12
     PUSHBUTTON      "...",IDB_BROWSE3,235,128,15,14
     EDITTEXT        IDC_FUNCTIONDELETEMB,157,146,48,12,ES_AUTOHSCROLL
-    LTEXT           "Log Jabber communication",IDC_STATIC,8,16,86,8
-    LTEXT           "Log socket communication",IDC_STATIC,8,51,86,8
-    LTEXT           "Log raw function calls (may grow quickly!)",IDC_STATIC,
-                    8,120,132,8
-    LTEXT           "Delete raw log on each ",IDC_STATIC,79,148,76,8
-    LTEXT           "megabytes",IDC_STATIC,207,148,35,8
-    LTEXT           "Log VPN communication on P2P startup",IDC_STATIC,8,85,
-                    128,8
+    LTEXT           "Log Jabber communication",IDC_S1,8,16,86,8
+    LTEXT           "Log socket communication",IDC_S2,8,51,86,8
+    LTEXT           "Log raw function calls (may grow quickly!)",IDC_S4,8,
+                    120,132,8
+    LTEXT           "Delete raw log on each",IDC_S5,79,148,74,8
+    LTEXT           "megabytes",IDC_S6,207,148,35,8
+    LTEXT           "Log VPN communication on P2P startup",IDC_S3,8,85,128,8
 END
 
 IDD_SETTINGS_MEDIATOR DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "Following mediators can be used:",IDC_STATIC,7,9,106,8
+    LTEXT           "Following mediators can be used:",IDC_S1,7,9,106,8
     CONTROL         "List1",IDC_MEDIATORLIST,"SysListView32",LVS_REPORT | 
                     LVS_SHOWSELALWAYS | LVS_NOLABELWRAP | LVS_AUTOARRANGE | 
                     LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
@@ -363,8 +372,8 @@ IDD_SETTINGS_MSGWIN DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "Various settings regarding chat window",
-                    IDC_LABEL_ETHERNET2,5,0,249,29
+    LTEXT           "Various settings regarding chat window",IDC_S1,5,0,249,
+                    29
     CONTROL         "Timestamp messages",IDC_TIMESTAMP_MESSAGES,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,3,41,86,10
     CONTROL         "Show message history",IDC_SHOW_MESSAGE_HISTORY,"Button",
@@ -468,7 +477,7 @@ IDD_SETTINGS_SKINS DIALOG DISCARDABLE  0, 0, 262, 175
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "Following skin files are found:",IDC_STATIC,7,12,93,8
+    LTEXT           "Following skin files are found:",IDC_S1,7,12,93,8
     PUSHBUTTON      "Apply",IDB_APPLY,157,134,42,14
     LTEXT           "To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.",
                     IDC_STATIC,7,135,136,33
@@ -542,15 +551,14 @@ IDD_SETTINGS_CONTACTS DIALOG DISCARDABLE  0, 0, 262, 175
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    GROUPBOX        "Contact list persistance",IDC_STATIC,3,7,256,41
+    GROUPBOX        "Contact list persistance",IDC_S1,3,7,256,41
     CONTROL         "Delete all local contacts on startup",
                     IDC_CONTACTS_DELETEONSTARTUP,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,7,17,125,10
     CONTROL         "Delete all local contacts on connect",
                     IDC_CONTACTS_DELETEONCONNECT,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,7,30,129,10
-    GROUPBOX        "Contacts subscription authorization",IDC_STATIC,3,65,
-                    255,53
+    GROUPBOX        "Contacts subscription authorization",IDC_S2,3,65,255,53
     CONTROL         "Never authorize",IDC_CONTACTS_AUTH0,"Button",
                     BS_AUTORADIOBUTTON,6,79,66,10
     CONTROL         "Ask me",IDC_CONTACTS_AUTH1,"Button",BS_AUTORADIOBUTTON,
@@ -636,15 +644,15 @@ STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     LTEXT           "MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.",
-                    IDC_STATIC,7,7,246,25
+                    IDC_S1,7,7,246,25
     CONTROL         "Use fixed MTU",IDC_USEFIXEDMTU,"Button",
                     BS_AUTORADIOBUTTON | WS_GROUP,7,39,63,10
     EDITTEXT        IDC_USEFIXEDMTUNUM,72,37,34,13,ES_AUTOHSCROLL | 
                     ES_NUMBER
     CONTROL         "Auto-detect MTU",IDC_AUTODETECTMTU,"Button",
                     BS_AUTORADIOBUTTON,7,62,127,10
-    LTEXT           "(will become effective as peers reconnect)",IDC_STATIC,
-                    21,73,134,8
+    LTEXT           "(will become effective as peers reconnect)",IDC_S2,21,
+                    73,134,8
 END
 
 IDD_SETTINGS_SOUNDS DIALOG DISCARDABLE  0, 0, 262, 175
@@ -670,10 +678,10 @@ BEGIN
     PUSHBUTTON      "Hide new contact",IDC_BLOCKNEWCONTACT,81,142,75,15
     PUSHBUTTON      "Unhide contact",IDC_UNBLOCKCONTACT,158,142,69,15,
                     WS_DISABLED
-    LTEXT           "Currently hidden contacts",IDC_STATIC,9,4,174,10
+    LTEXT           "Currently hidden contacts",IDC_S1,9,4,174,10
     LTEXT           "",IDC_SERVICE_DESCRIPTION,2,106,256,26,NOT WS_VISIBLE
     LTEXT           "All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.",
-                    IDC_STATIC,7,158,240,16
+                    IDC_S2,7,158,240,16
 END
 
 IDD_HIDECONTACT DIALOG DISCARDABLE  0, 0, 186, 52
@@ -707,7 +715,7 @@ BEGIN
     PUSHBUTTON      "&Add",IDC_FIREWALLRULE_ADD,205,63,46,14,WS_DISABLED
     PUSHBUTTON      "&Remove",IDC_FIREWALLRULE_REMOVE,205,131,46,14,
                     WS_DISABLED
-    LTEXT           "Default rule",IDC_STATIC,13,10,39,8
+    LTEXT           "Default rule",IDC_S1,13,10,39,8
 END
 
 IDD_SETTINGS_APPEARANCE DIALOG DISCARDABLE  0, 0, 262, 175
@@ -752,7 +760,7 @@ BEGIN
                     "Button",BS_AUTORADIOBUTTON | WS_DISABLED,10,77,110,10
     CONTROL         "by IP (without IP goes top)",IDC_SORTBYIPTOP,"Button",
                     BS_AUTORADIOBUTTON | WS_DISABLED,10,90,99,10
-    LTEXT           "Sort contact list",IDC_STATIC,10,24,50,8
+    LTEXT           "Sort contact list",IDC_S1,10,24,50,8
 END
 
 IDD_SETTINGS_CHATROOMS DIALOG DISCARDABLE  0, 0, 262, 208
@@ -1329,6 +1337,7 @@ BEGIN
     IDS_SERVICENAME         "Wippien"
 END
 
+#endif    // Croatian resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -1343,8 +1352,3 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
-
-#ifdef _APPUPDLIB
-#define _LIB
-#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
-#endif

@@ -572,6 +572,18 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	::EnableWindow(::GetDlgItem(m_Owner, IDOK), FALSE);
 	::EnableWindow(::GetDlgItem(m_Owner, IDC_NEXT), FALSE);
 
+	SetDlgItemText(IDC_LABEL_JID1, _Settings.Translate("You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc."));
+	SetDlgItemText(IDC_LABEL_JID2, _Settings.Translate("If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button."));
+	SetDlgItemText(IDB_BUTTON_JID1, _Settings.Translate("&Search"));
+	SetDlgItemText(IDC_RADIO2_JID, _Settings.Translate("I need new Jabber account"));
+	SetDlgItemText(IDC_RADIO1_JID, _Settings.Translate("I have existing Jabber account"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("JID"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Password"));
+	SetDlgItemText(IDC_TEST_JID, _Settings.Translate("Test Account"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("Server"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("Port"));
+	SetDlgItemText(IDC_USESSLWRAPPER, _Settings.Translate("Use SSL wrapper on port 443 (for GTalk)"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("Please click on 'Test Account' to proceed."));
 	return TRUE;
 }
 
@@ -1191,6 +1203,7 @@ LRESULT CSettingsDlg::CSettingsIcon::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam
 		StaticImage.Decode((unsigned char *)_Settings.m_Icon.Ptr(), _Settings.m_Icon.Len(), CXIMAGE_FORMAT_PNG);			
 		SelectedImage = &StaticImage;
 	}
+	SetDlgItemText(IDC_ADDNEW, _Settings.Translate("Add &New"));
 	return TRUE;
 }
 
@@ -1337,6 +1350,15 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		::SendMessage(GetDlgItem(IDC_DISCONNECT_ETHERNET), BM_SETCHECK, FALSE, NULL);
 
+	SetDlgItemText(IDC_CHECK_ETHERNET, _Settings.Translate("Show notification if ethernet adapter is unavailable."));
+	SetDlgItemText(IDC_DISCONNECT_ETHERNET, _Settings.Translate("Disconnect adapter on exit"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("UDP port fort for outoing and incoming packets (0 for auto select)"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("IP address for Wippien network adapter"));
+	SetDlgItemText(IDC_IPADDRESSIGNORE, _Settings.Translate("Ignore. IP will be set outside of this program."));
+	SetDlgItemText(IDC_IPADDRESSBYIPMEDIATOR, _Settings.Translate("Obtained from IP provider database, on URL"));
+	SetDlgItemText(IDC_IPADDRESSSTATIC, _Settings.Translate("Use following static address"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("IP address"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("Netmask"));
 	return TRUE;
 }
 
@@ -1517,6 +1539,10 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 		
 		SendMessage(GetDlgItem(IDC_MEDIATORLIST), LVM_SETITEM, 0, (LPARAM)&it);	
 	}
+
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Following mediators can be used:"));
+	SetDlgItemText(IDC_CHECK_ALLOWANYMEDIATOR, _Settings.Translate("Allow new mediators to be added"));
 
 	return TRUE;
 }
@@ -2387,6 +2413,14 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnInitDialog(UINT /*uMsg*/, WP
 	RefreshGroupsList();
 
 	::SetFocus(GetDlgItem(IDC_CONTACTID));
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Contact ID"));
+	SetDlgItemText(IDC_STATIC, _Settings.Translate("Contact Type"));
+	SetDlgItemText(IDC_CONTACTVISIBLE, _Settings.Translate("Visible Name"));
+	SetDlgItemText(IDC_ADDNEWCONTACT, _Settings.Translate("Add Contact"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("Put contact to the group"));
+	SetDlgItemText(IDC_ADDNEWGROUP, _Settings.Translate("Add Group"));
+	SetDlgItemText(IDC_REMOVEGROUP, _Settings.Translate("Remove Group"));
 	return TRUE;
 }
 
@@ -2897,6 +2931,12 @@ LRESULT CSettingsDlg::CSettingsLogging::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPa
 	sprintf(buff, "%d", i);
 	SetDlgItemText(IDC_FUNCTIONDELETEMB, buff);
 	
+	SetDlgItemText(IDC_S1, _Settings.Translate("Log Jabber communication"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Log socket communication"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("Log VPN communication on P2P startup"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("Log raw function calls (may grow quickly!)"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("Delete raw log on each"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
 	return TRUE;
 }
 
@@ -3072,6 +3112,9 @@ LRESULT CSettingsDlg::CSettingsMsgWin::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	else
 		::SendMessage(GetDlgItem(IDC_SHOW_MESSAGE_HISTORY), BM_SETCHECK, FALSE, NULL);
 
+	SetDlgItemText(IDC_S1, _Settings.Translate("Various settings regarding chat window"));
+	SetDlgItemText(IDC_TIMESTAMP_MESSAGES, _Settings.Translate("Timestamp messages"));
+	SetDlgItemText(IDC_SHOW_MESSAGE_HISTORY, _Settings.Translate("Show message history"));
 	return TRUE;
 }
 
@@ -4518,6 +4561,18 @@ LRESULT CSettingsDlg::CSettingsSkins::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	}
 
 	::EnableWindow(GetDlgItem(IDB_APPLY), FALSE);
+	SetDlgItemText(IDC_S1, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
 	return TRUE;
 }
 
@@ -5039,6 +5094,15 @@ LRESULT CSettingsDlg::CSettingsContacts::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	if (_Settings.m_AuthContacts == 2)
 			::SendMessage(GetDlgItem(IDC_CONTACTS_AUTH2), BM_SETCHECK, BST_CHECKED, NULL);
 
+	SetDlgItemText(IDC_S1, _Settings.Translate("Contact list persistance"));
+	SetDlgItemText(IDC_CONTACTS_DELETEONSTARTUP, _Settings.Translate("Delete all local contacts on startup"));
+	SetDlgItemText(IDC_CONTACTS_DELETEONCONNECT, _Settings.Translate("Delete all local contacts on connect"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Contacts subscription authorization"));
+	SetDlgItemText(IDC_CONTACTS_AUTH0, _Settings.Translate("Never authorize"));
+	SetDlgItemText(IDC_CONTACTS_AUTH1, _Settings.Translate("Ask me"));
+	SetDlgItemText(IDC_CONTACTS_AUTH2, _Settings.Translate("Always authorize"));
+	SetDlgItemText(IDC_AUTOCONNECTONSTARTUP, _Settings.Translate("Automatically establish VPN on startup"));
+	SetDlgItemText(IDC_AUTOCONNECTONTRAFFIC, _Settings.Translate("Automatically establish VPN on network traffic"));
 	return TRUE;
 }
 
@@ -5251,6 +5315,11 @@ LRESULT CSettingsDlg::CSettingsMTU::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	char buff[1024];
 	sprintf(buff, "%u", _Settings.m_FixedMTUNum);
 	SetDlgItemText(IDC_USEFIXEDMTUNUM, buff);
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets."));
+	SetDlgItemText(IDC_USEFIXEDMTU, _Settings.Translate("Use fixed MTU"));
+	SetDlgItemText(IDC_AUTODETECTMTU, _Settings.Translate("Auto-detect MTU"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("(will become effective as peers reconnect)"));
 	return TRUE;
 }
 
@@ -5500,6 +5569,11 @@ LRESULT CSettingsDlg::CSettingsContactsHide::OnInitDialog(UINT /*uMsg*/, WPARAM 
 		int j = _Settings.m_HiddenContacts[i];
 		m_HiddenContacts.AddString(from+j);
 	}
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Currently hidden contacts"));
+	SetDlgItemText(IDC_BLOCKNEWCONTACT, _Settings.Translate("Hide new contact"));
+	SetDlgItemText(IDC_UNBLOCKCONTACT, _Settings.Translate("Unhide contact"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely."));
 
 	return TRUE;
 }
@@ -5824,6 +5898,13 @@ LRESULT CSettingsDlg::CSettingsContactsSort::OnInitDialog(UINT /*uMsg*/, WPARAM 
 			break;
 	}
 	::SendMessage(GetDlgItem(dlgitem), BM_SETCHECK, TRUE, NULL);
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Sort contact list"));
+	SetDlgItemText(IDC_SORTNONE, _Settings.Translate("unsorted"));
+	SetDlgItemText(IDC_SORTBYNAME, _Settings.Translate("By name"));
+	SetDlgItemText(IDC_SORTBYJID, _Settings.Translate("By JID"));
+	SetDlgItemText(IDC_SORTBYIPBOTTOM, _Settings.Translate("by IP (without IP goes bottom)"));
+	SetDlgItemText(IDC_SORTBYIPTOP, _Settings.Translate("by IP (without IP goes top)"));
 	return TRUE;
 }
 

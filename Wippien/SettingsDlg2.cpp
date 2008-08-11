@@ -86,6 +86,15 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnInitDialog(UINT /*uMsg*/, WPAR
 	::SendMessage(GetDlgItem(IDC_TCP), BM_SETCHECK, BST_CHECKED, NULL);
 
 	PopulateList();
+	SetDlgItemText(IDC_S1, _Settings.Translate("Default rule"));
+	SetDlgItemText(IDC_ALLOWTRAFFIC, _Settings.Translate("Allow all traffic"));
+	SetDlgItemText(IDC_BLOCKTRAFFIC, _Settings.Translate("Block all traffic"));
+	SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But block these ports"));
+	SetDlgItemText(IDC_TCP, _Settings.Translate("TCP"));
+	SetDlgItemText(IDC_UDP, _Settings.Translate("UDP"));
+	SetDlgItemText(IDC_ICMP, _Settings.Translate("ICMP"));
+	SetDlgItemText(IDC_FIREWALLRULE_ADD, _Settings.Translate("&Add"));
+	SetDlgItemText(IDC_FIREWALLRULE_REMOVE, _Settings.Translate("&Remove"));
 	return TRUE;
 }
 

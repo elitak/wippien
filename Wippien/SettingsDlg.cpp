@@ -3169,6 +3169,12 @@ CSettingsDlg::CSettingsUser1::~CSettingsUser1()
 
 LRESULT CSettingsDlg::CSettingsUser1::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
+	SetDlgItemText(IDC_S1, _Settings.Translate("Nickname"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("First name"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("Last name"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("Email"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("URL"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("Notes"));
 	return TRUE;
 }
 
@@ -3484,6 +3490,15 @@ LRESULT CSettingsDlg::CSettingsUser2::OnChange(WORD wNotifyCode, WORD wID, HWND 
 
 LRESULT CSettingsDlg::CSettingsUser2::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
+	SetDlgItemText(IDC_S1, _Settings.Translate("Address"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Address Ext."));
+	SetDlgItemText(IDC_S3, _Settings.Translate("City"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("State"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("ZIP"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("Country"));
+	SetDlgItemText(IDC_STATIC_BIRTHDAY, _Settings.Translate("Birthday"));
+	SetDlgItemText(IDC_S7, _Settings.Translate("Voice Tel."));
+	SetDlgItemText(IDC_S8, _Settings.Translate("Fax"));
 	return TRUE;
 }
 
@@ -3796,6 +3811,17 @@ LRESULT CSettingsDlg::CSettingsUser3::OnChange(WORD wNotifyCode, WORD wID, HWND 
 }
 LRESULT CSettingsDlg::CSettingsUser3::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
+	SetDlgItemText(IDC_S1, _Settings.Translate("Address"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Address Ext."));
+	SetDlgItemText(IDC_S3, _Settings.Translate("City"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("State"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("ZIP"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("Country"));
+	SetDlgItemText(IDC_S7, _Settings.Translate("Title"));
+	SetDlgItemText(IDC_S8, _Settings.Translate("Voice Tel."));
+	SetDlgItemText(IDC_S9, _Settings.Translate("Fax"));
+	SetDlgItemText(IDC_S10, _Settings.Translate("Company name"));
+	SetDlgItemText(IDC_S11, _Settings.Translate("Department"));
 
 	return TRUE;
 }
@@ -4215,6 +4241,11 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 		it.cchTextMax = strlen(it.pszText);
 		SendDlgItemMessage(IDC_INTERFACELIST, LVM_SETITEM, 0, (LPARAM)&it);
 	}
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Allowed interfaces for direct connection"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Click on first column to change values"));
+	SetDlgItemText(IDC_SETTINGS_USER4_RESETALL, _Settings.Translate("&Allow All"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("If you choose 'not specified' value, then same value is used as in 'all other' setting."));
 }
 
 LRESULT CSettingsDlg::CSettingsUser4::OnInterfaceList(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
@@ -4561,18 +4592,10 @@ LRESULT CSettingsDlg::CSettingsSkins::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	}
 
 	::EnableWindow(GetDlgItem(IDB_APPLY), FALSE);
-	SetDlgItemText(IDC_S1, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
-	SetDlgItemText(IDC_S6, _Settings.Translate("megabytes"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("Following skin files are found"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview."));
+	SetDlgItemText(IDB_APPLY, _Settings.Translate("&Apply"));
+	SetDlgItemText(IDB_MORESKINS, _Settings.Translate("&More skins..."));
 	return TRUE;
 }
 
@@ -4869,6 +4892,18 @@ LRESULT CSettingsDlg::CSettingsSystem::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	CComBSTR2 j1 = _Settings.m_SettingsFolder;
 	SetDlgItemText(IDC_SETTINGSFOLDER, j1.ToString());
 
+	SetDlgItemText(IDC_SHOWINTASKBAR, _Settings.Translate("Show Wippien in taskbar"));
+	SetDlgItemText(IDC_ALIGNTOBORDER, _Settings.Translate("Rearrange desktop when Wippien window is aligned to border"));
+	SetDlgItemText(IDC_SNAPTOBORDER, _Settings.Translate("Snap to desktop border"));
+	SetDlgItemText(IDC_AUTHOHIDEONINACTIVITY, _Settings.Translate("Auto hide if inactive for "));
+	SetDlgItemText(IDC_S1, _Settings.Translate("seconds"));
+	SetDlgItemText(IDC_ALWAYSONTOP, _Settings.Translate("Always on top"));
+	SetDlgItemText(IDC_CONFIRMEXIT, _Settings.Translate("Confirm exit from application"));
+	SetDlgItemText(IDC_USEPOWEROPTIONS, _Settings.Translate("Disconnect on computer Sleep/Hibernate, Connect on Resume"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Password protect"));
+	SetDlgItemText(IDC_PASSWORDPROTECTSETTINGS, _Settings.Translate("Settings only"));
+	SetDlgItemText(IDC_PASSWORDPROTECTEVERYTHING, _Settings.Translate("Everything"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("Settings folder (changing below value requires wippien restart)"));
 	return TRUE;
 }
 
@@ -5021,6 +5056,9 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	m_Combo1.ResetContent();
 	m_Combo1.AddString(_Settings.Translate("<system default>"));
 
+	SetDlgItemText(IDC_ENABLEVOICECHAT, _Settings.Translate("Enable voice chat"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("Playback device"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Recording device"));
 	return TRUE;
 }
 
@@ -5205,6 +5243,13 @@ LRESULT CSettingsDlg::CSettingsSystemUpdate::OnInitDialog(UINT /*uMsg*/, WPARAM 
 		::SendMessage(GetDlgItem(IDC_SHOWUPDATERMESSAGES), BM_SETCHECK, FALSE, NULL);
 	
 
+	SetDlgItemText(IDC_CHECKUPDATE, _Settings.Translate("Check for updates when Wippien starts"));
+	SetDlgItemText(IDC_CHECKUPDATE_CONNECT, _Settings.Translate("Check for updates on Connect"));
+	SetDlgItemText(IDC_CHECKUPDATE_TIMED, _Settings.Translate("Check for updates each"));
+	SetDlgItemText(IDC_CHECKUPDATESILENTLY, _Settings.Translate("Update and restart application silently"));
+	SetDlgItemText(IDC_SHOWUPDATERMESSAGES, _Settings.Translate("Show system messages received from updater"));
+	SetDlgItemText(IDC_UPDATE_CHECKNOW, _Settings.Translate("&Check now"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("minutes"));
 	return TRUE;
 }
 
@@ -5399,6 +5444,9 @@ LRESULT CSettingsDlg::CSettingsSound::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	strcpy(m_Sound[3], ((CComBSTR2)_Notify.m_MsgOut).ToString());
 	strcpy(m_Sound[4], ((CComBSTR2)_Notify.m_Error).ToString());
 	
+	SetDlgItemText(IDC_S1, _Settings.Translate("Program events"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Sound (leave empty for default sound):"));
+	SetDlgItemText(IDB_PLAY, _Settings.Translate("&Play"));
 	return TRUE;
 }
 

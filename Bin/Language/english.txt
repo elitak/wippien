@@ -418,7 +418,7 @@ Company name
 Department
 Allowed interfaces for direct connection
 Allow All
-Click on first column to change values.
+Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found:
 Apply

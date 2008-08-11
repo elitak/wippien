@@ -448,6 +448,9 @@
 #define IDC_S6                          1508
 #define IDC_S7                          1509
 #define IDC_S8                          1510
+#define IDC_S9                          1511
+#define IDC_S10                         1512
+#define IDC_S11                         1513
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -480,7 +483,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1390
 #define _APS_NEXT_COMMAND_VALUE         32798
-#define _APS_NEXT_CONTROL_VALUE         1511
+#define _APS_NEXT_CONTROL_VALUE         1514
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

@@ -20,6 +20,8 @@
 #include "CwodWinSocket.h"
 #include "Settings.h"
 
+extern CSettings _Settings;
+
 
 #ifdef _WODXMPPLIB
 namespace WODXMPPCOMLib
@@ -104,8 +106,8 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		{
 			memset(m_Password, 0, 1024);
 			m_Success = FALSE;
-			m_Subject.Append("Enter password");
-			m_Text.Append("Please enter protect password:");
+			m_Subject.Append(_Settings.Translate("Enter Passphrase"));
+			m_Text.Append(_Settings.Translate("Please enter key passphrase"));
 		}
 
 		BOOL m_Success;
@@ -136,6 +138,8 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 			CenterWindow(GetDesktopWindow());
 			SetWindowText(m_Subject.Ptr());
 			SetDlgItemText(IDC_ENTERPASSPHRASE, m_Text.Ptr());
+			SetDlgItemText(IDOK, _Settings.Translate("O&K"));
+			SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 			return TRUE;
 		}
 

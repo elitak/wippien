@@ -242,9 +242,9 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnChange(WORD wNotifyCode, WORD 
 		::EnableWindow(GetDlgItem(IDC_FIREWALLRULE_ADD), FALSE);
 
 	if (::SendMessage(GetDlgItem(IDC_ALLOWTRAFFIC), BM_GETSTATE, NULL, NULL))
-		SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But block these ports:"));
+		SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But block these ports"));
 	else
-		SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But allow these ports:"));
+		SetDlgItemText(IDC_STATICBLOCK, _Settings.Translate("But allow these ports"));
 	
 	
 	return TRUE;

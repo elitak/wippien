@@ -13,8 +13,10 @@
 #include "VividTree.h"
 #include "User.h"
 #include "MenuXP.h"
+#include "Settings.h"
 
 class CMainDlg;
+extern CSettings _Settings;
 
 #include <vector>
 typedef std::vector<CUser *> USERLIST;
@@ -92,10 +94,18 @@ public:
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 		{
 			SetDlgItemText(IDC_RENAMEEDIT, m_VisibleName);
+			SetDlgItemText(IDOK, _Settings.Translate("O&K"));
+			SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 			if (m_IsGroupEdit)
 			{
-				SetWindowText("Rename group");
-				SetDlgItemText(IDC_STATICCONTACTNAME, "Enter new group name:");
+				SetWindowText(_Settings.Translate("Rename group"));
+				SetDlgItemText(IDC_STATICCONTACTNAME, _Settings.Translate("Enter new group name"));
+			}
+			else
+			{
+				SetWindowText(_Settings.Translate("Rename contact"));
+				SetDlgItemText(IDC_STATICCONTACTNAME, _Settings.Translate("Enter new contact name"));
+
 			}
 			CenterWindow(GetParent());
 			return TRUE;

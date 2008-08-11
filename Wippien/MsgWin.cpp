@@ -1480,6 +1480,7 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 		strcat(m_HistoryPath, ".history");
 	}
 
+	SetDlgItemText(IDC_ISTYPING, _Settings.Translate("Contact is typing..."));
 	return TRUE;
 }
 
@@ -2585,6 +2586,11 @@ LRESULT CMsgWin::CInsertHyperlinkDlg::OnCancel(WORD wNotifyCode, WORD wID, HWND 
 LRESULT CMsgWin::CInsertHyperlinkDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
 	CenterWindow(m_parent->m_hWnd);
+	SetWindowText(_Settings.Translate("Insert Hyperlink"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("URL:"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Description:"));
+	SetDlgItemText(IDOK, _Settings.Translate("O&K"));
+	SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 	return TRUE;
 }
 

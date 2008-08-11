@@ -1751,7 +1751,8 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 
 	m_LanguageEnglish.Clear();
 	m_LanguageEnglishIndex.Clear();
-
+	Buffer temp;
+	unsigned int offset;
 	int i;
 	int handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle >= 0)
@@ -1760,24 +1761,24 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 		{
 			i = read(handle, buff, sizeof(buff));
 			if (i>0)
-				m_LanguageEnglish.Append(buff, i);
+				temp.Append(buff, i);
 		} while (i>0);
 		close(handle);
 
-		m_LanguageEnglish.Append("\r\n", 2);
-		char *start = m_LanguageEnglish.Ptr();
-		char *p = start;
+		temp.Append("\r\n", 2);
 		m_LanguageEnglishTotal = 0;
 		char *a;
 		do 
 		{
-			p = m_LanguageEnglish.Ptr();
-			a = m_LanguageEnglish.GetNextLine();
+			offset = m_LanguageEnglish.m_end;
+			a = temp.GetNextLine();
 			if (a && *a)
 			{
+				FixCFormatting(a, buff);
+				m_LanguageEnglish.Append(buff);
+				m_LanguageEnglish.PutChar(0);
 				m_LanguageEnglishTotal++;
-				unsigned int ps = p-start;
-				m_LanguageEnglishIndex.Append((char *)&ps, sizeof(ps));
+				m_LanguageEnglishIndex.Append((char *)&offset, sizeof(offset));
 			}
 		} while (a);
 
@@ -1796,7 +1797,7 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 
 		m_LanguageOther.Clear();
 		m_LanguageOtherIndex.Clear();
-		Buffer temp;
+		temp.Clear();
 		unsigned int m_LanguageOtherTotal = 0;
 
 		handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
@@ -1846,23 +1847,23 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 					char *a2 = NULL;
 					m_LanguageOther.AppendSpace(&a2, ret);
 					WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), a2, ret, NULL, NULL);
+					temp.Clear();
+					temp.Append(a2, ret);
+					m_LanguageOther.Clear();
 				}
-				else
-					m_LanguageOther.Append(temp.Ptr(), temp.Len());
 			}
-			else
-				m_LanguageOther.Append(temp.Ptr(), temp.Len());
 			
-			m_LanguageOther.Append("\r\n", 2);
-			start = m_LanguageOther.Ptr();
+			temp.Append("\r\n", 2);
 			do 
 			{
-				p = m_LanguageOther.Ptr();
-				a = m_LanguageOther.GetNextLine();
+				offset = m_LanguageOther.m_end;
+				a = temp.GetNextLine();
 				if (a && *a)
 				{
-					unsigned int ps = p-start;
-					m_LanguageOtherIndex.Append((char *)&ps, sizeof(ps));
+					FixCFormatting(a, buff);
+					m_LanguageOther.Append(buff);
+					m_LanguageOther.PutChar(0);
+					m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
 					m_LanguageOtherTotal++;
 				}
 			} while (a);
@@ -1902,4 +1903,54 @@ char *CSettings::Translate(char *text)
 	}
 
 	return text;
+}
+
+void CSettings::FixCFormatting(char *in, char *out)
+{
+	while (*in)
+	{
+		if (*in=='\\')
+		{
+			in++;
+			if (*in)
+			{
+				switch (*in)
+				{
+					case '0':
+						*out = 0;
+						break;
+
+					case 'n':
+						*out = '\n';
+						break;
+
+					case 'r':
+						*out = '\r';
+						break;
+
+					case '\\':
+						*out = '\\';
+						break;
+
+					case '\"':
+						*out = '\"';
+						break;
+
+					case '\'':
+						*out = '\'';
+						break;
+
+				default:
+					MessageBeep(-1);
+					break;
+				}
+			}
+		}
+		else
+			*out = *in;
+
+		in++;
+		out++;
+	}
+	*out = 0;
 }

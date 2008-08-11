@@ -167,6 +167,8 @@ public:
 	CSettings::TreeGroup *CSettings::GetGroupByName(char *Name);
 	BOOL LoadLanguageFile(char *Language);
 	char *Translate(char *text);
+	void FixCFormatting(char *in, char *out);
+
 
 	// window stuff
 	BOOL m_IsAligned, m_IsTopMost, m_DoAlign;

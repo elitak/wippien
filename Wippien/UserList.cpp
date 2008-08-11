@@ -655,7 +655,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							s = stbuf;
 #endif
 							{
-								char *s1 = s.ToString();
+								char *s1 = _Settings.Translate(s.ToString());
 								if (strcmp(user->m_StatusText, s1))
 								{
 									user->m_Changed = TRUE;

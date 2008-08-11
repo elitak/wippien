@@ -277,6 +277,16 @@ LRESULT CContactAuthDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /
 	SetWindowPos(HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 	UpdateWin();
 
+	SetWindowText(_Settings.Translate("Authorization request"));
+	SetDlgItemText(IDC_AUTHSTATICTEXT, _Settings.Translate("Do you allow"));
+	SetDlgItemText(IDC_AUTHSTATICTEXT2, _Settings.Translate("to add you to his contact list?"));
+	SetDlgItemText(IDYES, _Settings.Translate("&Yes"));
+	SetDlgItemText(IDNO, _Settings.Translate("&No"));
+	SetDlgItemText(IDC_DETAILS, _Settings.Translate("&Details"));
+	SetDlgItemText(IDC_MOREREQUESTSWAITING, _Settings.Translate("more requests waiting..."));
+	SetDlgItemText(IDC_APPLYTOALL, _Settings.Translate("&Apply to all"));
+	SetDlgItemText(IDC_BLOCKUSER, _Settings.Translate("&Block user(s)"));
+
 	return TRUE;
 }
 

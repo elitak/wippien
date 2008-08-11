@@ -105,6 +105,10 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 	{
 		me->m_WippienState = WipDisconnected;	
 		me->m_MyMediatorChoice = (-1); // pick different mediator next time, ok?
+		me->m_MyMediatorOffer[0] = 0;
+		me->m_WippienState = WipWaitingInitRequest;
+		me->m_RemoteWippienState = WipUndefined;
+
 //		me->ReInit(TRUE);
 	}
 	me->SetSubtext();

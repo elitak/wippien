@@ -90,6 +90,11 @@ public:
 	{
 		AddContacts();
 		CenterWindow(GetParent());
+
+		SetWindowText(_Settings.Translate("Hide contact"));
+		SetDlgItemText(IDC_S1, _Settings.Translate("Enter contact JID"));
+		SetDlgItemText(IDOK, _Settings.Translate("O&K"));
+		SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 		return TRUE;
 	}
 

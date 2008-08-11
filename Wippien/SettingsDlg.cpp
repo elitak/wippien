@@ -258,7 +258,7 @@ LRESULT CSettingsDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 
 	CenterWindow(GetParent());
 
-
+	SetWindowText(_Settings.Translate("Settings"));
 	return TRUE;
 }
 
@@ -1599,6 +1599,15 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	m_ServicesList.Attach(GetDlgItem(IDC_LISTREGISTEREDGATEWAYS));
 
 	RefreshGatewaysList();
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Your current Instant messaging connections"));
+	SetDlgItemText(IDC_ADDNEWACCOUNT, _Settings.Translate("Add new account"));
+	SetDlgItemText(IDC_REMOVEACCOUNT, _Settings.Translate("Remove account"));
+	SetDlgItemText(IDC_OPENNEWACCOUNT, _Settings.Translate("Open new account"));
+	SetDlgItemText(IDC_STATIC_USERNAME, _Settings.Translate("Username:"));
+	SetDlgItemText(IDC_STATIC_PASSWORD, _Settings.Translate("Password:"));
+	SetDlgItemText(IDC_ACCOUNT_REGISTER, _Settings.Translate("Register!"));
+
 	return TRUE;
 }
 int CSettingsDlg::CSettingsAccounts::GetServiceType(char *t)
@@ -4664,6 +4673,17 @@ LRESULT CSettingsDlg::CSettingsAutoAway::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		::SendMessage(GetDlgItem(IDC_SETBACKONACTIVITY), BM_SETCHECK, FALSE, NULL);
 
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Wait"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("minutes before going to away mode (0 = disable)"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("Wait"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("minutes before going to extended away mode (0 = disable)"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("Wait"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("minutes before disconnecting (0 = disable)"));
+	SetDlgItemText(IDC_S7, _Settings.Translate("Auto-Away message"));
+	SetDlgItemText(IDC_S8, _Settings.Translate("Extended-Away message"));
+	SetDlgItemText(IDC_SETBACKONACTIVITY, _Settings.Translate("Set back when activity is detected again."));
+
 	return TRUE;
 }
 
@@ -5633,6 +5653,20 @@ LRESULT CSettingsDlg::CSettingsAppearance::OnInitDialog(UINT /*uMsg*/, WPARAM /*
 		::SendMessage(GetDlgItem(IDC_SHOWCONTACTSTATUS), BM_SETCHECK, FALSE, NULL);	
 
 
+	SetDlgItemText(IDC_S1, _Settings.Translate("Visible details"));
+	SetDlgItemText(IDC_SHOWPICTURE, _Settings.Translate("Avatar picture"));
+	SetDlgItemText(IDC_SHOWNAME, _Settings.Translate("Name"));
+	SetDlgItemText(IDC_SHOWIP, _Settings.Translate("IP address"));
+	SetDlgItemText(IDC_SHOWSTATUS, _Settings.Translate("Status text"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Contact's visible details"));
+	SetDlgItemText(IDC_SHOWCONTACTPICTURE, _Settings.Translate("Avatar picture"));
+	SetDlgItemText(IDC_SHOWCONTACTNAME, _Settings.Translate("Name"));
+	SetDlgItemText(IDC_SHOWCONTACTLASTONLINE, _Settings.Translate("Last online time"));
+	SetDlgItemText(IDC_SHOWCONTACTIP, _Settings.Translate("IP address"));
+	SetDlgItemText(IDC_SHOWCONTACTSTATUS, _Settings.Translate("Status text"));
+	SetDlgItemText(IDC_SHOWCONTACTACTIVITYMONITOR, _Settings.Translate("Activity Monitor"));
+
+
 	return TRUE;
 }
 
@@ -5932,6 +5966,16 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 		}
 	}
 #endif
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Nickname for chatrooms"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Show available rooms on following gateways"));
+	SetDlgItemText(IDC_S3, _Settings.Translate("Click above to select room, or enter new chat room details below"));
+	SetDlgItemText(IDC_S4, _Settings.Translate("Room name to create or join"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("Password (empty if none)"));
+	SetDlgItemText(IDC_S6, _Settings.Translate("Gateway"));
+	SetDlgItemText(IDC_CHATROOM_JOIN, _Settings.Translate("Join or Create room"));
+	SetDlgItemText(IDC_CHATROOM_BLOCKUSERSATSTARTUP, _Settings.Translate("Block users at startup"));
+
 
 	PopulateChatRoomListview();
 	return TRUE;

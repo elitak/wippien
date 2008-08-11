@@ -532,6 +532,11 @@ void CUpdateHandler::DownloadUpdates(BOOL silently)
 	m_SilentCheck = silently;
 	WODAPPUPDCOMLib::AppUpd_SetURL(m_Update, URLbuff.Ptr());
 	WODAPPUPDCOMLib::AppUpd_SetReplaceRule(m_Update, (WODAPPUPDCOMLib::ReplaceRulesEnum)1);
+	WODAPPUPDCOMLib::AppUpd_SetDialogText(m_Update, 0, _Settings.Translate("Progress"));
+	WODAPPUPDCOMLib::AppUpd_SetDialogText(m_Update, 1, _Settings.Translate("Cancel"));
+	WODAPPUPDCOMLib::AppUpd_SetDialogText(m_Update, 2, _Settings.Translate("Connecting"));
+	WODAPPUPDCOMLib::AppUpd_SetDialogText(m_Update, 3, _Settings.Translate("Requesting"));
+	WODAPPUPDCOMLib::AppUpd_SetDialogText(m_Update, 4, _Settings.Translate("Downloading"));
 	WODAPPUPDCOMLib::AppUpd_Check(m_Update);
 #endif
 	// spawn new thread so this can continue

@@ -63,6 +63,9 @@ LRESULT CProgressDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lP
 	HICON hi = LoadIcon(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_PROGRESSWINICON));
 	SetIcon(hi);
 
+	SetWindowText(_Settings.Translate("Progress"));
+	SetDlgItemText(IDC_DOWNLOADINGFILE, _Settings.Translate("Downloading"));
+	SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 	return TRUE;
 }
 

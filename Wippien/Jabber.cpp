@@ -156,6 +156,7 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 	{
 		char buff[1024];
 		strcpy(buff, j.ToString());
+		strcpy(buff, _Settings.Translate(buff));
 		j.Empty();
 		if (SUCCEEDED(_Jabber->m_Jabb->get_StateText(var, &j)))
 		{
@@ -179,9 +180,11 @@ void __stdcall CJabberEvents::DispStateChange(WODXMPPCOMLib::StatesEnum OldState
 		_MainDlg.Invalidate(FALSE);
 	}
 
+	strcpy(stat, _Settings.Translate(stat));
 	strcat(stat, " - ");
 	slen = 1024;
 	WODXMPPCOMLib::XMPP_GetStateText(wodXMPP, (WODXMPPCOMLib::StatesEnum)newst, stet, &slen);
+	strcpy(stet, _Settings.Translate(stet));
 	strcat(stat, stet);
 	_MainDlg.ShowStatusText(stat);
 
@@ -229,7 +232,7 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 		
 	}
 	else
-		_MainDlg.ShowStatusText(_Settings.Translate("Disconnected."));
+		_MainDlg.ShowStatusText(_Settings.Translate("Disconnected"));
 	
 	if (_Jabber->m_DoReconnect)
 	{

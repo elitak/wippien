@@ -80,6 +80,9 @@ LRESULT CDownloadSkinDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM 
     }	
 
 
+	SetWindowText(_Settings.Translate("Download more skins from Wippien website"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("Click on the skin to download and install it."));
+	SetDlgItemText(ID_CANCEL, _Settings.Translate("&Cancel"));
 	return FALSE;
 }
 

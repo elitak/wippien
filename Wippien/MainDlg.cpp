@@ -1543,12 +1543,13 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	var.vt = VT_ERROR;
 	if (SUCCEEDED(_Jabber->m_Jabb->get_StatusText(var, &k)))
 	{
-		st = k.ToString();
+		st = _Settings.Translate(k.ToString());
 	}
 #else
 	char stat[1024] = {0};	
 	int slen = 1024;
 	WODXMPPCOMLib::XMPP_GetStatusText(_Jabber->m_Jabb, stat, &slen);
+	strcpy(stat, _Settings.Translate(stat));
 	st = stat;
 #endif
 	if (_Settings.m_ShowMyIP)
@@ -2688,7 +2689,7 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 			case ID_POPUP4_CHANGEPASSWORD:
 				{
 					CSettingsDlg::CEnterPassDialog ndlg;
-					ndlg.SetText(_Settings.Translate("Change account password"), _Settings.Translate("Please enter new password:"));
+					ndlg.SetText(_Settings.Translate("Change account password"), _Settings.Translate("Please enter new password"));
 					ndlg.DoModal();
 					if (ndlg.m_Success)
 					{
@@ -2949,12 +2950,13 @@ LRESULT CMainDlg::OnMouseMove(HWND Owner, UINT /*uMsg*/, WPARAM wParam, LPARAM l
 				var.vt = VT_ERROR;
 				if (SUCCEEDED(_Jabber->m_Jabb->get_StatusText(var, &k)))
 				{
-					st = k.ToString();
+					st = _Settings.Translate(k.ToString());
 				}
 #else
 				char stat[1024] = {0};	
 				int slen = 1024;
 				WODXMPPCOMLib::XMPP_GetStatusText(_Jabber->m_Jabb, stat, &slen);
+				strcpy(stat, _Settings.Translate(stat));
 				st = stat;
 #endif
 				::SetWindowText(h, st);

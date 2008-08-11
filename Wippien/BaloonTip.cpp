@@ -136,6 +136,11 @@ LRESULT CBalloonTipDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
 		WriteText();
     }	
 	bHandled = FALSE;
+
+	SetDlgItemText(IDOK, _Settings.Translate("&Yes"));
+	SetDlgItemText(IDCANCEL, _Settings.Translate("&No"));
+	SetDlgItemText(IDCANCEL2, _Settings.Translate("&Cancel"));
+
 	return FALSE;
 }
 

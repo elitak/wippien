@@ -41,12 +41,6 @@ LRESULT CAboutDlg::OnCtlColorStatic(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lPa
 
 LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	DumpDebug("*CAboutDlg::OnInitDialog\r\n");
-/*	RECT rc;
-	GetWindowRect(&rc);
-	SetWindowPos(HWND_TOPMOST, rc.left, rc.top, 400, 300, SWP_NOSIZE | SWP_NOMOVE);
-	CenterWindow(GetDesktopWindow());
-*/
 
 	RECT rcScreen;
 	RECT rcMain;
@@ -131,6 +125,10 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	rc1.bottom = 250;
 	m_scroller.Create(rc1, m_hWnd);
 	m_scroller.SetText(ABOUT_SCROLL_TEXT);
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Registered to"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("FREE Version"));
+	SetDlgItemText(IDOK, _Settings.Translate("O&K"));
 	return TRUE;
 }
 

@@ -2587,8 +2587,8 @@ LRESULT CMsgWin::CInsertHyperlinkDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 {
 	CenterWindow(m_parent->m_hWnd);
 	SetWindowText(_Settings.Translate("Insert Hyperlink"));
-	SetDlgItemText(IDC_S1, _Settings.Translate("URL:"));
-	SetDlgItemText(IDC_S2, _Settings.Translate("Description:"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("URL"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Description"));
 	SetDlgItemText(IDOK, _Settings.Translate("O&K"));
 	SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 	return TRUE;

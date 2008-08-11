@@ -1772,9 +1772,12 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 		{
 			offset = m_LanguageEnglish.m_end;
 			a = temp.GetNextLine();
-			if (a && *a)
+			if (a && *a && *a!='#')
 			{
 				FixCFormatting(a, buff);
+				char *h = strstr(buff, "  ##");
+				if (h)
+					*h = 0;
 				m_LanguageEnglish.Append(buff);
 				m_LanguageEnglish.PutChar(0);
 				m_LanguageEnglishTotal++;
@@ -1858,9 +1861,12 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 			{
 				offset = m_LanguageOther.m_end;
 				a = temp.GetNextLine();
-				if (a && *a)
+				if (a && *a && *a!='#')
 				{
 					FixCFormatting(a, buff);
+					char *h = strstr(buff, "  ##");
+					if (h)
+						*h = 0;
 					m_LanguageOther.Append(buff);
 					m_LanguageOther.PutChar(0);
 					m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
@@ -1899,7 +1905,13 @@ char *CSettings::Translate(char *text)
 	for (int i=0;i<m_LanguageEnglishTotal;i++)
 	{
 		if (!strcmp(text, orga+orgp[i]))
-			return dsta + dstp[i];
+		{
+			orga = dsta + dstp[i];
+			if (*orga)
+				return orga;
+			else
+				return text;
+		}
 	}
 
 	return text;

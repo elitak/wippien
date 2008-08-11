@@ -358,7 +358,7 @@ IDD_SETTINGS_MEDIATOR DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "Following mediators can be used:",IDC_S1,7,9,106,8
+    LTEXT           "Following mediators can be used",IDC_S1,7,9,106,8
     CONTROL         "List1",IDC_MEDIATORLIST,"SysListView32",LVS_REPORT | 
                     LVS_SHOWSELALWAYS | LVS_NOLABELWRAP | LVS_AUTOARRANGE | 
                     LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
@@ -661,7 +661,7 @@ FONT 8, "MS Sans Serif"
 BEGIN
     LISTBOX         IDC_SOUNDEVENTS,7,18,244,89,LBS_NOINTEGRALHEIGHT | 
                     WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
-    LTEXT           "Sound (leave empty for default sound):",IDC_S2,7,113,
+    LTEXT           "Sound (leave empty for default sound)",IDC_S2,7,113,
                     122,8
     EDITTEXT        IDC_SOUND,7,125,189,12,ES_AUTOHSCROLL
     PUSHBUTTON      "...",IDB_BROWSE,199,124,15,14

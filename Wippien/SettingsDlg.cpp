@@ -1541,7 +1541,7 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	}
 
 
-	SetDlgItemText(IDC_S1, _Settings.Translate("Following mediators can be used:"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("Following mediators can be used"));
 	SetDlgItemText(IDC_CHECK_ALLOWANYMEDIATOR, _Settings.Translate("Allow new mediators to be added"));
 
 	return TRUE;
@@ -5445,7 +5445,7 @@ LRESULT CSettingsDlg::CSettingsSound::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 	strcpy(m_Sound[4], ((CComBSTR2)_Notify.m_Error).ToString());
 	
 	SetDlgItemText(IDC_S1, _Settings.Translate("Program events"));
-	SetDlgItemText(IDC_S2, _Settings.Translate("Sound (leave empty for default sound):"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Sound (leave empty for default sound)"));
 	SetDlgItemText(IDB_PLAY, _Settings.Translate("&Play"));
 	return TRUE;
 }

@@ -340,10 +340,10 @@ Test Account
 Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
-JID:
-Password:
-Server:
-Port:
+JID
+Password
+Server
+Port
 Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)
 O&K
@@ -360,15 +360,13 @@ Use following static address
 IP address
 Netmask
 Status
-Insert Hyperlink
-URL:
-Description:
+URL
+Description
 Add new account
 Remove account
 Register!
 Your current Instant messaging connections
-Username:
-Password:
+Username
 Open new account
 Authorization request
 &Yes
@@ -383,11 +381,11 @@ Add Group
 Remove Group
 Add Contact
 Put contact to the group
-Contact ID:
-Contact Type:
-Visible Name:
+Contact ID
+Contact Type
+Visible Name
 Rename contact
-Enter new contact name:
+Enter new contact name
 Settings
 < &Back
 Log Jabber communication
@@ -396,7 +394,7 @@ Log raw function calls (may grow quickly!)
 Delete raw log on each 
 megabytes
 Log VPN communication on P2P startup
-Following mediators can be used:
+Following mediators can be used
 Allow new mediators to be added
 Various settings regarding chat window
 Timestamp messages
@@ -405,7 +403,6 @@ Nickname
 First name
 Last name
 Email
-URL
 Notes
 Address
 Address Ext.
@@ -423,7 +420,7 @@ Allowed interfaces for direct connection
 Allow All
 Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found:
+Following skin files are found
 Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 More skins...
@@ -463,7 +460,7 @@ Check for updates on Connect
 Check for updates each
 Update and restart application silently
 Show system messages received from updater
-Check now
+&Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 Use fixed MTU
 Auto-detect MTU

@@ -412,7 +412,6 @@
 #define IDB_AVATARFRAME                 1386
 #define IDR_GROUPLISTPOPUP              1388
 #define IDB_NOTIFYWINDOWBACK            1389
-#define IDI_ICON1                       1390
 #define IDC_IPADDRESSIGNORE             1477
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479

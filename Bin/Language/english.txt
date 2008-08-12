@@ -336,8 +336,8 @@ Download more skins from Wippien website
 Click on the skin to download and install it.
 I need new Jabber account
 I have existing Jabber account
-Test Account
-Search
+&Test Account
+&Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID

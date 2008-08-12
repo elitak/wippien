@@ -579,7 +579,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SetDlgItemText(IDC_RADIO1_JID, _Settings.Translate("I have existing Jabber account"));
 	SetDlgItemText(IDC_S1, _Settings.Translate("JID"));
 	SetDlgItemText(IDC_S2, _Settings.Translate("Password"));
-	SetDlgItemText(IDC_TEST_JID, _Settings.Translate("Test Account"));
+	SetDlgItemText(IDC_TEST_JID, _Settings.Translate("&Test Account"));
 	SetDlgItemText(IDC_S3, _Settings.Translate("Server"));
 	SetDlgItemText(IDC_S4, _Settings.Translate("Port"));
 	SetDlgItemText(IDC_USESSLWRAPPER, _Settings.Translate("Use SSL wrapper on port 443 (for GTalk)"));

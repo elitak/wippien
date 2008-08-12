@@ -812,7 +812,11 @@ void CUserList::RefreshView(BOOL updateonly)
 									doblink = TRUE;
 									if (p->IsMsgWindowOpen())
 									{
-										p->PrintMsgWindow(TRUE, _Settings.Translate("User is now offline."), NULL);
+										CComBSTR k = _Settings.Translate("Contact");
+										k += " ";
+										k += _Settings.Translate("is now offline");										
+										CComBSTR2 k2 = k;
+										p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 									}
 									_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
 									_Notify.DoEvent(NotificationOffline);
@@ -868,14 +872,22 @@ void CUserList::RefreshView(BOOL updateonly)
 										_Notify.DoEvent(NotificationOnline);
 										if (p->IsMsgWindowOpen())
 										{
-											p->PrintMsgWindow(TRUE, _Settings.Translate("User is now online."), NULL);
+											CComBSTR k = _Settings.Translate("Contact");
+											k += " ";
+											k += _Settings.Translate("is now online");										
+											CComBSTR2 k2 = k;
+											p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 										}
 									}
 									else
 									{
 										if (p->IsMsgWindowOpen())
 										{
-											p->PrintMsgWindow(TRUE, _Settings.Translate("User is now offline."), NULL);
+											CComBSTR k = _Settings.Translate("Contact");
+											k += " ";
+											k += _Settings.Translate("is now offline");										
+											CComBSTR2 k2 = k;
+											p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 										}
 										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
 										_Notify.DoEvent(NotificationOffline);

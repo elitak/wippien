@@ -694,6 +694,36 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		void Init(HWND Owner);
 		BOOL Apply(void);
 	};
+	class CSettingsLanguages   : public CDialogImpl<CSettingsLanguages>, public _CSettingsTemplate
+	{
+		
+	public:
+		enum { IDD = IDD_SETTINGS_LANGUAGES};
+		
+		CSettingsLanguages();
+		~CSettingsLanguages();
+
+		CListBox m_Languages;
+
+		void EnumerateLocalLanguageFiles(void);
+		
+		BEGIN_MSG_MAP(CSettingsLanguages)
+			MESSAGE_HANDLER(WM_PAINT, OnPaint)
+			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+			NOTIFY_ID_HANDLER(IDC_LOCALLANGUAGES, OnLanguageChange)				
+			COMMAND_ID_HANDLER(IDC_CHANGE_LANGUAGE, OnButtonChange);
+		COMMAND_ID_HANDLER(IDC_RESET_ENGLISH, OnButtonReset);
+		END_MSG_MAP()
+			
+		LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+		LRESULT OnLanguageChange(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/);
+		LRESULT OnButtonChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		LRESULT OnButtonReset(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+		void Show(BOOL Show, RECT *rc);
+		void Init(HWND Owner);
+		BOOL Apply(void);
+	};
 	class CSettingsSound   : public CDialogImpl<CSettingsSound>, public _CSettingsTemplate
 	{
 
@@ -867,7 +897,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 			COMMAND_ID_HANDLER(IDC_CHATROOM_GATEWAYLIST, OnGatewayListClick);
 			COMMAND_ID_HANDLER(IDC_CHATROOM_GATEWAY2, OnChatRoom2Change);
 			COMMAND_HANDLER(IDC_CHATROOM_ROOMNAME, EN_CHANGE, OnChange);
-			NOTIFY_ID_HANDLER(IDC_CHATROOM_ROOMLIST, OmRoomList)				
+			NOTIFY_ID_HANDLER(IDC_CHATROOM_ROOMLIST, OnRoomList)				
 			COMMAND_ID_HANDLER(IDC_CHATROOM_JOIN, OnButtonClick);
 		END_MSG_MAP()
 			
@@ -876,7 +906,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		LRESULT OnButtonClick(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnChatRoom2Change(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 		LRESULT OnChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
-		LRESULT OmRoomList(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/);
+		LRESULT OnRoomList(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/);
 		void Show(BOOL Show, RECT *rc);
 		void Init(HWND Owner);
 		BOOL Apply(void);

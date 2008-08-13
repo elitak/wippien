@@ -57,7 +57,8 @@ public:
 	CComBSTR m_JID, m_Password, m_ServerHost, m_Nick;
 	long	m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFile, m_FunctionDebugFile;
-	CComBSTR m_Skin, m_UpdateURL, m_IPProviderURL;
+	CComBSTR m_Skin, m_UpdateURL, m_IPProviderURL, m_Language;
+	int m_LanguageFileVersion;
 	BOOL m_AllowAnyMediator, m_SoundOn;
 	BOOL m_TimestampMessages, m_ShowMessageHistory, m_ShowInTaskbar, m_SnapToBorder,
 			m_DeleteContactsOnStartup, m_DeleteContactsOnConnect, m_AutoConnectVPNOnNetwork, m_AutoConnectVPNOnStartup;
@@ -165,7 +166,8 @@ public:
 	BOOL IsHiddenContact(char *contact);
 	LinkMediatorStruct *AddLinkMediator(char *text, int Port);
 	CSettings::TreeGroup *CSettings::GetGroupByName(char *Name);
-	BOOL LoadLanguageFile(char *Language);
+	BOOL LoadLanguage(char *Language);
+	BOOL LoadLanguageFile(char *Language, Buffer *temp);
 	char *Translate(char *text);
 	void FixCFormatting(char *in, char *out);
 

@@ -1,6 +1,6 @@
-#
-#
-#
+# English template text
+# Author: Kresimir Petric
+# Version: 1
 No error.
 The system cannot find the file specified.
 The system cannot find the path specified.
@@ -525,3 +525,11 @@ Your &Details
 Enter Passphrase
 Enter password
 Please enter protect password
+System\\Languages
+Setup language used in all Wippien texts.
+New languages may appear periodically.
+Following languages are found as available on local computer
+&Change
+Locale used on local computer
+Currently used language
+Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.

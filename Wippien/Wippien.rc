@@ -655,8 +655,8 @@ FONT 8, "MS Sans Serif"
 BEGIN
     LISTBOX         IDC_SOUNDEVENTS,7,18,244,89,LBS_NOINTEGRALHEIGHT | 
                     WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
-    LTEXT           "Sound (leave empty for default sound)",IDC_S2,7,113,
-                    122,8
+    LTEXT           "Sound (leave empty for default sound)",IDC_S2,7,113,122,
+                    8
     EDITTEXT        IDC_SOUND,7,125,189,12,ES_AUTOHSCROLL
     PUSHBUTTON      "...",IDB_BROWSE,199,124,15,14
     PUSHBUTTON      "&Play",IDB_PLAY,218,124,34,14
@@ -785,6 +785,26 @@ BEGIN
     CONTROL         "Block users at startup",
                     IDC_CHATROOM_BLOCKUSERSATSTARTUP,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,99,186,108,12
+END
+
+IDD_SETTINGS_LANGUAGES DIALOG DISCARDABLE  0, 0, 262, 175
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Following languages are found as available on local computer",
+                    IDC_S1,8,16,194,8
+    CONTROL         "List1",IDC_LOCALLANGUAGES,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOLABELWRAP | LVS_AUTOARRANGE | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,27,254,85
+    PUSHBUTTON      "&Change",IDC_CHANGE_LANGUAGE,7,113,68,13,WS_DISABLED
+    PUSHBUTTON      "&Reset to English",IDC_RESET_ENGLISH,77,113,68,13
+    RTEXT           "Locale used on local computer",IDC_S2,7,148,168,8
+    LTEXT           "English",IDC_S3,179,148,81,8
+    RTEXT           "Currently used language",IDC_S5,7,158,168,8
+    LTEXT           "English",IDC_S6,179,158,81,8
+    LTEXT           "Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.",
+                    IDC_S7,7,126,253,19
 END
 
 
@@ -956,6 +976,14 @@ BEGIN
     IDD_SETTINGS_CONTACTS_SORT, DIALOG
     BEGIN
         VERTGUIDE, 10
+    END
+
+    IDD_SETTINGS_LANGUAGES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 260
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
     END
 END
 #endif    // APSTUDIO_INVOKED

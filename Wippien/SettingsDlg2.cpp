@@ -258,3 +258,229 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnChange(WORD wNotifyCode, WORD 
 	
 	return TRUE;
 }
+
+CSettingsDlg::CSettingsLanguages::CSettingsLanguages() : _CSettingsTemplate()
+{
+	PATH = _Settings.Translate("System\\Languages");
+	TEXT1 = _Settings.Translate("Setup language used in all Wippien texts.");
+	TEXT2 = _Settings.Translate("New languages may appear periodically.");
+}
+
+CSettingsDlg::CSettingsLanguages::~CSettingsLanguages()
+{
+
+}
+
+
+LRESULT CSettingsDlg::CSettingsLanguages::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+	CPaintDC dcPaint(m_hWnd);
+	return TRUE;
+}
+
+
+void CSettingsDlg::CSettingsLanguages::EnumerateLocalLanguageFiles(void)
+{
+	char buff[32768];
+	strcpy(buff, _Settings.m_MyPath);
+	strcat(buff, "Language\\*.txt");
+	
+	WIN32_FIND_DATA FileData;
+
+	HANDLE hSearch = FindFirstFile(buff, &FileData); 
+	CComBSTR2 Author, Version;
+
+	if (hSearch != INVALID_HANDLE_VALUE) 
+	{ 
+		BOOL fFinished = FALSE;
+		while (!fFinished) 
+		{ 
+			Author.Empty();
+			Version.Empty();
+
+			if (stricmp(FileData.cFileName, "english.txt"))
+			{
+
+				strcpy(buff, _Settings.m_MyPath);
+				strcat(buff, "Language\\");
+				strcat(buff, FileData.cFileName); 
+				Buffer temp;
+				if (_Settings.LoadLanguageFile(buff, &temp))
+				{
+					char *a = temp.GetNextLine(); // ignore first line
+					do 
+					{
+						a = temp.GetNextLine();
+						if (a && *a=='#')
+						{
+							char *b = strstr(a, "Author:");
+							if (b)
+							{
+								Author = trim(b+7);
+							}
+							else
+							{
+								b = strstr(a, "Version:");
+								if (b)
+								{
+									Version = trim(b+8);
+								}
+							}
+						}
+						else
+							a = NULL;
+					} while (a);
+
+
+					a = strchr(FileData.cFileName, '.');
+					if (a)
+						*a = 0;
+					{
+						LVITEM it = {0};
+						it.mask = LVIF_TEXT;
+						CComBSTR2 bf = FileData.cFileName;
+						it.pszText = bf.ToString();
+						*it.pszText = toupper(*it.pszText);
+						it.cchTextMax = strlen(it.pszText);
+						
+						int res = SendMessage(GetDlgItem(IDC_LOCALLANGUAGES), LVM_INSERTITEM, 0, (LPARAM)&it);
+						it.iItem = res;
+						it.iSubItem = 1;
+						it.mask = LVIF_TEXT;
+						it.pszText = Author.ToString();
+						it.cchTextMax = strlen(it.pszText);					
+						SendMessage(GetDlgItem(IDC_LOCALLANGUAGES), LVM_SETITEM, 0, (LPARAM)&it);
+						it.iItem = res;
+						it.iSubItem = 2;
+						it.mask = LVIF_TEXT;
+						it.pszText = Version.ToString();
+						it.cchTextMax = strlen(it.pszText);					
+						SendMessage(GetDlgItem(IDC_LOCALLANGUAGES), LVM_SETITEM, 0, (LPARAM)&it);
+					}
+				}
+			}
+			
+			if (!FindNextFile(hSearch, &FileData)) 
+				fFinished = TRUE; 
+		} 
+		
+		// Close the search handle. 		
+		FindClose(hSearch);
+	}
+}
+LRESULT CSettingsDlg::CSettingsLanguages::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+	m_Languages.Attach(GetDlgItem(IDC_LOCALLANGUAGES));
+
+	SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_BORDERSELECT | LVS_EX_FULLROWSELECT); 
+	LV_COLUMN lvcol = {0};
+	lvcol.mask=LVCF_TEXT | LVCF_WIDTH;
+	lvcol.pszText=_Settings.Translate("Language");
+	lvcol.cx = 150;	
+	SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
+	lvcol.pszText = _Settings.Translate("Author");
+	lvcol.cx = 150;
+	SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_INSERTCOLUMN,1,(LPARAM)&lvcol); 
+	lvcol.pszText = _Settings.Translate("Version");
+	lvcol.cx = 60;
+	SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_INSERTCOLUMN,2,(LPARAM)&lvcol); 
+
+	int lcid = GetUserDefaultLCID();
+	char buff[8192];
+	if (GetLocaleInfo(lcid, LOCALE_SENGLANGUAGE, buff, sizeof(buff)))
+		SetDlgItemText(IDC_S3, buff);
+
+	EnumerateLocalLanguageFiles();
+
+
+	SetDlgItemText(IDC_S1, _Settings.Translate("Following languages are found as available on local computer"));
+	SetDlgItemText(IDC_CHANGE_LANGUAGE, _Settings.Translate("&Change"));
+	SetDlgItemText(IDC_RESET_ENGLISH, _Settings.Translate("&Reset to English"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Locale used on local computer"));
+	SetDlgItemText(IDC_S5, _Settings.Translate("Currently used language"));
+	SetDlgItemText(IDC_S7, _Settings.Translate("Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change."));
+
+	return TRUE;
+}
+
+BOOL CSettingsDlg::CSettingsLanguages::Apply(void)
+{
+	char buff[16384];
+	*buff = 0;
+	::SendMessage(GetDlgItem(IDC_S6), WM_GETTEXT, 16384, (LPARAM)buff);
+	if (buff[0])
+	{
+		CComBSTR2 l = _Settings.m_Language;
+		if (strcmp(l.ToString(), buff))
+		{
+			_Settings.m_Language = buff;
+			_Settings.m_LanguageFileVersion = 0;
+			_Settings.LoadLanguage(buff);
+		}
+	}
+	return TRUE;
+}
+
+void CSettingsDlg::CSettingsLanguages::Init(HWND Owner)
+{
+	m_Owner = Owner;
+	Create(Owner);
+}
+
+void CSettingsDlg::CSettingsLanguages::Show(BOOL Show, RECT *rc)
+{
+	if (IsWindow())
+	{
+		if (Show)
+		{
+			::SetWindowPos(m_hWnd, NULL, rc->left, rc->top, rc->right, rc->bottom, SWP_NOZORDER);
+			ShowWindow(SW_SHOW);
+			SetFocus();
+		}
+		else
+			ShowWindow(SW_HIDE);
+	}
+}
+LRESULT CSettingsDlg::CSettingsLanguages::OnLanguageChange(int /*idCtrl*/, LPNMHDR pnmh, BOOL& bHandled)
+{
+	NMLISTVIEW *nm = (NMLISTVIEW *)pnmh;
+	
+	switch (pnmh->code)
+	{
+	case NM_CLICK:
+	case NM_DBLCLK:
+		{
+			int i = SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_GETNEXTITEM, -1,LVNI_SELECTED); // return item selected
+			if (i!=LB_ERR)
+				::EnableWindow(GetDlgItem(IDC_CHANGE_LANGUAGE), TRUE);
+			else
+				::EnableWindow(GetDlgItem(IDC_CHANGE_LANGUAGE), FALSE);
+		}
+		break;
+	}
+	return 0;
+}
+
+LRESULT CSettingsDlg::CSettingsLanguages::OnButtonChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{	
+	int i = SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_GETNEXTITEM, -1,LVNI_SELECTED); // return item selected
+	if (i != LB_ERR)
+	{
+		char lang[1024] = {0};
+		LVITEM lv = {0};
+		lv.mask = LVIF_TEXT;
+		lv.pszText = lang;
+		lv.cchTextMax = sizeof(lang);
+		lv.iItem = i;
+		SendDlgItemMessage(IDC_LOCALLANGUAGES,LVM_GETITEM, 0,(LPARAM)(LPLVITEM)&lv);
+		SetDlgItemText(IDC_S6, lang);
+	}
+	::EnableWindow(GetDlgItem(IDC_CHANGE_LANGUAGE), FALSE);
+	return TRUE;
+}
+
+LRESULT CSettingsDlg::CSettingsLanguages::OnButtonReset(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{	
+	SetDlgItemText(IDC_S6, "English");
+	return TRUE;
+}

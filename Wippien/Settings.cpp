@@ -250,8 +250,7 @@ CSettings::CSettings()
 	m_FirewallDefaultAllowRule = TRUE;
 	m_DisconnectEthernetOnExit = FALSE;
 	m_LanguageEnglishTotal = 0;
-
-	LoadLanguageFile("Croatian");
+	m_LanguageFileVersion = 0;
 }	
 
 CSettings::~CSettings()
@@ -521,6 +520,25 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
+
+			// check language
+			CXmlEntity *langent = CXmlEntity::FindByName(wip, "Language", 1);
+			if (langent)
+			{
+				m_Language = langent->Value;
+				m_LanguageFileVersion = 0;
+			}
+			else
+			{
+				// if local is available, use it.. 
+				int lcid = GetUserDefaultLCID();
+				char buff2[8192];
+				if (GetLocaleInfo(lcid, LOCALE_SENGLANGUAGE, buff2, sizeof(buff2)))
+				{
+					m_Language = buff2;
+					m_LanguageFileVersion = 0;
+				}
+			}
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
 			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://wippien.com/ip/?jid=");
 			ReadSettingsCfg(wip, "UpdateURL", m_UpdateURL, "http://wippien.com/Download/update.php");
@@ -1102,6 +1120,9 @@ BOOL CSettings::SaveConfig(void)
 	CComBSTR2 msh = m_ServerHost;
 	x.AddChildElem("ServerHost", msh.ToString());
 	x.AddChildElem("ServerPort", m_ServerPort);
+	msh.Empty();
+	msh = m_Language;
+	x.AddChildElem("Language", msh.ToString());
 	x.AddChildElem("UDPPort", m_UDPPort);
 	
 	CComBSTR2 m = m_IPProviderURL;
@@ -1742,7 +1763,71 @@ CSettings::TreeGroup *CSettings::GetGroupByName(char *Name)
 	return NULL;
 }
 
-BOOL CSettings::LoadLanguageFile(char *Language)
+BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
+{
+	char buff[32768];
+	int i;
+	temp->Clear();
+	int handle = open(Language, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+	if (handle >= 0)
+	{
+		BOOL initial = TRUE;
+		unsigned char *a1;
+		BOOL isunicode = FALSE;
+		do
+		{
+			a1 = (unsigned char *)buff;
+			i = read(handle, buff, sizeof(buff));
+			if (i>0)
+			{
+				if (initial && i>2)
+				{
+					initial = FALSE;
+					if (a1[0] == 239)
+					{
+						//							isutf8 = TRUE;
+						a1 = (unsigned char *)(buff+3);
+						i-=3;
+					}
+					if (a1[0] == 254)
+					{
+						//							isunicode = TRUE; // but ignore
+						a1 = (unsigned char *)(buff+2);
+						i-=2;
+					}
+					if (a1[0] == 255)
+					{
+						isunicode = TRUE;
+						a1 = (unsigned char *)(buff+2);
+						i-=2;
+					}
+				}
+				temp->Append((char *)a1, i);
+			}
+		} while (i>0);
+		close(handle);
+		
+		if (isunicode)
+		{
+			int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)temp->Ptr(), temp->Len(), NULL, NULL, NULL, NULL);
+			if (ret>0)
+			{
+				char *a2 = NULL;
+				Buffer ml;
+				ml.AppendSpace(&a2, ret);
+				WideCharToMultiByte(CP_ACP, 0, (BSTR)temp->Ptr(), temp->Len(), a2, ret, NULL, NULL);
+				temp->Clear();
+				temp->Append(a2, ret);
+			}
+		}
+
+		return TRUE;
+	}
+	return FALSE;
+}
+
+
+BOOL CSettings::LoadLanguage(char *Language)
 {
 	char buff[32768];
 	strcpy(buff, _Settings.m_MyPath);
@@ -1751,6 +1836,10 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 
 	m_LanguageEnglish.Clear();
 	m_LanguageEnglishIndex.Clear();
+	m_LanguageOther.Clear();
+	m_LanguageOtherIndex.Clear();
+	m_LanguageEnglishTotal = 0;
+
 	Buffer temp;
 	unsigned int offset;
 	int i;
@@ -1788,10 +1877,6 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 
 
 
-
-
-
-
 		// foreign file
 		strcpy(buff, _Settings.m_MyPath);
 		strcat(buff, "Language\\");
@@ -1803,83 +1888,43 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 		temp.Clear();
 		unsigned int m_LanguageOtherTotal = 0;
 
-		handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
-		if (handle >= 0)
+		if (LoadLanguageFile(buff, &temp))
 		{
-			BOOL initial = TRUE;
-			unsigned char *a1;
-			BOOL isunicode = FALSE;
-			do
-			{
-				a1 = (unsigned char *)buff;
-				i = read(handle, buff, sizeof(buff));
-				if (i>0)
-				{
-					if (initial && i>2)
-					{
-						initial = FALSE;
-						if (a1[0] == 239)
-						{
-//							isutf8 = TRUE;
-							a1 = (unsigned char *)(buff+3);
-							i-=3;
-						}
-						if (a1[0] == 254)
-						{
-//							isunicode = TRUE; // but ignore
-							a1 = (unsigned char *)(buff+2);
-							i-=2;
-						}
-						if (a1[0] == 255)
-						{
-							isunicode = TRUE;
-							a1 = (unsigned char *)(buff+2);
-							i-=2;
-						}
-					}
-					temp.Append((char *)a1, i);
-				}
-			} while (i>0);
-			close(handle);
-
-			if (isunicode)
-			{
-				int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), NULL, NULL, NULL, NULL);
-				if (ret>0)
-				{
-					char *a2 = NULL;
-					m_LanguageOther.AppendSpace(&a2, ret);
-					WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), a2, ret, NULL, NULL);
-					temp.Clear();
-					temp.Append(a2, ret);
-					m_LanguageOther.Clear();
-				}
-			}
-			
 			temp.Append("\r\n", 2);
 			do 
 			{
 				offset = m_LanguageOther.m_end;
 				a = temp.GetNextLine();
-				if (a && *a && *a!='#')
+				if (a && *a)
 				{
-					FixCFormatting(a, buff);
-					char *h = strstr(buff, "  ##");
-					if (h)
-						*h = 0;
-					m_LanguageOther.Append(buff);
-					m_LanguageOther.PutChar(0);
-					m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
-					m_LanguageOtherTotal++;
+					if (*a == '#')
+					{
+						char *b = strstr(a, "Version:");
+						if (b)
+						{
+							m_LanguageFileVersion = atoi(trim(b+8));
+						}
+					}
+					else
+					{
+						FixCFormatting(a, buff);
+						char *h = strstr(buff, "  ##");
+						if (h)
+							*h = 0;
+						m_LanguageOther.Append(buff);
+						m_LanguageOther.PutChar(0);
+						m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
+						m_LanguageOtherTotal++;
+					}
 				}
 			} while (a);
-
+			
 			if (m_LanguageEnglishTotal>m_LanguageOtherTotal)
 				m_LanguageEnglishTotal = m_LanguageOtherTotal;
-
+			
 			m_LanguageEnglish.m_offset = 0;
 			m_LanguageOther.m_offset = 0;
-
+			
 			GROUP_GENERAL = Translate("General\0");;
 			GROUP_OFFLINE = Translate("Offline\0");
 			AWAY_MESSAGE = Translate("Away due to inactivity.");
@@ -1888,7 +1933,10 @@ BOOL CSettings::LoadLanguageFile(char *Language)
 			IPS_ALLOW=Translate("allow");
 			IPS_DENY=Translate("deny");
 			IPS_UNKNOWN=Translate("not specified");
+			return TRUE;
 		}
+		if (m_LanguageEnglishTotal>m_LanguageOtherTotal)
+			m_LanguageEnglishTotal = m_LanguageOtherTotal;
 
 	}
 	return FALSE;

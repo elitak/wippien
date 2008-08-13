@@ -2170,6 +2170,9 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		pg = new CSettingsDlg::CSettingsAccounts();
 		m_SettingsDlg->m_Dialogs.push_back(pg);
 		
+		pg = new CSettingsDlg::CSettingsLanguages();
+		m_SettingsDlg->m_Dialogs.push_back(pg);
+		
 		pg = new CSettingsDlg::CSettingsLogging();
 		m_SettingsDlg->m_Dialogs.push_back(pg);
 

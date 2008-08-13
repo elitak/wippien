@@ -6386,7 +6386,7 @@ LRESULT CSettingsDlg::CSettingsChatRooms::OnGatewayListClick(WORD wNotifyCode, W
 	return TRUE;
 }
 
-LRESULT CSettingsDlg::CSettingsChatRooms::OmRoomList(int /*idCtrl*/, LPNMHDR pnmh, BOOL& bHandled)
+LRESULT CSettingsDlg::CSettingsChatRooms::OnRoomList(int /*idCtrl*/, LPNMHDR pnmh, BOOL& bHandled)
 {
 	NMLISTVIEW *nm = (NMLISTVIEW *)pnmh;
 	
@@ -6454,3 +6454,5 @@ void CSettingsDlg::CSettingsChatRooms::Show(BOOL Show, RECT *rc)
 			ShowWindow(SW_HIDE);
 	}
 }
+
+

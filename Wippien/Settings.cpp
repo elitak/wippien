@@ -21,10 +21,10 @@ const char *hex="0123456789abcdef";
 extern const char *hex;
 #endif
 
-const char *GROUP_GENERAL = "General\0";
-const char *GROUP_OFFLINE = "Offline\0";
-const char *AWAY_MESSAGE = "Away due to inactivity.";
-const char *EXTAWAY_MESSAGE = "Away for a loooong time.";
+char *GROUP_GENERAL = "General";
+char *GROUP_OFFLINE = "Offline";
+char *AWAY_MESSAGE = "Away due to inactivity.";
+char *EXTAWAY_MESSAGE = "Away for a loooong time.";
 
 extern CMainDlg _MainDlg;
 extern CNotify	_Notify;
@@ -483,6 +483,29 @@ int CSettings::LoadConfig(void)
 		if (wip)
 		{
 			CXmlEntity *ent = NULL;
+			// check language
+			CXmlEntity *langent = CXmlEntity::FindByName(wip, "Language", 1);
+			if (langent)
+			{
+				m_Language = langent->Value;
+				m_LanguageFileVersion = 0;
+			}
+			else
+			{
+				// if local is available, use it.. 
+				int lcid = GetUserDefaultLCID();
+				char buff2[8192];
+				if (GetLocaleInfo(lcid, LOCALE_SENGLANGUAGE, buff2, sizeof(buff2)))
+				{
+					m_Language = buff2;
+					m_LanguageFileVersion = 0;
+				}
+			}
+			if (m_Language.Length())
+			{
+				CComBSTR2 ml = m_Language;
+				LoadLanguage(ml.ToString());
+			}
 			ReadSettingsCfg(wip, "ShowInTaskbar", &m_ShowInTaskbar, FALSE);
 			ReadSettingsCfg(wip, "SoundOn", &m_SoundOn, TRUE);
 			ReadSettingsCfg(wip, "DeleteContactsOnStartup", &m_DeleteContactsOnStartup, FALSE);
@@ -520,25 +543,6 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
-
-			// check language
-			CXmlEntity *langent = CXmlEntity::FindByName(wip, "Language", 1);
-			if (langent)
-			{
-				m_Language = langent->Value;
-				m_LanguageFileVersion = 0;
-			}
-			else
-			{
-				// if local is available, use it.. 
-				int lcid = GetUserDefaultLCID();
-				char buff2[8192];
-				if (GetLocaleInfo(lcid, LOCALE_SENGLANGUAGE, buff2, sizeof(buff2)))
-				{
-					m_Language = buff2;
-					m_LanguageFileVersion = 0;
-				}
-			}
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
 			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://wippien.com/ip/?jid=");
 			ReadSettingsCfg(wip, "UpdateURL", m_UpdateURL, "http://wippien.com/Download/update.php");
@@ -1066,6 +1070,8 @@ BOOL CSettings::SaveConfig(void)
 	Buffer x;
 	x.Append("<Wippien>\r\n");	
 
+	CComBSTR2 ml = m_Language;
+	x.AddChildElem("Language", ml.ToString());
 	x.AddChildElem("ShowInTaskbar", m_ShowInTaskbar?"1":"0");
 	x.AddChildElem("SoundOn", m_SoundOn?"1":"0");
 	x.AddChildElem("DeleteContactsOnStartup", m_DeleteContactsOnStartup?"1":"0");
@@ -1120,9 +1126,6 @@ BOOL CSettings::SaveConfig(void)
 	CComBSTR2 msh = m_ServerHost;
 	x.AddChildElem("ServerHost", msh.ToString());
 	x.AddChildElem("ServerPort", m_ServerPort);
-	msh.Empty();
-	msh = m_Language;
-	x.AddChildElem("Language", msh.ToString());
 	x.AddChildElem("UDPPort", m_UDPPort);
 	
 	CComBSTR2 m = m_IPProviderURL;

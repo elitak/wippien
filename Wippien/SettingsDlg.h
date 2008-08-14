@@ -179,6 +179,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		
 		}
 
+		CComBSTR2 mPATH;
 		char *PATH;
 		char *TEXT1;
 		char *TEXT2;

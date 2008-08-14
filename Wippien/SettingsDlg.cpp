@@ -974,7 +974,11 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Disconnect(void)
 
 CSettingsDlg::CSettingsIcon::CSettingsIcon() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Identity\\Icon");
+	CComBSTR mp = _Settings.Translate("Identity");
+	mp += "\\";
+	mp += _Settings.Translate("Icon");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Please choose your icon.");
 	TEXT2 = _Settings.Translate("This is usually visible to your contacts.");
 
@@ -1269,7 +1273,6 @@ void CSettingsDlg::CSettingsIcon::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsEthernet::CSettingsEthernet() : _CSettingsTemplate()
 {
-	//PATH = "Network\\Virtual LAN";
 	PATH = _Settings.Translate("Network");
 	TEXT1 = _Settings.Translate("Please choose your IP address and netmask.");
 	TEXT2 = _Settings.Translate("This defines network range to be used by wippien.");
@@ -1449,7 +1452,11 @@ void CSettingsDlg::CSettingsEthernet::Show(BOOL Show, RECT *rc)
 }
 CSettingsDlg::CSettingsMediator::CSettingsMediator() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Network\\Mediator");
+	CComBSTR mp = _Settings.Translate("Network");
+	mp += "\\";
+	mp += _Settings.Translate("Mediator");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Please choose who will be your mediator.");
 	TEXT2 = _Settings.Translate("This defines people that mediate P2P connections.");
 }
@@ -1580,7 +1587,11 @@ void CSettingsDlg::CSettingsMediator::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsAccounts::CSettingsAccounts() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Identity\\Accounts");
+	CComBSTR mp = _Settings.Translate("Identity");
+	mp += "\\";
+	mp += _Settings.Translate("Accounts");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Enter all your accounts here.");
 	TEXT2 = _Settings.Translate("You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)");
 
@@ -2385,7 +2396,11 @@ void CSettingsDlg::CSettingsAccounts::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsContactsAddRemove::CSettingsContactsAddRemove() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Contacts\\Add/Remove");
+	CComBSTR mp = _Settings.Translate("Contacts");
+	mp += "\\";
+	mp += _Settings.Translate("Add/Remove");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Find new contacts.");
 	TEXT2 = _Settings.Translate("You can add new Jabber, ICQ, MSN... contacts");
 
@@ -2889,7 +2904,11 @@ void CSettingsDlg::CSettingsContactsAddRemove::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsLogging::CSettingsLogging() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Logging");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Logging");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Setup log files and debug info.");
 	TEXT2 = _Settings.Translate("Specify paths below");
 }
@@ -3089,7 +3108,11 @@ LRESULT CSettingsDlg::CSettingsLogging::OnBrowse4Cmd(WORD wNotifyCode, WORD wID,
 
 CSettingsDlg::CSettingsMsgWin::CSettingsMsgWin() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Messages");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Messages");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Chat window settings.");
 	TEXT2 = _Settings.Translate("For all open chat windows.");
 }
@@ -4451,7 +4474,11 @@ LRESULT CSettingsDlg::CSettingsUser4::OnDrawItem(UINT /*uMsg*/, WPARAM /*wParam*
 char m_SkinThreadBuffer[1024];
 CSettingsDlg::CSettingsSkins::CSettingsSkins() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Appearance\\Skins");
+	CComBSTR mp = _Settings.Translate("Appearance");
+	mp += "\\";
+	mp += _Settings.Translate("Skins");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Choose skin from below list.");
 	TEXT2 = _Settings.Translate("What will Wippien wear?");
 	memset(m_SkinThreadBuffer, 0, sizeof(m_SkinThreadBuffer));
@@ -4717,7 +4744,11 @@ LRESULT CSettingsDlg::CSettingsSkins::OnSkinList(WORD wNotifyCode, WORD wID, HWN
 
 CSettingsDlg::CSettingsAutoAway::CSettingsAutoAway() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Auto Away");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Auto Away");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Auto away settings.");
 	TEXT2 = _Settings.Translate("Determines how will Wippien behave when system is inactive.");
 }
@@ -4895,7 +4926,7 @@ LRESULT CSettingsDlg::CSettingsSystem::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	SetDlgItemText(IDC_SHOWINTASKBAR, _Settings.Translate("Show Wippien in taskbar"));
 	SetDlgItemText(IDC_ALIGNTOBORDER, _Settings.Translate("Rearrange desktop when Wippien window is aligned to border"));
 	SetDlgItemText(IDC_SNAPTOBORDER, _Settings.Translate("Snap to desktop border"));
-	SetDlgItemText(IDC_AUTHOHIDEONINACTIVITY, _Settings.Translate("Auto hide if inactive for "));
+	SetDlgItemText(IDC_AUTHOHIDEONINACTIVITY, _Settings.Translate("Auto hide if inactive for"));
 	SetDlgItemText(IDC_S1, _Settings.Translate("seconds"));
 	SetDlgItemText(IDC_ALWAYSONTOP, _Settings.Translate("Always on top"));
 	SetDlgItemText(IDC_CONFIRMEXIT, _Settings.Translate("Confirm exit from application"));
@@ -5030,7 +5061,11 @@ void CSettingsDlg::CSettingsSystem::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsVoiceChat::CSettingsVoiceChat() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Voice Chat");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Voice Chat");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Please setup your voice chat devices.");
 	TEXT2 = _Settings.Translate("Choose from list below.");
 }
@@ -5202,7 +5237,11 @@ void CSettingsDlg::CSettingsContacts::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsSystemUpdate::CSettingsSystemUpdate() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Updates");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Updates");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Update definitions.");
 	TEXT2 = _Settings.Translate("Define when and how will Wippien update itself.");
 }
@@ -5333,7 +5372,11 @@ void CSettingsDlg::CSettingsSystemUpdate::Show(BOOL Show, RECT *rc)
 }
 CSettingsDlg::CSettingsMTU::CSettingsMTU() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Network\\MTU");
+	CComBSTR mp = _Settings.Translate("Network");
+	mp += "\\";
+	mp += _Settings.Translate("MTU");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Please determine maximum transfer unit.");
 	TEXT2 = _Settings.Translate("If some peer doesn't respond to large packets...");
 }
@@ -5407,7 +5450,11 @@ void CSettingsDlg::CSettingsMTU::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsSound::CSettingsSound() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Sounds");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Sounds");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Setup sounds to be played on various events.");
 	TEXT2 = _Settings.Translate("Choose internal ones, or browse for WAV files.");
 	m_IChange = FALSE;
@@ -5588,7 +5635,11 @@ LRESULT CSettingsDlg::CSettingsSound::OnEditSound(WORD wNotifyCode, WORD wID, HW
 
 CSettingsDlg::CSettingsContactsHide::CSettingsContactsHide() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Contacts\\Hide");
+	CComBSTR mp = _Settings.Translate("Contacts");
+	mp += "\\";
+	mp += _Settings.Translate("Hide");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Hide contacts.");
 	TEXT2 = _Settings.Translate("You can hide some contacts from your sight.");
 
@@ -5907,7 +5958,11 @@ void CSettingsDlg::CSettingsAppearance::Show(BOOL Show, RECT *rc)
 
 CSettingsDlg::CSettingsContactsSort::CSettingsContactsSort() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Contacts\\Sort");
+	CComBSTR mp = _Settings.Translate("Contacts");
+	mp += "\\";
+	mp += _Settings.Translate("Sort");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Sorts contacts.");
 	TEXT2 = _Settings.Translate("Pick one of sort options.");
 }

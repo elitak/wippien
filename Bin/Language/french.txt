@@ -161,9 +161,10 @@ Votre mot de passe est modifié.  ##  Your password is now changed.
 Mot de passe modifié.  ##  Password changed
 Modifier mot de passe du compte  ##  Change account password
 Entrez un nouveau mot de passe  ##  Please enter new password
-Identité\\Carte ID  ##  Identity\\ID Card
-Identité\\Carte ID\\Adresse Perso  ##  Identity\\ID Card\\Home Address
-Identité\\Carte ID\\Adresse Bureau  ##  Identity\\ID Card\\Work Address
+Identité  ##  Identity
+Carte ID  ##  ID Card
+Adresse Perso  ##  Home Address
+Adresse Bureau  ##  Work Address
 Etes-vous sûr de vouloir supprimer l'historique?   ##  Are you sure you want to delete the history?
 Effacer l'historique?  ##  Delete history?
 Envoyer  ##  Send
@@ -208,13 +209,14 @@ Détails de connexion incorrects.  ##  Invalid logon details
 Vous devez entrer votre JID  ##  You must enter your JID.
 Vous devez saisir votre mot de passe.  ##  You must enter your password.
 Erreur Jabber  ##  Jabber error
-Identité\\Icone  ##  Identity\\Icon
+Icone  ##  Icon
 Choisissez votre icone.  ##  Please choose your icon.
 Elle sera visible par vos contacts.  ##  This is usually visible to your contacts.
 Réseau  ##  Network
 Choisissez votre adresse IP et masque réseau.  ##  Please choose your IP address and netmask.
 Cela définit la plage réseau utilisée par Wippien.  ##  This defines network range to be used by wippien.
-Réseau\\Médiateur  ##  Network\\Mediator
+Réseau  ##  Network
+Médiateur  ##  Mediator
 Choisissez qui sera votre médiateur.  ##  Please choose who will be your mediator.
 Définit le médiateur qui gérera les connexions P2P.  ##  This defines people that mediate P2P connections.
 Derniere vérification  ##  Last check
@@ -222,7 +224,6 @@ Port  ##  Port
 Nom d'hôte  ##  Hostname
 Permanent  ##  Permanent
 Temporaire  ##  Temporary
-Identité\\Comptes  ##  Identity\\Accounts
 Entrez tous vos comptes ici.  ##  Enter all your accounts here.
 Vous pouvez ajouter tous types de comptes supportés par votre serveur Jabber (généralement ICQ, MSN, etc...)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Etes-vous sûr de vouloir supprimer le compte '%s'?  ##  Are you sure you want to delete account '%s'?
@@ -230,15 +231,17 @@ Supprimer le compte enregistré?  ##  Delete registered account?
 Comptes  ##  Accounts
 Afficher passerelles seules  ##  Show only gateways
 Afficher tous les services  ##  Show all services
-Contacts\\Ajouter/Supprimer  ##  Contacts\\Add/Remove
+Contacts  ##  Contacts
+Ajouter/Supprimer  ##  Add/Remove
 Trouver nouveaux contacts.  ##  Find new contacts.
 Vous pouvez ajouter des nouveaux contacts Jabber, ICQ, MSN...  ##  You can add new Jabber, ICQ, MSN... contacts
 Tous fichiers (*.*)\0*\0Fichiers TXT (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Tous fichiers image (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Bitmaps Windows (*.bmp)\0*.bmp\0Fichiers Jpeg (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0Fichiers GIF (*.gif)\0*.gif\0Fichiers PNG (*.png)\0*.png\0Tous fichiers (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-Système\\Identification  ##  System\\Logging
+Système  ##  System
+Identification  ##  Logging
 Definir fichiers log et infos de debuggage  ##  Setup log files and debug info.
 Spécifier chemins ci-dessous  ##  Specify paths below
-Système\\Messages  ##  System\\Messages
+Messages  ##  Messages
 Paramètres fenêtre Chat  ##  Chat window settings.
 Pour toutes fenêtres Chat ouvertes  ##  For all open chat windows.
 Informations générales  ##  General info
@@ -249,29 +252,29 @@ Informations Pro  ##  Business information
 Détails Pro pour  ##  Work details for
 Autres  ##  all other
 adresse fournie par le médiateur  ##  address given by mediator
-Apparence\\Skins  ##  Appearance\\Skins
+Apparence  ##  Appearance
+Skins  ##  Skins
 Choisissez le skin dans la liste ci-dessous  ##  Choose skin from below list.
 Comment voulez-vous habiller Wippien?  ##  What will Wippien wear?
 .. aucun ..  ##  .. none ..
-Système\\Absence Auto  ##  System\\Auto Away
+Absence Auto  ##  Auto Away
 Paramètre Absence Automatique   ##  Auto away settings.
 Définit comment se comportera Wippien lorsque votre système est inactif.  ##  Determines how will Wippien behave when system is inactive.
 Système  ##  System
 Messages  basique  ##  Basic system messages.
 Définit le comportement du programme Wippien.  ##  Define Wippien application's behavior.
-Système\\Chat Vocal  ##  System\\Voice Chat
+Chat Vocal  ##  Voice Chat
 Merci de configurer vos périphériques de chat vocal  ##  Please setup your voice chat devices.
 Choisissez dans la liste ci-dessous  ##  Choose from list below.
 <par défaut>  ##  <system default>
-Contacts  ##  Contacts
 Paramètres basiques des contacts  ##  Contacts basic settings.
-Système\\Mises à jour  ##  System\\Updates
+Mises à jour  ##  Updates
 Choix des Mises à jour  ##  Update definitions.
 Définit quand et comment Wippien se mettra à jour.  ##  Define when and how will Wippien update itself.
-Réseau\\MTU  ##  Network\\MTU
+MTU  ##  MTU
 Choisissez l'unité de transert maximale (MTU)  ##  Please determine maximum transfer unit.
 Si certains peer ne répondent pas aux gros paquets...  ##  If some peer doesn't respond to large packets...
-Système\\Sons  ##  System\\Sounds
+Sons  ##  Sounds
 Configure les sons joués lors de différents évènements.  ##  Setup sounds to be played on various events.
 Choisissez ceux proposés, ou explorer pour choisir des fichiers WAV.  ##  Choose internal ones, or browse for WAV files.
 Contact en ligne  ##  Contact online
@@ -280,13 +283,13 @@ Message entrant  ##  Message in
 Message sortant  ##  Message out
 Erreur  ##  Error
 Fichiers WAV (*.wav)\0*.wav\0Tous fichiers (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-Contacts\\Cacher  ##  Contacts\\Hide
+Cacher  ##  Hide
 Cacher contacts.  ##  Hide contacts.
 Vous pouvez cacher des contacts de votre vue.  ##  You can hide some contacts from your sight.
 Apparence  ##  Appearance
 Paremètres Apparence  ##  Appearance settings.
 Définit comment l'interface graphique de Wippien s'affiche.  ##  Define how will Wippien's GUI appear to you.
-Contacts\\Trier  ##  Contacts\\Sort
+Trier  ##  Sort
 Trier les contacts.  ##  Sorts contacts.
 Choisissez un méthode de tri.  ##  Pick one of sort options.
 Salon de discussion  ##  ChatRoom
@@ -295,7 +298,7 @@ Spécifier ou choisir un salon à joindre ou pour en créer un nouveau.  ##  Specif
 - Toutes passerelles -  ##  - All gateways -
 Passerelle Service  ##  Service gateway
 Nom du Salon  ##  Room name
-Réseau\\Pare Feu  ##  Network\\Firewall
+Pare Feu  ##  Firewall
 Configurer les règles du Pare Feu.  ##  Set up firewall rules.
 Vous pouvez définir quels ports seront accessibles par vos contacts.  ##  You can set up which ports can be accessed by your contacts.
 * Tout trafic ICMP  ##  * All ICMP traffic
@@ -423,7 +426,7 @@ Si vous choisissez la valeur 'non défini', alors la même valeur est utilisée com
 Les skins suivants sont disponibles  ##  Following skin files are found
 Appliquer  ##  Apply
 Pour ajouter des skins supplémentaires, vous pouvez les copier dans le sous-dossiers 'Skin'. Ajoutez un fichier PNG 100x100 pixels correspondant pour la prévisualisation.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-Plus de skins...  ##  More skins...
+&Plus de skins...  ##  &More skins...
 Remettre quand une activité est re-détectée.  ##  Set back when activity is detected again.
 Attendre  ##  Wait
 minutes avant de passer en mode absent (0 = désactivé)  ##  minutes before going to away mode (0 = disable)
@@ -434,7 +437,7 @@ Message Absence-Etendue  ##  Extended-Away message
 Afficher Wippien dans la barre des tâches  ##  Show Wippien in taskbar
 Réorganiser le bureau quand la fenêtre Wippien est alignée sur le bord  ##  Rearrange desktop when Wippien window is aligned to border
 Coller sur le bord du bureau  ##  Snap to desktop border
-Masquer automatiquement quand inactif depuis  ##  Auto hide if inactive for
+Masquer automatiquement quand inactif depuis  ##  Auto hide if Wippien is inactive for
 Toujours en avant-plan  ##  Always on top
 Confirmer en quittant le programme  ##  Confirm exit from application
 Déconnecter quand l'ordinateur passe en Veille/Hibernation, Connecter à la reprise  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
@@ -525,7 +528,7 @@ Vos Dé&tails  ##  Your &Details
 Entrez PassPhrase  ##  Enter Passphrase
 Entrez MotDePasse  ##  Enter password
 Entrez mot de passe de protection  ##  Please enter protect password
-Système\\Langues  ##  System\\Languages
+Langues  ##  Languages
 Choisir la langue qui sera utilisée dans tous les textes de Wippien  ##  Setup language used in all Wippien texts.
 De nouvelles langues apparaitront régulièrement  ##  New languages may appear periodically.
 Les langues suivantes sont disponibles sur votre ordinateur  ##  Following languages are found as available on local computer

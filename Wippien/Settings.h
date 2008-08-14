@@ -26,8 +26,8 @@ class CXmlEntity;
 typedef std::vector<BSTR> REQUESTLIST;
 typedef std::vector<CxImage *> IMAGESLIST;
 
-extern const char *GROUP_GENERAL;
-extern const char *GROUP_OFFLINE;
+extern char *GROUP_GENERAL;
+extern char *GROUP_OFFLINE;
 
 #define WIPPIENIM	"WippienIM3"
 #define REFRESHUSERDETAILS			21600L // 6 hours

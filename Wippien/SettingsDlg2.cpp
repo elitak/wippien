@@ -51,7 +51,11 @@ extern const char *IPS_UNKNOWN;
 
 CSettingsDlg::CSettingsNetworkFirewall::CSettingsNetworkFirewall() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("Network\\Firewall");
+	CComBSTR mp = _Settings.Translate("Network");
+	mp += "\\";
+	mp += _Settings.Translate("Firewall");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Set up firewall rules.");
 	TEXT2 = _Settings.Translate("You can set up which ports can be accessed by your contacts.");
 	
@@ -261,7 +265,11 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnChange(WORD wNotifyCode, WORD 
 
 CSettingsDlg::CSettingsLanguages::CSettingsLanguages() : _CSettingsTemplate()
 {
-	PATH = _Settings.Translate("System\\Languages");
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Languages");
+	mPATH = mp;
+	PATH = mPATH.ToString();
 	TEXT1 = _Settings.Translate("Setup language used in all Wippien texts.");
 	TEXT2 = _Settings.Translate("New languages may appear periodically.");
 }
@@ -399,6 +407,9 @@ LRESULT CSettingsDlg::CSettingsLanguages::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	SetDlgItemText(IDC_S2, _Settings.Translate("Locale used on local computer"));
 	SetDlgItemText(IDC_S5, _Settings.Translate("Currently used language"));
 	SetDlgItemText(IDC_S7, _Settings.Translate("Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change."));
+
+	CComBSTR2 l = _Settings.m_Language;
+	SetDlgItemText(IDC_S6, l.ToString());
 
 	return TRUE;
 }

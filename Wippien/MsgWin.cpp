@@ -895,10 +895,10 @@ BOOL CMsgWin::ArrangeLayout()
 		::MoveWindow(hBtn,  rc.right-50, rc.bottom-50, 50, 50, TRUE);
 
 		// main toolbar elements
-		::MoveWindow(hSendFile,  rc.left + 5, rc.top+1, 48, 48, TRUE);
-		::MoveWindow(hDetails,  rc.left + 53, rc.top+1, 48, 48, TRUE);
-		::MoveWindow(hMuteOnOff,  rc.left + 101, rc.top+1, 48, 48, TRUE);
-		::MoveWindow(hClearHistory,  rc.left + 149, rc.top+1, 48, 48, TRUE);
+		::MoveWindow(hSendFile,  rc.left + 5, rc.top+1, 68, 48, TRUE);
+		::MoveWindow(hDetails,  rc.left + 73, rc.top+1, 68, 48, TRUE);
+		::MoveWindow(hMuteOnOff,  rc.left + 141, rc.top+1, 68, 48, TRUE);
+		::MoveWindow(hClearHistory,  rc.left + 209, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hHumanHead,  rc.right-48, rc.top, 48, 48, TRUE);
 
 		// middle toolbar elements

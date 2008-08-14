@@ -825,21 +825,26 @@ void CJabberLib::Connect(char *JID, char *Password)
 	
 	char *host = strchr(JID, '@');
 	if (!host)
-		err = -1;
-
-	if (host)
 	{
-		host++;
-		if (!err)
-			err = WODXMPP::XMPP_Connect(m_Handle, host);
+		SetStatus("Invalid JID");
 	}
-
-	if (err)
+	else
 	{
-		int s = sizeof(buff);
-		WODXMPP::XMPP_GetErrorText(m_Handle, err, buff, &s);
-		SetStatus(buff);
-		HWND h = ::GetDlgItem(hMainWnd, IDC_CONNECT);
-		::PostMessage(hMainWnd, WM_COMMAND,IDC_CONNECT,(LPARAM)h);
+		if (host)
+		{
+			host++;
+			if (!stricmp(host, "gmail.com"))
+				host = "talk.google.com";
+			if (!err)
+				err = WODXMPP::XMPP_Connect(m_Handle, host);
+		}
+		if (err)
+		{
+			int s = sizeof(buff);
+			WODXMPP::XMPP_GetErrorText(m_Handle, err, buff, &s);
+			SetStatus(buff);
+			HWND h = ::GetDlgItem(hMainWnd, IDC_DISCONNECT);
+			::PostMessage(hMainWnd, WM_COMMAND,IDC_DISCONNECT,(LPARAM)h);
+		}
 	}
 }

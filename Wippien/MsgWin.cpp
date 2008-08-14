@@ -913,7 +913,7 @@ BOOL CMsgWin::ArrangeLayout()
 //		::MoveWindow(hChooseEmoticon,  iButtonX, rc.bottom-77+22, 75, 55, TRUE );
 
 		//::MoveWindow(hIsTyping,  iButtonX, rc.bottom-77, 22, 22, TRUE );
-		::SetWindowPos(hIsTyping, NULL, rc.right - 100, rc.bottom-77, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+		::SetWindowPos(hIsTyping, NULL, rc.right - 140, rc.bottom-77, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 
 
 	return TRUE;

@@ -66,6 +66,7 @@ public:
 	HPEN m_hSeparatorPen;
 	BOOL m_ImagesLoaded, m_ListLoaded;
 //	IMAGELIST m_Image;
+	char m_LastTimestamp[100];
 
 	// Send button
 	CPNGButton m_btnSend;

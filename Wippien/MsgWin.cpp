@@ -277,6 +277,7 @@ void CMsgWin::Init(void)
 	m_ImagesLoaded = FALSE;
 	m_ListLoaded = FALSE;
 	m_EmoticonList = NULL;
+	m_LastTimestamp[0] = 0;
 }
 
 CMsgWin::~CMsgWin()
@@ -499,7 +500,7 @@ LRESULT CMsgWin::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BO
 	
 	bHandled = TRUE;
 	m_LastSay.Empty();
-
+	m_LastTimestamp[0] = 0;
 	return TRUE;
 }
 
@@ -828,6 +829,7 @@ LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 	if (i == 6)
 	{
 		m_LastSay.Empty();
+		m_LastTimestamp[0] = 0;
 		unlink(m_HistoryPath);
 //		if (m_ChatBox.m_Events)
 //			delete m_ChatBox.m_Events;
@@ -1024,8 +1026,15 @@ BOOL CMsgWin::AddTimestamp(Buffer *b)
 				*a = '0';
 			a++;
 		}
-		b->Append(buff);
-		b->Append(" ");
+		if (strcmp(buff, m_LastTimestamp))
+		{
+			strcpy(m_LastTimestamp, buff);
+			b->Append("<font face=\"Verdana\" size=\"1\">");
+			b->Append(buff);
+			b->Append("</font>");
+		}
+		else
+			b->Append("..");
 	}
 
 	return TRUE;
@@ -1108,7 +1117,6 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 					FileTimeToSystemTime(&ft, &st);
 					{
 						char *n = (mine?j1:m_User->m_VisibleName);
-						BOOL major = FALSE;
 
 						c->Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top>");
 						if (!(last == n))
@@ -1117,11 +1125,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 							last = n;
 							c->Append(n);
 							c->Append(" said:</b></b></font><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
-							c->Append("</td><td align=right valign=top width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
-							sprintf(buff, "%d:%d", st.wHour, st.wMinute);
-							c->Append(buff);
-							c->Append(")</font></td></tr><tr><td><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
-							major = TRUE;
+							c->Append("</td><td align=right valign=top width=1%>&nbsp;</td></tr><tr><td><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
 						}
 						else
 						{
@@ -1129,17 +1133,17 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 						}
 						
 						c->Append(a);
-						if (major)
+						c->Append("</font></td><td valign=top align=right width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
+						sprintf(buff, "%d:%d", st.wHour, st.wMinute);
+						char *b = buff;
+						while (*b)
 						{
-							c->Append("</font></td><td> </td></tr></table>");
+							if (*b == ' ')
+								*b = '0';
+							b++;
 						}
-						else
-						{
-							c->Append("</font></td><td valign=top align=right width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
-							sprintf(buff, "%d:%d", st.wHour, st.wMinute);
-							c->Append(buff);
-							c->Append(")</font></td></tr></table>");
-						}
+						c->Append(buff);
+						c->Append(")</font></td></tr></table>");
 						free(a);
 					}
 				}
@@ -1194,22 +1198,20 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char
 {
 	Html = "";
 	Buffer *b = new Buffer();
-	BOOL major = FALSE;
 	b->Append("<table cellspacing=0 cellpadding=0 bgcolor=\"");
 	b->Append(BackColor);
 	b->Append("\"><tr><td width=99% valign=top>");
 	if (!(m_LastSay == User))
 	{
+		m_LastTimestamp[0] = 0;
 		b->Append("<br><font face=\"Tahoma\" size=\"2\" color=\"");
 		b->Append(Color);
 		b->Append("\"><b>");
 		m_LastSay = User;
 		b->Append(User);
 		b->Append(" says:</b></b></font><hr style=\"border: 1px dotted #CCCCCC;\" />");
-		b->Append("</td><td align=right valign=top width=1%><font face=\"Verdana\" size=\"1\">(");
-		AddTimestamp(b);
-		b->Append(")</font></td></tr><tr><td><font face=\"Verdana\" size=\"1\">");
-		major = TRUE;
+		b->Append("</td><td align=right valign=top width=1%>&nbsp;");
+		b->Append("</td></tr><tr><td><font face=\"Verdana\" size=\"1\">");
 	}
 	else
 	{
@@ -1230,16 +1232,10 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char
 		c2.Replace("\n","<BR>");
 		b->Append(c2.GetBuffer(0));
 	}
-	if (major)
-	{
-		b->Append("</font></td><td> </td></tr></table>");
-	}
-	else
-	{
-		b->Append("</font></td><td valign=top align=right width=1%><font face=\"Verdana\" size=\"1\">(");
-		AddTimestamp(b);
-		b->Append(")</font></td></tr></table>");
-	}
+
+	b->Append("</font></td><td valign=top align=right width=1%>");
+	AddTimestamp(b);
+	b->Append("</td></tr></table>");
 
 	b->Append("\0",1);
 	b->ConsumeEnd(1);
@@ -1269,12 +1265,13 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 	else
 	{
 		m_LastSay.Empty();
+		m_LastTimestamp[0] = 0;
 		Buffer c;
 		c.Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top><font face=\"Tahoma\" size=\"2\" color=\"800080\">");
 		c.Append(text);
-		c.Append("</td><td align=right valign=top width=1%><font face=\"Verdana\" size=\"1\">(");
+		c.Append("</td><td align=right valign=top width=1%>");
 		AddTimestamp(&c);
-		c.Append(")</font></td></tr></table>");
+		c.Append("</td></tr></table>");
 		m_ChatBox.AddLine(&c, FALSE);
 	}
 	::ShowWindow(GetDlgItem(IDC_ISTYPING),  SW_HIDE);

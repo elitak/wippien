@@ -2430,7 +2430,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnInitDialog(UINT /*uMsg*/, WP
 	::SetFocus(GetDlgItem(IDC_CONTACTID));
 
 	SetDlgItemText(IDC_S1, _Settings.Translate("Contact ID"));
-	SetDlgItemText(IDC_STATIC, _Settings.Translate("Contact Type"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Contact Type"));
 	SetDlgItemText(IDC_CONTACTVISIBLE, _Settings.Translate("Visible Name"));
 	SetDlgItemText(IDC_ADDNEWCONTACT, _Settings.Translate("Add Contact"));
 	SetDlgItemText(IDC_S4, _Settings.Translate("Put contact to the group"));

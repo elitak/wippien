@@ -1498,16 +1498,19 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 
 		BOOL canconnect = (user->m_WippienState == WipConnected?TRUE:ConnectIfPossible(user, FALSE));
 
+		lpmii.fMask = MIIM_STATE;
 		GetMenuItemInfo(h, ID_POPUP1_COPYADDRESS, FALSE, &lpmii);
 		if (canconnect)
 			lpmii.fState = MFS_ENABLED;
 		else
 			lpmii.fState = MFS_DISABLED;
+		lpmii.dwTypeData = _Settings.Translate("&Copy IP");
+		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
 		SetMenuItemInfo(h, ID_POPUP1_COPYADDRESS, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_COPYADDRESS, ID_POPUP1_COPYADDRESS);
 
 
-		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
+		lpmii.fMask = MIIM_STATE;
 		GetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
 		if (user->m_Block)
 			lpmii.dwTypeData = _Settings.Translate("Unblock");
@@ -1515,39 +1518,57 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 			lpmii.dwTypeData = _Settings.Translate("Block");
 		if (tg && tg->Block) // disable block/unblock
 			lpmii.fState = MFS_DISABLED;
+		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
 		SetMenuItemInfo(h, ID_POPUP1_BLOCK, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_BLOCK, ID_POPUP1_BLOCK);
 
 		// nije dovrseno
 		lpmii.fMask = MIIM_STATE;
 		GetMenuItemInfo(h, ID_POPUP1_SENDFILE, FALSE, &lpmii);
-			lpmii.fState = MFS_DISABLED;
+		lpmii.dwTypeData = _Settings.Translate("Send &File");
+		lpmii.fState = MFS_DISABLED;
+		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
 		SetMenuItemInfo(h, ID_POPUP1_SENDFILE, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_SENDFILE, ID_POPUP1_SENDFILE);
 
 		// nije dovrseno
 		lpmii.fMask = MIIM_STATE;
 		GetMenuItemInfo(h, ID_POPUP1_VOICECHAT, FALSE, &lpmii);
-			lpmii.fState = MFS_DISABLED;
+		lpmii.dwTypeData = _Settings.Translate("&Voice Chat");
+		lpmii.fState = MFS_DISABLED;
+		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
 		SetMenuItemInfo(h, ID_POPUP1_VOICECHAT, FALSE, &lpmii);
 	//	AddMenuImage(ID_PNG1_SENDFILE, ID_POPUP1_VOICECHAT);
 
+		lpmii.fMask = MIIM_STATE;
 		GetMenuItemInfo(h, ID_POPUP1_SENDEMAIL, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("Send E&mail");
 		if (*user->m_Email)
 			lpmii.fState = MFS_ENABLED;
 		else
 			lpmii.fState = MFS_DISABLED;
+		lpmii.fMask = MIIM_STRING | MIIM_DATA | MIIM_STATE;
 		SetMenuItemInfo(h, ID_POPUP1_SENDEMAIL, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_SENDEMAIL, ID_POPUP1_SENDEMAIL);
 		
-	//	GetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
-	//		lpmii.fState = MFS_DISABLED;
-	//	SetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_DETAILS, ID_POPUP1_DETAILS);
+		lpmii.fMask = MIIM_DATA | MIIM_STRING;
+//		GetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("De&tails");
+		SetMenuItemInfo(h, ID_POPUP1_DETAILS, FALSE, &lpmii);
 
 		AddMenuImage(ID_PNG1_CHAT, ID_POPUP1_CHAT);
+//		GetMenuItemInfo(h, ID_POPUP1_CHAT, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("C&hat");
+		SetMenuItemInfo(h, ID_POPUP1_CHAT, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_RENAME, ID_POPUP1_RENAME);
+//		GetMenuItemInfo(h, ID_POPUP1_RENAME, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("&Rename");
+		SetMenuItemInfo(h, ID_POPUP1_RENAME, FALSE, &lpmii);
 		AddMenuImage(ID_PNG1_DELETE, ID_POPUP1_DELETE);
+//		GetMenuItemInfo(h, ID_POPUP1_DELETE, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("&Delete");
+		SetMenuItemInfo(h, ID_POPUP1_DELETE, FALSE, &lpmii);
 
 
 		m_UserPopupMenu->AttachMenu(hm);

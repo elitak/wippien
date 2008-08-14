@@ -458,7 +458,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 		{
 			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3)//::MsgHeadline)
 			{
-				ATLTRACE("Got message from remote peer\r\n");
+//				ATLTRACE("Got message from remote peer\r\n");
 				CComBSTR subj;
 				char subjbuff[1024];
 				int subjbufflen = sizeof(subjbuff);
@@ -512,7 +512,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
-									ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
+//									ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
 									BOOL isWippien = FALSE;
 									if (strstr(capa.ToString(), WIPPIENIM))
 										isWippien = TRUE;
@@ -641,7 +641,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
-									ATLTRACE("Got WIPPIENINITRESPONSE from %s\r\n", user->m_JID);
+//									ATLTRACE("Got WIPPIENINITRESPONSE from %s\r\n", user->m_JID);
 
 									// if we're trying to connect now..
 									if (user->m_WippienState >= WipConnecting)
@@ -667,7 +667,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 										char *med = out.GetString(NULL);
 										if (med)
 										{
-											ATLTRACE("Got mediator offer for %s from %s\r\n", med, user->m_JID);
+//											ATLTRACE("Got mediator offer for %s from %s\r\n", med, user->m_JID);
 											
 											int port = out.GetInt();
 											if (port)
@@ -730,7 +730,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 					}
 					if (subj == WIPPIENDISCONNECT && Contact)
 					{
-						ATLTRACE("Got DISCONNECT message\r\n");
+//						ATLTRACE("Got DISCONNECT message\r\n");
 						// reinit...
 						CComBSTR j;
 #ifndef _WODXMPPLIB
@@ -768,7 +768,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								if (user->m_Block)
 									return;
 
-								ATLTRACE("Got CONNECT message from %s\r\n", user->m_JID);
+//								ATLTRACE("Got CONNECT message from %s\r\n", user->m_JID);
 								Buffer in, out;
 								CComBSTR2 r;
 #ifndef _WODXMPPLIB

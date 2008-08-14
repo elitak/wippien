@@ -2335,59 +2335,69 @@ LRESULT CMainDlg::OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 
 	GetMenuItemInfo(h, ID_POPUP3_ONLINE, FALSE, &lpmii);
 	lpmii.fState = MFS_ENABLED;
+	lpmii.dwTypeData = _Settings.Translate("&Online");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_ONLINE, FALSE, &lpmii);
 
+	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP3_AWAY, FALSE, &lpmii);
 	if (online)
 		lpmii.fState = MFS_ENABLED;
 	else
 		lpmii.fState = MFS_DISABLED;
+	lpmii.dwTypeData = _Settings.Translate("&Away");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_AWAY, FALSE, &lpmii);
 
+	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP3_CHAT, FALSE, &lpmii);
 	if (online)
 		lpmii.fState = MFS_ENABLED;
 	else
 		lpmii.fState = MFS_DISABLED;
+	lpmii.dwTypeData = _Settings.Translate("Free for &Chat");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_CHAT, FALSE, &lpmii);
 
+	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP3_DONOTDISTURB, FALSE, &lpmii);
 	if (online)
 		lpmii.fState = MFS_ENABLED;
 	else
 		lpmii.fState = MFS_DISABLED;
+	lpmii.dwTypeData = _Settings.Translate("&Do not Disturb");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_DONOTDISTURB, FALSE, &lpmii);
 
+	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP3_EXTENDEDAWAY, FALSE, &lpmii);
 	if (online)
 		lpmii.fState = MFS_ENABLED;
 	else
 		lpmii.fState = MFS_DISABLED;
+	lpmii.dwTypeData = _Settings.Translate("E&xtended Away");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_EXTENDEDAWAY, FALSE, &lpmii);
 
+	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP3_INVISIBLE, FALSE, &lpmii);
 	if (online)
 		lpmii.fState = MFS_ENABLED;
 	else
 		lpmii.fState = MFS_DISABLED;
+	lpmii.dwTypeData = _Settings.Translate("&Invisible");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_INVISIBLE, FALSE, &lpmii);
 
+	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP3_OFFLINE, FALSE, &lpmii);
 	if (online || connecting)
 		lpmii.fState = MFS_ENABLED;
 	else
 		lpmii.fState = MFS_DISABLED;
+	lpmii.dwTypeData = _Settings.Translate("O&ffline");
+	lpmii.fMask = MIIM_STATE | MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP3_OFFLINE, FALSE, &lpmii);
-/*
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_ONLINE, ID_POPUP3_ONLINE);
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_AWAY, ID_POPUP3_AWAY);
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_FFC, ID_POPUP3_CHAT);
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_DND, ID_POPUP3_DONOTDISTURB);
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_XA, ID_POPUP3_EXTENDEDAWAY);
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_OFFLINE, ID_POPUP3_OFFLINE);
-	_MainDlg.m_UserList.AddMenuIcon(IDI_STATUS_INVISIBLE, ID_POPUP3_INVISIBLE);
-*/
-
 
 	m_CanTooltip = FALSE;
 	int i = m_UserList.m_AwayPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
@@ -2530,6 +2540,19 @@ LRESULT CMainDlg::OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	int i = m_UserList.m_SetupPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
 	m_CanTooltip = TRUE;
 	DestroyMenu(hm);
+
+	MENUITEMINFO lpmii = {0};
+	lpmii.cbSize = sizeof(lpmii);
+
+//	lpmii.fMask = MIIM_STATE;
+//	GetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
+	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Accounts");
+	lpmii.fMask = MIIM_DATA | MIIM_STRING;
+	SetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
+
+//	GetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
+	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Contacts");
+	SetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
 
 
 	switch (i)
@@ -2690,6 +2713,23 @@ LRESULT CMainDlg::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOO
 
 		POINT p;
 		GetCursorPos(&p);
+
+		MENUITEMINFO lpmii = {0};
+		lpmii.cbSize = sizeof(lpmii);
+		lpmii.fMask = MIIM_DATA | MIIM_STRING;
+		
+//		GetMenuItemInfo(h, ID_POPUP4_CHANGEPICTURE, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("Change &Picture");
+		SetMenuItemInfo(h, ID_POPUP4_CHANGEPICTURE, FALSE, &lpmii);
+
+//		GetMenuItemInfo(h, ID_POPUP4_CHANGEPASSWORD, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("Change Pa&ssword");
+		SetMenuItemInfo(h, ID_POPUP4_CHANGEPASSWORD, FALSE, &lpmii);
+		
+//		GetMenuItemInfo(h, ID_POPUP4_YOUR_DETAILS, FALSE, &lpmii);
+		lpmii.dwTypeData = _Settings.Translate("Your &Details");
+		SetMenuItemInfo(h, ID_POPUP4_YOUR_DETAILS, FALSE, &lpmii);
+		
 
 		int i = m_UserList.m_AwayPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, p.x, p.y, 0);
 		switch (i)

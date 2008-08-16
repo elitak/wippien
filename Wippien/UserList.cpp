@@ -818,7 +818,8 @@ void CUserList::RefreshView(BOOL updateonly)
 										CComBSTR2 k2 = k;
 										p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 									}
-									_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
+									if (_Settings.m_ShowNotificationPopup)
+										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
 									_Notify.DoEvent(NotificationOffline);
 								}
 							}
@@ -868,7 +869,8 @@ void CUserList::RefreshView(BOOL updateonly)
 									// fix for going offline but VPN leave connected
 									if (p->m_Online)
 									{
-										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now online"));
+										if (_Settings.m_ShowNotificationPopup)
+											_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now online"));
 										_Notify.DoEvent(NotificationOnline);
 										if (p->IsMsgWindowOpen())
 										{
@@ -889,7 +891,8 @@ void CUserList::RefreshView(BOOL updateonly)
 											CComBSTR2 k2 = k;
 											p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 										}
-										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
+										if (_Settings.m_ShowNotificationPopup)
+											_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
 										_Notify.DoEvent(NotificationOffline);
 									}
 									doblink = TRUE;

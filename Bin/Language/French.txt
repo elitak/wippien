@@ -384,7 +384,7 @@ Ajouter Groupe  ##  Add Group
 Effacer Groupe  ##  Remove Group
 Ajouter Contact  ##  Add Contact
 Mettre contact dans le group  ##  Put contact to the group
-ID Contact  ##  Contact ID
+Contact JID ##  Contact JID
 Type de Contact  ##  Contact Type
 Nom Affiché  ##  Visible Name
 Renommer contact  ##  Rename contact

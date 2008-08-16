@@ -235,6 +235,7 @@ CSettings::CSettings()
 	m_DeleteContactsOnConnect = FALSE;
 	m_AutoConnectVPNOnNetwork = TRUE;
 	m_AutoConnectVPNOnStartup = TRUE;
+	m_ShowNotificationPopup = TRUE;
 
 	m_FixedMTU = FALSE;
 	m_FixedMTUNum = 1200;
@@ -517,6 +518,7 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "AuthContacts", &m_AuthContacts, 1);
 			ReadSettingsCfg(wip, "AutoConnectVPNOnNetwork", &m_AutoConnectVPNOnNetwork, TRUE);
 			ReadSettingsCfg(wip, "AutoConnectVPNOnStartup", &m_AutoConnectVPNOnStartup, TRUE);
+			ReadSettingsCfg(wip, "ShowNotificationPopup", &m_ShowNotificationPopup, TRUE);
 			ReadSettingsCfg(wip, "VoiceChat", &m_EnableVoiceChat, TRUE);
 			ReadSettingsCfg(wip, "CheckUpdate", &m_CheckUpdate, TRUE);
 			ReadSettingsCfg(wip, "CheckUpdateConnect", &m_CheckUpdateConnect, TRUE);
@@ -1083,6 +1085,7 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("AuthContacts", m_AuthContacts);
 	x.AddChildElem("AutoConnectVPNOnNetwork", m_AutoConnectVPNOnNetwork?"1":"0");
 	x.AddChildElem("AutoConnectVPNOnStartup", m_AutoConnectVPNOnStartup?"1":"0");
+	x.AddChildElem("ShowNotificationPopup", m_ShowNotificationPopup?"1":"0");
 	x.AddChildElem("VoiceChat", m_EnableVoiceChat?"1":"0");
 	x.AddChildElem("CheckUpdate", m_CheckUpdate?"1":"0");
 	x.AddChildElem("CheckUpdateConnect", m_CheckUpdateConnect?"1":"0");
@@ -1884,7 +1887,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 					char *h = strstr(buff, "  ##");
 					if (h)
 						*h = 0;
-					m_LanguageEnglish.Append(buff);
+					m_LanguageEnglish.Append(trim(buff));
 					m_LanguageEnglish.PutChar(0);
 					m_LanguageEnglishTotal++;
 					m_LanguageEnglishIndex.Append((char *)&offset, sizeof(offset));
@@ -1929,7 +1932,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 						char *h = strstr(buff, "  ##");
 						if (h)
 							*h = 0;
-						m_LanguageOther.Append(buff);
+						m_LanguageOther.Append(trim(buff));
 						m_LanguageOther.PutChar(0);
 						m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
 						m_LanguageOtherTotal++;

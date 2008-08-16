@@ -259,6 +259,10 @@ LRESULT CSettingsDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	CenterWindow(GetParent());
 
 	SetWindowText(_Settings.Translate("Settings"));
+	SetDlgItemText(IDC_BACK, _Settings.Translate("< &Back"));
+	SetDlgItemText(IDC_NEXT, _Settings.Translate("&Next >"));
+	SetDlgItemText(IDOK, _Settings.Translate("O&K"));
+	SetDlgItemText(IDCANCEL, _Settings.Translate("&Cancel"));
 	return TRUE;
 }
 
@@ -2429,7 +2433,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnInitDialog(UINT /*uMsg*/, WP
 
 	::SetFocus(GetDlgItem(IDC_CONTACTID));
 
-	SetDlgItemText(IDC_S1, _Settings.Translate("Contact ID"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("Contact JID"));
 	SetDlgItemText(IDC_S2, _Settings.Translate("Contact Type"));
 	SetDlgItemText(IDC_CONTACTVISIBLE, _Settings.Translate("Visible Name"));
 	SetDlgItemText(IDC_ADDNEWCONTACT, _Settings.Translate("Add Contact"));
@@ -5153,6 +5157,11 @@ LRESULT CSettingsDlg::CSettingsContacts::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		::SendMessage(GetDlgItem(IDC_AUTOCONNECTONTRAFFIC), BM_SETCHECK, FALSE, NULL);
 
+	if (_Settings.m_ShowNotificationPopup)
+		::SendMessage(GetDlgItem(IDC_SHOWNOTIFICATION), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_SHOWNOTIFICATION), BM_SETCHECK, FALSE, NULL);
+
 	if (_Settings.m_AutoConnectVPNOnStartup)
 		::SendMessage(GetDlgItem(IDC_AUTOCONNECTONSTARTUP), BM_SETCHECK, TRUE, NULL);
 	else
@@ -5176,6 +5185,7 @@ LRESULT CSettingsDlg::CSettingsContacts::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	SetDlgItemText(IDC_CONTACTS_AUTH2, _Settings.Translate("Always authorize"));
 	SetDlgItemText(IDC_AUTOCONNECTONSTARTUP, _Settings.Translate("Automatically establish VPN on startup"));
 	SetDlgItemText(IDC_AUTOCONNECTONTRAFFIC, _Settings.Translate("Automatically establish VPN on network traffic"));
+	SetDlgItemText(IDC_SHOWNOTIFICATION, _Settings.Translate("Show notification popup window when contact goes online/offline"));
 	return TRUE;
 }
 
@@ -5191,6 +5201,11 @@ BOOL CSettingsDlg::CSettingsContacts::Apply(void)
 	else
 		_Settings.m_DeleteContactsOnConnect = FALSE;
 
+
+	if (::SendMessage(GetDlgItem(IDC_SHOWNOTIFICATION), BM_GETSTATE, NULL, NULL))
+		_Settings.m_ShowNotificationPopup = TRUE;
+	else
+		_Settings.m_ShowNotificationPopup = FALSE;
 
 	if (::SendMessage(GetDlgItem(IDC_AUTOCONNECTONTRAFFIC), BM_GETSTATE, NULL, NULL))
 		_Settings.m_AutoConnectVPNOnNetwork = TRUE;

@@ -1,6 +1,6 @@
 # English template text
 # Author: Kresimir Petric
-# Version: 1
+# Version: 2
 No error.
 The system cannot find the file specified.
 The system cannot find the path specified.
@@ -384,7 +384,7 @@ Add Group
 Remove Group
 Add Contact
 Put contact to the group
-Contact ID
+Contact JID
 Contact Type
 Visible Name
 Rename contact
@@ -394,7 +394,7 @@ Settings
 Log Jabber communication
 Log socket communication
 Log raw function calls (may grow quickly!)
-Delete raw log on each 
+Delete raw log on each
 megabytes
 Log VPN communication on P2P startup
 Following mediators can be used
@@ -537,3 +537,4 @@ Locale used on local computer
 Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 New language files available. Download?
+Show notification popup window when contact goes online/offline

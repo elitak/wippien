@@ -197,7 +197,38 @@ public:
 			// loop through files, and if those are languages, update ours
 			m_Owner->m_NewLanguageFiles = 0;
 //			if (NewFiles)
+			Buffer AvailableLangFiles;
 			{
+
+				// let's enumerate what we have so far
+				AvailableLangFiles.Append("\r\n");
+				char buff[32768];
+				strcpy(buff, _Settings.m_MyPath);
+				strcat(buff, "Language\\*.txt");
+				
+				WIN32_FIND_DATA FileData;
+				
+				HANDLE hSearch = FindFirstFile(buff, &FileData); 
+				CComBSTR2 Author, Version;
+				
+				if (hSearch != INVALID_HANDLE_VALUE) 
+				{ 
+					BOOL fFinished = FALSE;
+					while (!fFinished) 
+					{ 
+						char *a = strstr(FileData.cFileName, ".txt");
+						if (a)
+							*a = 0;
+						AvailableLangFiles.Append(FileData.cFileName);
+						AvailableLangFiles.Append("\r\n");
+						if (!FindNextFile(hSearch, &FileData)) 
+							fFinished = TRUE; 
+					} 
+					
+					// Close the search handle. 		
+					FindClose(hSearch);
+				}
+
 				short cnt = 0;
 				WODAPPUPDCOMLib::AppUpd_Files_GetCount(wodAppUpd, &cnt);
 				for (int i=0;i<cnt;i++)
@@ -279,9 +310,22 @@ public:
 										}
 										else
 										{
-											// don't download!
+											// if we don't have this locally, we must download it
+											strcat(path, "\r\n");
+											if (!strstr(AvailableLangFiles.Ptr(), path))
+											{
+												m_Owner->m_NewLanguageFiles++;
+												// we don't have it locally, fetch it
+												if (!needreplace)
+												{
+													WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, TRUE);
+													NewFiles++;
+												}
+											}
+											else // we don't need it at all. we have it but ignore it
 											if (needreplace)
 											{
+												// don't download!
 												WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, FALSE);
 												NewFiles--;
 											}

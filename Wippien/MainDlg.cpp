@@ -2220,7 +2220,7 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		mp1 += "\\";
 		mp1 += _Settings.Translate("ID Card");
 		mp1 += "\\";
-		mp1 += "Home Address";
+		mp1 += _Settings.Translate("Home Address");
 		mp2.Empty();
 		mp2 = mp1;
 		sprintf(us2->m_Path, mp2.ToString());
@@ -2237,7 +2237,7 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		mp1 += "\\";
 		mp1 += _Settings.Translate("ID Card");
 		mp1 += "\\";
-		mp1 += "Work Address";
+		mp1 += _Settings.Translate("Work Address");
 		mp2.Empty();
 		mp2 = mp1;
 		sprintf(us3->m_Path, mp2.ToString());
@@ -2534,10 +2534,6 @@ LRESULT CMainDlg::OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	HMENU hm = LoadMenu(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDR_SETUPPOPUP));
 	HMENU h = GetSubMenu(hm, 0);
 
-
-	m_CanTooltip = FALSE;
-	m_UserList.m_SetupPopupMenu->AttachMenu(hm);
-
 	MENUITEMINFO lpmii = {0};
 	lpmii.cbSize = sizeof(lpmii);
 	
@@ -2553,6 +2549,8 @@ LRESULT CMainDlg::OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Contacts");
 	SetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
 
+	m_CanTooltip = FALSE;
+	m_UserList.m_SetupPopupMenu->AttachMenu(hm);
 	int i = m_UserList.m_SetupPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
 	m_CanTooltip = TRUE;
 	DestroyMenu(hm);

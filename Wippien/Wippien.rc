@@ -291,7 +291,7 @@ BEGIN
     PUSHBUTTON      "Remove Group",IDC_REMOVEGROUP,181,128,57,13
     PUSHBUTTON      "Add Contact",IDC_ADDNEWCONTACT,119,56,75,13
     RTEXT           "Put contact to the group",IDC_S4,7,115,108,8
-    LTEXT           "Contact ID",IDC_S1,8,16,105,8
+    LTEXT           "Contact JID",IDC_S1,8,16,105,8
     LTEXT           "Contact Type",IDC_S2,121,15,121,8
     RTEXT           "Visible Name",IDC_CONTACTVISIBLE,26,44,86,8
 END
@@ -310,7 +310,7 @@ END
 IDD_SETTINGS DIALOGEX 0, 0, 390, 270
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
 CAPTION "Settings"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | 
                     TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_TABSTOP,
@@ -555,17 +555,20 @@ BEGIN
                     WS_TABSTOP,7,30,244,10
     GROUPBOX        "Contacts subscription authorization",IDC_S2,3,65,255,53
     CONTROL         "Never authorize",IDC_CONTACTS_AUTH0,"Button",
-                    BS_AUTORADIOBUTTON,6,79,148,10
+                    BS_AUTORADIOBUTTON,6,79,244,10
     CONTROL         "Ask me",IDC_CONTACTS_AUTH1,"Button",BS_AUTORADIOBUTTON,
-                    6,90,149,10
+                    6,90,239,10
     CONTROL         "Always authorize",IDC_CONTACTS_AUTH2,"Button",
-                    BS_AUTORADIOBUTTON,6,102,164,10
-    CONTROL         "Automatically establish VPN on network traffic",
-                    IDC_AUTOCONNECTONTRAFFIC,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,150,244,10
+                    BS_AUTORADIOBUTTON,6,102,239,10
     CONTROL         "Automatically establish VPN on startup",
                     IDC_AUTOCONNECTONSTARTUP,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,138,245,10
+                    WS_TABSTOP,7,121,245,10
+    CONTROL         "Automatically establish VPN on network traffic",
+                    IDC_AUTOCONNECTONTRAFFIC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,133,244,10
+    CONTROL         "Show notification popup window when contact goes online/offline",
+                    IDC_SHOWNOTIFICATION,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,154,250,11
 END
 
 IDD_PROGRESS DIALOG DISCARDABLE  0, 0, 234, 52
@@ -641,8 +644,8 @@ BEGIN
     LTEXT           "MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.",
                     IDC_S1,7,7,246,25
     CONTROL         "Use fixed MTU",IDC_USEFIXEDMTU,"Button",
-                    BS_AUTORADIOBUTTON | WS_GROUP,7,39,86,10
-    EDITTEXT        IDC_USEFIXEDMTUNUM,96,37,34,13,ES_AUTOHSCROLL | 
+                    BS_AUTORADIOBUTTON | WS_GROUP,7,39,122,10
+    EDITTEXT        IDC_USEFIXEDMTUNUM,131,37,34,13,ES_AUTOHSCROLL | 
                     ES_NUMBER
     CONTROL         "Auto-detect MTU",IDC_AUTODETECTMTU,"Button",
                     BS_AUTORADIOBUTTON,7,62,225,10

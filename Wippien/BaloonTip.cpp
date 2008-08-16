@@ -110,17 +110,21 @@ LRESULT CBalloonTipDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
 	m_wndTitle = GetDlgItem(IDC_BALLOONTIPTEXT);
 	m_wndTitle.SetFont(m_fontTitle);
 
-//	m_btnYes.SetCaption("&Yes");
+//	m_btn1.SetCaption(_Settings.Translate("&Yes"));
 	m_btn1.SetStyle(PBS_UNDERLINE);
 	m_btn1.SubclassWindow(GetDlgItem(IDOK));
 
-//	m_btnNo.SetCaption("&No");
+//	m_btn2.SetCaption(_Settings.Translate("&No"));
 	m_btn2.SetStyle(PBS_UNDERLINE);
 	m_btn2.SubclassWindow(GetDlgItem(IDCANCEL));
 
+//	m_btn3.SetCaption(_Settings.Translate("&Cancel"));
 	m_btn3.SetStyle(PBS_UNDERLINE);
 	m_btn3.SubclassWindow(GetDlgItem(IDCANCEL2));
 
+//	SetDlgItemText(IDOK, _Settings.Translate("&Yes"));
+///	SetDlgItemText(IDCANCEL, _Settings.Translate("&No"));
+//	SetDlgItemText(IDCANCEL2, _Settings.Translate("&Cancel"));
 
 	CAxWindow wndIE = GetDlgItem(IDC_BALLOONTIPMESSAGE);
 	HRESULT hr;
@@ -137,9 +141,6 @@ LRESULT CBalloonTipDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
     }	
 	bHandled = FALSE;
 
-	SetDlgItemText(IDOK, _Settings.Translate("&Yes"));
-	SetDlgItemText(IDCANCEL, _Settings.Translate("&No"));
-	SetDlgItemText(IDCANCEL2, _Settings.Translate("&Cancel"));
 
 	return FALSE;
 }
@@ -176,8 +177,8 @@ void CBalloonTipDlg::DrawType(void)
 	switch (m_Type & 7)
 	{
 	case MB_OKCANCEL:
-		m_btn1.SetCaption("&Ok");
-		m_btn2.SetCaption("&Cancel");
+		m_btn1.SetCaption(_Settings.Translate("&Ok"));
+		m_btn2.SetCaption(_Settings.Translate("&Cancel"));
 		::ShowWindow(GetDlgItem(IDOK), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL2), SW_HIDE);
@@ -186,9 +187,9 @@ void CBalloonTipDlg::DrawType(void)
 		break;
 
 	case MB_ABORTRETRYIGNORE:
-		m_btn1.SetCaption("&Abort");
-		m_btn2.SetCaption("&Retry");
-		m_btn3.SetCaption("&Ignore");
+		m_btn1.SetCaption(_Settings.Translate("&Abort"));
+		m_btn2.SetCaption(_Settings.Translate("&Retry"));
+		m_btn3.SetCaption(_Settings.Translate("&Ignore"));
 		::ShowWindow(GetDlgItem(IDOK), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL2), SW_SHOW);
@@ -198,9 +199,9 @@ void CBalloonTipDlg::DrawType(void)
 		break;
 
 	case MB_YESNOCANCEL:
-		m_btn1.SetCaption("&Yes");
-		m_btn2.SetCaption("&No");
-		m_btn3.SetCaption("&Cancel");
+		m_btn1.SetCaption(_Settings.Translate("&Yes"));
+		m_btn2.SetCaption(_Settings.Translate("&No"));
+		m_btn3.SetCaption(_Settings.Translate("&Cancel"));
 		::ShowWindow(GetDlgItem(IDOK), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL2), SW_SHOW);
@@ -210,8 +211,8 @@ void CBalloonTipDlg::DrawType(void)
 		break;
 
 	case MB_YESNO:
-		m_btn1.SetCaption("&Yes");
-		m_btn2.SetCaption("&No");
+		m_btn1.SetCaption(_Settings.Translate("&Yes"));
+		m_btn2.SetCaption(_Settings.Translate("&No"));
 		::ShowWindow(GetDlgItem(IDOK), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL2), SW_HIDE);
@@ -220,8 +221,8 @@ void CBalloonTipDlg::DrawType(void)
 		break;
 
 	case MB_RETRYCANCEL:
-		m_btn1.SetCaption("&Retry");
-		m_btn2.SetCaption("&Cancel");
+		m_btn1.SetCaption(_Settings.Translate("&Retry"));
+		m_btn2.SetCaption(_Settings.Translate("&Cancel"));
 		::ShowWindow(GetDlgItem(IDOK), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL2), SW_HIDE);
@@ -230,7 +231,7 @@ void CBalloonTipDlg::DrawType(void)
 		break;
 
 	default: //MB_OK
-		m_btn1.SetCaption("&Ok");
+		m_btn1.SetCaption(_Settings.Translate("&Ok"));
 //		SetDlgItemText(IDCANCEL, "&Cancel");
 		::ShowWindow(GetDlgItem(IDOK), SW_SHOW);
 		::ShowWindow(GetDlgItem(IDCANCEL), SW_HIDE);

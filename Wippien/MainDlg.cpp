@@ -2537,25 +2537,25 @@ LRESULT CMainDlg::OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 
 	m_CanTooltip = FALSE;
 	m_UserList.m_SetupPopupMenu->AttachMenu(hm);
-	int i = m_UserList.m_SetupPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
-	m_CanTooltip = TRUE;
-	DestroyMenu(hm);
 
 	MENUITEMINFO lpmii = {0};
 	lpmii.cbSize = sizeof(lpmii);
-
+	
 	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
 	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Accounts");
 	lpmii.fMask = MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
-
+	
 	lpmii.fMask = MIIM_STATE;
 	GetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
 	lpmii.fMask = MIIM_DATA | MIIM_STRING;
 	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Contacts");
 	SetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
 
+	int i = m_UserList.m_SetupPopupMenu->TrackPopupMenu(h, TPM_LEFTALIGN | TPM_RETURNCMD, rt.left, rt.bottom, 0);
+	m_CanTooltip = TRUE;
+	DestroyMenu(hm);
 
 	switch (i)
 	{

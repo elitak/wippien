@@ -45,10 +45,6 @@ int uudecode(const char *src, u_char *target, size_t targsize);
 int b64_pton(char const *src, u_char *target, size_t targsize);
 int b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize);
 
-const char *IPS_ALLOW="allow";
-const char *IPS_DENY="deny";
-const char *IPS_UNKNOWN="not specified";
-
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -4205,9 +4201,9 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 		LVITEM it = {0};
 		it.mask = LVIF_TEXT;
 		if (user->m_AllowedRemoteAny)
-			it.pszText = (char *)IPS_ALLOW;
+			it.pszText = (char *)_Settings.Translate("allow");
 		else
-			it.pszText = (char *)IPS_DENY;
+			it.pszText = (char *)_Settings.Translate("deny");
 		it.cchTextMax = strlen(it.pszText);
 
 
@@ -4233,13 +4229,13 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 			it.iSubItem = 0;
 			it.iItem = 0;
 			if (ips->Ignored)
-				it.pszText = (char *)IPS_UNKNOWN;
+				it.pszText = _Settings.Translate("not specified");
 			else
 			{
 				if (ips->Allowed)
-					it.pszText = (char *)IPS_ALLOW;
+					it.pszText = (char *)_Settings.Translate("allow");
 				else
-					it.pszText = (char *)IPS_DENY;
+					it.pszText = (char *)_Settings.Translate("deny");
 			}
 			it.cchTextMax = strlen(it.pszText);
 
@@ -4255,9 +4251,9 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 		it.iSubItem = 0;
 		it.mask = LVIF_TEXT;
 		if (user->m_AllowedRemoteMediator)
-			it.pszText = (char *)IPS_ALLOW;
+			it.pszText = (char *)_Settings.Translate("allow");
 		else
-			it.pszText = (char *)IPS_DENY;
+			it.pszText = (char *)_Settings.Translate("deny");
 
 
 		res = SendDlgItemMessage(IDC_INTERFACELIST, LVM_INSERTITEM, 0, (LPARAM)&it);

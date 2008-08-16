@@ -1,6 +1,6 @@
 # English template text
 # Author: Kresimir Petric
-# Version: 2
+# Version: 3
 No error.
 The system cannot find the file specified.
 The system cannot find the path specified.
@@ -538,3 +538,5 @@ Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 New language files available. Download?
 Show notification popup window when contact goes online/offline
+Contact is typing...
+says

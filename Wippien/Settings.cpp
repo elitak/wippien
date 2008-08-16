@@ -34,9 +34,6 @@ char *trim(char *text);
 
 char *REGISTRYKEY = "Software\\Kresimir Petric\\Wippien";
 extern const char * CONFIGURING_ADAPTER_TEXT;
-extern const char *IPS_ALLOW;
-extern const char *IPS_DENY;
-extern const char *IPS_UNKNOWN;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -1946,14 +1943,11 @@ BOOL CSettings::LoadLanguage(char *Language)
 			m_LanguageEnglish.m_offset = 0;
 			m_LanguageOther.m_offset = 0;
 			
-			GROUP_GENERAL = Translate("General\0");;
-			GROUP_OFFLINE = Translate("Offline\0");
+			GROUP_GENERAL = Translate("General");;
+			GROUP_OFFLINE = Translate("Offline");
 			AWAY_MESSAGE = Translate("Away due to inactivity.");
 			EXTAWAY_MESSAGE = Translate("Away for a loooong time.");
 			CONFIGURING_ADAPTER_TEXT = Translate("Configuring Wippien network adapter...");
-			IPS_ALLOW=Translate("allow");
-			IPS_DENY=Translate("deny");
-			IPS_UNKNOWN=Translate("not specified");
 			return TRUE;
 		}
 		if (m_LanguageEnglishTotal>m_LanguageOtherTotal)

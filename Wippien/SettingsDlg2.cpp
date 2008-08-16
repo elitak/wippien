@@ -45,10 +45,6 @@ int uudecode(const char *src, u_char *target, size_t targsize);
 int b64_pton(char const *src, u_char *target, size_t targsize);
 int b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize);
 
-extern const char *IPS_ALLOW;
-extern const char *IPS_DENY;
-extern const char *IPS_UNKNOWN;
-
 CSettingsDlg::CSettingsNetworkFirewall::CSettingsNetworkFirewall() : _CSettingsTemplate()
 {
 	CComBSTR mp = _Settings.Translate("Network");

@@ -36,7 +36,6 @@ int FindCxImageFormat(const CString& ext);
 void _CalcRect(int imgwidth, int imgheight, int rcwidth, int rcheight, long *xpos, long *ypos, long *xwidth, long *xheight, int size);
 void BufferUncompress(z_stream z_str, char *input_buffer, int len, _Buffer * output_buffer);
 
-
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -1209,7 +1208,9 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char
 		b->Append("\"><b>");
 		m_LastSay = User;
 		b->Append(User);
-		b->Append(" says:</b></b></font><hr style=\"border: 1px dotted #CCCCCC;\" />");
+		b->Append(" ");
+		b->Append(_Settings.Translate("says"));
+		b->Append("</b></b></font><hr style=\"border: 1px dotted #CCCCCC;\" />");
 		b->Append("</td><td align=right valign=top width=1%>&nbsp;");
 		b->Append("</td></tr><tr><td><font face=\"Verdana\" size=\"1\">");
 	}

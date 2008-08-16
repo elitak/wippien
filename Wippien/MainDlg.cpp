@@ -2544,13 +2544,15 @@ LRESULT CMainDlg::OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	MENUITEMINFO lpmii = {0};
 	lpmii.cbSize = sizeof(lpmii);
 
-//	lpmii.fMask = MIIM_STATE;
-//	GetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
+	lpmii.fMask = MIIM_STATE;
+	GetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
 	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Accounts");
 	lpmii.fMask = MIIM_DATA | MIIM_STRING;
 	SetMenuItemInfo(h, ID_POPUP2_IDENTITIES, FALSE, &lpmii);
 
-//	GetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
+	lpmii.fMask = MIIM_STATE;
+	GetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
+	lpmii.fMask = MIIM_DATA | MIIM_STRING;
 	lpmii.dwTypeData = _Settings.Translate("Add/Remove &Contacts");
 	SetMenuItemInfo(h, ID_POPUP2_NEWCONTACT, FALSE, &lpmii);
 

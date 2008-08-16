@@ -202,7 +202,10 @@ CSettings::CSettings()
 //	m_RSA = NULL;
 	m_RSA = RSA_generate_key(1024,35,NULL,NULL);
 
+	strcpy(buff, m_MyPath);
+	strcat(buff, "Language");
 
+	CreateDirectory(buff, NULL); // language folder
 	CreateDirectory(m_UserImagePath, NULL);
 	CreateDirectory(m_HistoryPath, NULL);
 
@@ -251,6 +254,7 @@ CSettings::CSettings()
 	m_DisconnectEthernetOnExit = FALSE;
 	m_LanguageEnglishTotal = 0;
 	m_LanguageFileVersion = 0;
+	m_LanguageEngFileVersion = 0;
 }	
 
 CSettings::~CSettings()
@@ -1864,16 +1868,27 @@ BOOL CSettings::LoadLanguage(char *Language)
 		{
 			offset = m_LanguageEnglish.m_end;
 			a = temp.GetNextLine();
-			if (a && *a && *a!='#')
+			if (a && *a)
 			{
-				FixCFormatting(a, buff);
-				char *h = strstr(buff, "  ##");
-				if (h)
-					*h = 0;
-				m_LanguageEnglish.Append(buff);
-				m_LanguageEnglish.PutChar(0);
-				m_LanguageEnglishTotal++;
-				m_LanguageEnglishIndex.Append((char *)&offset, sizeof(offset));
+				if (*a == '#')
+				{
+					char *b = strstr(a, "Version:");
+					if (b)
+					{
+						m_LanguageEngFileVersion = atoi(trim(b+8));
+					}
+				}
+				else
+				{
+					FixCFormatting(a, buff);
+					char *h = strstr(buff, "  ##");
+					if (h)
+						*h = 0;
+					m_LanguageEnglish.Append(buff);
+					m_LanguageEnglish.PutChar(0);
+					m_LanguageEnglishTotal++;
+					m_LanguageEnglishIndex.Append((char *)&offset, sizeof(offset));
+				}
 			}
 		} while (a);
 

@@ -111,6 +111,7 @@ public:
 	MACADDR m_MAC;
 
 	BOOL Init(void);
+	void Die(void);
 	BOOL Start(unsigned long IP, unsigned long Netmask);
 	BOOL CheckIfIPRangeIsFree(unsigned long IP, unsigned long Netmask, char *buff);
 	char m_Guid[1024], m_RegistryKey[1024];

@@ -174,14 +174,30 @@ int CheckSettingsWizard(void)
 	return 1;
 }
 
+HANDLE WippienMutex = INVALID_HANDLE_VALUE;
 int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 {
 	// double-check if this is only running instance
-	HANDLE mut = CreateMutex(NULL, TRUE, "WippienMutex");
-	if (!mut || GetLastError() == ERROR_ALREADY_EXISTS)
+	int mutexctr = 0;
+	BOOL mutexsucc = TRUE;
+	do 
 	{
-		return FALSE;
-	}
+		mutexsucc = TRUE;
+		WippienMutex = CreateMutex(NULL, TRUE, "WippienMutex");
+		if (!WippienMutex || GetLastError() == ERROR_ALREADY_EXISTS)
+		{
+			if (WippienMutex)
+				CloseHandle(WippienMutex);
+			WippienMutex = INVALID_HANDLE_VALUE;
+			mutexsucc = FALSE;
+			if (mutexctr == 5)
+			{
+				return FALSE;
+			}
+			mutexctr++;
+			Sleep(1000);
+		}
+	} while (!mutexsucc);
 	
 	if (!CheckSettingsWizard())
 		return FALSE;
@@ -261,6 +277,13 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	_SDK->CreateLinkWindow();
 
 	int nRet = theLoop.Run();
+	_Ethernet.Die();
+	if (WippienMutex != INVALID_HANDLE_VALUE)
+	{
+		ReleaseMutex(WippienMutex);
+		CloseHandle(WippienMutex);
+	}
+	WippienMutex = INVALID_HANDLE_VALUE;
 
 	delete _SDK;
 	_SDK = NULL;

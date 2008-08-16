@@ -74,6 +74,12 @@ CEthernet::CEthernet()
 
 CEthernet::~CEthernet()
 {
+	if (DieHandle != INVALID_HANDLE_VALUE)
+		Die();
+}
+
+void CEthernet::Die(void)
+{
 	// tell everyone to die
 	SetEvent(DieHandle);
 	
@@ -88,25 +94,15 @@ CEthernet::~CEthernet()
 			len = sizeof(mediaon);
 			if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
 			{
-//				MessageBeep(-1);
+				//				MessageBeep(-1);
 			}
 		}
 	}
-
+	
 	m_Alive = FALSE;
 	while (hReadThread != INVALID_HANDLE_VALUE || hWriteThread != INVALID_HANDLE_VALUE || hSetupThread != INVALID_HANDLE_VALUE)
 		Sleep(100);
-/*	
-	// delete threads
-	if (hReadThread != INVALID_HANDLE_VALUE)
-		CloseHandle(hReadThread);
-
-	if (hWriteThread != INVALID_HANDLE_VALUE)
-		CloseHandle(hWriteThread);
-
-	if (hProcThread != INVALID_HANDLE_VALUE)
-		CloseHandle(hProcThread);
-*/	
+	
 	// close network adapter
 	if (m_AdapterHandle != INVALID_HANDLE_VALUE)
 		CloseHandle(m_AdapterHandle);
@@ -117,13 +113,11 @@ CEthernet::~CEthernet()
 	
 	if (WriteHandle != INVALID_HANDLE_VALUE)
 		CloseHandle(WriteHandle);
-
+	
 	if (DieHandle != INVALID_HANDLE_VALUE)
 		CloseHandle(DieHandle);
+	DieHandle = INVALID_HANDLE_VALUE;
 	
-	// delete critical sections
-//	DeleteCriticalSection(&ReadCS);
-//	DeleteCriticalSection(&WriteCS);
 }
 
 void CEthernet::GetMac(MACADDR src, char dst[18])
@@ -142,18 +136,6 @@ void CEthernet::GetMac(MACADDR src, char dst[18])
 		dst[j++] = hex[src[i]%16];
 	}
 	
-}
-
-VOID CALLBACK TimerProc(HWND hwnd,UINT uMsg,UINT_PTR idEvent,DWORD dwTime)
-{
-		if (_Ethernet.m_AdapterHandle == INVALID_HANDLE_VALUE)
-			return;
-
-		MessageBeep(-1);
-		// otherwise...
-///		if (Init())
-//			KillTimer(NULL, 
-
 }
 
 BOOL CEthernet::Init(void)
@@ -712,7 +694,6 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 	CloseHandle(overlap.hEvent);
 	CloseHandle(eth->hWriteThread);
 	_Ethernet.m_Available = FALSE;
-	eth->m_AdapterHandle = INVALID_HANDLE_VALUE;
 	eth->hWriteThread = INVALID_HANDLE_VALUE;
 
 
@@ -722,6 +703,9 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 		Sleep(500);
 		eth->Init();
 	}
+	if (eth->m_AdapterHandle != INVALID_HANDLE_VALUE)
+		CloseHandle(eth->m_AdapterHandle);
+	eth->m_AdapterHandle = INVALID_HANDLE_VALUE;
 	return 0;
 }
 void CEthernet::InjectPacket(char *packet, int len)

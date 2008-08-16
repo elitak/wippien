@@ -33,6 +33,7 @@ public:
 	void DownloadUpdates(BOOL silently);
 	BOOL m_Silently, m_SilentCheck;
 	CProgressDlg *m_Dlg;
+	unsigned int m_NewLanguageFiles;
 
 #ifndef _APPUPDLIB
 	IwodAppUpdateCom *m_Update;

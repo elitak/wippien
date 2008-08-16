@@ -1741,17 +1741,15 @@ BOOL CUserList::DeleteGroup(char *GroupName)
 						WODXMPPCOMLib::XMPP_Contacts_Free(ct);
 					}
 #endif
-					
 
-					free(tg->Name);
-					delete tg;
-					_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
-					return TRUE;
 				}
 			}
+			free(tg->Name);
+			delete tg;
+			_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
+			return TRUE;
 		}
 	}
-
 	return FALSE;
 }
 		

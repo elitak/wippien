@@ -194,8 +194,107 @@ public:
 #endif
 			}
 
+			// loop through files, and if those are languages, update ours
+			m_Owner->m_NewLanguageFiles = 0;
+//			if (NewFiles)
+			{
+				short cnt = 0;
+				WODAPPUPDCOMLib::AppUpd_Files_GetCount(wodAppUpd, &cnt);
+				for (int i=0;i<cnt;i++)
+				{
+					void *file = NULL;
+					WODAPPUPDCOMLib::AppUpd_Files_GetFile(wodAppUpd, i, &file);
+					if (file)
+					{
+						char path[1024];
+						int plen = sizeof(path);
 
-			if (NewFiles)
+						WODAPPUPDCOMLib::AppUpd_File_GetPath(file, path, &plen);
+						if (plen>0)
+						{
+							if (strstr(path, "\\Language"))
+							{
+								// yes, this is language.. 
+								// get version
+								int newver = 0;
+								plen = sizeof(path);
+								WODAPPUPDCOMLib::AppUpd_File_GetNewVersion(file, path, &plen);
+								if (plen>0)
+								{
+									newver = atoi(path);
+								}
+								if (newver>0)
+								{
+									BOOL needreplace = FALSE;
+									WODAPPUPDCOMLib::AppUpd_File_GetNeedReplace(file, &needreplace);
+									plen = sizeof(path);
+									WODAPPUPDCOMLib::AppUpd_File_GetName(file, path, &plen);
+									if (plen>0)
+									{
+										// is it english or our file?
+										char *a = strchr(path, '.');
+										if (a)
+											*a = 0;
+										CComBSTR2 l = _Settings.m_Language;
+										if (!strcmp(path, "English")) // check if english
+										{
+											if (newver>_Settings.m_LanguageEngFileVersion)
+											{
+												m_Owner->m_NewLanguageFiles++;
+												if (!needreplace) // did wodappupdate detected new version?
+												{
+													WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, TRUE);
+													NewFiles++;
+												}
+											}
+											else
+											{
+												if (needreplace)
+												{
+													WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, FALSE);
+													NewFiles--;
+												}
+											}
+										}
+										else
+										if (!strcmp(path, l.ToString()) && strcmp(l.ToString(), "English")) // check if our langauge
+										{
+											if (newver>_Settings.m_LanguageFileVersion)
+											{
+												m_Owner->m_NewLanguageFiles++;
+												if (!needreplace) // did wodappupdate detected new version?
+												{
+													WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, TRUE);
+													NewFiles++;
+												}
+											}
+											else
+											{
+												if (needreplace)
+												{
+													WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, FALSE);
+													NewFiles--;
+												}
+											}
+										}
+										else
+										{
+											// don't download!
+											if (needreplace)
+											{
+												WODAPPUPDCOMLib::AppUpd_File_SetNeedReplace(file, FALSE);
+												NewFiles--;
+											}
+										}
+									}
+								}
+							}
+						}
+						WODAPPUPDCOMLib::AppUpd_Files_Free(file);
+					}
+				}
+			}
+			if (NewFiles > 0)
 			{
 				int answer = IDNO;
 #ifndef _APPUPDLIB
@@ -212,10 +311,17 @@ public:
 
 					m_UpdateHandlerMsgBoxShown = TRUE;
 					CComBSTR nv = "<font face=Verdana size=2>";
-					nv += _Settings.Translate("New version of Wippien is available. Download?");
-					nv += "<br>\r\n<br>\r\n<a href=\"http://wippien.com/notes.php\">";
-					nv += _Settings.Translate("Click here to see what's new.");
-					nv += "</a>";
+					if (m_Owner->m_NewLanguageFiles == NewFiles)
+						nv += _Settings.Translate("New language files available. Download?");
+					else
+						nv += _Settings.Translate("New version of Wippien is available. Download?");
+					nv += "<br>\r\n<br>\r\n";
+					if (m_Owner->m_NewLanguageFiles != NewFiles)
+					{
+						nv += "<a href=\"http://wippien.com/notes.php\">";
+						nv += _Settings.Translate("Click here to see what's new.");
+						nv += "</a>";
+					}
 					CComBSTR2 nv2 = nv;
 					answer = CBalloonTipDlg::Show(NULL, nv2.ToString(), _Settings.Translate("Wippien update"), MB_YESNO);
 					m_UpdateHandlerMsgBoxShown = FALSE;
@@ -395,6 +501,7 @@ CUpdateHandler::CUpdateHandler()
 #ifndef _APPUPDLIB
 	m_UpdateEvents = NULL;
 #endif
+	m_NewLanguageFiles = 0;
 }
 
 CUpdateHandler::~CUpdateHandler()

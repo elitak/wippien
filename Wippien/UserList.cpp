@@ -550,102 +550,105 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									user->m_Online = TRUE;	
 									time((long *)&user->m_LastOnline);
 #ifdef _WODXMPPLIB
-									char nickbuff[1024];
-									int nickbuflen = sizeof(nickbuff);
-									WODXMPPCOMLib::XMPP_Contact_GetNick(contact, nickbuff, &nickbuflen);
-									if (nickbuflen)
-										strcpy(user->m_VisibleName, nickbuff);
-
-									// let's see if nickname contains IP
-									if (nickbuflen>1)
+									if (!user->m_IsWippien)
 									{
-										if (nickbuff[nickbuflen-2] == ']')
+										char nickbuff[1024];
+										int nickbuflen = sizeof(nickbuff);
+										WODXMPPCOMLib::XMPP_Contact_GetNick(contact, nickbuff, &nickbuflen);
+										if (nickbuflen)
+											strcpy(user->m_VisibleName, nickbuff);
+
+										// let's see if nickname contains IP
+										if (nickbuflen>1)
 										{
-											char *nlend = NULL;
-											int nl = nickbuflen-2;
-											while (nl>0 && nickbuff[nl]!='[') nl--;
-											if (nl)
+											if (nickbuff[nickbuflen-2] == ']')
 											{
-												nlend = &nickbuff[nl];
-												nl++;
-												nickbuff[nickbuflen-2] = 0;
-
-												unsigned int ip[4] = {0};
-												int ctr = 0;
-												char *a = &nickbuff[nl];
-												char *b = a;
-												do 
+												char *nlend = NULL;
+												int nl = nickbuflen-2;
+												while (nl>0 && nickbuff[nl]!='[') nl--;
+												if (nl)
 												{
-													if (*a == '.')
+													nlend = &nickbuff[nl];
+													nl++;
+													nickbuff[nickbuflen-2] = 0;
+
+													unsigned int ip[4] = {0};
+													int ctr = 0;
+													char *a = &nickbuff[nl];
+													char *b = a;
+													do 
 													{
-														*a = 0;
-														if (ctr<4)
+														if (*a == '.')
 														{
-															ip[ctr] = atoi(b);
-															a++;
-															b = a;
-															ctr++;
-														}
-														else
-															break;
-													}
-													a++;
-												} while (*a);
-
-												if (ctr && !*a)
-												{
-													if (nlend)
-													{
-														*nlend = 0;
-														strcpy(user->m_VisibleName, trim(nickbuff));
-													}
-
-													if (!user->m_IsWippien || strcmp(user->m_IsWippien->Ptr(), jdnew.ToString()))
-													{
-															if (user->m_IsWippien)
-																delete user->m_IsWippien;
-															user->m_IsWippien = new Buffer();
-															user->m_IsWippien->Append(jdnew.ToString());
-															user->m_IsAlienWippien = TRUE;
-													}
-													if (user->m_IsWippien && _Ethernet.m_Available)
-													{
-															// send presence notification to user
-															Buffer raw;
-															raw.Append("<presence to='");
-															CComBSTR2 e = jdnew.ToString();
-															char *e1 = e.ToString();
-															char *e2 = strchr(e1, '/');
-															if (e2)
-																*e2 = 0;
-															e2 = strchr(e1, '@');
-															if (e2)
+															*a = 0;
+															if (ctr<4)
 															{
-																e2++;
-																raw.Append(e2);
+																ip[ctr] = atoi(b);
+																a++;
+																b = a;
+																ctr++;
 															}
 															else
-																raw.Append(e1);
-															raw.Append("'><x xmlns='vcard-temp:x:update'><nickname>");
-															CComBSTR2 j = _Settings.m_JID;
-															char *j1 = j.ToString();
-															char *j2 = strchr(j1, '@');
-															if (j2)
-																*j2 = 0;
-															raw.Append(j1);
-															raw.Append(" [");
-															struct  in_addr sin_addr;
-															sin_addr.S_un.S_addr = _Settings.m_MyLastNetwork;
-															raw.Append(inet_ntoa(sin_addr));
-															raw.Append("]</nickname></x></presence>");
-															WODXMPPCOMLib::XMPP_RawSend(_Jabber->m_Jabb, raw.Ptr());
-														
-															user->m_WippienState = WipDisconnected;
-															user->SetTimer(rand()%10 * 500, 3);
+																break;
+														}
+														a++;
+													} while (*a);
+
+													if (ctr && !*a)
+													{
+														if (nlend)
+														{
+															*nlend = 0;
+															strcpy(user->m_VisibleName, trim(nickbuff));
+														}
+
+														if (!user->m_IsWippien || strcmp(user->m_IsWippien->Ptr(), jdnew.ToString()))
+														{
+																if (user->m_IsWippien)
+																	delete user->m_IsWippien;
+																user->m_IsWippien = new Buffer();
+																user->m_IsWippien->Append(jdnew.ToString());
+																user->m_IsAlienWippien = TRUE;
+														}
+														if (user->m_IsWippien && _Ethernet.m_Available)
+														{
+																// send presence notification to user
+																Buffer raw;
+																raw.Append("<presence to='");
+																CComBSTR2 e = jdnew.ToString();
+																char *e1 = e.ToString();
+																char *e2 = strchr(e1, '/');
+																if (e2)
+																	*e2 = 0;
+																e2 = strchr(e1, '@');
+																if (e2)
+																{
+																	e2++;
+																	raw.Append(e2);
+																}
+																else
+																	raw.Append(e1);
+																raw.Append("'><x xmlns='vcard-temp:x:update'><nickname>");
+																CComBSTR2 j = _Settings.m_JID;
+																char *j1 = j.ToString();
+																char *j2 = strchr(j1, '@');
+																if (j2)
+																	*j2 = 0;
+																raw.Append(j1);
+																raw.Append(" [");
+																struct  in_addr sin_addr;
+																sin_addr.S_un.S_addr = _Settings.m_MyLastNetwork;
+																raw.Append(inet_ntoa(sin_addr));
+																raw.Append("]</nickname></x></presence>");
+																WODXMPPCOMLib::XMPP_RawSend(_Jabber->m_Jabb, raw.Ptr());
+															
+																user->m_WippienState = WipDisconnected;
+																user->SetTimer(rand()%10 * 500, 3);
+														}
 													}
 												}
-											}
 
+											}
 										}
 									}
 #endif
@@ -678,6 +681,19 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											user->m_IsWippien->Append("/");
 											user->m_IsWippien->Append(WIPPIENIM);
 										}
+										if (!user->m_IsWippien)
+										{
+											if (!strcmp(res, WIPPIENIM))
+											{
+												if (user->m_IsWippien)
+													delete user->m_IsWippien;
+												user->m_IsWippien = new Buffer();
+												user->m_IsWippien->Append(user->m_JID);
+												user->m_IsWippien->Append("/");
+												user->m_IsWippien->Append(res);
+											}
+										}
+
 
 #ifndef _WODXMPPLIB
 										CComBSTR2 gpr3;

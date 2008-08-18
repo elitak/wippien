@@ -683,7 +683,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										}
 										if (!user->m_IsWippien)
 										{
-											if (!strcmp(res, WIPPIENIM))
+											if (res && !strcmp(res, WIPPIENIM))
 											{
 												if (user->m_IsWippien)
 													delete user->m_IsWippien;

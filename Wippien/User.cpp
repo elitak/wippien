@@ -254,10 +254,16 @@ CUser::CUser()
 	m_LastSent = m_LastReceive = 0;
 	m_TotalReceived = m_TotalSent = 0;
 	m_IsAway = FALSE;
+	m_IsWippien = NULL;
+	m_IsAlienWippien = FALSE;
 }
 
 CUser::~CUser()
 {
+	if (m_IsWippien)
+		delete m_IsWippien;
+	m_IsWippien = NULL;
+
 	if (_MainDlg.IsWindow())
 	{
 		HTREEITEM show_item = _MainDlg.m_UserList.GetFirstVisibleItem();
@@ -698,7 +704,8 @@ void CUser::FdTimer(int TimerID)
 					}
 				}
 
-				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITREQUEST, &b);
+				if (m_IsWippien)
+					_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENINITREQUEST, &b);
 			}
 			return;
 		}
@@ -720,7 +727,8 @@ void CUser::FdTimer(int TimerID)
 				b.PutInt(m_MyMediatorPort);
 				b.PutInt(m_MyMediatorChoice);
 
-				_Jabber->ExchangeWippienDetails(m_JID , WIPPIENINITRESPONSE, &b);
+				if (m_IsWippien)
+					_Jabber->ExchangeWippienDetails(this , (char *)WIPPIENINITRESPONSE, &b);
 			}
 			return;
 		}
@@ -1188,7 +1196,8 @@ void CUser::NotifyDisconnect(void)
 	t.PutChar((char)m_WippienState);
 	_Settings.ToHex(&t, &out);
 	out.Append("\0", 1);
-	_Jabber->ExchangeWippienDetails(m_JID, WIPPIENDISCONNECT, &out);
+	if (m_IsWippien)
+		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &out);
 
 
 	ReInit(TRUE);
@@ -1201,7 +1210,8 @@ void CUser::NotifyConnect(void)
 	t.PutChar((char)m_WippienState);
 	_Settings.ToHex(&t, &out);
 	out.Append("\0", 1);
-	_Jabber->ExchangeWippienDetails(m_JID, WIPPIENCONNECT, &out);
+	if (m_IsWippien)
+		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &out);
 
 }
 

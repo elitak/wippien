@@ -1,11 +1,11 @@
 #ifndef __WIP_JABBER_H
 #define __WIP_JABBER_H
 
-#define WIPPIENINITREQUEST		"WippienInitRequest"
-#define WIPPIENINITRESPONSE		"WippienInitResponse"
-#define WIPPIENCONNECT			"WippienConnect"
-#define WIPPIENDISCONNECT		"WippienDisconnect"
-#define WIPPIENDETAILSTHREAD	"ExchangeDetailsThread"
+extern char *WIPPIENINITREQUEST;
+extern char *WIPPIENINITRESPONSE;
+extern char *WIPPIENCONNECT;
+extern char *WIPPIENDISCONNECT;
+extern char *WIPPIENDETAILSTHREAD;
 
 
 #ifdef _WODXMPPLIB
@@ -35,7 +35,7 @@ ErrorInfo;
 #endif
 
 class CJabber;
-
+class CUser;
 
 #ifndef _WODXMPPLIB
 class CJabberEvents : public IDispEventSimpleImpl<1, CJabberEvents, &__uuidof(WODXMPPCOMLib::_IwodXMPPComEvents)>
@@ -114,7 +114,7 @@ public:
 	HWND	m_ServiceRegisterHwnd, m_ServiceRefreshHwnd;
 
 
-	void ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text);
+	void ExchangeWippienDetails(CUser *user, char *Subj, Buffer *Text);
 
 #ifndef _WODXMPPLIB
 	CJabberEvents *m_Events;

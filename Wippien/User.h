@@ -156,6 +156,8 @@ public:
 	BOOL m_Changed, m_ChangeNotify, m_Online, m_Hidden;
 	unsigned long m_LastOnline;
 	CChatRoom *m_ChatRoomPtr;
+	Buffer *m_IsWippien;
+	BOOL m_IsAlienWippien;
 
 
 	void SetSubtext(void);

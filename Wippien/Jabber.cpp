@@ -35,6 +35,13 @@ namespace WODXMPPCOMLib
 }
 #endif
 
+char *WIPPIENINITREQUEST = "WippienInitRequest";
+char *WIPPIENINITRESPONSE	= "WippienInitResponse";
+char *WIPPIENCONNECT = "WippienConnect";
+char *WIPPIENDISCONNECT = "WippienDisconnect";
+char *WIPPIENDETAILSTHREAD = "ExchangeDetailsThread";
+
+
 
 CJabber *_Jabber = NULL;
 extern CMainDlg _MainDlg;
@@ -456,22 +463,78 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 
 //		if (SUCCEEDED(Message->get_Type(&ms)))
 		{
+			CComBSTR subj;
+			char subjbuff[1024];
+			int subjbufflen = sizeof(subjbuff);
+			int consumetextcount = 0;
 			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3)//::MsgHeadline)
 			{
 //				ATLTRACE("Got message from remote peer\r\n");
-				CComBSTR subj;
-				char subjbuff[1024];
-				int subjbufflen = sizeof(subjbuff);
 #ifndef _WODXMPPLIB
 				if (SUCCEEDED(Message->get_Subject(&subj)))
 				{
 					CComBSTR2 s1 = subj;
 					strcpy(subjbuff, s1.ToString());
+				}
 #else
 				WODXMPPCOMLib::XMPP_Message_GetSubject(Message, subjbuff, &subjbufflen);
 				subj = subjbuff;
 				{
+				}
 #endif
+			}
+			else
+			{
+				// check for alien contacts
+				CComBSTR2 j;
+#ifndef _WODXMPPLIB
+				Contact->get_JID(&j);
+#else
+				subjbufflen = sizeof(subjbuff);
+				WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, subjbuff, &subjbufflen);
+				j = subjbuff;				
+#endif
+				CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
+				if (user && user->m_IsAlienWippien)
+				{
+					CComBSTR2 r;
+#ifndef _WODXMPPLIB
+					if (SUCCEEDED(Message->get_Text(&r)))
+#else
+						subjbufflen = sizeof(subjbuff);
+					WODXMPPCOMLib::XMPP_Message_GetText(Message, subjbuff, &subjbufflen);
+					r = subjbuff;
+#endif
+					char *r1 = r.ToString();
+					if (!strncmp(r1, WIPPIENINITREQUEST, strlen(WIPPIENINITREQUEST)))
+					{
+						subj = WIPPIENINITREQUEST;
+						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+						consumetextcount += strlen(WIPPIENINITREQUEST)+1;
+					}
+					if (!strncmp(r1, WIPPIENINITRESPONSE, strlen(WIPPIENINITRESPONSE)))
+					{
+						subj = WIPPIENINITRESPONSE;
+						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+						consumetextcount += strlen(WIPPIENINITRESPONSE)+1;
+					}
+					if (!strncmp(r1, WIPPIENCONNECT, strlen(WIPPIENCONNECT)))
+					{
+						subj = WIPPIENCONNECT;
+						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+					}
+					if (!strncmp(r1, WIPPIENDISCONNECT, strlen(WIPPIENDISCONNECT)))
+					{
+						subj = WIPPIENDISCONNECT;
+						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+					}
+				}
+
+			}
+
+			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3)//::MsgHeadline)
+			{
+				{
 					if (subj == WIPPIENINITREQUEST && Contact)
 					{
 						if (!_Ethernet.m_Available) return; // ignore if ethernet is not available
@@ -487,6 +550,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #endif
 						{
 							char *r1 = r.ToString();
+							r1 += consumetextcount;
 							in.Append(r1);
 
 							_Settings.FromHex(&in, &out);
@@ -512,24 +576,34 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
-//									ATLTRACE("Got WIPPIENINITREQUEST from %s\r\n", user->m_JID);
-									BOOL isWippien = FALSE;
+									char *res = strchr(subjbuff, '/');
+									if (res)
+										res++;
+									else
+										res = "";
 									if (strstr(capa.ToString(), WIPPIENIM))
-										isWippien = TRUE;
-	
-									if (!isWippien)
 									{
-										// check JID
-										char *j1 = strchr(subjbuff, '/');
-										if (j1)
+										if (user->m_IsWippien)
+											delete user->m_IsWippien;
+										user->m_IsWippien = new Buffer();
+										user->m_IsWippien->Append(user->m_JID);
+										user->m_IsWippien->Append("/");
+										user->m_IsWippien->Append(WIPPIENIM);
+									}
+									if (!user->m_IsWippien)
+									{
+										if (!strcmp(res, WIPPIENIM))
 										{
-											j1++;
-											if (!strcmp(j1, WIPPIENIM))
-												isWippien = TRUE;
+											if (user->m_IsWippien)
+												delete user->m_IsWippien;
+											user->m_IsWippien = new Buffer();
+											user->m_IsWippien->Append(user->m_JID);
+											user->m_IsWippien->Append("/");
+											user->m_IsWippien->Append(res);
 										}
 									}
 
-									if (!isWippien)
+									if (!user->m_IsWippien)
 									{
 										// check also resource
 										Buffer b;
@@ -541,13 +615,18 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											line = b.GetNextLine();
 											if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
 											{	
-												isWippien = TRUE;
+												if (user->m_IsWippien)
+													delete user->m_IsWippien;
+												user->m_IsWippien = new Buffer();
+												user->m_IsWippien->Append(user->m_JID);
+												user->m_IsWippien->Append("/");
+												user->m_IsWippien->Append(line);
 												break;
 											}
 										} while (line);
 									}
 
-									if (isWippien)
+									if (user->m_IsWippien)
 									{
 										if (out.Len()>=4)
 										{
@@ -586,7 +665,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 												int olen = out.GetInt();
 												if (olen)
 												{
-													while (out.Len())
+													while (out.Len()>4)
 													{
 														int ij = out.GetInt();
 														char buff[1024];
@@ -624,6 +703,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #endif
 						{
 							char *r1 = r.ToString();
+							r1 += consumetextcount;
 							in.Append(r1);
 
 							_Settings.FromHex(&in, &out);
@@ -782,6 +862,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									char *r1 = r.ToString();
 									if (r1)
 									{
+										r1 += consumetextcount;
 										in.Append(r1);
 										if (in.Len())
 										{		
@@ -1439,9 +1520,8 @@ void CJabber::ChatRoomMessage(void *ChatRoom, char *MessageText, char *HtmlText)
 #endif
 }
 
-void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
+void CJabber::ExchangeWippienDetails(CUser *User, char *Subj, Buffer *Text)
 {
-
 #ifndef _WODXMPPLIB
 	CComPtr<WODXMPPCOMLib::IXMPPMessage> msg;
 	msg.CoCreateInstance(__uuidof(WODXMPPCOMLib::XMPPMessage));
@@ -1467,6 +1547,11 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 	if (Text && Text->Len())
 	{
 		Buffer out;
+		if (User->m_IsAlienWippien)
+		{
+			out.Append(Subj);
+			out.Append(" ");
+		}
 		_Settings.ToHex(Text, &out);
 		out.Append("\0", 1);
 #ifndef _WODXMPPLIB
@@ -1477,31 +1562,18 @@ void CJabber::ExchangeWippienDetails(char *JID, char *Subj, Buffer *Text)
 #endif
 	}
 
-#if 0
-
-	// let's fix JID so it *always* sends WIPPIENIM3 resource
-	CComBSTR2 jid1 = JID;
-	char *jid2 = jid1.ToString();
-	char *jid3 = strchr(jid2, '/');
-	if (jid3)
+	if (User->m_IsWippien)
 	{
-		*jid3 = 0;
-	}
-	char jid4[1024];
-	sprintf(jid4, "%s/%s", jid2, WIPPIENIM);
-#else
-	char *jid4 = JID;
-#endif
-//	Contact->SendMessage(msg);
 #ifndef _WODXMPPLIB
-	CComBSTR j5 = jid4;
+	CComBSTR j5 = User->m_IsWippien->Ptr();
 	HRESULT hr = _Jabber->m_Jabb->raw_SendMessage(j5, msg);
 #else
-	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, jid4, msg);
+	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, User->m_IsWippien->Ptr(), msg);
 #endif
-	if (FAILED(hr))
-	{
-		ShowError();
+		if (FAILED(hr))
+		{
+			ShowError();
+		}
 	}
 
 #ifdef _WODXMPPLIB

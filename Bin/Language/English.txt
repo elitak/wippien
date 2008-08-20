@@ -1,6 +1,6 @@
 # English template text
 # Author: Kresimir Petric
-# Version: 3
+# Version: 4
 No error.
 The system cannot find the file specified.
 The system cannot find the path specified.
@@ -142,6 +142,7 @@ Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>
 Reconnect in %d seconds.
+seconds
 No network
 Exit Wippien
 E&xit

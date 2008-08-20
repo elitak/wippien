@@ -2619,7 +2619,6 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewGroup(WORD wNotifyCode
 			tg->CountBuff[0] = 0;
 			tg->Temporary = FALSE;
 			_Settings.PushGroupSorted(tg);
-//			_Settings.m_Groups.push_back(tg);
 
 			RefreshGroupsList();
 			_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
@@ -2636,7 +2635,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnRemoveGroup(WORD wNotifyCode
 	{
 		if (!_MainDlg.m_UserList.DeleteGroup(buff))
 		{
-			RefreshGroupsList();
+//			RefreshGroupsList();
 			_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, 0);
 		}
 	}
@@ -2821,7 +2820,6 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 							memcpy(a, grp, strlen(grp));
 							tg->Name = a;
 							_Settings.PushGroupSorted(tg);
-							//_Settings.m_Groups.push_back(tg);
 						}
 
 #ifndef _WODXMPPLIB
@@ -4926,7 +4924,7 @@ LRESULT CSettingsDlg::CSettingsSystem::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPar
 	SetDlgItemText(IDC_SHOWINTASKBAR, _Settings.Translate("Show Wippien in taskbar"));
 	SetDlgItemText(IDC_ALIGNTOBORDER, _Settings.Translate("Rearrange desktop when Wippien window is aligned to border"));
 	SetDlgItemText(IDC_SNAPTOBORDER, _Settings.Translate("Snap to desktop border"));
-	SetDlgItemText(IDC_AUTHOHIDEONINACTIVITY, _Settings.Translate("Auto hide if inactive for"));
+	SetDlgItemText(IDC_AUTHOHIDEONINACTIVITY, _Settings.Translate("Auto hide if Wippien is inactive for"));
 	SetDlgItemText(IDC_S1, _Settings.Translate("seconds"));
 	SetDlgItemText(IDC_ALWAYSONTOP, _Settings.Translate("Always on top"));
 	SetDlgItemText(IDC_CONFIRMEXIT, _Settings.Translate("Confirm exit from application"));

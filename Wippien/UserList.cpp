@@ -1243,7 +1243,6 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 		memcpy(a, RootName, strlen(RootName));
 		tg->Name = a;
 		_Settings.PushGroupSorted(tg);
-//		_Settings.m_Groups.push_back(tg);
 	}
 
 	return hi;

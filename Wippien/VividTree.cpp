@@ -61,7 +61,11 @@ void CVividTree::DrawItems(CDC *pDC)
 			::SendMessage(m_hWnd, TVM_GETITEM, 0, (LPARAM)&lvitem);
 			user = (CUser *)lvitem.lParam;
 			if (!user)
+			{
 				tg = _Settings.GetGroupByName(name);
+				if (tg)
+					strcpy(name, tg->VisibleName);
+			}
 
 			if (GetItemRect(show_item, rc_item, TRUE))
 			{

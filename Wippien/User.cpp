@@ -229,6 +229,7 @@ CUser::CUser()
 	m_AllowedRemoteAny = m_AllowedRemoteMediator = TRUE;
 	m_HisVirtualIP = 0;
 
+	m_IsWippien = NULL;
 	ReInit(TRUE);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
@@ -254,7 +255,6 @@ CUser::CUser()
 	m_LastSent = m_LastReceive = 0;
 	m_TotalReceived = m_TotalSent = 0;
 	m_IsAway = FALSE;
-	m_IsWippien = NULL;
 	m_IsAlienWippien = FALSE;
 }
 
@@ -358,6 +358,9 @@ void CUser::ReInit(BOOL WithDirect)
 				return;
 		}
 	}
+	if (m_IsWippien)
+		delete m_IsWippien;
+	m_IsWippien = FALSE;
 	m_BlinkConnectingCounter = 0;
 	m_BlinkTimerCounter = 0;
 

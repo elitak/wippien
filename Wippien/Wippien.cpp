@@ -54,7 +54,7 @@ int CheckSettingsWizard(void)
 			tg->Name = a;
 			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
-			_Settings.m_Groups.push_back(tg);
+			_Settings.PushGroupSorted(tg);
 			
 			a = (char *)malloc(strlen(GROUP_OFFLINE)+1);
 			memcpy(a, GROUP_OFFLINE, strlen(GROUP_OFFLINE)+1);
@@ -64,7 +64,7 @@ int CheckSettingsWizard(void)
 			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			tg->Name = a;
-			_Settings.m_Groups.push_back(tg);
+			_Settings.PushGroupSorted(tg);
 
 			needwizard = TRUE;
 		}

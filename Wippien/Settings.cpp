@@ -633,6 +633,7 @@ int CSettings::LoadConfig(void)
 							tg->Open = FALSE;
 							tg->Block = FALSE;
 							tg->Name = a;
+							tg->VisibleName = a;
 							tg->Temporary = FALSE;
 							tg->CountBuff[0] = 0;
 							entf = CXmlEntity::FindAttrByName(ent, "Open");
@@ -658,10 +659,10 @@ int CSettings::LoadConfig(void)
 					tg->Open = FALSE;
 					tg->Block = FALSE;
 					tg->Name = a;
+					tg->VisibleName = a;
 					tg->CountBuff[0] = 0;
 					tg->Temporary = FALSE;
 					PushGroupSorted(tg);
-					//				m_Groups.push_back(tg);
 				}
 				char *a = (char *)malloc(strlen(GROUP_OFFLINE)+1);
 				memcpy(a, GROUP_OFFLINE, strlen(GROUP_OFFLINE)+1);
@@ -671,8 +672,9 @@ int CSettings::LoadConfig(void)
 				tg->Block = FALSE;
 				tg->Open = OffOpen;
 				tg->Name = a;
+				tg->VisibleName = a;
 				tg->CountBuff[0] = 0;
-				m_Groups.push_back(tg);
+				PushGroupSorted(tg);
 
 			}
 
@@ -1571,13 +1573,27 @@ int CSettings::LoadTools(void)
 
 void CSettings::PushGroupSorted(TreeGroup *grp)
 {
+	int kk = _Settings.m_Groups.size();
+	kk = kk;
 	for (int i = 0; i < _Settings.m_Groups.size(); i++)
 	{
 		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
-		if (stricmp(tg->Name, grp->Name)>0 || !stricmp(tg->Name, GROUP_OFFLINE))
+		if (!stricmp(tg->Name, grp->Name))
 		{
-			_Settings.m_Groups.insert(_Settings.m_Groups.begin()+i, grp);
+			delete grp;
 			return;
+		}
+	}
+	if (stricmp(grp->Name, GROUP_OFFLINE))
+	{
+		for (i = 0; i < _Settings.m_Groups.size(); i++)
+		{
+			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+			if (stricmp(tg->Name, grp->Name)>0 || !stricmp(tg->Name, GROUP_OFFLINE))
+			{
+				_Settings.m_Groups.insert(_Settings.m_Groups.begin()+i, grp);
+				return;
+			}
 		}
 	}
 	_Settings.m_Groups.push_back(grp);
@@ -1943,11 +1959,19 @@ BOOL CSettings::LoadLanguage(char *Language)
 			m_LanguageEnglish.m_offset = 0;
 			m_LanguageOther.m_offset = 0;
 			
-			GROUP_GENERAL = Translate("General");;
-			GROUP_OFFLINE = Translate("Offline");
 			AWAY_MESSAGE = Translate("Away due to inactivity.");
 			EXTAWAY_MESSAGE = Translate("Away for a loooong time.");
 			CONFIGURING_ADAPTER_TEXT = Translate("Configuring Wippien network adapter...");
+
+			// rename groups now
+			for (int i = 0; i < _Settings.m_Groups.size(); i++)
+			{
+				CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+				if (!stricmp(tg->Name, GROUP_GENERAL))
+					tg->VisibleName = Translate(GROUP_GENERAL);
+				if (!stricmp(tg->Name, GROUP_OFFLINE))
+					tg->VisibleName = Translate(GROUP_OFFLINE);
+			}
 			return TRUE;
 		}
 		if (m_LanguageEnglishTotal>m_LanguageOtherTotal)

@@ -122,6 +122,7 @@ public:
 	{
 		char *Name;
 		char CountBuff[128];
+		char *VisibleName;
 		BOOL Open;
 		BOOL Block;
 		HTREEITEM Item;

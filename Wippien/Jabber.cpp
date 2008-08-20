@@ -581,21 +581,20 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 										res++;
 									else
 										res = "";
-									if (strstr(capa.ToString(), WIPPIENIM))
+									if (!user->m_IsWippien)
 									{
-										if (user->m_IsWippien)
-											delete user->m_IsWippien;
-										user->m_IsWippien = new Buffer();
-										user->m_IsWippien->Append(user->m_JID);
-										user->m_IsWippien->Append("/");
-										user->m_IsWippien->Append(WIPPIENIM);
+										if (strstr(capa.ToString(), WIPPIENIM))
+										{
+											user->m_IsWippien = new Buffer();
+											user->m_IsWippien->Append(user->m_JID);
+											user->m_IsWippien->Append("/");
+											user->m_IsWippien->Append(WIPPIENIM);
+										}
 									}
 									if (!user->m_IsWippien)
 									{
 										if (res && strcmp(res, WIPPIENIM))
 										{
-											if (user->m_IsWippien)
-												delete user->m_IsWippien;
 											user->m_IsWippien = new Buffer();
 											user->m_IsWippien->Append(user->m_JID);
 											user->m_IsWippien->Append("/");
@@ -615,8 +614,6 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											line = b.GetNextLine();
 											if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
 											{	
-												if (user->m_IsWippien)
-													delete user->m_IsWippien;
 												user->m_IsWippien = new Buffer();
 												user->m_IsWippien->Append(user->m_JID);
 												user->m_IsWippien->Append("/");

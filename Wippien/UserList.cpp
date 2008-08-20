@@ -497,7 +497,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											user->m_ChatRoomPtr = room;
 											room->CreateGroup();
 											user->m_Block = room->m_Block; 
-											strcpy(user->m_Group, room->m_ShortName);
+//											strcpy(user->m_Group, room->m_ShortName);
 											break;
 										}	
 										
@@ -549,6 +549,27 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = TRUE;	
 									time((long *)&user->m_LastOnline);
+									if (!user->m_IsWippien)
+									{
+										CComBSTR2 r;
+#ifndef _WODXMPPLIB
+										if (SUCCEEDED(contact->get_Capabilities(&r)))
+#else
+											char rsbuf[1024] = {0};
+										int rsbuflen = sizeof(rsbuf);
+										WODXMPPCOMLib::XMPP_Contact_GetCapabilities(contact, rsbuf, &rsbuflen);
+										r = rsbuf;
+#endif
+										if (strstr(r.ToString(), WIPPIENIM))
+										{
+											user->m_IsWippien = new Buffer();
+											user->m_IsWippien->Append(user->m_JID);
+//											user->m_IsWippien->Append("/");
+//											user->m_IsWippien->Append(WIPPIENIM);
+											user->m_WippienState = WipDisconnected;
+											user->SetTimer(rand()%10 * 500, 3);
+										}
+									}
 #ifdef _WODXMPPLIB
 									if (!user->m_IsWippien)
 									{
@@ -604,8 +625,6 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 														if (!user->m_IsWippien || strcmp(user->m_IsWippien->Ptr(), jdnew.ToString()))
 														{
-																if (user->m_IsWippien)
-																	delete user->m_IsWippien;
 																user->m_IsWippien = new Buffer();
 																user->m_IsWippien->Append(jdnew.ToString());
 																user->m_IsAlienWippien = TRUE;
@@ -672,21 +691,20 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										WODXMPPCOMLib::XMPP_Contact_GetCapabilities(contact, rsbuf, &rsbuflen);
 										r = rsbuf;
 #endif
-										if (strstr(r.ToString(), WIPPIENIM))
+										if (!user->m_IsWippien)
 										{
-											if (user->m_IsWippien)
-												delete user->m_IsWippien;
-											user->m_IsWippien = new Buffer();
-											user->m_IsWippien->Append(user->m_JID);
-											user->m_IsWippien->Append("/");
-											user->m_IsWippien->Append(WIPPIENIM);
+											if (strstr(r.ToString(), WIPPIENIM))
+											{
+												user->m_IsWippien = new Buffer();
+												user->m_IsWippien->Append(user->m_JID);
+												user->m_IsWippien->Append("/");
+												user->m_IsWippien->Append(WIPPIENIM);
+											}
 										}
 										if (!user->m_IsWippien)
 										{
 											if (res && !strcmp(res, WIPPIENIM))
 											{
-												if (user->m_IsWippien)
-													delete user->m_IsWippien;
 												user->m_IsWippien = new Buffer();
 												user->m_IsWippien->Append(user->m_JID);
 												user->m_IsWippien->Append("/");
@@ -963,7 +981,7 @@ void CUserList::RefreshView(BOOL updateonly)
 									if (p->m_ChatRoomPtr)
 									{
 										p->m_ChatRoomPtr->CreateGroup();
-										strcpy(p->m_Group, p->m_ChatRoomPtr->m_ShortName);
+//kresovodje										strcpy(p->m_Group, p->m_ChatRoomPtr->m_ShortName);
 									}
 									TreeItem.hParent = FindRoot(p->m_Group);
 
@@ -1242,6 +1260,7 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 		memset(a, 0, strlen(RootName)+1);
 		memcpy(a, RootName, strlen(RootName));
 		tg->Name = a;
+		tg->VisibleName = a;
 		_Settings.PushGroupSorted(tg);
 	}
 
@@ -1335,7 +1354,7 @@ LRESULT CUserList::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 				for (int o=0;o<_MainDlg.m_ChatRooms.size();o++)
 				{
 					CChatRoom *room = _MainDlg.m_ChatRooms[o];
-					if (!strcmp(tg->Name, room->m_ShortName))
+					if (!strcmp(tg->Name, room->m_JID))
 					{
 						found = !(::ShowWindow(room->m_MessageWin->m_hWnd, SW_SHOWNORMAL));
 						room->OpenMsgWindow(TRUE);
@@ -1782,6 +1801,7 @@ BOOL CUserList::ExecuteRButtonGroupCommand(CSettings::TreeGroup *tg, int Command
 			{
 				free(tg->Name);
 				tg->Name = (char *)malloc(strlen(ndlg.m_VisibleName)+1);
+				tg->VisibleName = tg->Name;
 				strcpy(tg->Name, ndlg.m_VisibleName);
 				_Settings.Save();
 				PostMessage(WM_REFRESH, NULL, TRUE);

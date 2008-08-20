@@ -103,7 +103,7 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 	}	
 	else
 	{
-		me->m_WippienState = WipDisconnected;	
+		me->m_WippienState = WipUndefined;	
 		me->m_MyMediatorChoice = (-1); // pick different mediator next time, ok?
 		me->m_MyMediatorOffer[0] = 0;
 		me->m_WippienState = WipWaitingInitRequest;
@@ -658,7 +658,7 @@ void CUser::FdTimer(int TimerID)
 	if (TimerID==3)
 	{
 		KillTimer(3);
-		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
+		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse /*|| m_WippienState < WipWaitingInitResponse*/)
 		{
 			if (_Settings.m_MyLastNetwork)
 			{
@@ -713,7 +713,7 @@ void CUser::FdTimer(int TimerID)
 			return;
 		}
 
-		if (m_RemoteWippienState < WipDisconnected || m_WippienState < WipDisconnected)
+		if (m_RemoteWippienState < WipDisconnected /*|| m_WippienState < WipDisconnected*/)
 		{
 			if (_Settings.m_MyLastNetwork && m_RSA)
 			{

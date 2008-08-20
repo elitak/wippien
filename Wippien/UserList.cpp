@@ -566,7 +566,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											user->m_IsWippien->Append(user->m_JID);
 //											user->m_IsWippien->Append("/");
 //											user->m_IsWippien->Append(WIPPIENIM);
-											user->m_WippienState = WipDisconnected;
+											user->m_WippienState = WipUndefined;
 											user->SetTimer(rand()%10 * 500, 3);
 										}
 									}
@@ -661,7 +661,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 																raw.Append("]</nickname></x></presence>");
 																WODXMPPCOMLib::XMPP_RawSend(_Jabber->m_Jabb, raw.Ptr());
 															
-																user->m_WippienState = WipDisconnected;
+																user->m_WippienState = WipUndefined;
 																user->SetTimer(rand()%10 * 500, 3);
 														}
 													}
@@ -680,8 +680,6 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									{
 										// is this wippien dude?
 										CComBSTR2 r;
-										BOOL isWippien = FALSE;
-
 
 #ifndef _WODXMPPLIB
 										if (SUCCEEDED(contact->get_Capabilities(&r)))
@@ -738,7 +736,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 #endif
 
 										// also check by resource (obsolete!)
-										if (!isWippien)
+										if (!user->m_IsWippien)
 										{
 #ifndef _WODXMPPLIB
 											if (SUCCEEDED(contact->get_Resource(&r)))
@@ -766,7 +764,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											}	
 										}
 
-										if (isWippien)
+										if (user->m_IsWippien)
 										{
 											// yes he is, request init details
 											user->SetTimer(rand()%1000, 3);

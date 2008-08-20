@@ -676,7 +676,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											}
 
 											user->m_Changed = TRUE;
-											_MainDlg.m_UserList.RefreshUser(Contact, NULL);
+//											_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 										}
 										user->m_WippienState = WipWaitingInitResponse;
 										user->SetTimer(rand()%100, 3);
@@ -798,7 +798,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									LeaveCriticalSection(&user->m_CritCS);
 
 									user->m_Changed = TRUE;
-									_MainDlg.m_UserList.RefreshUser(Contact, NULL);
+									user->SetSubtext();
+//									_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 
 									user->m_WippienState = WipDisconnected;
 									user->SetTimer(rand()%100, 3);

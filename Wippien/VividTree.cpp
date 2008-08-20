@@ -63,7 +63,7 @@ void CVividTree::DrawItems(CDC *pDC)
 			if (!user)
 			{
 				tg = _Settings.GetGroupByName(name);
-				if (tg)
+				if (tg && tg->VisibleName)
 					strcpy(name, tg->VisibleName);
 			}
 

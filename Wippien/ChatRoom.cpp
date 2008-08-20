@@ -24,7 +24,7 @@ CChatRoom::CChatRoom()
 	CComBSTR2 n = _Settings.m_Nick;
 	strcpy(m_Nick, n.ToString());
 	memset(&m_ChatWindowRect, 0, sizeof(m_ChatWindowRect));
-//	memset(m_ShortName, 0, sizeof(m_ShortName));
+	memset(m_ShortName, 0, sizeof(m_ShortName));
 	memset(m_Password, 0, sizeof(m_Password));
 	m_Block = FALSE;
 	m_DoOpen = FALSE;
@@ -69,7 +69,7 @@ void CChatRoom::RemoveGroup(void)
 	for (i=0;i<_Settings.m_Groups.size();i++)
 	{
 		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-		if (tg->Temporary && !strcmp(tg->Name, m_JID))
+		if (tg->Temporary && !strcmp(tg->Name, m_ShortName))
 		{
 			_Settings.m_Groups.erase(_Settings.m_Groups.begin() + i);
 			free(tg->Name);
@@ -84,14 +84,6 @@ void CChatRoom::RemoveGroup(void)
 
 void CChatRoom::CreateGroup(void)
 {
-
-	for (int i = 0; i < _Settings.m_Groups.size(); i++)
-	{
-		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
-		if (!strcmp(tg->Name, m_JID))
-			return;
-	}
-
 	char buff[1024];
 	buff[0] = '[';
 	strcpy(buff+1, m_JID);
@@ -103,16 +95,19 @@ void CChatRoom::CreateGroup(void)
 		*j2 = 0;
 	}
 
+	for (int i = 0; i < _Settings.m_Groups.size(); i++)
+	{
+		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
+		if (!strcmp(tg->Name, buff))
+			return;
+	}
 
-//	strcpy(m_ShortName, buff);
+	strcpy(m_ShortName, buff);
 	// let's create group for this, if there isn't any...
 	CSettings::TreeGroup *grp = new CSettings::TreeGroup;
 	memset(grp, 0, sizeof(CSettings::TreeGroup));
-	grp->Name = (char *)malloc(strlen(m_JID)+1);
-	strcpy(grp->Name, m_JID);
-	m_VisibleNameBuffer.Clear();
-	m_VisibleNameBuffer.Append(buff);
-	grp->VisibleName = m_VisibleNameBuffer.Ptr();
+	grp->Name = (char *)malloc(strlen(buff)+1);
+	strcpy(grp->Name, buff);
 	grp->Open = TRUE;
 	grp->Temporary = TRUE;
 	_Settings.PushGroupSorted(grp);

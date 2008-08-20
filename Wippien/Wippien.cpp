@@ -52,7 +52,6 @@ int CheckSettingsWizard(void)
 			tg->Item = NULL;
 			tg->Open = FALSE;
 			tg->Name = a;
-			tg->VisibleName = a;
 			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			_Settings.PushGroupSorted(tg);
@@ -65,7 +64,6 @@ int CheckSettingsWizard(void)
 			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			tg->Name = a;
-			tg->VisibleName = a;
 			_Settings.PushGroupSorted(tg);
 
 			needwizard = TRUE;

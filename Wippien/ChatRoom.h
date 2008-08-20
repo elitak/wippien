@@ -10,7 +10,6 @@
 #endif // _MSC_VER > 1000
 
 class CMsgWin;
-#include "Buffer.h"
 
 class CChatRoom
 {
@@ -29,13 +28,12 @@ public:
 	void RemoveGroup(void);
 	
 	char m_JID[1024];
-//	char m_ShortName[128];
+	char m_ShortName[128];
 	char m_Password[1024];
 	char m_Nick[1024];
 	RECT m_ChatWindowRect;
 	BOOL m_Block, m_DoOpen, m_DoSave;
 
-	_Buffer m_VisibleNameBuffer;
 };
 
 #endif // !defined(AFX_CHATROOMWINDOW_H__3E627B65_FBBF_4C75_8DEB_BEE3BA96E2AE__INCLUDED_)

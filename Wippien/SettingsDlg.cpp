@@ -2615,7 +2615,6 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewGroup(WORD wNotifyCode
 			tg->Item = NULL;
 			tg->Open = FALSE;
 			tg->Name = a;
-			tg->VisibleName = a;
 			tg->Block = FALSE;
 			tg->CountBuff[0] = 0;
 			tg->Temporary = FALSE;
@@ -2820,7 +2819,6 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 							memset(a, 0, strlen(grp)+1);
 							memcpy(a, grp, strlen(grp));
 							tg->Name = a;
-							tg->VisibleName = a;
 							_Settings.PushGroupSorted(tg);
 						}
 

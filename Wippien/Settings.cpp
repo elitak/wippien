@@ -1837,7 +1837,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
 			{
 				char *a2 = NULL;
 				Buffer ml;
-				ml.AppendSpace(&a2, ret*3);
+				ml.AppendSpace(&a2, ret);
 				WideCharToMultiByte(CP_ACP, 0, (BSTR)temp->Ptr(), temp->Len(), a2, ret, NULL, NULL);
 				temp->Clear();
 				temp->Append(a2, ret);
@@ -1853,6 +1853,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
 BOOL CSettings::LoadLanguage(char *Language)
 {
 	return FALSE;
+
 	char buff[32768];
 	strcpy(buff, _Settings.m_MyPath);
 	strcat(buff, "Language\\English.txt");

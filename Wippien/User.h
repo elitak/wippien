@@ -40,8 +40,8 @@ typedef enum WippienState
 	WipDisconnected,
 	WipConnecting,
 	WipNegotiating,
-	WipConnected,
-	WipUndefined
+	WipConnected
+//	WipUndefined
 } WippienState;
 
 typedef struct IPAddressConnectionStruct

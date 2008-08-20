@@ -103,11 +103,10 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 	}	
 	else
 	{
-		me->m_WippienState = WipUndefined;	
 		me->m_MyMediatorChoice = (-1); // pick different mediator next time, ok?
 		me->m_MyMediatorOffer[0] = 0;
 		me->m_WippienState = WipWaitingInitRequest;
-		me->m_RemoteWippienState = WipUndefined;
+		me->m_RemoteWippienState = WipWaitingInitRequest;
 
 //		me->ReInit(TRUE);
 	}
@@ -336,7 +335,7 @@ void CUser::ReInit(BOOL WithDirect)
 
 		m_MyMediatorOffer[0] = 0;
 		m_WippienState = WipWaitingInitRequest;
-		m_RemoteWippienState = WipUndefined;
+		m_RemoteWippienState = WipWaitingInitRequest;
 		EnterCriticalSection(&m_CritCS);
 #ifndef _WODVPNLIB
 		m_wodVPN->raw_Stop();

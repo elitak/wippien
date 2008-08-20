@@ -566,7 +566,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											user->m_IsWippien->Append(user->m_JID);
 //											user->m_IsWippien->Append("/");
 //											user->m_IsWippien->Append(WIPPIENIM);
-											user->m_WippienState = WipUndefined;
+											user->m_WippienState = WipWaitingInitRequest;
 											user->SetTimer(rand()%10 * 500, 3);
 										}
 									}
@@ -661,7 +661,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 																raw.Append("]</nickname></x></presence>");
 																WODXMPPCOMLib::XMPP_RawSend(_Jabber->m_Jabb, raw.Ptr());
 															
-																user->m_WippienState = WipUndefined;
+																user->m_WippienState = WipWaitingInitRequest;
 																user->SetTimer(rand()%10 * 500, 3);
 														}
 													}

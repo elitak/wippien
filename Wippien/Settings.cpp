@@ -1852,6 +1852,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
 
 BOOL CSettings::LoadLanguage(char *Language)
 {
+	return FALSE;
 	char buff[32768];
 	strcpy(buff, _Settings.m_MyPath);
 	strcat(buff, "Language\\English.txt");

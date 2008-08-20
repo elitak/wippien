@@ -1221,7 +1221,7 @@ void CUser::NotifyBlock(void)
 {
 	if (m_Block && _Jabber)
 	{
-		m_WippienState = WipDisconnected;
+		m_WippienState = WipWaitingInitRequest;
 		NotifyDisconnect();
 	}
 }

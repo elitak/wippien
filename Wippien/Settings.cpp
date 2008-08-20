@@ -1837,7 +1837,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
 			{
 				char *a2 = NULL;
 				Buffer ml;
-				ml.AppendSpace(&a2, ret);
+				ml.AppendSpace(&a2, ret*3);
 				WideCharToMultiByte(CP_ACP, 0, (BSTR)temp->Ptr(), temp->Len(), a2, ret, NULL, NULL);
 				temp->Clear();
 				temp->Append(a2, ret);

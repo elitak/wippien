@@ -1786,11 +1786,12 @@ CSettings::TreeGroup *CSettings::GetGroupByName(char *Name)
 	return NULL;
 }
 
-BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
+BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 {
 	char buff[32768];
 	int i;
-	temp->Clear();
+	Buffer temp;
+	temp.Clear();
 	int handle = open(Language, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle >= 0)
 	{
@@ -1825,24 +1826,26 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
 						i-=2;
 					}
 				}
-				temp->Append((char *)a1, i);
+				temp.Append((char *)a1, i);
 			}
 		} while (i>0);
 		close(handle);
 		
 		if (isunicode)
 		{
-			int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)temp->Ptr(), temp->Len(), NULL, NULL, NULL, NULL);
+			int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), NULL, NULL, NULL, NULL);
 			if (ret>0)
 			{
 				char *a2 = NULL;
 				Buffer ml;
 				ml.AppendSpace(&a2, ret);
-				WideCharToMultiByte(CP_ACP, 0, (BSTR)temp->Ptr(), temp->Len(), a2, ret, NULL, NULL);
-				temp->Clear();
-				temp->Append(a2, ret);
+				WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), a2, ret, NULL, NULL);
+				temp.Clear();
+				temp.Append(a2, ret);
 			}
 		}
+
+		temp1->Append(temp.Ptr(), temp.Len());
 
 		return TRUE;
 	}
@@ -1852,8 +1855,6 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp)
 
 BOOL CSettings::LoadLanguage(char *Language)
 {
-	return FALSE;
-
 	char buff[32768];
 	strcpy(buff, _Settings.m_MyPath);
 	strcat(buff, "Language\\English.txt");
@@ -2042,7 +2043,7 @@ void CSettings::FixCFormatting(char *in, char *out)
 						break;
 
 				default:
-					MessageBeep(-1);
+//					MessageBeep(-1);
 					break;
 				}
 			}

@@ -506,27 +506,33 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 					r = subjbuff;
 #endif
 					char *r1 = r.ToString();
-					if (!strncmp(r1, WIPPIENINITREQUEST, strlen(WIPPIENINITREQUEST)))
+					if (*r1 == '[')
 					{
-						subj = WIPPIENINITREQUEST;
-						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
-						consumetextcount += strlen(WIPPIENINITREQUEST)+1;
-					}
-					if (!strncmp(r1, WIPPIENINITRESPONSE, strlen(WIPPIENINITRESPONSE)))
-					{
-						subj = WIPPIENINITRESPONSE;
-						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
-						consumetextcount += strlen(WIPPIENINITRESPONSE)+1;
-					}
-					if (!strncmp(r1, WIPPIENCONNECT, strlen(WIPPIENCONNECT)))
-					{
-						subj = WIPPIENCONNECT;
-						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
-					}
-					if (!strncmp(r1, WIPPIENDISCONNECT, strlen(WIPPIENDISCONNECT)))
-					{
-						subj = WIPPIENDISCONNECT;
-						msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+						if (!strncmp(r1+1, WIPPIENINITREQUEST, strlen(WIPPIENINITREQUEST)))
+						{
+							subj = WIPPIENINITREQUEST;
+							msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+							consumetextcount += strlen(WIPPIENINITREQUEST)+2;
+						}
+						else
+						if (!strncmp(r1+1, WIPPIENINITRESPONSE, strlen(WIPPIENINITRESPONSE)))
+						{
+							subj = WIPPIENINITRESPONSE;
+							msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+							consumetextcount += strlen(WIPPIENINITRESPONSE)+2;
+						}
+						else
+						if (!strncmp(r1+1, WIPPIENCONNECT, strlen(WIPPIENCONNECT)))
+						{
+							subj = WIPPIENCONNECT;
+							msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+						}
+						else
+						if (!strncmp(r1+1, WIPPIENDISCONNECT, strlen(WIPPIENDISCONNECT)))
+						{
+							subj = WIPPIENDISCONNECT;
+							msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+						}
 					}
 				}
 
@@ -550,7 +556,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #endif
 						{
 							char *r1 = r.ToString();
-							r1 += consumetextcount;
+							if (consumetextcount)
+							{
+								r1 += consumetextcount;
+								char *r2 = strchr(r1, ']');
+								if (r2)
+									*r2 = 0;
+							}
 							in.Append(r1);
 
 							_Settings.FromHex(&in, &out);
@@ -701,7 +713,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #endif
 						{
 							char *r1 = r.ToString();
-							r1 += consumetextcount;
+							if (consumetextcount)
+							{
+								r1 += consumetextcount;
+								char *r2 = strchr(r1, ']');
+								if (r2)
+									*r2 = 0;
+							}
 							in.Append(r1);
 
 							_Settings.FromHex(&in, &out);
@@ -863,7 +881,6 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									char *r1 = r.ToString();
 									if (r1)
 									{
-										r1 += consumetextcount;
 										in.Append(r1);
 										if (in.Len())
 										{		
@@ -1550,10 +1567,15 @@ void CJabber::ExchangeWippienDetails(CUser *User, char *Subj, Buffer *Text)
 		Buffer out;
 		if (User->m_IsAlienWippien)
 		{
+			out.Append("[");
 			out.Append(Subj);
 			out.Append(" ");
 		}
 		_Settings.ToHex(Text, &out);
+		if (User->m_IsAlienWippien)
+		{
+			out.Append("]");
+		}
 		out.Append("\0", 1);
 #ifndef _WODXMPPLIB
 		CComBSTR t1 = out.Ptr();

@@ -107,7 +107,7 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 		me->m_MyMediatorChoice = (-1); // pick different mediator next time, ok?
 		me->m_MyMediatorOffer[0] = 0;
 		me->m_WippienState = WipWaitingInitRequest;
-		me->m_RemoteWippienState = WipUndefined;
+		me->m_RemoteWippienState = WipWaitingInitRequest;
 
 //		me->ReInit(TRUE);
 	}
@@ -336,7 +336,7 @@ void CUser::ReInit(BOOL WithDirect)
 
 		m_MyMediatorOffer[0] = 0;
 		m_WippienState = WipWaitingInitRequest;
-		m_RemoteWippienState = WipUndefined;
+		m_RemoteWippienState = WipWaitingInitRequest;
 		EnterCriticalSection(&m_CritCS);
 #ifndef _WODVPNLIB
 		m_wodVPN->raw_Stop();
@@ -487,25 +487,65 @@ void CUser::SendConnectionRequest(BOOL Notify)
 #else
 			m_wodVPN->raw_Stop();
 #endif
+
+			CComBSTR myjid, hisjid;
 			CComBSTR myid;
-			if (m_ChatRoomPtr)
+			if (m_IsAlienWippien)
 			{
-				myid = m_ChatRoomPtr->m_JID;
-				myid += "/";
-				myid += m_ChatRoomPtr->m_Nick;
+				CComBSTR2 j = _Settings.m_JID;
+				char *j1 = j.ToString();
+				char *j2 = strchr(j1, '@');
+				if (j2)
+					*j2 = 0;
+				j2 = strchr(j1, ' ');
+				if (j2)
+					*j2 = 0;
+				myjid = j1;
+
+				CComBSTR2 l = this->m_VisibleName;
+				j1 = l.ToString();
+				j2 = strchr(j1, '@');
+				if (j2)
+					*j2 = 0;
+				j2 = strchr(j1, ' ');
+				if (j2)
+					*j2 = 0;
+				hisjid = j1;
+
 			}
 			else
-				myid = _Settings.m_JID;
+			{
+				if (m_ChatRoomPtr)
+				{
+					myjid = m_ChatRoomPtr->m_JID;
+					myjid += "/";
+					myjid += m_ChatRoomPtr->m_Nick;
+				}
+				else
+					myjid = _Settings.m_JID;
+
+				hisjid = m_JID;
+			}
+
+			myid += myjid;
 			myid += "_";
-			myid += m_JID;
+			myid += hisjid;
 
 			myid.ToLower();
+			CComBSTR hisid;
+
+			hisid += hisjid;
+			hisid += "_";
+			hisid += myjid;
+			hisid.ToLower();
+	
 #ifdef _WODVPNLIB
 			CComBSTR2 myid2 = myid;
 			WODVPNCOMLib::VPN_SetMyID(m_wodVPN, myid2.ToString());
 #else	
 			m_wodVPN->put_MyID(/*_Settings.m_JID*/myid);
 #endif
+
 			VARIANT varhost, varport;
 			varhost.vt = VT_BSTR;
 			USES_CONVERSION;
@@ -517,19 +557,6 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			varport.lVal = m_HisMediatorPort;
 			VARIANT varempty;
 			varempty.vt = VT_ERROR;
-
-			CComBSTR hisid = m_JID;
-			hisid += "_";
-			if (m_ChatRoomPtr)
-			{
-				hisid += m_ChatRoomPtr->m_JID;
-				hisid += "/";
-				hisid += m_ChatRoomPtr->m_Nick;
-			}
-			else
-				hisid += _Settings.m_JID;
-			hisid.ToLower();
-	
 
 #ifdef _WODVPNLIB
 			WODVPNCOMLib::VPN_SetRetryCount(m_wodVPN, 30);
@@ -658,7 +685,7 @@ void CUser::FdTimer(int TimerID)
 	if (TimerID==3)
 	{
 		KillTimer(3);
-		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
+		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse /*|| m_WippienState < WipWaitingInitResponse*/)
 		{
 			if (_Settings.m_MyLastNetwork)
 			{
@@ -713,7 +740,7 @@ void CUser::FdTimer(int TimerID)
 			return;
 		}
 
-		if (m_RemoteWippienState < WipDisconnected || m_WippienState < WipDisconnected)
+		if (m_RemoteWippienState < WipDisconnected /*|| m_WippienState < WipDisconnected*/)
 		{
 			if (_Settings.m_MyLastNetwork && m_RSA)
 			{

@@ -204,12 +204,12 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	if (!CheckSettingsWizard())
 		return FALSE;
 
-	if (_Settings.m_Language.Length())
+/*	if (_Settings.m_Language.Length())
 	{
 		CComBSTR2 l = _Settings.m_Language;
 		_Settings.LoadLanguage(l.ToString());
 	}
-
+*/
 	_UpdateHandler = new CUpdateHandler();
 	_UpdateHandler->InitUpdater();
 //	delete h;

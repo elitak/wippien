@@ -422,7 +422,7 @@ BOOL CSettingsDlg::CSettingsLanguages::Apply(void)
 		{
 			_Settings.m_Language = buff;
 			_Settings.m_LanguageFileVersion = 0;
-			_Settings.LoadLanguage(buff);
+//			_Settings.LoadLanguage(buff);
 		}
 	}
 	return TRUE;

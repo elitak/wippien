@@ -503,7 +503,7 @@ int CSettings::LoadConfig(void)
 					m_LanguageFileVersion = 0;
 				}
 			}
-			if (m_Language.Length())
+			if (m_Language.Length() && !m_LanguageOther.Len())
 			{
 				CComBSTR2 ml = m_Language;
 				LoadLanguage(ml.ToString());

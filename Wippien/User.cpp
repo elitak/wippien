@@ -685,7 +685,7 @@ void CUser::FdTimer(int TimerID)
 	if (TimerID==3)
 	{
 		KillTimer(3);
-		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse /*|| m_WippienState < WipWaitingInitResponse*/)
+		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
 		{
 			if (_Settings.m_MyLastNetwork)
 			{
@@ -740,7 +740,7 @@ void CUser::FdTimer(int TimerID)
 			return;
 		}
 
-		if (m_RemoteWippienState < WipDisconnected /*|| m_WippienState < WipDisconnected*/)
+		if (m_RemoteWippienState < WipDisconnected || m_WippienState < WipDisconnected)
 		{
 			if (_Settings.m_MyLastNetwork && m_RSA)
 			{

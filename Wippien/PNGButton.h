@@ -55,8 +55,8 @@ public:
 		m_BackBrush = CreateSolidBrush(RGB(207, 226, 252));
 
 		HDC hdc = ::GetDC(NULL);
-		m_hCaptionFont = CreateFont( -MulDiv(7, GetDeviceCaps(hdc, LOGPIXELSY), 72), 0, 0, 0, FW_NORMAL, FALSE, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
-		m_hCaptionUnderlineFont = CreateFont( -MulDiv(7, GetDeviceCaps(hdc, LOGPIXELSY), 72), 0, 0, 0, FW_NORMAL, FALSE, TRUE, 0, 0, 0, 0, 0, 0, "Tahoma");
+		m_hCaptionFont = CreateFont( -MulDiv(7, GetDeviceCaps(hdc, LOGPIXELSY), 72), 0, 0, 0, FW_NORMAL, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Tahoma");
+		m_hCaptionUnderlineFont = CreateFont( -MulDiv(7, GetDeviceCaps(hdc, LOGPIXELSY), 72), 0, 0, 0, FW_NORMAL, FALSE, TRUE, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Tahoma");
 		::ReleaseDC(NULL, hdc);
 
 		m_strCaption = "";

@@ -312,7 +312,8 @@ public:
 				(!bBold && lf.lfWeight == FW_BOLD))
 			{
 				lf.lfWeight = bBold ? FW_BOLD : FW_NORMAL;
-				
+
+				lf.lfCharSet = DEFAULT_CHARSET;
 				m_fontBold.CreateFontIndirect(&lf);
 				m_hDefFont = (HFONT)::SelectObject(m_hDC, m_fontBold);
 			}

@@ -1123,7 +1123,9 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 							c->Append("<font face=\"Tahoma\" size=\"2\" color=\"C0C0C0\"><br><b>");
 							last = n;
 							c->Append(n);
-							c->Append(" said:</b></b></font><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
+							c->Append(" ");
+							c->Append(_Settings.Translate("said"));
+							c->Append(":</b></b></font><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
 							c->Append("</td><td align=right valign=top width=1%>&nbsp;</td></tr><tr><td><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
 						}
 						else
@@ -1256,7 +1258,7 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 		if (u2)
 			*u2 = 0;
 
-		Buffer *b = CreateMsg(User, text, Html, "559040", "EEEEEE");
+		Buffer *b = CreateMsg(User, text, Html, "559040", "FFFFFF");
 
 		BOOL didplayemoticonsound = m_ChatBox.AddLine(b, FALSE);
 		delete b;
@@ -2271,7 +2273,7 @@ HRESULT CMsgWin::CInputBox::Send()
 					*b7 = 0;
 				CComBSTR2 b3(bstr2);
 				CComBSTR2 b2(bstr);
-				Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000", "FFFFFF");
+				Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000", "EEEEEE");
 
 							
 
@@ -3025,7 +3027,7 @@ void CMsgWin::CWEmoticon::CalcBalloonRect(HDC dc, SIZE *rect, SIZE *text)
 	if (!m_Font)
 	{
 		int lfh = -MulDiv(8, GetDeviceCaps(dc, LOGPIXELSY), 72);
-		m_Font = CreateFont(lfh , 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Arial");
+		m_Font = CreateFont(lfh , 0, 0, 0, FW_BOLD, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Arial");
 	}
 
 

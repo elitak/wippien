@@ -199,11 +199,13 @@ LRESULT CSettingsDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 
 	_tcscpy(LogFont.lfFaceName, _T("arial bold"));
 	LogFont.lfWeight = FW_BOLD;
+	LogFont.lfCharSet = DEFAULT_CHARSET;
 	LogFont.lfHeight = -::MulDiv(8, dcScreen.GetDeviceCaps(LOGPIXELSY), 72);
 	DlgTitle1.CreateFontIndirect(&LogFont);
 	
 	_tcscpy(LogFont.lfFaceName, _T("arial"));
 	LogFont.lfWeight = FW_NORMAL;
+	LogFont.lfCharSet = DEFAULT_CHARSET;
 	LogFont.lfHeight = -::MulDiv(8, dcScreen.GetDeviceCaps(LOGPIXELSY), 72);
 	DlgTitle2.CreateFontIndirect(&LogFont);
 
@@ -4182,6 +4184,7 @@ LRESULT CSettingsDlg::CSettingsUser4::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 
 	_tcscpy(LogFont.lfFaceName, _T("arial bold"));
 	LogFont.lfWeight = FW_BOLD;
+	LogFont.lfCharSet = DEFAULT_CHARSET;
 	LogFont.lfHeight = -::MulDiv(8, dcScreen.GetDeviceCaps(LOGPIXELSY), 72);
 	m_BoldFont.CreateFontIndirect(&LogFont);
 

@@ -265,6 +265,7 @@ LRESULT CContactAuthDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /
 
 		_tcscpy(LogFont.lfFaceName, _T("arial bold"));
 		LogFont.lfWeight = FW_BOLD;
+		LogFont.lfCharSet = DEFAULT_CHARSET;
 		LogFont.lfHeight = -::MulDiv(8, dcScreen.GetDeviceCaps(LOGPIXELSY), 72);
 		DlgTitle1.CreateFontIndirect(&LogFont);
 	}

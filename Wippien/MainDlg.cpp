@@ -1637,9 +1637,9 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
     lfHeightName = -MulDiv(12, GetDeviceCaps(hdc, LOGPIXELSY), 72);
     lfHeightIP = -MulDiv(8, GetDeviceCaps(hdc, LOGPIXELSY), 72);
     ::ReleaseDC(NULL, hdc);
-    m_Identity_NameFont = CreateFont(lfHeightName, 0, 0, 0, FW_BOLD, TRUE, 0, 0, 0, 0, 0, 0, 0, "Arial");
-    m_Identity_IPFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "Arial");
-	m_Identity_StatusFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
+    m_Identity_NameFont = CreateFont(lfHeightName, 0, 0, 0, FW_BOLD, TRUE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Arial");
+    m_Identity_IPFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Arial");
+	m_Identity_StatusFont = CreateFont(lfHeightIP, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Tahoma");
 
 	_LoadIconFromResource(&m_MainWndTopBannerBack, "PNG", CXIMAGE_FORMAT_PNG, IDB_BANNER_TOP_BACKGROUND);
 	_LoadIconFromResource(&m_MainWndTopBannerBack2, "PNG", CXIMAGE_FORMAT_PNG, IDB_BANNER_TOP_BACKGROUND2);

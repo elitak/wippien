@@ -541,3 +541,4 @@ New language files available. Download?
 Show notification popup window when contact goes online/offline
 Contact is typing...
 says
+said

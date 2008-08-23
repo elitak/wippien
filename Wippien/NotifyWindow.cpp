@@ -58,8 +58,8 @@ BOOL CNotifyWindow::Create(char *Subject, char *Text)
     h1 = -MulDiv(12, GetDeviceCaps(hdc, LOGPIXELSY), 72);
     h2 = -MulDiv(9, GetDeviceCaps(hdc, LOGPIXELSY), 72);
     ::ReleaseDC(NULL, hdc);
-    m_SubjectFont = CreateFont(h1, 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Arial");
-    m_TextFont = CreateFont(h2, 0, 0, 0, FW_NORMAL, FALSE, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
+    m_SubjectFont = CreateFont(h1, 0, 0, 0, FW_BOLD, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Arial");
+    m_TextFont = CreateFont(h2, 0, 0, 0, FW_NORMAL, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Tahoma");
 
 	m_Subject = new Buffer();
 	m_Subject->Append(Subject);

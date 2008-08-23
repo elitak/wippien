@@ -353,6 +353,7 @@ BOOL CBalloonHelp::Create(
 		LOGFONT lf={0};
 		m_ContentFont.GetLogFont(&lf);
 		lf.lfWeight=FW_BOLD;
+		lf.lfCharSet = DEFAULT_CHARSET;
 
 		m_TitleFont.CreateFontIndirect(&lf);
 	}

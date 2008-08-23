@@ -134,9 +134,9 @@ void CUserList::Init(CMainDlg *Owner, HWND Parent)
 	lfHeightGroup = -MulDiv(11, GetDeviceCaps(hdc, LOGPIXELSY), 72);
 	::ReleaseDC(NULL, hdc);
 
-	m_ListboxFont = CreateFont(lfHeight, 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Tahoma");
-	m_ListboxSubFont = CreateFont(lfHeightSub, 0, 0, 0, 0, FALSE, 0, 0, 0, 0, 0, 0, 0, "Arial");
-	m_ListboxGroupFont = CreateFont(lfHeightGroup, 0, 0, 0, FW_BOLD, FALSE, 0, 0, 0, 0, 0, 0, 0, "Sans Serif");
+	m_ListboxFont = CreateFont(lfHeight, 0, 0, 0, FW_BOLD, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Tahoma");
+	m_ListboxSubFont = CreateFont(lfHeightSub, 0, 0, 0, 0, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Arial");
+	m_ListboxGroupFont = CreateFont(lfHeightGroup, 0, 0, 0, FW_BOLD, FALSE, 0, 0, DEFAULT_CHARSET, 0, 0, 0, 0, "Sans Serif");
 
 	/*m_Tree.*/SubclassWindow(m_hWndParent);
 	/*m_Tree.*/SetItemHeight(1);
@@ -584,14 +584,15 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										{
 											if (nickbuff[nickbuflen-2] == ']')
 											{
+												nickbuff[nickbuflen-2] = '.';
 												char *nlend = NULL;
-												int nl = nickbuflen-2;
+												int nl = nickbuflen-1;
 												while (nl>0 && nickbuff[nl]!='[') nl--;
 												if (nl)
 												{
 													nlend = &nickbuff[nl];
 													nl++;
-													nickbuff[nickbuflen-2] = 0;
+													nickbuff[nickbuflen-1] = 0;
 
 													unsigned int ip[4] = {0};
 													int ctr = 0;

@@ -105,6 +105,7 @@ LRESULT CBalloonTipDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
 	::GetObject(hFont, sizeof(LOGFONT), &lf);
 	lf.lfHeight -= 5;
 	lf.lfWeight = FW_BOLD;
+	lf.lfCharSet = DEFAULT_CHARSET;
 	m_fontTitle.CreateFontIndirect(&lf),
 
 	m_wndTitle = GetDlgItem(IDC_BALLOONTIPTEXT);

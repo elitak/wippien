@@ -1573,8 +1573,11 @@ int CSettings::LoadTools(void)
 
 void CSettings::PushGroupSorted(TreeGroup *grp)
 {
-	int kk = _Settings.m_Groups.size();
-	kk = kk;
+	if (!stricmp(grp->Name, GROUP_GENERAL))
+		grp->VisibleName = Translate(GROUP_GENERAL);
+	if (!stricmp(grp->Name, GROUP_OFFLINE))
+		grp->VisibleName = Translate(GROUP_OFFLINE);
+
 	for (int i = 0; i < _Settings.m_Groups.size(); i++)
 	{
 		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
@@ -1966,15 +1969,6 @@ BOOL CSettings::LoadLanguage(char *Language)
 			EXTAWAY_MESSAGE = Translate("Away for a loooong time.");
 			CONFIGURING_ADAPTER_TEXT = Translate("Configuring Wippien network adapter...");
 
-			// rename groups now
-			for (int i = 0; i < _Settings.m_Groups.size(); i++)
-			{
-				CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
-				if (!stricmp(tg->Name, GROUP_GENERAL))
-					tg->VisibleName = Translate(GROUP_GENERAL);
-				if (!stricmp(tg->Name, GROUP_OFFLINE))
-					tg->VisibleName = Translate(GROUP_OFFLINE);
-			}
 			return TRUE;
 		}
 		if (m_LanguageEnglishTotal>m_LanguageOtherTotal)

@@ -493,7 +493,7 @@ int CSettings::LoadConfig(void)
 				m_Language = langent->Value;
 				m_LanguageFileVersion = 0;
 			}
-			else
+			if (!m_Language.Length())
 			{
 				// if local is available, use it.. 
 				int lcid = GetUserDefaultLCID();

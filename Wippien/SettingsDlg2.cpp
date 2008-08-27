@@ -305,8 +305,7 @@ void CSettingsDlg::CSettingsLanguages::EnumerateLocalLanguageFiles(void)
 			if (stricmp(FileData.cFileName, "english.txt"))
 			{
 
-				strcpy(buff, _Settings.m_MyPath);
-				strcat(buff, "Language\\");
+				strcpy(buff, _Settings.m_LanguagePath);
 				strcat(buff, FileData.cFileName); 
 				Buffer temp;
 				if (_Settings.LoadLanguageFile(buff, &temp))

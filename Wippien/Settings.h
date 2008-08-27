@@ -101,6 +101,7 @@ public:
 
 	CComBSTR m_SettingsFolder;
 	char m_CfgFilename[MAX_PATH];
+	char m_LanguagePath[MAX_PATH];
 	char m_UserImagePath[MAX_PATH];
 	char m_HistoryPath[MAX_PATH];
 	char m_UsrFilename[MAX_PATH];

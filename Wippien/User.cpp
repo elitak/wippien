@@ -1148,6 +1148,22 @@ Buffer *CUser::ExpandSystemArgs(Buffer *in)
 						return ExpandSystemArgs(&b);
 					}
 				}
+				else
+				{
+					a = strstr(t, "{wippien}");
+					if (a)
+					{
+						char buff[MAX_PATH];
+						if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, buff)))
+						{
+							b.Append(t, a-t);
+							b.Append(_Settings.m_MyPath);
+							b.Append(a+9);
+							b.Append("\0", 1);
+							return ExpandSystemArgs(&b);
+						}
+					}
+				}
 			}
 		}
 	}

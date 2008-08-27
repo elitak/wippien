@@ -203,8 +203,8 @@ public:
 				// let's enumerate what we have so far
 				AvailableLangFiles.Append("\r\n");
 				char buff[32768];
-				strcpy(buff, _Settings.m_MyPath);
-				strcat(buff, "Language\\*.txt");
+				strcpy(buff, _Settings.m_LanguagePath);
+				strcat(buff, "*.txt");
 				
 				WIN32_FIND_DATA FileData;
 				

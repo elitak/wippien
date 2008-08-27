@@ -1611,11 +1611,13 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 
 			if (add)
 			{
+				Buffer *b1;
 				MENUITEMINFO mit;
 				memset(&mit, 0, sizeof(mit));
 				mit.cbSize = sizeof(mit);
 				mit.fMask = MIIM_STRING | MIIM_ID;
-				mit.dwTypeData = mt->Menu;
+				b1 = user->ExpandArgs(mt->Menu);
+				mit.dwTypeData = b1->Ptr();
 				mit.cch = strlen(mt->Menu);
 				mit.fType = MFT_STRING;
 				mit.wID = (UINT)mt;
@@ -1640,6 +1642,7 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 					}
 				}
 				InsertMenuItem(h, 2+ctr, 2+ctr, &mit);
+				delete b1;
 	//			InsertMenu(h, 4, MF_BYPOSITION, (UINT)mt, mt->Menu);
 				ctr++;
 			}

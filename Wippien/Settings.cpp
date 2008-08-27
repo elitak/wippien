@@ -189,20 +189,21 @@ CSettings::CSettings()
 	strcpy(m_ChatRoomFilename, m_CfgFilename);
 	strcpy(m_UserImagePath, m_CfgFilename);
 	strcpy(m_HistoryPath, m_CfgFilename);
-//	strcpy(m_MyPath, m_CfgFilename);
+	strcpy(m_LanguagePath, m_CfgFilename);
+
+	
+	
 	strcat(m_CfgFilename, "\\Wippien.config");
 	strcat(m_UsrFilename, "\\Wippien.users");
 	strcat(m_ChatRoomFilename, "\\Wippien.rooms");
 	strcat(m_MyPath, "\\");
 	strcat(m_UserImagePath, "\\Images\\");
 	strcat(m_HistoryPath, "\\History\\");
-//	m_RSA = NULL;
+	strcat(m_LanguagePath, "\\Language\\");
+
 	m_RSA = RSA_generate_key(1024,35,NULL,NULL);
 
-	strcpy(buff, m_MyPath);
-	strcat(buff, "Language");
-
-	CreateDirectory(buff, NULL); // language folder
+	CreateDirectory(m_LanguagePath, NULL); // language folder
 	CreateDirectory(m_UserImagePath, NULL);
 	CreateDirectory(m_HistoryPath, NULL);
 
@@ -1587,12 +1588,18 @@ void CSettings::PushGroupSorted(TreeGroup *grp)
 			return;
 		}
 	}
+	if (!stricmp(grp->Name, GROUP_GENERAL))
+	{
+		_Settings.m_Groups.insert(_Settings.m_Groups.begin(), grp);
+		return;
+	}
+
 	if (stricmp(grp->Name, GROUP_OFFLINE))
 	{
 		for (i = 0; i < _Settings.m_Groups.size(); i++)
 		{
 			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
-			if (stricmp(tg->Name, grp->Name)>0 || !stricmp(tg->Name, GROUP_OFFLINE))
+			if (stricmp(tg->Name, grp->Name)>0 && stricmp(tg->Name, GROUP_GENERAL))
 			{
 				_Settings.m_Groups.insert(_Settings.m_Groups.begin()+i, grp);
 				return;
@@ -1859,8 +1866,8 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 BOOL CSettings::LoadLanguage(char *Language)
 {
 	char buff[32768];
-	strcpy(buff, _Settings.m_MyPath);
-	strcat(buff, "Language\\English.txt");
+	strcpy(buff, m_LanguagePath);
+	strcat(buff, "English.txt");
 
 
 	m_LanguageEnglish.Clear();
@@ -1918,8 +1925,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 
 
 		// foreign file
-		strcpy(buff, _Settings.m_MyPath);
-		strcat(buff, "Language\\");
+		strcpy(buff, _Settings.m_LanguagePath);
 		strcat(buff, Language);
 		strcat(buff, ".txt");
 

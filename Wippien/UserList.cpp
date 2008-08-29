@@ -482,7 +482,12 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								strcpy(user->m_VisibleName, jd2);
 							}
 							else
-								user = AddNewUser(j, contact);
+							{
+								if (stat != (WODXMPPCOMLib::StatusEnum)8) // unsubscribed
+									user = AddNewUser(j, contact);
+								else
+									user = NULL;
+							}
 						}
 
 						if (user)
@@ -576,8 +581,6 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										char nickbuff[1024];
 										int nickbuflen = sizeof(nickbuff);
 										WODXMPPCOMLib::XMPP_Contact_GetNick(contact, nickbuff, &nickbuflen);
-										if (nickbuflen)
-											strcpy(user->m_VisibleName, nickbuff);
 
 										// let's see if nickname contains IP
 										if (nickbuflen>1)

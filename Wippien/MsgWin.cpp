@@ -2357,7 +2357,11 @@ HRESULT CMsgWin::CInputBox::Send()
 
 					if (!online)
 					{
-						m_ParentDlg->Incoming(NULL, TRUE, _Settings.Translate("User is currently offline."), NULL);
+						CComBSTR k = _Settings.Translate("Contact");
+						k += " ";
+						k += _Settings.Translate("is currently offline");										
+						CComBSTR2 k2 = k;
+						m_ParentDlg->Incoming(NULL, TRUE, k2.ToString(), NULL);
 					}
 				}
 				if (!m_ParentDlg->m_Room)

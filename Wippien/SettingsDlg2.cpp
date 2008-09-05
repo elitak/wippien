@@ -286,8 +286,8 @@ LRESULT CSettingsDlg::CSettingsLanguages::OnPaint(UINT uMsg, WPARAM wParam, LPAR
 void CSettingsDlg::CSettingsLanguages::EnumerateLocalLanguageFiles(void)
 {
 	char buff[32768];
-	strcpy(buff, _Settings.m_MyPath);
-	strcat(buff, "Language\\*.txt");
+	strcpy(buff, _Settings.m_LanguagePath);
+	strcat(buff, "*.txt");
 	
 	WIN32_FIND_DATA FileData;
 
@@ -421,7 +421,7 @@ BOOL CSettingsDlg::CSettingsLanguages::Apply(void)
 		{
 			_Settings.m_Language = buff;
 			_Settings.m_LanguageFileVersion = 0;
-//			_Settings.LoadLanguage(buff);
+			_Settings.LoadLanguage(buff);
 		}
 	}
 	return TRUE;

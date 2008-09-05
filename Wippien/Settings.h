@@ -94,7 +94,8 @@ public:
 
 	int  m_SortContacts;
 
-	Buffer m_LanguageEnglish, m_LanguageOther;
+	Buffer m_LanguageEnglish;
+	Buffer *m_LanguageOther;
 	Buffer m_LanguageEnglishIndex, m_LanguageOtherIndex;
 	unsigned int m_LanguageEnglishTotal;
 

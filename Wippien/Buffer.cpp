@@ -437,6 +437,32 @@ void _Buffer::PutChar(int value)
 	Append(&ch, 1);
 }
 
+int _Buffer::FindNextLine(BOOL isunicode)
+{
+	int i,len;
+	
+	len = Len();
+	char *mark = Ptr();
+	
+	if (len)
+	{
+		i=0;
+		char *b = Ptr();
+		while (i<len && b[i]!='\n') i++;
+		if (i<len && b[i]=='\n')
+		{
+			if (isunicode)
+				return i+2;
+
+			return i+1;
+		}
+		else
+			return 0;
+	}
+	else
+		return 0;
+}
+
 char *_Buffer::GetNextLine()
 {
 	int i,len;

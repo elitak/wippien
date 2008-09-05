@@ -19,7 +19,6 @@
 // Dialog
 //
 
-
 IDD_DOWNLOADSKIN DIALOG DISCARDABLE  0, 0, 253, 262
 STYLE WS_POPUP | WS_CAPTION
 CAPTION "Download more skins from Wippien website"
@@ -87,7 +86,7 @@ BEGIN
     LISTBOX         IDC_CHOOSEICON,0,0,261,163,LBS_OWNERDRAWFIXED | 
                     LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | WS_HSCROLL | 
                     WS_TABSTOP
-    PUSHBUTTON      "Add &New",IDC_ADDNEW,207,164,53,15
+    PUSHBUTTON      "Add &New",IDC_ADDNEW,186,164,74,15
 END
 
 IDD_SETTINGS_ETHERNET DIALOG DISCARDABLE  0, 0, 262, 160
@@ -233,14 +232,14 @@ BEGIN
     LISTBOX         IDC_LISTREGISTEREDGATEWAYS,5,16,253,70,
                     LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | 
                     LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "Add new account",IDC_ADDNEWACCOUNT,5,87,75,15
-    PUSHBUTTON      "Remove account",IDC_REMOVEACCOUNT,82,87,69,15,
+    PUSHBUTTON      "Add new account",IDC_ADDNEWACCOUNT,5,87,85,15
+    PUSHBUTTON      "Remove account",IDC_REMOVEACCOUNT,92,87,79,15,
                     WS_DISABLED
     EDITTEXT        IDC_EDIT_SCREENNAME,66,139,112,14,ES_AUTOHSCROLL | NOT 
                     WS_VISIBLE
     EDITTEXT        IDC_EDIT_PASSWORD,66,155,111,14,ES_PASSWORD | 
                     ES_AUTOHSCROLL | NOT WS_VISIBLE
-    PUSHBUTTON      "Register!",IDC_ACCOUNT_REGISTER,182,155,53,15,NOT 
+    PUSHBUTTON      "Register!",IDC_ACCOUNT_REGISTER,182,155,68,15,NOT 
                     WS_VISIBLE
     LTEXT           "Your current Instant messaging connections",IDC_S1,9,4,
                     201,10
@@ -250,7 +249,7 @@ BEGIN
     LTEXT           "Password",IDC_STATIC_PASSWORD,11,157,45,8,NOT 
                     WS_VISIBLE
     LTEXT           "",IDC_SERVICE_DESCRIPTION,2,106,256,26,NOT WS_VISIBLE
-    PUSHBUTTON      "Open new account",IDC_OPENNEWACCOUNT,188,87,69,15,NOT 
+    PUSHBUTTON      "Open new account",IDC_OPENNEWACCOUNT,178,87,79,15,NOT 
                     WS_VISIBLE
 END
 
@@ -397,27 +396,27 @@ IDD_SETTINGS_USER_2 DIALOG DISCARDABLE  0, 0, 262, 160
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "Address",IDC_S1,4,31,37,8
-    EDITTEXT        IDC_SETTINGS_USER2_ADDRESS,44,29,204,12,ES_AUTOHSCROLL
-    LTEXT           "Address Ext.",IDC_S2,4,47,40,8
-    EDITTEXT        IDC_SETTINGS_USER2_ADDRESSEXT,44,44,204,12,
+    LTEXT           "Address",IDC_S1,4,31,54,8
+    EDITTEXT        IDC_SETTINGS_USER2_ADDRESS,61,29,179,12,ES_AUTOHSCROLL
+    LTEXT           "Address Ext.",IDC_S2,4,47,55,8
+    EDITTEXT        IDC_SETTINGS_USER2_ADDRESSEXT,61,44,179,12,
                     ES_AUTOHSCROLL
-    LTEXT           "City",IDC_S3,4,62,38,8
-    EDITTEXT        IDC_SETTINGS_USER2_CITY,44,59,126,12,ES_AUTOHSCROLL
-    LTEXT           "State",IDC_S4,3,76,37,8
-    EDITTEXT        IDC_SETTINGS_USER2_STATE,44,74,69,12,ES_AUTOHSCROLL
-    LTEXT           "ZIP",IDC_S5,3,91,37,8
-    EDITTEXT        IDC_SETTINGS_USER2_ZIP,44,89,69,12,ES_AUTOHSCROLL
-    LTEXT           "Country",IDC_S6,3,107,39,8
-    EDITTEXT        IDC_SETTINGS_USER2_COUNTRY,44,105,69,12,ES_AUTOHSCROLL
-    LTEXT           "Birthday",IDC_STATIC_BIRTHDAY,138,76,38,8
+    LTEXT           "City",IDC_S3,4,62,54,8
+    EDITTEXT        IDC_SETTINGS_USER2_CITY,61,59,126,12,ES_AUTOHSCROLL
+    LTEXT           "State",IDC_S4,3,76,55,8
+    EDITTEXT        IDC_SETTINGS_USER2_STATE,61,74,69,12,ES_AUTOHSCROLL
+    LTEXT           "ZIP",IDC_S5,3,91,52,8
+    EDITTEXT        IDC_SETTINGS_USER2_ZIP,61,89,69,12,ES_AUTOHSCROLL
+    LTEXT           "Country",IDC_S6,3,107,53,8
+    EDITTEXT        IDC_SETTINGS_USER2_COUNTRY,61,105,69,12,ES_AUTOHSCROLL
+    LTEXT           "Birthday",IDC_STATIC_BIRTHDAY,138,76,46,8
     CONTROL         "DateTimePicker1",IDC_SETTINGS_USER2_BDAY,
                     "SysDateTimePick32",DTS_RIGHTALIGN | DTS_SHOWNONE | 
-                    WS_TABSTOP,179,74,70,12
-    LTEXT           "Voice Tel.",IDC_S7,138,91,39,8
-    EDITTEXT        IDC_SETTINGS_USER2_PHONE,179,89,69,12,ES_AUTOHSCROLL
-    LTEXT           "Fax",IDC_S8,138,107,39,8
-    EDITTEXT        IDC_SETTINGS_USER2_FAX,179,105,69,12,ES_AUTOHSCROLL
+                    WS_TABSTOP,187,74,70,12
+    LTEXT           "Voice Tel.",IDC_S7,138,91,46,8
+    EDITTEXT        IDC_SETTINGS_USER2_PHONE,187,89,69,12,ES_AUTOHSCROLL
+    LTEXT           "Fax",IDC_S8,138,107,47,8
+    EDITTEXT        IDC_SETTINGS_USER2_FAX,187,105,69,12,ES_AUTOHSCROLL
 END
 
 IDD_SETTINGS_USER_3 DIALOG DISCARDABLE  0, 0, 262, 160
@@ -511,31 +510,31 @@ STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     CONTROL         "Show Wippien in taskbar",IDC_SHOWINTASKBAR,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,17,252,10
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,5,252,10
     CONTROL         "Rearrange desktop when Wippien window is aligned to border",
                     IDC_ALIGNTOBORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
-                    7,33,249,10
+                    7,21,249,10
     CONTROL         "Snap to desktop border",IDC_SNAPTOBORDER,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,48,250,10
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,36,250,10
     CONTROL         "Auto hide if Wippien is inactive for",
                     IDC_AUTHOHIDEONINACTIVITY,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,62,133,10
-    EDITTEXT        IDC_AUTHOHIDEONINACTIVITYSECONDS,144,61,43,12,
+                    WS_TABSTOP,7,50,133,10
+    EDITTEXT        IDC_AUTHOHIDEONINACTIVITYSECONDS,144,49,43,12,
                     ES_AUTOHSCROLL
-    LTEXT           "seconds",IDC_S1,191,63,49,8
+    LTEXT           "seconds",IDC_S1,191,51,49,8
     CONTROL         "Always on top",IDC_ALWAYSONTOP,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,76,246,10
+                    WS_TABSTOP,7,64,246,10
     CONTROL         "Confirm exit from application",IDC_CONFIRMEXIT,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,90,246,10
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,78,246,10
     CONTROL         "Disconnect on computer Sleep/Hibernate, Connect on Resume",
                     IDC_USEPOWEROPTIONS,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,104,254,20
-    LTEXT           "Password protect",IDC_S2,7,127,61,8
+                    WS_TABSTOP,7,87,254,20
+    LTEXT           "Password protect",IDC_S2,7,113,75,8
     CONTROL         "Settings only",IDC_PASSWORDPROTECTSETTINGS,"Button",
-                    BS_AUTORADIOBUTTON,70,127,60,10
+                    BS_AUTORADIOBUTTON,152,109,100,10
     CONTROL         "Everything",IDC_PASSWORDPROTECTEVERYTHING,"Button",
-                    BS_AUTORADIOBUTTON,133,127,54,10
-    EDITTEXT        IDC_PASSWORDPROTECTPASSWORD,190,127,62,12,ES_PASSWORD | 
+                    BS_AUTORADIOBUTTON,152,119,102,10
+    EDITTEXT        IDC_PASSWORDPROTECTPASSWORD,87,111,62,12,ES_PASSWORD | 
                     ES_AUTOHSCROLL
     LTEXT           "Settings folder (changing below value requires wippien restart)",
                     IDC_S3,7,145,247,8
@@ -673,8 +672,8 @@ FONT 8, "MS Sans Serif"
 BEGIN
     LISTBOX         IDC_HIDDENCONTACTS,5,16,222,124,LBS_NOINTEGRALHEIGHT | 
                     WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "Hide new contact",IDC_BLOCKNEWCONTACT,81,142,75,15
-    PUSHBUTTON      "Unhide contact",IDC_UNBLOCKCONTACT,158,142,69,15,
+    PUSHBUTTON      "Hide new contact",IDC_BLOCKNEWCONTACT,61,142,85,15
+    PUSHBUTTON      "Unhide contact",IDC_UNBLOCKCONTACT,148,142,79,15,
                     WS_DISABLED
     LTEXT           "Currently hidden contacts",IDC_S1,9,4,174,10
     LTEXT           "",IDC_SERVICE_DESCRIPTION,2,106,256,26,NOT WS_VISIBLE
@@ -699,9 +698,9 @@ STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     CONTROL         "Allow all traffic",IDC_ALLOWTRAFFIC,"Button",
-                    BS_AUTORADIOBUTTON,3,21,75,10
+                    BS_AUTORADIOBUTTON | BS_TOP | BS_MULTILINE,3,21,75,20
     CONTROL         "Block all traffic",IDC_BLOCKTRAFFIC,"Button",
-                    BS_AUTORADIOBUTTON,3,34,76,10
+                    BS_AUTORADIOBUTTON | BS_TOP | BS_MULTILINE,3,44,76,20
     LTEXT           "But block these ports",IDC_STATICBLOCK,82,5,156,8
     LISTBOX         IDC_RULES,82,15,118,129,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
                     WS_VSCROLL | WS_TABSTOP
@@ -919,7 +918,8 @@ BEGIN
     IDD_SETTINGS_SYSTEM, DIALOG
     BEGIN
         VERTGUIDE, 7
-        HORZGUIDE, 105
+        HORZGUIDE, 109
+        HORZGUIDE, 124
     END
 
     IDD_SETTINGS_CONTACTS, DIALOG

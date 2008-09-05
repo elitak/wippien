@@ -1,0 +1,544 @@
+# Italian template text
+# Author: Ottomano Nicola http://www.nicolaottomano.it
+# Version: 1
+Nessun errore.  ##  No error.
+Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
+Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
+Il sistema non riesce a trovare il percorso/file specificato.  ##  The system cannot find the specified file/directory.
+Type mismatch.  ##  Type mismatch.
+Impossibile creare il file/directory. File/directory già esistente.  ##  Cannot create a file/directory when that file/directory already exists.
+Il sistema non riesce a scrivere sul supporto specificato.  ##  The system cannot write to the specified device.
+Valore di proprietà non valido.  ##  Invalid Property Value.
+Timeout dell'operazione.  ##  This operation returned because the timeout period expired.
+Un interrupt a livello di sistema ha bloccato l'operazione del socket.  ##  System level interrupt interrupted socket operation.
+Errore di formato non valido.  ##  Generic error for invalid format, bad format.
+E' stato fatto un tentativo non consentito di accesso al socket.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Il sistema ha rilevato un argomento non valido al puntatore durante la chiamata.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Errore generico di formato non valido, input, etc.  ##  Generic error for invalid format, entry, etc.
+Argomento non valido.  ##  An invalid argument was supplied.
+Indirizzo IP non valido o l'host specificato non esiste.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Socket non valido o nessuna connessione remota.  ##  Invalid socket or not connected to remote.
+L'indirizzo specificato è già in uso.  ##  The specified address is already in use.
+L'indirizzo specificato non è disponibile.  ##  The specified address is not available.
+La Rete a cui ci si sta connettendo non è disponibile.  ##  The connected network is not available.
+La Rete a cui ci si sta connettendo non è raggiungibile.  ##  The connected network is not reachable.
+La connessione alla rete è stata annullata.  ##  The connected network connection has been reset.
+La connessione è stata annullata dalla rete o da un suo servizio intermedio.  ##  The current connection has been aborted by the network or intermediate services.
+La connessione è stata annullata.  ##  The current socket connection has been reset.
+Il socket non è connesso.  ##  The current socket has not been connected.
+La connessione è stata chiusa.  ##  The connection has been shutdown.
+Timeout della connessione.  ##  The current connection has timeout.
+La connessione è stata rifiutata dall'host remoto.  ##  The requested connection has been refused by the remote host.
+L'host name specificato è troppo lungo.  ##  Specified host name is too long.
+L'host remoto non è disponibile  ##  Remote host is currently unavailable.
+L'host remoto non è rintracciabile  ##  Remote host is currently unreachable. 
+Il sitema remoto non è pronto.  ##  Remote system is not ready.
+L'attuale versione del socket non è supportata dall'applicazione.  ##  Current socket version not supported by application.
+Socket API non inizializzata.  ##  Socket API is not initialized.
+Socket disconnesso.  ##  Socket has been disconnected.
+Host non trovato.  ##  Host not found.
+Memoria insufficiente per completare l'operazione.  ##  Not enough memory is available to complete this operation.
+Unknown search type.
+Argomento sconosciuto per il metodo Search.  ##  Unknown argument for Search method.
+Già inizializzato.  ##  Already started.
+Canale già inizializzato.  ##  Channel already started.
+Impossibile cambiare le impostazioni del canale quando è attivo.  ##  Cannot change channel setup while channel is started.
+Troppi dati inviati al socket. Provare più tardi.  ##  Too much data on the socket. Try later.
+Connessione fallita.  ##  Connection not established.
+Tipo dati sconosciuto.  ##  Unknown data type.
+Impossibile creare un thread per il socket.  ##  Failed to create socket thread.
+Tipo canale sconosciuto.  ##  Unknown channel type.
+Argomento non valido per la proprietà LocalAddress.  ##  Invalid argument was supplied in LocalAddress property.
+Il canale non può essere creato dal client.  ##  Channel cannot be created by local side.
+Il canale non può essere attivato dal client.  ##  Channel cannot be started by local side.
+Canale rifiutato dal client remoto.  ##  Channel refused by remote side.
+Versione del protocollo non supportata.  ##  Unsupported remote protocol version.
+wodVPN non inizializzato. Selezionare Start.  ##  wodVPN not yet started. Use Start first.
+Canale chiuso.  ##  Channel was closed.
+MTU troppo grande. ##  MTU size too large.
+MTU troppo piccolo.  ##  MTU size too small.
+Invalid socks request.
+Password non valida. Non corrisponde alla password remota.  ##  Invalid password. Does not match remote peer's password.
+Local ID non ipostato. E' richiesto dal metodo Search.  ##  Local ID not set. It is required for Search method.
+Remote ID non impostato. E' richiesto dal metodo Search.  ##  Remote ID not set. It is required for Search method.
+Impossibile connettersi all'IP specificato.  ##  Cannot bind to specified IP address.
+Sto già trasferendo un file.  ##  Already performing file transfer.
+File non trovato.  ##  File not found.
+Errore nello scrivere il file.  ##  Failed to write file.
+Impossibile aprire l'interfaccia di rete.  ##  Could not open network adapter.
+Può essere utilizzata solo un'interfaccia di rete per volta.  ##  Only one adapter can be used at a time.
+Codice di licenza mancante. Non è consentito utilizzare questo componentein fase di design.  ##  License key missing. You can not use this component in design environment.
+Errore non riconosciuto.  ##  Unrecognized Error.
+Impossibile connettersi. Selezionare Disconnetti prima.  ##  Cannot Connect at this time. Use Disconnect first.
+Impossibile eseguire. Nessuna connessione.  ##  Cannot execute, not yet connected.
+Il componente è occupato.  ##  Component busy.
+Impossibile cambiare la proprietà adesso. Disconnettersi prima.  ##  Cannot change property at this time. Use Disconnect first.
+Proprietà Hostname non impostata.  ##  Hostname property not set.
+Proprietà Login non impostata.  ##  Login property not set.
+Prprietà Password non impostata.  ##  Password property not set.
+Invalid XML packet.
+Invalid XML packet sequence ID.
+Login non valido: %s.  ##  Invalid login: %s.
+Contatto già presente nella lista contatti.   ##  Contact already exists in the collection.
+SSL could not be negotiated.
+Errore nella registrazione del nuovo utente: %s.  ##  Failed to register new user: %s.
+Notifica sconosciuta.  ##  Unknown notification.
+File non trovato.  ##  File not found.
+E' necessario specificare il formato immagine (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Errore nell'importazione dell'immagine.  ##  Failed to import photo.
+Risorse bloccate da un altro processo in corso.  ##  Another blocking method in progress.
+Invalid protocol data received.
+La grandezza del file è 0. Nulla da inviare.  ##  There's nothing to send. File size is 0.
+Contatto non trovato.  ##  Contact not found.
+Trasferimento file fallito.  ##  File transfer failed.
+Impossibile scrivere nel file.  ##  Could not write to file.
+Il checksum del file ricevuto non è valido.  ##  Checksum of received file is invalid.
+trasferimento annullato.  ##  Transfer aborted.
+Timeout del trasferimento.  ##  Transfer has timed out.
+Selezionato un protocollo invalido.  ##  Invalid protocol selected.
+Stato errato. Il componente è occupato.  ##  Invalid state. Component already busy.
+Nome non univoco, impossibile ottenere il lock. Usare un UpdaterName differente.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Method was cancelled.
+Fallita l'inizializzazione del programma di aggiornamento.  ##  Failed to start updater program.
+La firma del documento non è valida.  ##  Signature on retrieved document is invalid.
+Data non impostata.  ##  Date not set.
+Errore nella registrazione del server COM.  ##  Failed to register COM server.
+Pagina non trovata (errore 404). ##  Page not found (error 404) returned from the server.
+Grandezza del file scaricato file non valida.  ##  Invalid file size after download.
+Checksum MD5 del file scaricato non valido.  ##  Invalid MD5 checksum after download.
+Attenzione  ##  Warning
+Offline
+Online
+Non al PC  ##  Away
+Libero  ##  Free for chat
+Non disturbare  ##  Do not disturb
+Non al PC da molto tempo  ##  Extended away
+Invisibile  ##  Invisible
+Chiede l'iscrizione ##  Asking for subscription
+Contatto non iscritto  ##  Contact not subscribed
+Disconnesso dal server  ##  Disconnected from server
+Connessione al server  ##  Connecting to server
+Registrazione nuovo utente  ##  Registering new user
+Inizializzazione connessione sicura  ##  Initializing secure connection
+Invio dati d'autenticazione  ##  Sending authentication data
+Connesso al server  ##  Connected to server
+Ricezione dati dal server  ##  Receiving data from server
+Invio dati al server  ##  Sending data to server
+Esecuzione comandi sul server  ##  Executing command on server
+Disconnessione dal server  ##  Disconnecting from the server
+Autorizzazione richiesta  ##  Requested authorization
+Configurazione interfaccia di rete di Wippien...  ##  Configuring Wippien network adapter...
+L'interfaccia \"%s\" con indirizzo %s va in conflitto con l'interfaccia %s di Wippien. E' possibile che Wippien non possa inviare o ricevere pacchetti di rete. Si consiglia di disinstallare o disabilitare l'interfaccia di rete.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Interfaccia di rete disabilitata!  ##  Network adapter disabled!
+Interfaccia di rete aperta  ##  Network adapter opened
+Interfaccia di rete di Wippien non disponibile. Procedere solo con l'IM?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien deve configurare l'indirizzo IP dell'adattatore di rete utilizzando uno strumento esterno con privilegi amministrativi. Eseguire Wippien con privilegi amministrativi.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Richiesti privilegi amministrativi!  ##  Admin privilege required!
+Disconnesso  ##  Disconnected
+Connesso  ##  Connected
+Impossibile inviare il messaggio.  ##  Could not deliver message.
+Errore nel cambiare la password  ##  Failed to change password
+Disconnesso secondo le regole di inattività  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<< VPN non stabilita >>  ##  << VPN not established yet >>
+Connessione tra %d secondi.  ##  Reconnect in %d seconds.
+secondi  ##  seconds
+Nessuna rete  ##  No network
+Esci da Wippien  ##  Exit Wippien
+E&sci  ##  E&xit
+Apri le Impostazioni  ##  Open settings
+&Impostazioni  ##  &Settings
+Apri AboutBox  ##  Show AboutBox
+&About
+Imposta stato (Lontano dal PC, Invisibile...)  ##  Set your status (Away,Invisible...)
+Aggiungi contatti e account alieni  ##  Add contacts and alien accounts
+Disattiva Audio  ##  Mute sound
+Apri chat room  ##  Open chat room
+Autorizza gli amici  ##  Authorize your friends
+Inattivo  ##  Idle
+Uscire da wippien?  ##  Really exit Wippien?
+Sei sicuro?  ##  Are you sure?
+La password è stata cambiata.  ##  Your password is now changed.
+Password cambiata.  ##  Password changed
+Cambia la password per l'account  ##  Change account password
+Inserire una nuova password  ##  Please enter new password
+Identità  ##  Identity
+ID Card
+Indirizzo di casa  ##  Home Address
+Indirizzo ufficio  ##  Work Address
+Vuoi veramente cancellare la cronologia?  ##  Are you sure you want to delete the history?
+Cancellare la cronologia'  ##  Delete history?
+Invia  ##  Send
+Invia file  ##  Send file
+Dettagli  ##  Details
+Informazioni contatto  ##  Contact information
+Pulici  ##  Clear
+Cancella la cronologia  ##  Clear history
+Silenzia  ##  Mute
+Grassetto  ##  Bold
+Corsivo  ##  Italic
+Sottolineato  ##  Underline
+Inserisci link  ##  Insert hyperlink
+Riduci grandezza font  ##  Decrease font size
+Azzera grandezza font  ##  Reset font size
+Aumenta grandezza font  ##  Increase font size
+Imposta colore carattere  ##  Set Foreground color
+Imposta colore di sfondo  ##  Set Background color
+Emoticon  ##  Emoticons
+Nuove emoticon verranno scaricate ed installate. Procedere?  ##  New emoticons will be downloaded and installed. Proceed?
+Nuove emoticon  ##  New emoticons
+E' ora possibile cliccare sul pulsante delle emoticon per vedere le nuove emoticon installate.  ##  You can now click again on emoticon button to see new installed emoticons.
+Fatto!  ##  Done!
+Contatto  ##  Contact
+Connessione  ##  Connecting
+Richiesta  ##  Requesting
+Scaricamento  di ##  Downloading
+File di configurazione  ##  Configuration file
+Generale  ##  General
+Inattivo.  ##  Away due to inactivity.
+Inattivo da moooolto tempo.  ##  Away for a loooong time.
+consenti  ##  allow
+nega  ##  deny
+non pecificato  ##  not specified
+&Finisci  ##  &Finish
+&Avanti  ##  &Next >
+Identità  ##  Identity
+Inserire le informazioni di Logon.  ##  Please choose your logon information.
+Questo viene mostrato nella lista dei tuoi amici.  ##  This is shown on your friend's list.
+JID deve contenere il nome del server, formattato come user@server.com  ##  JID should contain server name, formatted like user@server.com
+Dati di logon non validi  ##  Invalid logon details
+E' necessario inserire il JID.  ##  You must enter your JID.
+E' necessario inserire la password.  ##  You must enter your password.
+Errore Jabber  ##  Jabber error
+Icona  ##  Icon
+Seleziona la tua icona.  ##  Please choose your icon.
+L'icona è generalmente visibile ai tuoi contatti.  ##  This is usually visible to your contacts.
+Rete  ##  Network
+Seleziona l'indirizzo IP e la netmask.  ##  Please choose your IP address and netmask.
+Definisce il range ip che Wippien può usare.  ##  This defines network range to be used by wippien.
+Rete  ##  Network
+Mediator
+Seleziona il Mediator.  ##  Please choose who will be your mediator.
+Definisce gli utenti che medieranno le connessioni P2P.  ##  This defines people that mediate P2P connections.
+Last check
+Porta  ##  Port
+Hostname
+Permanente  ##  Permanent
+Temporaneo  ##  Temporary
+Inserisci i tuoi account qui.  ##  Enter all your accounts here.
+Puoi aggiungere qualsiasi account supportato dal server Jabber (tipicamente ICQ, MSN,...)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Sei sicuro di voler cancellare l'acccount '%s'?  ##  Are you sure you want to delete account '%s'?
+Cancellare l'account registrato?  ##  Delete registered account?
+Accounts  ##  Accounts
+Visualizza solo i gateway  ##  Show only gateways
+Visualizza tutti i servizi  ##  Show all services
+Contatti  ##  Contacts
+Aggiungi/Rimuovi  ##  Add/Remove
+Trova nuovi contatti.  ##  Find new contacts.
+E' possibile aggiungere contatti Jabber, ICQ, MSN,...  ##  You can add new Jabber, ICQ, MSN... contacts
+Tutti i File (*.*)\0*\0TXT File (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Tutti i file Immagine (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0Tutti i file (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Sistema  ##  System
+Logging
+Configura i file di Log e le informazioni di debug.  ##  Setup log files and debug info.
+Specificare il percorso  ##  Specify paths below
+Messaggi  ##  Messages
+Impostazioni della finestra di chat.  ##  Chat window settings.
+Per tutte le finestre di chat aperte.  ##  For all open chat windows.
+Informazioni generali  ##  General info
+Informazioni generali su  ##  General information about
+Informazioni personali  ##  Personal information
+Dettagli abitazione per  ##  Home details for
+Dettagli di lavoro per  ##  Business information
+Dettagli ufficio per ##  Work details for
+altro  ##  all other
+indirizzo assegnato dal mediator  ##  address given by mediator
+Apparenza  ##  Appearance
+Skins
+Selezionare una skin dalla lista qui sotto.  ##  Choose skin from below list.
+What will Wippien wear?
+... nessuno ..  ##  .. none ..
+"Lontano dal PC" automatico  ##  Auto Away
+Impostazioni "Lontano dal PC" automatico ##  Auto away settings.
+Determina il comportamento di Wippien quando il sistema è inattivo.  ##  Determines how will Wippien behave when system is inactive.
+Sistema  ##  System
+Messaggi di sistema.  ##  Basic system messages.
+Definisce il comportamento di Wippien.  ##  Define Wippien application's behavior.
+Chat vocale  ##  Voice Chat
+Impostare i le periferiche per la chat vocale.  ##  Please setup your voice chat devices.
+Segliere dalla lista qui sotto.  ##  Choose from list below.
+<default di sistema>  ##  <system default>
+Impostazioni base per i contatti.  ##  Contacts basic settings.
+Aggiornamenti  ##  Updates
+Aggiorna le definizioni.  ##  Update definitions.
+Definisce come Wippien di auto-aggiornerà.  ##  Define when and how will Wippien update itself.
+MTU
+Determinare la massima unità di trasferimento.  ##  Please determine maximum transfer unit.
+Se alcuni peer non rispondono all'invio di pacchetti grandi...  ##  If some peer doesn't respond to large packets...
+Suoni  ##  Sounds
+Imposta i suoni da eseguire in base a vari eventi.  ##  Setup sounds to be played on various events.
+Sceglie uno interno o seleziona un file WAV.  ##  Choose internal ones, or browse for WAV files.
+Contatto online  ##  Contact online
+Contatto offline  ##  Contact offline
+Messaggio in ingresso  ##  Message in
+Messaggio in uscita  ##  Message out
+Errore  ##  Error
+WAV files (*.wav)\0*.wav\0Tutti i file (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+Nascondi  ##  Hide
+Nascondi contatti.  ##  Hide contacts.
+E' possibile nascondere alcuni contatti.  ##  You can hide some contacts from your sight.
+Apparenza  ##  Appearance
+Impostazioni apparenza.  ##  Appearance settings.
+Definisce come apparirà l'interfaccia di Wippien.  ##  Define how will Wippien's GUI appear to you.
+Ordina  ##  Sort
+Ordina contatti.  ##  Sorts contacts.
+Seleziona un'opzione di ordinamento.  ##  Pick one of sort options.
+ChatRoom
+Visualizza o crea chat room. (BETA!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Inserisci o seleziona una chat room o crea una nuova.  ##  Specify or browse for a room to join or create new one.
+- All gateways -
+Service gateway
+Nome della chat room  ##  Room name
+Firewall
+Imposta le regole del firewall.  ##  Set up firewall rules.
+Imposta quali porte sono accessibili ai tuoi contatti.  ##  You can set up which ports can be accessed by your contacts.
+* Tutto il traffico ICMP  ##  * All ICMP traffic
+Ma blocca queste porte  ##  But block these ports
+Ma consenti queste porte  ##  But allow these ports
+Aggiornamento Wippien  ##  Wippien update
+Una nuova versione di Wippien è disponibile. Scaricarla?  ##  New version of Wippien is available. Download?
+Clicca qui per vedere cosa c'è di nuovo.  ##  Click here to see what's new.
+L'attuale versione di Wippien è aggiornata.  ##  Your version of Wippien is up-to-date.
+Errore nella connessione al server remoto.  ##  Error connecting to remote server.
+Scaricamento completato. Sostituire adesso?  ##  Download successful. Replace now?
+Errore nell'aggiornamento di Wippien!  ##  Wippien update error!
+Una nuova versione di Wippien è stata trovata localmente. Sostituire?  ##  New version of Wippien found localy. Replace?
+Nuova versione  ##  New version
+Stato cambiato:  ##  Status changed: 
+giorno  ##  day
+giorni  ##  days
+ora  ##  hour
+ore  ##  hours
+minuto  ##  minute
+minuti  ##  minutes
+Ultimo contatto: mai  ##  Last seen: never
+è attualmente offline  ##  is currently offline
+è ora offline  ##  is now offline
+è ora online  ##  is now online
+è bloccato  ##  is blocked
+è offline  ##  is offline
+Sblocca  ##  Unblock
+Blocca  ##  Block
+Sei sicuro di voler eliminare il gruppo %s  ##  Are you sure you want to remove group %s
+Eliminare il gruppo?  ##  Remove group?
+Sei sicuro di voler eliminare il contatto %s  ##  Are you sure you want to remove contact %s
+Eliminare il contatto?  ##  Remove contact?
+Errore interfaccia di rete  ##  Adapter error
+Rinomina gruppo  ##  Rename group
+Inserisci un nuovo nome per il gruppo  ##  Enter new group name
+Scarica più skin dal sito di Wippien  ##  Download more skins from Wippien website
+Clicca sulla skin per scaricarla ed installarla.  ##  Click on the skin to download and install it.
+Crea un nuovo account Jabber  ##  I need new Jabber account
+Utilizza un account Jabber esistente   ##  I have existing Jabber account
+&Prova Account  ##  &Test Account
+&Cerca  ##  &Search
+Inserisci il tuo jabber ID (JID) qui. Wippien usa la rete Jabber per connetterti con i tuoi contatti.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Se non disponi di un JID, devi crearne uno nuovo. Puoi utilizzare il server Jabber che preferisci; ce ne sono molti pubblici disponibili. Puoi avere una lista di server disponibili cliccando su questo pulsante.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+JID
+Password
+Server
+Porta  ##  Port
+Clicca su 'Prova Account' per procedere.  ##  Please click on 'Test Account' to proceed.
+Usa SSL sulla porta 443 (per Gtalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+O&K  ##  O&K
+Annulla  ##  &Cancel
+Inserisci la passphrase  ##  Please enter key passphrase
+Aggiungi &Nuovo  ##  Add &New
+Notifica se l'interfaccia ethernet non è disponibile.  ##  Show notification if ethernet adapter is unavailable.
+Disconnetti l'interfaccia di rete all'uscita  ##  Disconnect adapter on exit
+Porta per i pacchetti UDP in Input/Output (0 = automatica)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Indirizzo IP per l'interfaccia di rete di Wippien  ##  IP address for Wippien network adapter
+Ignora. L'IP verrà impostato fuori dal programma.  ##  Ignore. IP will be set outside of this program.
+Ottenuto da un fornitore di indirizzi IP all'indirizzo:  ##  Obtained from IP provider database, on URL
+Usa il seguente IP statico  ##  Use following static address
+Indirizzo IP  ##  IP address
+Netmask
+Stato  ##  Status
+URL
+Descrizione  ##  Description
+Aggiungi nuovo account  ##  Add new account
+Rimuovi l'account  ##  Remove account
+Registra!  ##  Register!
+Attuali connessioni di Instant Messaging  ##  Your current Instant messaging connections
+Nome Utente  ##  Username
+Apri nuovo account  ##  Open new account
+Autorizzazione richiesta  ##  Authorization request
+&Si  ##  &Yes
+&No  ##  &No
+&Dettagli  ##  &Details
+&Applica a tutti  ##  &Apply to all
+&Blocca utente  ##  &Block user(s)
+Consenti  ##  Do you allow
+di aggiungere tuo nome alla sua lista contatti?  ##  to add you to his contact list?
+varie richieste in attesa...  ##  more requests waiting...
+Aggiungi Gruppo  ##  Add Group
+Elimina Gruppo  ##  Remove Group
+Aggiungi Contatto  ##  Add Contact
+Metti il Contatto nel gruppo  ##  Put contact to the group
+JID del Contatto  ##  Contact JID
+Tipo Contatto  ##  Contact Type
+Nome visibile  ##  Visible Name
+Rinomina Contatto  ##  Rename contact
+Inserisci il nuovo nome del Contatto  ##  Enter new contact name
+Impostazioni  ##  Settings
+< &Indietro  ##  < &Back
+Tieni traccia delle comunicazioni Jabber  ##  Log Jabber communication
+Tieni traccia delle comunicazioni socket  ##  Log socket communication
+Tieni traccia delle chiamate alle funzioni (può ingrandirsi velocemente!)  ##  Log raw function calls (may grow quickly!)
+Elimina i log grezzi ogni  ##  Delete raw log on each
+megabytes
+Tieni traccia delle comunicazioni VPN all'avvio del P2P  ##  Log VPN communication on P2P startup
+Sono disponibili i seguenti Mediator  ##  Following mediators can be used
+Consenti l'aggiunta di nuovi Mediator  ##  Allow new mediators to be added
+Varie impostazioni per la finestra di chat  ##  Various settings regarding chat window
+Visualizza l'ora nei messaggi  ##  Timestamp messages
+Visualizza la cronologia dei messaggi  ##  Show message history
+Nickname
+Nome  ##  First name
+Cognome  ##  Last name
+Email
+Note  ##  Notes
+Indirizzo  ##  Address
+Indirizzo esteso  ##  Address Ext.
+Città  ##  City
+Regione  ##  State
+CAP  ##  ZIP
+Paese  ##  Country
+Data di nascita  ##  Birthday
+Telefono  ##  Voice Tel.
+Fax
+Titolo  ##  Title
+Nome Azienda  ##  Company name
+Reparto  ##  Department
+Interfacceabilitate alla connessione diretta  ##  Allowed interfaces for direct connection
+Consenti tutti  ##  Allow All
+Clicca sulla prima colonna per modificare i valori  ##  Click on first column to change values
+Se si seleziona il valore 'non specificato', lo stesso valore sarà utilizzato come parametro 'tutti gli altri'  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Sono state trovate le seguenti skin  ##  Following skin files are found
+Applica  ##  Apply
+Per aggiungere più skin è possibile incollarle nella sottocartella 'Skin'. E' necessario includere il corrispondente file di anteprima in formato PNG 100x100  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+&Più skin...  ##  &More skins...
+Ritorna quando viene nuovamente rilevata attività.  ##  Set back when activity is detected again.
+Attendi  ##  Wait
+minuti prima di attivare la modalità 'Non al PC' (0 = disabilita)  ##  minutes before going to away mode (0 = disable)
+minuti prima di attivare la modalità 'Non al PC da molto tempo' (0 = disabilita)  ##  minutes before going to extended away mode (0 = disable)
+minuti prima di disconnetterti  ##  minutes before disconnecting (0 = disable)
+Messaggio 'Non al PC' automatico  ##  Auto-Away message
+Messaggio 'Non al PC da molto tempo' automatico  ##  Extended-Away message
+Visualizza Wippien nella Taskbar  ##  Show Wippien in taskbar
+Riorganizza il desktop quando Wippien è allineato al bordo  ##  Rearrange desktop when Wippien window is aligned to border
+Aggancia al bordo del desktop  ##  Snap to desktop border
+Nascondi Wippien se inattivo da  ##  Auto hide if Wippien is inactive for
+Sempre in primo piano  ##  Always on top
+Chiedi conferma prima di uscire  ##  Confirm exit from application
+Disconnetti se il computer va in Standby, Connetti al ripristino  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Proteggi con password  ##  Password protect
+Solo impostazioni  ##  Settings only
+Tutto  ##  Everything
+Cartella delle Impostazioni (richiede il riavvio di Wippien)  ##  Settings folder (changing below value requires wippien restart)
+Persistenza della lista contatti  ##  Contact list persistance
+Cancella tutti i contatti locali all'avvio  ##  Delete all local contacts on startup
+Cancella tutti i contatti locali ad ogni connessione  ##  Delete all local contacts on connect
+Autorizza nuovi contatti  ##  Contacts subscription authorization
+Non autorizzare mai  ##  Never authorize
+Chiedi  ##  Ask me
+Autorizza sempre  ##  Always authorize
+Stabilici automaticamente una VPN su traffico di rete  ##  Automatically establish VPN on network traffic
+Stabilici automaticamente una VPN all'avvio  ##  Automatically establish VPN on startup
+Progresso  ##  Progress
+Attiva la chat vocale  ##  Enable voice chat
+Dispositivo di riproduzione  ##  Playback device
+Dispositivo di registrazione  ##  Recording device
+Cerca aggiornamenti all'avvio  ##  Check for updates when Wippien starts
+Cerca aggiornamenti quando connesso  ##  Check for updates on Connect
+Cerca aggiornamenti ogni  ##  Check for updates each
+Aggiorna e riavvia l'applicazione silenziosamente  ##  Update and restart application silently
+Visualizza i messaggi di sistema ricevuti dall'updater  ##  Show system messages received from updater
+&Controlla adesso  ##  &Check now
+Le impostazioni MTU definiscono la grandezza massima di un pacchetto UDP da inviare ai peer. Se la connessione supporta un MTU più basso di quello impostato, è possibile che i pacchetti non arrivino correttamente.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Usa MTU fisso  ##  Use fixed MTU
+Auto-rileva MTU  ##  Auto-detect MTU
+(diventerà effettivo alla prossima connessione dei peer)  ##  (will become effective as peers reconnect)
+Suono (lasciare vuoto per i suoni predefiniti)  ##  Sound (leave empty for default sound)
+&Play  ##  &Play
+Eventi del programma  ##  Program events
+Nascondi nuovo contatto  ##  Hide new contact
+Mostra contatto  ##  Unhide contact
+Contatti nascosti  ##  Currently hidden contacts
+Tutti i contatti qui presenti *NON APPARIRANNO MAI* in Wippien. In questo modo puoi ignorare completamente queste persone.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Nascondi contatto  ##  Hide contact
+Inserisci JID del contatto  ##  Enter contact JID
+Consenti tutto il traffico  ##  Allow all traffic
+Blocca tutto il traffico  ##  Block all traffic
+&Aggiungi  ##  &Add
+&Rimuovi  ##  &Remove
+Regola predefinita  ##  Default rule
+Immagine avatar  ##  Avatar picture
+Nome  ##  Name
+Indirizzo IP  ##  IP address
+Stato  ##  Status text
+Ultima volta online  ##  Last online time
+Monitor attività  ##  Activity Monitor
+Dettagli visibili  ##  Visible details
+Dettagli dei contatti visibili  ##  Contact's visible details
+non ordinato  ##  unsorted
+Per nome  ##  By name
+per JID  ##  By JID
+Per IP (i senza IP vanno in fondo)  ##  by IP (without IP goes bottom)
+Per IP (i senza IP vanno in testa)  ##  by IP (without IP goes top)
+Ordina la lista contatti  ##  Sort contact list
+Nickname per le chat room  ##  Nickname for chatrooms
+Visualizza le chat room disponibili sui seguenti gateway  ##  Show available rooms on following gateways
+Clicca qui per selezionare la chat room, o inserisci i dati di una nuova chat room qui sotto  ##  Click above to select room, or enter new chat room details below
+Nome della chat room da creare o entrare  ##  Room name to create or join
+password (lasciare vuoto se nessuna password)  ##  Password (empty if none)
+Gateway
+Entra o Crea chat room  ##  Join or Create room
+Blocca gli utenti all'avvio  ##  Block users at startup
+&Copia IP  ##  &Copy IP
+C&hat
+Chat &Vocale  ##  &Voice Chat
+Invia &File  ##  Send &File
+Invia E&mail  ##  Send E&mail
+&Blocca  ##  &Block
+&Rinomina  ##  &Rename
+E&limina  ##  &Delete
+De&ttagli  ##  De&tails
+Aggiungi/Rimuovi &Account  ##  Add/Remove &Accounts
+Aggiungi/Rimuovi &Contatti  ##  Add/Remove &Contacts
+&Online
+Non &al PC  ##  &Away
+L&ibero  ##  Free for &Chat
+Non &Disturbare  ##  &Do not Disturb
+Lonta&no dal PC da molto tempo  ##  E&xtended Away
+&Invisibile  ##  &Invisible
+O&ffline
+Cambia Immagine  ##  Change &Picture
+Cambia Pa&ssword  ##  Change Pa&ssword
+I tuoi &Dettagli  ##  Your &Details
+Inserisci una Passphrase  ##  Enter Passphrase
+Inserire password  ##  Enter password
+Inserire password di protezione  ##  Please enter protect password
+Lingue  ##  Languages
+Imposta la lingia usata in tutti i testi su Wippien  ##  Setup language used in all Wippien texts.
+Nuove lingue potrebbero apparire periodicamente  ##  New languages may appear periodically.
+Le seguenti lingue sono disponibili sul PC  ##  Following languages are found as available on local computer
+&Cambia  ##  &Change
+Lingua usata sul PC locale  ##  Locale used on local computer
+Lingua corrente di Wippien  ##  Currently used language
+I cambiamenti avranno effetto in base alle necessità. Riavviare Wippien per visualizzare i cambiamenti.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Nuovi file di lingua disponibili. Scaricare?  ##  New language files available. Download?
+Visualizza una notifica popup quando i contatti sono online/offline  ##  Show notification popup window when contact goes online/offline
+Il contatto sta scrivendo...  ##  Contact is typing...
+dice  ##  says
+ha detto  ##  said

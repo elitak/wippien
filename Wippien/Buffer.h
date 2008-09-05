@@ -79,6 +79,7 @@ public:
 	void PutCString(BSTR);
 #endif
 	char *GetNextLine();
+	int FindNextLine(BOOL isunicode);
 
 };
 

@@ -254,6 +254,7 @@ CSettings::CSettings()
 	m_LanguageEnglishTotal = 0;
 	m_LanguageFileVersion = 0;
 	m_LanguageEngFileVersion = 0;
+	m_LanguageOther = new Buffer();
 }	
 
 CSettings::~CSettings()
@@ -331,7 +332,7 @@ CSettings::~CSettings()
 		m_LinkMediators.erase(m_LinkMediators.begin());
 	}
 
-
+	delete m_LanguageOther;
 }
 
 CXmlEntity *CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value, BOOL default_value)
@@ -504,7 +505,7 @@ int CSettings::LoadConfig(void)
 					m_LanguageFileVersion = 0;
 				}
 			}
-			if (m_Language.Length() && !m_LanguageOther.Len())
+			if (m_Language.Length() && !m_LanguageOther->Len())
 			{
 				CComBSTR2 ml = m_Language;
 				LoadLanguage(ml.ToString());
@@ -1814,7 +1815,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 			i = read(handle, buff, sizeof(buff));
 			if (i>0)
 			{
-				if (initial && i>2)
+				if (initial && i>5)
 				{
 					initial = FALSE;
 					if (a1[0] == 239)
@@ -1843,16 +1844,29 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 		
 		if (isunicode)
 		{
-			int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), NULL, NULL, NULL, NULL);
-			if (ret>0)
+			char buff2[65536];
+			_Buffer t2;
+			do 
 			{
-				char *a2 = NULL;
-				Buffer ml;
-				ml.AppendSpace(&a2, ret);
-				WideCharToMultiByte(CP_ACP, 0, (BSTR)temp.Ptr(), temp.Len(), a2, ret, NULL, NULL);
-				temp.Clear();
-				temp.Append(a2, ret);
-			}
+				i = temp.FindNextLine(TRUE);
+				if (i>0)
+				{
+					memset(buff2, 0, sizeof(buff2));
+					memcpy(buff2, temp.Ptr(), i);
+					temp.Consume(i);
+					int ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)buff2, -1, NULL, NULL, NULL, NULL);
+					if (ret>0)
+					{
+						WideCharToMultiByte(CP_ACP, 0, (BSTR)buff2, -1, buff, sizeof(buff), NULL, NULL);
+						ret--; // remove null terminator
+						t2.Append(buff, ret);
+//						t2.Append("\r\n");
+					}
+				}
+			} while (i>0);
+
+			temp.Clear();	
+			temp.Append(t2.Ptr(), t2.Len());
 		}
 
 		temp1->Append(temp.Ptr(), temp.Len());
@@ -1872,7 +1886,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 
 	m_LanguageEnglish.Clear();
 	m_LanguageEnglishIndex.Clear();
-	m_LanguageOther.Clear();
+	m_LanguageOther = new Buffer(); // I intentionally don't delete previous copy.. small intentional memory leak
 	m_LanguageOtherIndex.Clear();
 	m_LanguageEnglishTotal = 0;
 
@@ -1929,7 +1943,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 		strcat(buff, Language);
 		strcat(buff, ".txt");
 
-		m_LanguageOther.Clear();
+		m_LanguageOther->Clear();
 		m_LanguageOtherIndex.Clear();
 		temp.Clear();
 		unsigned int m_LanguageOtherTotal = 0;
@@ -1939,7 +1953,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 			temp.Append("\r\n", 2);
 			do 
 			{
-				offset = m_LanguageOther.m_end;
+				offset = m_LanguageOther->m_end;
 				a = temp.GetNextLine();
 				if (a && *a)
 				{
@@ -1957,8 +1971,8 @@ BOOL CSettings::LoadLanguage(char *Language)
 						char *h = strstr(buff, "  ##");
 						if (h)
 							*h = 0;
-						m_LanguageOther.Append(trim(buff));
-						m_LanguageOther.PutChar(0);
+						m_LanguageOther->Append(trim(buff));
+						m_LanguageOther->PutChar(0);
 						m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
 						m_LanguageOtherTotal++;
 					}
@@ -1969,7 +1983,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 				m_LanguageEnglishTotal = m_LanguageOtherTotal;
 			
 			m_LanguageEnglish.m_offset = 0;
-			m_LanguageOther.m_offset = 0;
+			m_LanguageOther->m_offset = 0;
 			
 			AWAY_MESSAGE = Translate("Away due to inactivity.");
 			EXTAWAY_MESSAGE = Translate("Away for a loooong time.");
@@ -1989,7 +2003,7 @@ char *CSettings::Translate(char *text)
 	char *orga = m_LanguageEnglish.Ptr();
 	unsigned int *orgp = (unsigned int *)m_LanguageEnglishIndex.Ptr();
 
-	char *dsta = m_LanguageOther.Ptr();
+	char *dsta = m_LanguageOther->Ptr();
 	unsigned int *dstp = (unsigned int *)m_LanguageOtherIndex.Ptr();
 	
 	for (int i=0;i<m_LanguageEnglishTotal;i++)

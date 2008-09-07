@@ -1866,6 +1866,40 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 
 //	ShellIcon(NIM_ADD);
 
+	WINDOWPLACEMENT wp = {0};
+	wp.length = sizeof(wp);
+	::GetWindowPlacement(GetDesktopWindow(), &wp);
+	
+	if (_Settings.m_RosterRect.left < wp.rcNormalPosition.left && _Settings.m_RosterRect.right  < wp.rcNormalPosition.left)
+	{
+		int width = _Settings.m_RosterRect.right - _Settings.m_RosterRect.left;
+		if (width<1) width = 200;
+		_Settings.m_RosterRect.left = wp.rcNormalPosition.left;
+		_Settings.m_RosterRect.right = _Settings.m_RosterRect.left + width;
+	}
+	if (_Settings.m_RosterRect.top < wp.rcNormalPosition.top && _Settings.m_RosterRect.bottom < wp.rcNormalPosition.top)
+	{
+		int height = _Settings.m_RosterRect.bottom - _Settings.m_RosterRect.top;
+		if (height<1) height = 500;
+		_Settings.m_RosterRect.top = wp.rcNormalPosition.top ;
+		_Settings.m_RosterRect.bottom = _Settings.m_RosterRect.top + height;
+	}
+	if (_Settings.m_RosterRect.left > wp.rcNormalPosition.right && _Settings.m_RosterRect.right  > wp.rcNormalPosition.right)
+	{
+		int width = _Settings.m_RosterRect.right - _Settings.m_RosterRect.left;
+		if (width<1) width = 200;
+		_Settings.m_RosterRect.right = wp.rcNormalPosition.right;
+		_Settings.m_RosterRect.left = _Settings.m_RosterRect.right - width;
+	}
+	if (_Settings.m_RosterRect.top > wp.rcNormalPosition.bottom && _Settings.m_RosterRect.bottom > wp.rcNormalPosition.bottom)
+	{
+		int height = _Settings.m_RosterRect.bottom - _Settings.m_RosterRect.top;
+		if (height<1) height = 500;
+		_Settings.m_RosterRect.bottom = wp.rcNormalPosition.bottom;
+		_Settings.m_RosterRect.top = _Settings.m_RosterRect.bottom - height;
+	}
+
+
 	// set position
 	if (_Settings.m_RosterRect.right>_Settings.m_RosterRect.left)
 	{

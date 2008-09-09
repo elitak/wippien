@@ -857,14 +857,14 @@ void CUser::SetSubtext(void)
 						sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("minutes"):_Settings.Translate("minute"));
 					}
 				}
+
+				sprintf(m_SubText, "%s %s", m_StatusText, howlong);
 			}
 			else
-				strcpy(howlong, _Settings.Translate("Last seen: never"));
+				strcpy(m_SubText, _Settings.Translate("Last seen: never"));
 		}
 		else
-			howlong[0] = 0;
-
-		sprintf(m_SubText, "%s %s", m_StatusText, howlong);
+			strcpy(m_SubText, m_StatusText);
 	}
 	if (ison && m_HisVirtualIP)
 	{

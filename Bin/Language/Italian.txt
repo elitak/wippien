@@ -1,6 +1,6 @@
 # Italian template text
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 1
+# Version: 2
 Nessun errore.  ##  No error.
 Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
@@ -55,7 +55,7 @@ Canale rifiutato dal client remoto.  ##  Channel refused by remote side.
 Versione del protocollo non supportata.  ##  Unsupported remote protocol version.
 wodVPN non inizializzato. Selezionare Start.  ##  wodVPN not yet started. Use Start first.
 Canale chiuso.  ##  Channel was closed.
-MTU troppo grande. ##  MTU size too large.
+MTU troppo grande.  ##  MTU size too large.
 MTU troppo piccolo.  ##  MTU size too small.
 Invalid socks request.
 Password non valida. Non corrisponde alla password remota.  ##  Invalid password. Does not match remote peer's password.
@@ -103,7 +103,7 @@ Fallita l'inizializzazione del programma di aggiornamento.  ##  Failed to start 
 La firma del documento non è valida.  ##  Signature on retrieved document is invalid.
 Data non impostata.  ##  Date not set.
 Errore nella registrazione del server COM.  ##  Failed to register COM server.
-Pagina non trovata (errore 404). ##  Page not found (error 404) returned from the server.
+Pagina non trovata (errore 404).  ##  Page not found (error 404) returned from the server.
 Grandezza del file scaricato file non valida.  ##  Invalid file size after download.
 Checksum MD5 del file scaricato non valido.  ##  Invalid MD5 checksum after download.
 Attenzione  ##  Warning
@@ -114,7 +114,7 @@ Libero  ##  Free for chat
 Non disturbare  ##  Do not disturb
 Non al PC da molto tempo  ##  Extended away
 Invisibile  ##  Invisible
-Chiede l'iscrizione ##  Asking for subscription
+Chiede l'iscrizione  ##  Asking for subscription
 Contatto non iscritto  ##  Contact not subscribed
 Disconnesso dal server  ##  Disconnected from server
 Connessione al server  ##  Connecting to server
@@ -150,8 +150,8 @@ Apri le Impostazioni  ##  Open settings
 &Impostazioni  ##  &Settings
 Apri AboutBox  ##  Show AboutBox
 &About
-Imposta stato (Lontano dal PC, Invisibile...)  ##  Set your status (Away,Invisible...)
-Aggiungi contatti e account alieni  ##  Add contacts and alien accounts
+Imposta stato (Non al PC, Invisibile...)  ##  Set your status (Away,Invisible...)
+Aggiungi contatti ed account.  ##  Add contacts and alien accounts
 Disattiva Audio  ##  Mute sound
 Apri chat room  ##  Open chat room
 Autorizza gli amici  ##  Authorize your friends
@@ -192,7 +192,7 @@ Fatto!  ##  Done!
 Contatto  ##  Contact
 Connessione  ##  Connecting
 Richiesta  ##  Requesting
-Scaricamento  di ##  Downloading
+Scaricamento  di  ##  Downloading
 File di configurazione  ##  Configuration file
 Generale  ##  General
 Inattivo.  ##  Away due to inactivity.
@@ -250,7 +250,7 @@ Informazioni generali su  ##  General information about
 Informazioni personali  ##  Personal information
 Dettagli abitazione per  ##  Home details for
 Dettagli di lavoro per  ##  Business information
-Dettagli ufficio per ##  Work details for
+Dettagli ufficio per  ##  Work details for
 altro  ##  all other
 indirizzo assegnato dal mediator  ##  address given by mediator
 Apparenza  ##  Appearance
@@ -258,8 +258,8 @@ Skins
 Selezionare una skin dalla lista qui sotto.  ##  Choose skin from below list.
 What will Wippien wear?
 ... nessuno ..  ##  .. none ..
-"Lontano dal PC" automatico  ##  Auto Away
-Impostazioni "Lontano dal PC" automatico ##  Auto away settings.
+"Non al PC" automatico  ##  Auto Away
+Impostazioni "Non al PC" automatico  ##  Auto away settings.
 Determina il comportamento di Wippien quando il sistema è inattivo.  ##  Determines how will Wippien behave when system is inactive.
 Sistema  ##  System
 Messaggi di sistema.  ##  Basic system messages.

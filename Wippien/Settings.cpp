@@ -1611,20 +1611,27 @@ void CSettings::PushGroupSorted(TreeGroup *grp)
 }
 
 
+BOOL m_PasswordDialogShown = FALSE;
 BOOL CSettings::CheckPasswordProtect(void)
 {
 	if (m_NowProtected)
 	{
 		if (m_PasswordProtectPassword.Length())
 		{
-			CSettingsDlg::CEnterPassDialog ndlg;
-			ndlg.DoModal();
-			if (!ndlg.m_Success)
+			if (!m_PasswordDialogShown)
+			{
+				m_PasswordDialogShown = TRUE;
+				CSettingsDlg::CEnterPassDialog ndlg;
+				ndlg.DoModal();
+				m_PasswordDialogShown = FALSE;
+				if (!ndlg.m_Success)
+					return FALSE;
+				CComBSTR2 pp = m_PasswordProtectPassword;
+				if (!strcmp(pp.ToString(), ndlg.m_Password))
+					m_NowProtected = FALSE;
+			}
+			else
 				return FALSE;
-			CComBSTR2 pp = m_PasswordProtectPassword;
-			if (!strcmp(pp.ToString(), ndlg.m_Password))
-				m_NowProtected = FALSE;
-
 		}
 		else
 			m_NowProtected = FALSE;

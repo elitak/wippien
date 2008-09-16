@@ -1935,7 +1935,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 					if (h)
 						*h = 0;
 					m_LanguageEnglish.Append(trim(buff));
-					m_LanguageEnglish.PutChar(0);
+					m_LanguageEnglish.PutShort(0);
 					m_LanguageEnglishTotal++;
 					m_LanguageEnglishIndex.Append((char *)&offset, sizeof(offset));
 				}
@@ -1979,7 +1979,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 						if (h)
 							*h = 0;
 						m_LanguageOther->Append(trim(buff));
-						m_LanguageOther->PutChar(0);
+						m_LanguageOther->PutShort(0);
 						m_LanguageOtherIndex.Append((char *)&offset, sizeof(offset));
 						m_LanguageOtherTotal++;
 					}

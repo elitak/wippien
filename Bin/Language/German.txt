@@ -1,6 +1,6 @@
 # Deutsches Sprachdatei für Wippien
 # Author: torsten.wagner@vnc-world.com
-# Version: 1
+# Version: 2
 Keine Fehler.  ## No error.
 Das System kann die genannte Datei nicht finden.  ## The system cannot find the file specified.
 Das System kann das genannte Verzeichnis nicht finden.  ## The system cannot find the path specified.
@@ -214,12 +214,12 @@ Icon  ## Icon
 Bitte wählen Sie ihr Icon aus  ## Please choose your icon.
 Diese sind in Ihren Kontakten ersichtlich.  ## This is usually visible to your contacts.
 Netzwerk  ## Network
-Bitte wählen sie ihre IP und Subnetmaske  ## Please choose your IP address and netmask.
-Von Wippien wird die definierte Netzwerkadressbandbreite verwendet.  ## This defines network range to be used by wippien.
-Netzwork  ## Network
+Bitte wählen Sie ihre Wippien Netzwerkeinstellungen  ## Please choose your IP address and netmask.
+Hier werden die Einstellungen definiert die Wippien verwenden soll.  ## This defines network range to be used by wippien.
+Netzwerk  ## Network
 Vermittler  ## Mediator
-Wählen Sie Ihren Vermittler aus.  ## Please choose who will be your mediator.
-Dies sind vermittelte Personen die auf P2P Verbindungen aufbauen.  ## This defines people that mediate P2P connections.
+Wählen Sie Ihren Vermittlersserver aus.  ## Please choose who will be your mediator.
+Dies sind Vermittlungsserver die P2P Verbindungen unterstützen.  ## This defines people that mediate P2P connections.
 Letzte Überprüfung  ## Last check
 Port  ## Port
 Computername  ## Hostname
@@ -230,7 +230,7 @@ Sie können diverse Jabberkonten an ihrem Jabberserver hinzufügen (typischerweise
 Sind Sie sicher das Sie das Konto löschen wollen '%s'?  ## Are you sure you want to delete account '%s'?
 Registriertes Konto löschen?  ## Delete registered account?
 Benutzerkonten  ## Accounts
-Zeige alle Gatewaya an  ## Show only gateways
+Zeige alle Gateways an  ## Show only gateways
 Zeige alle Dienste an  ## Show all services
 Verbindungen  ## Contacts
 hinzufügen/löschen  ## Add/Remove
@@ -262,8 +262,8 @@ Automatisch abwesend  ## Auto Away
 Einstellungen für die Abwesenheitsmeldungen  ## Auto away settings.
 Wie Wippien beendet wird, wenn das System inaktiv ist.  ## Determines how will Wippien behave when system is inactive.
 System  ## System
-Systemmitteilung  ## Basic system messages.
-Definiere die Wippien Anwendungsdarstellung  ## Define Wippien application's behavior.
+Systemeinstellungen  ## Basic system messages.
+Konfiguration von Wippien als Anwendung  ## Define Wippien application's behavior.
 Sprachchat  ## Voice Chat
 Bitte geben Sie ihre Spachchatkonfiguration ein.  ## Please setup your voice chat devices.
 Von nachfolgender Liste auswählen.  ## Choose from list below.
@@ -273,7 +273,7 @@ Updates  ## Updates
 Updatedefinition  ## Update definitions.
 Definieren Sie wie und wann Wippien sich selbst updaten wird.  ## Define when and how will Wippien update itself.
 MTU  ## MTU
-Definieren Sie die max. Transportgrösse.  ## Please determine maximum transfer unit.
+Definieren Sie die max. Datenpaketgrösse.  ## Please determine maximum transfer unit.
 Wenn einige Mitglieder nicht mit zu grossen Paketen antworten...  ## If some peer doesn't respond to large packets...
 Audio  ## Sounds
 Audioeinstellungen für verschiedene Ereignisse  ## Setup sounds to be played on various events.
@@ -343,7 +343,7 @@ Verwende existierendes Jabberkonto  ## I have existing Jabber account
 Testkonto  ## &Test Account
 Suchen  ## &Search
 Jabber ID (JID) hier eingeben. Wippien nutzt das Jabbernetzwerk - damit zeigen Sie das sie online sind, andere sehen können und mehr...  ## You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-Wenn Sie keine JID haben sollten sich für eine registrieren lassen. Sie können dies an einem beliebigen Jabberserver tun. Es gibt sehr viele öffentliche Server. Sie können eine akt. Liste der verfügbaren Server durch klicken dieser Taste einsehen.  ## If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Wenn Sie keine JID haben, müssen Sie sich für eine registrieren lassen. Sie können dies bei einem beliebigen Jabberserver tun. Es gibt viele öffentliche Server. Sie können eine akt. Liste der verfügbaren Server durch klicken der Taste `Suchen` einsehen.  ## If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ## JID
 Passwort  ## Password
 Server  ## Server
@@ -354,14 +354,14 @@ O&K  ## O&K
 Abbrechen  ## &Cancel
 Bitte Passphrase eingeben  ## Please enter key passphrase
 Neu hinzufügen  ## Add &New
-Zeige den Hinweis an wenn der Ethernetadapter nicht erreicbar ist.  ## Show notification if ethernet adapter is unavailable.
-Beim Beenden Verbindung abbrechen.  ## Disconnect adapter on exit
-UDP Port für alle ein- und ausgehenden Pakete verwenden. (0 für autom. Auswahl)  ## UDP port fort for outoing and incoming packets (0 for auto select)
-IP Adresse des Wippien Netzwerkadapters  ## IP address for Wippien network adapter
-Ignorieren Sie die von ausserhalb des Programms vergebene IP  ## Ignore. IP will be set outside of this program.
-Dies erhalten Sie von ihrer ISP-Datenbank, via URL  ## Obtained from IP provider database, on URL
-Folgende Adresse verw.  ## Use following static address
-IP Adresse  ## IP address
+Zeige einen Hinweis an wenn der Ethernetadapter nicht erreichbar ist.  ## Show notification if ethernet adapter is unavailable.
+Beim Beenden von `Wippien` die Verbindung ebenfalls beenden.  ## Disconnect adapter on exit
+Generell den UDP Port verwenden. (0 für autom. Auswahl)  ## UDP port fort for outoing and incoming packets (0 for auto select)
+IPv4-Adresse des Wippien Netzwerkadapters  ## IP address for Wippien network adapter
+Ignorieren Sie die von extern vergebene IP Adresse  ## Ignore. IP will be set outside of this program.
+Diese erhalten Sie von der IP-Datenbank, über folgende URL  ## Obtained from IP provider database, on URL
+Folgende IP verwenden  ## Use following static address
+IPv4-Adresse  ## IP address
 Subnet  ## Netmask
 Status  ## Status
 Website  ## URL
@@ -411,12 +411,12 @@ Notizen  ## Notes
 Strasse  ## Address
 Zusatzbez.  ## Address Ext.
 Ort  ## City
-Staat  ## State
+Bundesland  ## State
 Postleitzahl  ## ZIP
-Nation  ## Country
+Land  ## Country
 Geburtstag  ## Birthday
 Telefon  ## Voice Tel.
-FAX.  ## Fax
+FAX  ## Fax
 Titel  ## Title
 Unternehmen  ## Company name
 Abteilung  ## Department
@@ -438,21 +438,21 @@ längerfr. Abwesenheitsmitteilung (selbst definieren)  ## Extended-Away message
 Wippien in der Taskleiste anzeigen  ## Show Wippien in taskbar
 Desktop wieder herstellen wenn Wippien am Rand ausgerichtet wird.  ## Rearrange desktop when Wippien window is aligned to border.
 Am Desktoprand ausrichten  ## Snap to desktop border
-Wippien deaktiv, nicht anzeigen für  ## Auto hide if Wippien is inactive for
-Immer oben  ## Always on top
-Das Programmende über die Anwendung aus durchführen lassen.  ## Confirm exit from application
-Im Ruhezustand die Verbindung abbrechen, ansonsten Verbindung beibehalten  ## Disconnect on computer Sleep/Hibernate, Connect on Resume
+Wippien nicht mehr anzeigen nach  ## Auto hide if Wippien is inactive for
+Wippien immer im Vordergrund anzeigen.  ## Always on top
+Das Programmende über die Anwendung durchführen lassen.  ## Confirm exit from application
+Im Ruhezustand die Verbindung abbrechen, ansonsten Verb. beibehalten  ## Disconnect on computer Sleep/Hibernate, Connect on Resume
 Passwort eingeben:  ## Password protect
 nur für diese Einstellungen  ## Settings only
 Alle  ## Everything
-Einstellungen (Erst nach dem Neustart von Wippien wirksam.)  ## Settings folder (changing below value requires wippien restart)
+Individuelle Einstellungen speichern in... (Neustart von Wippien notwendig.)  ## Settings folder (changing below value requires wippien restart)
 dauerhafte Kontaktliste  ## Contact list persistance
 Alle lokalen Kontakte nach dem Programmstart löschen  ## Delete all local contacts on startup
 Alle lokalen Kontakte nach dem Verbindungsaufbau löschen  ## Delete all local contacts on connect
-Bestätigte und authorisierte Kontakte  ## Contacts subscription authorization
-Noch nicht authorisiert  ## Never authorize
-Frag mich  ## Ask me
-Bereits authorisiert  ## Always authorize
+Bestätigte oder authorisiere Kontakte  ## Contacts subscription authorization
+noch nicht authorisiert  ## Never authorize
+zuerst mich fragen  ## Ask me
+bereits authorisiert  ## Always authorize
 VPN beim Netzwerkverkehr automatisch starten  ## Automatically establish VPN on network traffic
 VPN automatisch beim Start aufbauen  ## Automatically establish VPN on startup
 In Bearbeitung  ## Progress
@@ -465,7 +465,7 @@ Immer nach Updates suchen  ## Check for updates each
 Im Hintergrund nach Updates suchen und neu starten  ## Update and restart application silently
 Zeigen Sie die Systemmitteilungen, die vom Updater indiziert werden.  ## Show system messages received from updater
 Jetzt überprüfen  ## &Check now
-MTU Einstellungen bestimmen die max. UDP Paketgrösse die an die Mitglieder versendet werden können. Wenn ihre Netzwerkverbindungen geringere MTU Werte als Wippien, ist es möglich dass Sie die grösseren Datenpakete nicht empfangen kann.  ## MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Die MTU Werte bestimmen die max. UDP Paketgrösse die an die Mitglieder versendet werden können. Wenn Sie geringere MTU Werte als Wippien verwenden können Sie keine größeren Pakete erhalten.  ## MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 feste MTU verwenden  ## Use fixed MTU
 autom. MTU verwenden  ## Auto-detect MTU
 (wird ausgeführt wenn wieder verbunden)  ## (will become effective as peers reconnect)
@@ -530,7 +530,7 @@ Passphrase eingeben  ## Enter Passphrase
 Passwort eingeben  ## Enter password
 Bitte Passwort eingeben  ## Please enter protect password
 Sprachen  ## Languages
-Sprachensetup die in Wippien verwendet wird.  ## Setup language used in all Wippien texts.
+Die Sprache in Wippien einstellen.  ## Setup language used in all Wippien texts.
 Neue Sprachen können hinzugefügt werden.  ## New languages may appear periodically.
 Die nachfolgenden möglichen Sprachdateien wurden auf dem Computer gefunden  ## Following languages are found as available on local computer
 Veränderungen  ## &Change
@@ -542,3 +542,4 @@ Das Verbindungsfenster wird angezeigt wenn der Kontakt online oder offline geht 
 Die Verbindung wählt sich ein ...  ## Contact is typing...
 sagt  ## says
 sagte  ## said
+

@@ -130,12 +130,13 @@ DWORD WINAPI CalcMTUThreadProc(LPVOID lpParam)
 
 		if (more)
 			Sleep(100);
-	} while (more);
+	} while (more && IsWindow(mtu->m_UserWnd));
 
 //	if (packet_size)
 //		printf("\r\nYou should set MTU to %d\r\n", packet_size+28);
 
-	::PostMessage(mtu->m_UserWnd, WM_MTUDETECT, packet_size+28, 0);
+	if (IsWindow(mtu->m_UserWnd))
+		::PostMessage(mtu->m_UserWnd, WM_MTUDETECT, packet_size+28, 0);
 	delete mtu;
 	return 0;
 }

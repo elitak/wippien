@@ -70,9 +70,15 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 {
 	CUser *me = (CUser *)this;
 #endif
-//	me->m_WippienState = WipDisconnected;	
-//	me->KillTimer(2);
+
+	// preserve Wippien state
+	Buffer *o = me->m_IsWippien;
+	me->m_IsWippien = NULL;
 	me->ReInit(TRUE);
+	if (!me->m_IsWippien)
+		me->m_IsWippien = o;
+	else
+		delete o;
 	me->m_IsAway = FALSE;
 	me->SetSubtext();
 	me->m_Changed = TRUE;
@@ -1246,7 +1252,13 @@ void CUser::NotifyDisconnect(void)
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &out);
 
 
+	Buffer *o = m_IsWippien;
+	m_IsWippien = NULL;
 	ReInit(TRUE);
+	if (!m_IsWippien)
+		m_IsWippien = o;
+	else
+		delete o;
 }
 
 void CUser::NotifyConnect(void)

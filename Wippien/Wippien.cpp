@@ -377,6 +377,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	::CoUninitialize();
 
 	// free up ARP library
+	pfnSnmpExtensionQuery = NULL;
 	if (hMIBLibrary)
 		FreeLibrary(hMIBLibrary);
 

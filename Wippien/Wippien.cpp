@@ -17,6 +17,9 @@
 #include "ContactAuthDlg.h"
 #include "UpdateHandler.h"
 #include "SDKMessageLink.h"
+#include <snmp.h>
+#pragma	comment(lib, "snmpapi.lib")
+
 
 
 CAppModule _Module;
@@ -26,6 +29,8 @@ CMainDlg _MainDlg;
 extern CJabber *_Jabber;
 extern CSDKMessageLink *_SDK;
 extern CContactAuthDlg *_ContactAuthDlg;
+PFNSNMPEXTENSIONQUERY	pfnSnmpExtensionQuery = NULL;	// Pointer to function: SnmpExtensionQuery
+int pfnSnmpAdapterIndex = -1;
 
 void ResampleImageIfNeeded(CxImage *img, int size);
 void ResampleImageIfNeeded(CxImage *img, int sizeX, int sizeY);
@@ -342,10 +347,39 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 
 	AtlAxWinInit();
 
+	// initialize ARP library
+	HMODULE					hMIBLibrary;			// Handle for library: inetmib1.dll
+	
+	PFNSNMPEXTENSIONINIT	pfnSnmpExtensionInit = NULL;	// Pointer to function: SnmpExtensionInit
+
+	hMIBLibrary	= LoadLibrary(TEXT("inetmib1.dll"));
+	
+	// If library loaded, get addresses of (SnmpExtensionInit, pfnSnmpExtensionQuery) functions
+	if (hMIBLibrary)
+	{
+		pfnSnmpExtensionInit	= (PFNSNMPEXTENSIONINIT)	GetProcAddress(hMIBLibrary, "SnmpExtensionInit");
+		pfnSnmpExtensionQuery	= (PFNSNMPEXTENSIONQUERY)	GetProcAddress(hMIBLibrary, "SnmpExtensionQuery");
+		
+		// If success get addresses and initialize SNMP, bInitialized = true
+		if (pfnSnmpExtensionInit && pfnSnmpExtensionQuery)
+		{
+			HANDLE				hPollForTrapEvent;
+			AsnObjectIdentifier	aoiSupportedView;
+			
+			if (!pfnSnmpExtensionInit(0, &hPollForTrapEvent, &aoiSupportedView))
+				pfnSnmpExtensionQuery = NULL;
+		}
+	}
+
 	int nRet = Run(lpstrCmdLine, nCmdShow);
 
 	_Module.Term();
 	::CoUninitialize();
+
+	// free up ARP library
+	if (hMIBLibrary)
+		FreeLibrary(hMIBLibrary);
+
 
 #ifdef _WODVPNLIB
 	WODVPNCOMLib::_VPN_LibDeinit();
@@ -360,4 +394,102 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 #endif
 
 	return nRet;
+}
+
+
+BOOL EditARPEntry(unsigned char IPAddress[4], unsigned char MACAddress[6])
+{
+	if (!pfnSnmpExtensionQuery || pfnSnmpAdapterIndex<0)
+		return 0;
+	
+	SnmpVarBindList		SVBList;
+	SnmpVarBind			SVBVars[4];
+	UINT				OID[4][10];
+	AsnInteger32		aiErrorStatus, aiErrorIndex;
+	BOOL				bReturn	= FALSE;
+	
+	//-----------------------------------------------------------------------
+	//	Fill array of 4 OIDs
+	//	
+	//	OID[0]	:	"1.3.6.1.2.1.4.22.1.1", ipNetToMediaIfIndex
+	//				The interface on which this entry's equivalence is effective
+	//
+	//	OID[1]	:	"1.3.6.1.2.1.4.22.1.2", ipNetToMediaPhysAddress
+	//				The media-dependent 'physical' address
+	//
+	//	OID[2]	:	"1.3.6.1.2.1.4.22.1.3", ipNetToMediaNetAddress
+	//				The IpAddress corresponding to the media-dependent 'physical' address
+	//
+	//	OID[3]	:	"1.3.6.1.2.1.4.22.1.4", ipNetToMediaType
+	//				Entry type: 1:Other, 2:Invalid(Remove), 3:Dynamic, 4:Static
+	//-----------------------------------------------------------------------
+	for (int count=0; count<4; count++)
+	{
+		OID[count][0]		= 1;
+		OID[count][1]		= 3;
+		OID[count][2]		= 6;
+		OID[count][3]		= 1;
+		OID[count][4]		= 2;
+		OID[count][5]		= 1;
+		OID[count][6]		= 4;
+		OID[count][7]		= 22;
+		OID[count][8]		= 1;
+		OID[count][9]		= 1 + count;
+		
+		switch(count)
+		{
+		case 0:
+			//	OID[0]	:	"1.3.6.1.2.1.4.22.1.1", ipNetToMediaIfIndex
+			//				The interface on which this entry's equivalence is effective
+			SVBVars[count].value.asnType				= ASN_INTEGER;
+			SVBVars[count].value.asnValue.number		= pfnSnmpAdapterIndex;
+			break;
+			
+		case 1:
+			//	OID[1]	:	"1.3.6.1.2.1.4.22.1.2", ipNetToMediaPhysAddress
+			//				The media-dependent 'physical' address
+			SVBVars[count].value.asnType				= ASN_OCTETSTRING;
+			SVBVars[count].value.asnValue.string.stream	= MACAddress;
+			SVBVars[count].value.asnValue.string.length	= 6;	// MAC Address length
+			SVBVars[count].value.asnValue.string.dynamic= FALSE;
+			break;
+			
+		case 2:
+			//	OID[2]	:	"1.3.6.1.2.1.4.22.1.3", ipNetToMediaNetAddress
+			//				The IpAddress corresponding to the media-dependent 'physical' address
+			SVBVars[count].value.asnType				= ASN_IPADDRESS;
+			SVBVars[count].value.asnValue.string.stream	= IPAddress;
+			SVBVars[count].value.asnValue.string.length	= 4;	// IP Address length
+			SVBVars[count].value.asnValue.string.dynamic= FALSE;
+			break;
+			
+		case 3:
+			//	OID[3]	:	"1.3.6.1.2.1.4.22.1.4", ipNetToMediaType
+			//				Entry type: 2:Remove, 3:Dynamic, 4:Static
+			SVBVars[count].value.asnType				= ASN_INTEGER;
+			SVBVars[count].value.asnValue.number		= 3; //	(2:Remove, 3:Dynamic, 4:Static)
+			break;
+		}
+		AsnObjectIdentifier	AsnOID = {sizeof(OID[count])/sizeof(UINT), OID[count]};
+		SnmpUtilOidCpy(&SVBVars[count].name, &AsnOID);
+	}
+	
+	SVBList.len		= 4;
+	SVBList.list	= SVBVars;
+	
+	aiErrorStatus	= 0;
+	aiErrorIndex	= 0;
+	
+	// Set information of entry (4 OIDs)
+	if (pfnSnmpExtensionQuery(SNMP_PDU_SET, &SVBList, &aiErrorStatus, &aiErrorIndex))
+		if (aiErrorStatus == SNMP_ERRORSTATUS_NOERROR)
+			bReturn = TRUE; // If success set bReturn = true
+		
+		// Frees the memory allocated for the specified object identifiers
+		SnmpUtilOidFree(&SVBVars[3].name);
+		SnmpUtilOidFree(&SVBVars[2].name);
+		SnmpUtilOidFree(&SVBVars[1].name);
+		SnmpUtilOidFree(&SVBVars[0].name);
+		
+		return bReturn;		// TRUE if set successfully, FALSE otherwise.
 }

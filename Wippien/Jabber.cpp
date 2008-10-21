@@ -21,7 +21,6 @@
 #endif
 
 
-
 #ifdef _WODVPNLIB
 namespace WODVPNCOMLib
 {
@@ -52,6 +51,7 @@ extern CSDKMessageLink *_SDK;
 
 int uuencode(unsigned char *src, unsigned int srclength,char *target, size_t targsize);
 void PopulateChatRoomListview(void);
+BOOL EditARPEntry(unsigned char IPAddress[4], unsigned char MACAddress[6]);
 
 #ifndef _WODXMPPLIB
 
@@ -644,6 +644,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											{
 												memcpy(user->m_MAC, out.Ptr(), 6);
 												out.Consume(6);
+												// set up ARP table for this MAC
+												EditARPEntry((unsigned char *)&user->m_HisVirtualIP, user->m_MAC);
 											}
 											else
 											{

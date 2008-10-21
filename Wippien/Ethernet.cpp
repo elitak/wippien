@@ -17,6 +17,7 @@ extern CSettings _Settings;
 extern CMainDlg _MainDlg;
 extern CEthernet _Ethernet;
 extern CUpdateHandler *_UpdateHandler;
+extern int pfnSnmpAdapterIndex;
 
 const char * CONFIGURING_ADAPTER_TEXT = "Configuring Wippien network adapter...";
 
@@ -314,6 +315,7 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 				{
 					if (!strcmp(ad_info->AdapterName, m_Guid))
 					{
+						pfnSnmpAdapterIndex = ad_info->Index;
 
 						// is it set to DHCP?
 						if (!ad_info->DhcpEnabled)

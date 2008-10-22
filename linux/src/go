@@ -1,0 +1,3 @@
+#!/bin/sh
+gcc wiptun.c -o wiptun
+g++ -D_UNIXVPN -D_LIB clnt.cpp buffer.c libstrophe.a libexpat.a /usr/lib/libcrypto.a /usr/lib/libpthread.so unixVPN.a -o wipclnt

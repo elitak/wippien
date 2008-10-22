@@ -1,0 +1,12 @@
+To build wippien correctly, just do svn checkout to some folder, and then execute 'go' script. It should compile two files - 
+
+
+wiptun - should be run with root privileges, it's interface to TAP adapter
+wipclnt JID PASSWORD - should be run as regular user for each contact that wants to connect
+
+You should use only existing JIDs. wipclnt cannot create new users, it cannot add/remove contacts, it will just pipe data. So, do all the preparation on big Wippien (or any other jabber client)
+
+This is alpha version only - still very slow, yes, I know, but it is my plan to improve it.. :)
+
+Cheers!
+Kreso

@@ -8,7 +8,7 @@ EXECUTABLESRV=bin/wiptun
 EXECUTABLECLN=bin/wipclnt
 
 all: $(EXECUTABLESRV) $(EXECUTABLECLN)
-	echo "all done"
+	@echo "all done"
 
 $(EXECUTABLESRV): $(SOURCESRV) 
 	$(CC) $(CFLAGS) $(SOURCESSRV) -o $(EXECUTABLESRV)

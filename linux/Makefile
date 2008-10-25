@@ -1,11 +1,11 @@
 CPLUS=g++
 CC=gcc
 CFLAGS=-Wall -fexceptions -D_UNIXVPN -D_LIB -O2
-LDFLAGS=-l pthread libstrophe.a libexpat.a -l crypto unixVPN.a
-SOURCESSRV=wiptun.c
-SOURCESCLN=clnt.cpp buffer.c
-EXECUTABLESRV=../bin/wiptun
-EXECUTABLECLN=../bin/wipclnt
+LDFLAGS=-l pthread -l crypto lib/libstrophe.a lib/libexpat.a lib/unixVPN.a
+SOURCESSRV=src/wiptun.c
+SOURCESCLN=src/clnt.cpp src/buffer.c
+EXECUTABLESRV=bin/wiptun
+EXECUTABLECLN=bin/wipclnt
 
 all: $(EXECUTABLESRV) $(EXECUTABLECLN)
 	echo "all done"

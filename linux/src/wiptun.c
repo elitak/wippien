@@ -11,6 +11,11 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <errno.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
 
 const char * DOMAINSOCKET_NAME="/var/run/wippien.sock";
 
@@ -181,14 +186,27 @@ int do_child(int client_sock, struct sockaddr_in *sockaddr)
   }
   
   printf("Leaving...\n");
+  return 0;
 }
 
+void defunct_handler (int signum)
+{
+  int sig_status;
+  /*int sig_pid = */waitpid (-1, &sig_status, WNOHANG);
+}
+  
 int main(void)
 {
   int client_sock, cli_len;   
   struct sockaddr_in cli_addr;
   int result;
     
+  struct sigaction sa, osa;
+  sa.sa_handler = defunct_handler;
+  sigfillset (&sa.sa_mask);
+  sa.sa_flags = SA_RESTART;
+  sigaction (SIGCHLD, &sa, &osa);
+  
   int domsocket = prepare_domainsocket();
   if (domsocket)
   {

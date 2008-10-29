@@ -1,6 +1,6 @@
 # Spanish	
-# Author: dokanel
-# Version: 1
+# Author: tdknela@gmail.com
+# Version: 2
 Sin Errores.  ##  No error.   
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
@@ -246,12 +246,12 @@ Mensajes  ##  Messages
 Opciones de la ventana de charla  ##  Chat window settings.
 Para todas las ventanas de charla abiertas  ##  For all open chat windows.
 Información general  ##  General info
-Información general sobre  ##  General information about
+Información general  ##  General information about
 Información personal  ##  Personal information
-Información personal de  ##  Home details for
+Información personal  ##  Home details for
 Información laboral  ##  Business information
-Información laboral para  ##  Work details for
-todos las demás  ##  all other
+Información laboral  ##  Work details for
+todas las demás  ##  all other
 dirección dada por el mediador  ##  address given by mediator
 Apariencia  ##  Appearance
 Máscaras  ##  Skins
@@ -297,7 +297,7 @@ Sala de Charla  ##  ChatRoom
 Elija o cree una sala de charla. (TODAVÍA EN VERSIÓN DE PRUEBA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Especifique o elija una sala para entrar o cree una nueva.  ##  Specify or browse for a room to join or create new one.
 - Todas las puertas de enlace -  ##  - All gateways -
-Servicio de puerta de enlace  ##  Service gateway
+Servidor de puerta de enlace  ##  Service gateway
 Nombre de la sala  ##  Room name
 Cortafuegos  ##  Firewall
 Configurar las reglas del cortafuegos.  ##  Set up firewall rules.
@@ -343,9 +343,9 @@ Ya tengo una cuenta Jabber  ##  I have existing Jabber account
 &Probar Cuenta  ##  &Test Account
 &Buscar  ##  &Search
 Introduzca aquí su Jabber ID (JID). Wippien usa la red Jabber para la presencia, es decir, informar a sus contactos de tu estado, ver otros contactos, etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-Si no posee una JID, debe registrarse para obtener una. Puede hacerlo en cualquier servidor de jabber. Existen muchos servidores públicos disponibles. Puede encontrar una lista de servidores disponibles actualmente pulsando sobre este botón.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
-JID  ##  JID
-Contraseña  ##  Password
+Si no posee una JID, debe registrarse para obtener una. Puede hacerlo en cualquier servidor de jabber. Existen muchos servidores públicos disponibles. Puede encontrar una lista de servidores disponibles actualmente pulsando sobre el botón Buscar.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Jabber ID  ##  JID
+Contrasña.  ##  Password
 Servidor  ##  Server
 Puerto  ##  Port
 Por favor pulse en 'Probar Cuenta' para continuar.  ##  Please click on 'Test Account' to proceed.
@@ -362,7 +362,7 @@ Ignorar. La IP será configurada fuera de este programa.  ##  Ignore. IP will be 
 Obtener IP de la base de datos del proveedor, cuya URL es:  ##  Obtained from IP provider database, on URL
 Dirección estática:  ##  Use following static address
 Dirección IP  ##  IP address
-Máscara de subred  ##  Netmask
+Másc.Subred  ##  Netmask
 Estado  ##  Status
 URL  ##  URL
 Descripción  ##  Description
@@ -421,9 +421,9 @@ Título  ##  Title
 Compañía  ##  Company name
 Departamento  ##  Department
 Interfaces autorizadas para conexión directa  ##  Allowed interfaces for direct connection
-Autorizar todas  ##  Allow All
+Permitir todas  ##  Allow All
 Pulse en la primera columna para cambiar los valores  ##  Click on first column to change values
-Si elije el valor 'no especificado', ese valor será usado en 'todas las demas' parámetros.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Si deja los valores 'por defecto', se aplicará el permiso a 'todas las demás'.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Las máscaras siguientes están disponibles  ##  Following skin files are found
 Aplicar  ##  Apply
 Para añadir más máscaras, también puede colocarlas en el subdirectorio 'Skin'. Añadir un archivo PNG (100x100 pixels) correspondiente para la previsualización.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
@@ -436,7 +436,7 @@ minutos antes de desconectar (0 = desactivado)  ##  minutes before disconnecting
 Mensaje de Auto-Ausente  ##  Auto-Away message
 Mensaje de Auto-Ausente+  ##  Extended-Away message
 Mostrar Wippien en la barra de tareas  ##  Show Wippien in taskbar
-Reorganizar el escritorio cuando Wippien está alineado con el borde  ##  Rearrange desktop when Wippien window is aligned to border
+Reorganizar el escritorio cuando Wippien esté alineado con el borde  ##  Rearrange desktop when Wippien window is aligned to border
 Ceñirse al borde del escritorio  ##  Snap to desktop border
 Auto-Ocultar si Wippien está inactivo  ##  Auto hide if Wippien is inactive for
 Siempre encima  ##  Always on top
@@ -449,7 +449,7 @@ Parámetros (reiniciar Wippien después de modificarlos)  ##  Settings folder (cha
 Persistencia de la lista de contactos local  ##  Contact list persistance
 Eliminar todos los contactos locales al inicio  ##  Delete all local contacts on startup
 Eliminar todos los contactos locales al conectarse  ##  Delete all local contacts on connect
-Permitir a los demás agregarse a su lista de contactos  ##  Contacts subscription authorization
+Permitir a los demás unirse a su lista de contactos  ##  Contacts subscription authorization
 No permitir nunca  ##  Never authorize
 Preguntarme  ##  Ask me
 Permitir siempre  ##  Always authorize
@@ -475,10 +475,10 @@ Eventos  ##  Program events
 Ocultar nuevo contacto  ##  Hide new contact
 Mostrar contacto  ##  Unhide contact
 Contactos ocultados actualmente  ##  Currently hidden contacts
-Todos los contactos listados aquí no aparecerán *NUNCA* en Wippien...  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Los contactos listados aquí no aparecerán *NUNCA* en Wippien...  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
 Ocultar contacto  ##  Hide contact
 Introducir JID del contacto  ##  Enter contact JID
-Autorizar todo el tráfico  ##  Allow all traffic
+Permitir todo el tráfico  ##  Allow all traffic
 Bloquear el tráfico  ##  Block all traffic
 &Añadir  ##  &Add
 &Eliminar  ##  &Remove
@@ -499,9 +499,9 @@ Por IP (sin IP arriba)  ##  by IP (without IP goes top)
 Ordenar la lista de contactos  ##  Sort contact list
 Alias para las salas  ##  Nickname for chatrooms
 Mostrar las salas que hay disponibles en:  ##  Show available rooms on following gateways
-Seleccionar una sala de arriba, o introducir los detalles de la nueva sala debajo:  ##  Click above to select room, or enter new chat room details below
+Seleccione una sala de arriba, o introduzca los detalles de la nueva sala abajo:  ##  Click above to select room, or enter new chat room details below
 Nombre de la sala a Crear/Entrar  ##  Room name to create or join
-Contraseña (dejarlo vacío para ninguno)  ##  Password (empty if none)
+Contraseña (opcional)  ##  Password (empty if none)
 Puerta de enlace  ##  Gateway
 Crear/Entrar en una sala  ##  Join or Create room
 Bloquear usuarios al inicio  ##  Block users at startup
@@ -531,7 +531,7 @@ Introduzca contraseña  ##  Enter password
 Por favor introduzca una contraseña de protección  ##  Please enter protect password
 Idiomas  ##  Languages
 Elegir el idioma que será utilizado en todos los textos de Wippien  ##  Setup language used in all Wippien texts.
-Los nuevos idiomas irán apareciendo próximamente  ##  New languages may appear periodically.
+Nuevos idiomas irán apareciendo próximamente  ##  New languages may appear periodically.
 Están disponibles los siguientes idiomas actualmente en este ordenador  ##  Following languages are found as available on local computer
 &Cambiar  ##  &Change
 Idioma utilizado por vuestro ordenador  ##  Locale used on local computer

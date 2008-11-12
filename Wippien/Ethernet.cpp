@@ -550,8 +550,14 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 	while (eth->m_Alive && eth->m_Enabled)
 	{
 
-		while (eth->m_Alive && eth->m_Enabled && /*!eth->WriteBuffer.Len()*/ eth->m_EthWriteStart == eth->m_EthWriteEnd)			
+		while (eth->m_Alive && eth->m_Enabled && eth->m_EthWriteStart == eth->m_EthWriteEnd)			
 		{
+			if (eth->m_EthWriteStart == eth->m_EthWriteEnd)
+			{
+				EthWriteData *ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
+				if (ed->Occupied) // all taken, go out!
+					break;
+			}
 			rt = WaitForMultipleObjects(2, eth->Handles, FALSE, 100);
 			if (rt == WAIT_OBJECT_0)
 			{
@@ -578,118 +584,117 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 				FirewallRules.push_back(fs);
 			}
 		}
-		if (eth->m_Alive && eth->m_Enabled && /*eth->WriteBuffer.Len()*/ eth->m_EthWriteEnd!=eth->m_EthWriteStart)
+		if (eth->m_Alive && eth->m_Enabled)
 		{
 
-
-			char *a = NULL;
-//			unsigned int len;
-			while (eth->m_EthWriteEnd != eth->m_EthWriteStart)
-//			while (eth->WriteBuffer.Len())
+			EthWriteData *ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
+			if (eth->m_EthWriteEnd!=eth->m_EthWriteStart || ed->Occupied)
 			{
-				a = NULL;
-				EthWriteData *ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
-//				if (!ed->Occupied)
-//					MessageBeep(-1);
-				if (ed->Occupied)
+				char *a = NULL;
+				while (eth->m_EthWriteEnd != eth->m_EthWriteStart || ed->Occupied)
 				{
-					
-					a = (char *)ed;
-					a += sizeof(EthWriteData);
-
-					if (ed->DataLen && a)
+					a = NULL;
+					if (ed->Occupied)
 					{
-
-						// should we write?
-						ETH_HEADER *ethr = (ETH_HEADER *) a;
-						IPHDR *ip = (IPHDR *)(a + sizeof(ETH_HEADER));
-						UDPHDR *udp = (UDPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
-						//		ICMPHDR *icmp = (ICMPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
-						TCPHDR *tcp = (TCPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
-						ARP_PACKET *p = (ARP_PACKET *)a;
 						
-						BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
-						for (int i=0;i<FirewallRules.size();i++)
+						a = (char *)ed;
+						a += sizeof(EthWriteData);
+
+						if (ed->DataLen && a)
 						{
-							FirewallStruct *fs = (FirewallStruct *)FirewallRules[i];
-							if (fs->Proto == ip->protocol)
+
+							// should we write?
+							ETH_HEADER *ethr = (ETH_HEADER *) a;
+							IPHDR *ip = (IPHDR *)(a + sizeof(ETH_HEADER));
+							UDPHDR *udp = (UDPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
+							//		ICMPHDR *icmp = (ICMPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
+							TCPHDR *tcp = (TCPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
+							ARP_PACKET *p = (ARP_PACKET *)a;
+							
+							BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
+							for (int i=0;i<FirewallRules.size();i++)
 							{
-								switch (fs->Proto)
+								FirewallStruct *fs = (FirewallStruct *)FirewallRules[i];
+								if (fs->Proto == ip->protocol)
 								{
-								case IPPROTO_ICMP:
-									cansend = !cansend;
-									break;
-									
-								case IPPROTO_UDP:
-									if (udp->dest == fs->Port/* || udp->source == fs->Port*/)
+									switch (fs->Proto)
+									{
+									case IPPROTO_ICMP:
 										cansend = !cansend;
-									break;
-									
-								case IPPROTO_TCP:
-									if (tcp->dest == fs->Port/* || tcp->source == fs->Port*/)
-										cansend = !cansend;
-									break;
+										break;
+										
+									case IPPROTO_UDP:
+										if (udp->dest == fs->Port/* || udp->source == fs->Port*/)
+											cansend = !cansend;
+										break;
+										
+									case IPPROTO_TCP:
+										if (tcp->dest == fs->Port/* || tcp->source == fs->Port*/)
+											cansend = !cansend;
+										break;
+									}
 								}
 							}
-						}
-						
+							
 
 
-						DWORD nwrite = ed->DataLen;
-						if (cansend && ed->DataLen>0 && eth->m_AdapterHandle)
-						{
-							if (!WriteFile(eth->m_AdapterHandle, a, ed->DataLen, &nwrite, &overlap))
+							DWORD nwrite = ed->DataLen;
+							if (cansend && ed->DataLen>0 && eth->m_AdapterHandle)
 							{
-								dwError = GetLastError();
-								switch (dwError)
+								if (!WriteFile(eth->m_AdapterHandle, a, ed->DataLen, &nwrite, &overlap))
 								{
-									case ERROR_MORE_DATA:
-										// loop more...
-										break;
+									dwError = GetLastError();
+									switch (dwError)
+									{
+										case ERROR_MORE_DATA:
+											// loop more...
+											break;
 
-									case ERROR_HANDLE_EOF:
-									case ERROR_FILE_NOT_FOUND:
-										eth->m_Alive = FALSE;
-										break;
+										case ERROR_HANDLE_EOF:
+										case ERROR_FILE_NOT_FOUND:
+											eth->m_Alive = FALSE;
+											break;
 
-									case ERROR_IO_PENDING: 
-										while(eth->m_Alive && eth->m_Enabled)
-										{
-	//										Sleep(10);
-	//										int ret = 100;
-											int ret = WaitForMultipleObjects(2, hs, FALSE, 1000);
-											if (ret == (WAIT_OBJECT_0) || !eth->m_Alive)
+										case ERROR_IO_PENDING: 
+											while(eth->m_Alive && eth->m_Enabled)
 											{
-												eth->m_Alive = FALSE;
-												break;
-											}
-											else
-											{
-												if (GetOverlappedResult(eth->m_AdapterHandle, &overlap, &nwrite, FALSE))
+		//										Sleep(10);
+		//										int ret = 100;
+												int ret = WaitForMultipleObjects(2, hs, FALSE, 1000);
+												if (ret == (WAIT_OBJECT_0) || !eth->m_Alive)
 												{
-	//												EnterCriticalSection(&eth->WriteCS);
-	//												eth->WriteBuffer.Consume(len + 4);
-	//												LeaveCriticalSection(&eth->WriteCS);
+													eth->m_Alive = FALSE;
 													break;
 												}
-											}
-										} 
-										break;
+												else
+												{
+													if (GetOverlappedResult(eth->m_AdapterHandle, &overlap, &nwrite, FALSE))
+													{
+		//												EnterCriticalSection(&eth->WriteCS);
+		//												eth->WriteBuffer.Consume(len + 4);
+		//												LeaveCriticalSection(&eth->WriteCS);
+														break;
+													}
+												}
+											} 
+											break;
+									}
+		//							ATLTRACE("<<Sent %d bytes to adapter\r\n", nwrite);
 								}
-	//							ATLTRACE("<<Sent %d bytes to adapter\r\n", nwrite);
+								else
+		//							ATLTRACE("<<Sent %d bytes to adapter\r\n", nwrite);
+								ResetEvent(overlap.hEvent);
+		//						ATLTRACE("WriteThread wrote %d bytes\r\n", nwrite);
 							}
-							else
-	//							ATLTRACE("<<Sent %d bytes to adapter\r\n", nwrite);
-							ResetEvent(overlap.hEvent);
-	//						ATLTRACE("WriteThread wrote %d bytes\r\n", nwrite);
+		//					free(a);
 						}
-	//					free(a);
 					}
+					ed->Occupied = FALSE;
+					eth->m_EthWriteStart++;
+					if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
+						eth->m_EthWriteStart = 0;
+					// for next loop
 				}
-				ed->Occupied = FALSE;
-				eth->m_EthWriteStart++;
-				if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
-					eth->m_EthWriteStart = 0;
 			}
 		}
 	}

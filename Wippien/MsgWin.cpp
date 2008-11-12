@@ -2858,7 +2858,8 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 //						::SetTextAlign(dcPaint.m_hDC, TA_CENTER);
 						//ExtTextOut(dcPaint.m_hDC, rc.right/2+1, rc.bottom - text.cy, 0, NULL, str, strlen(str), NULL);
 						rc.top += em->m_Image->GetHeight();
-						DrawText(dcPaint.m_hDC, str, strlen(str), &rc, DT_CENTER);
+						if (str)
+							DrawText(dcPaint.m_hDC, str, strlen(str), &rc, DT_CENTER);
 
 						::SelectObject(dcPaint.m_hDC, oldfont);
 					}

@@ -350,12 +350,11 @@ long EventStateChange(void *wodVPN, StatesEnum OldState)
 	char buff[1024];
 	int len = sizeof(buff);
 	VPN_GetStateText(wodVPN, st, buff, &len);
-//	printf("EVENTStateChange changed to %s\n", buff);
 }
 
 long EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
 {
-	printf("EVENTConnected\n");
+	printf("VPN Connected\n");
 	int i;
 	
 	for (i=0;i<TOTALUSERS;i++)
@@ -370,7 +369,7 @@ long EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
 
 long EventDisconnected(void *wodVPN, long ErrorCode, char * ErrorText)
 {
-	printf("EVENTDisconnected\n");
+	printf("VPN Disconnected\n");
 	int i;
 	
 	for (i=0;i<TOTALUSERS;i++)
@@ -385,7 +384,7 @@ long EventDisconnected(void *wodVPN, long ErrorCode, char * ErrorText)
 
 long EventSearchDone(void *wodVPN, char * IP, long Port, long ErrorCode, char * ErrorText)
 {
-	printf("EVENTSearchDone\n");
+	printf("VPN SearchDone\n");
 	
 	if (!ErrorCode)
 	{
@@ -404,12 +403,10 @@ long EventIncomingData(void *wodVPN, void *Data, int Len)
 	ETH_HEADER *ethr = (ETH_HEADER *) Data;
 //	printf("INCOMING %x packet from %x:%x:%x:%x:%x:%x to %x:%x:%x:%x:%x:%x\n", ethr->proto, ethr->src[0], ethr->src[1], ethr->src[2], ethr->src[3], ethr->src[4], ethr->src[5], ethr->dest[0], ethr->dest[1], ethr->dest[2], ethr->dest[3], ethr->dest[4], ethr->dest[5]); 
 	int result = send(domsocket, Data, Len, 0);
-//	printf("EVENTIncomingData %d/%d\n", result, Len);
 }
 
 void checkWippienState(user *u)
 {
-//	printf("Checking Wippien state\n");
 	if (!u->rsa || u->RemoteWippienState < WipWaitingInitResponse || u->LocalWippienState < WipWaitingInitResponse)
 	{
 		WIPNUX::Buffer b;
@@ -429,7 +426,7 @@ void checkWippienState(user *u)
 		
 		exchangeWippienDetails(u, (char *)WIPPIENINITREQUEST, (char *)buffer_ptr(&b), buffer_len(&b));    
 		buffer_free(&b);
-		printf("Sending wippieninitrequest to %s\n", u->JID);
+		printf("Sending WippienInitRequest to %s\n", u->JID);
 		return;
 	}
 	else
@@ -450,7 +447,7 @@ void checkWippienState(user *u)
 				
 				exchangeWippienDetails(u, (char *)WIPPIENINITRESPONSE, (char *)buffer_ptr(&b), buffer_len(&b));    
 				buffer_free(&b);
-				printf("Sending wippieninitresponse to %s\n", u->JID);
+				printf("Sending WippienInitResponse to %s\n", u->JID);
 				return;
 			}
 		}
@@ -466,7 +463,7 @@ void checkWippienState(user *u)
 				
 				exchangeWippienDetails(u, (char *)WIPPIENCONNECT, (char *)buffer_ptr(&b), buffer_len(&b));    
 				buffer_free(&b);
-				printf("Sending wippienconnect to %s\n", u->JID);
+				printf("Sending WippienConnect to %s\n", u->JID);
 				return;
 			}
 			
@@ -512,7 +509,7 @@ user *getWippienUser(char *from)
 	int iswippien = 0;
 	int i;
 	
-	printf("checking if %s is wippien\n", from);
+	//printf("checking if %s is wippien\n", from);
 	for (i=0;i<TOTALUSERS;i++)
 	{
 		if (!strcmp(USERLIST[i]->JID, from))
@@ -529,7 +526,7 @@ user *isWippien(char *from, xmpp_stanza_t *stanza)
 	int iswippien = 0;
 	int i;
 	
-	printf("checking if %s is wippien\n", from);
+	//printf("checking if %s is wippien\n", from);
 	for (i=0;i<TOTALUSERS;i++)
 	{
 		if (!strcmp(USERLIST[i]->JID, from))
@@ -559,7 +556,7 @@ user *isWippien(char *from, xmpp_stanza_t *stanza)
 	
 	if (iswippien)
 	{
-		printf("%s is wippien\n", from);
+		//printf("%s is wippien\n", from);
 		if (TOTALUSERS < MAXUSERS)
 		{
 			user *u = (user *)malloc(sizeof(user));
@@ -577,7 +574,7 @@ user *isWippien(char *from, xmpp_stanza_t *stanza)
 			
 			
 			USERLIST[TOTALUSERS++] = u;
-			printf("%s added to collection, total %d\n", from, TOTALUSERS);
+			//printf("%s added to collection, total %d\n", from, TOTALUSERS);
 			return u;
 		}
 	}
@@ -729,6 +726,7 @@ void myxmpp_conn_handler(xmpp_conn_t * const conn, const xmpp_conn_event_t statu
 	if (status == XMPP_CONN_CONNECT) 
 	{
 		
+		printf("Connected to XMPP server\n");
 		xmpp_handler_add(conn,message_handler, NULL, "message", NULL, ctx);
 		xmpp_handler_add(conn,presence_handler, NULL, "presence", NULL, ctx);
 		
@@ -740,6 +738,7 @@ void myxmpp_conn_handler(xmpp_conn_t * const conn, const xmpp_conn_event_t statu
 	}
 	else
 	{
+		printf("Disconnected from XMPP server\n");
 		xmpp_stop(ctx);  
 	}
 	
@@ -928,13 +927,23 @@ void ReadMAC(char *dev)
 
 int main(int argc, char **argv)
 {
-	if (argc != 3)
+	if (argc < 2)
 	{
 		printf("Please start with wipclnt JID Password\n");
 		return -1;
 	}
 	JID = (char *)argv[1];
-	Password = (char *)argv[2];
+	if (argc > 2)
+	{
+		Password = (char *)argv[2];
+	}
+	else
+	{
+		printf("Please enter password for %s: ", JID);
+		Password = (char *)malloc(1024);
+		memset(Password, 0, 1024);
+		scanf("%s", Password);
+	}
 	
 	_VPN_LibInit(0);
 	

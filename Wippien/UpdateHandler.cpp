@@ -663,8 +663,7 @@ void CUpdateHandler::DownloadUpdates(BOOL silently)
 	CComBSTR2 uurl = _Settings.m_UpdateURL;
 	URLbuff.Append(_Settings.m_UpdateURL);
 	URLbuff.Append("?JID=");
-	Buffer u1;
-	u1.Append(_Settings.m_JID);
+	URLbuff.Append(_Settings.m_JID);
 
 
 #ifndef _APPUPDLIB

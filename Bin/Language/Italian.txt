@@ -1,6 +1,6 @@
 # Italian template text
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 3
+# Version: 4
 Nessun errore.  ##  No error.
 Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
@@ -55,7 +55,7 @@ Canale rifiutato dal client remoto.  ##  Channel refused by remote side.
 Versione del protocollo non supportata.  ##  Unsupported remote protocol version.
 wodVPN non inizializzato. Selezionare Start.  ##  wodVPN not yet started. Use Start first.
 Canale chiuso.  ##  Channel was closed.
-MTU troppo grande. ##  MTU size too large.
+MTU troppo grande.  ##  MTU size too large.
 MTU troppo piccolo.  ##  MTU size too small.
 Invalid socks request.
 Password non valida. Non corrisponde alla password remota.  ##  Invalid password. Does not match remote peer's password.
@@ -79,7 +79,7 @@ Prprietà Password non impostata.  ##  Password property not set.
 Invalid XML packet.
 Invalid XML packet sequence ID.
 Login non valido: %s.  ##  Invalid login: %s.
-Contatto già presente nella lista contatti.   ##  Contact already exists in the collection.
+Contatto già presente nella lista contatti.  ##  Contact already exists in the collection.
 SSL could not be negotiated.
 Errore nella registrazione del nuovo utente: %s.  ##  Failed to register new user: %s.
 Notifica sconosciuta.  ##  Unknown notification.
@@ -103,7 +103,7 @@ Fallita l'inizializzazione del programma di aggiornamento.  ##  Failed to start 
 La firma del documento non è valida.  ##  Signature on retrieved document is invalid.
 Data non impostata.  ##  Date not set.
 Errore nella registrazione del server COM.  ##  Failed to register COM server.
-Pagina non trovata (errore 404). ##  Page not found (error 404) returned from the server.
+Pagina non trovata (errore 404).  ##  Page not found (error 404) returned from the server.
 Grandezza del file scaricato file non valida.  ##  Invalid file size after download.
 Checksum MD5 del file scaricato non valido.  ##  Invalid MD5 checksum after download.
 Attenzione  ##  Warning
@@ -114,7 +114,7 @@ Libero  ##  Free for chat
 Non disturbare  ##  Do not disturb
 Non al PC da molto tempo  ##  Extended away
 Invisibile  ##  Invisible
-Chiede l'iscrizione ##  Asking for subscription
+Chiede l'iscrizione  ##  Asking for subscription
 Contatto non iscritto  ##  Contact not subscribed
 Disconnesso dal server  ##  Disconnected from server
 Connessione al server  ##  Connecting to server
@@ -250,14 +250,14 @@ Informazioni generali su  ##  General information about
 Informazioni personali  ##  Personal information
 Dettagli abitazione per  ##  Home details for
 Dettagli di lavoro per  ##  Business information
-Dettagli ufficio per ##  Work details for
+Dettagli ufficio per  ##  Work details for
 altro  ##  all other
 indirizzo assegnato dal mediator  ##  address given by mediator
 Apparenza  ##  Appearance
 Skins
 Selezionare una skin dalla lista qui sotto.  ##  Choose skin from below list.
 What will Wippien wear?
-... nessuno ..  ##  .. none ..
+.... nessuno ..  ##  .. none ..
 "Non al PC" automatico  ##  Auto Away
 Impostazioni "Non al PC" automatico  ##  Auto away settings.
 Determina il comportamento di Wippien quando il sistema è inattivo.  ##  Determines how will Wippien behave when system is inactive.
@@ -339,7 +339,7 @@ Inserisci un nuovo nome per il gruppo  ##  Enter new group name
 Scarica più skin dal sito di Wippien  ##  Download more skins from Wippien website
 Clicca sulla skin per scaricarla ed installarla.  ##  Click on the skin to download and install it.
 Crea un nuovo account Jabber  ##  I need new Jabber account
-Utilizza un account Jabber esistente   ##  I have existing Jabber account
+Utilizza un account Jabber esistente  ##  I have existing Jabber account
 &Prova Account  ##  &Test Account
 &Cerca  ##  &Search
 Inserisci il tuo jabber ID (JID) qui. Wippien usa la rete Jabber per connetterti con i tuoi contatti.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
@@ -530,7 +530,7 @@ Inserisci una Passphrase  ##  Enter Passphrase
 Inserire password  ##  Enter password
 Inserire password di protezione  ##  Please enter protect password
 Lingue  ##  Languages
-Imposta la lingia usata in tutti i testi su Wippien  ##  Setup language used in all Wippien texts.
+Imposta la lingua usata in tutti i testi su Wippien  ##  Setup language used in all Wippien texts.
 Nuove lingue potrebbero apparire periodicamente  ##  New languages may appear periodically.
 Le seguenti lingue sono disponibili sul PC  ##  Following languages are found as available on local computer
 &Cambia  ##  &Change

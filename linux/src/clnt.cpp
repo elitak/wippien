@@ -49,6 +49,7 @@ RSA *rsa = NULL;
 unsigned char MAC[6] = {0};
 VPNEventsStruct m_Events = {0};
 int m_MsgAlive = 1;
+BOOL m_Debug = 0;
 
 int domsocket = -1;
 xmpp_ctx_t *ctx = NULL;
@@ -747,9 +748,10 @@ void myxmpp_conn_handler(xmpp_conn_t * const conn, const xmpp_conn_event_t statu
 int connect_xmpp(void)
 {
 	xmpp_initialize();
-	//  xmpp_log_t *log = xmpp_get_default_logger(XMPP_LEVEL_DEBUG); /* pass NULL instead to silence output */
-	//  ctx = xmpp_ctx_new(NULL, log);
-	ctx = xmpp_ctx_new(NULL, NULL);
+	xmpp_log_t *log = 0;
+	if (m_Debug)
+	    log = xmpp_get_default_logger(XMPP_LEVEL_DEBUG);
+	ctx = xmpp_ctx_new(NULL, log);
 	conn = xmpp_conn_new(ctx);
 	char buff[1024];
 	sprintf(buff, JID);
@@ -927,15 +929,36 @@ void ReadMAC(char *dev)
 
 int main(int argc, char **argv)
 {
-	if (argc < 2)
+	char *u = NULL;
+	char *p = NULL;
+	
+	int c = 1;
+	while (c < argc)
+	{
+		if (argv[c][0] == '-' || argv[c][0] == '/')
+		{
+			if (tolower(argv[c][1] == 'd'))
+				m_Debug = 1;
+		}
+		else
+		if (!u)
+			u = argv[c];
+		else
+		if (!p)
+			p = argv[c];
+		
+		c++;		
+	}
+	
+	if (!u)
 	{
 		printf("Please start with wipclnt JID Password\n");
 		return -1;
 	}
-	JID = (char *)argv[1];
-	if (argc > 2)
+	JID = u;
+	if (p)
 	{
-		Password = (char *)argv[2];
+		Password = (char *)p;
 	}
 	else
 	{

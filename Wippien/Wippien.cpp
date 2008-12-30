@@ -468,7 +468,7 @@ BOOL EditARPEntry(unsigned char IPAddress[4], unsigned char MACAddress[6])
 			//	OID[3]	:	"1.3.6.1.2.1.4.22.1.4", ipNetToMediaType
 			//				Entry type: 2:Remove, 3:Dynamic, 4:Static
 			SVBVars[count].value.asnType				= ASN_INTEGER;
-			SVBVars[count].value.asnValue.number		= 3; //	(2:Remove, 3:Dynamic, 4:Static)
+			SVBVars[count].value.asnValue.number		= 4; //	(2:Remove, 3:Dynamic, 4:Static)
 			break;
 		}
 		AsnObjectIdentifier	AsnOID = {sizeof(OID[count])/sizeof(UINT), OID[count]};

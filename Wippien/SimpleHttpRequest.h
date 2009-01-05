@@ -72,6 +72,7 @@ public:
 	{
 		m_In.Append("GET /");
 		m_In.Append(Uri);
+
 		m_In.Append(" HTTP/1.1\r\nHost: ");
 		m_In.Append(Host);
 		if (Port != 80)
@@ -80,7 +81,7 @@ public:
 			sprintf(buff, ":%d", Port);
 			m_In.Append(buff);
 		}
-		m_In.Append("\r\nConnection: close\r\n\r\n");
+		m_In.Append("\r\nUser-Agent: Wippien IPProviderURL\r\nConnection: close\r\n\r\n");
 		m_Socket->connect(Host, Port);
 	}
 	

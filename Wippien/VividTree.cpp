@@ -290,7 +290,7 @@ void CVividTree::DrawItems(CDC *pDC)
 									if (user->m_BlinkConnectingCounter%2)
 										pDC->SetTextColor(RGB(127,127,255));
 									else
-										pDC->SetTextColor(RGB(255,255,255));
+										pDC->SetTextColor(RGB(64,64,192));
 									break;
 
 								default:

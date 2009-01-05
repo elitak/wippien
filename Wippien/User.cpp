@@ -79,7 +79,7 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 		me->m_IsWippien = o;
 	else
 		delete o;
-	me->m_IsAway = FALSE;
+//	me->m_IsAway = FALSE;
 	me->SetSubtext();
 	me->m_Changed = TRUE;
 	_MainDlg.m_UserList.PostMessage(WM_REFRESH, 0, (LPARAM)me);
@@ -373,7 +373,8 @@ void CUser::ReInit(BOOL WithDirect)
 	m_MyMediatorChoice = (-1);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
-	m_IsAway = FALSE;
+//	ATLTRACE("2Set %s away to FALSE\r\n", m_JID);
+//	m_IsAway = FALSE;
 	SetSubtext();
 	m_Hidden = FALSE;
 	m_Resource[0] = 0;
@@ -479,7 +480,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 
 			m_BlinkConnectingCounter = 0;
 			SetTimer(1000, 1);
-			SetTimer(150, 2);
+			SetTimer(100, 2);
 
 			if (Notify)
 			{
@@ -751,7 +752,7 @@ void CUser::FdTimer(int TimerID)
 		{
 			if (_Settings.m_MyLastNetwork && m_RSA)
 			{
-				m_IsAway = FALSE;
+//				m_IsAway = FALSE;
 				SetSubtext();
 				Buffer b;
 

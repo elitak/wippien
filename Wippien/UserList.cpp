@@ -677,9 +677,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 #endif
 									user->m_IsAway = FALSE;
 									user->SetSubtext();
-									if (stat >= 2 && stat <=5)
+									if (stat == 4 || stat ==5)
 										user->m_IsAway = TRUE;
-									
+//									ATLTRACE("3Set %s away to %d\r\n", user->m_JID, user->m_IsAway);									
 									if (user->m_Changed)
 									{
 										// is this wippien dude?

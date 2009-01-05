@@ -141,11 +141,17 @@ void CVividTree::DrawItems(CDC *pDC)
 							if (h< 34)
 								h1 = (34 - h)/2;
 
-//							if (user->m_IsAway)
-//								user->m_Image->AlphaSet(80);
-//							else
-//								user->m_Image->AlphaSet(256);
-							user->m_Image->Draw(pDC->m_hDC, rc_item.left-28, rc_item.top+h1);
+							//ATLTRACE("Drawing image for %s, away is %d\r\n", user->m_JID, user->m_IsAway);
+							if (user->m_IsAway)
+							{
+								CxImage *d = new CxImage();
+								d->Copy(*user->m_Image);
+								d->Light(50,-40);
+								d->Draw(pDC->m_hDC, rc_item.left-28, rc_item.top+h1);
+								delete d;
+							}
+							else
+								user->m_Image->Draw(pDC->m_hDC, rc_item.left-28, rc_item.top+h1);
 						}
 					}
 
@@ -208,6 +214,7 @@ void CVividTree::DrawItems(CDC *pDC)
 					else
 						cf = RGB(96,96,96);
 
+					pDC->SetTextColor(RGB(0,0,0));
 					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 					if (_Settings.m_ShowContactActivity)
 					{

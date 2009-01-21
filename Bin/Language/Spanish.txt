@@ -1,6 +1,6 @@
 # Spanish	
 # Author: tdknela@gmail.com
-# Version: 2
+# Version: 3
 Sin Errores.  ##  No error.   
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
@@ -542,3 +542,4 @@ Mostrar una ventana emergente notificando al conectarse un contacto  ##  Show no
 Escribiendo...  ##  Contact is typing....
 dice  ##  says
 dijo  ##  said
+You can use your GMAIL account here.  ##  You can use your GMAIL account here.

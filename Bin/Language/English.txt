@@ -1,6 +1,6 @@
 # English template text
 # Author: Kresimir Petric
-# Version: 5
+# Version: 6
 No error.
 The system cannot find the file specified.
 The system cannot find the path specified.
@@ -542,3 +542,4 @@ Show notification popup window when contact goes online/offline
 Contact is typing...
 says
 said
+You can use your GMAIL account here.

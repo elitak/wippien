@@ -226,6 +226,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 	class CSettingsJID   : public CAxDialogImpl<CSettingsJID>, public _CSettingsTemplate
 	{
 	public:
+		char m_TEXT[8192];
 #ifndef _WODXMPPLIB
 		class CJabberEvents;
 #endif

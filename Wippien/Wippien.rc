@@ -62,6 +62,8 @@ BEGIN
     LTEXT           "Port",IDC_S4,5,122,35,9
     LTEXT           "Please click on 'Test Account' to proceed.",IDC_S5,1,
                     138,236,8
+    LTEXT           "You can use your GMAIL account login and password.",IDC_S6,1,
+                    55,236,8
     CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
                     IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     88,123,170,10

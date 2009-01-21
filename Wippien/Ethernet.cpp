@@ -604,12 +604,9 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 						{
 
 							// should we write?
-							ETH_HEADER *ethr = (ETH_HEADER *) a;
 							IPHDR *ip = (IPHDR *)(a + sizeof(ETH_HEADER));
 							UDPHDR *udp = (UDPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
-							//		ICMPHDR *icmp = (ICMPHDR *)(packet + sizeof(ETH_HEADER) + sizeof(IPHDR));
 							TCPHDR *tcp = (TCPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
-							ARP_PACKET *p = (ARP_PACKET *)a;
 							
 							BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
 							for (int i=0;i<FirewallRules.size();i++)
@@ -624,12 +621,12 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 										break;
 										
 									case IPPROTO_UDP:
-										if (udp->dest == fs->Port/* || udp->source == fs->Port*/)
+										if (udp->dest == fs->Port)
 											cansend = !cansend;
 										break;
 										
 									case IPPROTO_TCP:
-										if (tcp->dest == fs->Port/* || tcp->source == fs->Port*/)
+										if (tcp->dest == fs->Port)
 											cansend = !cansend;
 										break;
 									}
@@ -658,8 +655,6 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 										case ERROR_IO_PENDING: 
 											while(eth->m_Alive && eth->m_Enabled)
 											{
-		//										Sleep(10);
-		//										int ret = 100;
 												int ret = WaitForMultipleObjects(2, hs, FALSE, 1000);
 												if (ret == (WAIT_OBJECT_0) || !eth->m_Alive)
 												{
@@ -670,30 +665,24 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 												{
 													if (GetOverlappedResult(eth->m_AdapterHandle, &overlap, &nwrite, FALSE))
 													{
-		//												EnterCriticalSection(&eth->WriteCS);
-		//												eth->WriteBuffer.Consume(len + 4);
-		//												LeaveCriticalSection(&eth->WriteCS);
 														break;
 													}
 												}
 											} 
 											break;
 									}
-		//							ATLTRACE("<<Sent %d bytes to adapter\r\n", nwrite);
 								}
-								else
-		//							ATLTRACE("<<Sent %d bytes to adapter\r\n", nwrite);
 								ResetEvent(overlap.hEvent);
-		//						ATLTRACE("WriteThread wrote %d bytes\r\n", nwrite);
 							}
-		//					free(a);
 						}
 					}
 					ed->Occupied = FALSE;
 					eth->m_EthWriteStart++;
 					if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
 						eth->m_EthWriteStart = 0;
+
 					// for next loop
+					ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
 				}
 			}
 		}

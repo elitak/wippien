@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <sys\stat.h>
 #include <Iphlpapi.h>
+
 #ifdef _SKINMAGICKEY
 #include "SkinMagicLib.h"
 #endif
@@ -496,7 +497,9 @@ CSettingsDlg::CSettingsJID::CSettingsJID() : _CSettingsTemplate()
 {
 	PATH = _Settings.Translate("Identity");
 	TEXT1 = _Settings.Translate("Please choose your logon information.");
-	TEXT2 = _Settings.Translate("This is shown on your friend's list.");
+	sprintf(m_TEXT, "%s%s", _Settings.Translate("This is shown on your friend's list."), _Settings.Translate("You can use your GMAIL account here."));
+	TEXT2 = m_TEXT;
+
 
 	m_Jabber = NULL;
 	m_TestSuccess = FALSE;
@@ -548,12 +551,34 @@ LRESULT CSettingsDlg::CSettingsJID::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lPa
 
 LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	
-	
 	CComBSTR2 j;
 	j = _Settings.m_JID;
 	if (!j.Length())
-		j = "newuser@wippien.com";
+	{
+		char buff[8192], buff2[8192];
+		memset(buff, 0, sizeof(buff));
+		memset(buff2, 0, sizeof(buff2));
+
+		unsigned long size = sizeof(buff);
+		GetUserName(buff, &size);
+		int l = strlen(buff);
+		int k = 0;
+		for (int i=0;i<l;i++)
+		{
+			if (k?isalnum(buff[i]):isalpha(buff[i]))
+				buff2[k++]=buff[i];
+			else
+			if (k && buff[i]==' ')
+				buff2[k++]='_';
+		}
+		if (strlen(buff2))
+		{
+			sprintf(buff, "%s%d@wippien.com", buff2, rand()%99);
+			j = buff;
+		}
+		else
+			j = "newuser@wippien.com";
+	}
 	CComBSTR2 p;
 	p = _Settings.m_Password;
 	SetDlgItemText(IDC_EDIT_JID, j.ToString());
@@ -565,7 +590,11 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SetDlgItemText(IDC_EDIT_JID3, hs.ToString());
 	SetDlgItemText(IDC_EDIT_JID4, buff);
 
-	BOOL regnew = ::SendMessage(GetDlgItem(IDC_RADIO1_JID), BM_SETCHECK, BST_CHECKED, NULL);
+	if (_Settings.m_JID.Length())
+		::SendMessage(GetDlgItem(IDC_RADIO1_JID), BM_SETCHECK, BST_CHECKED, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_RADIO2_JID), BM_SETCHECK, BST_CHECKED, NULL);
+
 	if (_Settings.m_UseSSLWrapper)
 		::SendMessage(GetDlgItem(IDC_USESSLWRAPPER), BM_SETCHECK, BST_CHECKED, NULL);
 
@@ -586,6 +615,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SetDlgItemText(IDC_S4, _Settings.Translate("Port"));
 	SetDlgItemText(IDC_USESSLWRAPPER, _Settings.Translate("Use SSL wrapper on port 443 (for GTalk)"));
 	SetDlgItemText(IDC_S5, _Settings.Translate("Please click on 'Test Account' to proceed."));
+	SetDlgItemText(IDC_S6, _Settings.Translate("You can use your GMAIL account here."));
 	return TRUE;
 }
 

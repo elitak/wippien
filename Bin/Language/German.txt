@@ -1,6 +1,6 @@
 # Deutsches Sprachdatei für Wippien
 # Author: torsten.wagner@vnc-world.com
-# Version: 2
+# Version: 3
 Keine Fehler.  ## No error.
 Das System kann die genannte Datei nicht finden.  ## The system cannot find the file specified.
 Das System kann das genannte Verzeichnis nicht finden.  ## The system cannot find the path specified.
@@ -542,4 +542,4 @@ Das Verbindungsfenster wird angezeigt wenn der Kontakt online oder offline geht 
 Die Verbindung wählt sich ein ...  ## Contact is typing...
 sagt  ## says
 sagte  ## said
-
+You can use your GMAIL account here.  ##  You can use your GMAIL account here.

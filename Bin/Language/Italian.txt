@@ -1,6 +1,6 @@
 # Italian template text
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 4
+# Version: 6
 Nessun errore.  ##  No error.
 Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
@@ -57,7 +57,7 @@ wodVPN non inizializzato. Selezionare Start.  ##  wodVPN not yet started. Use St
 Canale chiuso.  ##  Channel was closed.
 MTU troppo grande.  ##  MTU size too large.
 MTU troppo piccolo.  ##  MTU size too small.
-Invalid socks request.
+Ricchiesta non valida.  ##  Invalid socks request.
 Password non valida. Non corrisponde alla password remota.  ##  Invalid password. Does not match remote peer's password.
 Local ID non ipostato. E' richiesto dal metodo Search.  ##  Local ID not set. It is required for Search method.
 Remote ID non impostato. E' richiesto dal metodo Search.  ##  Remote ID not set. It is required for Search method.
@@ -76,18 +76,18 @@ Impossibile cambiare la proprietà adesso. Disconnettersi prima.  ##  Cannot chan
 Proprietà Hostname non impostata.  ##  Hostname property not set.
 Proprietà Login non impostata.  ##  Login property not set.
 Prprietà Password non impostata.  ##  Password property not set.
-Invalid XML packet.
-Invalid XML packet sequence ID.
+Pacchetto XML non valido.  ##  Invalid XML packet.
+ID del pacchetto XML non valido.  ##  Invalid XML packet sequence ID.
 Login non valido: %s.  ##  Invalid login: %s.
-Contatto già presente nella lista contatti.  ##  Contact already exists in the collection.
-SSL could not be negotiated.
+Contatto già presente nella lista contatti.   ##  Contact already exists in the collection.
+Negoziazione SSL fallita.  ##  SSL could not be negotiated.
 Errore nella registrazione del nuovo utente: %s.  ##  Failed to register new user: %s.
 Notifica sconosciuta.  ##  Unknown notification.
 File non trovato.  ##  File not found.
 E' necessario specificare il formato immagine (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Errore nell'importazione dell'immagine.  ##  Failed to import photo.
 Risorse bloccate da un altro processo in corso.  ##  Another blocking method in progress.
-Invalid protocol data received.
+Ricevuti dati non validi per il protocollo.  ##  Invalid protocol data received.
 La grandezza del file è 0. Nulla da inviare.  ##  There's nothing to send. File size is 0.
 Contatto non trovato.  ##  Contact not found.
 Trasferimento file fallito.  ##  File transfer failed.
@@ -98,7 +98,7 @@ Timeout del trasferimento.  ##  Transfer has timed out.
 Selezionato un protocollo invalido.  ##  Invalid protocol selected.
 Stato errato. Il componente è occupato.  ##  Invalid state. Component already busy.
 Nome non univoco, impossibile ottenere il lock. Usare un UpdaterName differente.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.
+La funzione è stata cancellata.  ##  Method was cancelled.
 Fallita l'inizializzazione del programma di aggiornamento.  ##  Failed to start updater program.
 La firma del documento non è valida.  ##  Signature on retrieved document is invalid.
 Data non impostata.  ##  Date not set.
@@ -220,7 +220,7 @@ Rete  ##  Network
 Mediator
 Seleziona il Mediator.  ##  Please choose who will be your mediator.
 Definisce gli utenti che medieranno le connessioni P2P.  ##  This defines people that mediate P2P connections.
-Last check
+Ultimo controllo  # Last check
 Porta  ##  Port
 Hostname
 Permanente  ##  Permanent
@@ -239,7 +239,7 @@ E' possibile aggiungere contatti Jabber, ICQ, MSN,...  ##  You can add new Jabbe
 Tutti i File (*.*)\0*\0TXT File (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Tutti i file Immagine (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0Tutti i file (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Sistema  ##  System
-Logging
+Autenticazione  ##  Logging
 Configura i file di Log e le informazioni di debug.  ##  Setup log files and debug info.
 Specificare il percorso  ##  Specify paths below
 Messaggi  ##  Messages
@@ -256,8 +256,8 @@ indirizzo assegnato dal mediator  ##  address given by mediator
 Apparenza  ##  Appearance
 Skins
 Selezionare una skin dalla lista qui sotto.  ##  Choose skin from below list.
-What will Wippien wear?
-.... nessuno ..  ##  .. none ..
+Quale sarà il vestito di Wippien?  ##  What will Wippien wear?
+... nessuno ..  ##  .. none ..
 "Non al PC" automatico  ##  Auto Away
 Impostazioni "Non al PC" automatico  ##  Auto away settings.
 Determina il comportamento di Wippien quando il sistema è inattivo.  ##  Determines how will Wippien behave when system is inactive.
@@ -296,8 +296,8 @@ Seleziona un'opzione di ordinamento.  ##  Pick one of sort options.
 ChatRoom
 Visualizza o crea chat room. (BETA!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Inserisci o seleziona una chat room o crea una nuova.  ##  Specify or browse for a room to join or create new one.
-- All gateways -
-Service gateway
+- Tutti i gateway -  ##  - All gateways -
+Gateway di servizio  ##  Service gateway
 Nome della chat room  ##  Room name
 Firewall
 Imposta le regole del firewall.  ##  Set up firewall rules.
@@ -339,7 +339,7 @@ Inserisci un nuovo nome per il gruppo  ##  Enter new group name
 Scarica più skin dal sito di Wippien  ##  Download more skins from Wippien website
 Clicca sulla skin per scaricarla ed installarla.  ##  Click on the skin to download and install it.
 Crea un nuovo account Jabber  ##  I need new Jabber account
-Utilizza un account Jabber esistente  ##  I have existing Jabber account
+Utilizza un account Jabber esistente   ##  I have existing Jabber account
 &Prova Account  ##  &Test Account
 &Cerca  ##  &Search
 Inserisci il tuo jabber ID (JID) qui. Wippien usa la rete Jabber per connetterti con i tuoi contatti.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
@@ -542,3 +542,4 @@ Visualizza una notifica popup quando i contatti sono online/offline  ##  Show no
 Il contatto sta scrivendo...  ##  Contact is typing...
 dice  ##  says
 ha detto  ##  said
+You can use your GMAIL account here.  ##  You can use your GMAIL account here.

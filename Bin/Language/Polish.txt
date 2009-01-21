@@ -1,6 +1,6 @@
 # Polskie t³umaczenie do Wippien
 # Author: Poliman.pl - info@poliman.pl
-# Version: 1
+# Version: 2
 Brak b³êdu.  ##  No error.
 System nie mo¿e znaleŸæ wybranego pliku.  ##  The system cannot find the file specified.
 System nie mo¿e znaleŸæ wybranej œcie¿ki.  ##  The system cannot find the path specified.
@@ -542,3 +542,4 @@ Poka¿ powiadomienie je¿eli kontakt stanie siê dostêpny/niedostêpny  ##  Show not
 Kontakt pisze...  ##  Contact is typing...
 mówi  ##  says
 powiedzia³  ##  said
+You can use your GMAIL account here.  ##  You can use your GMAIL account here.

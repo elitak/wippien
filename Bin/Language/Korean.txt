@@ -1,0 +1,545 @@
+# Korean template text
+# Author: plain_walker@hotmail.com
+# Version: 1
+이상 없습니다.  ##  No error.
+시스템이 지정한 파일을 찾을 수 없습니다.  ##  The system cannot find the file specified.
+시스템이 지정한 경로를 찾을 수 없습니다.  ##  The system cannot find the path specified.
+시스템이 지정한 파일이나 디렉토리를 찾을 수 없습니다.  ##  The system cannot find the specified file/directory.
+유형이 맞지 않습니다.  ##  Type mismatch.
+이미 파일이나 디렉토리가 있기때문에 파일이나 디렉토리를 만들 수 없습니다.  ##  Cannot create a file/directory when that file/directory already exists.
+시스템이 지정한 장치를 기록할 수 없습니다.  ##  The system cannot write to the specified device.
+가능한 값이 아닙니다.  ##  Invalid Property Value.
+연산이 만료되어 반환되었니다.  ##  This operation returned because the timeout period expired.
+시스템 수준에서 소켓 연산이 중단되었습니다.  ##  System level interrupt interrupted socket operation.
+비정상적인 포맷이거나 배드 포맷으로 인하여 오류가 일어났습니다.  ##  Generic error for invalid format, bad format.
+액세스 권한에 의해 금지된 방법으로 소켓 액세스 시도가 이루어졌습니다.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+시스템이 요청된 포인터 인수를 사용을 위한 시도 과정에서 비정상적인 포인터 주소를 찾았습니다.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+비정상적인 포맷이거나 목록 등으로 인하여 오류가 일어났습니다.  ##  Generic error for invalid format, entry, etc.
+비정상적인 인수가 공급되었습니다.  ##  An invalid argument was supplied.
+제공된 IP 주소가 유효하지 않거나 지정된 호스트 IP가 존재하지 않습니다.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+비정상적인 소켓이거나 원격 연결이 이루어지지 않았습니다.  ##  Invalid socket or not connected to remote.
+지정한 주소가 이미 사용되고 있습니다.  ##  The specified address is already in use.
+지정한 주소가 불가능합니다.  ##  The specified address is not available.
+연결된 네트워크가 불가능합니다.  ##  The connected network is not available.
+연결된 네트워크가 도달할 수 없습니다.  ##  The connected network is not reachable.
+연결된 네트워크 연결이 재설정 되었습니다.  ##  The connected network connection has been reset.
+현재 연결이 네트워크나 중재 서비스에 의해 중단되었습니다.  ##  The current connection has been aborted by the network or intermediate services.
+현재 소켓 연결이 재설정되었습니다.  ##  The current socket connection has been reset.
+현재 소켓이 연결되지 않았습니다.  ##  The current socket has not been connected.
+연결이 종료되었습니다.  ##  The connection has been shutdown.
+현재 연결의 기한이 만료하였습니다.  ##  The current connection has timeout.
+요청된 연결이 원격 호스트에 의해 거부되었습니다.  ##  The requested connection has been refused by the remote host.
+지정한 호스트 이름이 너무 깁니다.  ##  Specified host name is too long.
+현재 원격 호스트가 사용할 수 없습니다.  ##  Remote host is currently unavailable.
+현재 원격 호스트에 도달할 수 없습니다.  ##  Remote host is currently unreachable. 
+원격 시스템이 준비되지 않았습니다.  ##  Remote system is not ready.
+응용 프로그램이 현재 소켓 버전을 지원하지 않습니다.  ##  Current socket version not supported by application.
+소켓 API가 초기화되지 않았습니다.  ##  Socket API is not initialized.
+소켓 연결이 끊어졌습니다.  ##  Socket has been disconnected.
+호스트를 찾을 수 없습니다.  ##  Host not found.
+연산을 완료하기에 사용할 수 있는 메모리가 충분하지 않습니다.  ##  Not enough memory is available to complete this operation.
+알 수 없는 검색 유형입니다.  ##  Unknown search type.
+알 수 없는 검색 인수입니다.  ##  Unknown argument for Search method.
+이미 시작되었습니다.  ##  Already started.
+채널이 이미 시작되었습니다.  ##  Channel already started.
+채널이 시작되어 채널 설정을 바꿀 수 없습니다.  ##  Cannot change channel setup while channel is started.
+소켓에 너무 많은 데이터가 있습니다. 다시 시도해주십시오.  ##  Too much data on the socket. Try later.
+연결이 구축되지 않았습니다.  ##  Connection not established.
+알 수 없는 데이터 유형입니다.  ##  Unknown data type.
+소켓 스레드를 만드는데 실패하였습니다.  ##  Failed to create socket thread.
+알 수 없는 채널 유형입니다.  ##  Unknown channel type.
+비정상적인 인수가 로컬주소 속성에 공급되었습니다.  ##  Invalid argument was supplied in LocalAddress property.
+로컬 상의 채널을 만들 수 없습니다.  ##  Channel cannot be created by local side.
+로컬 상의 채널이 시작될 수 없습니다.  ##  Channel cannot be started by local side.
+원격 상에서 채널이 거부되었습니다.  ##  Channel refused by remote side.
+지원하지 않는 원격 프로토콜 버전입니다.  ##  Unsupported remote protocol version.
+wodVPN이 아직 시작되지 않았습니다. 먼저 실행해주십시오.  ##  wodVPN not yet started. Use Start first.
+채널이 닫혔습니다.  ##  Channel was closed.
+MTU 크기가 너무 큽니다.  ##  MTU size too large.
+MTU 크기가 너무 작습니다.  ##  MTU size too small.
+비정상적인 소켓 요청입니다.  ##  Invalid socks request.
+비정상적인 암호입니다. 원격 동료의 암호와 일치하지 않습니다.  ##  Invalid password. Does not match remote peer's password.
+로컬 ID가 설정되지 않았습니다. 검색을 위해선 로컬 ID가 필요합니다.  ##  Local ID not set. It is required for Search method.
+원격 ID가 설정되지 않았습니다. 검색을 위해선 원격 ID가 필요합니다.  ##  Remote ID not set. It is required for Search method.
+지정한 IP 주소를 고정할 수 없습니다.  ##  Cannot bind to specified IP address.
+이미 파일 전송을 수행하고 있습니다.  ##  Already performing file transfer.
+파일을 찾을 수 없습니다.  ##  File not found.
+파을을 기록하는데 실패하였습니다.  ##  Failed to write file.
+네트워크 어댑터를 열 수 없습니다.  ##  Could not open network adapter.
+동시에 한 어댑터만을 사용할 수 있습니다.  ##  Only one adapter can be used at a time.
+라이센스 키를 잃어버렸습니다. 설계 환경의 구성 요소를 사용할 수 없습니다.  ##  License key missing. You can not use this component in design environment.
+인식되지 않은 오류입니다.  ##  Unrecognized Error.
+동시에 연결할 수 없습니다. 먼저 연결을 끊어주십시오.  ##  Cannot Connect at this time. Use Disconnect first.
+아직 연결되어 있어 실행할 수 없습니다.  ##  Cannot execute, not yet connected.
+구성 요소가 바쁜 상태입니다.  ##  Component busy.
+동시에 속성을 바꿀 수 없습니다. 먼저 연결을 끊어주십시오.  ##  Cannot change property at this time. Use Disconnect first.
+호스트명 속성이 설정되지 않았습니다.  ##  Hostname property not set.
+로그인 속성이 설정되지 않았습니다.  ##  Login property not set.
+암호 속성이 설정되지 않았습니다.  ##  Password property not set.
+비정상적인 XML 패킷입니다.  ##  Invalid XML packet.
+비정상적인 XML 패킷 순서 ID입니다.  ##  Invalid XML packet sequence ID.
+비정상적인 로그인입니다: %s.  ##  Invalid login: %s.
+연락처가 이미 목록에 존재합니다.  ##  Contact already exists in the collection.
+SSL은 처리될 수 없습니다.  ##  SSL could not be negotiated.
+새로운 사용자를 등록하는데 실패하였습니다: %s.  ##  Failed to register new user: %s.
+알수없는 알림입니다.  ##  Unknown notification.
+파일을 찾을 수 없습니다.  ##  File not found.
+정확한 사진 유형을 지정해야 합니다 (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+사진을 가져오는데 실패하였습니다.  ##  Failed to import photo.
+진행을 차단하는 다른 방법입니다.  ##  Another blocking method in progress.
+비정상적인 프로토콜 데이터를 받았습니다.  ##  Invalid protocol data received.
+보낼 것이 없습니다. 파일 크기가 0입니다.  ##  There's nothing to send. File size is 0.
+연락처를 찾을 수 없습니다.  ##  Contact not found.
+파일 전송에 실패하였습니다.  ##  File transfer failed.
+파일 기록을 할 수 없습니다.  ##  Could not write to file.
+받은 파일의 체크섬이 비정상적입니다.  ##  Checksum of received file is invalid.
+전송이 중단되었습니다.  ##  Transfer aborted.
+전송 시간이 만료되었습니다.  ##  Transfer has timed out.
+비정상적인 프로토콜이 선택되었습니다.  ##  Invalid protocol selected.
+비정상적인 상태입니다. 이미 구성 요소가 바쁜 상태입니다.  ##  Invalid state. Component already busy.
+이름이 유일하지 않아 고정할 수 없습니다. 다른 업데이터명을 사용해주십시오.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+방법이 취소되었습니다.  ##  Method was cancelled.
+업데이터 프로그램을 시작하는데 실패하였습니다.  ##  Failed to start updater program.
+검색된 문서의 서명이 비정상적입니다.  ##  Signature on retrieved document is invalid.
+날짜가 설정되지 않았습니다.  ##  Date not set.
+COM 서버를 등록하는데 실패하였습니다.  ##  Failed to register COM server.
+다음 문구가 서버로부터 반환되었습니다; 페이지를 찾을 수 없습니다 (404 오류).  ##  Page not found (error 404) returned from the server.
+다운로드한 파일 크기가 비정상적입니다.  ##  Invalid file size after download.
+다운로드한 파일의 MD5 체크섬이 비정상적입니다.  ##  Invalid MD5 checksum after download.
+경고  ##  Warning
+오프라인  ##  Offline
+온라인  ##  Online
+자리 비움  ##  Away
+한가해요  ##  Free for chat
+방해하지마  ##  Do not disturb
+자리 비움 연장  ##  Extended away
+보이지 않음  ##  Invisible
+서명 요청  ##  Asking for subscription
+서명되지 않은 연락처  ##  Contact not subscribed
+서버에서 연결이 끊어짐  ##  Disconnected from server
+서버에 연결하는 중  ##  Connecting to server
+새로운 사용자를 등록하는 중  ##  Registering new user
+보안 연결을 초기화하는 중  ##  Initializing secure connection
+인증 데이터를 보내는 중  ##  Sending authentication data
+서버에 연결됨  ##  Connected to server
+서버로부터 데이터를 받는 중  ##  Receiving data from server
+서버에 데이터를 보내는 중  ##  Sending data to server
+서버의 명령을 실행하는 중  ##  Executing command on server
+서버로부터 연결을 끊는 중  ##  Disconnecting from the server
+승인이 요청됨  ##  Requested authorization
+Wippien 네트워크 어댑터를 구성하는 중...  ##  Configuring Wippien network adapter...
+어댑터\"%s\"와 주소%s가 Wippien%s과 충돌합니다. Wippien이 네트워크 패킷을 보내거나 받지 못할 수 있습니다. 어댑터를 제거하거나 비활성화시키십시오.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+네트워크 어댑터가 비활성화되어 있습니다!  ##  Network adapter disabled!
+네트워크 어댑터가 열렸습니다.  ##  Network adapter opened
+Wippien 네트워크 어댑터를 사용할 수 없습니다. 인스턴트 메시지로만 진행하시겠습니까?  ##  Wippien network adapter not available. Proceed with IM only?
+외부 도구(관리자 권한이 필요)를 사용하여 Wippien 어댑터의 IP 주소를 설정해야합니다. 충분한 권한을 얻기 위해서는 적어도 한 번 관리자로 Wippien을 실행해야 합니다.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+관리자 권한이 필요합니다!  ##  Admin privilege required!
+연결이 끊어짐  ##  Disconnected
+연결됨  ##  Connected
+메시지를 전달할 수 없습니다.  ##  Could not deliver message.
+암호를 바꾸는데 실패함  ##  Failed to change password
+비활동 규칙으로 인하여 연결이 끊어짐  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\n들어온 합계: %s\r\n나간 합계: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<< VPN이 아직 구축되지 않음  >>  ##  << VPN not established yet >>
+%d 초 이내에 다시 연결합니다.  ##  Reconnect in %d seconds.
+초  ##  seconds
+네트워크 없음  ##  No network
+Wippien 종료  ##  Exit Wippien
+종료(&x)  ##  E&xit
+설정 열기  ##  Open settings
+설정(&s)  ##  &Settings
+Wippien 정보  ##  Show AboutBox
+Wippien?(&a)  ##  &About
+상태 설정 (자리 비움, 보이지 않음...)  ##  Set your status (Away,Invisible...)
+연락처 및 외부 계정 추가  ##  Add contacts and alien accounts
+소리 끄기  ##  Mute sound
+채팅방 열기  ##  Open chat room
+친구 추가 승인  ##  Authorize your friends
+정지  ##  Idle
+정말로 Wippien을 나가겠습니까?  ##  Really exit Wippien?
+정말입니까?  ##  Are you sure?
+암호가 바뀌었습니다.  ##  Your password is now changed.
+암호 바뀜  ##  Password changed
+계정 암호 바꾸기  ##  Change account password
+새로운 암호 입력  ##  Please enter new password
+인적사항  ##  Identity
+ID 카드  ##  ID Card
+자택 주소  ##  Home Address
+직장 주소  ##  Work Address
+정말로 기록을 삭제하시겠습니까?  ##  Are you sure you want to delete the history?
+기록을 삭제하시겠습니까?  ##  Delete history?
+보내기  ##  Send
+파일 보내기  ##  Send file
+세부 정보  ##  Details
+연락처 정보  ##  Contact information
+지우기  ##  Clear
+기록 지우기  ##  Clear history
+음소거  ##  Mute
+굵게  ##  Bold
+기울임꼴  ##  Italic
+밑줄  ##  Underline
+하이퍼링크 넣기  ##  Insert hyperlink
+폰트 크기 작게  ##  Decrease font size
+폰트 크기 재설정  ##  Reset font size
+폰트 크기 크게  ##  Increase font size
+전경색 설정  ##  Set Foreground color
+배경색 설정  ##  Set Background color
+이모티콘  ##  Emoticons
+새로운 이모티콘을 다운로드하고 설치합니다. 계속하시겠습니까?  ##  New emoticons will be downloaded and installed. Proceed?
+새로운 이모티콘  ##  New emoticons
+이모티콘 버튼을 클릭하여 새로 설치된 이모티콘을 볼 수 있습니다.  ##  You can now click again on emoticon button to see new installed emoticons.
+완료!  ##  Done!
+연락처  ##  Contact
+연결 중  ##  Connecting
+요청 중  ##  Requesting
+다운로드 중  ##  Downloading
+구성 파일  ##  Configuration file
+일반  ##  General	
+비활동으로 인한 자리 비움  ##  Away due to inactivity.
+매우 긴 시간동안 자리 비움  ##  Away for a loooong time.
+허락  ##  allow
+거절  ##  deny
+지정되지 않음  ##  not specified
+끝(&f)  ##  &Finish
+다음(&n) >  ##  &Next >
+인적사항  ##  Identity
+로그온 정보를 선택해주십시오.  ##  Please choose your logon information.
+친구 목록에 보여집니다.  ##  This is shown on your friend's list.
+JID는 서버 이름을 포함해야합니다. 예) user@server.com  ##  JID should contain server name, formatted like user@server.com
+비정상적인 로그온 세부 정보  ##  Invalid logon details
+JID를 입력해야 합니다.  ##  You must enter your JID.
+암호를 입력해야 합니다.  ##  \You must enter your password.
+Jabber 오류  ##  Jabber error
+아이콘  ##  Icon
+아이콘을 선택해주십시오.  ##  Please choose your icon.
+일반적으로 연락처에 보여집니다.  ##  This is usually visible to your contacts.
+네트워크  ##  Network
+IP 주소와 넷마스트를 선택해주십시오.  ##  Please choose your IP address and netmask.
+wippien에 의해 사용되는 네트워크의 범위를 정의합니다.  ##  This defines network range to be used by wippien.
+네트워크  ##  Network
+중재자  ##  Mediator
+중재자를 선택해주십시오.  ##  Please choose who will be your mediator.
+P2P 연결을 중재할 사람을 정의합니다.  ##  This defines people that mediate P2P connections.
+마지막 점검  ##  Last check
+포트  ##  Port
+호스트명  ##  Hostname
+영구  ##  Permanent
+임시  ##  Temporary
+여기에 계정을 입력하십시오.  ##  Enter all your accounts here.
+Jabber 서버를 지원하는 어떤 계정이든 추가할 수 있습니다(대체로 ICQ, MSN, 등..).  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+정말로 계정 '%s' 을 삭제하시겠습니까?  ##  Are you sure you want to delete account '%s'?
+등록괸 계정을 삭제하시겠습니까?  ##  Delete registered account?
+계정  ##  Accounts
+게이트웨이만 보기  ##  Show only gateways
+모든 서비스 보기  ##  Show all services
+연락처  ##  Contacts
+추가/제거  ##  Add/Remove
+새로운 연락처 검색  ##  Find new contacts.
+새로운 Jabber, ICQ, MSN... 연락처를 추가  ##  You can add new Jabber, ICQ, MSN... contacts
+모든 파일 (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+모든 이미지 파일 (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows 비트맵 (*.bmp)\0*.bmp\0Jpeg 파일 (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF 파일 (*.gif)\0*.gif\0PNG 파일 (*.png)\0*.png\0All 파일 (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+시스템  ##  System
+로그인  ##  Logging
+로그 파일과 디버그 정보를 설정  ##  Setup log files and debug info.
+아래 경로를 지정  ##  Specify paths below
+메시지  ##  Messages
+채팅창 설정.  ##  Chat window settings.
+모든 열려진 채팅창에 대하여  ##  For all open chat windows.
+일반 정보  ##  General info
+일반 정보에 대하여  ##  General information about
+개인 정보  ##  Personal information
+자택 세부 정보에 대하여  ##  Home details for
+직장 정보  ##  Business information
+직장 세부 정보에 대하여  ##  Work details for
+기타  ##  all other
+중재자에 의해 주어진 주소  ##  address given by mediator
+겉모양  ##  Appearance
+스킨  ##  Skins
+아래 목록에서 스킨을 선택하십시오.  ##  Choose skin from below list.
+Wippien이 무엇을 입을 것입니까?  ##  What will Wippien wear?
+.. 없음 ..  ##  .. none ..
+자동으로 자리 비움  ##  Auto Away
+자동으로 자리 비움 설정  ##  Auto away settings.
+시스템이 정지하였을 때 Wippien의 동작을 결정합니다.  ##  Determines how will Wippien behave when system is inactive.
+시스템  ##  System
+기본 시스템 메시지  ##  Basic system messages.
+Wippien 프로그램의 동작을 정의합니다.  ##  Define Wippien application's behavior.
+음성 채팅  ##  Voice Chat
+음성 채팅 장치를 설정해주십시오.  ##  Please setup your voice chat devices.
+아래 목록에서 선택하십시오.  ##  Choose from list below.
+<시스템 기본값>  ##  <system default>
+연락처 기본 설정  ##  Contacts basic settings.
+업데이트  ##  Updates
+업데이트 정의  ##  Update definitions.
+Wippien 자체 업데이트에 대하여 정의합니다.  ##  Define when and how will Wippien update itself.
+MTU  ##  MTU
+최대 전송 단위를 결정해주십시오.  ##  Please determine maximum transfer unit.
+어떤 동료가 큰 패킷에 응답하지 않을 경우...  ##  If some peer doesn't respond to large packets...
+소리  ##  Sounds
+여러 이벤트가 일어났을 때 재생될 소리를 설정합니다.  ##  Setup sounds to be played on various events.
+내장된 소리나, WAV 파일을 찾아 선택하십시오.  ##  Choose internal ones, or browse for WAV files.
+연락처 온라인  ##  Contact online
+연락처 오프라인  ##  Contact offline
+메시지 들어옴  ##  Message in
+메시지 나감  ##  Message out
+오류  ##  Error
+WAV 파일 (*.wav)\0*.wav\0모든 파일 (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+숨김  ##  Hide
+연락처 숨김  ##  Hide contacts.
+화면에서 어떤 연락처를 숨길 수 있습니다.  ##  You can hide some contacts from your sight.
+겉모양  ##  Appearance
+겉모양을 설정합니다.  ##  Appearance settings.
+Wippien의 GUI에 대하여 정의합니다.  ##  Define how will Wippien's GUI appear to you.
+정렬  ##  Sort
+연락처를 정렬합니다.  ##  Sorts contacts.
+정렬 방법을 선택합니다.  ##  Pick one of sort options.
+채팅방  ##  ChatRoom
+채팅방을 펼치거나 만듭니다. (아직 베타입니다!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+입장할 방을 지정하거나 펼칩니다. 혹은 새로운 방을 만듭니다.  ##  Specify or browse for a room to join or create new one.
+- 모든 게이트웨이 -  ##  - All gateways -
+게이트웨이 서비스  ##  Service gateway
+방 이름  ##  Room name
+방화벽  ##  Firewall
+방화벽 규칙을 설정합니다.  ##  Set up firewall rules.
+연락처로 액세스할 포트를 설정할 수 있습니다.  ##  You can set up which ports can be accessed by your contacts.
+* 모든 ICMP 트래픽  ##  * All ICMP traffic
+차단할 포트 조건  ##  But block these ports
+허락할 포트 조건  ##  But allow these ports
+Wippien 업데이트  ##  Wippien update
+새로운 버전의 Wippien을 사용할 수 있습니다. 다운로드하시겠습니까?  ##  New version of Wippien is available. Download?
+여기를 클릭하여 새로운 사항을 보십시오.  ##  Click here to see what's new.
+Wippien의 버전이 최신입니다.  ##  Your version of Wippien is up-to-date.
+원격 서버에 연결하는 데 오류가 일어났습니다.  ##  Error connecting to remote server.
+성공적으로 다운로드하였습니다. 지금 교체하시겠습니까?  ##  Download successful. Replace now?
+Wippien 업데이트 오류!  ##  Wippien update error!
+로컬 상에서 새로운 버전의 Wippien을 발견하였습니다. 교체하시겠습니까?  ##  New version of Wippien found localy. Replace?
+새로운 버전  ##  New version
+상태 바뀜:  ##  Status changed: 
+일  ##  day
+일  ##  days
+시  ##  hour
+시  ##  hours
+분  ##  minute
+분  ##  minutes
+마지막 보임: 없음  ##  Last seen: never
+현재 오프라인입니다.  ##  is currently offline
+현재 오프라인입니다.  ##  is now offline
+현재 온라인입니다.  ##  is now online
+차단되었습니다.  ##  is blocked
+오프라인입니다.  ##  is offline
+차단 해제  ##  Unblock
+차단  ##  Block
+그룹 %s 를 제거하시겠습니까?  ##  Are you sure you want to remove group %s
+그룹을 제거하시겠습니까?  ##  Remove group?
+연락처 %s 를 제거하시겠습니까?  ##  Are you sure you want to remove contact %s
+연락처를 제거하시겠습니까?  ##  Remove contact?
+어댑터 오류  ##  Adapter error
+그룹 이름 바꾸기  ##  Rename group
+새 그룹 이름 입력  ##  Enter new group name
+Wippien 웹사이트에서 더 많은 스킨 다운로드  ##  Download more skins from Wippien website
+스킨을 클릭하여 다운로드하고 설치합니다.  ##  Click on the skin to download and install it.
+새 Jabber 계정이 필요합니다  ##  I need new Jabber account
+이미 Jabber 계정이 있습니다  ##  I have existing Jabber account
+계정 검사(&t)  ##  &Test Account
+검색(&s)  ##  &Search
+jabber ID (JID) 를 여기에 입력하십시오. Wippien은 당신의 존재(온라인 연락처를 알리거나, 다른 연락처를 보는 등)를 위해 Jabber 네트워크를 사용합니다.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+JID를 가지고 있지 않으면, 새로 등록하십시오. 원하는 어떠한 jabber 서버를 선택할 수 있습니다. 다음의 공식 서버들을 사용 할 수 있습니다. 버튼을 클릭하여 현재 열린 서버들의 목록을 찾을 수 있습니다.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+JID  ##  JID
+암호  ##  Password
+서버  ##  Server
+포트  ##  Port
+계속하기 위해 '계정 검사'를 클릭해주십시오.  ##  Please click on 'Test Account' to proceed.
+포트 443 상의 SSL 래퍼 사용 (for 구글 토크)  ##  Use SSL wrapper on port 443 (for GTalk)
+확인(&k)  ##  O&K
+취소(&c)  ##  &Cancel
+암호구를 입력하십시오  ##  Please enter key passphrase
+새 계정 추가(&n)  ##  Add &New
+이더넷 어댑터를 사용할 수 없을 때 알림을 봅니다.  ##  Show notification if ethernet adapter is unavailable.
+나가기 위해 어댑터 연결 끊기  ##  Disconnect adapter on exit
+들어오고 나갈 패킷이 사용할 UDP 포트 (0은 자동 선택)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Wippien 네트워크 어댑터가 사용할 IP 주소  ##  IP address for Wippien network adapter
+무시합니다. IP는 프로그램 밖에서 설정됩니다.  ##  Ignore. IP will be set outside of this program.
+URL 상의 IP 공급자 데이터베이스에서 얻어옴  ##  Obtained from IP provider database, on URL
+다음의 정적 주소를 사용  ##  Use following static address
+IP 주소  ##  IP address
+넷마스크  ##  Netmask
+상태  ##  Status
+URL  ##  URL
+설명  ##  Description
+새 계정 추가  ##  Add new account
+계정 제거  ##  Remove account
+등록!  ##  Register!
+현재의 인스턴트 메시지 연결  ##  Your current Instant messaging connections
+유저명  ##  Username
+새 계정 열기  ##  Open new account
+승인 요청  ##  Authorization request
+예(&y)  ##  &Yes
+아니오(&n)  ##  &No
+세부 정보(&d)  ##  &Details
+모두 적용(&a)  ##  &Apply to all
+사용자 차단(&b)  ##  &Block user(s)
+허락하시겠습니까  ##  Do you allow
+상대의 연락처 목록에 당신을 추가하시겠습니까?  ##  to add you to his contact list?
+더 많은 요청을 기다리는 중...  ##  more requests waiting...
+그룹 추가  ##  Add Group
+그룸 제거  ##  Remove Group
+연락처 추가  ##  Add Contact
+그룹에 연락처 놓기  ##  Put contact to the group
+JID 연락처  ##  Contact JID
+연락처 유형  ##  Contact Type
+보이는 이름  ##  Visible Name
+연락처 이름 바꾸기  ##  Rename contact
+새로운 연락처 이름 입력  ##  Enter new contact name
+설정  ##  Settings
+< 이전(&b)  ##  < &Back
+Jabber 통신 로그  ##  Log Jabber communication
+소켓 통신 로그  ##  Log socket communication
+원시 함수 호출 로그 (빨리 커질 수도 있습니다!)  ##  Log raw function calls (may grow quickly!)
+각각의 원본 로그 삭제  ##  Delete raw log on each
+메가바이트  ##  megabytes
+P2P 시작할 때 VPN 통신 기록  ##  Log VPN communication on P2P startup
+다음의 중재자를 사용할 수 있음  ##  Following mediators can be used
+새 중재자 추가 허락  ##  Allow new mediators to be added
+채팅창에 관련된 여러 설정  ##  Various settings regarding chat window
+타임 스탬프 메시지  ##  Timestamp messages
+메시지 기록 보기  ##  Show message history
+별명  ##  Nickname
+이름  ##  First name
+성  ##  Last name
+이메일  ##  Email
+비망록  ##  Notes
+주소  ##  Address
+부가 주소  ##  Address Ext.
+시  ##  City
+도  ##  State
+우편번호  ##  ZIP
+국가  ##  Country
+생일  ##  Birthday
+음성 전화  ##  Voice Tel.
+팩스  ##  Fax
+직위  ##  Title
+회사 이름  ##  Company name
+부서  ##  Department
+직접 연결을 위한 인터페이스 허락  ##  Allowed interfaces for direct connection
+모두 허락  ##  Allow All
+값을 바꾸려면 첫 번째 컬럼을 클릭  ##  Click on first column to change values
+'지정되지 않은' 값을 선택하였다면, 같은 값이 '다른 모든' 설정에서 사용되어집니다.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+다음의 스킨 파일이 찾아짐  ##  Following skin files are found
+적용  ##  Apply
+더 많은 스킨을 추가하려면, 'Skin' 하위폴더에 넣으십시오. 미리보기를 위해 100x100 에 대응하는 PNG 파일을 추가합니다.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+더 많은 스킨...(&m)  ##  &More skins...
+활동이 다시 감지되면 설정을 되돌립니다.  ##  Set back when activity is detected again.
+대기  ##  Wait
+자리 비움 모드 전의 대기 시간(분) (0 = 사용안함)  ##  minutes before going to away mode (0 = disable)
+연장된 자리 비움 모드 전의 대기 시간(분) (0 = 사용안함)  ##  minutes before going to extended away mode (0 = disable)
+연결 끊기 전의 대기 시간 (0 = 사용안함)  ##  minutes before disconnecting (0 = disable)
+자동 자리 비움 메시지  ##  Auto-Away message
+연장된 자리 비움 메시지  ##  Extended-Away message
+작업 표시줄에 Wippien 보기  ##  Show Wippien in taskbar
+바탕 화면을 재배열할 때 Wippien 창을 가장자리로 정렬  ##  Rearrange desktop when Wippien window is aligned to border
+바탕 화면 가장자리에 자석  ##  Snap to desktop border
+Wippien 이 비활성화 상태일 때 자동으로 숨김  ##  Auto hide if Wippien is inactive for
+항상 위에  ##  Always on top
+프로그램에서 나갈 때 확인  ##  Confirm exit from application
+컴퓨터가 대기/최대 절전 모드로 들어갈 때 연결 끊기, 복귀 시 연결  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+암호 보호  ##  Password protect
+설정만  ##  Settings only
+모두  ##  Everything
+설정 폴더 (아래 값을 바꿀 경우 wippien 재시작 필요)  ##  Settings folder (changing below value requires wippien restart)
+연락처 목록 지속성  ##  Contact list persistance
+시작할 때 모든 로컬 연락처 삭제  ##  Delete all local contacts on startup
+연결할 때 모든 로컬 연락처 삭제  ##  Delete all local contacts on connect
+연락처 가입 승인  ##  Contacts subscription authorization
+승인 안함  ##  Never authorize
+물어보기  ##  Ask me
+항상 승인  ##  Always authorize
+자동으로 네트워크 트래픽에 VPN 구축  ##  Automatically establish VPN on network traffic
+자동으로 시작할 때 VPN 구축  ##  Automatically establish VPN on startup
+진행  ##  Progress
+음성 채팅 활성화  ##  Enable voice chat
+재생 장치  ##  Playback device
+녹음 장치  ##  Recording device
+Wippien 시작할 때 업데이트 체크  ##  Check for updates when Wippien starts
+연결할 때 업데이트 체크  ##  Check for updates on Connect
+각각의 상황에 업데이트  ##  Check for updates each
+프로그램을 자동으로 업데이트하고 재시작  ##  Update and restart application silently
+업데이터로부터 받은 시스템 메시지 보기  ##  Show system messages received from updater
+지금 체크하기(&c)  ##  &Check now
+MTU 설정은 동료에게 보낼 수 있는 최대 UDP 패킷을 정의합니다. 네트워크 연결의 MTU값이 wippien보다 작을 경우, 동료는 큰 패킷을 받지 못합니다.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+수정된 MTU 사용  ##  Use fixed MTU
+MTU 자동 감지  ##  Auto-detect MTU
+(동료가 재연결할 때 효과적)  ##  (will become effective as peers reconnect)
+소리 (기본 소리를 위해 비움)  ##  Sound (leave empty for default sound)
+재생(&p)  ##  &Play
+프로그램 이벤트  ##  Program events
+새 연락처 숨김  ##  Hide new contact
+연락처 숨김 해제  ##  Unhide contact
+현재 숨겨진 연락처  ##  Currently hidden contacts
+여기에 나열된 모든 연락처를 Wippien에 나타내지 않습니다.. 그들은 더이상 존재하지 않을 것입니다. 사람을 완벽히 무시할 수 있는 방법입니다.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+연락처 숨김  ##  Hide contact
+JID 연락처 입력  ##  Enter contact JID
+모든 트래픽 허락  ##  Allow all traffic
+모든 트래픽 차단  ##  Block all traffic
+추가(&a)  ##  &Add
+제거(&r)  ##  &Remove
+기본 규칙  ##  Default rule
+아바타 그림  ##  Avatar picture
+이름  ##  Name
+IP 주소  ##  IP address
+상태 텍스트  ##  Status text
+마지막 온라인 시간  ##  Last online time
+활성 모니터  ##  Activity Monitor
+볼 수 있는 세부 정보  ##  Visible details
+연락처의 볼 수 있는 세부 정보  ##  Contact's visible details
+정렬 안함  ##  unsorted
+이름 순  ##  By name
+JID 순  ##  By JID
+IP 순 (IP 하단으로 가지 않음)  ##  by IP (without IP goes bottom)
+IP 순 (IP 상단으로 가지 않음)  ##  by IP (without IP goes top)
+정렬된 연락처 목록  ##  Sort contact list
+채팅방에 쓸 별명  ##  Nickname for chatrooms
+다음 게이트웨이의 입장가능한 방들 보기  ##  Show available rooms on following gateways
+위의 방에서 선택하거나, 새로운 채팅방 정보를 아래에 입력  ##  Click above to select room, or enter new chat room details below
+만들거나 입장할 방 이름  ##  Room name to create or join
+암호 (없을 경우 비움)  ##  Password (empty if none)
+게이트웨이  ##  Gateway
+방 입장 or 만들기  ##  Join or Create room
+시작할 때 사용자 차단  ##  Block users at startup
+IP 복사(&c)  ##  &Copy IP
+채팅(&h)  ##  C&hat
+음성 채팅(&v)  ##  &Voice Chat
+파일 보내기(&f)  ##  Send &File
+이메일 보내기(&m)  ##  Send E&mail
+차단(&b)  ##  &Block
+이름 바꾸기(&r)  ##  &Rename
+삭제(&d)  ##  &Delete
+세부 정보(&t)  ##  De&tails
+계정 추가/제거(&a)  ##  Add/Remove &Accounts
+연락처 추가/제거(&c)  ##  Add/Remove &Contacts
+온라인(&o)  ##  &Online
+자리 비움(&a)  ##  &Away
+한가해요(&c)  ##  Free for &Chat
+방해하지마(&d)  ##  &Do not Disturb
+자리 비움 연장(&x)  ##  E&xtended Away
+보이지 않음(&i)  ##  &Invisible
+오프라인(&f)  ##  O&ffline
+그림 바꾸기(&p)  ##  Change &Picture
+암호 바꾸기(&s)  ##  Change Pa&ssword
+세부 정보(&d)  ##  Your &Details
+암호구 입력  ##  Enter Passphrase
+암호 입력  ##  Enter password
+보호 암호 입력  ##  Please enter protect password
+언어  ##  Languages
+Wippien에서 쓰이는 모든 언어 설치  ##  Setup language used in all Wippien texts.
+새로운 언어가 주기적으로 나타날 수 있습니다.  ##  New languages may appear periodically.
+다음의 사용 가능한 언어가 로컬 컴퓨터에서 발견됨  ##  Following languages are found as available on local computer
+바꾸기(&c)  ##  &Change
+로컬 컴퓨터에서 사용 중인 로케일  ##  Locale used on local computer
+현재 사용 중인 언어  ##  Currently used language
+필수적인 요소만 바뀌었습니다. 모두 적용하려면 Wippien을 재시작하십시오.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+새로운 언어 파일이 사용 가능합니다. 다운로드하시겠습니까?  ##  New language files available. Download?
+연락처가 온라인/오프라인이 될 때 알림 팝업창 보기  ##  Show notification popup window when contact goes online/offline
+연락처 타이핑 중...  ##  Contact is typing...
+말함  ##  says
+말했음  ##  said
+여기에 GMAIL 계정을 사용할 수 있습니다.  ##  You can use your GMAIL account here.

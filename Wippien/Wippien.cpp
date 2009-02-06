@@ -220,7 +220,17 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 //	delete h;
 
 	// now we start up Ethernet
-	if (!_Ethernet.Init())
+	BOOL ethsuccess = FALSE;
+	ethsuccess = _Ethernet.InitAdapter();
+	if (!ethsuccess)
+		ethsuccess = _Ethernet.InitOpenVPNAdapter();
+	if (ethsuccess)
+	{
+		char buff[16384];
+		sprintf(buff, _Settings.Translate("Network adapter opened"));
+		_MainDlg.ShowStatusText(buff);
+	}
+	else
 	{
 		if (_Settings.m_DoNotShow[DONOTSHOW_NOETHERNET] != '1')
 		{

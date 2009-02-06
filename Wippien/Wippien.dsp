@@ -45,7 +45,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVESSL" /FR /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\..\OpenSSL\x86\inc32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVESSL" /FR /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x41a /d "_DEBUG"
 # ADD RSC /l 0x41a /d "_DEBUG"
@@ -54,7 +54,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
+# ADD LINK32 ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib iphlpapi.lib wsock32.lib Shell32.lib Comdlg32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ssleay32.lib libeay32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /libpath:"..\..\..\OpenSSL\x86\out32" /FIXED:NO
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "Wippien - Win32 Release"
@@ -71,7 +71,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "HAVESSL" /FR /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "..\..\..\OpenSSL\x86\inc32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "HAVESSL" /FR /Yu"stdafx.h" /FD /c
 # ADD BASE RSC /l 0x41a /d "NDEBUG"
 # ADD RSC /l 0x41a /d "NDEBUG"
 BSC32=bscmake.exe
@@ -79,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /machine:I386
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
+# ADD LINK32 Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib wsock32.lib Shell32.lib Comdlg32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ssleay32.lib libeay32.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe" /libpath:"..\..\..\OpenSSL\x86\out32"
 # SUBTRACT LINK32 /debug
 
 !ELSEIF  "$(CFG)" == "Wippien - Win32 LibDebug"
@@ -97,7 +97,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVESSL" /FR /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVESSL" /D "_WODVPNLIB" /D "_APPUPDLIB" /D "_WODXMPPLIB" /FR /YX"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "\WeOnlyDo\OpenSSL\x86\inc32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVESSL" /D "_WODVPNLIB" /D "_APPUPDLIB" /D "_WODXMPPLIB" /FR /YX"stdafx.h" /FD /GZ /c
 # ADD BASE RSC /l 0x41a /d "_DEBUG"
 # ADD RSC /l 0x41a /d "_DEBUG" /d "_APPUPDLIB"
 BSC32=bscmake.exe
@@ -106,7 +106,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
 # SUBTRACT BASE LINK32 /pdb:none
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
+# ADD LINK32 ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib iphlpapi.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib Secur32.lib wsock32.lib Shell32.lib Comdlg32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ssleay32.lib libeay32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32" /FIXED:NO
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "Wippien - Win32 LibRelease"
@@ -124,7 +124,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "HAVESSL" /FR /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "HAVESSL" /D "_WODVPNLIB" /D "_APPUPDLIB" /D "_WODXMPPLIB" /FR /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O1 /I "..\..\..\OpenSSL\x86\inc32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "HAVESSL" /D "_WODVPNLIB" /D "_APPUPDLIB" /D "_WODXMPPLIB" /FR /FD /c
 # SUBTRACT CPP /YX /Yc /Yu
 # ADD BASE RSC /l 0x41a /d "NDEBUG"
 # ADD RSC /l 0x41a /d "NDEBUG" /d "_APPUPDLIB"
@@ -134,7 +134,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
 # SUBTRACT BASE LINK32 /debug
-# ADD LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib Secur32.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe"
+# ADD LINK32 Iphlpapi.lib ..\Lib\cximage.lib ..\Lib\Jpeg.lib ..\Lib\png.lib ..\Lib\Tiff.lib ..\Lib\zlib.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Release\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib Secur32.lib wsock32.lib Shell32.lib Comdlg32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ssleay32.lib libeay32.lib /nologo /subsystem:windows /machine:I386 /out:"../Bin/Wippien.exe" /libpath:"..\..\..\OpenSSL\x86\out32"
 # SUBTRACT LINK32 /debug
 
 !ENDIF 
@@ -1185,14 +1185,6 @@ SOURCE=..\WipUpd\Release\WipUpd.exe
 # Begin Source File
 
 SOURCE=..\Gfx\yah.png
-# End Source File
-# Begin Source File
-
-SOURCE=..\Lib\ssleay32.lib
-# End Source File
-# Begin Source File
-
-SOURCE=..\Lib\libeay32.lib
 # End Source File
 # Begin Source File
 

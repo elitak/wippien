@@ -2,7 +2,7 @@
 #define __BUFFER_CPP
 
 #ifdef HAVESSL
-#include "openssl/bn.h"
+#include <openssl/bn.h>
 #endif
 
 #define GET_32BIT(cp) (((unsigned long)(unsigned char)(cp)[0] << 24) | \

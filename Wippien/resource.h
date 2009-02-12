@@ -40,6 +40,7 @@
 #define IDC_LBL_WELCOME                 1019
 #define IDB_WATERMARK                   1020
 #define IDC_EDIT_JID                    1021
+#define IDC_RESOURCE                    1022
 #define IDC_LABEL_JID                   1023
 #define IDC_LABEL_JID1                  1024
 #define IDC_LABEL_JID2                  1025
@@ -248,6 +249,7 @@
 #define IDC_LICENSED_TO                 1217
 #define IDC_S2                          1217
 #define IDC_CHECKUPDATE                 1218
+#define IDC_S12                         1218
 #define IDB_SKINPREVIEW                 1219
 #define IDC_SNAPTOBORDER                1220
 #define IDC_CHECKUPDATE_TIMED           1221

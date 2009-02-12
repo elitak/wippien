@@ -37,10 +37,12 @@ BEGIN
                     WS_TABSTOP,137,242,27,20
 END
 
-IDD_SETTINGS_JID DIALOG DISCARDABLE  0, 0, 262, 160
+
+IDD_SETTINGS_JID DIALOG DISCARDABLE  0, 0, 262, 171
 STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
+    PUSHBUTTON      "&Search",IDB_BUTTON_JID1,226,25,35,26
     CONTROL         "I need new Jabber account",IDC_RADIO2_JID,"Button",
                     BS_AUTORADIOBUTTON,5,65,120,10
     CONTROL         "I have existing Jabber account",IDC_RADIO1_JID,"Button",
@@ -48,25 +50,26 @@ BEGIN
     EDITTEXT        IDC_EDIT_JID,46,77,182,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT2_JID,46,90,74,12,ES_PASSWORD
     PUSHBUTTON      "&Test Account",IDC_TEST_JID,122,90,63,13
-    EDITTEXT        IDC_EDIT_JID3,46,109,92,12
-    EDITTEXT        IDC_EDIT_JID4,46,122,40,12,ES_NUMBER
-    PUSHBUTTON      "&Search",IDB_BUTTON_JID1,226,25,35,26
+    EDITTEXT        IDC_RESOURCE,46,103,73,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_JID3,46,123,92,12
+    EDITTEXT        IDC_EDIT_JID4,46,136,40,12,ES_NUMBER
+    CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
+                    IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    88,137,170,10
     LTEXT           "You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.",
                     IDC_LABEL_JID1,0,0,261,21
     LTEXT           "If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.",
                     IDC_LABEL_JID2,0,24,223,34
     LTEXT           "JID",IDC_S1,5,78,35,9
     LTEXT           "Password",IDC_S2,5,91,35,9
-    LTEXT           "",IDC_JABBER_CONN_STATUS,3,152,145,11
-    LTEXT           "Server",IDC_S3,5,110,35,9
-    LTEXT           "Port",IDC_S4,5,122,35,9
+    LTEXT           "",IDC_JABBER_CONN_STATUS,3,159,145,11
+    LTEXT           "Server",IDC_S3,5,124,35,9
+    LTEXT           "Port",IDC_S4,5,136,35,9
     LTEXT           "Please click on 'Test Account' to proceed.",IDC_S5,1,
-                    138,236,8
-    LTEXT           "You can use your GMAIL account login and password.",IDC_S6,1,
-                    55,236,8
-    CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
-                    IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
-                    88,123,170,10
+                    149,236,8
+    LTEXT           "You can use your GMAIL account login and password.",
+                    IDC_S6,1,55,236,8
+    LTEXT           "Resource",IDC_S12,5,106,35,9
 END
 
 IDD_NEEDPASS DIALOG DISCARDABLE  0, 0, 186, 60

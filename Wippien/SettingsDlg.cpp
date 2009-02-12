@@ -523,6 +523,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnChange(WORD wNotifyCode, WORD wID, HWND hW
 		case IDC_EDIT2_JID:
 		case IDC_USESSLWRAPPER:
 		case IDC_EDIT_JID:
+		case IDC_RESOURCE:
 			NeedRestart();
 			if (wID == IDC_EDIT_JID)
 			{
@@ -583,6 +584,9 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	p = _Settings.m_Password;
 	SetDlgItemText(IDC_EDIT_JID, j.ToString());
 	SetDlgItemText(IDC_EDIT2_JID, p.ToString());
+	
+	CComBSTR2 res = _Settings.m_Resource;
+	SetDlgItemText(IDC_RESOURCE, res.ToString());
 
 	CComBSTR2 hs = _Settings.m_ServerHost;
 	char buff[1024];
@@ -657,6 +661,19 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 
 		return FALSE;
 	}			
+
+	*buff = 0;
+	::SendMessage(GetDlgItem(IDC_RESOURCE), WM_GETTEXT, 16384, (LPARAM)buff);
+	if (buff[0])
+	{
+		char *p = buff;
+		while (*p)
+		{
+			if (!isalnum(*p))
+				*p='_';
+		}
+		_Settings.m_Resource = buff;
+	}
 
 	*buff = 0;
 	::SendMessage(GetDlgItem(IDC_EDIT_JID3), WM_GETTEXT, 16384, (LPARAM)buff);

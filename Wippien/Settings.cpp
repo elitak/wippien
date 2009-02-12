@@ -546,6 +546,7 @@ int CSettings::LoadConfig(void)
 				ReadSettingsCfg(wip, "Password", m_Password, "");
 			}
 			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
+			ReadSettingsCfg(wip, "Resource", m_Resource, WIPPIENIM);
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
@@ -1131,6 +1132,9 @@ BOOL CSettings::SaveConfig(void)
 
 	Buffer in, out;
 	
+	CComBSTR2 res = m_Resource;
+	x.AddChildElem("Resource", res.ToString());
+
 	CComBSTR2 msh = m_ServerHost;
 	x.AddChildElem("ServerHost", msh.ToString());
 	x.AddChildElem("ServerPort", m_ServerPort);
@@ -1145,7 +1149,6 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("ShowContactPicture", m_ShowContactPicture?"1":"0");
 	x.AddChildElem("ShowContactLastOnline", m_ShowContactLastOnline?"1":"0");
 	x.AddChildElem("ShowContactActivity", m_ShowContactActivity?"1":"0");
-	//		x.AddChildElem("ShowContactName", m_ShowContactName?"1":"0");
 	x.AddChildElem("ShowContactIP", m_ShowContactIP?"1":"0");
 	x.AddChildElem("ShowContactStatus", m_ShowContactStatus?"1":"0");
 	x.AddChildElem("ShowMyPicture", m_ShowMyPicture?"1":"0");

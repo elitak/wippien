@@ -976,7 +976,9 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							m_SimpleHttpRequest->Get(j2.ToString());
 						}
 
+						
 						// now connect!
+						WODXMPPCOMLib::XMPP_SetCombineResources(_Jabber->m_Jabb, FALSE);
 						_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort, _Settings.m_UseSSLWrapper);
 					}
 					

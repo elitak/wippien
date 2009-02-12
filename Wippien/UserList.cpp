@@ -436,6 +436,8 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							jd2++;
 							res = jd2;
 						}
+						else
+							jd2="";
 						jid = jd1;
 //						ATLTRACE("user=%s \r\n", jd.ToString());
 //						if (res)
@@ -452,8 +454,17 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						for (int k=0;!found && k<m_Users.size();k++)
 						{
 							user = (CUser *)m_Users[k];
-							if (!stricmp(user->m_JID, j) || !stricmp(user->m_JID, jd.ToString()))
-							 found = TRUE;
+							if ( !stricmp(user->m_JID, j))
+							{
+								// same user
+								if (user->m_Resource[0]) // resource already set?
+								{
+									if (!stricmp(user->m_Resource, jd2))
+										found = TRUE;
+								}
+								else
+									found = TRUE;
+							}
 						}
 						WODXMPPCOMLib::StatusEnum stat = (WODXMPPCOMLib::StatusEnum)0/*Offline*/;
 #ifndef _WODXMPPLIB
@@ -779,12 +790,13 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								{
 									if (user->m_Online)
 									{
-
 										user->m_Changed = TRUE;
 										user->m_ChangeNotify = TRUE;
 									}
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = FALSE;
+									user->m_Resource[0] = 0;
+
 
 									if (!chatroom1)
 										user->ReInit(FALSE/*TRUE*/);
@@ -839,6 +851,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						}
 
 					}
+
 #ifndef _WODXMPPLIB
 					if (!cntc)
 						contact->Release();
@@ -943,6 +956,35 @@ void CUserList::RefreshView(BOOL updateonly)
 
 					if (!ison && p->m_WippienState!=WipConnected)
 					{
+						BOOL docont = FALSE;
+						// are there more users like this?
+						for (int uctr=0;uctr<m_Users.size();uctr++)
+						{
+							CUser *us = (CUser *)m_Users[uctr];
+							if (us!=p)
+							{
+								if (!stricmp(us->m_JID, p->m_JID))
+								{
+									// same user!!! find ourselves and go out
+									for (int uc=0;uc<m_Users.size();uc++)
+									{
+										if (m_Users[uc] == p)
+										{
+											m_Users.erase(m_Users.begin()+uc);
+											delete p;
+											break;
+										}
+									}
+									docont = TRUE;
+									break;
+								}
+							}
+						}
+						if (docont)
+						{
+							i--;
+							continue;
+						}
 						if (!p->m_TreeItem)
 						{
 								TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
@@ -1282,13 +1324,28 @@ CUser *CUserList::GetUserByJID(char *JID)
 	char *a1 = j.ToString();
 	char *a2 = strchr(a1, '/');
 	if (a2)
+	{
 		*a2 = 0;
+		a2++;
+	}
+	else
+		a2 = "";
 
 	for (int i=0;i<m_Users.size();i++)
 	{
 		CUser *user = (CUser *)m_Users[i];
-		if (!stricmp(user->m_JID, a1) || !stricmp(user->m_JID, JID))
-			return user;
+		if ( !stricmp(user->m_JID, a1))
+		{
+			// same user
+			if (user->m_Resource[0]) // resource already set?
+			{
+				if (!stricmp(user->m_Resource, a2))
+					return user;
+			}
+			else
+				return user;
+		}
+
 	}
 
 	return NULL;

@@ -837,7 +837,10 @@ void CUser::SetSubtext(void)
 				}
 			}
 		}
-		sprintf(m_SubText, "%s", m_StatusText);
+		if (m_Resource[0])
+			sprintf(m_SubText, "%-6s %s", m_Resource, m_StatusText);
+		else
+			sprintf(m_SubText, "%s", m_StatusText);
 	}
 	else
 	{

@@ -585,6 +585,12 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SetDlgItemText(IDC_EDIT_JID, j.ToString());
 	SetDlgItemText(IDC_EDIT2_JID, p.ToString());
 	
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Home"));
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Work"));
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Office"));
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Laptop"));
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Desktop"));
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)WIPPIENIM);
 	CComBSTR2 res = _Settings.m_Resource;
 	SetDlgItemText(IDC_RESOURCE, res.ToString());
 
@@ -614,6 +620,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SetDlgItemText(IDC_RADIO1_JID, _Settings.Translate("I have existing Jabber account"));
 	SetDlgItemText(IDC_S1, _Settings.Translate("JID"));
 	SetDlgItemText(IDC_S2, _Settings.Translate("Password"));
+	SetDlgItemText(IDC_S12, _Settings.Translate("Resource"));
 	SetDlgItemText(IDC_TEST_JID, _Settings.Translate("&Test Account"));
 	SetDlgItemText(IDC_S3, _Settings.Translate("Server"));
 	SetDlgItemText(IDC_S4, _Settings.Translate("Port"));
@@ -671,6 +678,7 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 		{
 			if (!isalnum(*p))
 				*p='_';
+			p++;
 		}
 		_Settings.m_Resource = buff;
 	}

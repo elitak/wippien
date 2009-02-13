@@ -1264,7 +1264,10 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	int prt = port;
 	
 	l += "/";
-	l += WIPPIENIM;
+	if (*_Settings.m_Resource)
+		l += _Settings.m_Resource;
+	else
+		l += WIPPIENIM;
 
 //	char buff[1024];
 //	srand((unsigned)time( NULL ));

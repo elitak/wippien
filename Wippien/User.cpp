@@ -838,7 +838,15 @@ void CUser::SetSubtext(void)
 			}
 		}
 		if (m_Resource[0])
-			sprintf(m_SubText, "%-6s %s", m_Resource, m_StatusText);
+		{
+			if (strlen(m_Resource)>7)
+			{
+				sprintf(m_SubText, "       .. %s", m_StatusText);
+				memcpy(m_SubText, m_Resource, 7);
+			}
+			else
+				sprintf(m_SubText, "%s %s", m_Resource, m_StatusText);
+		}
 		else
 			sprintf(m_SubText, "%s", m_StatusText);
 	}
@@ -979,32 +987,16 @@ void CUser::OpenMsgWindow(BOOL WithFocus)
 	if (!m_MessageWin)
 	{
 		m_MessageWin = new CMsgWin(this);
-//		m_MessageWin->m_HumanHead = &m_Icon;
-
 	}
 	if (!m_MessageWin->m_hWnd)
 	{
-//		HWND act = GetActiveWindow();
 		LoadUserImage(&m_MessageWin->m_HumanHead);
 		m_MessageWin->Create(NULL);
-//		Buffer b;
-//		m_MessageWin->LoadHistory();
 		m_MessageWin->Show();
-//		SetActiveWindow(act);
-//		if (m_InputBox.IsWindow())
-//			m_InputBox.SetFocus();
-
 	}
-/*	else
-	{
-		SetActiveWindow(m_MessageWin->m_hWnd);
-	}
-*/
-
 	if (WithFocus)
 	{
 		SetActiveWindow(m_MessageWin->m_hWnd);
-//		m_MessageWin->ShowWindow(SW_SHOWNORMAL);
 	
 		if (m_MessageWin->m_InputBox.IsWindow())
 			m_MessageWin->m_InputBox.SetFocus();
@@ -1033,6 +1025,16 @@ void CUser::CloseMsgWindow(void)
 void CUser::PrintMsgWindow(BOOL IsSystem, char *Text, char *Html)
 {
 	OpenMsgWindow(FALSE);
+	if (m_MessageWin)
+	{
+		if (m_Resource[0] && !strchr(m_MessageWin->m_JID, '/'))
+		{
+			strcat(m_MessageWin->m_JID, "/");
+			strcat(m_MessageWin->m_JID, m_Resource);
+		}
+		m_MessageWin->SetTitle();
+	}
+
 	if (!IsSystem)
 		FlashWindow(m_MessageWin->m_hWnd, TRUE);
 

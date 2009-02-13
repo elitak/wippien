@@ -245,6 +245,7 @@ CMsgWin::CMsgWin(CUser *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(
 {
 	Init();
 	m_User = Owner;
+	strcpy(m_JID, m_User->m_JID);
 }
 
 CMsgWin::CMsgWin(CChatRoom *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)
@@ -277,6 +278,7 @@ void CMsgWin::Init(void)
 	m_ListLoaded = FALSE;
 	m_EmoticonList = NULL;
 	m_LastTimestamp[0] = 0;
+	m_JID[0] = 0;
 }
 
 CMsgWin::~CMsgWin()
@@ -991,12 +993,6 @@ LRESULT CMsgWin::OnSizing(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*b
 
 BOOL CMsgWin::Show(void)
 {
-	char buff[1024];
-	if (m_User)
-		sprintf(buff, "%s (%s)", m_User->m_VisibleName, m_User->m_JID);
-	else
-		sprintf(buff, "%s", m_Room->m_JID);
-	SetWindowText(buff);
 	m_Button.SubclassWindow ( GetDlgItem(IDB_SEND) );
 
 
@@ -1005,9 +1001,21 @@ BOOL CMsgWin::Show(void)
 	if (m_Room && m_Room->m_ChatWindowRect.right > m_Room->m_ChatWindowRect.left)
 		SetWindowPos(NULL, &m_Room->m_ChatWindowRect, SWP_NOZORDER);
 
+	SetTitle();
 	::ShowWindow(m_hWnd, SW_SHOWNOACTIVATE); 
 	
 	return TRUE;
+}
+void CMsgWin::SetTitle(void)
+{
+	char buff[1024];
+	if (m_User)
+	{
+		sprintf(buff, "%s (%s)", m_User->m_VisibleName, m_JID);
+	}
+	else
+		sprintf(buff, "%s", m_Room->m_JID);
+	SetWindowText(buff);
 }
 
 BOOL CMsgWin::AddTimestamp(Buffer *b)
@@ -2281,7 +2289,7 @@ HRESULT CMsgWin::CInputBox::Send()
 				{
 					m_ParentDlg->m_ChatBox.AddLine(b1, TRUE);
 					m_ParentDlg->SaveHistory(TRUE, b3.ToString());
-					_Jabber->Message(NULL, m_ParentDlg->m_User->m_JID, b3.ToString(), b2.ToString());
+					_Jabber->Message(NULL, m_ParentDlg->m_JID, b3.ToString(), b2.ToString());
 				}
 				delete b1;
 
@@ -2446,12 +2454,12 @@ HRESULT CMsgWin::CInputBox::NotifyTyping()
 	{
 		WODXMPPCOMLib::StatusEnum stat;
 		WODXMPPCOMLib::XMPP_Contact_GetStatus(cnt, &stat);
-		if (stat > /*WODXMPPCOMLib::StatusEnum::Offline*/ 0 && stat < /*WODXMPPCOMLib::StatusEnum::Requested*/ 6)
+		if (stat > 0 && stat < 6)
 		{
 			VARIANT var;
 			var.vt = VT_I4;
 			var.lVal = 1;
-			WODXMPPCOMLib::XMPP_Contact_Notify(cnt, (WODXMPPCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
+			WODXMPPCOMLib::XMPP_Notify(_Jabber->m_Jabb, m_ParentDlg->m_JID, (WODXMPPCOMLib::ContactNotifyEnum)1/*UserTyping*/, var);
 		}
 		WODXMPPCOMLib::XMPP_Contacts_Free(cnt);
 	}

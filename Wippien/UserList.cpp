@@ -1314,11 +1314,20 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 
 CUser *CUserList::GetUserByJID(BSTR JID)
 {
+	return GetUserByJID(JID, FALSE);
+}
+CUser *CUserList::GetUserByJID(BSTR JID, BOOL WithResource)
+{
 	CComBSTR2 j = JID;
 	return GetUserByJID(j.ToString());
 }
 
 CUser *CUserList::GetUserByJID(char *JID)
+{
+	return GetUserByJID(JID, FALSE);
+}
+
+CUser *CUserList::GetUserByJID(char *JID, BOOL WithResource)
 {
 	CComBSTR2 j = JID;
 	char *a1 = j.ToString();

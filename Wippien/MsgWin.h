@@ -44,11 +44,13 @@ public:
 	virtual ~CMsgWin();
 	CContainedWindow /*m_List, m_Edit, */m_Button;
 	CUser *m_User;
+	char m_JID[1024];
 	CChatRoom *m_Room;
 	CComBSTR m_LastSay;
 
 	BOOL ArrangeLayout();
 	BOOL Show(void);
+	void SetTitle(void);
 	Buffer *CreateMsg(char *User, char *Text, char *Html, char *Color, char *BackColor);
 	BOOL Incoming(char *User, BOOL IsSystem, char *Text, char *Html);
 	BOOL SaveHistory(BOOL Mine, char *Text);

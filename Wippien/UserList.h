@@ -42,8 +42,10 @@ public:
 	HTREEITEM FindRoot(char *RootName);
 	HTREEITEM FindRoot(char *RootName, BOOL canaddnew);
 	CUser *GetUserByJID(char *JID);
-	CUser *GetUserByVirtualIP(unsigned long IP);
 	CUser *GetUserByJID(BSTR JID);
+	CUser *GetUserByJID(char *JID, BOOL WithResource);
+	CUser *GetUserByJID(BSTR JID, BOOL WithResource);
+	CUser *GetUserByVirtualIP(unsigned long IP);
 	void InitIcons(void);
 	void LoadIconFromResource(CxImage *img, int resid);
 	BOOL ConnectIfPossible(CUser *user, BOOL perform);

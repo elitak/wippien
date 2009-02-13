@@ -779,7 +779,7 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						{
 							Buffer textbuff;
 							char buff[1024];
-							textbuff.Append(user->m_SubText);
+							textbuff.Append(user->m_StatusText);
 							textbuff.Append("\r\n\r\n");
 
 
@@ -972,6 +972,11 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							m_SimpleHttpRequest = new CSimpleHttpRequest(m_hWnd, 999); // which timer event occurs?
 							CComBSTR j1 = _Settings.m_IPProviderURL;
 							j1 += _Settings.m_JID;
+							if (*_Settings.m_Resource)
+							{
+								j1 += "/";
+								j1 += _Settings.m_Resource;
+							}
 							CComBSTR2 j2 = j1;
 							m_SimpleHttpRequest->Get(j2.ToString());
 						}
@@ -2677,12 +2682,7 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 		return;
 	}
 	else
-	{
-		int j = strlen(Contact);
-		char *j1 = strchr(Contact, '/');
-		if (j1)
-			*j1 = 0;
-		
+	{		
 		if (_SDK)
 		{
 			Buffer b;
@@ -2694,14 +2694,12 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 				return;
 		}
 
-		for (int i = 0; i < m_UserList.m_Users.size(); i++)
+		CUser *user = m_UserList.GetUserByJID(Contact, TRUE);
+		if (!user)
+			user = m_UserList.GetUserByJID(Contact, FALSE);
+		if (user)
 		{
-			CUser *user = m_UserList.m_Users[i];
-			if (!strnicmp(user->m_JID, Contact, j))
-			{
-				user->PrintMsgWindow(FALSE, Message, HtmlMessage);
-				return;
-			}
+			user->PrintMsgWindow(FALSE, Message, HtmlMessage);
 		}
 	}
 }

@@ -262,6 +262,7 @@ CUser::CUser()
 	m_TotalReceived = m_TotalSent = 0;
 	m_IsAway = FALSE;
 	m_IsAlienWippien = FALSE;
+	m_LastResource[0] = 0;
 }
 
 CUser::~CUser()

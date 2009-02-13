@@ -22,6 +22,7 @@ CNotifyWindow::CNotifyWindow()
 	m_Timer = 0;
 	m_SubjectFont = m_TextFont = NULL;
 	m_Subject = NULL;
+	m_Subtext = NULL;
 	m_Text = NULL;
 }
 
@@ -37,9 +38,11 @@ CNotifyWindow::~CNotifyWindow()
 		delete m_Subject;
 	if (m_Text)
 		delete m_Text;
+	if (m_Subtext)
+		delete m_Subtext;
 }
 
-BOOL CNotifyWindow::Create(char *Subject, char *Text)
+BOOL CNotifyWindow::Create(char *Subject, char *Subtext, char *Text)
 {
 	DWORD dwExStyle=WS_EX_TOOLWINDOW | WS_EX_TOPMOST;
 	
@@ -65,6 +68,13 @@ BOOL CNotifyWindow::Create(char *Subject, char *Text)
 	m_Subject->Append(Subject);
 	m_Text = new Buffer();
 	m_Text->Append(Text);
+	m_Subtext = new Buffer();
+	if (*Subtext)
+	{
+		m_Subtext->Append("(");
+		m_Subtext->Append(Subtext);
+		m_Subtext->Append(")");
+	}
 
 	APPBARDATA	abd;
 	memset(&abd, 0, sizeof(APPBARDATA));
@@ -98,10 +108,13 @@ void CNotifyWindow::OnPaint(HDC dc)
 	HGDIOBJ font = ::SelectObject(mc.m_hDC, m_SubjectFont);
 	::SetBkMode(mc.m_hDC, TRANSPARENT);
 	::DrawText(mc.m_hDC, m_Subject->Ptr(), m_Subject->Len(), &rc, DT_CENTER);
-	rc.top += 40;
-	rc.left -= 30;
+	rc.top += 20;
 	::SelectObject(mc.m_hDC, m_TextFont);
+	::DrawText(mc.m_hDC, m_Subtext->Ptr(), m_Subtext->Len(), &rc, DT_CENTER);
+	rc.top += 20;
+	rc.left -= 30;
 	::DrawText(mc.m_hDC, m_Text->Ptr(), m_Text->Len(), &rc, DT_CENTER);
+//	rc.left -= 30;
 	::SelectObject(mc.m_hDC, font);
 	::BitBlt(pdc.m_hDC, 0, 0, m_Image->GetWidth(), m_Image->GetHeight(), mc.m_hDC, 0, 0, SRCCOPY);
 }

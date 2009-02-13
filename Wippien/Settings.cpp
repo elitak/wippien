@@ -985,19 +985,19 @@ int CSettings::LoadUsers(void)
 							delete user;
 #else
 							user->Release();
-#endif						
+#endif      
 						}
 						else
 						{
 							_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 							_MainDlg.m_UserList.m_Users.push_back(user);
-						}
-
-						user->m_Changed = FALSE;
-						user->m_ChangeNotify = FALSE;
-						user->m_Online = FALSE;
-						if (!strlen(user->m_StatusText))
-							strcpy(user->m_StatusText, _Settings.Translate("Offline"));
+							
+							user->m_Changed = FALSE;
+							user->m_ChangeNotify = FALSE;
+							user->m_Online = FALSE;
+							if (!strlen(user->m_StatusText))
+								strcpy(user->m_StatusText, _Settings.Translate("Offline"));
+						 }
 
 						ent->Name[0] = 0;
 					}

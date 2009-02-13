@@ -36,7 +36,7 @@ public:
 	void DoEvent(NotificationsEnum Event);
 	unsigned long m_LastTick;
 	void Beep(BSTR Sound, int resID, BOOL Must);
-	void ShowTrayNotify(char *Subject, char *Text);
+	void ShowTrayNotify(char *Subject, char *Subtext, char *Text);
 
 private:
 	CMainDlg *m_Owner;

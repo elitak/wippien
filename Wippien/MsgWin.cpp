@@ -246,6 +246,11 @@ CMsgWin::CMsgWin(CUser *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(
 	Init();
 	m_User = Owner;
 	strcpy(m_JID, m_User->m_JID);
+	if (*m_User->m_Resource)
+	{
+		strcat(m_JID, "/");
+		strcat(m_JID, m_User->m_Resource);
+	}
 }
 
 CMsgWin::CMsgWin(CChatRoom *Owner) : /*m_List(this, 1), m_Edit(this, 2), */m_Button(this, 1)

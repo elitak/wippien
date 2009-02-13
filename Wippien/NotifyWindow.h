@@ -30,7 +30,7 @@ public:
 
 	CxImage *m_Image;
 
-	BOOL Create(char *Subject, char *Text);
+	BOOL Create(char *Subject, char *Subtext, char *Text);
 
 	RECT m_Rect, m_ShowRect;
 	HFONT m_SubjectFont, m_TextFont;
@@ -39,7 +39,7 @@ public:
 	void OnPaint(HDC dc);
 	void OnTimer(UINT id, TIMERPROC proc);
 	void OnMouseMove(UINT wParam, CPoint p);
-	Buffer *m_Subject, *m_Text;
+	Buffer *m_Subject, *m_Text, *m_Subtext;
 
 	BEGIN_MSG_MAP_EX(thisClass)
 		MSG_WM_PAINT(OnPaint)

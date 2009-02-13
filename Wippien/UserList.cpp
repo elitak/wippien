@@ -562,6 +562,8 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										user->m_Changed = TRUE;
 										user->m_ChangeNotify = TRUE;
 									}
+									if (! *user->m_LastResource)
+										strcpy(user->m_LastResource, user->m_Resource);
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = TRUE;	
 									time((long *)&user->m_LastOnline);
@@ -1007,7 +1009,7 @@ void CUserList::RefreshView(BOOL updateonly)
 										p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 									}
 									if (_Settings.m_ShowNotificationPopup)
-										_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
+										_Notify.ShowTrayNotify(p->m_VisibleName, p->m_LastResource, _Settings.Translate("is now offline"));
 									_Notify.DoEvent(NotificationOffline);
 								}
 							}
@@ -1058,7 +1060,7 @@ void CUserList::RefreshView(BOOL updateonly)
 									if (p->m_Online)
 									{
 										if (_Settings.m_ShowNotificationPopup)
-											_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now online"));
+											_Notify.ShowTrayNotify(p->m_VisibleName, p->m_Resource, _Settings.Translate("is now online"));
 										_Notify.DoEvent(NotificationOnline);
 										if (p->IsMsgWindowOpen())
 										{
@@ -1080,7 +1082,7 @@ void CUserList::RefreshView(BOOL updateonly)
 											p->PrintMsgWindow(TRUE, k2.ToString(), NULL);
 										}
 										if (_Settings.m_ShowNotificationPopup)
-											_Notify.ShowTrayNotify(p->m_VisibleName, _Settings.Translate("is now offline"));
+											_Notify.ShowTrayNotify(p->m_VisibleName, p->m_LastResource, _Settings.Translate("is now offline"));
 										_Notify.DoEvent(NotificationOffline);
 									}
 									doblink = TRUE;

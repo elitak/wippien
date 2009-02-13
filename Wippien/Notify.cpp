@@ -40,7 +40,7 @@ void CNotify::Init(CMainDlg *Owner)
 	m_Owner = Owner;
 }
 
-void CNotify::ShowTrayNotify(char *Subject, char *Text)
+void CNotify::ShowTrayNotify(char *Subject, char *Subtext, char *Text)
 {
 	if (m_NotifyWindow)
 	{
@@ -51,7 +51,7 @@ void CNotify::ShowTrayNotify(char *Subject, char *Text)
 	}
 
 	m_NotifyWindow = new CNotifyWindow();
-	m_NotifyWindow->Create(Subject, Text);
+	m_NotifyWindow->Create(Subject, Subtext, Text);
 }
 
 void CNotify::DoEvent(NotificationsEnum Event)

@@ -123,7 +123,7 @@ public:
 #endif //WODVPNLIB
 
 	char m_JID[256];
-	char m_Resource[256];
+	char m_Resource[256], m_LastResource[256];;
 	char m_VisibleName[256];
 	char m_Email[128];
 	char m_SubText[256];

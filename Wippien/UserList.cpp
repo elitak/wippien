@@ -318,10 +318,18 @@ void CUserList::SortUsers(void)
 					{
 						case 1: // visible name
 							rez = stricmp(user1->m_VisibleName, user2->m_VisibleName);
+							if (!rez)
+							{
+								rez = stricmp(user1->m_JID, user2->m_JID);
+								if (!rez)
+									rez = stricmp(user1->m_Resource, user2->m_Resource);
+							}
 							break;
 
 						case 2: // JID
 							rez = stricmp(user1->m_JID, user2->m_JID);
+							if (!rez)
+								rez = stricmp(user1->m_Resource, user2->m_Resource);
 							break;
 
 						case 3: // by IP bottom

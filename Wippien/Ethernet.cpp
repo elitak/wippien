@@ -740,7 +740,12 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 						ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
 					}
 					else
+					{
+						eth->m_EthWriteStart++;
+						if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
+							eth->m_EthWriteStart = 0;
 						break;
+					}
 				}
 			}
 		}

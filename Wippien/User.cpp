@@ -355,7 +355,7 @@ void CUser::ReInit(BOOL WithDirect)
 				return;
 		}
 	}
-	m_IsUsingWippien = FALSE;
+//	m_IsUsingWippien = FALSE;
 	m_BlinkConnectingCounter = 0;
 	m_BlinkTimerCounter = 0;
 
@@ -366,9 +366,6 @@ void CUser::ReInit(BOOL WithDirect)
 //	m_IsAway = FALSE;
 	SetSubtext();
 	m_Hidden = FALSE;
-	m_Resource[0] = 0;
-
-
 }
 
 

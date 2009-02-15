@@ -141,6 +141,7 @@ public:
 	_cryptoAES128 m_AES;
 	int m_MTU;
 	CDetectMTU *m_DetectMTU;
+	BOOL m_Saved;
 	unsigned long m_LastSent, m_LastReceive, m_TotalReceived, m_TotalSent;
 
 	char m_StatusText[128];
@@ -156,7 +157,8 @@ public:
 	BOOL m_Changed, m_ChangeNotify, m_Online, m_Hidden;
 	unsigned long m_LastOnline;
 	CChatRoom *m_ChatRoomPtr;
-	Buffer *m_IsWippien;
+	//Buffer *m_IsWippien;
+	BOOL m_IsUsingWippien;
 	BOOL m_IsAlienWippien;
 
 

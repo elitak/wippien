@@ -567,7 +567,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = TRUE;	
 									time((long *)&user->m_LastOnline);
-									if (!user->m_IsWippien)
+									if (!user->m_IsUsingWippien)
 									{
 										CComBSTR2 r;
 #ifndef _WODXMPPLIB
@@ -580,16 +580,13 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 #endif
 										if (strstr(r.ToString(), WIPPIENIM))
 										{
-											user->m_IsWippien = new Buffer();
-											user->m_IsWippien->Append(user->m_JID);
-//											user->m_IsWippien->Append("/");
-//											user->m_IsWippien->Append(WIPPIENIM);
+											user->m_IsUsingWippien = TRUE;
 											user->m_WippienState = WipWaitingInitRequest;
 											user->SetTimer(rand()%10 * 500, 3);
 										}
 									}
 #ifdef _WODXMPPLIB
-									if (!user->m_IsWippien)
+									if (!user->m_IsUsingWippien)
 									{
 										char nickbuff[1024];
 										int nickbuflen = sizeof(nickbuff);
@@ -640,13 +637,12 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 															strcpy(user->m_VisibleName, trim(nickbuff));
 														}
 
-														if (!user->m_IsWippien || strcmp(user->m_IsWippien->Ptr(), jdnew.ToString()))
+														if (!user->m_IsUsingWippien)
 														{
-																user->m_IsWippien = new Buffer();
-																user->m_IsWippien->Append(jdnew.ToString());
-																user->m_IsAlienWippien = TRUE;
+															user->m_IsUsingWippien = TRUE;
+															user->m_IsAlienWippien = TRUE;
 														}
-														if (user->m_IsWippien && _Ethernet.m_Available)
+														if (user->m_IsUsingWippien && _Ethernet.m_Available)
 														{
 																// send presence notification to user
 																Buffer raw;
@@ -706,26 +702,10 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										WODXMPPCOMLib::XMPP_Contact_GetCapabilities(contact, rsbuf, &rsbuflen);
 										r = rsbuf;
 #endif
-										if (!user->m_IsWippien)
-										{
-											if (strstr(r.ToString(), WIPPIENIM))
-											{
-												user->m_IsWippien = new Buffer();
-												user->m_IsWippien->Append(user->m_JID);
-												user->m_IsWippien->Append("/");
-												user->m_IsWippien->Append(WIPPIENIM);
-											}
-										}
-										if (!user->m_IsWippien)
-										{
-											if (res && !strcmp(res, WIPPIENIM))
-											{
-												user->m_IsWippien = new Buffer();
-												user->m_IsWippien->Append(user->m_JID);
-												user->m_IsWippien->Append("/");
-												user->m_IsWippien->Append(res);
-											}
-										}
+										if (!user->m_IsUsingWippien && strstr(r.ToString(), WIPPIENIM))
+												user->m_IsUsingWippien = TRUE;
+										if (!user->m_IsUsingWippien && res && res && !strcmp(res, WIPPIENIM))
+												user->m_IsUsingWippien = TRUE;
 
 
 #ifndef _WODXMPPLIB
@@ -753,7 +733,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 #endif
 
 										// also check by resource (obsolete!)
-										if (!user->m_IsWippien)
+										if (!user->m_IsUsingWippien)
 										{
 #ifndef _WODXMPPLIB
 											if (SUCCEEDED(contact->get_Resource(&r)))
@@ -781,7 +761,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											}	
 										}
 
-										if (user->m_IsWippien)
+										if (user->m_IsUsingWippien)
 										{
 											// yes he is, request init details
 											user->SetTimer(rand()%1000, 3);
@@ -958,35 +938,6 @@ void CUserList::RefreshView(BOOL updateonly)
 
 					if (!ison && p->m_WippienState!=WipConnected)
 					{
-						BOOL docont = FALSE;
-						// are there more users like this?
-						for (int uctr=0;uctr<m_Users.size();uctr++)
-						{
-							CUser *us = (CUser *)m_Users[uctr];
-							if (us!=p)
-							{
-								if (!stricmp(us->m_JID, p->m_JID))
-								{
-									// same user!!! find ourselves and go out
-									for (int uc=0;uc<m_Users.size();uc++)
-									{
-										if (m_Users[uc] == p)
-										{
-											m_Users.erase(m_Users.begin()+uc);
-											delete p;
-											break;
-										}
-									}
-									docont = TRUE;
-									break;
-								}
-							}
-						}
-						if (docont)
-						{
-							i--;
-							continue;
-						}
 						if (!p->m_TreeItem)
 						{
 								TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
@@ -1011,6 +962,28 @@ void CUserList::RefreshView(BOOL updateonly)
 									if (_Settings.m_ShowNotificationPopup)
 										_Notify.ShowTrayNotify(p->m_VisibleName, p->m_LastResource, _Settings.Translate("is now offline"));
 									_Notify.DoEvent(NotificationOffline);
+								}
+							}
+						}
+						// are there more users like this?
+						for (int uctr=0;uctr<m_Users.size();uctr++)
+						{
+							CUser *us = (CUser *)m_Users[uctr];
+							if (us!=p)
+							{
+								if (!stricmp(us->m_JID, p->m_JID))
+								{
+									// same user!!! find ourselves and go out
+									for (int uc=0;uc<m_Users.size();uc++)
+									{
+										if (m_Users[uc] == p)
+										{
+											m_Users.erase(m_Users.begin()+uc);
+											delete p;
+											RefreshView(updateonly);
+											return;
+										}
+									}
 								}
 							}
 						}
@@ -1390,7 +1363,7 @@ BOOL CUserList::ConnectIfPossible(CUser *user, BOOL perform)
 		}
 		else
 		{
-			if (user->m_IsWippien)
+			if (user->m_IsUsingWippien)
 				user->ExchangeWippienDetails();
 		}
 	}

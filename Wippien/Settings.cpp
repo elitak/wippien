@@ -1344,11 +1344,27 @@ BOOL CSettings::SaveRooms(void)
 BOOL CSettings::SaveUsers(void)
 {	
 	Buffer x;
-	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+
+	int i;
+	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
-		if (!user->m_ChatRoomPtr) // we do not dump temporary users
+		user->m_Saved = FALSE;
+	}
+	
+	
+	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	{
+		CUser *user = _MainDlg.m_UserList.m_Users[i];
+		if (!user->m_ChatRoomPtr && !user->m_Saved) // we do not dump temporary users
 		{
+			for (int o=i+1;o<_MainDlg.m_UserList.m_Users.size();o++)
+			{
+				CUser *u = _MainDlg.m_UserList.m_Users[o];
+				if (!stricmp(user->m_JID, u->m_JID))
+					u->m_Saved = TRUE;
+			}
+			user->m_Saved = FALSE;
 			CComBSTR j = user->m_JID;
 			x.Append("<User>\r\n");
 			x.AddChildElem("Name", user->m_JID);

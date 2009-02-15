@@ -72,13 +72,7 @@ STDMETHODIMP CUser::raw_Disconnected(WODVPNCOMLib::IwodVPNCom * Owner, LONG Erro
 #endif
 
 	// preserve Wippien state
-	Buffer *o = me->m_IsWippien;
-	me->m_IsWippien = NULL;
 	me->ReInit(TRUE);
-	if (!me->m_IsWippien)
-		me->m_IsWippien = o;
-	else
-		delete o;
 //	me->m_IsAway = FALSE;
 	me->SetSubtext();
 	me->m_Changed = TRUE;
@@ -235,7 +229,7 @@ CUser::CUser()
 	m_AllowedRemoteAny = m_AllowedRemoteMediator = TRUE;
 	m_HisVirtualIP = 0;
 
-	m_IsWippien = NULL;
+	m_IsUsingWippien = NULL;
 	ReInit(TRUE);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
@@ -267,10 +261,6 @@ CUser::CUser()
 
 CUser::~CUser()
 {
-	if (m_IsWippien)
-		delete m_IsWippien;
-	m_IsWippien = NULL;
-
 	if (_MainDlg.IsWindow())
 	{
 		HTREEITEM show_item = _MainDlg.m_UserList.GetFirstVisibleItem();
@@ -365,9 +355,7 @@ void CUser::ReInit(BOOL WithDirect)
 				return;
 		}
 	}
-	if (m_IsWippien)
-		delete m_IsWippien;
-	m_IsWippien = FALSE;
+	m_IsUsingWippien = FALSE;
 	m_BlinkConnectingCounter = 0;
 	m_BlinkTimerCounter = 0;
 
@@ -743,7 +731,7 @@ void CUser::FdTimer(int TimerID)
 					}
 				}
 
-				if (m_IsWippien)
+				if (m_IsUsingWippien)
 					_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENINITREQUEST, &b);
 			}
 			return;
@@ -766,7 +754,7 @@ void CUser::FdTimer(int TimerID)
 				b.PutInt(m_MyMediatorPort);
 				b.PutInt(m_MyMediatorChoice);
 
-				if (m_IsWippien)
+				if (m_IsUsingWippien)
 					_Jabber->ExchangeWippienDetails(this , (char *)WIPPIENINITRESPONSE, &b);
 			}
 			return;
@@ -1196,8 +1184,8 @@ BOOL CUser::LoadUserImage(CxImage *img)
 	img->Clear();
 	if (img->Load(buff, CXIMAGE_FORMAT_PNG))
 		return TRUE;
-
-// otherwise get something from the resource
+	
+	// otherwise get something from the resource
 	int hm = (rand() % 37);
 	HRSRC h = FindResource(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDB_HUMAN1 + hm), "PNG");
 	DWORD rsize= SizeofResource(_Module.GetModuleInstance(),h);
@@ -1256,17 +1244,11 @@ void CUser::NotifyDisconnect(void)
 	t.PutChar((char)m_WippienState);
 	_Settings.ToHex(&t, &out);
 	out.Append("\0", 1);
-	if (m_IsWippien)
+	if (m_IsUsingWippien)
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &out);
 
 
-	Buffer *o = m_IsWippien;
-	m_IsWippien = NULL;
 	ReInit(TRUE);
-	if (!m_IsWippien)
-		m_IsWippien = o;
-	else
-		delete o;
 }
 
 void CUser::NotifyConnect(void)
@@ -1276,7 +1258,7 @@ void CUser::NotifyConnect(void)
 	t.PutChar((char)m_WippienState);
 	_Settings.ToHex(&t, &out);
 	out.Append("\0", 1);
-	if (m_IsWippien)
+	if (m_IsUsingWippien)
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &out);
 
 }

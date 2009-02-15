@@ -593,28 +593,22 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 										res++;
 									else
 										res = "";
-									if (!user->m_IsWippien)
+									if (!user->m_IsUsingWippien)
 									{
 										if (strstr(capa.ToString(), WIPPIENIM))
 										{
-											user->m_IsWippien = new Buffer();
-											user->m_IsWippien->Append(user->m_JID);
-											user->m_IsWippien->Append("/");
-											user->m_IsWippien->Append(WIPPIENIM);
+											user->m_IsUsingWippien = TRUE;
 										}
 									}
-									if (!user->m_IsWippien)
+									if (!user->m_IsUsingWippien)
 									{
 										if (res && strcmp(res, WIPPIENIM))
 										{
-											user->m_IsWippien = new Buffer();
-											user->m_IsWippien->Append(user->m_JID);
-											user->m_IsWippien->Append("/");
-											user->m_IsWippien->Append(res);
+											user->m_IsUsingWippien = TRUE;
 										}
 									}
 
-									if (!user->m_IsWippien)
+									if (!user->m_IsUsingWippien)
 									{
 										// check also resource
 										Buffer b;
@@ -626,16 +620,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											line = b.GetNextLine();
 											if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
 											{	
-												user->m_IsWippien = new Buffer();
-												user->m_IsWippien->Append(user->m_JID);
-												user->m_IsWippien->Append("/");
-												user->m_IsWippien->Append(line);
+												user->m_IsUsingWippien = TRUE;
 												break;
 											}
 										} while (line);
 									}
 
-									if (user->m_IsWippien)
+									if (user->m_IsUsingWippien)
 									{
 										if (out.Len()>=4)
 										{
@@ -1590,13 +1581,20 @@ void CJabber::ExchangeWippienDetails(CUser *User, char *Subj, Buffer *Text)
 #endif
 	}
 
-	if (User->m_IsWippien)
+	if (User->m_IsUsingWippien)
 	{
 #ifndef _WODXMPPLIB
 	CComBSTR j5 = User->m_IsWippien->Ptr();
 	HRESULT hr = _Jabber->m_Jabb->raw_SendMessage(j5, msg);
 #else
-	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, User->m_IsWippien->Ptr(), msg);
+	Buffer bf;
+	bf.Append(User->m_JID);
+	if (*User->m_Resource)
+	{
+		bf.Append("/");
+		bf.Append(User->m_Resource);
+	}
+	HRESULT hr = WODXMPPCOMLib::XMPP_SendMessage(_Jabber->m_Jabb, bf.Ptr(), msg);
 #endif
 		if (FAILED(hr))
 		{

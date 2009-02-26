@@ -854,6 +854,38 @@ LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 	return TRUE;
 }
 
+LRESULT CMsgWin::OnBtnChatRoomSettings(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+#ifndef _WODXMPPLIB
+	WODXMPPCOMLib::IXMPPChatRooms *rs = NULL;
+	_Jabber->m_Jabb->get_ChatRooms(&rs);
+	if (rs)
+	{
+		WODXMPPCOMLib::IXMPPChatRoom *r = NULL;
+		CComBSTR n = m_JID;
+		VARIANT var;
+		var.vt = VT_BSTR;
+		var.bstrVal = n;
+		rs->get_Room(var, &r);
+		if (r)
+		{
+			r->get_Settings();
+			r->Release();
+		}
+		rs->Release();
+	}
+#else
+	void *chatroom = NULL;
+	WODXMPPCOMLib::XMPP_GetChatRoomByName(_Jabber->m_Jabb, m_Room->m_JID, &chatroom);
+	if (chatroom)
+	{
+		WODXMPPCOMLib::XMPP_ChatRoom_GetSettings(chatroom);
+		WODXMPPCOMLib::XMPP_ChatRoom_Free(chatroom);
+	}	
+#endif
+	return TRUE;
+}
+
 BOOL CMsgWin::ArrangeLayout()
 {
 
@@ -882,6 +914,7 @@ BOOL CMsgWin::ArrangeLayout()
 		HWND hMuteOnOff = GetDlgItem(ID_PNG1_MUTEONOFF);
 		HWND hHumanHead = GetDlgItem(IDC_PERSON);
 		HWND hClearHistory = GetDlgItem(ID_PNG1_CLEARHISTORY);
+		HWND hRoomSettings = GetDlgItem(ID_PNG1_CHATROOMSETTINGS);
 
 		HWND hContactList = GetDlgItem(IDC_MSGWIN_USERS);
 		
@@ -905,6 +938,8 @@ BOOL CMsgWin::ArrangeLayout()
 		::MoveWindow(hDetails,  rc.left + 73, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hMuteOnOff,  rc.left + 141, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hClearHistory,  rc.left + 209, rc.top+1, 68, 48, TRUE);
+		if (m_Room)
+			::MoveWindow(hRoomSettings,  rc.left + 277, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hHumanHead,  rc.right-48, rc.top, 48, 48, TRUE);
 
 		// middle toolbar elements
@@ -964,7 +999,9 @@ LRESULT CMsgWin::OnSize(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHand
 			IHTMLElement2 *pElement = NULL;
 			if (SUCCEEDED(htmlElement->QueryInterface(IID_IHTMLElement2,(LPVOID*)&pElement)))
 			{
-				pElement->put_scrollTop(100000);
+				long p = 0;
+				pElement->get_scrollHeight(&p);
+				pElement->put_scrollTop(p+1000);
 				pElement->Release();
 				KillTimer(1);
 			}
@@ -1367,11 +1404,19 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 
 	m_btnClearHistory.SetCaption(_Settings.Translate("Clear"));
 	m_btnClearHistory.LoadPNG(ID_PNG_CLEARHISTORY);
-	//m_btnDetails.m_cxImage.Resample(24,24);
-//	ResampleImageIfNeeded(&m_btnDetails.m_cxImage, 32);
 	m_btnClearHistory.SubclassWindow(GetDlgItem(ID_PNG1_CLEARHISTORY));
 	m_btnClearHistory.SetToolTipText(_Settings.Translate("Clear history"));
 
+	if (m_Room)
+	{
+		m_btnRoomSettings.SetCaption(_Settings.Translate("Room Info"));	
+		m_btnRoomSettings.LoadPNG(ID_PNG_CHATROOMSETTINGS);
+		m_btnRoomSettings.SubclassWindow(GetDlgItem(ID_PNG1_CHATROOMSETTINGS));
+		m_btnRoomSettings.SetToolTipText(_Settings.Translate("Get room information"));
+	}
+	else
+		::ShowWindow(GetDlgItem(ID_PNG1_CHATROOMSETTINGS), SW_HIDE);
+	
 
 	// middle toolbar buttons
 	m_btnBold.LoadPNG(IDB_BOLD);
@@ -1555,7 +1600,9 @@ LRESULT CMsgWin::OnTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHan
 			var.bstrVal = T2BSTR("s
 //			pElement->doScroll();
 */
-			pElement->put_scrollTop(100000);
+			long p = 0;
+			pElement->get_scrollHeight(&p);
+			pElement->put_scrollTop(p+1000);
 			pElement->Release();
 			KillTimer(1);
 		}
@@ -1627,7 +1674,9 @@ HRESULT CMsgWin::CChatBox::AddHtml(BSTR HtmlCode)
 		var.bstrVal = T2BSTR("s
 //			pElement->doScroll();
 */
-			pElement->put_scrollTop(100000);
+			long p = 0;
+			pElement->get_scrollHeight(&p);
+			pElement->put_scrollTop(p+1000);
 			m_ParentDlg->SetTimer(1, 200);
 			pElement->Release();
 		}

@@ -547,6 +547,9 @@ int CSettings::LoadConfig(void)
 			}
 			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
 			ReadSettingsCfg(wip, "Resource", m_Resource, WIPPIENIM);
+			if (!m_Resource.Length())
+				m_Resource = WIPPIENIM;
+
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);

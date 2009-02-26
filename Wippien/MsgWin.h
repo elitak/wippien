@@ -74,7 +74,7 @@ public:
 	CPNGButton m_btnSend;
 
 	// main toolbar buttons
-	CPNGButton m_btnSendFile, m_btnDetails, m_btnMuteOnOff,m_btnClearHistory;
+	CPNGButton m_btnSendFile, m_btnDetails, m_btnMuteOnOff,m_btnClearHistory, m_btnRoomSettings;
 
 	// middle toolbar buttons
 	CPNGButton m_btnBold, m_btnItalic, m_btnUnderline, m_btnHyperlink, m_btnFontSizeDown, m_btnEmoticons, 
@@ -276,6 +276,7 @@ public:
 		COMMAND_ID_HANDLER(IDC_FONTBACKCOLOR, OnFontBackcolorBtnClicked)
 		COMMAND_ID_HANDLER(ID_PNG1_DETAILS, OnBtnDetails)
 		COMMAND_ID_HANDLER(ID_PNG1_CLEARHISTORY, OnBtnClearHistory)
+		COMMAND_ID_HANDLER(ID_PNG1_CHATROOMSETTINGS, OnBtnChatRoomSettings)
 		COMMAND_ID_HANDLER(ID_PNG1_MUTEONOFF, OnBtnMuteOnOff)
 		CHAIN_MSG_MAP(CDialogResize<CMsgWin>)
 /*	ALT_MSG_MAP(1)	
@@ -374,6 +375,7 @@ public:
 	LRESULT OnFontBackcolorBtnClicked(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnDetails(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBtnChatRoomSettings(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnMuteOnOff(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT	OnMeasureItem(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT	OnDrawItem(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);

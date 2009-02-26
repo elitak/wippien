@@ -43,16 +43,16 @@ FONT 8, "MS Sans Serif"
 BEGIN
     PUSHBUTTON      "&Search",IDB_BUTTON_JID1,226,25,35,26
     CONTROL         "I need new Jabber account",IDC_RADIO2_JID,"Button",
-                    BS_AUTORADIOBUTTON,5,65,120,10
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,5,65,120,10
     CONTROL         "I have existing Jabber account",IDC_RADIO1_JID,"Button",
-                    BS_AUTORADIOBUTTON,128,65,129,10
-    EDITTEXT        IDC_EDIT_JID,46,77,182,12,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT2_JID,46,90,74,12,ES_PASSWORD
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,128,65,129,10
+    EDITTEXT        IDC_EDIT_JID,46,77,182,12,ES_AUTOHSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT2_JID,46,90,74,12,ES_PASSWORD | WS_TABSTOP
     PUSHBUTTON      "&Test Account",IDC_TEST_JID,122,90,63,13
     COMBOBOX        IDC_RESOURCE,46,103,76,46,CBS_DROPDOWN | CBS_SORT | 
                     WS_VSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_EDIT_JID3,46,123,92,12
-    EDITTEXT        IDC_EDIT_JID4,46,136,40,12,ES_NUMBER
+    EDITTEXT        IDC_EDIT_JID3,46,123,92,12,WS_TABSTOP
+    EDITTEXT        IDC_EDIT_JID4,46,136,40,12,ES_NUMBER | WS_TABSTOP
     CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
                     IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     88,137,170,10
@@ -204,15 +204,15 @@ BEGIN
                     WS_TABSTOP,143,111,24,14
     CONTROL         "&Send",IDB_SEND,"Button",BS_OWNERDRAW | WS_TABSTOP,171,
                     134,40,38
-    CONTROL         "<picture goes heere<",IDC_PERSON,"Button",BS_OWNERDRAW | 
+    CONTROL         "<picture goes here>",IDC_PERSON,"Button",BS_OWNERDRAW | 
                     WS_TABSTOP,167,16,47,47
-    CONTROL         "<Send file>",ID_PNG1_SENDFILE,"Button",BS_OWNERDRAW | 
-                    WS_DISABLED | WS_TABSTOP,1,2,33,15
+    CONTROL         "<Send file>",ID_PNG1_SENDFILE,"Button",BS_OWNERDRAW | WS_DISABLED | WS_TABSTOP,1,2,33,15
     PUSHBUTTON      "<Details>",ID_PNG1_DETAILS,41,3,47,13
     RTEXT           "Contact is typing...",IDC_ISTYPING,141,119,88,9,NOT 
                     WS_VISIBLE
     PUSHBUTTON      "<Mute>",ID_PNG1_MUTEONOFF,95,3,47,13
-    PUSHBUTTON      "<Clear>",ID_PNG1_CLEARHISTORY,146,1,47,13
+    PUSHBUTTON      "<Clear>",ID_PNG1_CLEARHISTORY,146,3,47,13
+    PUSHBUTTON      "<Settings>",ID_PNG1_CHATROOMSETTINGS,197,3,47,13
     LISTBOX         IDC_MSGWIN_USERS,175,68,53,45,LBS_SORT | 
                     LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
 END
@@ -1171,6 +1171,7 @@ IDC_MYAUTHDLG           PNG     DISCARDABLE     "..\\Gfx\\co0009-16.png"
 ID_PNG_SKINBASE         PNG     DISCARDABLE     "..\\Gfx\\base_skin.png"
 ID_PNG_AVATARBASE       PNG     DISCARDABLE     "..\\Gfx\\base_avatar.png"
 ID_PNG_CLEARHISTORY     PNG     DISCARDABLE     "..\\Gfx\\clear_history.png"
+ID_PNG_CHATROOMSETTINGS PNG     DISCARDABLE     "..\\Gfx\\chat_room_settings.png"
 ID_PNG1_CHATROOMS       PNG     DISCARDABLE     "..\\gfx\\chatrooms.png"
 IDB_NOTIFYWINDOWBACK    PNG     DISCARDABLE     "..\\gfx\\notifywin.png"
 

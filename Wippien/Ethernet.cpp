@@ -603,11 +603,13 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 	DWORD dwError;
 
 	int rt = 0;
+	BOOL mustread = FALSE;
 	while (eth->m_Alive && eth->m_Enabled)
 	{
 
-		while (eth->m_Alive && eth->m_Enabled && eth->m_EthWriteStart == eth->m_EthWriteEnd)			
+		while ((eth->m_Alive && eth->m_Enabled && eth->m_EthWriteStart == eth->m_EthWriteEnd) || mustread)			
 		{
+			mustread = FALSE;
 			if (eth->m_EthWriteStart == eth->m_EthWriteEnd)
 			{
 				EthWriteData *ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
@@ -741,9 +743,10 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 					}
 					else
 					{
-						eth->m_EthWriteStart++;
-						if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
-							eth->m_EthWriteStart = 0;
+						mustread = TRUE;
+//						eth->m_EthWriteStart++;
+//						if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
+//							eth->m_EthWriteStart = 0;
 						break;
 					}
 				}

@@ -12,6 +12,7 @@
 #include "ContactAuthDlg.h"
 #include "SDKMessageLink.h"
 #include "ChatRoom.h"
+#include "MsgWin.h"
 
 #ifndef MIN
 #define  MIN(a, b)   ((a)<(b)?(a):(b)) 
@@ -1196,6 +1197,42 @@ void __stdcall CJabberEvents::DispError(WODXMPPCOMLib::IXMPPContact *Contact, WO
 //	MessageBox(NULL, err, t1.ToString(), MB_OK | MB_ICONHAND);
 }
 
+#ifdef _WODXMPPLIB
+void XMPPChatRoomData(void *wodXMPP, void *Room)
+{
+	char buff[8192];
+	int l = sizeof(buff);
+	WODXMPPCOMLib::XMPP_ChatRoom_GetJID(Room, buff, &l);
+	long h = 0;
+	
+	for (int i = 0; i < _MainDlg.m_ChatRooms.size(); i++)
+	{
+		CChatRoom *room = _MainDlg.m_ChatRooms[i];
+		if (!stricmp(room->m_JID, buff))
+		{
+			h = (long)room->m_MessageWin->m_hWnd;
+			break;
+		}
+	}
+
+	strcat(buff, " configuration");
+
+
+	void *settings = NULL;
+	WODXMPPCOMLib::XMPP_ChatRoom_SettingsGet(Room, &settings);
+	if (settings)
+	{
+		int success = FALSE;
+		WODXMPPCOMLib::XMPP_Vars_Show(settings, buff, h, &success);
+		if (success)
+			WODXMPPCOMLib::XMPP_ChatRoom_SaveSettings(Room);
+
+		WODXMPPCOMLib::XMPP_Vars_Free(settings);
+	}
+}
+#endif
+
+
 
 CJabber::CJabber(void)
 {
@@ -1215,6 +1252,7 @@ CJabber::CJabber(void)
 	m_Events.VCardDetails = XMPPVCardDetails;
 	m_Events.ChatRoomListDone = XMPPChatRoomListDone;
 	m_Events.Error = XMPPError;
+	m_Events.ChatRoomData = XMPPChatRoomData;
 
 		
 	m_Jabb = WODXMPPCOMLib::_XMPP_Create(&m_Events);

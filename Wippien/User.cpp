@@ -1237,12 +1237,12 @@ BOOL CUser::SaveUserImage(CxImage &img)
 void CUser::NotifyDisconnect(void)
 {
 	Buffer t;
-	Buffer out;
+//	Buffer out;
 	t.PutChar((char)m_WippienState);
-	_Settings.ToHex(&t, &out);
-	out.Append("\0", 1);
+//	_Settings.ToHex(&t, &out);
+//	out.Append("\0", 1);
 	if (m_IsUsingWippien)
-		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &out);
+		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &t);
 
 
 	ReInit(TRUE);
@@ -1251,12 +1251,12 @@ void CUser::NotifyDisconnect(void)
 void CUser::NotifyConnect(void)
 {	
 	Buffer t;
-	Buffer out;
+//	Buffer out;
 	t.PutChar((char)m_WippienState);
-	_Settings.ToHex(&t, &out);
-	out.Append("\0", 1);
+//	_Settings.ToHex(&t, &out);
+//	out.Append("\0", 1);
 	if (m_IsUsingWippien)
-		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &out);
+		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &t);
 
 }
 

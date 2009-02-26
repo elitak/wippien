@@ -624,6 +624,10 @@ SOURCE=.\BushBaby.png
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\chat_room_settings.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\chatrooms.png
 # End Source File
 # Begin Source File

@@ -458,6 +458,8 @@
 #define IDC_S11                         1513
 #define IDC_LOCALLANGUAGES              1515
 #define IDC_SHOWNOTIFICATION            1516
+#define ID_PNG_CHATROOMSETTINGS			1517
+#define ID_PNG1_CHATROOMSETTINGS        1518
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772

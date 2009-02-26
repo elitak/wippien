@@ -591,6 +591,9 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Laptop"));
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Desktop"));
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)WIPPIENIM);
+	if (!_Settings.m_Resource.Length())
+		_Settings.m_Resource = WIPPIENIM;
+
 	CComBSTR2 res = _Settings.m_Resource;
 	SetDlgItemText(IDC_RESOURCE, res.ToString());
 

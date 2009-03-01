@@ -2922,10 +2922,30 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 							WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
 							if (ct)
 							{
-								if (!strcmp(user->m_Group, GROUP_GENERAL)) // is this general group?
-									WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, "");
-								else
-									WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, user->m_Group);;
+								char *grp = "";
+								if (strcmp(user->m_Group, GROUP_GENERAL)) // is this general group?
+									grp = user->m_Group;
+
+								WODXMPPCOMLib::XMPP_Contact_SetGroup(ct, grp);
+
+								// loop through all contacts and change the group
+								CComBSTR2 jd1 = user->m_JID;
+								char *jd2 = jd1.ToString();
+								char *jd3 = strchr(jd2, '/');
+								if (jd3)
+									*jd3 = 0;
+								int jd4 = strlen(jd2);
+								int x;
+								for (x=0;x<m_UserList.m_Users.size();x++)
+								{
+									CUser *u = (CUser *)m_UserList.m_Users[x];
+									if (!strncmp(u->m_JID, jd2, jd4))
+									{
+										strcpy(u->m_Group, grp);
+										u->m_Changed = TRUE;
+									}
+								}
+
 							}
 #endif
 							user->m_Changed = TRUE;

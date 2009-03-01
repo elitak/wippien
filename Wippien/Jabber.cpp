@@ -594,7 +594,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 										res++;
 									else
 										res = "";
-									if (!user->m_IsUsingWippien)
+/*									if (!user->m_IsUsingWippien)
 									{
 										if (strstr(capa.ToString(), WIPPIENIM))
 										{
@@ -603,7 +603,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									}
 									if (!user->m_IsUsingWippien)
 									{
-										if (res && strcmp(res, WIPPIENIM))
+										if (res && !strcmp(res, WIPPIENIM))
 										{
 											user->m_IsUsingWippien = TRUE;
 										}
@@ -626,6 +626,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											}
 										} while (line);
 									}
+*/
+									// since this message arrived, he *MUST* be using wippien, isn't he?
+									user->m_IsUsingWippien = TRUE;
 
 									if (user->m_IsUsingWippien)
 									{
@@ -684,8 +687,11 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											user->m_Changed = TRUE;
 											_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 										}
-										user->m_WippienState = WipWaitingInitResponse;
-										user->SetTimer(rand()%100, 3);
+										if (!user->m_Block)
+										{
+											user->m_WippienState = WipWaitingInitResponse;
+											user->SetTimer(rand()%100, 3);
+										}
 									}
 								}
 							}
@@ -742,8 +748,10 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									memcpy(src, out.Ptr(), 128);
 									if (RSA_private_decrypt(128, (unsigned char *)src, (unsigned char *)dst,  _Settings.m_RSA, RSA_PKCS1_PADDING) < 0)
 									{
-										user->m_WippienState = WipDisconnected;
-										user->NotifyDisconnect();
+										user->m_IsUsingWippien = TRUE; // obviously...
+										user->m_WippienState = WipWaitingInitRequest;
+										user->SetTimer(rand()%100, 3);
+//										user->NotifyDisconnect();
 										return;
 									}
 
@@ -813,9 +821,12 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 
 									user->m_WippienState = WipDisconnected;
-									user->SetTimer(rand()%100, 3);
-									if (_Settings.m_AutoConnectVPNOnStartup)
-										user->SendConnectionRequest(TRUE);
+									if (!user->m_Block)
+									{
+										user->SetTimer(rand()%100, 3);
+										if (_Settings.m_AutoConnectVPNOnStartup)
+											user->SendConnectionRequest(TRUE);
+									}
 
 								}
 							}
@@ -889,7 +900,13 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							}
 							if (user && !user->m_Block)
 							{
-								user->SendConnectionRequest(FALSE);
+								if (user->m_IsUsingWippien)
+									user->SendConnectionRequest(FALSE);
+								else
+								{
+									user->m_IsUsingWippien = TRUE;
+									user->SetTimer(rand()%100, 3);
+								}
 							}
 						}
 					}			

@@ -513,11 +513,16 @@ void CUser::SendConnectionRequest(BOOL Notify)
 					myjid = m_ChatRoomPtr->m_JID;
 					myjid += "/";
 					myjid += m_ChatRoomPtr->m_Nick;
+
+					hisjid = m_ChatRoomPtr->m_JID;
+					hisjid += "/";
+					hisjid += m_Resource;
 				}
 				else
-					myjid = _Settings.m_JID;
-
-				hisjid = m_JID;
+				{
+					myjid = _Settings.m_JID;	
+					hisjid = m_JID;
+				}
 			}
 
 			myid += myjid;
@@ -751,7 +756,7 @@ void CUser::FdTimer(int TimerID)
 				b.PutInt(m_MyMediatorPort);
 				b.PutInt(m_MyMediatorChoice);
 
-				if (m_IsUsingWippien)
+				if (m_IsUsingWippien && !m_Block)
 					_Jabber->ExchangeWippienDetails(this , (char *)WIPPIENINITRESPONSE, &b);
 			}
 			return;
@@ -759,6 +764,7 @@ void CUser::FdTimer(int TimerID)
 
 		if (m_RemoteWippienState < WipConnecting || m_WippienState < WipConnecting)
 		{
+			KillTimer(9);
 			NotifyConnect();
 			return;
 		}
@@ -1255,7 +1261,7 @@ void CUser::NotifyConnect(void)
 	t.PutChar((char)m_WippienState);
 //	_Settings.ToHex(&t, &out);
 //	out.Append("\0", 1);
-	if (m_IsUsingWippien)
+	if (m_IsUsingWippien  && !m_Block)
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &t);
 
 }

@@ -232,10 +232,14 @@ CUser *CUserList::AddNewUser(char *j, void *contact)
 			int gblen = sizeof(gb);
 			WODXMPPCOMLib::XMPP_Contact_GetGroup(contact, gb, &gblen);
 			strcpy(user->m_Group, gb);
+
+			gblen = sizeof(user->m_VisibleName);
+			WODXMPPCOMLib::XMPP_Contact_GetNick(contact, user->m_VisibleName, &gblen);
+			
 #endif
 		}
 
-		// calculate visible name
+/*		// calculate visible name
 		CComBSTR2 j1 = user->m_JID;
 		char *j2 = j1.ToString();
 		char *b = strchr(j2, '@');
@@ -247,7 +251,7 @@ CUser *CUserList::AddNewUser(char *j, void *contact)
 				*b = 0;
 		}
 		strcpy(user->m_VisibleName, j2);
-
+*/
 		CxImage img;
 //							if (!user->m_Icon.Len())
 		if (!user->LoadUserImage(&img))
@@ -496,9 +500,14 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							}
 							if (isuserinchatroom)
 							{
+								char *jd1 = jd.ToString();
+								char *jd3 = strchr(jd1, '/');
+								if (jd3)
+									*jd3 = 0;
 
-								user = AddNewUser(jd.ToString(), contact);
+								user = AddNewUser(jd1, contact);
 								strcpy(user->m_VisibleName, jd2);
+								strcpy(user->m_Resource, res);
 							}
 							else
 							{
@@ -534,7 +543,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						if (user && !found && chatroom1 && isuserinchatroom)
 						{
 							// new chatroom user was added
-							user->m_ChatRoomPtr->m_MessageWin->AddUserToContactList(user->m_JID, FALSE);
+							user->m_ChatRoomPtr->m_MessageWin->AddUserToContactList(user->m_Resource, FALSE);
 						}	
 
 						if (user)
@@ -2022,6 +2031,15 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 //					user->m_TreeItem = (HTREEITEM)-1;
 					m_SortedUsersBuffer.Clear();
 					_Settings.SaveUsers();
+#ifdef _WODXMPPLIB
+					void *ct = NULL;
+					WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, user->m_JID, &ct);
+					if (ct)
+					{
+						WODXMPPCOMLib::XMPP_Contact_SetName(ct, ndlg.m_VisibleName);
+					}
+#endif
+
 					PostMessage(WM_REFRESH, NULL, TRUE);
 				}
 			}

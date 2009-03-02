@@ -56,7 +56,7 @@ void CVividTree::DrawItems(CDC *pDC)
 			lvitem.hItem = show_item;
 			lvitem.pszText = name;
 			lvitem.cchTextMax = sizeof(name);
-			lvitem.mask = TVIF_PARAM | TVIF_TEXT;
+			lvitem.mask = TVIF_PARAM | TVIF_TEXT | TVIF_INTEGRAL;
 			
 			::SendMessage(m_hWnd, TVM_GETITEM, 0, (LPARAM)&lvitem);
 			user = (CUser *)lvitem.lParam;
@@ -69,6 +69,9 @@ void CVividTree::DrawItems(CDC *pDC)
 
 			if (GetItemRect(show_item, rc_item, TRUE))
 			{
+				if (rc_item.bottom - rc_item.top < lvitem.iIntegral)
+					rc_item.bottom = rc_item.top + lvitem.iIntegral;
+
 				rc_item.right = rcowner.right/*-rcowner.left+rc_item.left*/;
 				if (has_children  || selected || highlited)
 				{

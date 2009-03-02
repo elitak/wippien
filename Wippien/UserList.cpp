@@ -500,6 +500,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							}
 							if (isuserinchatroom)
 							{
+								if (!res)
+									continue;
+
 								char *jd1 = jd.ToString();
 								char *jd3 = strchr(jd1, '/');
 								if (jd3)
@@ -507,8 +510,6 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 								user = AddNewUser(jd1, contact);
 								strcpy(user->m_VisibleName, jd2);
-								if (!res)
-									continue;
 
 								strcpy(user->m_Resource, res);
 							}

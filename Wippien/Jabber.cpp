@@ -687,9 +687,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											user->m_Changed = TRUE;
 											_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 										}
+										user->m_WippienState = WipWaitingInitResponse;
 										if (!user->m_Block)
 										{
-											user->m_WippienState = WipWaitingInitResponse;
 											user->SetTimer(rand()%100, 3);
 										}
 									}

@@ -507,6 +507,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 								user = AddNewUser(jd1, contact);
 								strcpy(user->m_VisibleName, jd2);
+								if (!res)
+									continue;
+
 								strcpy(user->m_Resource, res);
 							}
 							else

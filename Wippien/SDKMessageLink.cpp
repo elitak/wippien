@@ -487,6 +487,16 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 			}
 			break;
 
+		case WM_WIPPIEN_GETSTATUSTEXT:
+			{
+				char buff[8192];
+				int len = sizeof(buff);
+				WODXMPPCOMLib::XMPP_GetStatusText(_Jabber->m_Jabb, buff, &len);
+				pLink->SendBuffer((HWND) wParam, buff);
+				return TRUE;
+			}
+			break;
+			
 		case WM_WIPPIEN_GETMYIP:
 			{
 				char *a = "";
@@ -738,6 +748,17 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						_Settings.m_ServerHost = b.Ptr();
 						break;
 
+					case WM_WIPPIEN_SETSTATUSTEXT:
+						{
+							WODXMPPCOMLib::StatusEnum newstatus;
+							WODXMPPCOMLib::XMPP_GetStatus(_Jabber->m_Jabb, &newstatus);
+							WODXMPPCOMLib::XMPP_SetStatus(_Jabber->m_Jabb, newstatus, b.Ptr());
+
+							_MainDlg.m_MyStatusText->Clear();
+							_MainDlg.m_MyStatusText->Append(b.Ptr());
+						}
+						break;
+						
 					case WM_WIPPIEN_SETJID:
 						_Settings.m_JID = b.Ptr();
 						break;

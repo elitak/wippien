@@ -1,0 +1,26 @@
+HKCR
+{
+	Wippien.SDK.1 = s 'WippienSDK Class'
+	{
+		CLSID = s '{34AE1617-F394-4631-8F89-C291691D824F}'
+	}
+	Wippien.SDK = s 'WippienSDK Class'
+	{
+		CLSID = s '{34AE1617-F394-4631-8F89-C291691D824F}'
+		CurVer = s 'Wippien.SDK.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {34AE1617-F394-4631-8F89-C291691D824F} = s 'WippienSDK Class'
+		{
+			ProgID = s 'Wippien.SDK.1'
+			VersionIndependentProgID = s 'Wippien.SDK'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{4695EBF6-9789-4C5F-81E7-86C7FB95F2CD}'
+		}
+	}
+}

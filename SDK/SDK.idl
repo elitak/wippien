@@ -1,0 +1,109 @@
+// SDK.idl : IDL source for SDK.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SDK.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	[
+		object,
+		uuid(CAD56E0F-4F78-4D9B-B425-92B8A5361D6D),
+		dual,
+		helpstring("IWippienSDK Interface"),
+		pointer_default(unique)
+	]
+	interface IWippienSDK : IDispatch
+	{
+		[propget, id(DISPID_VALUE), helpstring("Holds your JID.")] HRESULT JID([out, retval] BSTR *pVal);
+		[propput, id(DISPID_VALUE), helpstring("Holds your JID.")] HRESULT JID([in] BSTR newVal);
+//		[propget, id(1), helpstring("property Visible")] HRESULT Visible([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(1), helpstring("Determines if Wippien is visible.")] HRESULT Visible([in] VARIANT_BOOL newVal);
+		[propget, id(2), helpstring("Holds current status.")] HRESULT Status([out, retval] long *pVal);
+		[propput, id(2), helpstring("Holds current status.")] HRESULT Status([in] long newVal);
+		[id(3), helpstring("Saves configuration settings.")] HRESULT SaveSettings();
+		[id(4), helpstring("Terminates Wippien")] HRESULT Die();
+		[propget, id(5), helpstring("Determines hostname where Wippien connects.")] HRESULT Hostname([out, retval] BSTR *pVal);
+		[propput, id(5), helpstring("Determines hostname where Wippien connects.")] HRESULT Hostname([in] BSTR newVal);
+		[propget, id(6), helpstring("Determines port where Wippien connects.")] HRESULT Port([out, retval] long *pVal);
+		[propput, id(6), helpstring("Determines port where Wippien connects.")] HRESULT Port([in] long newVal);
+
+		[propget, id(9), helpstring("Returns total number of users on your contact list.")] HRESULT UserCount([out, retval] long *pVal);
+		[propget, id(10), helpstring("Holds user's JID.")] HRESULT UserJID([in] VARIANT User, [out, retval] BSTR *pVal);
+		[propput, id(10), helpstring("Holds user's JID.")] HRESULT UserJID([in] VARIANT User, [in] BSTR newVal);
+		[propget, id(11), helpstring("Holds user's resource info.")] HRESULT UserResource([in] VARIANT User, [out, retval] BSTR *pVal);
+		[propput, id(11), helpstring("Holds user's resource info.")] HRESULT UserResource([in] VARIANT User, [in] BSTR newVal);
+		[propget, id(12), helpstring("Holds user's email.")] HRESULT UserEmail([in] VARIANT User, [out, retval] BSTR *pVal);
+		[propput, id(12), helpstring("Holds user's email.")] HRESULT UserEmail([in] VARIANT User, [in] BSTR newVal);
+		[propget, id(13), helpstring("Holds user's nickname/visible name.")] HRESULT UserVisibleName([in] VARIANT User, [out, retval] BSTR *pVal);
+		[propput, id(13), helpstring("Holds user's nickname/visible name.")] HRESULT UserVisibleName([in] VARIANT User, [in] BSTR newVal);
+		[propget, id(14), helpstring("Holds user's group.")] HRESULT UserGroup([in] VARIANT User, [out, retval] BSTR *pVal);
+		[propput, id(14), helpstring("Holds user's group.")] HRESULT UserGroup([in] VARIANT User, [in] BSTR newVal);
+		[propget, id(15), helpstring("Determines if user's network packets are blocked.")] HRESULT UserBlock([in] VARIANT User, [out, retval] VARIANT_BOOL *pVal);
+		[propput, id(15), helpstring("Determines if user's network packets are blocked.")] HRESULT UserBlock([in] VARIANT User, [in] VARIANT_BOOL newVal);
+		[propget, id(16), helpstring("Returns user's presence status.")] HRESULT UserPresenceStatus([in] VARIANT User, [out, retval] long *pVal);
+		[propget, id(27), helpstring("Returns user's VPN status.")] HRESULT UserVPNStatus([in] VARIANT User, [out, retval] long *pVal);
+		[id(17), helpstring("Opens user's chat window.")] HRESULT OpenChatWindow([in] VARIANT User);
+		[id(18), helpstring("Closes user's chat window.")] HRESULT CloseChatWindow([in] VARIANT User);
+		[id(19), helpstring("Sends message to the user.")] HRESULT SendMessage([in] VARIANT User, BSTR PlainText, BSTR HtmlText);
+		[propget, id(20), helpstring("Returns your virtual IP address.")] HRESULT MyIP([out, retval] BSTR *pVal);
+		[propget, id(21), helpstring("Returns your virtual netmask.")] HRESULT MyNetmask([out, retval] BSTR *pVal);
+		[propget, id(22), helpstring("Returns user's virtual IP address.")] HRESULT UserIP(VARIANT User, [out, retval] BSTR *pVal);
+		[id(23), helpstring("Initiates VPN connection with the user.")] HRESULT UserConnect(VARIANT User);
+		[propget, id(24), helpstring("Returns user's real IP when connected.")] HRESULT UserConnectedIP(VARIANT User, [out, retval] BSTR *pVal);
+		[propget, id(25), helpstring("Returns user's real port when connected.")] HRESULT UserConnectedPort(VARIANT User, [out, retval] long *pVal);
+		[id(28), helpstring("Changes Wippien GUI password.")] HRESULT ChangePassword(BSTR OldPassword, BSTR NewPassword, VARIANT_BOOL ProtectAll);
+		[id(29), helpstring("Initiates VPN connection with the user and specifies IP address.")] HRESULT UserConnectIP(VARIANT User, int IP);
+		[id(30), helpstring("Adds new contact to the list (remote authorization required).")] HRESULT AddContact(BSTR JID, VARIANT_BOOL Subscribe);
+		[id(31), helpstring("Removes contact from the list.")] HRESULT RemoveContact(BSTR JID, VARIANT_BOOL Unsubscribe);
+		[propget, id(32), helpstring("Determines if sound is enabled.")] HRESULT Sound([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(32), helpstring("Determines if sound is enabled.")] HRESULT Sound([in] VARIANT_BOOL newVal);
+		[id(33), helpstring("Creates new jabber account.")] HRESULT CreateAccount(BSTR JID, BSTR Password, BSTR Hostname, int Port);
+		[id(34), helpstring("Connects to the server.")] HRESULT Connect();
+		[id(35), helpstring("Disconnects from the server")] HRESULT Disconnect();
+		[propget, id(36), helpstring("Holds status text.")] HRESULT StatusText([out, retval] BSTR *pVal);
+		[propput, id(36), helpstring("Holds status text.")] HRESULT StatusText([in] BSTR newVal);
+	};
+
+[
+	uuid(4695EBF6-9789-4C5F-81E7-86C7FB95F2CD),
+	version(1.0),
+	helpstring("Wippien COM Interface library")
+]
+library WIPPIENSDKCOMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(BC5DC3B4-24B8-441A-B24C-211CF280D31A),
+		helpstring("_IWippienSDKEvents Interface")
+	]
+	dispinterface _IWippienSDKEvents
+	{
+		properties:
+		methods:
+		[id(DISPID_VALUE), helpstring("Fires when new message arrives.")] void IncomingMessage(BSTR JID, BSTR *PlainText, BSTR *HtmlText);
+		[id(2), helpstring("Fires when user's presence status changes.")] void UserPresenceChange(BSTR JID, long NewPresence, long OldPresence);
+		[id(5), helpstring("Fires when user's VPN status changes.")] void UserVPNChange(BSTR JID, long NewVPNState, long OldVPNState);
+		[id(1), helpstring("Fires when Wippien's status changes.")] void StatusChange(long OldStatus, long NewStatus);
+		[id(3), helpstring("Fires when Wippien disconnects from the server.")] void Disconnected(BSTR ErrorText);
+		[id(4), helpstring("Fires when Wippien connects to the server.")] void Connected();
+		[id(6), helpstring("Fires when mediator message arrives.")] void MediatorMessage(BSTR JID, BSTR *Text);
+		[id(7), helpstring("Fires when account creation finishes.")] void AccountCreated(BSTR ErrorText);
+		[id(8), helpstring("Fires when contact requests authorization.")] void AuthRequest(BSTR JID);
+		[id(9), helpstring("Fires when Wippien is closed.")] void Die();
+	};
+	
+
+	[
+		uuid(34AE1617-F394-4631-8F89-C291691D824F),
+		helpstring("WippienSDK Class")
+	]
+	coclass WippienSDK
+	{
+		[default] interface IWippienSDK;
+		[default, source] dispinterface _IWippienSDKEvents;
+	};
+};

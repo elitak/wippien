@@ -294,6 +294,12 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	_SDK->CreateLinkWindow();
 
 	int nRet = theLoop.Run();
+	if (_SDK)
+	{
+		if (!_SDK->FireEvent(WM_WIPPIEN_EVENT_DIE,""))
+			return FALSE;
+	}
+	
 	_Ethernet.Die();
 	if (WippienMutex != INVALID_HANDLE_VALUE)
 	{

@@ -603,6 +603,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										{
 											user->m_IsUsingWippien = TRUE;
 											user->m_WippienState = WipWaitingInitRequest;
+											user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 											user->SetTimer(rand()%10 * 500, 3);
 										}
 									}
@@ -696,6 +697,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 																WODXMPPCOMLib::XMPP_RawSend(_Jabber->m_Jabb, raw.Ptr());
 															
 																user->m_WippienState = WipWaitingInitRequest;
+																user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 																user->SetTimer(rand()%10 * 500, 3);
 														}
 													}

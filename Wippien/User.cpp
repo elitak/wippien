@@ -25,6 +25,16 @@ extern CMainDlg _MainDlg;
 extern CEthernet _Ethernet;
 extern CSDKMessageLink *_SDK;
 
+const char *WippienStateString[] = {"WipWaitingInitRequest","WipWaitingInitResponse","WipDisconnected","WipConnecting","WipNegotiating","WipConnected","WipUndefined",
+"7","8","9",
+"10","11","12","13","14","15","16","17","18","19",
+"20","21","22","23","24","25","26","27","28","29",
+"30","31","32","33","34","35","36","37","38","39",
+"40","41","42","43","44","45","46","47","48","49"
+
+};
+
+
 #ifdef _WODVPNLIB
 long raw_Connected(void *wodVPN, char * PeerID, char * IP, long Port)
 {
@@ -44,6 +54,7 @@ STDMETHODIMP CUser::raw_Connected(WODVPNCOMLib::IwodVPNCom * Owner, BSTR PeerID,
 		me->KillTimer(2); //blinker
 		int oldst = me->m_WippienState;
 		me->m_WippienState = WipConnected;
+		me->DumpToFile("WippienState set to %s\r\n", WippienStateString[me->m_WippienState]);
 		if (_SDK && oldst != me->m_WippienState)
 		{
 			Buffer b;
@@ -103,13 +114,12 @@ STDMETHODIMP CUser::raw_SearchDone(WODVPNCOMLib::IwodVPNCom * Owner, BSTR IP, LO
 	}	
 	else
 	{
-		me->m_WippienState = WipDisconnected;	
 		me->m_MyMediatorChoice = (-1); // pick different mediator next time, ok?
 		me->m_MyMediatorOffer[0] = 0;
 		me->m_WippienState = WipWaitingInitRequest;
 		me->m_RemoteWippienState = WipWaitingInitRequest;
-
-//		me->ReInit(TRUE);
+		me->DumpToFile("RemoteWippienState set to %s\r\n", WippienStateString[me->m_RemoteWippienState]);
+		me->DumpToFile("WippienState set to %s\r\n", WippienStateString[me->m_WippienState]);
 	}
 	me->SetSubtext();
 
@@ -257,6 +267,7 @@ CUser::CUser()
 	m_IsAway = FALSE;
 	m_IsAlienWippien = FALSE;
 	m_LastResource[0] = 0;
+	SetDebugLogFile();
 }
 
 CUser::~CUser()
@@ -325,6 +336,7 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
+	SetDebugLogFile();
 	if (WithDirect)
 	{
 		int oldst = m_WippienState;
@@ -334,6 +346,8 @@ void CUser::ReInit(BOOL WithDirect)
 		m_MyMediatorOffer[0] = 0;
 		m_WippienState = WipWaitingInitRequest;
 		m_RemoteWippienState = WipWaitingInitRequest;
+		DumpToFile("RemoteWippienState set to %s\r\n", WippienStateString[m_RemoteWippienState]);
+		DumpToFile("WippienState set to %s\r\n", WippienStateString[m_WippienState]);
 		EnterCriticalSection(&m_CritCS);
 #ifndef _WODVPNLIB
 		m_wodVPN->raw_Stop();
@@ -454,6 +468,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 		{
 			int oldst = m_WippienState;
 			m_WippienState = WipConnecting;
+			DumpToFile("WippienState set to %s\r\n", WippienStateString[m_WippienState]);
 			if (_SDK)
 			{
 				Buffer b;
@@ -562,12 +577,11 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			WODVPNCOMLib::VPN_SetThreads(m_wodVPN, TRUE);
 			WODVPNCOMLib::VPN_SetTimeout(m_wodVPN, 8);
 			long port = 0;
-			if (_Settings.m_VPNSocketDebugFile.Length())
+			if (_Settings.m_VPNSocketDebugFolder.Length())
 			{
-				CComBSTR2 vs = _Settings.m_VPNSocketDebugFile;
-				char vsbuff[1024];
-				sprintf(vsbuff, vs.ToString(), m_JID);
-				WODVPNCOMLib::VPN_SetDebugFile(m_wodVPN, vsbuff);
+				SetDebugLogFile();
+				if (m_Log.Length())
+					WODVPNCOMLib::VPN_SetDebugFile(m_wodVPN, ((CComBSTR2)m_Log).ToString());
 			}
 
 			char intbuff[1024] = {0};
@@ -793,6 +807,76 @@ BOOL CUser::IsIPAllowed(unsigned long IP)
 	}
 
 	return allow;
+}
+
+void CUser::DumpToFileFixed(char *text)
+{
+	char buff[16384];
+	CComBSTR2 file = m_Log;
+	int handle;
+	
+	if (text && text[0])
+	{
+		
+		handle = open(file.ToString(), O_BINARY | O_WRONLY | O_APPEND | O_CREAT, S_IREAD | S_IWRITE);
+		if (handle!=(-1))
+		{
+			
+			struct tm *newtime;
+			time_t aclock;
+			
+			time( &aclock );                 
+			newtime = localtime( &aclock );
+			
+			strcpy(buff, asctime(newtime));
+			char *a = buff;
+			while (*a)
+			{
+				if (*a<31)
+					*a = 0;
+				else
+					a++;
+			}			
+			
+			strcat(buff, "-> ");
+			write(handle, buff, strlen(buff));						
+			write(handle, text, strlen(text));
+			close(handle);
+		}
+	}
+}
+
+void CUser::DumpToFile(char *text,...)
+{
+	char buff[16384];
+	va_list marker;
+	va_start(marker,text);
+	wvsprintf(buff,text,marker);
+	va_end(marker);
+	DumpToFileFixed(buff);
+	
+}
+
+void CUser::SetDebugLogFile(void)
+{
+	CComBSTR2 vs = _Settings.m_VPNSocketDebugFolder;
+	char *v2 = vs.ToString();
+	int v3 = strlen(v2);
+	if (v3)
+	{
+		if (v2[v3-1] == '\\')
+			v2[v3-1] = 0;
+	}
+	char vsbuff[1024];
+	sprintf(vsbuff, "%s\\%s_%s", v2, m_JID, m_Resource);
+	v3 = 0;
+	while (vsbuff[v3])
+	{
+		if (vsbuff[v3]=='/')
+			vsbuff[v3] = '_';
+		v3++;
+	}
+	m_Log = vsbuff;
 }
 
 void CUser::SetSubtext(void)
@@ -1271,6 +1355,7 @@ void CUser::NotifyBlock(void)
 	if (m_Block && _Jabber)
 	{
 		m_WippienState = WipDisconnected;
+		DumpToFile("WippienState set to %s\r\n", WippienStateString[m_WippienState]);
 		NotifyDisconnect();
 	}
 }

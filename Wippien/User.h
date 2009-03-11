@@ -44,6 +44,8 @@ typedef enum WippienState
 	WipUndefined
 } WippienState;
 
+extern const char *WippienStateString[];
+
 typedef struct IPAddressConnectionStruct
 {
 	BOOL Allowed;
@@ -163,8 +165,12 @@ public:
 
 
 	void SetSubtext(void);
+	void SetDebugLogFile(void);
+	void DumpToFileFixed(char *text);
+	void DumpToFile(char *text,...);
 
-	CComBSTR m_RemoteAddr;
+
+	CComBSTR m_RemoteAddr, m_Log;
 	int m_RemotePort;//, /*m_LocalPort, */;
 	RSA *m_RSA;
 	Buffer m_RemoteIPList;

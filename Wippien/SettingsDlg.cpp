@@ -2996,7 +2996,7 @@ LRESULT CSettingsDlg::CSettingsLogging::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPa
 	CComBSTR2 j1 = _Settings.m_SocketDebugFile;
 	SetDlgItemText(IDC_LOG_SOCKET, j1.ToString());
 	
-	CComBSTR2 j3 = _Settings.m_VPNSocketDebugFile;
+	CComBSTR2 j3 = _Settings.m_VPNSocketDebugFolder;
 	SetDlgItemText(IDC_LOG_VPNSOCKET, j3.ToString());
 	
 
@@ -3044,10 +3044,10 @@ BOOL CSettingsDlg::CSettingsLogging::Apply(void)
 	::SendMessage(GetDlgItem(IDC_LOG_VPNSOCKET), WM_GETTEXT, 16384, (LPARAM)buff);
 	if (buff[0])
 	{
-		_Settings.m_VPNSocketDebugFile = buff;
+		_Settings.m_VPNSocketDebugFolder = buff;
 	}
 	else
-		_Settings.m_VPNSocketDebugFile.Empty();
+		_Settings.m_VPNSocketDebugFolder.Empty();
 
 	*buff = 0;
 	::SendMessage(GetDlgItem(IDC_LOG_FUNCTION), WM_GETTEXT, 16384, (LPARAM)buff);

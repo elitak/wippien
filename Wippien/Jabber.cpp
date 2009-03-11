@@ -664,7 +664,10 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											out.GetBignum2(user->m_RSA->n);
 
 											if (out.Len())
+											{
 												user->m_RemoteWippienState = (WippienState)out.GetChar();
+												user->DumpToFile("RemoteWippienState set to %s\r\n", WippienStateString[user->m_RemoteWippienState]);
+											}
 
 											if (out.Len())
 											{
@@ -688,6 +691,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 										}
 										user->m_WippienState = WipWaitingInitResponse;
+										user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 										if (!user->m_Block)
 										{
 											user->SetTimer(rand()%100, 3);
@@ -750,6 +754,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									{
 										user->m_IsUsingWippien = TRUE; // obviously...
 										user->m_WippienState = WipWaitingInitRequest;
+										user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 										user->SetTimer(rand()%100, 3);
 //										user->NotifyDisconnect();
 										return;
@@ -757,7 +762,10 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 
 									out.Consume(128);
 									if (out.Len())
+									{
 										user->m_RemoteWippienState = (WippienState)out.GetChar();
+										user->DumpToFile("RemoteWippienState set to %s\r\n", WippienStateString[user->m_RemoteWippienState]);
+									}
 
 									if (out.Len()/* && user->m_MyMediatorOffer[0]*/)
 									{
@@ -821,6 +829,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									_MainDlg.m_UserList.RefreshUser(Contact, NULL);
 
 									user->m_WippienState = WipDisconnected;
+									user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 									if (!user->m_Block)
 									{
 										user->SetTimer(rand()%100, 3);
@@ -893,6 +902,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 											if (out.Len())
 											{
 												user->m_RemoteWippienState = (WippienState)out.GetChar();
+												user->DumpToFile("RemoteWippienState set to %s\r\n", WippienStateString[user->m_RemoteWippienState]);
 											}
 										}
 									}

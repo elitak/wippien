@@ -800,7 +800,7 @@ int CSettings::LoadConfig(void)
 
 			ReadSettingsCfg(wip, "JabberDebugFile", m_JabberDebugFile, "");
 			ReadSettingsCfg(wip, "SocketDebugFile", m_SocketDebugFile, "");
-			ReadSettingsCfg(wip, "VPNSocketDebugFile", m_VPNSocketDebugFile, "");
+			ReadSettingsCfg(wip, "VPNSocketDebugFolder", m_VPNSocketDebugFolder, "");
 			ReadSettingsCfg(wip, "FunctionDebugFile", m_FunctionDebugFile, "");
 			ReadSettingsCfg(wip, "DeleteFunctionLogMb", &m_DeleteFunctionLogMb, 10*1024*1024);
 			ReadSettingsCfg(wip, "AutoAwayMinutes", &m_AutoAwayMinutes, 10);
@@ -1269,8 +1269,8 @@ BOOL CSettings::SaveConfig(void)
 	CComBSTR2 dbf2 = m_SocketDebugFile;
 	x.AddChildElem("SocketDebugFile", dbf2.ToString());
 
-	CComBSTR2 dbf22 = m_VPNSocketDebugFile;
-	x.AddChildElem("VPNSocketDebugFile", dbf22.ToString());
+	CComBSTR2 dbf22 = m_VPNSocketDebugFolder;
+	x.AddChildElem("VPNSocketDebugFolder", dbf22.ToString());
 	
 	CComBSTR2 dbf21 = m_FunctionDebugFile;
 	x.AddChildElem("FunctionDebugFile", dbf21.ToString());

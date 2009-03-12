@@ -589,6 +589,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
+									user->DumpToFileFixed("Got WIPPIENINITREQUEST\r\n");
 									char *res = strchr(subjbuff, '/');
 									if (res)
 										res++;
@@ -741,6 +742,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
+									user->DumpToFileFixed("Got WIPPIENINITREQUEST\r\n");
 //									ATLTRACE("Got WIPPIENINITRESPONSE from %s\r\n", user->m_JID);
 
 									// if we're trying to connect now..
@@ -801,7 +803,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 													user->m_HisMediatorPort = user->m_MyMediatorPort;
 												}
 //												user->m_MyMediatorOffer[0] = 0;
-												ATLTRACE("Selected mediator %s for %s\r\n", user->m_HisMediatorOffer, user->m_JID);
+												ATLTRACE("Selected mediator %s for %s/%s\r\n", user->m_HisMediatorOffer, user->m_JID, user->m_Resource);
 											}											
 											free(med);
 										}
@@ -858,6 +860,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 							if (user)
 							{
+								user->DumpToFileFixed("Got WIPPIENDISCONNECT\r\n");
 								user->ReInit(TRUE);
 							}
 						}
@@ -878,6 +881,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 							if (user)
 							{
+								user->DumpToFileFixed("Got WIPPIENCONNECT\r\n");
 								if (user->m_Block)
 									return;
 

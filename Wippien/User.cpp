@@ -607,7 +607,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 				}
 			}
 
-			ATLTRACE("Using mediator %s for %s\r\n", m_HisMediatorOffer, m_JID);
+			ATLTRACE("Using mediator %s for %s/%s\r\n", m_HisMediatorOffer, m_JID, m_Resource);
 			WODVPNCOMLib::VPN_Start(m_wodVPN, &port);
 			CComBSTR2 hisid2 = hisid;
 			WODVPNCOMLib::VPN_Search(m_wodVPN, (WODVPNCOMLib::SearchEnum)0, hisid2.ToString(), varhost, varport, varempty);
@@ -739,7 +739,7 @@ void CUser::FdTimer(int TimerID)
 								m_MyMediatorPort = st->Port;
 								if (j++ == m_MyMediatorChoice)
 								{
-									ATLTRACE("Offering mediator %s to %s\r\n", st->Host, m_JID);
+									ATLTRACE("Offering mediator %s to %s/%s\r\n", st->Host, m_JID, m_Resource);
 									break;
 								}
 							}

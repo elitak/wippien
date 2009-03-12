@@ -257,7 +257,7 @@ CUser *CUserList::AddNewUser(char *j, void *contact)
 		if (!user->LoadUserImage(&img))
 		{
 			// KRESOFIX, get user REAL icon
-			int hm = (rand() % 37);
+			int hm = (rand() % 61);
 			HRSRC h = FindResource(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDB_HUMAN1 + hm), "PNG");
 			DWORD rsize= SizeofResource(_Module.GetModuleInstance(),h);
 			CxImage cx;

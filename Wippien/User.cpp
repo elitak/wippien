@@ -1273,7 +1273,7 @@ BOOL CUser::LoadUserImage(CxImage *img)
 		return TRUE;
 	
 	// otherwise get something from the resource
-	int hm = (rand() % 37);
+	int hm = (rand() % 61);
 	HRSRC h = FindResource(_Module.GetModuleInstance(), MAKEINTRESOURCE(IDB_HUMAN1 + hm), "PNG");
 	DWORD rsize= SizeofResource(_Module.GetModuleInstance(),h);
 	CxImage cx;

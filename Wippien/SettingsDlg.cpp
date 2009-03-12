@@ -1259,7 +1259,7 @@ LRESULT CSettingsDlg::CSettingsIcon::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam
 	m_IconList.Attach(GetDlgItem(IDC_CHOOSEICON));
 
 	int i;
-	for (i=IDB_HUMAN1;i<=IDB_HUMAN37;i++)
+	for (i=IDB_HUMAN1;i<=IDB_HUMAN61;i++)
 		AddImage(i);
 				
 	if (_Settings.m_Icon.Len())

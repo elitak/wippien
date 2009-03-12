@@ -859,24 +859,29 @@ void CUser::DumpToFile(char *text,...)
 
 void CUser::SetDebugLogFile(void)
 {
-	CComBSTR2 vs = _Settings.m_VPNSocketDebugFolder;
-	char *v2 = vs.ToString();
-	int v3 = strlen(v2);
-	if (v3)
+	if (_Settings.m_VPNSocketDebugFolder.Length())
 	{
-		if (v2[v3-1] == '\\')
-			v2[v3-1] = 0;
+		CComBSTR2 vs = _Settings.m_VPNSocketDebugFolder;
+		char *v2 = vs.ToString();
+		int v3 = strlen(v2);
+		if (v3)
+		{
+			if (v2[v3-1] == '\\')
+				v2[v3-1] = 0;
+		}
+		char vsbuff[1024];
+		sprintf(vsbuff, "%s\\%s_%s", v2, m_JID, m_Resource);
+		v3 = 0;
+		while (vsbuff[v3])
+		{
+			if (vsbuff[v3]=='/')
+				vsbuff[v3] = '_';
+			v3++;
+		}
+		m_Log = vsbuff;
 	}
-	char vsbuff[1024];
-	sprintf(vsbuff, "%s\\%s_%s", v2, m_JID, m_Resource);
-	v3 = 0;
-	while (vsbuff[v3])
-	{
-		if (vsbuff[v3]=='/')
-			vsbuff[v3] = '_';
-		v3++;
-	}
-	m_Log = vsbuff;
+	else
+		m_Log.Empty();
 }
 
 void CUser::SetSubtext(void)

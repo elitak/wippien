@@ -742,7 +742,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								CUser *user = _MainDlg.m_UserList.GetUserByJID(j);
 								if (user)
 								{
-									user->DumpToFileFixed("Got WIPPIENINITREQUEST\r\n");
+									user->DumpToFileFixed("Got WIPPIENINITRESPONSE\r\n");
 //									ATLTRACE("Got WIPPIENINITRESPONSE from %s\r\n", user->m_JID);
 
 									// if we're trying to connect now..

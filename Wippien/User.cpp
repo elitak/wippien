@@ -546,13 +546,13 @@ void CUser::SendConnectionRequest(BOOL Notify)
 					myjid = _Settings.m_JID;	
 					if (m_MyRandom && m_HisRandom)
 					{
-						sprintf(randombuff, "%u", m_MyRandom);
+						sprintf(randombuff, "_%s_%u", ((CComBSTR2)_Settings.m_Resource).ToString(), m_MyRandom);
 						myjid += randombuff;
 					}
 					hisjid = m_JID;
 					if (m_MyRandom && m_HisRandom)
 					{
-						sprintf(randombuff, "%u", m_HisRandom);
+						sprintf(randombuff, "_%s_%u", ((CComBSTR2)m_Resource).ToString(), m_HisRandom);
 						hisjid += randombuff;
 					}
 				}

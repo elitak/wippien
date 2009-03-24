@@ -1118,6 +1118,7 @@ void CUserList::RefreshView(BOOL updateonly)
 	//				if (TreeItem.hParent != (HTREEITEM)SendMessage(TVM_GETNEXTITEM, TVGN_PARENT, (LPARAM)TreeItem.item.hItem) || p->m_Hidden)
 					{
 						p->m_BlinkTimerCounter = 0;
+						::KillTimer(this->m_hWnd, (unsigned int)p->m_TreeItem);
 	//					ATLTRACE("Deleting %s\r\n", p->m_JID);
 						DeleteItem(p->m_TreeItem);
 						p->m_TreeItem = 0;

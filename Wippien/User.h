@@ -174,6 +174,7 @@ public:
 	int m_RemotePort;//, /*m_LocalPort, */;
 	RSA *m_RSA;
 	Buffer m_RemoteIPList;
+	int m_MyRandom, m_HisRandom;
 	
 	IPADDRESSLIST m_AllowedRemoteIPs;
 	BOOL m_AllowedRemoteAny, m_AllowedRemoteMediator;

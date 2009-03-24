@@ -268,6 +268,7 @@ CUser::CUser()
 	m_IsAlienWippien = FALSE;
 	m_LastResource[0] = 0;
 	SetDebugLogFile();
+	m_MyRandom = m_HisRandom = 0;
 }
 
 CUser::~CUser()
@@ -336,6 +337,12 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
+	m_MyRandom = 0;
+	while (!m_MyRandom)
+	{
+		m_MyRandom = (rand()%1024)+1;
+	}
+
 	SetDebugLogFile();
 	if (WithDirect)
 	{
@@ -535,8 +542,19 @@ void CUser::SendConnectionRequest(BOOL Notify)
 				}
 				else
 				{
+					char randombuff[128];
 					myjid = _Settings.m_JID;	
+					if (m_MyRandom && m_HisRandom)
+					{
+						sprintf(randombuff, "%u", m_MyRandom);
+						myjid += randombuff;
+					}
 					hisjid = m_JID;
+					if (m_MyRandom && m_HisRandom)
+					{
+						sprintf(randombuff, "%u", m_HisRandom);
+						hisjid += randombuff;
+					}
 				}
 			}
 
@@ -575,7 +593,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			WODVPNCOMLib::VPN_SetRetryCount(m_wodVPN, 30);
 			WODVPNCOMLib::VPN_SetRetryWait(m_wodVPN, 500);
 			WODVPNCOMLib::VPN_SetThreads(m_wodVPN, TRUE);
-			WODVPNCOMLib::VPN_SetTimeout(m_wodVPN, 8);
+			WODVPNCOMLib::VPN_SetTimeout(m_wodVPN, 15);
 			long port = 0;
 			if (_Settings.m_VPNSocketDebugFolder.Length())
 			{
@@ -746,6 +764,7 @@ void CUser::FdTimer(int TimerID)
 						}
 					}
 				}
+				b.PutInt(m_MyRandom); // add random value to append to VPN request
 
 				if (m_IsUsingWippien)
 					_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENINITREQUEST, &b);

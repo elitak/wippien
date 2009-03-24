@@ -590,11 +590,11 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								if (user)
 								{
 									user->DumpToFileFixed("Got WIPPIENINITREQUEST\r\n");
-									char *res = strchr(subjbuff, '/');
-									if (res)
-										res++;
-									else
-										res = "";
+//									char *res = strchr(subjbuff, '/');
+//									if (res)
+//										res++;
+//									else
+//										res = "";
 /*									if (!user->m_IsUsingWippien)
 									{
 										if (strstr(capa.ToString(), WIPPIENIM))
@@ -686,6 +686,11 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 															_Settings.AddLinkMediator(buff, out.GetInt());															
 													}
 												}
+											}
+											if (out.Len())
+											{
+												// random number for remote peer
+												user->m_HisRandom = out.GetInt();
 											}
 
 											user->m_Changed = TRUE;

@@ -687,11 +687,14 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 													}
 												}
 											}
+											//user->DumpToFile("Before WIPPIENINITREQUEST, myrandom=%d, hisrandom=%d", user->m_MyRandom, user->m_HisRandom);
 											if (out.Len())
 											{
+												//user->DumpToFile("In WIPPIENINITREQUEST, myrandom=%d, hisrandom=%d", user->m_MyRandom, user->m_HisRandom);
 												// random number for remote peer
 												user->m_HisRandom = out.GetInt();
 											}
+											//user->DumpToFile("After WIPPIENINITREQUEST, myrandom=%d, hisrandom=%d", user->m_MyRandom, user->m_HisRandom);
 
 											user->m_Changed = TRUE;
 											_MainDlg.m_UserList.RefreshUser(Contact, NULL);

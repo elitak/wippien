@@ -240,6 +240,7 @@ CUser::CUser()
 	m_HisVirtualIP = 0;
 
 	m_IsUsingWippien = NULL;
+	m_MyRandom = m_HisRandom = 0;
 	ReInit(TRUE);
 	m_MTU = 0;
 	m_DetectMTU = NULL;
@@ -268,7 +269,6 @@ CUser::CUser()
 	m_IsAlienWippien = FALSE;
 	m_LastResource[0] = 0;
 	SetDebugLogFile();
-	m_MyRandom = m_HisRandom = 0;
 }
 
 CUser::~CUser()
@@ -544,6 +544,8 @@ void CUser::SendConnectionRequest(BOOL Notify)
 				{
 					char randombuff[128];
 					myjid = _Settings.m_JID;	
+					//DumpToFile("Preparing VPN, myrandom=%d, hisrandom=%d", m_MyRandom, m_HisRandom);
+
 					if (m_MyRandom && m_HisRandom)
 					{
 						sprintf(randombuff, "_%s_%u", ((CComBSTR2)_Settings.m_Resource).ToString(), m_MyRandom);
@@ -767,7 +769,10 @@ void CUser::FdTimer(int TimerID)
 				b.PutInt(m_MyRandom); // add random value to append to VPN request
 
 				if (m_IsUsingWippien)
+				{
+					DumpToFile("Sending WIPPIENINITREQUEST, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 					_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENINITREQUEST, &b);
+				}
 			}
 			return;
 		}
@@ -790,7 +795,10 @@ void CUser::FdTimer(int TimerID)
 				b.PutInt(m_MyMediatorChoice);
 
 				if (m_IsUsingWippien && !m_Block)
+				{
+					DumpToFile("Sending WIPPIENINITRESPONSE, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 					_Jabber->ExchangeWippienDetails(this , (char *)WIPPIENINITRESPONSE, &b);
+				}
 			}
 			return;
 		}
@@ -1356,7 +1364,10 @@ void CUser::NotifyDisconnect(void)
 //	_Settings.ToHex(&t, &out);
 //	out.Append("\0", 1);
 	if (m_IsUsingWippien)
+	{
+		DumpToFile("Sending WIPPIENDISCONNECT, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &t);
+	}
 
 
 	ReInit(TRUE);
@@ -1370,7 +1381,10 @@ void CUser::NotifyConnect(void)
 //	_Settings.ToHex(&t, &out);
 //	out.Append("\0", 1);
 	if (m_IsUsingWippien  && !m_Block)
+	{
+		DumpToFile("Sending WIPPIENCONNECT, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &t);
+	}
 
 }
 

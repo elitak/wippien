@@ -510,8 +510,8 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 								user = AddNewUser(jd1, contact);
 								strcpy(user->m_VisibleName, jd2);
-
 								strcpy(user->m_Resource, res);
+								user->SetDebugLogFile();
 							}
 							else
 							{
@@ -553,7 +553,10 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						if (user)
 						{
 							if (res && strlen(res)<sizeof(user->m_Resource))
+							{
 								strcpy(user->m_Resource, res);
+								user->SetDebugLogFile();
+							}
 
 							// if unsubscripted
 							if (stat == /*Unsubscribed*/8)

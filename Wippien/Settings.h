@@ -54,7 +54,7 @@ public:
 	CSettings();
 	virtual ~CSettings();
 
-	CComBSTR m_JID, m_Password, m_ServerHost, m_Nick, m_Resource;
+	CComBSTR m_JID, m_Password, m_ServerHost, m_Nick, m_Resource, m_StaticResource;
 	long	m_ObtainIPAddress;
 	CComBSTR m_JabberDebugFile, m_SocketDebugFile, m_VPNSocketDebugFolder, m_FunctionDebugFile;
 	CComBSTR m_Skin, m_UpdateURL, m_IPProviderURL, m_Language;

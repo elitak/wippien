@@ -278,6 +278,19 @@ void XMPPConnected(void *wodXMPP)
 void __stdcall CJabberEvents::DispConnected ()
 #endif
 {
+	char buff[1024];
+	int b = sizeof(buff);
+	WODXMPPCOMLib::XMPP_GetLogin(_Jabber->m_Jabb, buff, &b);
+	char *j1 = strchr(buff, '/');
+	if (j1)
+	{
+		*j1 = 0;
+		j1++;
+	}
+	_Settings.m_JID = buff;
+	if (j1)
+		_Settings.m_Resource = j1;
+
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	_Jabber->m_ConnectTime = GetTickCount();
 //		_MainDlg.ShowStatusText("Connected.");

@@ -592,9 +592,12 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Desktop"));
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)WIPPIENIM);
 	if (!_Settings.m_Resource.Length())
+	{
 		_Settings.m_Resource = WIPPIENIM;
+		_Settings.m_StaticResource = WIPPIENIM;
+	}
 
-	CComBSTR2 res = _Settings.m_Resource;
+	CComBSTR2 res = _Settings.m_StaticResource;
 	SetDlgItemText(IDC_RESOURCE, res.ToString());
 
 	CComBSTR2 hs = _Settings.m_ServerHost;
@@ -684,6 +687,7 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 			p++;
 		}
 		_Settings.m_Resource = buff;
+		_Settings.m_StaticResource = buff;
 	}
 
 	*buff = 0;

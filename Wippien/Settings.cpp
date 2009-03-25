@@ -548,7 +548,10 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
 			ReadSettingsCfg(wip, "Resource", m_Resource, WIPPIENIM);
 			if (!m_Resource.Length())
+			{
 				m_Resource = WIPPIENIM;
+			}
+			m_StaticResource = m_Resource;
 
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
@@ -1135,7 +1138,7 @@ BOOL CSettings::SaveConfig(void)
 
 	Buffer in, out;
 	
-	CComBSTR2 res = m_Resource;
+	CComBSTR2 res = m_StaticResource;
 	x.AddChildElem("Resource", res.ToString());
 
 	CComBSTR2 msh = m_ServerHost;

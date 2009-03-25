@@ -460,6 +460,15 @@ public:
 			if (i == 6)
 			{
 				m_Owner->m_Silently = TRUE;
+				// let's loop through all the contacts and disconnect them
+				for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+				{
+					CUser *u = (CUser *)_MainDlg.m_UserList.m_Users[i];
+					if (u->m_RemoteWippienState != /*WippienState.*/WipWaitingInitRequest)
+						u->NotifyDisconnect();
+				}
+				Sleep(500); // give them time to send out messages
+
 #ifndef _APPUPDLIB
 				m_Owner->m_Update->Update();
 #else

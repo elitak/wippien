@@ -145,6 +145,7 @@ public:
 	CDetectMTU *m_DetectMTU;
 	BOOL m_Saved;
 	unsigned long m_LastSent, m_LastReceive, m_TotalReceived, m_TotalSent;
+	int m_DisconnectedTimer;
 
 	char m_StatusText[128];
 	WippienState m_WippienState, m_RemoteWippienState;

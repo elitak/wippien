@@ -269,6 +269,7 @@ CUser::CUser()
 	m_IsAlienWippien = FALSE;
 	m_LastResource[0] = 0;
 	SetDebugLogFile();
+	m_DisconnectedTimer = 0;
 }
 
 CUser::~CUser()
@@ -337,6 +338,7 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
+	SetTimer(1000, 8);
 	m_MyRandom = 0;
 	while (!m_MyRandom)
 	{
@@ -812,6 +814,30 @@ void CUser::FdTimer(int TimerID)
 
 	}
 	else
+	if (TimerID == 8)
+	{
+		if (m_IsUsingWippien && !m_Block)
+		{
+			switch (m_WippienState)
+			{
+				case WipWaitingInitRequest:
+				case WipDisconnected:
+					m_DisconnectedTimer++;
+					if (m_DisconnectedTimer>3)
+					{
+						m_DisconnectedTimer = 0;
+						if (_Settings.m_AutoConnectVPNOnNetwork)
+							_MainDlg.m_UserList.ConnectIfPossible(this, TRUE);
+					}
+					break;
+
+				default:
+					m_DisconnectedTimer = 0;
+
+			}
+		}
+	}	
+	else
 	if (TimerID == 9)
 	{
 		KillTimer(9);
@@ -1014,6 +1040,7 @@ BOOL CUser::SendNetworkPacket(char *data, int len)
 	switch (m_WippienState)
 	{
 		case WipDisconnected:
+		case WipWaitingInitRequest:
 			if (_Settings.m_AutoConnectVPNOnNetwork)
 				_MainDlg.m_UserList.ConnectIfPossible(this, TRUE);
 			break;
@@ -1104,6 +1131,7 @@ void CUser::OpenMsgWindow(BOOL WithFocus)
 	}
 	if (WithFocus)
 	{
+		m_MessageWin->SetTitle();
 		SetActiveWindow(m_MessageWin->m_hWnd);
 	
 		if (m_MessageWin->m_InputBox.IsWindow())
@@ -1135,6 +1163,7 @@ void CUser::PrintMsgWindow(BOOL IsSystem, char *Text, char *Html)
 	OpenMsgWindow(FALSE);
 	if (m_MessageWin)
 	{
+		strcpy(m_MessageWin->m_JID, m_JID);
 		if (m_Resource[0] && !strchr(m_MessageWin->m_JID, '/'))
 		{
 			strcat(m_MessageWin->m_JID, "/");

@@ -1506,11 +1506,13 @@ LRESULT CUserList::OnLButtonDblClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 				return TRUE;
 		}
 	}
+
+	ExecuteRButtonUserCommand(user, ID_POPUP1_CHAT);
 	
-	user->OpenMsgWindow(TRUE);
+/*	user->OpenMsgWindow(TRUE);
 	if (user->m_MessageWin && ::IsWindow(user->m_MessageWin->m_hWnd))
 		::ShowWindow(user->m_MessageWin->m_hWnd, SW_SHOWNORMAL);
-
+*/
 	return TRUE;
 }
 
@@ -2014,7 +2016,17 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 			break;
 
 		case ID_POPUP1_CHAT:
-			user->OpenMsgWindow(TRUE);
+			{
+				BOOL wasopen = TRUE;
+				if (!user->m_MessageWin || !user->m_MessageWin->m_hWnd)
+					wasopen = FALSE;
+				user->OpenMsgWindow(TRUE);
+				if (!wasopen && user->m_MessageWin)
+				{
+					strcpy(user->m_MessageWin->m_JID, user->m_JID);
+					user->m_MessageWin->SetTitle();
+				}
+			}
 			break;
 
 		case ID_POPUP1_VOICECHAT:

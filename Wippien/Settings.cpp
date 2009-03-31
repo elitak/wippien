@@ -189,7 +189,7 @@ CSettings::CSettings()
 	strcpy(m_ChatRoomFilename, m_CfgFilename);
 	strcpy(m_UserImagePath, m_CfgFilename);
 	strcpy(m_HistoryPath, m_CfgFilename);
-	strcpy(m_LanguagePath, m_CfgFilename);
+	strcpy(m_LanguagePath, m_MyPath);
 
 	
 	

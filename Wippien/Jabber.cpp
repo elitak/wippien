@@ -603,44 +603,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 								if (user)
 								{
 									user->DumpToFileFixed("Got WIPPIENINITREQUEST\r\n");
-//									char *res = strchr(subjbuff, '/');
-//									if (res)
-//										res++;
-//									else
-//										res = "";
-/*									if (!user->m_IsUsingWippien)
-									{
-										if (strstr(capa.ToString(), WIPPIENIM))
-										{
-											user->m_IsUsingWippien = TRUE;
-										}
-									}
-									if (!user->m_IsUsingWippien)
-									{
-										if (res && !strcmp(res, WIPPIENIM))
-										{
-											user->m_IsUsingWippien = TRUE;
-										}
-									}
 
-									if (!user->m_IsUsingWippien)
-									{
-										// check also resource
-										Buffer b;
-										b.Append(user->m_Resource);
-										b.Append("\r\n");
-										char *line;
-										do 
-										{
-											line = b.GetNextLine();
-											if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
-											{	
-												user->m_IsUsingWippien = TRUE;
-												break;
-											}
-										} while (line);
-									}
-*/
 									// since this message arrived, he *MUST* be using wippien, isn't he?
 									user->m_IsUsingWippien = TRUE;
 
@@ -1350,23 +1313,20 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	else
 		l += WIPPIENIM;
 
-//	char buff[1024];
-//	srand((unsigned)time( NULL ));
-//	buff[0] = 0;
-//	for(int i=0;i<3;i++)
-//		sprintf(&buff[strlen(buff)], "%x", rand());
-//	l += buff;
 
 #ifndef _WODXMPPLIB
-	CComBSTR caps;
-	m_Jabb->get_Capabilities(&caps);
-	CComBSTR2 caps2 = caps;
-	if (!strstr(caps2.ToString(), WIPPIENIM))
+	if (_Ethernet.m_AdapterHandle != INVALID_HANDLE_VALUE)
 	{
-		if (caps.Length())
-			caps += " ";
-		caps += "Wippien";
-		m_Jabb->put_Capabilities(caps);
+		CComBSTR caps;
+		m_Jabb->get_Capabilities(&caps);
+		CComBSTR2 caps2 = caps;
+		if (!strstr(caps2.ToString(), WIPPIENIM))
+		{
+			if (caps.Length())
+				caps += " ";
+			caps += "Wippien";
+			m_Jabb->put_Capabilities(caps);
+		}
 	}
 
 	m_Jabb->put_Login(l);
@@ -1379,15 +1339,18 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)1);
 
 #else
-	char buff[1024] = {0};
-	int bflen = sizeof(buff);
-	WODXMPPCOMLib::XMPP_GetCapabilities(m_Jabb, buff, &bflen);
-	if (!strstr(buff, WIPPIENIM))
+	if (_Ethernet.m_AdapterHandle != INVALID_HANDLE_VALUE)
 	{
-		if (strlen(buff))
-			strcat(buff, " ");
-		strcat(buff, WIPPIENIM);
-		WODXMPPCOMLib::XMPP_SetCapabilities(m_Jabb, buff);
+		char buff[1024] = {0};
+		int bflen = sizeof(buff);
+		WODXMPPCOMLib::XMPP_GetCapabilities(m_Jabb, buff, &bflen);
+		if (!strstr(buff, WIPPIENIM))
+		{
+			if (strlen(buff))
+				strcat(buff, " ");
+			strcat(buff, WIPPIENIM);
+			WODXMPPCOMLib::XMPP_SetCapabilities(m_Jabb, buff);
+		}
 	}
 
 	CComBSTR2 l1 = l;

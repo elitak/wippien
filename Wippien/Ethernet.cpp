@@ -830,7 +830,7 @@ DWORD WINAPI CEthernet::ReadThreadFunc(LPVOID lpParam)
 			success = ReadFile(eth->m_AdapterHandle, buf+2, 16384, &nread, &overlap);
 		if (success)
 		{
-//			ATLTRACE(">>Received %d bytes from adapter\r\n", nread);
+			ATLTRACE(">>Received %d bytes from adapter\r\n", nread);
 			eth->ProcPacket(buf+2, nread);
 
 			mustread = TRUE;

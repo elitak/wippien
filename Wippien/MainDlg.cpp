@@ -2116,6 +2116,16 @@ LRESULT CMainDlg::OnExit(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL&
 				return TRUE;
 	}
 
+	// let's loop through all the contacts and disconnect them
+	int i;
+	for (i=0;i<m_UserList.m_Users.size();i++)
+	{
+		CUser *u = (CUser *)m_UserList.m_Users[i];
+		if (u->m_RemoteWippienState != /*WippienState.*/WipWaitingInitRequest)
+			u->NotifyDisconnect();
+	}
+	Sleep(100); // give them time to send out messages
+
 	DumpDebug("*MainDlg::OnExit \r\n");
 	GetWindowRect(&_Settings.m_RosterRect);
 	_Settings.m_RosterRect.bottom = _Settings.m_RosterRect.top + m_SizeY;

@@ -1,410 +1,410 @@
-# Polskie t³umaczenie do Wippien
+# Polish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Poliman.pl - info@poliman.pl
-# Version: 2
-Brak b³êdu.  ##  No error.
-System nie mo¿e znaleŸæ wybranego pliku.  ##  The system cannot find the file specified.
-System nie mo¿e znaleŸæ wybranej œcie¿ki.  ##  The system cannot find the path specified.
-System nie mo¿e znaleŸæ wybranego pliku/katalogu.  ##  The system cannot find the specified file/directory.
-Niezgodnoœæ typów.  ##  Type mismatch.
-Nie mo¿na utworzyæ pliku/katalogu gdy¿ ten plik/katalog ju¿ istnieje.  ##  Cannot create a file/directory when that file/directory already exists.
-System nie mo¿e zapisaæ na wybrane urz¹dzenie.  ##  The system cannot write to the specified device.
-B³êdna wartoœæ w³aœciwoœci.  ##  Invalid Property Value.
-Operacja zosta³a zwrócona gdy¿ zakoñczy³ siê czas oczekiwania.  ##  This operation returned because the timeout period expired.
-Poziom przerwania systemu przerwa³ operacjê na gnieŸdzie.  ##  System level interrupt interrupted socket operation.
-Ogólny b³¹d formatu, b³êdny format.  ##  Generic error for invalid format, bad format.
-Nast¹pi³a próba dostêpu do gniazda w sposób zabroniony przez prawa dostêpu.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-System wykry³ nieprawid³owy wskaŸnik adresu przy próbie u¿ycia wska¿nika w odwo³aniu.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Ogólny b³¹d formatu, wejœcia, itd.  ##  Generic error for invalid format, entry, etc.
-U¿yto b³êdny argument.  ##  An invalid argument was supplied.
-Podany adres IP jest nieprawid³owy lub komputer/host wskazany przez adres IP nie istnieje .  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-B³êdne gniazdo lub nie po³¹czony ze zdalnym.  ##  Invalid socket or not connected to remote.
-Podany adres jest ju¿ w u¿yciu.  ##  The specified address is already in use.
-Podany adres jest niedostêpny.  ##  The specified address is not available.
-Po³¹czona sieæ jest niedostêpna.  ##  The connected network is not available.
-Po³¹czona sieæ jest nieosi¹galna.  ##  The connected network is not reachable.
-Po³¹czenie z sieci¹ zosta³o zrestartowane.  ##  The connected network connection has been reset.
-Bie¿¹ce po³¹czenie zosta³o zakoñczone przez sieæ lub poœrednicz¹ce us³ugi.  ##  The current connection has been aborted by the network or intermediate services.
-Bie¿¹ce po³¹czenie gniazda zosta³o zrestartowane.  ##  The current socket connection has been reset.
-Bie¿¹cy gniazdo nie zosta³o po³¹czone.  ##  The current socket has not been connected.
-Po³¹czenie zosta³o zakoñczone .  ##  The connection has been shutdown.
-Bie¿¹ce po³¹czenie ma limit czasu.  ##  The current connection has timeout.
-Zdalny komputer/host odmówi³ ¿¹danego po³¹czenia.  ##  The requested connection has been refused by the remote host.
-Podana nazwa komputera/hosta jest za d³uga.  ##  Specified host name is too long.
-Zdalny komputer/host jest teraz niedostêpny.  ##  Remote host is currently unavailable.
-Zdalny komputer/host jest teraz nieosi¹galny.  ##  Remote host is currently unreachable. 
+# Version: 3
+Brak bÅ‚Ä™du.  ##  No error.
+System nie moÅ¼e znaleÅºÄ‡ wybranego pliku.  ##  The system cannot find the file specified.
+System nie moÅ¼e znaleÅºÄ‡ wybranej Å›cieÅ¼ki.  ##  The system cannot find the path specified.
+System nie moÅ¼e znaleÅºÄ‡ wybranego pliku/katalogu.  ##  The system cannot find the specified file/directory.
+NiezgodnoÅ›Ä‡ typÃ³w.  ##  Type mismatch.
+Nie moÅ¼na utworzyÄ‡ pliku/katalogu gdyÅ¼ ten plik/katalog juÅ¼ istnieje.  ##  Cannot create a file/directory when that file/directory already exists.
+System nie moÅ¼e zapisaÄ‡ na wybrane urzÄ…dzenie.  ##  The system cannot write to the specified device.
+BÅ‚Ä™dna wartoÅ›Ä‡ wÅ‚aÅ›ciwoÅ›ci.  ##  Invalid Property Value.
+Operacja zostaÅ‚a zwrÃ³cona gdyÅ¼ zakoÅ„czyÅ‚ siÄ™ czas oczekiwania.  ##  This operation returned because the timeout period expired.
+Poziom przerwania systemu przerwaÅ‚ operacjÄ™ na gnieÅºdzie.  ##  System level interrupt interrupted socket operation.
+OgÃ³lny bÅ‚Ä…d formatu, bÅ‚Ä™dny format.  ##  Generic error for invalid format, bad format.
+NastÄ…piÅ‚a prÃ³ba dostÄ™pu do gniazda w sposÃ³b zabroniony przez prawa dostÄ™pu.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+System wykryÅ‚ nieprawidÅ‚owy wskaÅºnik adresu przy prÃ³bie uÅ¼ycia wskaÅ¼nika w odwoÅ‚aniu.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+OgÃ³lny bÅ‚Ä…d formatu, wejÅ›cia, itd.  ##  Generic error for invalid format, entry, etc.
+UÅ¼yto bÅ‚Ä™dny argument.  ##  An invalid argument was supplied.
+Podany adres IP jest nieprawidÅ‚owy lub komputer/host wskazany przez adres IP nie istnieje .  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+BÅ‚Ä™dne gniazdo lub nie poÅ‚Ä…czony ze zdalnym.  ##  Invalid socket or not connected to remote.
+Podany adres jest juÅ¼ w uÅ¼yciu.  ##  The specified address is already in use.
+Podany adres jest niedostÄ™pny.  ##  The specified address is not available.
+PoÅ‚Ä…czona sieÄ‡ jest niedostÄ™pna.  ##  The connected network is not available.
+PoÅ‚Ä…czona sieÄ‡ jest nieosiÄ…galna.  ##  The connected network is not reachable.
+PoÅ‚Ä…czenie z sieciÄ… zostaÅ‚o zrestartowane.  ##  The connected network connection has been reset.
+BieÅ¼Ä…ce poÅ‚Ä…czenie zostaÅ‚o zakoÅ„czone przez sieÄ‡ lub poÅ›redniczÄ…ce usÅ‚ugi.  ##  The current connection has been aborted by the network or intermediate services.
+BieÅ¼Ä…ce poÅ‚Ä…czenie gniazda zostaÅ‚o zrestartowane.  ##  The current socket connection has been reset.
+BieÅ¼Ä…cy gniazdo nie zostaÅ‚o poÅ‚Ä…czone.  ##  The current socket has not been connected.
+PoÅ‚Ä…czenie zostaÅ‚o zakoÅ„czone .  ##  The connection has been shutdown.
+BieÅ¼Ä…ce poÅ‚Ä…czenie ma limit czasu.  ##  The current connection has timeout.
+Zdalny komputer/host odmÃ³wiÅ‚ Å¼Ä…danego poÅ‚Ä…czenia.  ##  The requested connection has been refused by the remote host.
+Podana nazwa komputera/hosta jest za dÅ‚uga.  ##  Specified host name is too long.
+Zdalny komputer/host jest teraz niedostÄ™pny.  ##  Remote host is currently unavailable.
+Zdalny komputer/host jest teraz nieosiÄ…galny.  ##  Remote host is currently unreachable.
 Zdalny system nie jest gotowy.  ##  Remote system is not ready.
-Bie¿¹ca wersja gniazda nie jest obs³ugiwana przez aplikacjê.  ##  Current socket version not supported by application.
-Socket API nie zosta³o zainicjowane.  ##  Socket API is not initialized.
-Gniazdo zosta³o od³¹czone.  ##  Socket has been disconnected.
+BieÅ¼Ä…ca wersja gniazda nie jest obsÅ‚ugiwana przez aplikacjÄ™.  ##  Current socket version not supported by application.
+Socket API nie zostaÅ‚o zainicjowane.  ##  Socket API is not initialized.
+Gniazdo zostaÅ‚o odÅ‚Ä…czone.  ##  Socket has been disconnected.
 Nie odnaleziono hosta.  ##  Host not found.
-Dostêpne jest zbyt ma³o pamiêci aby ukoñczyæ operacjê.  ##  Not enough memory is available to complete this operation.
+DostÄ™pne jest zbyt maÅ‚o pamiÄ™ci aby ukoÅ„czyÄ‡ operacjÄ™.  ##  Not enough memory is available to complete this operation.
 Nieznany typ poszukiwania.  ##  Unknown search type.
 Nieznany argument dla metody poszukiwania.  ##  Unknown argument for Search method.
-Ju¿ zainicjowane.  ##  Already started.
-Kana³ ju¿ zainicjowany.  ##  Channel already started.
-Nie mo¿na zmieniæ ustawieñ kana³u gdy jest uruchomiony.  ##  Cannot change channel setup while channel is started.
-Zbyt du¿o danych na gnieŸdzie. Spróbuj póŸniej.  ##  Too much data on the socket. Try later.
-Po³¹czenie nie nawi¹zane.  ##  Connection not established.
+JuÅ¼ zainicjowane.  ##  Already started.
+KanaÅ‚ juÅ¼ zainicjowany.  ##  Channel already started.
+Nie moÅ¼na zmieniÄ‡ ustawieÅ„ kanaÅ‚u gdy jest uruchomiony.  ##  Cannot change channel setup while channel is started.
+Zbyt duÅ¼o danych na gnieÅºdzie. SprÃ³buj pÃ³Åºniej.  ##  Too much data on the socket. Try later.
+PoÅ‚Ä…czenie nie nawiÄ…zane.  ##  Connection not established.
 Nieznany typ danych.  ##  Unknown data type.
-Nie uda³o siê stworzyæ w¹tku gniazda.  ##  Failed to create socket thread.
-Nieznany typ kana³u.  ##  Unknown channel type.
-B³êdny argument wpisany we w³aœciwoœciach lokalnego adresu.  ##  Invalid argument was supplied in LocalAddress property.
-Kana³ nie mo¿e byæ utworzony po stronie lokalnej.  ##  Channel cannot be created by local side.
-Kana³ nie mo¿e byæ zainicjowany po stronie lokalnej.  ##  Channel cannot be started by local side.
-Kana³ odrzucony po stronie zdalnej.  ##  Channel refused by remote side.
-Nie obs³ugiwana wersja protoko³u po stronie zdalnej .  ##  Unsupported remote protocol version.
-wodVPN jeszcze nie zainicjowany. U¿yj najpierw Start.  ##  wodVPN not yet started. Use Start first.
-Kana³ zosta³ zamkniêty.  ##  Channel was closed.
-Zbyt du¿y rozmiar MTU.  ##  MTU size too large.
-Zbyt ma³y rozmiar MTU.  ##  MTU size too small.
-B³êdne rz¹danie socks.  ##  Invalid socks request.
-Niepoprawne has³o. Nie zgadza siê z has³em po stronie zdalnej.  ##  Invalid password. Does not match remote peer's password.
+Nie udaÅ‚o siÄ™ stworzyÄ‡ wÄ…tku gniazda.  ##  Failed to create socket thread.
+Nieznany typ kanaÅ‚u.  ##  Unknown channel type.
+BÅ‚Ä™dny argument wpisany we wÅ‚aÅ›ciwoÅ›ciach lokalnego adresu.  ##  Invalid argument was supplied in LocalAddress property.
+KanaÅ‚ nie moÅ¼e byÄ‡ utworzony po stronie lokalnej.  ##  Channel cannot be created by local side.
+KanaÅ‚ nie moÅ¼e byÄ‡ zainicjowany po stronie lokalnej.  ##  Channel cannot be started by local side.
+KanaÅ‚ odrzucony po stronie zdalnej.  ##  Channel refused by remote side.
+Nie obsÅ‚ugiwana wersja protokoÅ‚u po stronie zdalnej .  ##  Unsupported remote protocol version.
+wodVPN jeszcze nie zainicjowany. UÅ¼yj najpierw Start.  ##  wodVPN not yet started. Use Start first.
+KanaÅ‚ zostaÅ‚ zamkniÄ™ty.  ##  Channel was closed.
+Zbyt duÅ¼y rozmiar MTU.  ##  MTU size too large.
+Zbyt maÅ‚y rozmiar MTU.  ##  MTU size too small.
+BÅ‚Ä™dne rzÄ…danie socks.  ##  Invalid socks request.
+Niepoprawne hasÅ‚o. Nie zgadza siÄ™ z hasÅ‚em po stronie zdalnej.  ##  Invalid password. Does not match remote peer's password.
 Lokalne ID nie ustawione. Jest wymagane dla metody wyszukiwania.  ##  Local ID not set. It is required for Search method.
 Zdalne ID nie ustawione. Jest wymagane dla metody wyszukiwania.  ##  Remote ID not set. It is required for Search method.
-Nie mo¿na stworzyæ powi¹zania z podanym adresem IP.  ##  Cannot bind to specified IP address.
-Ju¿ odbywa siê transfer pliku.  ##  Already performing file transfer.
+Nie moÅ¼na stworzyÄ‡ powiÄ…zania z podanym adresem IP.  ##  Cannot bind to specified IP address.
+JuÅ¼ odbywa siÄ™ transfer pliku.  ##  Already performing file transfer.
 Plik nie znaleziony.  ##  File not found.
-Nieuda³o siê zapisaæ pliku.  ##  Failed to write file.
-Nie mo¿na otworzyæ adaptera sieciowego.  ##  Could not open network adapter.
-Tylko jeden adapter sieciowy mo¿e byæ u¿ywany w tym samym czasie.  ##  Only one adapter can be used at a time.
-Brak klucza licencyjnego. Nie mo¿esz u¿ywaæ tego komponentu w œrodowisku projektowania.  ##  License key missing. You can not use this component in design environment.
-Nieznany b³¹d.  ##  Unrecognized Error.
-Nie mo¿na po³¹czyæ w tym momencie. U¿yj najpierw Roz³¹cz.  ##  Cannot Connect at this time. Use Disconnect first.
-Nie mo¿na wykonaæ, jeszcze nie pod³¹czony.  ##  Cannot execute, not yet connected.
-Komponent zajêty.  ##  Component busy.
-Nie mo¿na zmieniæ w³aœciwoœci w tym momencie. U¿yj najpierw Roz³¹cz.  ##  Cannot change property at this time. Use Disconnect first.
+NieudaÅ‚o siÄ™ zapisaÄ‡ pliku.  ##  Failed to write file.
+Nie moÅ¼na otworzyÄ‡ adaptera sieciowego.  ##  Could not open network adapter.
+Tylko jeden adapter sieciowy moÅ¼e byÄ‡ uÅ¼ywany w tym samym czasie.  ##  Only one adapter can be used at a time.
+Brak klucza licencyjnego. Nie moÅ¼esz uÅ¼ywaÄ‡ tego komponentu w Å›rodowisku projektowania.  ##  License key missing. You can not use this component in design environment.
+Nieznany bÅ‚Ä…d.  ##  Unrecognized Error.
+Nie moÅ¼na poÅ‚Ä…czyÄ‡ w tym momencie. UÅ¼yj najpierw RozÅ‚Ä…cz.  ##  Cannot Connect at this time. Use Disconnect first.
+Nie moÅ¼na wykonaÄ‡, jeszcze nie podÅ‚Ä…czony.  ##  Cannot execute, not yet connected.
+Komponent zajÄ™ty.  ##  Component busy.
+Nie moÅ¼na zmieniÄ‡ wÅ‚aÅ›ciwoÅ›ci w tym momencie. UÅ¼yj najpierw RozÅ‚Ä…cz.  ##  Cannot change property at this time. Use Disconnect first.
 Nazwa komputer/hosta nie ustawiona.  ##  Hostname property not set.
 Login nie ustawiony.  ##  Login property not set.
-Has³o nie ustawione.  ##  Password property not set.
-B³êdny pakiet XML.  ##  Invalid XML packet.
-B³êdny ID sekwencji pakietu XML.  ##  Invalid XML packet sequence ID.
-B³êdny login: %s.  ##  Invalid login: %s.
-Istnieje ju¿ taki Kontakt w bazie.  ##  Contact already exists in the collection.
-Nie mo¿na wynegocjowaæ SSL.  ##  SSL could not be negotiated.
-Nie uda³o siê zarejestrowaæ nowego u¿ytkownika: %s.  ##  Failed to register new user: %s.
+HasÅ‚o nie ustawione.  ##  Password property not set.
+BÅ‚Ä™dny pakiet XML.  ##  Invalid XML packet.
+BÅ‚Ä™dny ID sekwencji pakietu XML.  ##  Invalid XML packet sequence ID.
+BÅ‚Ä™dny login: %s.  ##  Invalid login: %s.
+Istnieje juÅ¼ taki Kontakt w bazie.  ##  Contact already exists in the collection.
+Nie moÅ¼na wynegocjowaÄ‡ SSL.  ##  SSL could not be negotiated.
+Nie udaÅ‚o siÄ™ zarejestrowaÄ‡ nowego uÅ¼ytkownika: %s.  ##  Failed to register new user: %s.
 Nieznane powiadomienie.  ##  Unknown notification.
 Nie znaleziono pliku.  ##  File not found.
 Podaj typ obrazu. (PNG/JPG/BMP/GIF)  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Nie uda³o siê zaimportowaæ obrazu  ##  Failed to import photo.
+Nie udaÅ‚o siÄ™ zaimportowaÄ‡ obrazu  ##  Failed to import photo.
 Inna metoda blokowania w trakcie wykownywania .  ##  Another blocking method in progress.
-Otrzymano b³êdne dane protoko³u.  ##  Invalid protocol data received.
-Nic nie ma do wys³ania. Rozmiar pliku 0.  ##  There's nothing to send. File size is 0.
+Otrzymano bÅ‚Ä™dne dane protokoÅ‚u.  ##  Invalid protocol data received.
+Nic nie ma do wysÅ‚ania. Rozmiar pliku 0.  ##  There's nothing to send. File size is 0.
 Nie znaleziono Kontaktu.  ##  Contact not found.
-Transfer pliku siê nie powiód³.  ##  File transfer failed.
-Nie mo¿na zapisaæ do pliku.  ##  Could not write to file.
-Suma kontrolna pliku jest b³êdna.  ##  Checksum of received file is invalid.
+Transfer pliku siÄ™ nie powiÃ³dÅ‚.  ##  File transfer failed.
+Nie moÅ¼na zapisaÄ‡ do pliku.  ##  Could not write to file.
+Suma kontrolna pliku jest bÅ‚Ä™dna.  ##  Checksum of received file is invalid.
 Transfer anulowany.  ##  Transfer aborted.
-Min¹³ czas oczekiwania transferu.  ##  Transfer has timed out.
-Wybrano b³êdny protokó³.  ##  Invalid protocol selected.
-B³êdny stan. Komponent jest zajêty.  ##  Invalid state. Component already busy.
-Nazwa nie unikatowa, nie mo¿na uzyskaæ blokady. Proszê u¿yæ innej NazwaUaktualnienia.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Metoda zosta³a anulowana.  ##  Method was cancelled.
-Nie uda³o siê zainicjowaæ programu uaktualniaj¹cego.  ##  Failed to start updater program.
-Podpis otrzymanego dokumentu jest b³êdny.  ##  Signature on retrieved document is invalid.
+MinÄ…Å‚ czas oczekiwania transferu.  ##  Transfer has timed out.
+Wybrano bÅ‚Ä™dny protokÃ³Å‚.  ##  Invalid protocol selected.
+BÅ‚Ä™dny stan. Komponent jest zajÄ™ty.  ##  Invalid state. Component already busy.
+Nazwa nie unikatowa, nie moÅ¼na uzyskaÄ‡ blokady. ProszÄ™ uÅ¼yÄ‡ innej NazwaUaktualnienia.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Metoda zostaÅ‚a anulowana.  ##  Method was cancelled.
+Nie udaÅ‚o siÄ™ zainicjowaÄ‡ programu uaktualniajÄ…cego.  ##  Failed to start updater program.
+Podpis otrzymanego dokumentu jest bÅ‚Ä™dny.  ##  Signature on retrieved document is invalid.
 Nie ustawiono daty.  ##  Date not set.
-Nie uda³o siê zarejestrowaæ serwera COM.  ##  Failed to register COM server.
-Nie znaleziono strony (b³¹d 404) odpowiedŸ od serwera.  ##  Page not found (error 404) returned from the server.
-B³êdny rozmiar pliku po œci¹gniêciu.  ##  Invalid file size after download.
-B³êdna suma kontrolna MD5 po œci¹gniêciu.  ##  Invalid MD5 checksum after download.
+Nie udaÅ‚o siÄ™ zarejestrowaÄ‡ serwera COM.  ##  Failed to register COM server.
+Nie znaleziono strony (bÅ‚Ä…d 404) odpowiedÅº od serwera.  ##  Page not found (error 404) returned from the server.
+BÅ‚Ä™dny rozmiar pliku po Å›ciÄ…gniÄ™ciu.  ##  Invalid file size after download.
+BÅ‚Ä™dna suma kontrolna MD5 po Å›ciÄ…gniÄ™ciu.  ##  Invalid MD5 checksum after download.
 Uwaga  ##  Warning
-Niedostêpny  ##  Offline
-Dostêpny  ##  Online
+NiedostÄ™pny  ##  Offline
+DostÄ™pny  ##  Online
 Oddalony  ##  Away
 Gotowy do rozmowy  ##  Free for chat
-Nie przeszkadzaæ  ##  Do not disturb
-Oddalony na d³u¿ej  ##  Extended away
+Nie przeszkadzaÄ‡  ##  Do not disturb
+Oddalony na dÅ‚uÅ¼ej  ##  Extended away
 Niewidoczny  ##  Invisible
 Prosi o zatwierdzenie  ##  Asking for subscription
 Kontakt nie zatwierdzony  ##  Contact not subscribed
-Roz³¹czono z serwerem  ##  Disconnected from server
-£¹czenie z serwerem  ##  Connecting to server
-Rejestrowanie nowego u¿ytkownika  ##  Registering new user
-Nawi¹zywanie bezpiecznego pol¹czenia  ##  Initializing secure connection
-Wys³anie danych uwierzytelniaj¹cych  ##  Sending authentication data
-Po³¹czono z serwerem  ##  Connected to server
+RozÅ‚Ä…czono z serwerem  ##  Disconnected from server
+ÅÄ…czenie z serwerem  ##  Connecting to server
+Rejestrowanie nowego uÅ¼ytkownika  ##  Registering new user
+NawiÄ…zywanie bezpiecznego polÄ…czenia  ##  Initializing secure connection
+WysÅ‚anie danych uwierzytelniajÄ…cych  ##  Sending authentication data
+PoÅ‚Ä…czono z serwerem  ##  Connected to server
 Odbieranie danch z serwera  ##  Receiving data from server
-Wysy³anie danych do serwera  ##  Sending data to server
+WysyÅ‚anie danych do serwera  ##  Sending data to server
 Wykonywanie komendy na serwerze  ##  Executing command on server
-Roz³¹czono z serwerem  ##  Disconnecting from the server
-Proœba o autoryzacjê  ##  Requested authorization
-Konfigurowanie urz¹dzenia sieciowego Wippien...  ##  Configuring Wippien network adapter...
-Urz¹dzenie sieciowe \"%s\" o adresie %s ma konflikt z adresem Wippien %s. Jest mo¿liwe ¿e Wippien nie bêdzie móg³ wysy³aæ ani odbieraæ pakietów sieciowych. Proszê odinstalowaæ lub wy³¹czyæ to urz¹dzenie.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Urz¹dzenie sieciowe wy³¹czone!  ##  Network adapter disabled!
+RozÅ‚Ä…czono z serwerem  ##  Disconnecting from the server
+ProÅ›ba o autoryzacjÄ™  ##  Requested authorization
+Konfigurowanie urzÄ…dzenia sieciowego Wippien...  ##  Configuring Wippien network adapter...
+UrzÄ…dzenie sieciowe \"%s\" o adresie %s ma konflikt z adresem Wippien %s. Jest moÅ¼liwe Å¼e Wippien nie bÄ™dzie mÃ³gÅ‚ wysyÅ‚aÄ‡ ani odbieraÄ‡ pakietÃ³w sieciowych. ProszÄ™ odinstalowaÄ‡ lub wyÅ‚Ä…czyÄ‡ to urzÄ…dzenie.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+UrzÄ…dzenie sieciowe wyÅ‚Ä…czone!  ##  Network adapter disabled!
 Urzadzenie sieciowe otwarte  ##  Network adapter opened
-Urz¹dzenie sieciowe Wippien niedostêpne. Kontynuowaæ tylko z IM?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien musi ustawiæ adres sieciowy IP urz¹dzenia przy u¿yciu zewnêtrznego narzêdzia - potrzebuje uprawnieñ admistratora. Proszê uruchomiæ Wippien chocia¿ raz jako administrator aby uzyskaæ uprawnienia  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+UrzÄ…dzenie sieciowe Wippien niedostÄ™pne. KontynuowaÄ‡ tylko z IM?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien musi ustawiÄ‡ adres sieciowy IP urzÄ…dzenia przy uÅ¼yciu zewnÄ™trznego narzÄ™dzia - potrzebuje uprawnieÅ„ admistratora. ProszÄ™ uruchomiÄ‡ Wippien chociaÅ¼ raz jako administrator aby uzyskaÄ‡ uprawnienia  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Potrzebne uprawnienia Administratora  ##  Admin privilege required!
-Roz³¹czony  ##  Disconnected
-Po³¹czony  ##  Connected
-Nie mo¿na dostarczyæ wiadomoœci.  ##  Could not deliver message.
-Nie uda³o siê zmieniæ has³a.  ##  Failed to change password
-Roz³¹czono z powodu zasady braku aktywnoœci.  ##  Disconnected due to inactivity rule
+RozÅ‚Ä…czony  ##  Disconnected
+PoÅ‚Ä…czony  ##  Connected
+Nie moÅ¼na dostarczyÄ‡ wiadomoÅ›ci.  ##  Could not deliver message.
+Nie udaÅ‚o siÄ™ zmieniÄ‡ hasÅ‚a.  ##  Failed to change password
+RozÅ‚Ä…czono z powodu zasady braku aktywnoÅ›ci.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nSuma  do: %s\r\nSuma od: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN jeszcze nie nawi¹zane >>  ##  << VPN not established yet >>
-Ponowne po³¹czenie za %d sekund.  ##  Reconnect in %d seconds.
+<< VPN jeszcze nie nawiÄ…zane >>  ##  << VPN not established yet >>
+Ponowne poÅ‚Ä…czenie za %d sekund.  ##  Reconnect in %d seconds.
 sekundy  ##  seconds
 Brak sieci  ##  No network
-Wyjœcie z Wippien  ##  Exit Wippien
-Wyjœcie  ##  E&xit
-Otwórz ustawienia  ##  Open settings
+WyjÅ›cie z Wippien  ##  Exit Wippien
+WyjÅ›cie  ##  E&xit
+OtwÃ³rz ustawienia  ##  Open settings
 Ustawienia  ##  &Settings
-Poka¿ informacje o programie  ##  Show AboutBox
+PokaÅ¼ informacje o programie  ##  Show AboutBox
 Opis  ##  &About
-Ustaw swój status (, Niewidoczny...)  ##  Set your status (,Invisible...)
+Ustaw swÃ³j status (, Niewidoczny...)  ##  Set your status (Away,Invisible...)
 Dodaj kontakt, obce konto  ##  Add contacts and alien accounts
-Wycisz dŸwiêk  ##  Mute sound
-Otwórz pokój rozmów  ##  Open chat room
-Autoryzuj swoich przyjació³  ##  Authorize your friends
+Wycisz dÅºwiÄ™k  ##  Mute sound
+OtwÃ³rz pokÃ³j rozmÃ³w  ##  Open chat room
+Autoryzuj swoich przyjaciÃ³Å‚  ##  Authorize your friends
 Bezczynny  ##  Idle
-Naprawdê wyjœæ z Wippien?  ##  Really exit Wippien?
+NaprawdÄ™ wyjÅ›Ä‡ z Wippien?  ##  Really exit Wippien?
 Na pewno?  ##  Are you sure?
-Twoje has³o zosta³o zmienione.  ##  Your password is now changed.
-Has³o zmienione  ##  Password changed
-Zmieñ haslo do konta  ##  Change account password
-Proszê podaæ nowe has³o  ##  Please enter new password
-To¿samoœæ  ##  Identity
+Twoje hasÅ‚o zostaÅ‚o zmienione.  ##  Your password is now changed.
+HasÅ‚o zmienione  ##  Password changed
+ZmieÅ„ haslo do konta  ##  Change account password
+ProszÄ™ podaÄ‡ nowe hasÅ‚o  ##  Please enter new password
+ToÅ¼samoÅ›Ä‡  ##  Identity
 ID Karta  ##  ID Card
 Adres domowy  ##  Home Address
 Adres pracy  ##  Work Address
-Jesteœ pewny ¿e chcesz skasowaæ historiê?  ##  Are you sure you want to delete the history?
-Skasowaæ historiê?  ##  Delete history?
-Wyœlij  ##  Send
-Wyœlij plik  ##  Send file
-Szczegó³y  ##  Details
+JesteÅ› pewny Å¼e chcesz skasowaÄ‡ historiÄ™?  ##  Are you sure you want to delete the history?
+SkasowaÄ‡ historiÄ™?  ##  Delete history?
+WyÅ›lij  ##  Send
+WyÅ›lij plik  ##  Send file
+SzczegÃ³Å‚y  ##  Details
 Informacje o kontakcie  ##  Contact information
-Wyma¿  ##  Clear
-Wymazaæ historiê  ##  Clear history
+WymaÅ¼  ##  Clear
+WymazaÄ‡ historiÄ™  ##  Clear history
 Wycisz  ##  Mute
 Pogrubiony  ##  Bold
 Kursywa  ##  Italic
-Podkreœlenie  ##  Underline
-Wstaw hiper³¹cze  ##  Insert hyperlink
+PodkreÅ›lenie  ##  Underline
+Wstaw hiperÅ‚Ä…cze  ##  Insert hyperlink
 Zmniejsz rozmiar czcionki  ##  Decrease font size
-Zresetowaæ rozmiar czcionki  ##  Reset font size
-Zwiêksz rozmiar czcionki  ##  Increase font size
+ZresetowaÄ‡ rozmiar czcionki  ##  Reset font size
+ZwiÄ™ksz rozmiar czcionki  ##  Increase font size
 Ustaw kolor pierwszego planu  ##  Set Foreground color
-Ustaw kolor t³a  ##  Set Background color
+Ustaw kolor tÅ‚a  ##  Set Background color
 Emotikony  ##  Emoticons
-Nowe emotikony bêdê sci¹gniête i zainstalowane. PotwierdŸ?  ##  New emoticons will be downloaded and installed. Proceed?
+Nowe emotikony bÄ™dÄ™ sciÄ…gniÄ™te i zainstalowane. PotwierdÅº?  ##  New emoticons will be downloaded and installed. Proceed?
 Nowe emotikony  ##  New emoticons
-Mo¿esz klikn¹æ ponownie na przycisk emotikon aby zobaczyæ nowo zainstalowane.  ##  You can now click again on emoticon button to see new installed emoticons.
+MoÅ¼esz kliknÄ…Ä‡ ponownie na przycisk emotikon aby zobaczyÄ‡ nowo zainstalowane.  ##  You can now click again on emoticon button to see new installed emoticons.
 Zrobione!  ##  Done!
 Kontakt  ##  Contact
-£¹czenie  ##  Connecting
-¯¹da  ##  Requesting
-Œci¹ganie  ##  Downloading
+ÅÄ…czenie  ##  Connecting
+Å»Ä…da  ##  Requesting
+ÅšciÄ…ganie  ##  Downloading
 Plik konfiguracyjny  ##  Configuration file
-Ogólne  ##  General
-Oddalony z powodu braku aktywnoœci.  ##  Away due to inactivity.
-Oddalony przez d³u¿szy okres.  ##  Away for a loooong time.
-pozwól  ##  allow
-zabroñ  ##  deny
-nie okreœlone  ##  not specified
-Zakoñcz  ##  &Finish
+OgÃ³lne  ##  General
+Oddalony z powodu braku aktywnoÅ›ci.  ##  Away due to inactivity.
+Oddalony przez dÅ‚uÅ¼szy okres.  ##  Away for a loooong time.
+pozwÃ³l  ##  allow
+zabroÅ„  ##  deny
+nie okreÅ›lone  ##  not specified
+ZakoÅ„cz  ##  &Finish
 Dalej >  ##  &Next >
-To¿samoœæ  ##  Identity
-Proszê wprowadziæ informacje potrzebne do logowania.  ##  Please choose your logon information.
-To jest pokazywane na liœcie twoje przyjaciela.  ##  This is shown on your friend's list.
-JID powinno zawieraæ nazwê serwera, wed³ug formatu user@server.com  ##  JID should contain server name, formatted like user@server.com
-B³êdne dane logowania.  ##  Invalid logon details
-Musisz podaæ swój JID.  ##  You must enter your JID.
-Musisz podaæ swoje has³o.  ##  You must enter your password.
-B³¹d Jabber  ##  Jabber error
+ToÅ¼samoÅ›Ä‡  ##  Identity
+ProszÄ™ wprowadziÄ‡ informacje potrzebne do logowania.  ##  Please choose your logon information.
+To jest pokazywane na liÅ›cie twoje przyjaciela.  ##  This is shown on your friend's list.
+JID powinno zawieraÄ‡ nazwÄ™ serwera, wedÅ‚ug formatu user@server.com  ##  JID should contain server name, formatted like user@server.com
+BÅ‚Ä™dne dane logowania.  ##  Invalid logon details
+Musisz podaÄ‡ swÃ³j JID.  ##  You must enter your JID.
+Musisz podaÄ‡ swoje hasÅ‚o.  ##  You must enter your password.
+BÅ‚Ä…d Jabber  ##  Jabber error
 Ikona  ##  Icon
-Proszê wybraæ swoj¹ ikonê  ##  Please choose your icon.
-To jest zwykle widoczne dla twoich kontaktów.  ##  This is usually visible to your contacts.
-Sieæ  ##  Network
-Proszê wybraæ adres IP oraz maskê sieciow¹.  ##  Please choose your IP address and netmask.
-To okreœla zakres adresów sieciowych u¿ywanych przez Wippien.  ##  This defines network range to be used by wippien.
-Sieæ  ##  Network
+ProszÄ™ wybraÄ‡ swojÄ… ikonÄ™  ##  Please choose your icon.
+To jest zwykle widoczne dla twoich kontaktÃ³w.  ##  This is usually visible to your contacts.
+SieÄ‡  ##  Network
+ProszÄ™ wybraÄ‡ adres IP oraz maskÄ™ sieciowÄ….  ##  Please choose your IP address and netmask.
+To okreÅ›la zakres adresÃ³w sieciowych uÅ¼ywanych przez Wippien.  ##  This defines network range to be used by wippien.
+SieÄ‡  ##  Network
 Negocjator  ##  Mediator
 Wybierz negocjatora.  ##  Please choose who will be your mediator.
-To okreœla madia negocjuj¹ce po³¹czenia P2P.  ##  This defines people that mediate P2P connections.
+To okreÅ›la madia negocjujÄ…ce poÅ‚Ä…czenia P2P.  ##  This defines people that mediate P2P connections.
 Ostatnie sprawdzanie  ##  Last check
 Port  ##  Port
 NazwaGospodarza  ##  Hostname
-Sta³y  ##  Permanent
+StaÅ‚y  ##  Permanent
 Tymczasowy  ##  Temporary
 Wybierz tutaj wszystkie swoje konta.  ##  Enter all your accounts here.
-Mo¿esz dodaæ wszystkie konta obs³ugiwane przez serwer Jabber (typowe ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Jesteœ pewny ¿e chcesz skasowaæ konto '%s'?  ##  Are you sure you want to delete account '%s'?
-Skasowaæ zarejestrowane konto?  ##  Delete registered account?
+MoÅ¼esz dodaÄ‡ wszystkie konta obsÅ‚ugiwane przez serwer Jabber (typowe ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+JesteÅ› pewny Å¼e chcesz skasowaÄ‡ konto '%s'?  ##  Are you sure you want to delete account '%s'?
+SkasowaÄ‡ zarejestrowane konto?  ##  Delete registered account?
 Konta  ##  Accounts
-Poka¿ tylko bramy  ##  Show only gateways
-Poka¿ wszystkie us³ugi  ##  Show all services
+PokaÅ¼ tylko bramy  ##  Show only gateways
+PokaÅ¼ wszystkie usÅ‚ugi  ##  Show all services
 Kontakty  ##  Contacts
-Dodaj/Usuñ  ##  Add/Remove
-ZnajdŸ nowe kontakty  ##  Find new contacts.
-Mo¿esz dodaæ nowe kontakty Jabber, ICQ, MSN ...  ##  You can add new Jabber, ICQ, MSN... contacts
+Dodaj/UsuÅ„  ##  Add/Remove
+ZnajdÅº nowe kontakty  ##  Find new contacts.
+MoÅ¼esz dodaÄ‡ nowe kontakty Jabber, ICQ, MSN ...  ##  You can add new Jabber, ICQ, MSN... contacts
 Wszystkie pliki (*.*)\0*\0TXT pliki (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Wszystkie obrazy (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmapy (*.bmp)\0*.bmp\0Jpeg pliki (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF pliki (*.gif)\0*.gif\0PNG pliki (*.png)\0*.png\0Wszystkie pliki (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 System  ##  System
 Logowanie  ##  Logging
 Ustaw plik logowania i debugowania  ##  Setup log files and debug info.
-Okreœl œcie¿ki poni¿ej  ##  Specify paths below
-Wiadomoœci  ##  Messages
-W³aœciwoœci okna rozmowy  ##  Chat window settings.
-Dla wszystkich otwartych okien rozmów  ##  For all open chat windows.
-Informacje ogólne  ##  General info
-Informacje ogólne  ##  General information about
+OkreÅ›l Å›cieÅ¼ki poniÅ¼ej  ##  Specify paths below
+WiadomoÅ›ci  ##  Messages
+WÅ‚aÅ›ciwoÅ›ci okna rozmowy  ##  Chat window settings.
+Dla wszystkich otwartych okien rozmÃ³w  ##  For all open chat windows.
+Informacje ogÃ³lne  ##  General info
+Informacje ogÃ³lne  ##  General information about
 Informacje osobiste  ##  Personal information
-Domowe szczegó³y dla  ##  Home details for
+Domowe szczegÃ³Å‚y dla  ##  Home details for
 Informacje biznesowe  ##  Business information
 Robocze ustawienia dla  ##  Work details for
 wszystkie inne  ##  all other
 adres otrzymany od negocjatora  ##  address given by mediator
-Wygl¹d  ##  Appearance
-Skórki  ##  Skins
-Wybierz skórkê z poni¿szej listy.  ##  Choose skin from below list.
-Jaki bêdzie wygl¹d Wippien?  ##  What will Wippien wear?
-... ¿adne ..  ##  .. none ..
+WyglÄ…d  ##  Appearance
+SkÃ³rki  ##  Skins
+Wybierz skÃ³rkÄ™ z poniÅ¼szej listy.  ##  Choose skin from below list.
+Jaki bÄ™dzie wyglÄ…d Wippien?  ##  What will Wippien wear?
+... Å¼adne ..  ##  .. none ..
 Auto oddalony  ##  Auto Away
 Ustawienia dla Auto oddalony  ##  Auto away settings.
-Okreœla jak Wippien bêdzie dzia³a³ gdy system jest nie aktywny.  ##  Determines how will Wippien behave when system is inactive.
+OkreÅ›la jak Wippien bÄ™dzie dziaÅ‚aÅ‚ gdy system jest nie aktywny.  ##  Determines how will Wippien behave when system is inactive.
 System  ##  System
-Podstawowe wiadomoœci systemowe  ##  Basic system messages.
-Okreœl zachowanie aplikacji Wippien  ##  Define Wippien application's behavior.
-Rozmowa g³osowa  ##  Voice Chat
-Ustaw swoje urz¹dzenia dla rozmów g³osowych.  ##  Please setup your voice chat devices.
-Wybierz z poni¿szej listy.  ##  Choose from list below.
-<ustawienia domyœlne systemu>  ##  <system default>
-Podstawowe ustawienia kontaktów  ##  Contacts basic settings.
+Podstawowe wiadomoÅ›ci systemowe  ##  Basic system messages.
+OkreÅ›l zachowanie aplikacji Wippien  ##  Define Wippien application's behavior.
+Rozmowa gÅ‚osowa  ##  Voice Chat
+Ustaw swoje urzÄ…dzenia dla rozmÃ³w gÅ‚osowych.  ##  Please setup your voice chat devices.
+Wybierz z poniÅ¼szej listy.  ##  Choose from list below.
+<ustawienia domyÅ›lne systemu>  ##  <system default>
+Podstawowe ustawienia kontaktÃ³w  ##  Contacts basic settings.
 Uaktualnienia  ##  Updates
 Uaktualnij definicje.  ##  Update definitions.
-Okreœl jak i kiedy Wippien bêdzie siê uaktualnia³.  ##  Define when and how will Wippien update itself.
+OkreÅ›l jak i kiedy Wippien bÄ™dzie siÄ™ uaktualniaÅ‚.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Proszê wybraæ maksymalny transfer dla jednostki.  ##  Please determine maximum transfer unit.
-Je¿eli jakiœ kontakt nie odpowiada z powodu du¿ych pakietów...  ##  If some peer doesn't respond to large packets...
-DŸwiêki  ##  Sounds
-Ustaw dziêki odtwarzane przy zdarzeniach  ##  Setup sounds to be played on various events.
-Wybierz wbudowane lub przegl¹daj za plikami WAV.  ##  Choose internal ones, or browse for WAV files.
-Kontakt dostêpny  ##  Contact online
-Kontakt niedostêpny  ##  Contact offline
-Wiadomoœæ przychodz¹ca  ##  Message in
-Wiadomoœæ wychodz¹ca  ##  Message out
-B³¹d  ##  Error
+ProszÄ™ wybraÄ‡ maksymalny transfer dla jednostki.  ##  Please determine maximum transfer unit.
+JeÅ¼eli jakiÅ› kontakt nie odpowiada z powodu duÅ¼ych pakietÃ³w...  ##  If some peer doesn't respond to large packets...
+DÅºwiÄ™ki  ##  Sounds
+Ustaw dziÄ™ki odtwarzane przy zdarzeniach  ##  Setup sounds to be played on various events.
+Wybierz wbudowane lub przeglÄ…daj za plikami WAV.  ##  Choose internal ones, or browse for WAV files.
+Kontakt dostÄ™pny  ##  Contact online
+Kontakt niedostÄ™pny  ##  Contact offline
+WiadomoÅ›Ä‡ przychodzÄ…ca  ##  Message in
+WiadomoÅ›Ä‡ wychodzÄ…ca  ##  Message out
+BÅ‚Ä…d  ##  Error
 WAV pliki (*.wav)\0*.wav\0Wszytkie pliki (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Ukryj  ##  Hide
 Ukryj kontakty  ##  Hide contacts.
-Mo¿esz ukryæ niektóre kontakty.  ##  You can hide some contacts from your sight.
-Wygl¹d  ##  Appearance
-Ustawienia wygl¹du  ##  Appearance settings.
-Okreœl jak GUI Wippien bêdzie wyœwietlane.  ##  Define how will Wippien's GUI appear to you.
+MoÅ¼esz ukryÄ‡ niektÃ³re kontakty.  ##  You can hide some contacts from your sight.
+WyglÄ…d  ##  Appearance
+Ustawienia wyglÄ…du  ##  Appearance settings.
+OkreÅ›l jak GUI Wippien bÄ™dzie wyÅ›wietlane.  ##  Define how will Wippien's GUI appear to you.
 Sortuj  ##  Sort
 Sortuj kontakty  ##  Sorts contacts.
 Wybierz opcje sortowania.  ##  Pick one of sort options.
-PokójRozmów  ##  ChatRoom
-Przegl¹daj lub stwórz pokój rozmów. (WCI¥¯ WERSJA BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Wybierz lub przegl¹daj pokój aby siê przy³¹czyæ lub stwórz nowy.  ##  Specify or browse for a room to join or create new one.
+PokÃ³jRozmÃ³w  ##  ChatRoom
+PrzeglÄ…daj lub stwÃ³rz pokÃ³j rozmÃ³w. (WCIÄ„Å» WERSJA BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Wybierz lub przeglÄ…daj pokÃ³j aby siÄ™ przyÅ‚Ä…czyÄ‡ lub stwÃ³rz nowy.  ##  Specify or browse for a room to join or create new one.
 - Wszystkie bramki -  ##  - All gateways -
-Bramka us³ug  ##  Service gateway
+Bramka usÅ‚ug  ##  Service gateway
 Nazwa pokoju  ##  Room name
 Zapora ogniowa  ##  Firewall
-Ustaw regu³y zapory ogniowej.  ##  Set up firewall rules.
-Mo¿esz ustawiæ które porty bêd¹ dostêpne przez twoje kontakty.  ##  You can set up which ports can be accessed by your contacts.
+Ustaw reguÅ‚y zapory ogniowej.  ##  Set up firewall rules.
+MoÅ¼esz ustawiÄ‡ ktÃ³re porty bÄ™dÄ… dostÄ™pne przez twoje kontakty.  ##  You can set up which ports can be accessed by your contacts.
 * Caly ruch ICMP  ##  * All ICMP traffic
-Blokowaæ te porty  ##  But block these ports
-Zezwoliæ te porty  ##  But allow these ports
+BlokowaÄ‡ te porty  ##  But block these ports
+ZezwoliÄ‡ te porty  ##  But allow these ports
 uaktualnij Wippien  ##  Wippien update
-Nowa wersja Wippien dostêpna. Pobraæ?  ##  New version of Wippien is available. Download?
-Kliknij tutaj aby zobaczyæ co jest nowego.  ##  Click here to see what's new.
+Nowa wersja Wippien dostÄ™pna. PobraÄ‡?  ##  New version of Wippien is available. Download?
+Kliknij tutaj aby zobaczyÄ‡ co jest nowego.  ##  Click here to see what's new.
 Twoja wersja Wippien jest aktualna.  ##  Your version of Wippien is up-to-date.
-B³¹d przy po³¹czeniu ze zdalnym serwerem.  ##  Error connecting to remote server.
-Pobieranie zakoñczone. Zamieniæ?  ##  Download successful. Replace now?
-B³¹d przy aktualizacji Wippien!  ##  Wippien update error!
-Nowa wersja Wippien znale¿iona lokalnie. Zamieniæ?  ##  New version of Wippien found localy. Replace?
+BÅ‚Ä…d przy poÅ‚Ä…czeniu ze zdalnym serwerem.  ##  Error connecting to remote server.
+Pobieranie zakoÅ„czone. ZamieniÄ‡?  ##  Download successful. Replace now?
+BÅ‚Ä…d przy aktualizacji Wippien!  ##  Wippien update error!
+Nowa wersja Wippien znaleÅ¼iona lokalnie. ZamieniÄ‡?  ##  New version of Wippien found localy. Replace?
 Nowa wersja  ##  New version
-Status zmieniony:  ##  Status changed: 
-dzieñ  ##  day
+Status zmieniony:  ##  Status changed:
+dzieÅ„  ##  day
 dni  ##  days
 godzina  ##  hour
 godziny  ##  hours
 minuta  ##  minute
 minut  ##  minutes
 Ostatnio widziany: nigdy  ##  Last seen: never
-obecnie jest niedostêpny  ##  is currently offline
-jest teraz niedostêpny  ##  is now offline
-jest teraz dostêpny  ##  is now online
+obecnie jest niedostÄ™pny  ##  is currently offline
+jest teraz niedostÄ™pny  ##  is now offline
+jest teraz dostÄ™pny  ##  is now online
 jest blokowany  ##  is blocked
-jest niedostêpny  ##  is offline
+jest niedostÄ™pny  ##  is offline
 Odblokuj  ##  Unblock
 Blokuj  ##  Block
-Jesteœ pewny ¿e chcesz usun¹æ grupê %s ?  ##  Are you sure you want to remove group %s
-Usun¹æ grupê?  ##  Remove group?
-Jesteœ pewny ¿e chcesz usun¹æ kontakt %s ?  ##  Are you sure you want to remove contact %s
-Usun¹æ kontakt?  ##  Remove contact?
-B³¹d urz¹dzenia sieciowego  ##  Adapter error
-Zmieñ nazwê grupy  ##  Rename group
-Wpisz now¹ nazwê grupy  ##  Enter new group name
-Pobierz wiêcej skórek ze strony Wippien  ##  Download more skins from Wippien website
-Kliknij na skórce aby pobraæ i zainstalowaæ.  ##  Click on the skin to download and install it.
-Potrzebujê nowego konta Jabber  ##  I need new Jabber account
+JesteÅ› pewny Å¼e chcesz usunÄ…Ä‡ grupÄ™ %s ?  ##  Are you sure you want to remove group %s
+UsunÄ…Ä‡ grupÄ™?  ##  Remove group?
+JesteÅ› pewny Å¼e chcesz usunÄ…Ä‡ kontakt %s ?  ##  Are you sure you want to remove contact %s
+UsunÄ…Ä‡ kontakt?  ##  Remove contact?
+BÅ‚Ä…d urzÄ…dzenia sieciowego  ##  Adapter error
+ZmieÅ„ nazwÄ™ grupy  ##  Rename group
+Wpisz nowÄ… nazwÄ™ grupy  ##  Enter new group name
+Pobierz wiÄ™cej skÃ³rek ze strony Wippien  ##  Download more skins from Wippien website
+Kliknij na skÃ³rce aby pobraÄ‡ i zainstalowaÄ‡.  ##  Click on the skin to download and install it.
+PotrzebujÄ™ nowego konta Jabber  ##  I need new Jabber account
 Posiadam konto Jabber  ##  I have existing Jabber account
 Testuj konto  ##  &Test Account
 Szukaj  ##  &Search
-Wpisz tutaj swoje Jabber ID (JID). Wippien u¿ywa sieci Jabber do sprawdzania obecnoœci - aby powiadomiæ ¿e jesteœ online, aby znaæ status kontaktów etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-Je¿eli nie masz JID, powinieneœ zarejestrowaæ nowe. Mo¿esz zrobiæ to poprzez ka¿dy serwer jabber. Mo¿esz otworzyæ listê dostêpnych klikaj¹c na przycisk.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Wpisz tutaj swoje Jabber ID (JID). Wippien uÅ¼ywa sieci Jabber do sprawdzania obecnoÅ›ci - aby powiadomiÄ‡ Å¼e jesteÅ› online, aby znaÄ‡ status kontaktÃ³w etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+JeÅ¼eli nie masz JID, powinieneÅ› zarejestrowaÄ‡ nowe. MoÅ¼esz zrobiÄ‡ to poprzez kaÅ¼dy serwer jabber. MoÅ¼esz otworzyÄ‡ listÄ™ dostÄ™pnych klikajÄ…c na przycisk.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Has³o  ##  Password
+HasÅ‚o  ##  Password
 Serwer  ##  Server
 Port  ##  Port
-Proszê klink¹æ na `Testuj konto` aby kontynuowaæ  ##  Please click on 'Test Account' to proceed.
-U¿yj os³ony SSL na porcie 443 (dla GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+ProszÄ™ klinkÄ…Ä‡ na `Testuj konto` aby kontynuowaÄ‡  ##  Please click on 'Test Account' to proceed.
+UÅ¼yj osÅ‚ony SSL na porcie 443 (dla GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 Anuluj  ##  &Cancel
-Proszê podaæ frazê koduj¹c¹  ##  Please enter key passphrase
+ProszÄ™ podaÄ‡ frazÄ™ kodujÄ…cÄ…  ##  Please enter key passphrase
 Dodaj nowy  ##  Add &New
-Poka¿ powiadomienie je¿eli urz¹dzenie sieciowe jest niedostêpne.  ##  Show notification if ethernet adapter is unavailable.
-Wy³¹cz urzadzenie sieciowe przy wyjœciu.  ##  Disconnect adapter on exit
-Port UDP dla ruchu pakietów przychodz¹cych i wychodz¹cych. (0 automatyczny wybór)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-Adres IP dla urz¹dzenia sieciowego Wippien  ##  IP address for Wippien network adapter
-Zignoruj. Adres IP bêdzie ustawiony poza programem  ##  Ignore. IP will be set outside of this program.
+PokaÅ¼ powiadomienie jeÅ¼eli urzÄ…dzenie sieciowe jest niedostÄ™pne.  ##  Show notification if ethernet adapter is unavailable.
+WyÅ‚Ä…cz urzadzenie sieciowe przy wyjÅ›ciu.  ##  Disconnect adapter on exit
+Port UDP dla ruchu pakietÃ³w przychodzÄ…cych i wychodzÄ…cych. (0 automatyczny wybÃ³r)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Adres IP dla urzÄ…dzenia sieciowego Wippien  ##  IP address for Wippien network adapter
+Zignoruj. Adres IP bÄ™dzie ustawiony poza programem  ##  Ignore. IP will be set outside of this program.
 Uzyskane z bazy dostawcy IP, na URL  ##  Obtained from IP provider database, on URL
-U¿yj statycznego adresu IP  ##  Use following static address
+UÅ¼yj statycznego adresu IP  ##  Use following static address
 Adres IP  ##  IP address
 Maska  ##  Netmask
 Status  ##  Status
 URL  ##  URL
 Opis  ##  Description
 Dodaj nowe konto  ##  Add new account
-Usuñ konto  ##  Remove account
+UsuÅ„ konto  ##  Remove account
 Zarejestruj!  ##  Register!
-Twoje obecne po³¹czenia komunikatorów  ##  Your current Instant messaging connections
-Nazwa u¿ytkownika  ##  Username
-Otwórz nowe konto  ##  Open new account
-Proœba o autoryzacjê  ##  Authorization request
+Twoje obecne poÅ‚Ä…czenia komunikatorÃ³w  ##  Your current Instant messaging connections
+Nazwa uÅ¼ytkownika  ##  Username
+OtwÃ³rz nowe konto  ##  Open new account
+ProÅ›ba o autoryzacjÄ™  ##  Authorization request
 Tak  ##  &Yes
 Nie  ##  &No
-W³aœciwoœci  ##  &Details
+WÅ‚aÅ›ciwoÅ›ci  ##  &Details
 Zastosuj na wszystko  ##  &Apply to all
-Blokuj u¿ytkownika  ##  &Block user(s)
+Blokuj uÅ¼ytkownika  ##  &Block user(s)
 Czy zezwalasz  ##  Do you allow
-aby dodaæ ciebie do jego listy kontktów?  ##  to add you to his contact list?
-wiêcej ¿¹dañ czekam...  ##  more requests waiting...
-Dodaj Grupê.  ##  Add Group
-Usuñ Grupê  ##  Remove Group
+aby dodaÄ‡ ciebie do jego listy kontktÃ³w?  ##  to add you to his contact list?
+wiÄ™cej Å¼Ä…daÅ„ czekam...  ##  more requests waiting...
+Dodaj GrupÄ™.  ##  Add Group
+UsuÅ„ GrupÄ™  ##  Remove Group
 Dodaj Kontakt  ##  Add Contact
 Dodaj kontakt do grupy  ##  Put contact to the group
 Kontakt JID  ##  Contact JID
 Typ Kontaktu  ##  Contact Type
 Widoczna nazwa  ##  Visible Name
-Zmieñ nazwê kontaktu  ##  Rename contact
-WprowadŸ now¹ nazwê kontaktu  ##  Enter new contact name
+ZmieÅ„ nazwÄ™ kontaktu  ##  Rename contact
+WprowadÅº nowÄ… nazwÄ™ kontaktu  ##  Enter new contact name
 Ustawienia  ##  Settings
-< Powrót  ##  < &Back
-Loguj komunikacjê przez Jabber  ##  Log Jabber communication
-Loguj komunikacjê przez gniazdo  ##  Log socket communication
-Loguj Ÿród³owe rozmowy funkcyjne (mo¿e osi¹gn¹æ szybko du¿e rozmiary!)  ##  Log raw function calls (may grow quickly!)
-Kasuj Ÿród³owe logi przy ka¿dym  ##  Delete raw log on each
+< PowrÃ³t  ##  < &Back
+Loguj komunikacjÄ™ przez Jabber  ##  Log Jabber communication
+Loguj komunikacjÄ™ przez gniazdo  ##  Log socket communication
+Loguj ÅºrÃ³dÅ‚owe rozmowy funkcyjne (moÅ¼e osiÄ…gnÄ…Ä‡ szybko duÅ¼e rozmiary!)  ##  Log raw function calls (may grow quickly!)
+Kasuj ÅºrÃ³dÅ‚owe logi przy kaÅ¼dym  ##  Delete raw log on each
 megabajty  ##  megabytes
-Loguj komunikacjê VPN przy starcie P2P.  ##  Log VPN communication on P2P startup
-Nastêpuj¹cy negocjatorzy mog¹ byæ u¿ywani.  ##  Following mediators can be used
-Zezwól na dodawanie nowych negocjatorów  ##  Allow new mediators to be added
-Ró¿ne ustawienia dotycz¹ce okna rozmów.  ##  Various settings regarding chat window
-Czas wiadomoœci  ##  Timestamp messages
-Poka¿ historiê wiadomoœci  ##  Show message history
+Loguj komunikacjÄ™ VPN przy starcie P2P.  ##  Log VPN communication on P2P startup
+NastÄ™pujÄ…cy negocjatorzy mogÄ… byÄ‡ uÅ¼ywani.  ##  Following mediators can be used
+ZezwÃ³l na dodawanie nowych negocjatorÃ³w  ##  Allow new mediators to be added
+RÃ³Å¼ne ustawienia dotyczÄ…ce okna rozmÃ³w.  ##  Various settings regarding chat window
+Czas wiadomoÅ›ci  ##  Timestamp messages
+PokaÅ¼ historiÄ™ wiadomoÅ›ci  ##  Show message history
 Pseudonim  ##  Nickname
-Imiê  ##  First name
+ImiÄ™  ##  First name
 Nazwisko  ##  Last name
 Email  ##  Email
 Opis  ##  Notes
@@ -417,129 +417,129 @@ Kraj  ##  Country
 Data Urodzin  ##  Birthday
 Telefon  ##  Voice Tel.
 FAX  ##  Fax
-Tytu³  ##  Title
+TytuÅ‚  ##  Title
 Nazwa firmy  ##  Company name
 Departament  ##  Department
-Zezwolono interfejsom na bezpoœrednie po³¹czenia.  ##  Allowed interfaces for direct connection
-Zezwól wszysto  ##  Allow All
-Kliknij na pierwsz¹ kolumnê aby zmieniæ wartoœci.  ##  Click on first column to change values
-Je¿eli wybierzesz wartoœæ 'nie podano', taka sama wartoœæ jest u¿ywana w ustawieniu 'wszystkie inne'.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Nastêpuj¹ce pliki skórek zosta³y znalezione  ##  Following skin files are found
+Zezwolono interfejsom na bezpoÅ›rednie poÅ‚Ä…czenia.  ##  Allowed interfaces for direct connection
+ZezwÃ³l wszysto  ##  Allow All
+Kliknij na pierwszÄ… kolumnÄ™ aby zmieniÄ‡ wartoÅ›ci.  ##  Click on first column to change values
+JeÅ¼eli wybierzesz wartoÅ›Ä‡ 'nie podano', taka sama wartoÅ›Ä‡ jest uÅ¼ywana w ustawieniu 'wszystkie inne'.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+NastÄ™pujÄ…ce pliki skÃ³rek zostaÅ‚y znalezione  ##  Following skin files are found
 Zastosuj  ##  Apply
-Aby dodaæ wiêcej skórek, mo¿esz wkleiæ je do podfoldera 'Skin'. Dodaj odpowiedni plik 100x100 PNG dla podgl¹du.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-Wiêcej skórek  ##  &More skins...
-Ustaw kiedy wykryta zostanie aktywnoœæ.  ##  Set back when activity is detected again.
+Aby dodaÄ‡ wiÄ™cej skÃ³rek, moÅ¼esz wkleiÄ‡ je do podfoldera 'Skin'. Dodaj odpowiedni plik 100x100 PNG dla podglÄ…du.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+WiÄ™cej skÃ³rek  ##  &More skins...
+Ustaw kiedy wykryta zostanie aktywnoÅ›Ä‡.  ##  Set back when activity is detected again.
 Czekaj  ##  Wait
-minut po których w³¹czy siê status Oddalony (0=wy³¹czenie)  ##  minutes before going to away mode (0 = disable)
-minut po których w³¹czy siê status Oddalony na d³u¿ej (0=wy³¹czenie)  ##  minutes before going to extended away mode (0 = disable)
-minut po których roz³¹czy (0=wy³¹czenie)  ##  minutes before disconnecting (0 = disable)
+minut po ktÃ³rych wÅ‚Ä…czy siÄ™ status Oddalony (0=wyÅ‚Ä…czenie)  ##  minutes before going to away mode (0 = disable)
+minut po ktÃ³rych wÅ‚Ä…czy siÄ™ status Oddalony na dÅ‚uÅ¼ej (0=wyÅ‚Ä…czenie)  ##  minutes before going to extended away mode (0 = disable)
+minut po ktÃ³rych rozÅ‚Ä…czy (0=wyÅ‚Ä…czenie)  ##  minutes before disconnecting (0 = disable)
 Opis w trybie Oddalony  ##  Auto-Away message
-Opis w trybie Oddalony na d³u¿ej  ##  Extended-Away message
+Opis w trybie Oddalony na dÅ‚uÅ¼ej  ##  Extended-Away message
 Pokazuj Wippien na pasku  ##  Show Wippien in taskbar
-Przestaw pulpit kiedy okno Wippien jest wyrównane do krawêdzi.  ##  Rearrange desktop when Wippien window is aligned to border.
-Przy³¹cz do krawêdzi pulpitu  ##  Snap to desktop border
+Przestaw pulpit kiedy okno Wippien jest wyrÃ³wnane do krawÄ™dzi.  ##  Rearrange desktop when Wippien window is aligned to border
+PrzyÅ‚Ä…cz do krawÄ™dzi pulpitu  ##  Snap to desktop border
 AutoUkrywanie gdy Wippien jest nieaktywny przez  ##  Auto hide if Wippien is inactive for
 Zawsze na wierzchu  ##  Always on top
-PotwierdŸ wyjœcie z aplikacji  ##  Confirm exit from application
-Roz³¹cz kiedy komputer przejdzie w stan Uœpienia/Hibernacji, po³¹cz przy wznowieniu  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Zabezpieczenie has³em  ##  Password protect
+PotwierdÅº wyjÅ›cie z aplikacji  ##  Confirm exit from application
+RozÅ‚Ä…cz kiedy komputer przejdzie w stan UÅ›pienia/Hibernacji, poÅ‚Ä…cz przy wznowieniu  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Zabezpieczenie hasÅ‚em  ##  Password protect
 Tylko ustawienia  ##  Settings only
 Wszystko  ##  Everything
-Folder ustawieñ (zmiana wymaga restartu Wippien)  ##  Settings folder (changing below value requires wippien restart)
-Trwa³oœæ listy kontaktów  ##  Contact list persistance
-Usuñ wszystkie kontakty lokalne przy uruchomieniu  ##  Delete all local contacts on startup
-Usuñ wszystkie kontakty lokalne przy po³¹czeniu  ##  Delete all local contacts on connect
-Autoryzacja kontaktów  ##  Contacts subscription authorization
-Nigdy nie autoryzuj, odrzucaj proœby o autoryzacjê  ##  Never authorize
-Zawsze pytaj o autoryzacjê  ##  Ask me
+Folder ustawieÅ„ (zmiana wymaga restartu Wippien)  ##  Settings folder (changing below value requires wippien restart)
+TrwaÅ‚oÅ›Ä‡ listy kontaktÃ³w  ##  Contact list persistance
+UsuÅ„ wszystkie kontakty lokalne przy uruchomieniu  ##  Delete all local contacts on startup
+UsuÅ„ wszystkie kontakty lokalne przy poÅ‚Ä…czeniu  ##  Delete all local contacts on connect
+Autoryzacja kontaktÃ³w  ##  Contacts subscription authorization
+Nigdy nie autoryzuj, odrzucaj proÅ›by o autoryzacjÄ™  ##  Never authorize
+Zawsze pytaj o autoryzacjÄ™  ##  Ask me
 Zawsze autoryzuj, bez pytania  ##  Always authorize
-Automatycznie nawi¹zuj VPN przy aktywnoœci sieci  ##  Automatically establish VPN on network traffic
-Automatycznie nawi¹zuj VPN przy uruchomieniu  ##  Automatically establish VPN on startup
-Postêp  ##  Progress
-W³¹cz rozmowy g³osowe  ##  Enable voice chat
-Urz¹dzenie do odtwarzania  ##  Playback device
-Urz¹dzenie do nagrywania  ##  Recording device
-SprawdŸ aktualizacje przy starcie Wippien  ##  Check for updates when Wippien starts
-SprawdŸ aktualizacje przy po³¹czeniu  ##  Check for updates on Connect
-SprawdŸ aktualizacje co  ##  Check for updates each
+Automatycznie nawiÄ…zuj VPN przy aktywnoÅ›ci sieci  ##  Automatically establish VPN on network traffic
+Automatycznie nawiÄ…zuj VPN przy uruchomieniu  ##  Automatically establish VPN on startup
+PostÄ™p  ##  Progress
+WÅ‚Ä…cz rozmowy gÅ‚osowe  ##  Enable voice chat
+UrzÄ…dzenie do odtwarzania  ##  Playback device
+UrzÄ…dzenie do nagrywania  ##  Recording device
+SprawdÅº aktualizacje przy starcie Wippien  ##  Check for updates when Wippien starts
+SprawdÅº aktualizacje przy poÅ‚Ä…czeniu  ##  Check for updates on Connect
+SprawdÅº aktualizacje co  ##  Check for updates each
 Uaktualnij i zrestartuj aplikacje automatycznie  ##  Update and restart application silently
-Poka¿ wiadomoœci systemowe otrzymane od uaktualniaj¹cego.  ##  Show system messages received from updater
-SprawdŸ teraz  ##  &Check now
-Ustawienia MTU okreœlaj¹ maksymalny pakiet UDP jaki mo¿e byæ wys³any do kontaktu. Je¿eli twoje po³¹czenie ma mniejsz¹ wartoœæ MTU ni¿ Wippien, mo¿liwe ¿e kontakt nidgy nie otrzyma du¿ych pakietów.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-U¿yj sta³ego MTU  ##  Use fixed MTU
+PokaÅ¼ wiadomoÅ›ci systemowe otrzymane od uaktualniajÄ…cego.  ##  Show system messages received from updater
+SprawdÅº teraz  ##  &Check now
+Ustawienia MTU okreÅ›lajÄ… maksymalny pakiet UDP jaki moÅ¼e byÄ‡ wysÅ‚any do kontaktu. JeÅ¼eli twoje poÅ‚Ä…czenie ma mniejszÄ… wartoÅ›Ä‡ MTU niÅ¼ Wippien, moÅ¼liwe Å¼e kontakt nidgy nie otrzyma duÅ¼ych pakietÃ³w.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+UÅ¼yj staÅ‚ego MTU  ##  Use fixed MTU
 Autowykrywanie MTU  ##  Auto-detect MTU
-(ustawienia bêd¹ obowi¹zuj¹ce przy ponownym po³¹czeniu)  ##  (will become effective as peers reconnect)
-Dzwiêk (zostaw puste - dzwiêk domyœlny)  ##  Sound (leave empty for default sound)
-Odtwórz  ##  &Play
+(ustawienia bÄ™dÄ… obowiÄ…zujÄ…ce przy ponownym poÅ‚Ä…czeniu)  ##  (will become effective as peers reconnect)
+DzwiÄ™k (zostaw puste - dzwiÄ™k domyÅ›lny)  ##  Sound (leave empty for default sound)
+OdtwÃ³rz  ##  &Play
 Zdarzenia programu  ##  Program events
 Ukryj nowy kontakt  ##  Hide new contact
-Poka¿ kontakt  ##  Unhide contact
+PokaÅ¼ kontakt  ##  Unhide contact
 Obecnie ukryte kontaktu  ##  Currently hidden contacts
-Wszystkie pokazane tutaj kontakty *NIGDY* nie pojawi¹ siê w Wippien. Ju¿ dla ciebie nie istniej¹. W ten sposób bêd¹ kompletnie ignorowane.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Wszystkie pokazane tutaj kontakty *NIGDY* nie pojawiÄ… siÄ™ w Wippien. JuÅ¼ dla ciebie nie istniejÄ…. W ten sposÃ³b bÄ™dÄ… kompletnie ignorowane.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
 Ukryj kontakt  ##  Hide contact
-WprowadŸ kontakt JID  ##  Enter contact JID
-Zezwól na ka¿dy ruch sieciowy  ##  Allow all traffic
-Blokuj ka¿dy ruch sieciowy  ##  Block all traffic
+WprowadÅº kontakt JID  ##  Enter contact JID
+ZezwÃ³l na kaÅ¼dy ruch sieciowy  ##  Allow all traffic
+Blokuj kaÅ¼dy ruch sieciowy  ##  Block all traffic
 Dodaj  ##  &Add
-Usuñ  ##  &Remove
-Domyœlna zasada  ##  Default rule
+UsuÅ„  ##  &Remove
+DomyÅ›lna zasada  ##  Default rule
 Obraz awatar  ##  Avatar picture
 Nazwa  ##  Name
 Adres IP  ##  IP address
 Opis statusu  ##  Status text
 Ostatnio widziany  ##  Last online time
-Monitor aktywnoœci  ##  Activity Monitor
-Widoczne w³aœciwoœci kontaktu  ##  Visible details
-Widoczne w³aœciwoœci kontaktu  ##  Contact's visible details
+Monitor aktywnoÅ›ci  ##  Activity Monitor
+Widoczne wÅ‚aÅ›ciwoÅ›ci kontaktu  ##  Visible details
+Widoczne wÅ‚aÅ›ciwoÅ›ci kontaktu  ##  Contact's visible details
 bez sortowania  ##  unsorted
 po Nazwie  ##  By name
 po JID  ##  By JID
 po adresie IP (bez adresu IP na dole)  ##  by IP (without IP goes bottom)
-po adresie IP (bez adresu IP na górze)  ##  by IP (without IP goes top)
-Sortuj listê kontaktów  ##  Sort contact list
-Pseudonim w pokojach rozmów  ##  Nickname for chatrooms
-Poka¿ dostêpne pokoje na nastêpuj¹cych bramkach  ##  Show available rooms on following gateways
-Kliknij powy¿ej aby wybraæ pokój lub wprowadŸ w³asciwoœci pokoju poni¿ej.  ##  Click above to select room, or enter new chat room details below
-Nazwa pokoju do utworzenia lub do³¹czenia  ##  Room name to create or join
-Has³o (puste je¿eli brak)  ##  Password (empty if none)
+po adresie IP (bez adresu IP na gÃ³rze)  ##  by IP (without IP goes top)
+Sortuj listÄ™ kontaktÃ³w  ##  Sort contact list
+Pseudonim w pokojach rozmÃ³w  ##  Nickname for chatrooms
+PokaÅ¼ dostÄ™pne pokoje na nastÄ™pujÄ…cych bramkach  ##  Show available rooms on following gateways
+Kliknij powyÅ¼ej aby wybraÄ‡ pokÃ³j lub wprowadÅº wÅ‚asciwoÅ›ci pokoju poniÅ¼ej.  ##  Click above to select room, or enter new chat room details below
+Nazwa pokoju do utworzenia lub doÅ‚Ä…czenia  ##  Room name to create or join
+HasÅ‚o (puste jeÅ¼eli brak)  ##  Password (empty if none)
 Bramka  ##  Gateway
-Do³¹cz lub Stwórz pokój  ##  Join or Create room
-Blokuj u¿ytkowników przy uruchomieniu  ##  Block users at startup
+DoÅ‚Ä…cz lub StwÃ³rz pokÃ³j  ##  Join or Create room
+Blokuj uÅ¼ytkownikÃ³w przy uruchomieniu  ##  Block users at startup
 Kopiuj IP  ##  &Copy IP
 Rozmowa  ##  C&hat
-Rozmowa g³osowa  ##  &Voice Chat
-Wyœlij Plik  ##  Send &File
-Wyœlij Email  ##  Send E&mail
+Rozmowa gÅ‚osowa  ##  &Voice Chat
+WyÅ›lij Plik  ##  Send &File
+WyÅ›lij Email  ##  Send E&mail
 Blokuj  ##  &Block
-Zmieñ nazwê  ##  &Rename
-Usuñ  ##  &Delete
-W³aœciwoœci  ##  De&tails
-Dodaj/Usuñ Konta  ##  Add/Remove &Accounts
-Dodaj/Usuñ Kontakty  ##  Add/Remove &Contacts
-Dostêpny  ##  &Online
+ZmieÅ„ nazwÄ™  ##  &Rename
+UsuÅ„  ##  &Delete
+WÅ‚aÅ›ciwoÅ›ci  ##  De&tails
+Dodaj/UsuÅ„ Konta  ##  Add/Remove &Accounts
+Dodaj/UsuÅ„ Kontakty  ##  Add/Remove &Contacts
+DostÄ™pny  ##  &Online
 Oddalony  ##  &Away
 Gotowy do rozmowy  ##  Free for &Chat
-Nie przeszkadzaæ  ##  &Do not Disturb
-oddalony na d³u¿ej  ##  E&xtended Away
+Nie przeszkadzaÄ‡  ##  &Do not Disturb
+oddalony na dÅ‚uÅ¼ej  ##  E&xtended Away
 Niewidoczny  ##  &Invisible
-Niedostêpny  ##  O&ffline
-Zmieñ obraz  ##  Change &Picture
-Zmieñ has³o  ##  Change Pa&ssword
+NiedostÄ™pny  ##  O&ffline
+ZmieÅ„ obraz  ##  Change &Picture
+ZmieÅ„ hasÅ‚o  ##  Change Pa&ssword
 Twoje dane  ##  Your &Details
-WprowadŸ frazê koduj¹c¹  ##  Enter Passphrase
-WprowadŸ has³o  ##  Enter password
-Proszê wprowadziæ has³o zabezpieczaj¹ce  ##  Please enter protect password
-Jêzyki  ##  Languages
-Ustaw jêzyk u¿ywany we wszystkich tekstach Wippien.  ##  Setup language used in all Wippien texts.
-Nowe jêzyki mog¹ siê pojawiaæ z czasem.  ##  New languages may appear periodically.
-Nastêpuj¹ce jêzyki znaleziono na lokalnym komputerze  ##  Following languages are found as available on local computer
-Zmieñ  ##  &Change
-Ustawienia u¿yte na lokalnym komputerze  ##  Locale used on local computer
-U¿ywany jêzyk  ##  Currently used language
-Zmiany niepe³ne. Uruchom ponownie Wippien aby zobaczyæ wszystkie zmiany.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-Dostêpne s¹ nowe jêzyki. Pobraæ?  ##  New language files available. Download?
-Poka¿ powiadomienie je¿eli kontakt stanie siê dostêpny/niedostêpny  ##  Show notification popup window when contact goes online/offline
+WprowadÅº frazÄ™ kodujÄ…cÄ…  ##  Enter Passphrase
+WprowadÅº hasÅ‚o  ##  Enter password
+ProszÄ™ wprowadziÄ‡ hasÅ‚o zabezpieczajÄ…ce  ##  Please enter protect password
+JÄ™zyki  ##  Languages
+Ustaw jÄ™zyk uÅ¼ywany we wszystkich tekstach Wippien.  ##  Setup language used in all Wippien texts.
+Nowe jÄ™zyki mogÄ… siÄ™ pojawiaÄ‡ z czasem.  ##  New languages may appear periodically.
+NastÄ™pujÄ…ce jÄ™zyki znaleziono na lokalnym komputerze  ##  Following languages are found as available on local computer
+ZmieÅ„  ##  &Change
+Ustawienia uÅ¼yte na lokalnym komputerze  ##  Locale used on local computer
+UÅ¼ywany jÄ™zyk  ##  Currently used language
+Zmiany niepeÅ‚ne. Uruchom ponownie Wippien aby zobaczyÄ‡ wszystkie zmiany.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+DostÄ™pne sÄ… nowe jÄ™zyki. PobraÄ‡?  ##  New language files available. Download?
+PokaÅ¼ powiadomienie jeÅ¼eli kontakt stanie siÄ™ dostÄ™pny/niedostÄ™pny  ##  Show notification popup window when contact goes online/offline
 Kontakt pisze...  ##  Contact is typing...
-mówi  ##  says
-powiedzia³  ##  said
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+mÃ³wi  ##  says
+powiedziaÅ‚  ##  said
+MoÅ¼esz uÅ¼yÄ‡ swojego konta GMAIL  ##  You can use your GMAIL account here.

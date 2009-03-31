@@ -1,545 +1,545 @@
 # Korean template text
 # Author: plain_walker@hotmail.com
-# Version: 1
-ÀÌ»ó ¾ø½À´Ï´Ù.  ##  No error.
-½Ã½ºÅÛÀÌ ÁöÁ¤ÇÑ ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  The system cannot find the file specified.
-½Ã½ºÅÛÀÌ ÁöÁ¤ÇÑ °æ·Î¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  The system cannot find the path specified.
-½Ã½ºÅÛÀÌ ÁöÁ¤ÇÑ ÆÄÀÏÀÌ³ª µğ·ºÅä¸®¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  The system cannot find the specified file/directory.
-À¯ÇüÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.  ##  Type mismatch.
-ÀÌ¹Ì ÆÄÀÏÀÌ³ª µğ·ºÅä¸®°¡ ÀÖ±â¶§¹®¿¡ ÆÄÀÏÀÌ³ª µğ·ºÅä¸®¸¦ ¸¸µé ¼ö ¾ø½À´Ï´Ù.  ##  Cannot create a file/directory when that file/directory already exists.
-½Ã½ºÅÛÀÌ ÁöÁ¤ÇÑ ÀåÄ¡¸¦ ±â·ÏÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  The system cannot write to the specified device.
-°¡´ÉÇÑ °ªÀÌ ¾Æ´Õ´Ï´Ù.  ##  Invalid Property Value.
-¿¬»êÀÌ ¸¸·áµÇ¾î ¹İÈ¯µÇ¾ú´Ï´Ù.  ##  This operation returned because the timeout period expired.
-½Ã½ºÅÛ ¼öÁØ¿¡¼­ ¼ÒÄÏ ¿¬»êÀÌ Áß´ÜµÇ¾ú½À´Ï´Ù.  ##  System level interrupt interrupted socket operation.
-ºñÁ¤»óÀûÀÎ Æ÷¸ËÀÌ°Å³ª ¹èµå Æ÷¸ËÀ¸·Î ÀÎÇÏ¿© ¿À·ù°¡ ÀÏ¾î³µ½À´Ï´Ù.  ##  Generic error for invalid format, bad format.
-¾×¼¼½º ±ÇÇÑ¿¡ ÀÇÇØ ±İÁöµÈ ¹æ¹ıÀ¸·Î ¼ÒÄÏ ¾×¼¼½º ½Ãµµ°¡ ÀÌ·ç¾îÁ³½À´Ï´Ù.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-½Ã½ºÅÛÀÌ ¿äÃ»µÈ Æ÷ÀÎÅÍ ÀÎ¼ö¸¦ »ç¿ëÀ» À§ÇÑ ½Ãµµ °úÁ¤¿¡¼­ ºñÁ¤»óÀûÀÎ Æ÷ÀÎÅÍ ÁÖ¼Ò¸¦ Ã£¾Ò½À´Ï´Ù.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-ºñÁ¤»óÀûÀÎ Æ÷¸ËÀÌ°Å³ª ¸ñ·Ï µîÀ¸·Î ÀÎÇÏ¿© ¿À·ù°¡ ÀÏ¾î³µ½À´Ï´Ù.  ##  Generic error for invalid format, entry, etc.
-ºñÁ¤»óÀûÀÎ ÀÎ¼ö°¡ °ø±ŞµÇ¾ú½À´Ï´Ù.  ##  An invalid argument was supplied.
-Á¦°øµÈ IP ÁÖ¼Ò°¡ À¯È¿ÇÏÁö ¾Ê°Å³ª ÁöÁ¤µÈ È£½ºÆ® IP°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-ºñÁ¤»óÀûÀÎ ¼ÒÄÏÀÌ°Å³ª ¿ø°İ ¿¬°áÀÌ ÀÌ·ç¾îÁöÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Invalid socket or not connected to remote.
-ÁöÁ¤ÇÑ ÁÖ¼Ò°¡ ÀÌ¹Ì »ç¿ëµÇ°í ÀÖ½À´Ï´Ù.  ##  The specified address is already in use.
-ÁöÁ¤ÇÑ ÁÖ¼Ò°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.  ##  The specified address is not available.
-¿¬°áµÈ ³×Æ®¿öÅ©°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.  ##  The connected network is not available.
-¿¬°áµÈ ³×Æ®¿öÅ©°¡ µµ´ŞÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  The connected network is not reachable.
-¿¬°áµÈ ³×Æ®¿öÅ© ¿¬°áÀÌ Àç¼³Á¤ µÇ¾ú½À´Ï´Ù.  ##  The connected network connection has been reset.
-ÇöÀç ¿¬°áÀÌ ³×Æ®¿öÅ©³ª ÁßÀç ¼­ºñ½º¿¡ ÀÇÇØ Áß´ÜµÇ¾ú½À´Ï´Ù.  ##  The current connection has been aborted by the network or intermediate services.
-ÇöÀç ¼ÒÄÏ ¿¬°áÀÌ Àç¼³Á¤µÇ¾ú½À´Ï´Ù.  ##  The current socket connection has been reset.
-ÇöÀç ¼ÒÄÏÀÌ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  The current socket has not been connected.
-¿¬°áÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.  ##  The connection has been shutdown.
-ÇöÀç ¿¬°áÀÇ ±âÇÑÀÌ ¸¸·áÇÏ¿´½À´Ï´Ù.  ##  The current connection has timeout.
-¿äÃ»µÈ ¿¬°áÀÌ ¿ø°İ È£½ºÆ®¿¡ ÀÇÇØ °ÅºÎµÇ¾ú½À´Ï´Ù.  ##  The requested connection has been refused by the remote host.
-ÁöÁ¤ÇÑ È£½ºÆ® ÀÌ¸§ÀÌ ³Ê¹« ±é´Ï´Ù.  ##  Specified host name is too long.
-ÇöÀç ¿ø°İ È£½ºÆ®°¡ »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  Remote host is currently unavailable.
-ÇöÀç ¿ø°İ È£½ºÆ®¿¡ µµ´ŞÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  Remote host is currently unreachable. 
-¿ø°İ ½Ã½ºÅÛÀÌ ÁØºñµÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Remote system is not ready.
-ÀÀ¿ë ÇÁ·Î±×·¥ÀÌ ÇöÀç ¼ÒÄÏ ¹öÀüÀ» Áö¿øÇÏÁö ¾Ê½À´Ï´Ù.  ##  Current socket version not supported by application.
-¼ÒÄÏ API°¡ ÃÊ±âÈ­µÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Socket API is not initialized.
-¼ÒÄÏ ¿¬°áÀÌ ²÷¾îÁ³½À´Ï´Ù.  ##  Socket has been disconnected.
-È£½ºÆ®¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  Host not found.
-¿¬»êÀ» ¿Ï·áÇÏ±â¿¡ »ç¿ëÇÒ ¼ö ÀÖ´Â ¸Ş¸ğ¸®°¡ ÃæºĞÇÏÁö ¾Ê½À´Ï´Ù.  ##  Not enough memory is available to complete this operation.
-¾Ë ¼ö ¾ø´Â °Ë»ö À¯ÇüÀÔ´Ï´Ù.  ##  Unknown search type.
-¾Ë ¼ö ¾ø´Â °Ë»ö ÀÎ¼öÀÔ´Ï´Ù.  ##  Unknown argument for Search method.
-ÀÌ¹Ì ½ÃÀÛµÇ¾ú½À´Ï´Ù.  ##  Already started.
-Ã¤³ÎÀÌ ÀÌ¹Ì ½ÃÀÛµÇ¾ú½À´Ï´Ù.  ##  Channel already started.
-Ã¤³ÎÀÌ ½ÃÀÛµÇ¾î Ã¤³Î ¼³Á¤À» ¹Ù²Ü ¼ö ¾ø½À´Ï´Ù.  ##  Cannot change channel setup while channel is started.
-¼ÒÄÏ¿¡ ³Ê¹« ¸¹Àº µ¥ÀÌÅÍ°¡ ÀÖ½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØÁÖ½Ê½Ã¿À.  ##  Too much data on the socket. Try later.
-¿¬°áÀÌ ±¸ÃàµÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Connection not established.
-¾Ë ¼ö ¾ø´Â µ¥ÀÌÅÍ À¯ÇüÀÔ´Ï´Ù.  ##  Unknown data type.
-¼ÒÄÏ ½º·¹µå¸¦ ¸¸µå´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù.  ##  Failed to create socket thread.
-¾Ë ¼ö ¾ø´Â Ã¤³Î À¯ÇüÀÔ´Ï´Ù.  ##  Unknown channel type.
-ºñÁ¤»óÀûÀÎ ÀÎ¼ö°¡ ·ÎÄÃÁÖ¼Ò ¼Ó¼º¿¡ °ø±ŞµÇ¾ú½À´Ï´Ù.  ##  Invalid argument was supplied in LocalAddress property.
-·ÎÄÃ »óÀÇ Ã¤³ÎÀ» ¸¸µé ¼ö ¾ø½À´Ï´Ù.  ##  Channel cannot be created by local side.
-·ÎÄÃ »óÀÇ Ã¤³ÎÀÌ ½ÃÀÛµÉ ¼ö ¾ø½À´Ï´Ù.  ##  Channel cannot be started by local side.
-¿ø°İ »ó¿¡¼­ Ã¤³ÎÀÌ °ÅºÎµÇ¾ú½À´Ï´Ù.  ##  Channel refused by remote side.
-Áö¿øÇÏÁö ¾Ê´Â ¿ø°İ ÇÁ·ÎÅäÄİ ¹öÀüÀÔ´Ï´Ù.  ##  Unsupported remote protocol version.
-wodVPNÀÌ ¾ÆÁ÷ ½ÃÀÛµÇÁö ¾Ê¾Ò½À´Ï´Ù. ¸ÕÀú ½ÇÇàÇØÁÖ½Ê½Ã¿À.  ##  wodVPN not yet started. Use Start first.
-Ã¤³ÎÀÌ ´İÇû½À´Ï´Ù.  ##  Channel was closed.
-MTU Å©±â°¡ ³Ê¹« Å®´Ï´Ù.  ##  MTU size too large.
-MTU Å©±â°¡ ³Ê¹« ÀÛ½À´Ï´Ù.  ##  MTU size too small.
-ºñÁ¤»óÀûÀÎ ¼ÒÄÏ ¿äÃ»ÀÔ´Ï´Ù.  ##  Invalid socks request.
-ºñÁ¤»óÀûÀÎ ¾ÏÈ£ÀÔ´Ï´Ù. ¿ø°İ µ¿·áÀÇ ¾ÏÈ£¿Í ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.  ##  Invalid password. Does not match remote peer's password.
-·ÎÄÃ ID°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù. °Ë»öÀ» À§ÇØ¼± ·ÎÄÃ ID°¡ ÇÊ¿äÇÕ´Ï´Ù.  ##  Local ID not set. It is required for Search method.
-¿ø°İ ID°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù. °Ë»öÀ» À§ÇØ¼± ¿ø°İ ID°¡ ÇÊ¿äÇÕ´Ï´Ù.  ##  Remote ID not set. It is required for Search method.
-ÁöÁ¤ÇÑ IP ÁÖ¼Ò¸¦ °íÁ¤ÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  Cannot bind to specified IP address.
-ÀÌ¹Ì ÆÄÀÏ Àü¼ÛÀ» ¼öÇàÇÏ°í ÀÖ½À´Ï´Ù.  ##  Already performing file transfer.
-ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  File not found.
-ÆÄÀ»À» ±â·ÏÇÏ´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù.  ##  Failed to write file.
-³×Æ®¿öÅ© ¾î´ğÅÍ¸¦ ¿­ ¼ö ¾ø½À´Ï´Ù.  ##  Could not open network adapter.
-µ¿½Ã¿¡ ÇÑ ¾î´ğÅÍ¸¸À» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.  ##  Only one adapter can be used at a time.
-¶óÀÌ¼¾½º Å°¸¦ ÀÒ¾î¹ö·È½À´Ï´Ù. ¼³°è È¯°æÀÇ ±¸¼º ¿ä¼Ò¸¦ »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  License key missing. You can not use this component in design environment.
-ÀÎ½ÄµÇÁö ¾ÊÀº ¿À·ùÀÔ´Ï´Ù.  ##  Unrecognized Error.
-µ¿½Ã¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù. ¸ÕÀú ¿¬°áÀ» ²÷¾îÁÖ½Ê½Ã¿À.  ##  Cannot Connect at this time. Use Disconnect first.
-¾ÆÁ÷ ¿¬°áµÇ¾î ÀÖ¾î ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  Cannot execute, not yet connected.
-±¸¼º ¿ä¼Ò°¡ ¹Ù»Û »óÅÂÀÔ´Ï´Ù.  ##  Component busy.
-µ¿½Ã¿¡ ¼Ó¼ºÀ» ¹Ù²Ü ¼ö ¾ø½À´Ï´Ù. ¸ÕÀú ¿¬°áÀ» ²÷¾îÁÖ½Ê½Ã¿À.  ##  Cannot change property at this time. Use Disconnect first.
-È£½ºÆ®¸í ¼Ó¼ºÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Hostname property not set.
-·Î±×ÀÎ ¼Ó¼ºÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Login property not set.
-¾ÏÈ£ ¼Ó¼ºÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Password property not set.
-ºñÁ¤»óÀûÀÎ XML ÆĞÅ¶ÀÔ´Ï´Ù.  ##  Invalid XML packet.
-ºñÁ¤»óÀûÀÎ XML ÆĞÅ¶ ¼ø¼­ IDÀÔ´Ï´Ù.  ##  Invalid XML packet sequence ID.
-ºñÁ¤»óÀûÀÎ ·Î±×ÀÎÀÔ´Ï´Ù: %s.  ##  Invalid login: %s.
-¿¬¶ôÃ³°¡ ÀÌ¹Ì ¸ñ·Ï¿¡ Á¸ÀçÇÕ´Ï´Ù.  ##  Contact already exists in the collection.
-SSLÀº Ã³¸®µÉ ¼ö ¾ø½À´Ï´Ù.  ##  SSL could not be negotiated.
-»õ·Î¿î »ç¿ëÀÚ¸¦ µî·ÏÇÏ´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù: %s.  ##  Failed to register new user: %s.
-¾Ë¼ö¾ø´Â ¾Ë¸²ÀÔ´Ï´Ù.  ##  Unknown notification.
-ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  File not found.
-Á¤È®ÇÑ »çÁø À¯ÇüÀ» ÁöÁ¤ÇØ¾ß ÇÕ´Ï´Ù (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-»çÁøÀ» °¡Á®¿À´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù.  ##  Failed to import photo.
-ÁøÇàÀ» Â÷´ÜÇÏ´Â ´Ù¸¥ ¹æ¹ıÀÔ´Ï´Ù.  ##  Another blocking method in progress.
-ºñÁ¤»óÀûÀÎ ÇÁ·ÎÅäÄİ µ¥ÀÌÅÍ¸¦ ¹Ş¾Ò½À´Ï´Ù.  ##  Invalid protocol data received.
-º¸³¾ °ÍÀÌ ¾ø½À´Ï´Ù. ÆÄÀÏ Å©±â°¡ 0ÀÔ´Ï´Ù.  ##  There's nothing to send. File size is 0.
-¿¬¶ôÃ³¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.  ##  Contact not found.
-ÆÄÀÏ Àü¼Û¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.  ##  File transfer failed.
-ÆÄÀÏ ±â·ÏÀ» ÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  Could not write to file.
-¹ŞÀº ÆÄÀÏÀÇ Ã¼Å©¼¶ÀÌ ºñÁ¤»óÀûÀÔ´Ï´Ù.  ##  Checksum of received file is invalid.
-Àü¼ÛÀÌ Áß´ÜµÇ¾ú½À´Ï´Ù.  ##  Transfer aborted.
-Àü¼Û ½Ã°£ÀÌ ¸¸·áµÇ¾ú½À´Ï´Ù.  ##  Transfer has timed out.
-ºñÁ¤»óÀûÀÎ ÇÁ·ÎÅäÄİÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù.  ##  Invalid protocol selected.
-ºñÁ¤»óÀûÀÎ »óÅÂÀÔ´Ï´Ù. ÀÌ¹Ì ±¸¼º ¿ä¼Ò°¡ ¹Ù»Û »óÅÂÀÔ´Ï´Ù.  ##  Invalid state. Component already busy.
-ÀÌ¸§ÀÌ À¯ÀÏÇÏÁö ¾Ê¾Æ °íÁ¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ ¾÷µ¥ÀÌÅÍ¸íÀ» »ç¿ëÇØÁÖ½Ê½Ã¿À.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-¹æ¹ıÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.  ##  Method was cancelled.
-¾÷µ¥ÀÌÅÍ ÇÁ·Î±×·¥À» ½ÃÀÛÇÏ´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù.  ##  Failed to start updater program.
-°Ë»öµÈ ¹®¼­ÀÇ ¼­¸íÀÌ ºñÁ¤»óÀûÀÔ´Ï´Ù.  ##  Signature on retrieved document is invalid.
-³¯Â¥°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.  ##  Date not set.
-COM ¼­¹ö¸¦ µî·ÏÇÏ´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù.  ##  Failed to register COM server.
-´ÙÀ½ ¹®±¸°¡ ¼­¹ö·ÎºÎÅÍ ¹İÈ¯µÇ¾ú½À´Ï´Ù; ÆäÀÌÁö¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù (404 ¿À·ù).  ##  Page not found (error 404) returned from the server.
-´Ù¿î·ÎµåÇÑ ÆÄÀÏ Å©±â°¡ ºñÁ¤»óÀûÀÔ´Ï´Ù.  ##  Invalid file size after download.
-´Ù¿î·ÎµåÇÑ ÆÄÀÏÀÇ MD5 Ã¼Å©¼¶ÀÌ ºñÁ¤»óÀûÀÔ´Ï´Ù.  ##  Invalid MD5 checksum after download.
-°æ°í  ##  Warning
-¿ÀÇÁ¶óÀÎ  ##  Offline
-¿Â¶óÀÎ  ##  Online
-ÀÚ¸® ºñ¿ò  ##  Away
-ÇÑ°¡ÇØ¿ä  ##  Free for chat
-¹æÇØÇÏÁö¸¶  ##  Do not disturb
-ÀÚ¸® ºñ¿ò ¿¬Àå  ##  Extended away
-º¸ÀÌÁö ¾ÊÀ½  ##  Invisible
-¼­¸í ¿äÃ»  ##  Asking for subscription
-¼­¸íµÇÁö ¾ÊÀº ¿¬¶ôÃ³  ##  Contact not subscribed
-¼­¹ö¿¡¼­ ¿¬°áÀÌ ²÷¾îÁü  ##  Disconnected from server
-¼­¹ö¿¡ ¿¬°áÇÏ´Â Áß  ##  Connecting to server
-»õ·Î¿î »ç¿ëÀÚ¸¦ µî·ÏÇÏ´Â Áß  ##  Registering new user
-º¸¾È ¿¬°áÀ» ÃÊ±âÈ­ÇÏ´Â Áß  ##  Initializing secure connection
-ÀÎÁõ µ¥ÀÌÅÍ¸¦ º¸³»´Â Áß  ##  Sending authentication data
-¼­¹ö¿¡ ¿¬°áµÊ  ##  Connected to server
-¼­¹ö·ÎºÎÅÍ µ¥ÀÌÅÍ¸¦ ¹Ş´Â Áß  ##  Receiving data from server
-¼­¹ö¿¡ µ¥ÀÌÅÍ¸¦ º¸³»´Â Áß  ##  Sending data to server
-¼­¹öÀÇ ¸í·ÉÀ» ½ÇÇàÇÏ´Â Áß  ##  Executing command on server
-¼­¹ö·ÎºÎÅÍ ¿¬°áÀ» ²÷´Â Áß  ##  Disconnecting from the server
-½ÂÀÎÀÌ ¿äÃ»µÊ  ##  Requested authorization
-Wippien ³×Æ®¿öÅ© ¾î´ğÅÍ¸¦ ±¸¼ºÇÏ´Â Áß...  ##  Configuring Wippien network adapter...
-¾î´ğÅÍ\"%s\"¿Í ÁÖ¼Ò%s°¡ Wippien%s°ú Ãæµ¹ÇÕ´Ï´Ù. WippienÀÌ ³×Æ®¿öÅ© ÆĞÅ¶À» º¸³»°Å³ª ¹ŞÁö ¸øÇÒ ¼ö ÀÖ½À´Ï´Ù. ¾î´ğÅÍ¸¦ Á¦°ÅÇÏ°Å³ª ºñÈ°¼ºÈ­½ÃÅ°½Ê½Ã¿À.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-³×Æ®¿öÅ© ¾î´ğÅÍ°¡ ºñÈ°¼ºÈ­µÇ¾î ÀÖ½À´Ï´Ù!  ##  Network adapter disabled!
-³×Æ®¿öÅ© ¾î´ğÅÍ°¡ ¿­·È½À´Ï´Ù.  ##  Network adapter opened
-Wippien ³×Æ®¿öÅ© ¾î´ğÅÍ¸¦ »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù. ÀÎ½ºÅÏÆ® ¸Ş½ÃÁö·Î¸¸ ÁøÇàÇÏ½Ã°Ú½À´Ï±î?  ##  Wippien network adapter not available. Proceed with IM only?
-¿ÜºÎ µµ±¸(°ü¸®ÀÚ ±ÇÇÑÀÌ ÇÊ¿ä)¸¦ »ç¿ëÇÏ¿© Wippien ¾î´ğÅÍÀÇ IP ÁÖ¼Ò¸¦ ¼³Á¤ÇØ¾ßÇÕ´Ï´Ù. ÃæºĞÇÑ ±ÇÇÑÀ» ¾ò±â À§ÇØ¼­´Â Àû¾îµµ ÇÑ ¹ø °ü¸®ÀÚ·Î WippienÀ» ½ÇÇàÇØ¾ß ÇÕ´Ï´Ù.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-°ü¸®ÀÚ ±ÇÇÑÀÌ ÇÊ¿äÇÕ´Ï´Ù!  ##  Admin privilege required!
-¿¬°áÀÌ ²÷¾îÁü  ##  Disconnected
-¿¬°áµÊ  ##  Connected
-¸Ş½ÃÁö¸¦ Àü´ŞÇÒ ¼ö ¾ø½À´Ï´Ù.  ##  Could not deliver message.
-¾ÏÈ£¸¦ ¹Ù²Ù´Âµ¥ ½ÇÆĞÇÔ  ##  Failed to change password
-ºñÈ°µ¿ ±ÔÄ¢À¸·Î ÀÎÇÏ¿© ¿¬°áÀÌ ²÷¾îÁü  ##  Disconnected due to inactivity rule
-%s (%d)\r\nMTU: %d\r\nµé¾î¿Â ÇÕ°è: %s\r\n³ª°£ ÇÕ°è: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPNÀÌ ¾ÆÁ÷ ±¸ÃàµÇÁö ¾ÊÀ½  >>  ##  << VPN not established yet >>
-%d ÃÊ ÀÌ³»¿¡ ´Ù½Ã ¿¬°áÇÕ´Ï´Ù.  ##  Reconnect in %d seconds.
-ÃÊ  ##  seconds
-³×Æ®¿öÅ© ¾øÀ½  ##  No network
-Wippien Á¾·á  ##  Exit Wippien
-Á¾·á(&x)  ##  E&xit
-¼³Á¤ ¿­±â  ##  Open settings
-¼³Á¤(&s)  ##  &Settings
-Wippien Á¤º¸  ##  Show AboutBox
+# Version: 2
+Å”ÄšÂ»Ã³ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  No error.
+ËÄ‚ËÅŸÄ¹Å°Å”Äš ÃÃ¶ÃÂ¤Ã‡Åƒ Ä†Ã„Å”ÄÅ”Â» Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  The system cannot find the file specified.
+ËÄ‚ËÅŸÄ¹Å°Å”Äš ÃÃ¶ÃÂ¤Ã‡Åƒ Â°Ä‡Â·ÃÂ¸Â¦ Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  The system cannot find the path specified.
+ËÄ‚ËÅŸÄ¹Å°Å”Äš ÃÃ¶ÃÂ¤Ã‡Åƒ Ä†Ã„Å”ÄÅ”ÄšÅ‚Å ÂµÄ‘Â·ÅŸÄ¹Ã¤Â¸Â®Â¸Â¦ Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  The system cannot find the specified file/directory.
+Å”Å»Ã‡Ã¼Å”Äš Â¸Ã‚ÃÃ¶ Ä¾Ä˜ËÅ”Â´ÄÂ´Å®.  ##  Type mismatch.
+Å”ÄšÄ…Äš Ä†Ã„Å”ÄÅ”ÄšÅ‚Å ÂµÄ‘Â·ÅŸÄ¹Ã¤Â¸Â®Â°Ë‡ Å”Ã–Â±Ã¢Â¶Â§Ä…Â®Å¼Ë‡ Ä†Ã„Å”ÄÅ”ÄšÅ‚Å ÂµÄ‘Â·ÅŸÄ¹Ã¤Â¸Â®Â¸Â¦ Â¸Â¸ÂµÃ© Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Cannot create a file/directory when that file/directory already exists.
+ËÄ‚ËÅŸÄ¹Å°Å”Äš ÃÃ¶ÃÂ¤Ã‡Åƒ Å”ÄºÃ„Ë‡Â¸Â¦ Â±Ã¢Â·ÄÃ‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  The system cannot write to the specified device.
+Â°Ë‡Â´Ã‰Ã‡Åƒ Â°ÅÅ”Äš Ä¾Ä†Â´ÅÂ´ÄÂ´Å®.  ##  Invalid Property Value.
+Å¼Â¬Â»Ä™Å”Äš Â¸Â¸Â·Ã¡ÂµÃ‡Ä¾Ã® Ä…ÃÄŒÅ»ÂµÃ‡Ä¾ÃºÂ´ÄÂ´Å®.  ##  This operation returned because the timeout period expired.
+ËÄ‚ËÅŸÄ¹Å° Ä½Ã¶ÃÅ˜Å¼Ë‡Ä½Â­ Ä½Å‡Ã„Ä Å¼Â¬Â»Ä™Å”Äš ÃÃŸÂ´ÃœÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  System level interrupt interrupted socket operation.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ä†Ã·Â¸Ã‹Å”ÄšÂ°Ä¹Å‚Å Ä…ÄÂµÄº Ä†Ã·Â¸Ã‹Å”Â¸Â·Ã Å”ÃÃ‡ÄÅ¼Â© Å¼Å”Â·Å¯Â°Ë‡ Å”ÄÄ¾Ã®Å‚ÂµËÅ”Â´ÄÂ´Å®.  ##  Generic error for invalid format, bad format.
+Ä¾Ã—Ä½Ä½ËÅŸ Â±Ã‡Ã‡ÅƒÅ¼Ë‡ Å”Ã‡Ã‡Å˜ Â±ÃÃÃ¶ÂµÄŒ Ä…Ä‡Ä…Ã½Å”Â¸Â·Ã Ä½Å‡Ã„Ä Ä¾Ã—Ä½Ä½ËÅŸ ËÄ‚ÂµÂµÂ°Ë‡ Å”ÄšÂ·Ã§Ä¾Ã®ÃÅ‚ËÅ”Â´ÄÂ´Å®.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+ËÄ‚ËÅŸÄ¹Å°Å”Äš Å¼Ã¤Ä‚Â»ÂµÄŒ Ä†Ã·Å”ÃÄ¹Ã Å”ÃÄ½Ã¶Â¸Â¦ Â»Ã§Å¼Ã«Å”Â» Å”Â§Ã‡Åƒ ËÄ‚ÂµÂµ Â°ÃºÃÂ¤Å¼Ë‡Ä½Â­ ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ä†Ã·Å”ÃÄ¹Ã ÃÃ–Ä½Å‡Â¸Â¦ Ä‚ÅÄ¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ä†Ã·Â¸Ã‹Å”ÄšÂ°Ä¹Å‚Å Â¸Å„Â·Ä ÂµÃ®Å”Â¸Â·Ã Å”ÃÃ‡ÄÅ¼Â© Å¼Å”Â·Å¯Â°Ë‡ Å”ÄÄ¾Ã®Å‚ÂµËÅ”Â´ÄÂ´Å®.  ##  Generic error for invalid format, entry, etc.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Å”ÃÄ½Ã¶Â°Ë‡ Â°Å™Â±Å¢ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  An invalid argument was supplied.
+ÃÂ¦Â°Å™ÂµÄŒ IP ÃÃ–Ä½Å‡Â°Ë‡ Å”Å»ÄŒÅ¼Ã‡ÄÃÃ¶ Ä¾Ä˜Â°Ä¹Å‚Å ÃÃ¶ÃÂ¤ÂµÄŒ ÄŒÅËÅŸÄ†Â® IPÂ°Ë‡ ÃÂ¸Å”Ã§Ã‡ÄÃÃ¶ Ä¾Ä˜ËÅ”Â´ÄÂ´Å®.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ä½Å‡Ã„ÄÅ”ÄšÂ°Ä¹Å‚Å Å¼Å™Â°Ã Å¼Â¬Â°Ã¡Å”Äš Å”ÄšÂ·Ã§Ä¾Ã®ÃÃ¶ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Invalid socket or not connected to remote.
+ÃÃ¶ÃÂ¤Ã‡Åƒ ÃÃ–Ä½Å‡Â°Ë‡ Å”ÄšÄ…Äš Â»Ã§Å¼Ã«ÂµÃ‡Â°Ã­ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  The specified address is already in use.
+ÃÃ¶ÃÂ¤Ã‡Åƒ ÃÃ–Ä½Å‡Â°Ë‡ ÅŸÅ‡Â°Ë‡Â´Ã‰Ã‡ÅÂ´ÄÂ´Å®.  ##  The specified address is not available.
+Å¼Â¬Â°Ã¡ÂµÄŒ Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©Â°Ë‡ ÅŸÅ‡Â°Ë‡Â´Ã‰Ã‡ÅÂ´ÄÂ´Å®.  ##  The connected network is not available.
+Å¼Â¬Â°Ã¡ÂµÄŒ Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©Â°Ë‡ ÂµÂµÂ´Å¢Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  The connected network is not reachable.
+Å¼Â¬Â°Ã¡ÂµÄŒ Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Å¼Â¬Â°Ã¡Å”Äš Å”Ã§Ä½Å‚ÃÂ¤ ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  The connected network connection has been reset.
+Ã‡Ã¶Å”Ã§ Å¼Â¬Â°Ã¡Å”Äš Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©Å‚Å ÃÃŸÅ”Ã§ Ä½Â­ÅŸÅ„ËÅŸÅ¼Ë‡ Å”Ã‡Ã‡Å˜ ÃÃŸÂ´ÃœÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  The current connection has been aborted by the network or intermediate services.
+Ã‡Ã¶Å”Ã§ Ä½Å‡Ã„Ä Å¼Â¬Â°Ã¡Å”Äš Å”Ã§Ä½Å‚ÃÂ¤ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  The current socket connection has been reset.
+Ã‡Ã¶Å”Ã§ Ä½Å‡Ã„ÄÅ”Äš Å¼Â¬Â°Ã¡ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  The current socket has not been connected.
+Å¼Â¬Â°Ã¡Å”Äš ÃÄ¾Â·Ã¡ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  The connection has been shutdown.
+Ã‡Ã¶Å”Ã§ Å¼Â¬Â°Ã¡Å”Ã‡ Â±Ã¢Ã‡ÅƒÅ”Äš Â¸Â¸Â·Ã¡Ã‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  The current connection has timeout.
+Å¼Ã¤Ä‚Â»ÂµÄŒ Å¼Â¬Â°Ã¡Å”Äš Å¼Å™Â°Ã ÄŒÅËÅŸÄ†Â®Å¼Ë‡ Å”Ã‡Ã‡Å˜ Â°Ä¹ÅŸÃÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  The requested connection has been refused by the remote host.
+ÃÃ¶ÃÂ¤Ã‡Åƒ ÄŒÅËÅŸÄ†Â® Å”ÄšÂ¸Â§Å”Äš Å‚Ä˜Ä…Â« Â±Ã©Â´ÄÂ´Å®.  ##  Specified host name is too long.
+Ã‡Ã¶Å”Ã§ Å¼Å™Â°Ã ÄŒÅËÅŸÄ†Â®Â°Ë‡ Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Remote host is currently unavailable.
+Ã‡Ã¶Å”Ã§ Å¼Å™Â°Ã ÄŒÅËÅŸÄ†Â®Å¼Ë‡ ÂµÂµÂ´Å¢Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Remote host is currently unreachable. 
+Å¼Å™Â°Ã ËÄ‚ËÅŸÄ¹Å°Å”Äš ÃÅ˜ÅŸÅ„ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Remote system is not ready.
+Å”Å”Å¼Ã« Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„Å”Äš Ã‡Ã¶Å”Ã§ Ä½Å‡Ã„Ä Ä…Ã¶Å”Ã¼Å”Â» ÃÃ¶Å¼Å™Ã‡ÄÃÃ¶ Ä¾Ä˜ËÅ”Â´ÄÂ´Å®.  ##  Current socket version not supported by application.
+Ä½Å‡Ã„Ä APIÂ°Ë‡ Ä‚Ä˜Â±Ã¢ÄŒÂ­ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Socket API is not initialized.
+Ä½Å‡Ã„Ä Å¼Â¬Â°Ã¡Å”Äš Ë›Ã·Ä¾Ã®ÃÅ‚ËÅ”Â´ÄÂ´Å®.  ##  Socket has been disconnected.
+ÄŒÅËÅŸÄ†Â®Â¸Â¦ Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Host not found.
+Å¼Â¬Â»Ä™Å”Â» Å¼ÄÂ·Ã¡Ã‡ÄÂ±Ã¢Å¼Ë‡ Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Å”Ã–Â´Ã‚ Â¸Å¢Â¸Ä‘Â¸Â®Â°Ë‡ Ä‚Ä‡ÅŸÄÃ‡ÄÃÃ¶ Ä¾Ä˜ËÅ”Â´ÄÂ´Å®.  ##  Not enough memory is available to complete this operation.
+Ä¾Ã‹ Ä½Ã¶ Ä¾Å™Â´Ã‚ Â°Ã‹Â»Ã¶ Å”Å»Ã‡Ã¼Å”Ã”Â´ÄÂ´Å®.  ##  Unknown search type.
+Ä¾Ã‹ Ä½Ã¶ Ä¾Å™Â´Ã‚ Â°Ã‹Â»Ã¶ Å”ÃÄ½Ã¶Å”Ã”Â´ÄÂ´Å®.  ##  Unknown argument for Search method.
+Å”ÄšÄ…Äš ËÄ‚Å”Å°ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Already started.
+Ä‚Â¤Å‚ÃÅ”Äš Å”ÄšÄ…Äš ËÄ‚Å”Å°ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Channel already started.
+Ä‚Â¤Å‚ÃÅ”Äš ËÄ‚Å”Å°ÂµÃ‡Ä¾Ã® Ä‚Â¤Å‚Ã Ä½Å‚ÃÂ¤Å”Â» Ä…Å®Ë›Ãœ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Cannot change channel setup while channel is started.
+Ä½Å‡Ã„ÄÅ¼Ë‡ Å‚Ä˜Ä…Â« Â¸Ä…Å”ÅŸ ÂµÄ„Å”ÄšÄ¹ÃÂ°Ë‡ Å”Ã–ËÅ”Â´ÄÂ´Å®. Â´Å®ËÄ‚ ËÄ‚ÂµÂµÃ‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Too much data on the socket. Try later.
+Å¼Â¬Â°Ã¡Å”Äš Â±Â¸Ä‚Å•ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Connection not established.
+Ä¾Ã‹ Ä½Ã¶ Ä¾Å™Â´Ã‚ ÂµÄ„Å”ÄšÄ¹Ã Å”Å»Ã‡Ã¼Å”Ã”Â´ÄÂ´Å®.  ##  Unknown data type.
+Ä½Å‡Ã„Ä ËÅŸÂ·Ä…ÂµÄºÂ¸Â¦ Â¸Â¸ÂµÄºÂ´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  Failed to create socket thread.
+Ä¾Ã‹ Ä½Ã¶ Ä¾Å™Â´Ã‚ Ä‚Â¤Å‚Ã Å”Å»Ã‡Ã¼Å”Ã”Â´ÄÂ´Å®.  ##  Unknown channel type.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Å”ÃÄ½Ã¶Â°Ë‡ Â·ÃÃ„Ä‚ÃÃ–Ä½Å‡ Ä½Ã“Ä½ÅŸÅ¼Ë‡ Â°Å™Â±Å¢ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Invalid argument was supplied in LocalAddress property.
+Â·ÃÃ„Ä‚ Â»Ã³Å”Ã‡ Ä‚Â¤Å‚ÃÅ”Â» Â¸Â¸ÂµÃ© Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Channel cannot be created by local side.
+Â·ÃÃ„Ä‚ Â»Ã³Å”Ã‡ Ä‚Â¤Å‚ÃÅ”Äš ËÄ‚Å”Å°ÂµÃ‰ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Channel cannot be started by local side.
+Å¼Å™Â°Ã Â»Ã³Å¼Ë‡Ä½Â­ Ä‚Â¤Å‚ÃÅ”Äš Â°Ä¹ÅŸÃÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Channel refused by remote side.
+ÃÃ¶Å¼Å™Ã‡ÄÃÃ¶ Ä¾Ä˜Â´Ã‚ Å¼Å™Â°Ã Ã‡ÃÂ·ÃÄ¹Ã¤Ã„Ã Ä…Ã¶Å”Ã¼Å”Ã”Â´ÄÂ´Å®.  ##  Unsupported remote protocol version.
+wodVPNÅ”Äš Ä¾Ä†ÃÃ· ËÄ‚Å”Å°ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®. Â¸ÅÅ”Ãº ËÃ‡Ã‡Å•Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  wodVPN not yet started. Use Start first.
+Ä‚Â¤Å‚ÃÅ”Äš Â´ÃÃ‡Å±ËÅ”Â´ÄÂ´Å®.  ##  Channel was closed.
+MTU Ä¹Â©Â±Ã¢Â°Ë‡ Å‚Ä˜Ä…Â« Ä¹Â®Â´ÄÂ´Å®.  ##  MTU size too large.
+MTU Ä¹Â©Â±Ã¢Â°Ë‡ Å‚Ä˜Ä…Â« Å”Å°ËÅ”Â´ÄÂ´Å®.  ##  MTU size too small.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ä½Å‡Ã„Ä Å¼Ã¤Ä‚Â»Å”Ã”Â´ÄÂ´Å®.  ##  Invalid socks request.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ä¾ÄÄŒÅÅ”Ã”Â´ÄÂ´Å®. Å¼Å™Â°Ã ÂµÅ¼Â·Ã¡Å”Ã‡ Ä¾ÄÄŒÅÅ¼Ã Å”ÄÃ„Ë‡Ã‡ÄÃÃ¶ Ä¾Ä˜ËÅ”Â´ÄÂ´Å®.  ##  Invalid password. Does not match remote peer's password.
+Â·ÃÃ„Ä‚ IDÂ°Ë‡ Ä½Å‚ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®. Â°Ã‹Â»Ã¶Å”Â» Å”Â§Ã‡Å˜Ä½Â± Â·ÃÃ„Ä‚ IDÂ°Ë‡ Ã‡Ä˜Å¼Ã¤Ã‡ÅÂ´ÄÂ´Å®.  ##  Local ID not set. It is required for Search method.
+Å¼Å™Â°Ã IDÂ°Ë‡ Ä½Å‚ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®. Â°Ã‹Â»Ã¶Å”Â» Å”Â§Ã‡Å˜Ä½Â± Å¼Å™Â°Ã IDÂ°Ë‡ Ã‡Ä˜Å¼Ã¤Ã‡ÅÂ´ÄÂ´Å®.  ##  Remote ID not set. It is required for Search method.
+ÃÃ¶ÃÂ¤Ã‡Åƒ IP ÃÃ–Ä½Å‡Â¸Â¦ Â°Ã­ÃÂ¤Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Cannot bind to specified IP address.
+Å”ÄšÄ…Äš Ä†Ã„Å”Ä Å”Ã¼Ä½Å°Å”Â» Ä½Ã¶Ã‡Å•Ã‡ÄÂ°Ã­ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  Already performing file transfer.
+Ä†Ã„Å”ÄÅ”Â» Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  File not found.
+Ä†Ã„Å”Â»Å”Â» Â±Ã¢Â·ÄÃ‡ÄÂ´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  Failed to write file.
+Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Ã®Â´Ä‘Ä¹ÃÂ¸Â¦ Å¼Â­ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Could not open network adapter.
+ÂµÅ¼ËÄ‚Å¼Ë‡ Ã‡Åƒ Ä¾Ã®Â´Ä‘Ä¹ÃÂ¸Â¸Å”Â» Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  Only one adapter can be used at a time.
+Â¶Ã³Å”ÄšÄ½Ä¾ËÅŸ Ä¹Â°Â¸Â¦ Å”Å‡Ä¾Ã®Ä…Ã¶Â·ÄŒËÅ”Â´ÄÂ´Å®. Ä½Å‚Â°Ä ÄŒÅ»Â°Ä‡Å”Ã‡ Â±Â¸Ä½ÅŸ Å¼Ã¤Ä½Å‡Â¸Â¦ Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  License key missing. You can not use this component in design environment.
+Å”ÃËÃ„ÂµÃ‡ÃÃ¶ Ä¾Ä˜Å”ÅŸ Å¼Å”Â·Å¯Å”Ã”Â´ÄÂ´Å®.  ##  Unrecognized Error.
+ÂµÅ¼ËÄ‚Å¼Ë‡ Å¼Â¬Â°Ã¡Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®. Â¸ÅÅ”Ãº Å¼Â¬Â°Ã¡Å”Â» Ë›Ã·Ä¾Ã®ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Cannot Connect at this time. Use Disconnect first.
+Ä¾Ä†ÃÃ· Å¼Â¬Â°Ã¡ÂµÃ‡Ä¾Ã® Å”Ã–Ä¾Ã® ËÃ‡Ã‡Å•Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Cannot execute, not yet connected.
+Â±Â¸Ä½ÅŸ Å¼Ã¤Ä½Å‡Â°Ë‡ Ä…Å®Â»Å° Â»Ã³Ä¹Ã‚Å”Ã”Â´ÄÂ´Å®.  ##  Component busy.
+ÂµÅ¼ËÄ‚Å¼Ë‡ Ä½Ã“Ä½ÅŸÅ”Â» Ä…Å®Ë›Ãœ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®. Â¸ÅÅ”Ãº Å¼Â¬Â°Ã¡Å”Â» Ë›Ã·Ä¾Ã®ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Cannot change property at this time. Use Disconnect first.
+ÄŒÅËÅŸÄ†Â®Â¸Ã­ Ä½Ã“Ä½ÅŸÅ”Äš Ä½Å‚ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Hostname property not set.
+Â·ÃÂ±Ã—Å”Ã Ä½Ã“Ä½ÅŸÅ”Äš Ä½Å‚ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Login property not set.
+Ä¾ÄÄŒÅ Ä½Ã“Ä½ÅŸÅ”Äš Ä½Å‚ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Password property not set.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã XML Ä†ÄÄ¹Â¶Å”Ã”Â´ÄÂ´Å®.  ##  Invalid XML packet.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã XML Ä†ÄÄ¹Â¶ Ä½Å™Ä½Â­ IDÅ”Ã”Â´ÄÂ´Å®.  ##  Invalid XML packet sequence ID.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Â·ÃÂ±Ã—Å”ÃÅ”Ã”Â´ÄÂ´Å®: %s.  ##  Invalid login: %s.
+Å¼Â¬Â¶Ã´Ä‚Å‚Â°Ë‡ Å”ÄšÄ…Äš Â¸Å„Â·ÄÅ¼Ë‡ ÃÂ¸Å”Ã§Ã‡ÅÂ´ÄÂ´Å®.  ##  Contact already exists in the collection.
+SSLÅ”ÅŸ Ä‚Å‚Â¸Â®ÂµÃ‰ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  SSL could not be negotiated.
+Â»Å‘Â·ÃÅ¼Ã® Â»Ã§Å¼Ã«Å”ÃšÂ¸Â¦ ÂµÃ®Â·ÄÃ‡ÄÂ´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®: %s.  ##  Failed to register new user: %s.
+Ä¾Ã‹Ä½Ã¶Ä¾Å™Â´Ã‚ Ä¾Ã‹Â¸Ë›Å”Ã”Â´ÄÂ´Å®.  ##  Unknown notification.
+Ä†Ã„Å”ÄÅ”Â» Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  File not found.
+ÃÂ¤ÄŒÂ®Ã‡Åƒ Â»Ã§ÃÅ™ Å”Å»Ã‡Ã¼Å”Â» ÃÃ¶ÃÂ¤Ã‡Å˜Ä¾ÃŸ Ã‡ÅÂ´ÄÂ´Å® (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Â»Ã§ÃÅ™Å”Â» Â°Ë‡ÃÂ®Å¼Å”Â´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  Failed to import photo.
+ÃÅ™Ã‡Å•Å”Â» Ã‚Ã·Â´ÃœÃ‡ÄÂ´Ã‚ Â´Å®Â¸Ä„ Ä…Ä‡Ä…Ã½Å”Ã”Â´ÄÂ´Å®.  ##  Another blocking method in progress.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ã‡ÃÂ·ÃÄ¹Ã¤Ã„Ã ÂµÄ„Å”ÄšÄ¹ÃÂ¸Â¦ Ä…Å¢Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Invalid protocol data received.
+ÅŸÂ¸Å‚Ä¾ Â°ÃÅ”Äš Ä¾Å™ËÅ”Â´ÄÂ´Å®. Ä†Ã„Å”Ä Ä¹Â©Â±Ã¢Â°Ë‡ 0Å”Ã”Â´ÄÂ´Å®.  ##  There's nothing to send. File size is 0.
+Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Contact not found.
+Ä†Ã„Å”Ä Å”Ã¼Ä½Å°Å¼Ë‡ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  File transfer failed.
+Ä†Ã„Å”Ä Â±Ã¢Â·ÄÅ”Â» Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Could not write to file.
+Ä…Å¢Å”ÅŸ Ä†Ã„Å”ÄÅ”Ã‡ Ä‚Ä½Ä¹Â©Ä½Â¶Å”Äš ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã”Â´ÄÂ´Å®.  ##  Checksum of received file is invalid.
+Å”Ã¼Ä½Å°Å”Äš ÃÃŸÂ´ÃœÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Transfer aborted.
+Å”Ã¼Ä½Å° ËÄ‚Â°ÅÅ”Äš Â¸Â¸Â·Ã¡ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Transfer has timed out.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Ã‡ÃÂ·ÃÄ¹Ã¤Ã„ÃÅ”Äš Ä½Â±Ä¹Ä‚ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Invalid protocol selected.
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Â»Ã³Ä¹Ã‚Å”Ã”Â´ÄÂ´Å®. Å”ÄšÄ…Äš Â±Â¸Ä½ÅŸ Å¼Ã¤Ä½Å‡Â°Ë‡ Ä…Å®Â»Å° Â»Ã³Ä¹Ã‚Å”Ã”Â´ÄÂ´Å®.  ##  Invalid state. Component already busy.
+Å”ÄšÂ¸Â§Å”Äš Å”Å»Å”ÄÃ‡ÄÃÃ¶ Ä¾Ä˜Ä¾Ä† Â°Ã­ÃÂ¤Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®. Â´Å®Â¸Ä„ Ä¾Ã·ÂµÄ„Å”ÄšÄ¹ÃÂ¸Ã­Å”Â» Â»Ã§Å¼Ã«Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Ä…Ä‡Ä…Ã½Å”Äš Ä‚Ã«Ä½Å‡ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Method was cancelled.
+Ä¾Ã·ÂµÄ„Å”ÄšÄ¹Ã Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„Å”Â» ËÄ‚Å”Å°Ã‡ÄÂ´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  Failed to start updater program.
+Â°Ã‹Â»Ã¶ÂµÄŒ Ä…Â®Ä½Â­Å”Ã‡ Ä½Â­Â¸Ã­Å”Äš ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã”Â´ÄÂ´Å®.  ##  Signature on retrieved document is invalid.
+Å‚Å»Ã‚Ä„Â°Ë‡ Ä½Å‚ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Ä¾Å‡ËÅ”Â´ÄÂ´Å®.  ##  Date not set.
+COM Ä½Â­Ä…Ã¶Â¸Â¦ ÂµÃ®Â·ÄÃ‡ÄÂ´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®.  ##  Failed to register COM server.
+Â´Å®Å”Ë Ä…Â®Â±Â¸Â°Ë‡ Ä½Â­Ä…Ã¶Â·ÃÅŸÃÄ¹Ã Ä…ÃÄŒÅ»ÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®; Ä†Ã¤Å”ÄšÃÃ¶Â¸Â¦ Ä‚ÅÅ”Â» Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å® (404 Å¼Å”Â·Å¯).  ##  Page not found (error 404) returned from the server.
+Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡Åƒ Ä†Ã„Å”Ä Ä¹Â©Â±Ã¢Â°Ë‡ ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã”Â´ÄÂ´Å®.  ##  Invalid file size after download.
+Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡Åƒ Ä†Ã„Å”ÄÅ”Ã‡ MD5 Ä‚Ä½Ä¹Â©Ä½Â¶Å”Äš ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã”Â´ÄÂ´Å®.  ##  Invalid MD5 checksum after download.
+Â°Ä‡Â°Ã­  ##  Warning
+Å¼Å”Ã‡ÃÂ¶Ã³Å”Ã  ##  Offline
+Å¼Ã‚Â¶Ã³Å”Ã  ##  Online
+Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ  ##  Away
+Ã‡ÅƒÂ°Ë‡Ã‡Å˜Å¼Ã¤  ##  Free for chat
+Ä…Ä‡Ã‡Å˜Ã‡ÄÃÃ¶Â¸Â¶  ##  Do not disturb
+Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Å¼Â¬Å”Äº  ##  Extended away
+ÅŸÂ¸Å”ÄšÃÃ¶ Ä¾Ä˜Å”Ë  ##  Invisible
+Ä½Â­Â¸Ã­ Å¼Ã¤Ä‚Â»  ##  Asking for subscription
+Ä½Â­Â¸Ã­ÂµÃ‡ÃÃ¶ Ä¾Ä˜Å”ÅŸ Å¼Â¬Â¶Ã´Ä‚Å‚  ##  Contact not subscribed
+Ä½Â­Ä…Ã¶Å¼Ë‡Ä½Â­ Å¼Â¬Â°Ã¡Å”Äš Ë›Ã·Ä¾Ã®ÃÃ¼  ##  Disconnected from server
+Ä½Â­Ä…Ã¶Å¼Ë‡ Å¼Â¬Â°Ã¡Ã‡ÄÂ´Ã‚ ÃÃŸ  ##  Connecting to server
+Â»Å‘Â·ÃÅ¼Ã® Â»Ã§Å¼Ã«Å”ÃšÂ¸Â¦ ÂµÃ®Â·ÄÃ‡ÄÂ´Ã‚ ÃÃŸ  ##  Registering new user
+ÅŸÂ¸Ä¾ÄŒ Å¼Â¬Â°Ã¡Å”Â» Ä‚Ä˜Â±Ã¢ÄŒÂ­Ã‡ÄÂ´Ã‚ ÃÃŸ  ##  Initializing secure connection
+Å”ÃÃÅ‘ ÂµÄ„Å”ÄšÄ¹ÃÂ¸Â¦ ÅŸÂ¸Å‚Â»Â´Ã‚ ÃÃŸ  ##  Sending authentication data
+Ä½Â­Ä…Ã¶Å¼Ë‡ Å¼Â¬Â°Ã¡ÂµÄ˜  ##  Connected to server
+Ä½Â­Ä…Ã¶Â·ÃÅŸÃÄ¹Ã ÂµÄ„Å”ÄšÄ¹ÃÂ¸Â¦ Ä…Å¢Â´Ã‚ ÃÃŸ  ##  Receiving data from server
+Ä½Â­Ä…Ã¶Å¼Ë‡ ÂµÄ„Å”ÄšÄ¹ÃÂ¸Â¦ ÅŸÂ¸Å‚Â»Â´Ã‚ ÃÃŸ  ##  Sending data to server
+Ä½Â­Ä…Ã¶Å”Ã‡ Â¸Ã­Â·Ã‰Å”Â» ËÃ‡Ã‡Å•Ã‡ÄÂ´Ã‚ ÃÃŸ  ##  Executing command on server
+Ä½Â­Ä…Ã¶Â·ÃÅŸÃÄ¹Ã Å¼Â¬Â°Ã¡Å”Â» Ë›Ã·Â´Ã‚ ÃÃŸ  ##  Disconnecting from the server
+ËÃ‚Å”ÃÅ”Äš Å¼Ã¤Ä‚Â»ÂµÄ˜  ##  Requested authorization
+Wippien Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Ã®Â´Ä‘Ä¹ÃÂ¸Â¦ Â±Â¸Ä½ÅŸÃ‡ÄÂ´Ã‚ ÃÃŸ...  ##  Configuring Wippien network adapter...
+Ä¾Ã®Â´Ä‘Ä¹Ã\"%s\"Å¼Ã ÃÃ–Ä½Å‡%sÂ°Ë‡ Wippien%sÂ°Ãº Ä‚Ä‡ÂµÄ…Ã‡ÅÂ´ÄÂ´Å®. WippienÅ”Äš Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä†ÄÄ¹Â¶Å”Â» ÅŸÂ¸Å‚Â»Â°Ä¹Å‚Å Ä…Å¢ÃÃ¶ Â¸Å™Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®. Ä¾Ã®Â´Ä‘Ä¹ÃÂ¸Â¦ ÃÂ¦Â°Ä¹Ã‡ÄÂ°Ä¹Å‚Å ÅŸÅ„ÄŒÂ°Ä½ÅŸÄŒÂ­ËÄ‚Ä¹Â°ËÄ˜ËÄ‚Å¼Å”.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Ã®Â´Ä‘Ä¹ÃÂ°Ë‡ ÅŸÅ„ÄŒÂ°Ä½ÅŸÄŒÂ­ÂµÃ‡Ä¾Ã® Å”Ã–ËÅ”Â´ÄÂ´Å®!  ##  Network adapter disabled!
+Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Ã®Â´Ä‘Ä¹ÃÂ°Ë‡ Å¼Â­Â·ÄŒËÅ”Â´ÄÂ´Å®.  ##  Network adapter opened
+Wippien Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Ã®Â´Ä‘Ä¹ÃÂ¸Â¦ Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®. Å”ÃËÅŸÄ¹ÄÄ†Â® Â¸Å¢ËÄ‚ÃÃ¶Â·ÃÂ¸Â¸ ÃÅ™Ã‡Å•Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Wippien network adapter not available. Proceed with IM only?
+Å¼ÃœÅŸÃ ÂµÂµÂ±Â¸(Â°Ã¼Â¸Â®Å”Ãš Â±Ã‡Ã‡ÅƒÅ”Äš Ã‡Ä˜Å¼Ã¤)Â¸Â¦ Â»Ã§Å¼Ã«Ã‡ÄÅ¼Â© Wippien Ä¾Ã®Â´Ä‘Ä¹ÃÅ”Ã‡ IP ÃÃ–Ä½Å‡Â¸Â¦ Ä½Å‚ÃÂ¤Ã‡Å˜Ä¾ÃŸÃ‡ÅÂ´ÄÂ´Å®. Ä‚Ä‡ÅŸÄÃ‡Åƒ Â±Ã‡Ã‡ÅƒÅ”Â» Ä¾ÅˆÂ±Ã¢ Å”Â§Ã‡Å˜Ä½Â­Â´Ã‚ Å”Å±Ä¾Ã®ÂµÂµ Ã‡Åƒ Ä…Å™ Â°Ã¼Â¸Â®Å”ÃšÂ·Ã WippienÅ”Â» ËÃ‡Ã‡Å•Ã‡Å˜Ä¾ÃŸ Ã‡ÅÂ´ÄÂ´Å®.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Â°Ã¼Â¸Â®Å”Ãš Â±Ã‡Ã‡ÅƒÅ”Äš Ã‡Ä˜Å¼Ã¤Ã‡ÅÂ´ÄÂ´Å®!  ##  Admin privilege required!
+Å¼Â¬Â°Ã¡Å”Äš Ë›Ã·Ä¾Ã®ÃÃ¼  ##  Disconnected
+Å¼Â¬Â°Ã¡ÂµÄ˜  ##  Connected
+Â¸Å¢ËÄ‚ÃÃ¶Â¸Â¦ Å”Ã¼Â´Å¢Ã‡Å‡ Ä½Ã¶ Ä¾Å™ËÅ”Â´ÄÂ´Å®.  ##  Could not deliver message.
+Ä¾ÄÄŒÅÂ¸Â¦ Ä…Å®Ë›Å®Â´Ã‚ÂµÄ„ ËÃ‡Ä†ÄÃ‡Ã”  ##  Failed to change password
+ÅŸÅ„ÄŒÂ°ÂµÅ¼ Â±Ã”Ã„Ë˜Å”Â¸Â·Ã Å”ÃÃ‡ÄÅ¼Â© Å¼Â¬Â°Ã¡Å”Äš Ë›Ã·Ä¾Ã®ÃÃ¼  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\nÂµÃ©Ä¾Ã®Å¼Ã‚ Ã‡ÅÂ°Ä: %s\r\nÅ‚ÅÂ°Å Ã‡ÅÂ°Ä: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<< VPNÅ”Äš Ä¾Ä†ÃÃ· Â±Â¸Ä‚Å•ÂµÃ‡ÃÃ¶ Ä¾Ä˜Å”Ë  >>  ##  << VPN not established yet >>
+%d Ä‚Ä˜ Å”ÄšÅ‚Â»Å¼Ë‡ Â´Å®ËÄ‚ Å¼Â¬Â°Ã¡Ã‡ÅÂ´ÄÂ´Å®.  ##  Reconnect in %d seconds.
+Ä‚Ä˜  ##  seconds
+Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Å™Å”Ë  ##  No network
+Wippien ÃÄ¾Â·Ã¡  ##  Exit Wippien
+ÃÄ¾Â·Ã¡(&x)  ##  E&xit
+Ä½Å‚ÃÂ¤ Å¼Â­Â±Ã¢  ##  Open settings
+Ä½Å‚ÃÂ¤(&s)  ##  &Settings
+Wippien ÃÂ¤ÅŸÂ¸  ##  Show AboutBox
 Wippien?(&a)  ##  &About
-»óÅÂ ¼³Á¤ (ÀÚ¸® ºñ¿ò, º¸ÀÌÁö ¾ÊÀ½...)  ##  Set your status (Away,Invisible...)
-¿¬¶ôÃ³ ¹× ¿ÜºÎ °èÁ¤ Ãß°¡  ##  Add contacts and alien accounts
-¼Ò¸® ²ô±â  ##  Mute sound
-Ã¤ÆÃ¹æ ¿­±â  ##  Open chat room
-Ä£±¸ Ãß°¡ ½ÂÀÎ  ##  Authorize your friends
-Á¤Áö  ##  Idle
-Á¤¸»·Î WippienÀ» ³ª°¡°Ú½À´Ï±î?  ##  Really exit Wippien?
-Á¤¸»ÀÔ´Ï±î?  ##  Are you sure?
-¾ÏÈ£°¡ ¹Ù²î¾ú½À´Ï´Ù.  ##  Your password is now changed.
-¾ÏÈ£ ¹Ù²ñ  ##  Password changed
-°èÁ¤ ¾ÏÈ£ ¹Ù²Ù±â  ##  Change account password
-»õ·Î¿î ¾ÏÈ£ ÀÔ·Â  ##  Please enter new password
-ÀÎÀû»çÇ×  ##  Identity
-ID Ä«µå  ##  ID Card
-ÀÚÅÃ ÁÖ¼Ò  ##  Home Address
-Á÷Àå ÁÖ¼Ò  ##  Work Address
-Á¤¸»·Î ±â·ÏÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?  ##  Are you sure you want to delete the history?
-±â·ÏÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?  ##  Delete history?
-º¸³»±â  ##  Send
-ÆÄÀÏ º¸³»±â  ##  Send file
-¼¼ºÎ Á¤º¸  ##  Details
-¿¬¶ôÃ³ Á¤º¸  ##  Contact information
-Áö¿ì±â  ##  Clear
-±â·Ï Áö¿ì±â  ##  Clear history
-À½¼Ò°Å  ##  Mute
-±½°Ô  ##  Bold
-±â¿ïÀÓ²Ã  ##  Italic
-¹ØÁÙ  ##  Underline
-ÇÏÀÌÆÛ¸µÅ© ³Ö±â  ##  Insert hyperlink
-ÆùÆ® Å©±â ÀÛ°Ô  ##  Decrease font size
-ÆùÆ® Å©±â Àç¼³Á¤  ##  Reset font size
-ÆùÆ® Å©±â Å©°Ô  ##  Increase font size
-Àü°æ»ö ¼³Á¤  ##  Set Foreground color
-¹è°æ»ö ¼³Á¤  ##  Set Background color
-ÀÌ¸ğÆ¼ÄÜ  ##  Emoticons
-»õ·Î¿î ÀÌ¸ğÆ¼ÄÜÀ» ´Ù¿î·ÎµåÇÏ°í ¼³Ä¡ÇÕ´Ï´Ù. °è¼ÓÇÏ½Ã°Ú½À´Ï±î?  ##  New emoticons will be downloaded and installed. Proceed?
-»õ·Î¿î ÀÌ¸ğÆ¼ÄÜ  ##  New emoticons
-ÀÌ¸ğÆ¼ÄÜ ¹öÆ°À» Å¬¸¯ÇÏ¿© »õ·Î ¼³Ä¡µÈ ÀÌ¸ğÆ¼ÄÜÀ» º¼ ¼ö ÀÖ½À´Ï´Ù.  ##  You can now click again on emoticon button to see new installed emoticons.
-¿Ï·á!  ##  Done!
-¿¬¶ôÃ³  ##  Contact
-¿¬°á Áß  ##  Connecting
-¿äÃ» Áß  ##  Requesting
-´Ù¿î·Îµå Áß  ##  Downloading
-±¸¼º ÆÄÀÏ  ##  Configuration file
-ÀÏ¹İ  ##  General	
-ºñÈ°µ¿À¸·Î ÀÎÇÑ ÀÚ¸® ºñ¿ò  ##  Away due to inactivity.
-¸Å¿ì ±ä ½Ã°£µ¿¾È ÀÚ¸® ºñ¿ò  ##  Away for a loooong time.
-Çã¶ô  ##  allow
-°ÅÀı  ##  deny
-ÁöÁ¤µÇÁö ¾ÊÀ½  ##  not specified
-³¡(&f)  ##  &Finish
-´ÙÀ½(&n) >  ##  &Next >
-ÀÎÀû»çÇ×  ##  Identity
-·Î±×¿Â Á¤º¸¸¦ ¼±ÅÃÇØÁÖ½Ê½Ã¿À.  ##  Please choose your logon information.
-Ä£±¸ ¸ñ·Ï¿¡ º¸¿©Áı´Ï´Ù.  ##  This is shown on your friend's list.
-JID´Â ¼­¹ö ÀÌ¸§À» Æ÷ÇÔÇØ¾ßÇÕ´Ï´Ù. ¿¹) user@server.com  ##  JID should contain server name, formatted like user@server.com
-ºñÁ¤»óÀûÀÎ ·Î±×¿Â ¼¼ºÎ Á¤º¸  ##  Invalid logon details
-JID¸¦ ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù.  ##  You must enter your JID.
-¾ÏÈ£¸¦ ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù.  ##  \You must enter your password.
-Jabber ¿À·ù  ##  Jabber error
-¾ÆÀÌÄÜ  ##  Icon
-¾ÆÀÌÄÜÀ» ¼±ÅÃÇØÁÖ½Ê½Ã¿À.  ##  Please choose your icon.
-ÀÏ¹İÀûÀ¸·Î ¿¬¶ôÃ³¿¡ º¸¿©Áı´Ï´Ù.  ##  This is usually visible to your contacts.
-³×Æ®¿öÅ©  ##  Network
-IP ÁÖ¼Ò¿Í ³İ¸¶½ºÆ®¸¦ ¼±ÅÃÇØÁÖ½Ê½Ã¿À.  ##  Please choose your IP address and netmask.
-wippien¿¡ ÀÇÇØ »ç¿ëµÇ´Â ³×Æ®¿öÅ©ÀÇ ¹üÀ§¸¦ Á¤ÀÇÇÕ´Ï´Ù.  ##  This defines network range to be used by wippien.
-³×Æ®¿öÅ©  ##  Network
-ÁßÀçÀÚ  ##  Mediator
-ÁßÀçÀÚ¸¦ ¼±ÅÃÇØÁÖ½Ê½Ã¿À.  ##  Please choose who will be your mediator.
-P2P ¿¬°áÀ» ÁßÀçÇÒ »ç¶÷À» Á¤ÀÇÇÕ´Ï´Ù.  ##  This defines people that mediate P2P connections.
-¸¶Áö¸· Á¡°Ë  ##  Last check
-Æ÷Æ®  ##  Port
-È£½ºÆ®¸í  ##  Hostname
-¿µ±¸  ##  Permanent
-ÀÓ½Ã  ##  Temporary
-¿©±â¿¡ °èÁ¤À» ÀÔ·ÂÇÏ½Ê½Ã¿À.  ##  Enter all your accounts here.
-Jabber ¼­¹ö¸¦ Áö¿øÇÏ´Â ¾î¶² °èÁ¤ÀÌµç Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù(´ëÃ¼·Î ICQ, MSN, µî..).  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Á¤¸»·Î °èÁ¤ '%s' À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?  ##  Are you sure you want to delete account '%s'?
-µî·Ï±­ °èÁ¤À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?  ##  Delete registered account?
-°èÁ¤  ##  Accounts
-°ÔÀÌÆ®¿şÀÌ¸¸ º¸±â  ##  Show only gateways
-¸ğµç ¼­ºñ½º º¸±â  ##  Show all services
-¿¬¶ôÃ³  ##  Contacts
-Ãß°¡/Á¦°Å  ##  Add/Remove
-»õ·Î¿î ¿¬¶ôÃ³ °Ë»ö  ##  Find new contacts.
-»õ·Î¿î Jabber, ICQ, MSN... ¿¬¶ôÃ³¸¦ Ãß°¡  ##  You can add new Jabber, ICQ, MSN... contacts
-¸ğµç ÆÄÀÏ (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-¸ğµç ÀÌ¹ÌÁö ÆÄÀÏ (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows ºñÆ®¸Ê (*.bmp)\0*.bmp\0Jpeg ÆÄÀÏ (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF ÆÄÀÏ (*.gif)\0*.gif\0PNG ÆÄÀÏ (*.png)\0*.png\0All ÆÄÀÏ (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-½Ã½ºÅÛ  ##  System
-·Î±×ÀÎ  ##  Logging
-·Î±× ÆÄÀÏ°ú µğ¹ö±× Á¤º¸¸¦ ¼³Á¤  ##  Setup log files and debug info.
-¾Æ·¡ °æ·Î¸¦ ÁöÁ¤  ##  Specify paths below
-¸Ş½ÃÁö  ##  Messages
-Ã¤ÆÃÃ¢ ¼³Á¤.  ##  Chat window settings.
-¸ğµç ¿­·ÁÁø Ã¤ÆÃÃ¢¿¡ ´ëÇÏ¿©  ##  For all open chat windows.
-ÀÏ¹İ Á¤º¸  ##  General info
-ÀÏ¹İ Á¤º¸¿¡ ´ëÇÏ¿©  ##  General information about
-°³ÀÎ Á¤º¸  ##  Personal information
-ÀÚÅÃ ¼¼ºÎ Á¤º¸¿¡ ´ëÇÏ¿©  ##  Home details for
-Á÷Àå Á¤º¸  ##  Business information
-Á÷Àå ¼¼ºÎ Á¤º¸¿¡ ´ëÇÏ¿©  ##  Work details for
-±âÅ¸  ##  all other
-ÁßÀçÀÚ¿¡ ÀÇÇØ ÁÖ¾îÁø ÁÖ¼Ò  ##  address given by mediator
-°Ñ¸ğ¾ç  ##  Appearance
-½ºÅ²  ##  Skins
-¾Æ·¡ ¸ñ·Ï¿¡¼­ ½ºÅ²À» ¼±ÅÃÇÏ½Ê½Ã¿À.  ##  Choose skin from below list.
-WippienÀÌ ¹«¾ùÀ» ÀÔÀ» °ÍÀÔ´Ï±î?  ##  What will Wippien wear?
-.. ¾øÀ½ ..  ##  .. none ..
-ÀÚµ¿À¸·Î ÀÚ¸® ºñ¿ò  ##  Auto Away
-ÀÚµ¿À¸·Î ÀÚ¸® ºñ¿ò ¼³Á¤  ##  Auto away settings.
-½Ã½ºÅÛÀÌ Á¤ÁöÇÏ¿´À» ¶§ WippienÀÇ µ¿ÀÛÀ» °áÁ¤ÇÕ´Ï´Ù.  ##  Determines how will Wippien behave when system is inactive.
-½Ã½ºÅÛ  ##  System
-±âº» ½Ã½ºÅÛ ¸Ş½ÃÁö  ##  Basic system messages.
-Wippien ÇÁ·Î±×·¥ÀÇ µ¿ÀÛÀ» Á¤ÀÇÇÕ´Ï´Ù.  ##  Define Wippien application's behavior.
-À½¼º Ã¤ÆÃ  ##  Voice Chat
-À½¼º Ã¤ÆÃ ÀåÄ¡¸¦ ¼³Á¤ÇØÁÖ½Ê½Ã¿À.  ##  Please setup your voice chat devices.
-¾Æ·¡ ¸ñ·Ï¿¡¼­ ¼±ÅÃÇÏ½Ê½Ã¿À.  ##  Choose from list below.
-<½Ã½ºÅÛ ±âº»°ª>  ##  <system default>
-¿¬¶ôÃ³ ±âº» ¼³Á¤  ##  Contacts basic settings.
-¾÷µ¥ÀÌÆ®  ##  Updates
-¾÷µ¥ÀÌÆ® Á¤ÀÇ  ##  Update definitions.
-Wippien ÀÚÃ¼ ¾÷µ¥ÀÌÆ®¿¡ ´ëÇÏ¿© Á¤ÀÇÇÕ´Ï´Ù.  ##  Define when and how will Wippien update itself.
+Â»Ã³Ä¹Ã‚ Ä½Å‚ÃÂ¤ (Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ, ÅŸÂ¸Å”ÄšÃÃ¶ Ä¾Ä˜Å”Ë...)  ##  Set your status (Away,Invisible...)
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä…Ã— Å¼ÃœÅŸÃ Â°ÄÃÂ¤ Ä‚ÃŸÂ°Ë‡  ##  Add contacts and alien accounts
+Ä½Å‡Â¸Â® Ë›Ã´Â±Ã¢  ##  Mute sound
+Ä‚Â¤Ä†Ä‚Ä…Ä‡ Å¼Â­Â±Ã¢  ##  Open chat room
+Ã„ÅÂ±Â¸ Ä‚ÃŸÂ°Ë‡ ËÃ‚Å”Ã  ##  Authorize your friends
+ÃÂ¤ÃÃ¶  ##  Idle
+ÃÂ¤Â¸Â»Â·Ã WippienÅ”Â» Å‚ÅÂ°Ë‡Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Really exit Wippien?
+ÃÂ¤Â¸Â»Å”Ã”Â´ÄÂ±Ã®?  ##  Are you sure?
+Ä¾ÄÄŒÅÂ°Ë‡ Ä…Å®Ë›Ã®Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  Your password is now changed.
+Ä¾ÄÄŒÅ Ä…Å®Ë›Å„  ##  Password changed
+Â°ÄÃÂ¤ Ä¾ÄÄŒÅ Ä…Å®Ë›Å®Â±Ã¢  ##  Change account password
+Â»Å‘Â·ÃÅ¼Ã® Ä¾ÄÄŒÅ Å”Ã”Â·Ã‚  ##  Please enter new password
+Å”ÃÅ”Å±Â»Ã§Ã‡Ã—  ##  Identity
+ID Ã„Â«ÂµÄº  ##  ID Card
+Å”ÃšÄ¹Ä‚ ÃÃ–Ä½Å‡  ##  Home Address
+ÃÃ·Å”Äº ÃÃ–Ä½Å‡  ##  Work Address
+ÃÂ¤Â¸Â»Â·Ã Â±Ã¢Â·ÄÅ”Â» Â»ÄÃÂ¦Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Are you sure you want to delete the history?
+Â±Ã¢Â·ÄÅ”Â» Â»ÄÃÂ¦Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Delete history?
+ÅŸÂ¸Å‚Â»Â±Ã¢  ##  Send
+Ä†Ã„Å”Ä ÅŸÂ¸Å‚Â»Â±Ã¢  ##  Send file
+Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸  ##  Details
+Å¼Â¬Â¶Ã´Ä‚Å‚ ÃÂ¤ÅŸÂ¸  ##  Contact information
+ÃÃ¶Å¼Ä›Â±Ã¢  ##  Clear
+Â±Ã¢Â·Ä ÃÃ¶Å¼Ä›Â±Ã¢  ##  Clear history
+Å”ËÄ½Å‡Â°Ä¹  ##  Mute
+Â±ËÂ°Ã”  ##  Bold
+Â±Ã¢Å¼ÄÅ”Ã“Ë›Ä‚  ##  Italic
+Ä…Å˜ÃÅ®  ##  Underline
+Ã‡ÄÅ”ÄšÄ†Å°Â¸ÂµÄ¹Â© Å‚Ã–Â±Ã¢  ##  Insert hyperlink
+Ä†Å¯Ä†Â® Ä¹Â©Â±Ã¢ Å”Å°Â°Ã”  ##  Decrease font size
+Ä†Å¯Ä†Â® Ä¹Â©Â±Ã¢ Å”Ã§Ä½Å‚ÃÂ¤  ##  Reset font size
+Ä†Å¯Ä†Â® Ä¹Â©Â±Ã¢ Ä¹Â©Â°Ã”  ##  Increase font size
+Å”Ã¼Â°Ä‡Â»Ã¶ Ä½Å‚ÃÂ¤  ##  Set Foreground color
+Ä…ÄÂ°Ä‡Â»Ã¶ Ä½Å‚ÃÂ¤  ##  Set Background color
+Å”ÄšÂ¸Ä‘Ä†Ä½Ã„Ãœ  ##  Emoticons
+Â»Å‘Â·ÃÅ¼Ã® Å”ÄšÂ¸Ä‘Ä†Ä½Ã„ÃœÅ”Â» Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡ÄÂ°Ã­ Ä½Å‚Ã„Ë‡Ã‡ÅÂ´ÄÂ´Å®. Â°ÄÄ½Ã“Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  New emoticons will be downloaded and installed. Proceed?
+Â»Å‘Â·ÃÅ¼Ã® Å”ÄšÂ¸Ä‘Ä†Ä½Ã„Ãœ  ##  New emoticons
+Å”ÄšÂ¸Ä‘Ä†Ä½Ã„Ãœ Ä…Ã¶Ä†Â°Å”Â» Ä¹Â¬Â¸Å»Ã‡ÄÅ¼Â© Â»Å‘Â·Ã Ä½Å‚Ã„Ë‡ÂµÄŒ Å”ÄšÂ¸Ä‘Ä†Ä½Ã„ÃœÅ”Â» ÅŸÄ½ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  You can now click again on emoticon button to see new installed emoticons.
+Å¼ÄÂ·Ã¡!  ##  Done!
+Å¼Â¬Â¶Ã´Ä‚Å‚  ##  Contact
+Å¼Â¬Â°Ã¡ ÃÃŸ  ##  Connecting
+Å¼Ã¤Ä‚Â» ÃÃŸ  ##  Requesting
+Â´Å®Å¼Ã®Â·ÃÂµÄº ÃÃŸ  ##  Downloading
+Â±Â¸Ä½ÅŸ Ä†Ã„Å”Ä  ##  Configuration file
+Å”ÄÄ…Ã  ##  General	
+ÅŸÅ„ÄŒÂ°ÂµÅ¼Å”Â¸Â·Ã Å”ÃÃ‡Åƒ Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ  ##  Away due to inactivity.
+Â¸Ä¹Å¼Ä› Â±Ã¤ ËÄ‚Â°ÅÂµÅ¼Ä¾ÄŒ Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ  ##  Away for a loooong time.
+Ã‡ÄƒÂ¶Ã´  ##  allow
+Â°Ä¹Å”Ã½  ##  deny
+ÃÃ¶ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Å”Ë  ##  not specified
+Å‚Ë‡(&f)  ##  &Finish
+Â´Å®Å”Ë(&n) >  ##  &Next >
+Å”ÃÅ”Å±Â»Ã§Ã‡Ã—  ##  Identity
+Â·ÃÂ±Ã—Å¼Ã‚ ÃÂ¤ÅŸÂ¸Â¸Â¦ Ä½Â±Ä¹Ä‚Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please choose your logon information.
+Ã„ÅÂ±Â¸ Â¸Å„Â·ÄÅ¼Ë‡ ÅŸÂ¸Å¼Â©ÃÃ½Â´ÄÂ´Å®.  ##  This is shown on your friend's list.
+JIDÂ´Ã‚ Ä½Â­Ä…Ã¶ Å”ÄšÂ¸Â§Å”Â» Ä†Ã·Ã‡Ã”Ã‡Å˜Ä¾ÃŸÃ‡ÅÂ´ÄÂ´Å®. Å¼Ä…) user@server.com  ##  JID should contain server name, formatted like user@server.com
+ÅŸÅ„ÃÂ¤Â»Ã³Å”Å±Å”Ã Â·ÃÂ±Ã—Å¼Ã‚ Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸  ##  Invalid logon details
+JIDÂ¸Â¦ Å”Ã”Â·Ã‚Ã‡Å˜Ä¾ÃŸ Ã‡ÅÂ´ÄÂ´Å®.  ##  You must enter your JID.
+Ä¾ÄÄŒÅÂ¸Â¦ Å”Ã”Â·Ã‚Ã‡Å˜Ä¾ÃŸ Ã‡ÅÂ´ÄÂ´Å®.  ##  \You must enter your password.
+Jabber Å¼Å”Â·Å¯  ##  Jabber error
+Ä¾Ä†Å”ÄšÃ„Ãœ  ##  Icon
+Ä¾Ä†Å”ÄšÃ„ÃœÅ”Â» Ä½Â±Ä¹Ä‚Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please choose your icon.
+Å”ÄÄ…ÃÅ”Å±Å”Â¸Â·Ã Å¼Â¬Â¶Ã´Ä‚Å‚Å¼Ë‡ ÅŸÂ¸Å¼Â©ÃÃ½Â´ÄÂ´Å®.  ##  This is usually visible to your contacts.
+Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©  ##  Network
+IP ÃÃ–Ä½Å‡Å¼Ã Å‚ÃÂ¸Â¶ËÅŸÄ†Â®Â¸Â¦ Ä½Â±Ä¹Ä‚Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please choose your IP address and netmask.
+wippienÅ¼Ë‡ Å”Ã‡Ã‡Å˜ Â»Ã§Å¼Ã«ÂµÃ‡Â´Ã‚ Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©Å”Ã‡ Ä…Ã¼Å”Â§Â¸Â¦ ÃÂ¤Å”Ã‡Ã‡ÅÂ´ÄÂ´Å®.  ##  This defines network range to be used by wippien.
+Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©  ##  Network
+ÃÃŸÅ”Ã§Å”Ãš  ##  Mediator
+ÃÃŸÅ”Ã§Å”ÃšÂ¸Â¦ Ä½Â±Ä¹Ä‚Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please choose who will be your mediator.
+P2P Å¼Â¬Â°Ã¡Å”Â» ÃÃŸÅ”Ã§Ã‡Å‡ Â»Ã§Â¶Ã·Å”Â» ÃÂ¤Å”Ã‡Ã‡ÅÂ´ÄÂ´Å®.  ##  This defines people that mediate P2P connections.
+Â¸Â¶ÃÃ¶Â¸Â· ÃË‡Â°Ã‹  ##  Last check
+Ä†Ã·Ä†Â®  ##  Port
+ÄŒÅËÅŸÄ†Â®Â¸Ã­  ##  Hostname
+Å¼ÂµÂ±Â¸  ##  Permanent
+Å”Ã“ËÄ‚  ##  Temporary
+Å¼Â©Â±Ã¢Å¼Ë‡ Â°ÄÃÂ¤Å”Â» Å”Ã”Â·Ã‚Ã‡ÄËÄ˜ËÄ‚Å¼Å”.  ##  Enter all your accounts here.
+Jabber Ä½Â­Ä…Ã¶Â¸Â¦ ÃÃ¶Å¼Å™Ã‡ÄÂ´Ã‚ Ä¾Ã®Â¶Ë› Â°ÄÃÂ¤Å”ÄšÂµÃ§ Ä‚ÃŸÂ°Ë‡Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®(Â´Ã«Ä‚Ä½Â·Ã ICQ, MSN, ÂµÃ®..).  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+ÃÂ¤Â¸Â»Â·Ã Â°ÄÃÂ¤ '%s' Å”Â» Â»ÄÃÂ¦Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Are you sure you want to delete account '%s'?
+ÂµÃ®Â·ÄÂ±Â­ Â°ÄÃÂ¤Å”Â» Â»ÄÃÂ¦Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Delete registered account?
+Â°ÄÃÂ¤  ##  Accounts
+Â°Ã”Å”ÄšÄ†Â®Å¼Å£Å”ÄšÂ¸Â¸ ÅŸÂ¸Â±Ã¢  ##  Show only gateways
+Â¸Ä‘ÂµÃ§ Ä½Â­ÅŸÅ„ËÅŸ ÅŸÂ¸Â±Ã¢  ##  Show all services
+Å¼Â¬Â¶Ã´Ä‚Å‚  ##  Contacts
+Ä‚ÃŸÂ°Ë‡/ÃÂ¦Â°Ä¹  ##  Add/Remove
+Â»Å‘Â·ÃÅ¼Ã® Å¼Â¬Â¶Ã´Ä‚Å‚ Â°Ã‹Â»Ã¶  ##  Find new contacts.
+Â»Å‘Â·ÃÅ¼Ã® Jabber, ICQ, MSN... Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ Ä‚ÃŸÂ°Ë‡  ##  You can add new Jabber, ICQ, MSN... contacts
+Â¸Ä‘ÂµÃ§ Ä†Ã„Å”Ä (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Â¸Ä‘ÂµÃ§ Å”ÄšÄ…ÄšÃÃ¶ Ä†Ã„Å”Ä (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows ÅŸÅ„Ä†Â®Â¸Ä˜ (*.bmp)\0*.bmp\0Jpeg Ä†Ã„Å”Ä (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF Ä†Ã„Å”Ä (*.gif)\0*.gif\0PNG Ä†Ã„Å”Ä (*.png)\0*.png\0All Ä†Ã„Å”Ä (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+ËÄ‚ËÅŸÄ¹Å°  ##  System
+Â·ÃÂ±Ã—Å”Ã  ##  Logging
+Â·ÃÂ±Ã— Ä†Ã„Å”ÄÂ°Ãº ÂµÄ‘Ä…Ã¶Â±Ã— ÃÂ¤ÅŸÂ¸Â¸Â¦ Ä½Å‚ÃÂ¤  ##  Setup log files and debug info.
+Ä¾Ä†Â·Ë‡ Â°Ä‡Â·ÃÂ¸Â¦ ÃÃ¶ÃÂ¤  ##  Specify paths below
+Â¸Å¢ËÄ‚ÃÃ¶  ##  Messages
+Ä‚Â¤Ä†Ä‚Ä‚Ë˜ Ä½Å‚ÃÂ¤.  ##  Chat window settings.
+Â¸Ä‘ÂµÃ§ Å¼Â­Â·ÃÃÅ™ Ä‚Â¤Ä†Ä‚Ä‚Ë˜Å¼Ë‡ Â´Ã«Ã‡ÄÅ¼Â©  ##  For all open chat windows.
+Å”ÄÄ…Ã ÃÂ¤ÅŸÂ¸  ##  General info
+Å”ÄÄ…Ã ÃÂ¤ÅŸÂ¸Å¼Ë‡ Â´Ã«Ã‡ÄÅ¼Â©  ##  General information about
+Â°Å‚Å”Ã ÃÂ¤ÅŸÂ¸  ##  Personal information
+Å”ÃšÄ¹Ä‚ Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸Å¼Ë‡ Â´Ã«Ã‡ÄÅ¼Â©  ##  Home details for
+ÃÃ·Å”Äº ÃÂ¤ÅŸÂ¸  ##  Business information
+ÃÃ·Å”Äº Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸Å¼Ë‡ Â´Ã«Ã‡ÄÅ¼Â©  ##  Work details for
+Â±Ã¢Ä¹Â¸  ##  all other
+ÃÃŸÅ”Ã§Å”ÃšÅ¼Ë‡ Å”Ã‡Ã‡Å˜ ÃÃ–Ä¾Ã®ÃÅ™ ÃÃ–Ä½Å‡  ##  address given by mediator
+Â°ÅƒÂ¸Ä‘Ä¾Ã§  ##  Appearance
+ËÅŸÄ¹Ë›  ##  Skins
+Ä¾Ä†Â·Ë‡ Â¸Å„Â·ÄÅ¼Ë‡Ä½Â­ ËÅŸÄ¹Ë›Å”Â» Ä½Â±Ä¹Ä‚Ã‡ÄËÄ˜ËÄ‚Å¼Å”.  ##  Choose skin from below list.
+WippienÅ”Äš Ä…Â«Ä¾Å¯Å”Â» Å”Ã”Å”Â» Â°ÃÅ”Ã”Â´ÄÂ±Ã®?  ##  What will Wippien wear?
+.. Ä¾Å™Å”Ë ..  ##  .. none ..
+Å”ÃšÂµÅ¼Å”Â¸Â·Ã Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ  ##  Auto Away
+Å”ÃšÂµÅ¼Å”Â¸Â·Ã Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Ä½Å‚ÃÂ¤  ##  Auto away settings.
+ËÄ‚ËÅŸÄ¹Å°Å”Äš ÃÂ¤ÃÃ¶Ã‡ÄÅ¼Â´Å”Â» Â¶Â§ WippienÅ”Ã‡ ÂµÅ¼Å”Å°Å”Â» Â°Ã¡ÃÂ¤Ã‡ÅÂ´ÄÂ´Å®.  ##  Determines how will Wippien behave when system is inactive.
+ËÄ‚ËÅŸÄ¹Å°  ##  System
+Â±Ã¢ÅŸÂ» ËÄ‚ËÅŸÄ¹Å° Â¸Å¢ËÄ‚ÃÃ¶  ##  Basic system messages.
+Wippien Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„Å”Ã‡ ÂµÅ¼Å”Å°Å”Â» ÃÂ¤Å”Ã‡Ã‡ÅÂ´ÄÂ´Å®.  ##  Define Wippien application's behavior.
+Å”ËÄ½ÅŸ Ä‚Â¤Ä†Ä‚  ##  Voice Chat
+Å”ËÄ½ÅŸ Ä‚Â¤Ä†Ä‚ Å”ÄºÃ„Ë‡Â¸Â¦ Ä½Å‚ÃÂ¤Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please setup your voice chat devices.
+Ä¾Ä†Â·Ë‡ Â¸Å„Â·ÄÅ¼Ë‡Ä½Â­ Ä½Â±Ä¹Ä‚Ã‡ÄËÄ˜ËÄ‚Å¼Å”.  ##  Choose from list below.
+<ËÄ‚ËÅŸÄ¹Å° Â±Ã¢ÅŸÂ»Â°Å>  ##  <system default>
+Å¼Â¬Â¶Ã´Ä‚Å‚ Â±Ã¢ÅŸÂ» Ä½Å‚ÃÂ¤  ##  Contacts basic settings.
+Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â®  ##  Updates
+Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â® ÃÂ¤Å”Ã‡  ##  Update definitions.
+Wippien Å”ÃšÄ‚Ä½ Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â®Å¼Ë‡ Â´Ã«Ã‡ÄÅ¼Â© ÃÂ¤Å”Ã‡Ã‡ÅÂ´ÄÂ´Å®.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-ÃÖ´ë Àü¼Û ´ÜÀ§¸¦ °áÁ¤ÇØÁÖ½Ê½Ã¿À.  ##  Please determine maximum transfer unit.
-¾î¶² µ¿·á°¡ Å« ÆĞÅ¶¿¡ ÀÀ´äÇÏÁö ¾ÊÀ» °æ¿ì...  ##  If some peer doesn't respond to large packets...
-¼Ò¸®  ##  Sounds
-¿©·¯ ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ» ¶§ Àç»ıµÉ ¼Ò¸®¸¦ ¼³Á¤ÇÕ´Ï´Ù.  ##  Setup sounds to be played on various events.
-³»ÀåµÈ ¼Ò¸®³ª, WAV ÆÄÀÏÀ» Ã£¾Æ ¼±ÅÃÇÏ½Ê½Ã¿À.  ##  Choose internal ones, or browse for WAV files.
-¿¬¶ôÃ³ ¿Â¶óÀÎ  ##  Contact online
-¿¬¶ôÃ³ ¿ÀÇÁ¶óÀÎ  ##  Contact offline
-¸Ş½ÃÁö µé¾î¿È  ##  Message in
-¸Ş½ÃÁö ³ª°¨  ##  Message out
-¿À·ù  ##  Error
-WAV ÆÄÀÏ (*.wav)\0*.wav\0¸ğµç ÆÄÀÏ (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-¼û±è  ##  Hide
-¿¬¶ôÃ³ ¼û±è  ##  Hide contacts.
-È­¸é¿¡¼­ ¾î¶² ¿¬¶ôÃ³¸¦ ¼û±æ ¼ö ÀÖ½À´Ï´Ù.  ##  You can hide some contacts from your sight.
-°Ñ¸ğ¾ç  ##  Appearance
-°Ñ¸ğ¾çÀ» ¼³Á¤ÇÕ´Ï´Ù.  ##  Appearance settings.
-WippienÀÇ GUI¿¡ ´ëÇÏ¿© Á¤ÀÇÇÕ´Ï´Ù.  ##  Define how will Wippien's GUI appear to you.
-Á¤·Ä  ##  Sort
-¿¬¶ôÃ³¸¦ Á¤·ÄÇÕ´Ï´Ù.  ##  Sorts contacts.
-Á¤·Ä ¹æ¹ıÀ» ¼±ÅÃÇÕ´Ï´Ù.  ##  Pick one of sort options.
-Ã¤ÆÃ¹æ  ##  ChatRoom
-Ã¤ÆÃ¹æÀ» ÆîÄ¡°Å³ª ¸¸µì´Ï´Ù. (¾ÆÁ÷ º£Å¸ÀÔ´Ï´Ù!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-ÀÔÀåÇÒ ¹æÀ» ÁöÁ¤ÇÏ°Å³ª ÆîÄ¨´Ï´Ù. È¤Àº »õ·Î¿î ¹æÀ» ¸¸µì´Ï´Ù.  ##  Specify or browse for a room to join or create new one.
-- ¸ğµç °ÔÀÌÆ®¿şÀÌ -  ##  - All gateways -
-°ÔÀÌÆ®¿şÀÌ ¼­ºñ½º  ##  Service gateway
-¹æ ÀÌ¸§  ##  Room name
-¹æÈ­º®  ##  Firewall
-¹æÈ­º® ±ÔÄ¢À» ¼³Á¤ÇÕ´Ï´Ù.  ##  Set up firewall rules.
-¿¬¶ôÃ³·Î ¾×¼¼½ºÇÒ Æ÷Æ®¸¦ ¼³Á¤ÇÒ ¼ö ÀÖ½À´Ï´Ù.  ##  You can set up which ports can be accessed by your contacts.
-* ¸ğµç ICMP Æ®·¡ÇÈ  ##  * All ICMP traffic
-Â÷´ÜÇÒ Æ÷Æ® Á¶°Ç  ##  But block these ports
-Çã¶ôÇÒ Æ÷Æ® Á¶°Ç  ##  But allow these ports
-Wippien ¾÷µ¥ÀÌÆ®  ##  Wippien update
-»õ·Î¿î ¹öÀüÀÇ WippienÀ» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù. ´Ù¿î·ÎµåÇÏ½Ã°Ú½À´Ï±î?  ##  New version of Wippien is available. Download?
-¿©±â¸¦ Å¬¸¯ÇÏ¿© »õ·Î¿î »çÇ×À» º¸½Ê½Ã¿À.  ##  Click here to see what's new.
-WippienÀÇ ¹öÀüÀÌ ÃÖ½ÅÀÔ´Ï´Ù.  ##  Your version of Wippien is up-to-date.
-¿ø°İ ¼­¹ö¿¡ ¿¬°áÇÏ´Â µ¥ ¿À·ù°¡ ÀÏ¾î³µ½À´Ï´Ù.  ##  Error connecting to remote server.
-¼º°øÀûÀ¸·Î ´Ù¿î·ÎµåÇÏ¿´½À´Ï´Ù. Áö±İ ±³Ã¼ÇÏ½Ã°Ú½À´Ï±î?  ##  Download successful. Replace now?
-Wippien ¾÷µ¥ÀÌÆ® ¿À·ù!  ##  Wippien update error!
-·ÎÄÃ »ó¿¡¼­ »õ·Î¿î ¹öÀüÀÇ WippienÀ» ¹ß°ßÇÏ¿´½À´Ï´Ù. ±³Ã¼ÇÏ½Ã°Ú½À´Ï±î?  ##  New version of Wippien found localy. Replace?
-»õ·Î¿î ¹öÀü  ##  New version
-»óÅÂ ¹Ù²ñ:  ##  Status changed: 
-ÀÏ  ##  day
-ÀÏ  ##  days
-½Ã  ##  hour
-½Ã  ##  hours
-ºĞ  ##  minute
-ºĞ  ##  minutes
-¸¶Áö¸· º¸ÀÓ: ¾øÀ½  ##  Last seen: never
-ÇöÀç ¿ÀÇÁ¶óÀÎÀÔ´Ï´Ù.  ##  is currently offline
-ÇöÀç ¿ÀÇÁ¶óÀÎÀÔ´Ï´Ù.  ##  is now offline
-ÇöÀç ¿Â¶óÀÎÀÔ´Ï´Ù.  ##  is now online
-Â÷´ÜµÇ¾ú½À´Ï´Ù.  ##  is blocked
-¿ÀÇÁ¶óÀÎÀÔ´Ï´Ù.  ##  is offline
-Â÷´Ü ÇØÁ¦  ##  Unblock
-Â÷´Ü  ##  Block
-±×·ì %s ¸¦ Á¦°ÅÇÏ½Ã°Ú½À´Ï±î?  ##  Are you sure you want to remove group %s
-±×·ìÀ» Á¦°ÅÇÏ½Ã°Ú½À´Ï±î?  ##  Remove group?
-¿¬¶ôÃ³ %s ¸¦ Á¦°ÅÇÏ½Ã°Ú½À´Ï±î?  ##  Are you sure you want to remove contact %s
-¿¬¶ôÃ³¸¦ Á¦°ÅÇÏ½Ã°Ú½À´Ï±î?  ##  Remove contact?
-¾î´ğÅÍ ¿À·ù  ##  Adapter error
-±×·ì ÀÌ¸§ ¹Ù²Ù±â  ##  Rename group
-»õ ±×·ì ÀÌ¸§ ÀÔ·Â  ##  Enter new group name
-Wippien À¥»çÀÌÆ®¿¡¼­ ´õ ¸¹Àº ½ºÅ² ´Ù¿î·Îµå  ##  Download more skins from Wippien website
-½ºÅ²À» Å¬¸¯ÇÏ¿© ´Ù¿î·ÎµåÇÏ°í ¼³Ä¡ÇÕ´Ï´Ù.  ##  Click on the skin to download and install it.
-»õ Jabber °èÁ¤ÀÌ ÇÊ¿äÇÕ´Ï´Ù  ##  I need new Jabber account
-ÀÌ¹Ì Jabber °èÁ¤ÀÌ ÀÖ½À´Ï´Ù  ##  I have existing Jabber account
-°èÁ¤ °Ë»ç(&t)  ##  &Test Account
-°Ë»ö(&s)  ##  &Search
-jabber ID (JID) ¸¦ ¿©±â¿¡ ÀÔ·ÂÇÏ½Ê½Ã¿À. WippienÀº ´ç½ÅÀÇ Á¸Àç(¿Â¶óÀÎ ¿¬¶ôÃ³¸¦ ¾Ë¸®°Å³ª, ´Ù¸¥ ¿¬¶ôÃ³¸¦ º¸´Â µî)¸¦ À§ÇØ Jabber ³×Æ®¿öÅ©¸¦ »ç¿ëÇÕ´Ï´Ù.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-JID¸¦ °¡Áö°í ÀÖÁö ¾ÊÀ¸¸é, »õ·Î µî·ÏÇÏ½Ê½Ã¿À. ¿øÇÏ´Â ¾î¶°ÇÑ jabber ¼­¹ö¸¦ ¼±ÅÃÇÒ ¼ö ÀÖ½À´Ï´Ù. ´ÙÀ½ÀÇ °ø½Ä ¼­¹öµéÀ» »ç¿ë ÇÒ ¼ö ÀÖ½À´Ï´Ù. ¹öÆ°À» Å¬¸¯ÇÏ¿© ÇöÀç ¿­¸° ¼­¹öµéÀÇ ¸ñ·ÏÀ» Ã£À» ¼ö ÀÖ½À´Ï´Ù.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Ä‚Ã–Â´Ã« Å”Ã¼Ä½Å° Â´ÃœÅ”Â§Â¸Â¦ Â°Ã¡ÃÂ¤Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please determine maximum transfer unit.
+Ä¾Ã®Â¶Ë› ÂµÅ¼Â·Ã¡Â°Ë‡ Ä¹Â« Ä†ÄÄ¹Â¶Å¼Ë‡ Å”Å”Â´Ã¤Ã‡ÄÃÃ¶ Ä¾Ä˜Å”Â» Â°Ä‡Å¼Ä›...  ##  If some peer doesn't respond to large packets...
+Ä½Å‡Â¸Â®  ##  Sounds
+Å¼Â©Â·Å» Å”ÄšÅŸÄ„Ä†Â®Â°Ë‡ Å”ÄÄ¾Ã®Å‚ÂµÅ”Â» Â¶Â§ Å”Ã§Â»Ã½ÂµÃ‰ Ä½Å‡Â¸Â®Â¸Â¦ Ä½Å‚ÃÂ¤Ã‡ÅÂ´ÄÂ´Å®.  ##  Setup sounds to be played on various events.
+Å‚Â»Å”ÄºÂµÄŒ Ä½Å‡Â¸Â®Å‚Å, WAV Ä†Ã„Å”ÄÅ”Â» Ä‚ÅÄ¾Ä† Ä½Â±Ä¹Ä‚Ã‡ÄËÄ˜ËÄ‚Å¼Å”.  ##  Choose internal ones, or browse for WAV files.
+Å¼Â¬Â¶Ã´Ä‚Å‚ Å¼Ã‚Â¶Ã³Å”Ã  ##  Contact online
+Å¼Â¬Â¶Ã´Ä‚Å‚ Å¼Å”Ã‡ÃÂ¶Ã³Å”Ã  ##  Contact offline
+Â¸Å¢ËÄ‚ÃÃ¶ ÂµÃ©Ä¾Ã®Å¼ÄŒ  ##  Message in
+Â¸Å¢ËÄ‚ÃÃ¶ Å‚ÅÂ°Â¨  ##  Message out
+Å¼Å”Â·Å¯  ##  Error
+WAV Ä†Ã„Å”Ä (*.wav)\0*.wav\0Â¸Ä‘ÂµÃ§ Ä†Ã„Å”Ä (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+Ä½Å±Â±Ä  ##  Hide
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä½Å±Â±Ä  ##  Hide contacts.
+ÄŒÂ­Â¸Ã©Å¼Ë‡Ä½Â­ Ä¾Ã®Â¶Ë› Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ Ä½Å±Â±Ä‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  You can hide some contacts from your sight.
+Â°ÅƒÂ¸Ä‘Ä¾Ã§  ##  Appearance
+Â°ÅƒÂ¸Ä‘Ä¾Ã§Å”Â» Ä½Å‚ÃÂ¤Ã‡ÅÂ´ÄÂ´Å®.  ##  Appearance settings.
+WippienÅ”Ã‡ GUIÅ¼Ë‡ Â´Ã«Ã‡ÄÅ¼Â© ÃÂ¤Å”Ã‡Ã‡ÅÂ´ÄÂ´Å®.  ##  Define how will Wippien's GUI appear to you.
+ÃÂ¤Â·Ã„  ##  Sort
+Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ ÃÂ¤Â·Ã„Ã‡ÅÂ´ÄÂ´Å®.  ##  Sorts contacts.
+ÃÂ¤Â·Ã„ Ä…Ä‡Ä…Ã½Å”Â» Ä½Â±Ä¹Ä‚Ã‡ÅÂ´ÄÂ´Å®.  ##  Pick one of sort options.
+Ä‚Â¤Ä†Ä‚Ä…Ä‡  ##  ChatRoom
+Ä‚Â¤Ä†Ä‚Ä…Ä‡Å”Â» Ä†Ã®Ã„Ë‡Â°Ä¹Å‚Å Â¸Â¸ÂµÄ›Â´ÄÂ´Å®. (Ä¾Ä†ÃÃ· ÅŸÅÄ¹Â¸Å”Ã”Â´ÄÂ´Å®!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Å”Ã”Å”ÄºÃ‡Å‡ Ä…Ä‡Å”Â» ÃÃ¶ÃÂ¤Ã‡ÄÂ°Ä¹Å‚Å Ä†Ã®Ã„Â¨Â´ÄÂ´Å®. ÄŒÂ¤Å”ÅŸ Â»Å‘Â·ÃÅ¼Ã® Ä…Ä‡Å”Â» Â¸Â¸ÂµÄ›Â´ÄÂ´Å®.  ##  Specify or browse for a room to join or create new one.
+- Â¸Ä‘ÂµÃ§ Â°Ã”Å”ÄšÄ†Â®Å¼Å£Å”Äš -  ##  - All gateways -
+Â°Ã”Å”ÄšÄ†Â®Å¼Å£Å”Äš Ä½Â­ÅŸÅ„ËÅŸ  ##  Service gateway
+Ä…Ä‡ Å”ÄšÂ¸Â§  ##  Room name
+Ä…Ä‡ÄŒÂ­ÅŸÂ®  ##  Firewall
+Ä…Ä‡ÄŒÂ­ÅŸÂ® Â±Ã”Ã„Ë˜Å”Â» Ä½Å‚ÃÂ¤Ã‡ÅÂ´ÄÂ´Å®.  ##  Set up firewall rules.
+Å¼Â¬Â¶Ã´Ä‚Å‚Â·Ã Ä¾Ã—Ä½Ä½ËÅŸÃ‡Å‡ Ä†Ã·Ä†Â®Â¸Â¦ Ä½Å‚ÃÂ¤Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  You can set up which ports can be accessed by your contacts.
+* Â¸Ä‘ÂµÃ§ ICMP Ä†Â®Â·Ë‡Ã‡ÄŒ  ##  * All ICMP traffic
+Ã‚Ã·Â´ÃœÃ‡Å‡ Ä†Ã·Ä†Â® ÃÂ¶Â°Ã‡  ##  But block these ports
+Ã‡ÄƒÂ¶Ã´Ã‡Å‡ Ä†Ã·Ä†Â® ÃÂ¶Â°Ã‡  ##  But allow these ports
+Wippien Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â®  ##  Wippien update
+Â»Å‘Â·ÃÅ¼Ã® Ä…Ã¶Å”Ã¼Å”Ã‡ WippienÅ”Â» Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®. Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  New version of Wippien is available. Download?
+Å¼Â©Â±Ã¢Â¸Â¦ Ä¹Â¬Â¸Å»Ã‡ÄÅ¼Â© Â»Å‘Â·ÃÅ¼Ã® Â»Ã§Ã‡Ã—Å”Â» ÅŸÂ¸ËÄ˜ËÄ‚Å¼Å”.  ##  Click here to see what's new.
+WippienÅ”Ã‡ Ä…Ã¶Å”Ã¼Å”Äš Ä‚Ã–ËÄ¹Å”Ã”Â´ÄÂ´Å®.  ##  Your version of Wippien is up-to-date.
+Å¼Å™Â°Ã Ä½Â­Ä…Ã¶Å¼Ë‡ Å¼Â¬Â°Ã¡Ã‡ÄÂ´Ã‚ ÂµÄ„ Å¼Å”Â·Å¯Â°Ë‡ Å”ÄÄ¾Ã®Å‚ÂµËÅ”Â´ÄÂ´Å®.  ##  Error connecting to remote server.
+Ä½ÅŸÂ°Å™Å”Å±Å”Â¸Â·Ã Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®. ÃÃ¶Â±Ã Â±Å‚Ä‚Ä½Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Download successful. Replace now?
+Wippien Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â® Å¼Å”Â·Å¯!  ##  Wippien update error!
+Â·ÃÃ„Ä‚ Â»Ã³Å¼Ë‡Ä½Â­ Â»Å‘Â·ÃÅ¼Ã® Ä…Ã¶Å”Ã¼Å”Ã‡ WippienÅ”Â» Ä…ÃŸÂ°ÃŸÃ‡ÄÅ¼Â´ËÅ”Â´ÄÂ´Å®. Â±Å‚Ä‚Ä½Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  New version of Wippien found localy. Replace?
+Â»Å‘Â·ÃÅ¼Ã® Ä…Ã¶Å”Ã¼  ##  New version
+Â»Ã³Ä¹Ã‚ Ä…Å®Ë›Å„:  ##  Status changed: 
+Å”Ä  ##  day
+Å”Ä  ##  days
+ËÄ‚  ##  hour
+ËÄ‚  ##  hours
+ÅŸÄ  ##  minute
+ÅŸÄ  ##  minutes
+Â¸Â¶ÃÃ¶Â¸Â· ÅŸÂ¸Å”Ã“: Ä¾Å™Å”Ë  ##  Last seen: never
+Ã‡Ã¶Å”Ã§ Å¼Å”Ã‡ÃÂ¶Ã³Å”ÃÅ”Ã”Â´ÄÂ´Å®.  ##  is currently offline
+Ã‡Ã¶Å”Ã§ Å¼Å”Ã‡ÃÂ¶Ã³Å”ÃÅ”Ã”Â´ÄÂ´Å®.  ##  is now offline
+Ã‡Ã¶Å”Ã§ Å¼Ã‚Â¶Ã³Å”ÃÅ”Ã”Â´ÄÂ´Å®.  ##  is now online
+Ã‚Ã·Â´ÃœÂµÃ‡Ä¾ÃºËÅ”Â´ÄÂ´Å®.  ##  is blocked
+Å¼Å”Ã‡ÃÂ¶Ã³Å”ÃÅ”Ã”Â´ÄÂ´Å®.  ##  is offline
+Ã‚Ã·Â´Ãœ Ã‡Å˜ÃÂ¦  ##  Unblock
+Ã‚Ã·Â´Ãœ  ##  Block
+Â±Ã—Â·Ä› %s Â¸Â¦ ÃÂ¦Â°Ä¹Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Are you sure you want to remove group %s
+Â±Ã—Â·Ä›Å”Â» ÃÂ¦Â°Ä¹Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Remove group?
+Å¼Â¬Â¶Ã´Ä‚Å‚ %s Â¸Â¦ ÃÂ¦Â°Ä¹Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Are you sure you want to remove contact %s
+Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ ÃÂ¦Â°Ä¹Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  Remove contact?
+Ä¾Ã®Â´Ä‘Ä¹Ã Å¼Å”Â·Å¯  ##  Adapter error
+Â±Ã—Â·Ä› Å”ÄšÂ¸Â§ Ä…Å®Ë›Å®Â±Ã¢  ##  Rename group
+Â»Å‘ Â±Ã—Â·Ä› Å”ÄšÂ¸Â§ Å”Ã”Â·Ã‚  ##  Enter new group name
+Wippien Å”Ä„Â»Ã§Å”ÄšÄ†Â®Å¼Ë‡Ä½Â­ Â´Å‘ Â¸Ä…Å”ÅŸ ËÅŸÄ¹Ë› Â´Å®Å¼Ã®Â·ÃÂµÄº  ##  Download more skins from Wippien website
+ËÅŸÄ¹Ë›Å”Â» Ä¹Â¬Â¸Å»Ã‡ÄÅ¼Â© Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡ÄÂ°Ã­ Ä½Å‚Ã„Ë‡Ã‡ÅÂ´ÄÂ´Å®.  ##  Click on the skin to download and install it.
+Â»Å‘ Jabber Â°ÄÃÂ¤Å”Äš Ã‡Ä˜Å¼Ã¤Ã‡ÅÂ´ÄÂ´Å®  ##  I need new Jabber account
+Å”ÄšÄ…Äš Jabber Â°ÄÃÂ¤Å”Äš Å”Ã–ËÅ”Â´ÄÂ´Å®  ##  I have existing Jabber account
+Â°ÄÃÂ¤ Â°Ã‹Â»Ã§(&t)  ##  &Test Account
+Â°Ã‹Â»Ã¶(&s)  ##  &Search
+jabber ID (JID) Â¸Â¦ Å¼Â©Â±Ã¢Å¼Ë‡ Å”Ã”Â·Ã‚Ã‡ÄËÄ˜ËÄ‚Å¼Å”. WippienÅ”ÅŸ Â´Ã§ËÄ¹Å”Ã‡ ÃÂ¸Å”Ã§(Å¼Ã‚Â¶Ã³Å”Ã Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ Ä¾Ã‹Â¸Â®Â°Ä¹Å‚Å, Â´Å®Â¸Ä„ Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ ÅŸÂ¸Â´Ã‚ ÂµÃ®)Â¸Â¦ Å”Â§Ã‡Å˜ Jabber Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â©Â¸Â¦ Â»Ã§Å¼Ã«Ã‡ÅÂ´ÄÂ´Å®.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+JIDÂ¸Â¦ Â°Ë‡ÃÃ¶Â°Ã­ Å”Ã–ÃÃ¶ Ä¾Ä˜Å”Â¸Â¸Ã©, Â»Å‘Â·Ã ÂµÃ®Â·ÄÃ‡ÄËÄ˜ËÄ‚Å¼Å”. Å¼Å™Ã‡ÄÂ´Ã‚ Ä¾Ã®Â¶Â°Ã‡Åƒ jabber Ä½Â­Ä…Ã¶Â¸Â¦ Ä½Â±Ä¹Ä‚Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®. Â´Å®Å”ËÅ”Ã‡ Â°Å™ËÃ„ Ä½Â­Ä…Ã¶ÂµÃ©Å”Â» Â»Ã§Å¼Ã« Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®. Ä…Ã¶Ä†Â°Å”Â» Ä¹Â¬Â¸Å»Ã‡ÄÅ¼Â© Ã‡Ã¶Å”Ã§ Å¼Â­Â¸Â° Ä½Â­Ä…Ã¶ÂµÃ©Å”Ã‡ Â¸Å„Â·ÄÅ”Â» Ä‚ÅÅ”Â» Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-¾ÏÈ£  ##  Password
-¼­¹ö  ##  Server
-Æ÷Æ®  ##  Port
-°è¼ÓÇÏ±â À§ÇØ '°èÁ¤ °Ë»ç'¸¦ Å¬¸¯ÇØÁÖ½Ê½Ã¿À.  ##  Please click on 'Test Account' to proceed.
-Æ÷Æ® 443 »óÀÇ SSL ·¡ÆÛ »ç¿ë (for ±¸±Û ÅäÅ©)  ##  Use SSL wrapper on port 443 (for GTalk)
-È®ÀÎ(&k)  ##  O&K
-Ãë¼Ò(&c)  ##  &Cancel
-¾ÏÈ£±¸¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À  ##  Please enter key passphrase
-»õ °èÁ¤ Ãß°¡(&n)  ##  Add &New
-ÀÌ´õ³İ ¾î´ğÅÍ¸¦ »ç¿ëÇÒ ¼ö ¾øÀ» ¶§ ¾Ë¸²À» º¾´Ï´Ù.  ##  Show notification if ethernet adapter is unavailable.
-³ª°¡±â À§ÇØ ¾î´ğÅÍ ¿¬°á ²÷±â  ##  Disconnect adapter on exit
-µé¾î¿À°í ³ª°¥ ÆĞÅ¶ÀÌ »ç¿ëÇÒ UDP Æ÷Æ® (0Àº ÀÚµ¿ ¼±ÅÃ)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-Wippien ³×Æ®¿öÅ© ¾î´ğÅÍ°¡ »ç¿ëÇÒ IP ÁÖ¼Ò  ##  IP address for Wippien network adapter
-¹«½ÃÇÕ´Ï´Ù. IP´Â ÇÁ·Î±×·¥ ¹Û¿¡¼­ ¼³Á¤µË´Ï´Ù.  ##  Ignore. IP will be set outside of this program.
-URL »óÀÇ IP °ø±ŞÀÚ µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ ¾ò¾î¿È  ##  Obtained from IP provider database, on URL
-´ÙÀ½ÀÇ Á¤Àû ÁÖ¼Ò¸¦ »ç¿ë  ##  Use following static address
-IP ÁÖ¼Ò  ##  IP address
-³İ¸¶½ºÅ©  ##  Netmask
-»óÅÂ  ##  Status
+Ä¾ÄÄŒÅ  ##  Password
+Ä½Â­Ä…Ã¶  ##  Server
+Ä†Ã·Ä†Â®  ##  Port
+Â°ÄÄ½Ã“Ã‡ÄÂ±Ã¢ Å”Â§Ã‡Å˜ 'Â°ÄÃÂ¤ Â°Ã‹Â»Ã§'Â¸Â¦ Ä¹Â¬Â¸Å»Ã‡Å˜ÃÃ–ËÄ˜ËÄ‚Å¼Å”.  ##  Please click on 'Test Account' to proceed.
+Ä†Ã·Ä†Â® 443 Â»Ã³Å”Ã‡ SSL Â·Ë‡Ä†Å° Â»Ã§Å¼Ã« (for Â±Â¸Â±Å° Ä¹Ã¤Ä¹Â©)  ##  Use SSL wrapper on port 443 (for GTalk)
+ÄŒÂ®Å”Ã(&k)  ##  O&K
+Ä‚Ã«Ä½Å‡(&c)  ##  &Cancel
+Ä¾ÄÄŒÅÂ±Â¸Â¸Â¦ Å”Ã”Â·Ã‚Ã‡ÄËÄ˜ËÄ‚Å¼Å”  ##  Please enter key passphrase
+Â»Å‘ Â°ÄÃÂ¤ Ä‚ÃŸÂ°Ë‡(&n)  ##  Add &New
+Å”ÄšÂ´Å‘Å‚Ã Ä¾Ã®Â´Ä‘Ä¹ÃÂ¸Â¦ Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Ä¾Å™Å”Â» Â¶Â§ Ä¾Ã‹Â¸Ë›Å”Â» ÅŸÄ¾Â´ÄÂ´Å®.  ##  Show notification if ethernet adapter is unavailable.
+Å‚ÅÂ°Ë‡Â±Ã¢ Å”Â§Ã‡Å˜ Ä¾Ã®Â´Ä‘Ä¹Ã Å¼Â¬Â°Ã¡ Ë›Ã·Â±Ã¢  ##  Disconnect adapter on exit
+ÂµÃ©Ä¾Ã®Å¼Å”Â°Ã­ Å‚ÅÂ°Ä„ Ä†ÄÄ¹Â¶Å”Äš Â»Ã§Å¼Ã«Ã‡Å‡ UDP Ä†Ã·Ä†Â® (0Å”ÅŸ Å”ÃšÂµÅ¼ Ä½Â±Ä¹Ä‚)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Wippien Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä¾Ã®Â´Ä‘Ä¹ÃÂ°Ë‡ Â»Ã§Å¼Ã«Ã‡Å‡ IP ÃÃ–Ä½Å‡  ##  IP address for Wippien network adapter
+Ä…Â«ËÄ‚Ã‡ÅÂ´ÄÂ´Å®. IPÂ´Ã‚ Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„ Ä…Å°Å¼Ë‡Ä½Â­ Ä½Å‚ÃÂ¤ÂµÃ‹Â´ÄÂ´Å®.  ##  Ignore. IP will be set outside of this program.
+URL Â»Ã³Å”Ã‡ IP Â°Å™Â±Å¢Å”Ãš ÂµÄ„Å”ÄšÄ¹ÃÅŸÅÅ”ÄšËÅŸÅ¼Ë‡Ä½Â­ Ä¾ÅˆÄ¾Ã®Å¼ÄŒ  ##  Obtained from IP provider database, on URL
+Â´Å®Å”ËÅ”Ã‡ ÃÂ¤Å”Å± ÃÃ–Ä½Å‡Â¸Â¦ Â»Ã§Å¼Ã«  ##  Use following static address
+IP ÃÃ–Ä½Å‡  ##  IP address
+Å‚ÃÂ¸Â¶ËÅŸÄ¹Â©  ##  Netmask
+Â»Ã³Ä¹Ã‚  ##  Status
 URL  ##  URL
-¼³¸í  ##  Description
-»õ °èÁ¤ Ãß°¡  ##  Add new account
-°èÁ¤ Á¦°Å  ##  Remove account
-µî·Ï!  ##  Register!
-ÇöÀçÀÇ ÀÎ½ºÅÏÆ® ¸Ş½ÃÁö ¿¬°á  ##  Your current Instant messaging connections
-À¯Àú¸í  ##  Username
-»õ °èÁ¤ ¿­±â  ##  Open new account
-½ÂÀÎ ¿äÃ»  ##  Authorization request
-¿¹(&y)  ##  &Yes
-¾Æ´Ï¿À(&n)  ##  &No
-¼¼ºÎ Á¤º¸(&d)  ##  &Details
-¸ğµÎ Àû¿ë(&a)  ##  &Apply to all
-»ç¿ëÀÚ Â÷´Ü(&b)  ##  &Block user(s)
-Çã¶ôÇÏ½Ã°Ú½À´Ï±î  ##  Do you allow
-»ó´ëÀÇ ¿¬¶ôÃ³ ¸ñ·Ï¿¡ ´ç½ÅÀ» Ãß°¡ÇÏ½Ã°Ú½À´Ï±î?  ##  to add you to his contact list?
-´õ ¸¹Àº ¿äÃ»À» ±â´Ù¸®´Â Áß...  ##  more requests waiting...
-±×·ì Ãß°¡  ##  Add Group
-±×·ë Á¦°Å  ##  Remove Group
-¿¬¶ôÃ³ Ãß°¡  ##  Add Contact
-±×·ì¿¡ ¿¬¶ôÃ³ ³õ±â  ##  Put contact to the group
-JID ¿¬¶ôÃ³  ##  Contact JID
-¿¬¶ôÃ³ À¯Çü  ##  Contact Type
-º¸ÀÌ´Â ÀÌ¸§  ##  Visible Name
-¿¬¶ôÃ³ ÀÌ¸§ ¹Ù²Ù±â  ##  Rename contact
-»õ·Î¿î ¿¬¶ôÃ³ ÀÌ¸§ ÀÔ·Â  ##  Enter new contact name
-¼³Á¤  ##  Settings
-< ÀÌÀü(&b)  ##  < &Back
-Jabber Åë½Å ·Î±×  ##  Log Jabber communication
-¼ÒÄÏ Åë½Å ·Î±×  ##  Log socket communication
-¿ø½Ã ÇÔ¼ö È£Ãâ ·Î±× (»¡¸® Ä¿Áú ¼öµµ ÀÖ½À´Ï´Ù!)  ##  Log raw function calls (may grow quickly!)
-°¢°¢ÀÇ ¿øº» ·Î±× »èÁ¦  ##  Delete raw log on each
-¸Ş°¡¹ÙÀÌÆ®  ##  megabytes
-P2P ½ÃÀÛÇÒ ¶§ VPN Åë½Å ±â·Ï  ##  Log VPN communication on P2P startup
-´ÙÀ½ÀÇ ÁßÀçÀÚ¸¦ »ç¿ëÇÒ ¼ö ÀÖÀ½  ##  Following mediators can be used
-»õ ÁßÀçÀÚ Ãß°¡ Çã¶ô  ##  Allow new mediators to be added
-Ã¤ÆÃÃ¢¿¡ °ü·ÃµÈ ¿©·¯ ¼³Á¤  ##  Various settings regarding chat window
-Å¸ÀÓ ½ºÅÆÇÁ ¸Ş½ÃÁö  ##  Timestamp messages
-¸Ş½ÃÁö ±â·Ï º¸±â  ##  Show message history
-º°¸í  ##  Nickname
-ÀÌ¸§  ##  First name
-¼º  ##  Last name
-ÀÌ¸ŞÀÏ  ##  Email
-ºñ¸Á·Ï  ##  Notes
-ÁÖ¼Ò  ##  Address
-ºÎ°¡ ÁÖ¼Ò  ##  Address Ext.
-½Ã  ##  City
-µµ  ##  State
-¿ìÆí¹øÈ£  ##  ZIP
-±¹°¡  ##  Country
-»ıÀÏ  ##  Birthday
-À½¼º ÀüÈ­  ##  Voice Tel.
-ÆÑ½º  ##  Fax
-Á÷À§  ##  Title
-È¸»ç ÀÌ¸§  ##  Company name
-ºÎ¼­  ##  Department
-Á÷Á¢ ¿¬°áÀ» À§ÇÑ ÀÎÅÍÆäÀÌ½º Çã¶ô  ##  Allowed interfaces for direct connection
-¸ğµÎ Çã¶ô  ##  Allow All
-°ªÀ» ¹Ù²Ù·Á¸é Ã¹ ¹øÂ° ÄÃ·³À» Å¬¸¯  ##  Click on first column to change values
-'ÁöÁ¤µÇÁö ¾ÊÀº' °ªÀ» ¼±ÅÃÇÏ¿´´Ù¸é, °°Àº °ªÀÌ '´Ù¸¥ ¸ğµç' ¼³Á¤¿¡¼­ »ç¿ëµÇ¾îÁı´Ï´Ù.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-´ÙÀ½ÀÇ ½ºÅ² ÆÄÀÏÀÌ Ã£¾ÆÁü  ##  Following skin files are found
-Àû¿ë  ##  Apply
-´õ ¸¹Àº ½ºÅ²À» Ãß°¡ÇÏ·Á¸é, 'Skin' ÇÏÀ§Æú´õ¿¡ ³ÖÀ¸½Ê½Ã¿À. ¹Ì¸®º¸±â¸¦ À§ÇØ 100x100 ¿¡ ´ëÀÀÇÏ´Â PNG ÆÄÀÏÀ» Ãß°¡ÇÕ´Ï´Ù.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-´õ ¸¹Àº ½ºÅ²...(&m)  ##  &More skins...
-È°µ¿ÀÌ ´Ù½Ã °¨ÁöµÇ¸é ¼³Á¤À» µÇµ¹¸³´Ï´Ù.  ##  Set back when activity is detected again.
-´ë±â  ##  Wait
-ÀÚ¸® ºñ¿ò ¸ğµå ÀüÀÇ ´ë±â ½Ã°£(ºĞ) (0 = »ç¿ë¾ÈÇÔ)  ##  minutes before going to away mode (0 = disable)
-¿¬ÀåµÈ ÀÚ¸® ºñ¿ò ¸ğµå ÀüÀÇ ´ë±â ½Ã°£(ºĞ) (0 = »ç¿ë¾ÈÇÔ)  ##  minutes before going to extended away mode (0 = disable)
-¿¬°á ²÷±â ÀüÀÇ ´ë±â ½Ã°£ (0 = »ç¿ë¾ÈÇÔ)  ##  minutes before disconnecting (0 = disable)
-ÀÚµ¿ ÀÚ¸® ºñ¿ò ¸Ş½ÃÁö  ##  Auto-Away message
-¿¬ÀåµÈ ÀÚ¸® ºñ¿ò ¸Ş½ÃÁö  ##  Extended-Away message
-ÀÛ¾÷ Ç¥½ÃÁÙ¿¡ Wippien º¸±â  ##  Show Wippien in taskbar
-¹ÙÅÁ È­¸éÀ» Àç¹è¿­ÇÒ ¶§ Wippien Ã¢À» °¡ÀåÀÚ¸®·Î Á¤·Ä  ##  Rearrange desktop when Wippien window is aligned to border
-¹ÙÅÁ È­¸é °¡ÀåÀÚ¸®¿¡ ÀÚ¼®  ##  Snap to desktop border
-Wippien ÀÌ ºñÈ°¼ºÈ­ »óÅÂÀÏ ¶§ ÀÚµ¿À¸·Î ¼û±è  ##  Auto hide if Wippien is inactive for
-Ç×»ó À§¿¡  ##  Always on top
-ÇÁ·Î±×·¥¿¡¼­ ³ª°¥ ¶§ È®ÀÎ  ##  Confirm exit from application
-ÄÄÇ»ÅÍ°¡ ´ë±â/ÃÖ´ë ÀıÀü ¸ğµå·Î µé¾î°¥ ¶§ ¿¬°á ²÷±â, º¹±Í ½Ã ¿¬°á  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-¾ÏÈ£ º¸È£  ##  Password protect
-¼³Á¤¸¸  ##  Settings only
-¸ğµÎ  ##  Everything
-¼³Á¤ Æú´õ (¾Æ·¡ °ªÀ» ¹Ù²Ü °æ¿ì wippien Àç½ÃÀÛ ÇÊ¿ä)  ##  Settings folder (changing below value requires wippien restart)
-¿¬¶ôÃ³ ¸ñ·Ï Áö¼Ó¼º  ##  Contact list persistance
-½ÃÀÛÇÒ ¶§ ¸ğµç ·ÎÄÃ ¿¬¶ôÃ³ »èÁ¦  ##  Delete all local contacts on startup
-¿¬°áÇÒ ¶§ ¸ğµç ·ÎÄÃ ¿¬¶ôÃ³ »èÁ¦  ##  Delete all local contacts on connect
-¿¬¶ôÃ³ °¡ÀÔ ½ÂÀÎ  ##  Contacts subscription authorization
-½ÂÀÎ ¾ÈÇÔ  ##  Never authorize
-¹°¾îº¸±â  ##  Ask me
-Ç×»ó ½ÂÀÎ  ##  Always authorize
-ÀÚµ¿À¸·Î ³×Æ®¿öÅ© Æ®·¡ÇÈ¿¡ VPN ±¸Ãà  ##  Automatically establish VPN on network traffic
-ÀÚµ¿À¸·Î ½ÃÀÛÇÒ ¶§ VPN ±¸Ãà  ##  Automatically establish VPN on startup
-ÁøÇà  ##  Progress
-À½¼º Ã¤ÆÃ È°¼ºÈ­  ##  Enable voice chat
-Àç»ı ÀåÄ¡  ##  Playback device
-³ìÀ½ ÀåÄ¡  ##  Recording device
-Wippien ½ÃÀÛÇÒ ¶§ ¾÷µ¥ÀÌÆ® Ã¼Å©  ##  Check for updates when Wippien starts
-¿¬°áÇÒ ¶§ ¾÷µ¥ÀÌÆ® Ã¼Å©  ##  Check for updates on Connect
-°¢°¢ÀÇ »óÈ²¿¡ ¾÷µ¥ÀÌÆ®  ##  Check for updates each
-ÇÁ·Î±×·¥À» ÀÚµ¿À¸·Î ¾÷µ¥ÀÌÆ®ÇÏ°í Àç½ÃÀÛ  ##  Update and restart application silently
-¾÷µ¥ÀÌÅÍ·ÎºÎÅÍ ¹ŞÀº ½Ã½ºÅÛ ¸Ş½ÃÁö º¸±â  ##  Show system messages received from updater
-Áö±İ Ã¼Å©ÇÏ±â(&c)  ##  &Check now
-MTU ¼³Á¤Àº µ¿·á¿¡°Ô º¸³¾ ¼ö ÀÖ´Â ÃÖ´ë UDP ÆĞÅ¶À» Á¤ÀÇÇÕ´Ï´Ù. ³×Æ®¿öÅ© ¿¬°áÀÇ MTU°ªÀÌ wippienº¸´Ù ÀÛÀ» °æ¿ì, µ¿·á´Â Å« ÆĞÅ¶À» ¹ŞÁö ¸øÇÕ´Ï´Ù.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-¼öÁ¤µÈ MTU »ç¿ë  ##  Use fixed MTU
-MTU ÀÚµ¿ °¨Áö  ##  Auto-detect MTU
-(µ¿·á°¡ Àç¿¬°áÇÒ ¶§ È¿°úÀû)  ##  (will become effective as peers reconnect)
-¼Ò¸® (±âº» ¼Ò¸®¸¦ À§ÇØ ºñ¿ò)  ##  Sound (leave empty for default sound)
-Àç»ı(&p)  ##  &Play
-ÇÁ·Î±×·¥ ÀÌº¥Æ®  ##  Program events
-»õ ¿¬¶ôÃ³ ¼û±è  ##  Hide new contact
-¿¬¶ôÃ³ ¼û±è ÇØÁ¦  ##  Unhide contact
-ÇöÀç ¼û°ÜÁø ¿¬¶ôÃ³  ##  Currently hidden contacts
-¿©±â¿¡ ³ª¿­µÈ ¸ğµç ¿¬¶ôÃ³¸¦ Wippien¿¡ ³ªÅ¸³»Áö ¾Ê½À´Ï´Ù.. ±×µéÀº ´õÀÌ»ó Á¸ÀçÇÏÁö ¾ÊÀ» °ÍÀÔ´Ï´Ù. »ç¶÷À» ¿Ïº®È÷ ¹«½ÃÇÒ ¼ö ÀÖ´Â ¹æ¹ıÀÔ´Ï´Ù.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-¿¬¶ôÃ³ ¼û±è  ##  Hide contact
-JID ¿¬¶ôÃ³ ÀÔ·Â  ##  Enter contact JID
-¸ğµç Æ®·¡ÇÈ Çã¶ô  ##  Allow all traffic
-¸ğµç Æ®·¡ÇÈ Â÷´Ü  ##  Block all traffic
-Ãß°¡(&a)  ##  &Add
-Á¦°Å(&r)  ##  &Remove
-±âº» ±ÔÄ¢  ##  Default rule
-¾Æ¹ÙÅ¸ ±×¸²  ##  Avatar picture
-ÀÌ¸§  ##  Name
-IP ÁÖ¼Ò  ##  IP address
-»óÅÂ ÅØ½ºÆ®  ##  Status text
-¸¶Áö¸· ¿Â¶óÀÎ ½Ã°£  ##  Last online time
-È°¼º ¸ğ´ÏÅÍ  ##  Activity Monitor
-º¼ ¼ö ÀÖ´Â ¼¼ºÎ Á¤º¸  ##  Visible details
-¿¬¶ôÃ³ÀÇ º¼ ¼ö ÀÖ´Â ¼¼ºÎ Á¤º¸  ##  Contact's visible details
-Á¤·Ä ¾ÈÇÔ  ##  unsorted
-ÀÌ¸§ ¼ø  ##  By name
-JID ¼ø  ##  By JID
-IP ¼ø (IP ÇÏ´ÜÀ¸·Î °¡Áö ¾ÊÀ½)  ##  by IP (without IP goes bottom)
-IP ¼ø (IP »ó´ÜÀ¸·Î °¡Áö ¾ÊÀ½)  ##  by IP (without IP goes top)
-Á¤·ÄµÈ ¿¬¶ôÃ³ ¸ñ·Ï  ##  Sort contact list
-Ã¤ÆÃ¹æ¿¡ ¾µ º°¸í  ##  Nickname for chatrooms
-´ÙÀ½ °ÔÀÌÆ®¿şÀÌÀÇ ÀÔÀå°¡´ÉÇÑ ¹æµé º¸±â  ##  Show available rooms on following gateways
-À§ÀÇ ¹æ¿¡¼­ ¼±ÅÃÇÏ°Å³ª, »õ·Î¿î Ã¤ÆÃ¹æ Á¤º¸¸¦ ¾Æ·¡¿¡ ÀÔ·Â  ##  Click above to select room, or enter new chat room details below
-¸¸µé°Å³ª ÀÔÀåÇÒ ¹æ ÀÌ¸§  ##  Room name to create or join
-¾ÏÈ£ (¾øÀ» °æ¿ì ºñ¿ò)  ##  Password (empty if none)
-°ÔÀÌÆ®¿şÀÌ  ##  Gateway
-¹æ ÀÔÀå or ¸¸µé±â  ##  Join or Create room
-½ÃÀÛÇÒ ¶§ »ç¿ëÀÚ Â÷´Ü  ##  Block users at startup
-IP º¹»ç(&c)  ##  &Copy IP
-Ã¤ÆÃ(&h)  ##  C&hat
-À½¼º Ã¤ÆÃ(&v)  ##  &Voice Chat
-ÆÄÀÏ º¸³»±â(&f)  ##  Send &File
-ÀÌ¸ŞÀÏ º¸³»±â(&m)  ##  Send E&mail
-Â÷´Ü(&b)  ##  &Block
-ÀÌ¸§ ¹Ù²Ù±â(&r)  ##  &Rename
-»èÁ¦(&d)  ##  &Delete
-¼¼ºÎ Á¤º¸(&t)  ##  De&tails
-°èÁ¤ Ãß°¡/Á¦°Å(&a)  ##  Add/Remove &Accounts
-¿¬¶ôÃ³ Ãß°¡/Á¦°Å(&c)  ##  Add/Remove &Contacts
-¿Â¶óÀÎ(&o)  ##  &Online
-ÀÚ¸® ºñ¿ò(&a)  ##  &Away
-ÇÑ°¡ÇØ¿ä(&c)  ##  Free for &Chat
-¹æÇØÇÏÁö¸¶(&d)  ##  &Do not Disturb
-ÀÚ¸® ºñ¿ò ¿¬Àå(&x)  ##  E&xtended Away
-º¸ÀÌÁö ¾ÊÀ½(&i)  ##  &Invisible
-¿ÀÇÁ¶óÀÎ(&f)  ##  O&ffline
-±×¸² ¹Ù²Ù±â(&p)  ##  Change &Picture
-¾ÏÈ£ ¹Ù²Ù±â(&s)  ##  Change Pa&ssword
-¼¼ºÎ Á¤º¸(&d)  ##  Your &Details
-¾ÏÈ£±¸ ÀÔ·Â  ##  Enter Passphrase
-¾ÏÈ£ ÀÔ·Â  ##  Enter password
-º¸È£ ¾ÏÈ£ ÀÔ·Â  ##  Please enter protect password
-¾ğ¾î  ##  Languages
-Wippien¿¡¼­ ¾²ÀÌ´Â ¸ğµç ¾ğ¾î ¼³Ä¡  ##  Setup language used in all Wippien texts.
-»õ·Î¿î ¾ğ¾î°¡ ÁÖ±âÀûÀ¸·Î ³ªÅ¸³¯ ¼ö ÀÖ½À´Ï´Ù.  ##  New languages may appear periodically.
-´ÙÀ½ÀÇ »ç¿ë °¡´ÉÇÑ ¾ğ¾î°¡ ·ÎÄÃ ÄÄÇ»ÅÍ¿¡¼­ ¹ß°ßµÊ  ##  Following languages are found as available on local computer
-¹Ù²Ù±â(&c)  ##  &Change
-·ÎÄÃ ÄÄÇ»ÅÍ¿¡¼­ »ç¿ë ÁßÀÎ ·ÎÄÉÀÏ  ##  Locale used on local computer
-ÇöÀç »ç¿ë ÁßÀÎ ¾ğ¾î  ##  Currently used language
-ÇÊ¼öÀûÀÎ ¿ä¼Ò¸¸ ¹Ù²î¾ú½À´Ï´Ù. ¸ğµÎ Àû¿ëÇÏ·Á¸é WippienÀ» Àç½ÃÀÛÇÏ½Ê½Ã¿À.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-»õ·Î¿î ¾ğ¾î ÆÄÀÏÀÌ »ç¿ë °¡´ÉÇÕ´Ï´Ù. ´Ù¿î·ÎµåÇÏ½Ã°Ú½À´Ï±î?  ##  New language files available. Download?
-¿¬¶ôÃ³°¡ ¿Â¶óÀÎ/¿ÀÇÁ¶óÀÎÀÌ µÉ ¶§ ¾Ë¸² ÆË¾÷Ã¢ º¸±â  ##  Show notification popup window when contact goes online/offline
-¿¬¶ôÃ³ Å¸ÀÌÇÎ Áß...  ##  Contact is typing...
-¸»ÇÔ  ##  says
-¸»ÇßÀ½  ##  said
-¿©±â¿¡ GMAIL °èÁ¤À» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.  ##  You can use your GMAIL account here.
+Ä½Å‚Â¸Ã­  ##  Description
+Â»Å‘ Â°ÄÃÂ¤ Ä‚ÃŸÂ°Ë‡  ##  Add new account
+Â°ÄÃÂ¤ ÃÂ¦Â°Ä¹  ##  Remove account
+ÂµÃ®Â·Ä!  ##  Register!
+Ã‡Ã¶Å”Ã§Å”Ã‡ Å”ÃËÅŸÄ¹ÄÄ†Â® Â¸Å¢ËÄ‚ÃÃ¶ Å¼Â¬Â°Ã¡  ##  Your current Instant messaging connections
+Å”Å»Å”ÃºÂ¸Ã­  ##  Username
+Â»Å‘ Â°ÄÃÂ¤ Å¼Â­Â±Ã¢  ##  Open new account
+ËÃ‚Å”Ã Å¼Ã¤Ä‚Â»  ##  Authorization request
+Å¼Ä…(&y)  ##  &Yes
+Ä¾Ä†Â´ÄÅ¼Å”(&n)  ##  &No
+Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸(&d)  ##  &Details
+Â¸Ä‘ÂµÃ Å”Å±Å¼Ã«(&a)  ##  &Apply to all
+Â»Ã§Å¼Ã«Å”Ãš Ã‚Ã·Â´Ãœ(&b)  ##  &Block user(s)
+Ã‡ÄƒÂ¶Ã´Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®  ##  Do you allow
+Â»Ã³Â´Ã«Å”Ã‡ Å¼Â¬Â¶Ã´Ä‚Å‚ Â¸Å„Â·ÄÅ¼Ë‡ Â´Ã§ËÄ¹Å”Â» Ä‚ÃŸÂ°Ë‡Ã‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  to add you to his contact list?
+Â´Å‘ Â¸Ä…Å”ÅŸ Å¼Ã¤Ä‚Â»Å”Â» Â±Ã¢Â´Å®Â¸Â®Â´Ã‚ ÃÃŸ...  ##  more requests waiting...
+Â±Ã—Â·Ä› Ä‚ÃŸÂ°Ë‡  ##  Add Group
+Â±Ã—Â·Ã« ÃÂ¦Â°Ä¹  ##  Remove Group
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä‚ÃŸÂ°Ë‡  ##  Add Contact
+Â±Ã—Â·Ä›Å¼Ë‡ Å¼Â¬Â¶Ã´Ä‚Å‚ Å‚Å‘Â±Ã¢  ##  Put contact to the group
+JID Å¼Â¬Â¶Ã´Ä‚Å‚  ##  Contact JID
+Å¼Â¬Â¶Ã´Ä‚Å‚ Å”Å»Ã‡Ã¼  ##  Contact Type
+ÅŸÂ¸Å”ÄšÂ´Ã‚ Å”ÄšÂ¸Â§  ##  Visible Name
+Å¼Â¬Â¶Ã´Ä‚Å‚ Å”ÄšÂ¸Â§ Ä…Å®Ë›Å®Â±Ã¢  ##  Rename contact
+Â»Å‘Â·ÃÅ¼Ã® Å¼Â¬Â¶Ã´Ä‚Å‚ Å”ÄšÂ¸Â§ Å”Ã”Â·Ã‚  ##  Enter new contact name
+Ä½Å‚ÃÂ¤  ##  Settings
+< Å”ÄšÅ”Ã¼(&b)  ##  < &Back
+Jabber Ä¹Ã«ËÄ¹ Â·ÃÂ±Ã—  ##  Log Jabber communication
+Ä½Å‡Ã„Ä Ä¹Ã«ËÄ¹ Â·ÃÂ±Ã—  ##  Log socket communication
+Å¼Å™ËÄ‚ Ã‡Ã”Ä½Ã¶ ÄŒÅÄ‚Ã¢ Â·ÃÂ±Ã— (Â»Ë‡Â¸Â® Ã„Å¼ÃÃº Ä½Ã¶ÂµÂµ Å”Ã–ËÅ”Â´ÄÂ´Å®!)  ##  Log raw function calls (may grow quickly!)
+Â°Ë˜Â°Ë˜Å”Ã‡ Å¼Å™ÅŸÂ» Â·ÃÂ±Ã— Â»ÄÃÂ¦  ##  Delete raw log on each
+Â¸Å¢Â°Ë‡Ä…Å®Å”ÄšÄ†Â®  ##  megabytes
+P2P ËÄ‚Å”Å°Ã‡Å‡ Â¶Â§ VPN Ä¹Ã«ËÄ¹ Â±Ã¢Â·Ä  ##  Log VPN communication on P2P startup
+Â´Å®Å”ËÅ”Ã‡ ÃÃŸÅ”Ã§Å”ÃšÂ¸Â¦ Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Å”Ã–Å”Ë  ##  Following mediators can be used
+Â»Å‘ ÃÃŸÅ”Ã§Å”Ãš Ä‚ÃŸÂ°Ë‡ Ã‡ÄƒÂ¶Ã´  ##  Allow new mediators to be added
+Ä‚Â¤Ä†Ä‚Ä‚Ë˜Å¼Ë‡ Â°Ã¼Â·Ä‚ÂµÄŒ Å¼Â©Â·Å» Ä½Å‚ÃÂ¤  ##  Various settings regarding chat window
+Ä¹Â¸Å”Ã“ ËÅŸÄ¹Ä†Ã‡Ã Â¸Å¢ËÄ‚ÃÃ¶  ##  Timestamp messages
+Â¸Å¢ËÄ‚ÃÃ¶ Â±Ã¢Â·Ä ÅŸÂ¸Â±Ã¢  ##  Show message history
+ÅŸÂ°Â¸Ã­  ##  Nickname
+Å”ÄšÂ¸Â§  ##  First name
+Ä½ÅŸ  ##  Last name
+Å”ÄšÂ¸Å¢Å”Ä  ##  Email
+ÅŸÅ„Â¸ÃÂ·Ä  ##  Notes
+ÃÃ–Ä½Å‡  ##  Address
+ÅŸÃÂ°Ë‡ ÃÃ–Ä½Å‡  ##  Address Ext.
+ËÄ‚  ##  City
+ÂµÂµ  ##  State
+Å¼Ä›Ä†Ã­Ä…Å™ÄŒÅ  ##  ZIP
+Â±Ä…Â°Ë‡  ##  Country
+Â»Ã½Å”Ä  ##  Birthday
+Å”ËÄ½ÅŸ Å”Ã¼ÄŒÂ­  ##  Voice Tel.
+Ä†ÅƒËÅŸ  ##  Fax
+ÃÃ·Å”Â§  ##  Title
+ÄŒÂ¸Â»Ã§ Å”ÄšÂ¸Â§  ##  Company name
+ÅŸÃÄ½Â­  ##  Department
+ÃÃ·ÃË˜ Å¼Â¬Â°Ã¡Å”Â» Å”Â§Ã‡Åƒ Å”ÃÄ¹ÃÄ†Ã¤Å”ÄšËÅŸ Ã‡ÄƒÂ¶Ã´  ##  Allowed interfaces for direct connection
+Â¸Ä‘ÂµÃ Ã‡ÄƒÂ¶Ã´  ##  Allow All
+Â°ÅÅ”Â» Ä…Å®Ë›Å®Â·ÃÂ¸Ã© Ä‚Ä… Ä…Å™Ã‚Â° Ã„Ä‚Â·Å‚Å”Â» Ä¹Â¬Â¸Å»  ##  Click on first column to change values
+'ÃÃ¶ÃÂ¤ÂµÃ‡ÃÃ¶ Ä¾Ä˜Å”ÅŸ' Â°ÅÅ”Â» Ä½Â±Ä¹Ä‚Ã‡ÄÅ¼Â´Â´Å®Â¸Ã©, Â°Â°Å”ÅŸ Â°ÅÅ”Äš 'Â´Å®Â¸Ä„ Â¸Ä‘ÂµÃ§' Ä½Å‚ÃÂ¤Å¼Ë‡Ä½Â­ Â»Ã§Å¼Ã«ÂµÃ‡Ä¾Ã®ÃÃ½Â´ÄÂ´Å®.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Â´Å®Å”ËÅ”Ã‡ ËÅŸÄ¹Ë› Ä†Ã„Å”ÄÅ”Äš Ä‚ÅÄ¾Ä†ÃÃ¼  ##  Following skin files are found
+Å”Å±Å¼Ã«  ##  Apply
+Â´Å‘ Â¸Ä…Å”ÅŸ ËÅŸÄ¹Ë›Å”Â» Ä‚ÃŸÂ°Ë‡Ã‡ÄÂ·ÃÂ¸Ã©, 'Skin' Ã‡ÄÅ”Â§Ä†ÃºÂ´Å‘Å¼Ë‡ Å‚Ã–Å”Â¸ËÄ˜ËÄ‚Å¼Å”. Ä…ÄšÂ¸Â®ÅŸÂ¸Â±Ã¢Â¸Â¦ Å”Â§Ã‡Å˜ 100x100 Å¼Ë‡ Â´Ã«Å”Å”Ã‡ÄÂ´Ã‚ PNG Ä†Ã„Å”ÄÅ”Â» Ä‚ÃŸÂ°Ë‡Ã‡ÅÂ´ÄÂ´Å®.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+Â´Å‘ Â¸Ä…Å”ÅŸ ËÅŸÄ¹Ë›...(&m)  ##  &More skins...
+ÄŒÂ°ÂµÅ¼Å”Äš Â´Å®ËÄ‚ Â°Â¨ÃÃ¶ÂµÃ‡Â¸Ã© Ä½Å‚ÃÂ¤Å”Â» ÂµÃ‡ÂµÄ…Â¸Å‚Â´ÄÂ´Å®.  ##  Set back when activity is detected again.
+Â´Ã«Â±Ã¢  ##  Wait
+Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Â¸Ä‘ÂµÄº Å”Ã¼Å”Ã‡ Â´Ã«Â±Ã¢ ËÄ‚Â°Å(ÅŸÄ) (0 = Â»Ã§Å¼Ã«Ä¾ÄŒÃ‡Ã”)  ##  minutes before going to away mode (0 = disable)
+Å¼Â¬Å”ÄºÂµÄŒ Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Â¸Ä‘ÂµÄº Å”Ã¼Å”Ã‡ Â´Ã«Â±Ã¢ ËÄ‚Â°Å(ÅŸÄ) (0 = Â»Ã§Å¼Ã«Ä¾ÄŒÃ‡Ã”)  ##  minutes before going to extended away mode (0 = disable)
+Å¼Â¬Â°Ã¡ Ë›Ã·Â±Ã¢ Å”Ã¼Å”Ã‡ Â´Ã«Â±Ã¢ ËÄ‚Â°Å (0 = Â»Ã§Å¼Ã«Ä¾ÄŒÃ‡Ã”)  ##  minutes before disconnecting (0 = disable)
+Å”ÃšÂµÅ¼ Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Â¸Å¢ËÄ‚ÃÃ¶  ##  Auto-Away message
+Å¼Â¬Å”ÄºÂµÄŒ Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Â¸Å¢ËÄ‚ÃÃ¶  ##  Extended-Away message
+Å”Å°Ä¾Ã· Ã‡Ä„ËÄ‚ÃÅ®Å¼Ë‡ Wippien ÅŸÂ¸Â±Ã¢  ##  Show Wippien in taskbar
+Ä…Å®Ä¹Ã ÄŒÂ­Â¸Ã©Å”Â» Å”Ã§Ä…ÄÅ¼Â­Ã‡Å‡ Â¶Â§ Wippien Ä‚Ë˜Å”Â» Â°Ë‡Å”ÄºÅ”ÃšÂ¸Â®Â·Ã ÃÂ¤Â·Ã„  ##  Rearrange desktop when Wippien window is aligned to border
+Ä…Å®Ä¹Ã ÄŒÂ­Â¸Ã© Â°Ë‡Å”ÄºÅ”ÃšÂ¸Â®Å¼Ë‡ Å”ÃšÄ½Â®  ##  Snap to desktop border
+Wippien Å”Äš ÅŸÅ„ÄŒÂ°Ä½ÅŸÄŒÂ­ Â»Ã³Ä¹Ã‚Å”Ä Â¶Â§ Å”ÃšÂµÅ¼Å”Â¸Â·Ã Ä½Å±Â±Ä  ##  Auto hide if Wippien is inactive for
+Ã‡Ã—Â»Ã³ Å”Â§Å¼Ë‡  ##  Always on top
+Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„Å¼Ë‡Ä½Â­ Å‚ÅÂ°Ä„ Â¶Â§ ÄŒÂ®Å”Ã  ##  Confirm exit from application
+Ã„Ã„Ã‡Â»Ä¹ÃÂ°Ë‡ Â´Ã«Â±Ã¢/Ä‚Ã–Â´Ã« Å”Ã½Å”Ã¼ Â¸Ä‘ÂµÄºÂ·Ã ÂµÃ©Ä¾Ã®Â°Ä„ Â¶Â§ Å¼Â¬Â°Ã¡ Ë›Ã·Â±Ã¢, ÅŸÄ…Â±Ã ËÄ‚ Å¼Â¬Â°Ã¡  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Ä¾ÄÄŒÅ ÅŸÂ¸ÄŒÅ  ##  Password protect
+Ä½Å‚ÃÂ¤Â¸Â¸  ##  Settings only
+Â¸Ä‘ÂµÃ  ##  Everything
+Ä½Å‚ÃÂ¤ Ä†ÃºÂ´Å‘ (Ä¾Ä†Â·Ë‡ Â°ÅÅ”Â» Ä…Å®Ë›Ãœ Â°Ä‡Å¼Ä› wippien Å”Ã§ËÄ‚Å”Å° Ã‡Ä˜Å¼Ã¤)  ##  Settings folder (changing below value requires wippien restart)
+Å¼Â¬Â¶Ã´Ä‚Å‚ Â¸Å„Â·Ä ÃÃ¶Ä½Ã“Ä½ÅŸ  ##  Contact list persistance
+ËÄ‚Å”Å°Ã‡Å‡ Â¶Â§ Â¸Ä‘ÂµÃ§ Â·ÃÃ„Ä‚ Å¼Â¬Â¶Ã´Ä‚Å‚ Â»ÄÃÂ¦  ##  Delete all local contacts on startup
+Å¼Â¬Â°Ã¡Ã‡Å‡ Â¶Â§ Â¸Ä‘ÂµÃ§ Â·ÃÃ„Ä‚ Å¼Â¬Â¶Ã´Ä‚Å‚ Â»ÄÃÂ¦  ##  Delete all local contacts on connect
+Å¼Â¬Â¶Ã´Ä‚Å‚ Â°Ë‡Å”Ã” ËÃ‚Å”Ã  ##  Contacts subscription authorization
+ËÃ‚Å”Ã Ä¾ÄŒÃ‡Ã”  ##  Never authorize
+Ä…Â°Ä¾Ã®ÅŸÂ¸Â±Ã¢  ##  Ask me
+Ã‡Ã—Â»Ã³ ËÃ‚Å”Ã  ##  Always authorize
+Å”ÃšÂµÅ¼Å”Â¸Â·Ã Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Ä†Â®Â·Ë‡Ã‡ÄŒÅ¼Ë‡ VPN Â±Â¸Ä‚Å•  ##  Automatically establish VPN on network traffic
+Å”ÃšÂµÅ¼Å”Â¸Â·Ã ËÄ‚Å”Å°Ã‡Å‡ Â¶Â§ VPN Â±Â¸Ä‚Å•  ##  Automatically establish VPN on startup
+ÃÅ™Ã‡Å•  ##  Progress
+Å”ËÄ½ÅŸ Ä‚Â¤Ä†Ä‚ ÄŒÂ°Ä½ÅŸÄŒÂ­  ##  Enable voice chat
+Å”Ã§Â»Ã½ Å”ÄºÃ„Ë‡  ##  Playback device
+Å‚Ä›Å”Ë Å”ÄºÃ„Ë‡  ##  Recording device
+Wippien ËÄ‚Å”Å°Ã‡Å‡ Â¶Â§ Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â® Ä‚Ä½Ä¹Â©  ##  Check for updates when Wippien starts
+Å¼Â¬Â°Ã¡Ã‡Å‡ Â¶Â§ Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â® Ä‚Ä½Ä¹Â©  ##  Check for updates on Connect
+Â°Ë˜Â°Ë˜Å”Ã‡ Â»Ã³ÄŒË›Å¼Ë‡ Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â®  ##  Check for updates each
+Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„Å”Â» Å”ÃšÂµÅ¼Å”Â¸Â·Ã Ä¾Ã·ÂµÄ„Å”ÄšÄ†Â®Ã‡ÄÂ°Ã­ Å”Ã§ËÄ‚Å”Å°  ##  Update and restart application silently
+Ä¾Ã·ÂµÄ„Å”ÄšÄ¹ÃÂ·ÃÅŸÃÄ¹Ã Ä…Å¢Å”ÅŸ ËÄ‚ËÅŸÄ¹Å° Â¸Å¢ËÄ‚ÃÃ¶ ÅŸÂ¸Â±Ã¢  ##  Show system messages received from updater
+ÃÃ¶Â±Ã Ä‚Ä½Ä¹Â©Ã‡ÄÂ±Ã¢(&c)  ##  &Check now
+MTU Ä½Å‚ÃÂ¤Å”ÅŸ ÂµÅ¼Â·Ã¡Å¼Ë‡Â°Ã” ÅŸÂ¸Å‚Ä¾ Ä½Ã¶ Å”Ã–Â´Ã‚ Ä‚Ã–Â´Ã« UDP Ä†ÄÄ¹Â¶Å”Â» ÃÂ¤Å”Ã‡Ã‡ÅÂ´ÄÂ´Å®. Å‚Ã—Ä†Â®Å¼Ã¶Ä¹Â© Å¼Â¬Â°Ã¡Å”Ã‡ MTUÂ°ÅÅ”Äš wippienÅŸÂ¸Â´Å® Å”Å°Å”Â» Â°Ä‡Å¼Ä›, ÂµÅ¼Â·Ã¡Â´Ã‚ Ä¹Â« Ä†ÄÄ¹Â¶Å”Â» Ä…Å¢ÃÃ¶ Â¸Å™Ã‡ÅÂ´ÄÂ´Å®.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Ä½Ã¶ÃÂ¤ÂµÄŒ MTU Â»Ã§Å¼Ã«  ##  Use fixed MTU
+MTU Å”ÃšÂµÅ¼ Â°Â¨ÃÃ¶  ##  Auto-detect MTU
+(ÂµÅ¼Â·Ã¡Â°Ë‡ Å”Ã§Å¼Â¬Â°Ã¡Ã‡Å‡ Â¶Â§ ÄŒÅ¼Â°ÃºÅ”Å±)  ##  (will become effective as peers reconnect)
+Ä½Å‡Â¸Â® (Â±Ã¢ÅŸÂ» Ä½Å‡Â¸Â®Â¸Â¦ Å”Â§Ã‡Å˜ ÅŸÅ„Å¼Åˆ)  ##  Sound (leave empty for default sound)
+Å”Ã§Â»Ã½(&p)  ##  &Play
+Ã‡ÃÂ·ÃÂ±Ã—Â·Ä„ Å”ÄšÅŸÄ„Ä†Â®  ##  Program events
+Â»Å‘ Å¼Â¬Â¶Ã´Ä‚Å‚ Ä½Å±Â±Ä  ##  Hide new contact
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä½Å±Â±Ä Ã‡Å˜ÃÂ¦  ##  Unhide contact
+Ã‡Ã¶Å”Ã§ Ä½Å±Â°ÃœÃÅ™ Å¼Â¬Â¶Ã´Ä‚Å‚  ##  Currently hidden contacts
+Å¼Â©Â±Ã¢Å¼Ë‡ Å‚ÅÅ¼Â­ÂµÄŒ Â¸Ä‘ÂµÃ§ Å¼Â¬Â¶Ã´Ä‚Å‚Â¸Â¦ WippienÅ¼Ë‡ Å‚ÅÄ¹Â¸Å‚Â»ÃÃ¶ Ä¾Ä˜ËÅ”Â´ÄÂ´Å®.. Â±Ã—ÂµÃ©Å”ÅŸ Â´Å‘Å”ÄšÂ»Ã³ ÃÂ¸Å”Ã§Ã‡ÄÃÃ¶ Ä¾Ä˜Å”Â» Â°ÃÅ”Ã”Â´ÄÂ´Å®. Â»Ã§Â¶Ã·Å”Â» Å¼ÄÅŸÂ®ÄŒÃ· Ä…Â«ËÄ‚Ã‡Å‡ Ä½Ã¶ Å”Ã–Â´Ã‚ Ä…Ä‡Ä…Ã½Å”Ã”Â´ÄÂ´Å®.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä½Å±Â±Ä  ##  Hide contact
+JID Å¼Â¬Â¶Ã´Ä‚Å‚ Å”Ã”Â·Ã‚  ##  Enter contact JID
+Â¸Ä‘ÂµÃ§ Ä†Â®Â·Ë‡Ã‡ÄŒ Ã‡ÄƒÂ¶Ã´  ##  Allow all traffic
+Â¸Ä‘ÂµÃ§ Ä†Â®Â·Ë‡Ã‡ÄŒ Ã‚Ã·Â´Ãœ  ##  Block all traffic
+Ä‚ÃŸÂ°Ë‡(&a)  ##  &Add
+ÃÂ¦Â°Ä¹(&r)  ##  &Remove
+Â±Ã¢ÅŸÂ» Â±Ã”Ã„Ë˜  ##  Default rule
+Ä¾Ä†Ä…Å®Ä¹Â¸ Â±Ã—Â¸Ë›  ##  Avatar picture
+Å”ÄšÂ¸Â§  ##  Name
+IP ÃÃ–Ä½Å‡  ##  IP address
+Â»Ã³Ä¹Ã‚ Ä¹Å˜ËÅŸÄ†Â®  ##  Status text
+Â¸Â¶ÃÃ¶Â¸Â· Å¼Ã‚Â¶Ã³Å”Ã ËÄ‚Â°Å  ##  Last online time
+ÄŒÂ°Ä½ÅŸ Â¸Ä‘Â´ÄÄ¹Ã  ##  Activity Monitor
+ÅŸÄ½ Ä½Ã¶ Å”Ã–Â´Ã‚ Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸  ##  Visible details
+Å¼Â¬Â¶Ã´Ä‚Å‚Å”Ã‡ ÅŸÄ½ Ä½Ã¶ Å”Ã–Â´Ã‚ Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸  ##  Contact's visible details
+ÃÂ¤Â·Ã„ Ä¾ÄŒÃ‡Ã”  ##  unsorted
+Å”ÄšÂ¸Â§ Ä½Å™  ##  By name
+JID Ä½Å™  ##  By JID
+IP Ä½Å™ (IP Ã‡ÄÂ´ÃœÅ”Â¸Â·Ã Â°Ë‡ÃÃ¶ Ä¾Ä˜Å”Ë)  ##  by IP (without IP goes bottom)
+IP Ä½Å™ (IP Â»Ã³Â´ÃœÅ”Â¸Â·Ã Â°Ë‡ÃÃ¶ Ä¾Ä˜Å”Ë)  ##  by IP (without IP goes top)
+ÃÂ¤Â·Ã„ÂµÄŒ Å¼Â¬Â¶Ã´Ä‚Å‚ Â¸Å„Â·Ä  ##  Sort contact list
+Ä‚Â¤Ä†Ä‚Ä…Ä‡Å¼Ë‡ Ä¾Âµ ÅŸÂ°Â¸Ã­  ##  Nickname for chatrooms
+Â´Å®Å”Ë Â°Ã”Å”ÄšÄ†Â®Å¼Å£Å”ÄšÅ”Ã‡ Å”Ã”Å”ÄºÂ°Ë‡Â´Ã‰Ã‡Åƒ Ä…Ä‡ÂµÃ© ÅŸÂ¸Â±Ã¢  ##  Show available rooms on following gateways
+Å”Â§Å”Ã‡ Ä…Ä‡Å¼Ë‡Ä½Â­ Ä½Â±Ä¹Ä‚Ã‡ÄÂ°Ä¹Å‚Å, Â»Å‘Â·ÃÅ¼Ã® Ä‚Â¤Ä†Ä‚Ä…Ä‡ ÃÂ¤ÅŸÂ¸Â¸Â¦ Ä¾Ä†Â·Ë‡Å¼Ë‡ Å”Ã”Â·Ã‚  ##  Click above to select room, or enter new chat room details below
+Â¸Â¸ÂµÃ©Â°Ä¹Å‚Å Å”Ã”Å”ÄºÃ‡Å‡ Ä…Ä‡ Å”ÄšÂ¸Â§  ##  Room name to create or join
+Ä¾ÄÄŒÅ (Ä¾Å™Å”Â» Â°Ä‡Å¼Ä› ÅŸÅ„Å¼Åˆ)  ##  Password (empty if none)
+Â°Ã”Å”ÄšÄ†Â®Å¼Å£Å”Äš  ##  Gateway
+Ä…Ä‡ Å”Ã”Å”Äº or Â¸Â¸ÂµÃ©Â±Ã¢  ##  Join or Create room
+ËÄ‚Å”Å°Ã‡Å‡ Â¶Â§ Â»Ã§Å¼Ã«Å”Ãš Ã‚Ã·Â´Ãœ  ##  Block users at startup
+IP ÅŸÄ…Â»Ã§(&c)  ##  &Copy IP
+Ä‚Â¤Ä†Ä‚(&h)  ##  C&hat
+Å”ËÄ½ÅŸ Ä‚Â¤Ä†Ä‚(&v)  ##  &Voice Chat
+Ä†Ã„Å”Ä ÅŸÂ¸Å‚Â»Â±Ã¢(&f)  ##  Send &File
+Å”ÄšÂ¸Å¢Å”Ä ÅŸÂ¸Å‚Â»Â±Ã¢(&m)  ##  Send E&mail
+Ã‚Ã·Â´Ãœ(&b)  ##  &Block
+Å”ÄšÂ¸Â§ Ä…Å®Ë›Å®Â±Ã¢(&r)  ##  &Rename
+Â»ÄÃÂ¦(&d)  ##  &Delete
+Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸(&t)  ##  De&tails
+Â°ÄÃÂ¤ Ä‚ÃŸÂ°Ë‡/ÃÂ¦Â°Ä¹(&a)  ##  Add/Remove &Accounts
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä‚ÃŸÂ°Ë‡/ÃÂ¦Â°Ä¹(&c)  ##  Add/Remove &Contacts
+Å¼Ã‚Â¶Ã³Å”Ã(&o)  ##  &Online
+Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ(&a)  ##  &Away
+Ã‡ÅƒÂ°Ë‡Ã‡Å˜Å¼Ã¤(&c)  ##  Free for &Chat
+Ä…Ä‡Ã‡Å˜Ã‡ÄÃÃ¶Â¸Â¶(&d)  ##  &Do not Disturb
+Å”ÃšÂ¸Â® ÅŸÅ„Å¼Åˆ Å¼Â¬Å”Äº(&x)  ##  E&xtended Away
+ÅŸÂ¸Å”ÄšÃÃ¶ Ä¾Ä˜Å”Ë(&i)  ##  &Invisible
+Å¼Å”Ã‡ÃÂ¶Ã³Å”Ã(&f)  ##  O&ffline
+Â±Ã—Â¸Ë› Ä…Å®Ë›Å®Â±Ã¢(&p)  ##  Change &Picture
+Ä¾ÄÄŒÅ Ä…Å®Ë›Å®Â±Ã¢(&s)  ##  Change Pa&ssword
+Ä½Ä½ÅŸÃ ÃÂ¤ÅŸÂ¸(&d)  ##  Your &Details
+Ä¾ÄÄŒÅÂ±Â¸ Å”Ã”Â·Ã‚  ##  Enter Passphrase
+Ä¾ÄÄŒÅ Å”Ã”Â·Ã‚  ##  Enter password
+ÅŸÂ¸ÄŒÅ Ä¾ÄÄŒÅ Å”Ã”Â·Ã‚  ##  Please enter protect password
+Ä¾Ä‘Ä¾Ã®  ##  Languages
+WippienÅ¼Ë‡Ä½Â­ Ä¾Ë›Å”ÄšÂ´Ã‚ Â¸Ä‘ÂµÃ§ Ä¾Ä‘Ä¾Ã® Ä½Å‚Ã„Ë‡  ##  Setup language used in all Wippien texts.
+Â»Å‘Â·ÃÅ¼Ã® Ä¾Ä‘Ä¾Ã®Â°Ë‡ ÃÃ–Â±Ã¢Å”Å±Å”Â¸Â·Ã Å‚ÅÄ¹Â¸Å‚Å» Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  New languages may appear periodically.
+Â´Å®Å”ËÅ”Ã‡ Â»Ã§Å¼Ã« Â°Ë‡Â´Ã‰Ã‡Åƒ Ä¾Ä‘Ä¾Ã®Â°Ë‡ Â·ÃÃ„Ä‚ Ã„Ã„Ã‡Â»Ä¹ÃÅ¼Ë‡Ä½Â­ Ä…ÃŸÂ°ÃŸÂµÄ˜  ##  Following languages are found as available on local computer
+Ä…Å®Ë›Å®Â±Ã¢(&c)  ##  &Change
+Â·ÃÃ„Ä‚ Ã„Ã„Ã‡Â»Ä¹ÃÅ¼Ë‡Ä½Â­ Â»Ã§Å¼Ã« ÃÃŸÅ”Ã Â·ÃÃ„Ã‰Å”Ä  ##  Locale used on local computer
+Ã‡Ã¶Å”Ã§ Â»Ã§Å¼Ã« ÃÃŸÅ”Ã Ä¾Ä‘Ä¾Ã®  ##  Currently used language
+Ã‡Ä˜Ä½Ã¶Å”Å±Å”Ã Å¼Ã¤Ä½Å‡Â¸Â¸ Ä…Å®Ë›Ã®Ä¾ÃºËÅ”Â´ÄÂ´Å®. Â¸Ä‘ÂµÃ Å”Å±Å¼Ã«Ã‡ÄÂ·ÃÂ¸Ã© WippienÅ”Â» Å”Ã§ËÄ‚Å”Å°Ã‡ÄËÄ˜ËÄ‚Å¼Å”.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Â»Å‘Â·ÃÅ¼Ã® Ä¾Ä‘Ä¾Ã® Ä†Ã„Å”ÄÅ”Äš Â»Ã§Å¼Ã« Â°Ë‡Â´Ã‰Ã‡ÅÂ´ÄÂ´Å®. Â´Å®Å¼Ã®Â·ÃÂµÄºÃ‡ÄËÄ‚Â°ÃšËÅ”Â´ÄÂ±Ã®?  ##  New language files available. Download?
+Å¼Â¬Â¶Ã´Ä‚Å‚Â°Ë‡ Å¼Ã‚Â¶Ã³Å”Ã/Å¼Å”Ã‡ÃÂ¶Ã³Å”ÃÅ”Äš ÂµÃ‰ Â¶Â§ Ä¾Ã‹Â¸Ë› Ä†Ã‹Ä¾Ã·Ä‚Ë˜ ÅŸÂ¸Â±Ã¢  ##  Show notification popup window when contact goes online/offline
+Å¼Â¬Â¶Ã´Ä‚Å‚ Ä¹Â¸Å”ÄšÃ‡Ã ÃÃŸ...  ##  Contact is typing...
+Â¸Â»Ã‡Ã”  ##  says
+Â¸Â»Ã‡ÃŸÅ”Ë  ##  said
+Å¼Â©Â±Ã¢Å¼Ë‡ GMAIL Â°ÄÃÂ¤Å”Â» Â»Ã§Å¼Ã«Ã‡Å‡ Ä½Ã¶ Å”Ã–ËÅ”Â´ÄÂ´Å®.  ##  You can use your GMAIL account here.

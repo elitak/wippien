@@ -1900,6 +1900,36 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 			temp.Clear();	
 			temp.Append(t2.Ptr(), t2.Len());
 		}
+		else
+		{
+			_Buffer t2;
+			wchar_t tt[32768];
+			do 
+			{
+
+				i = temp.FindNextLine(FALSE);
+				if (i>0)
+				{
+					memset(tt, 0, sizeof(tt));
+					int ret = MultiByteToWideChar(CP_UTF8, 0, temp.Ptr(), i, NULL, NULL);
+					if (ret>0)
+					{
+						MultiByteToWideChar(CP_UTF8, 0, temp.Ptr(), i, tt, sizeof(tt));
+
+						temp.Consume(i);
+						ret = WideCharToMultiByte(CP_ACP, 0, (BSTR)tt, -1, NULL, NULL, NULL, NULL);
+						if (ret>0)
+						{
+							WideCharToMultiByte(CP_ACP, 0, (BSTR)tt, -1, buff, sizeof(buff), NULL, NULL);
+							t2.Append(buff);
+						}
+					}
+				}
+			} while (i>0);
+			
+			temp.Clear();	
+			temp.Append(t2.Ptr(), t2.Len());
+		}
 
 		temp1->Append(temp.Ptr(), temp.Len());
 

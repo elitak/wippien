@@ -654,6 +654,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 													while (out.Len()>4)
 													{
 														int ij = out.GetInt();
+														if (ij > out.Len())
+															ij = out.Len();
 														char buff[1024];
 														memset(buff, 0, sizeof(buff));
 														memcpy(buff, out.Ptr(), ij);

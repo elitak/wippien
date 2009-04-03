@@ -717,7 +717,7 @@ void CUser::FdTimer(int TimerID)
 			_MainDlg.m_UserList.Invalidate();
 	}
 	else
-	if (TimerID==3)
+	if (TimerID==3 && _Ethernet.m_Available)
 	{
 		KillTimer(3);
 		if (!m_RSA || m_RemoteWippienState < WipWaitingInitResponse || m_WippienState < WipWaitingInitResponse)
@@ -816,7 +816,7 @@ void CUser::FdTimer(int TimerID)
 	else
 	if (TimerID == 8)
 	{
-		if (m_IsUsingWippien && !m_Block)
+		if (m_IsUsingWippien && !m_Block && m_HisVirtualIP)
 		{
 			switch (m_WippienState)
 			{

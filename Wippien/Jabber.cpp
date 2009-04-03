@@ -1313,11 +1313,16 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	if (*_Settings.m_Resource)
 		l += _Settings.m_Resource;
 	else
-		l += WIPPIENIM;
+	{
+		if (_Ethernet.m_Available)
+			l += WIPPIENIM;
+		else
+			l += "WippienNoAdapter";
+	}
 
 
 #ifndef _WODXMPPLIB
-	if (_Ethernet.m_AdapterHandle != INVALID_HANDLE_VALUE)
+	if (_Ethernet.m_Available)
 	{
 		CComBSTR caps;
 		m_Jabb->get_Capabilities(&caps);
@@ -1341,7 +1346,7 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 		m_Jabb->put_Security((WODXMPPCOMLib::SecurityEnum)1);
 
 #else
-	if (_Ethernet.m_AdapterHandle != INVALID_HANDLE_VALUE)
+	if (_Ethernet.m_Available)
 	{
 		char buff[1024] = {0};
 		int bflen = sizeof(buff);

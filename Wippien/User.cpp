@@ -344,6 +344,8 @@ void CUser::ReInit(BOOL WithDirect)
 	{
 		m_MyRandom = (rand()%1024)+1;
 	}
+	if (m_WippienState != WipConnected)
+		m_IsUsingWippien = FALSE;
 
 	SetDebugLogFile();
 	if (WithDirect)

@@ -1,6 +1,6 @@
 # Czech translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sonyc
-# Version: 164
+# Version: 1
 Zadna chyba  ##  No error.
 System nemuze nalez uvedeny soubor.  ##  The system cannot find the file specified.
 System nemuze nalezt uvedenou cestu.  ##  The system cannot find the path specified.

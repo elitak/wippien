@@ -1,6 +1,6 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 552
+# Version: 2
 Sem erro.  ##  No error.
 O sistema não consegue encontrar o ficheiro especificado.  ##  The system cannot find the file specified.
 O sistema não encontrou o caminho especificado.  ##  The system cannot find the path specified.

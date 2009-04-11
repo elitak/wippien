@@ -1,6 +1,6 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
-# Author: José Martins
-# Version: 1
+# Author: José Martins and Ahn
+# Version: 552
 Sem erro.  ##  No error.
 O sistema não consegue encontrar o ficheiro especificado.  ##  The system cannot find the file specified.
 O sistema não encontrou o caminho especificado.  ##  The system cannot find the path specified.
@@ -128,11 +128,11 @@ A executar comando no servidor  ##  Executing command on server
 A desligar do servidor  ##  Disconnecting from the server
 Autorização requerida  ##  Requested authorization
 A configurar o adaptador de rede Wippien...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+O adaptador \"%s\" com o endereço %s encontra-se em conflito com o do Wippien %s. Pode acontecer que o Wippien não consiga enviar ou receber dados. Por favor desinstale ou desactive esse adaptador.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Adaptador de rede desligado  ##  Network adapter disabled!
 Adaptador de rede ligado  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+O adaptador de rede do Wippien não está disponível. Continuar apenas com o IM ?  ##  Wippien network adapter not available. Proceed with IM only?
+O Wippien deve configurar o endereço IP com uma ferramente externa e requere privilégios administrativos. Por favor executa o Wippien pelo menos uma vez com permissões de administrador.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 São requeridos privilégios de Administrador!  ##  Admin privilege required!
 Desligado  ##  Disconnected
 Ligado  ##  Connected
@@ -203,10 +203,10 @@ Não especificado  ##  not specified
 &Finalizado  ##  &Finish
 &Seguinte >  ##  &Next >
 Identidade  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
+Escolha a sua informação de entrada.  ##  Please choose your logon information.
+Isto aparece na lista dos seus contactos.  ##  This is shown on your friend's list.
+A JID deve conter o nome de servidor formatado da seguinte maneira: "user@server.com"  ##  JID should contain server name, formatted like user@server.com
+Detalhes de entrada inválidos.  ##  Invalid logon details
 Tens de inserir o teu JID.  ##  You must enter your JID.
 Tens de inserir a tua password.  ##  You must enter your password.
 Erro de Jabber  ##  Jabber error
@@ -226,8 +226,8 @@ Hostname  ##  Hostname
 Permanentemente  ##  Permanent
 Temporáriamente  ##  Temporary
 Coloca todas as tuas contas aqui.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
+Pode adicionar qualquer conta suportada pelo servidor Jabber (normalmente ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Tem a certeza que quer apagar a conta '%s'?  ##  Are you sure you want to delete account '%s'?
 Apagar a conta registada?  ##  Delete registered account?
 Contas  ##  Accounts
 Mostrar apenas gateways  ##  Show only gateways
@@ -235,9 +235,9 @@ Motrar todos os serviços  ##  Show all services
 Contactos  ##  Contacts
 Adicionar/Remover  ##  Add/Remove
 Procurar novos contactos.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Pode adicionar novos contactos Jabber, ICQ, MSN...  ##  You can add new Jabber, ICQ, MSN... contacts
+Todos os ficheiros (*.*)\0*\0Ficheiros TXT (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Todas as imagens (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Ficheiros Jpeg (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0Ficheiros GIF (*.gif)\0*.gif\0Ficheiros PNG (*.png)\0*.png\0Todos os ficheiros (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Sistema  ##  System
 A registar  ##  Logging
 Configurar ficheiros de Registo e Configuração.  ##  Setup log files and debug info.
@@ -256,16 +256,16 @@ endereço fornecido pelo mediador  ##  address given by mediator
 Aparência  ##  Appearance
 Skins  ##  Skins
 Escolhe a skin da seguinte lista.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
+O que o Wippien vai usar?  ##  What will Wippien wear?
 .. nada ..  ##  .. none ..
-  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+Fora automático  ##  Auto Away
+Configurações de "Fora Automático".  ##  Auto away settings.
+Determina o que o Wippien faz quando o sistema fica inactivo.  ##  Determines how will Wippien behave when system is inactive.
 Sistema  ##  System
 Sistema de mensagens básico  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
+Define o comportamento do Wippien.  ##  Define Wippien application's behavior.
 Conversa por voz  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
+Configure os dispositivos para conversas de voz.  ##  Please setup your voice chat devices.
 Escolha da lista abaixo.  ##  Choose from list below.
 <por defeito>  ##  <system default>
 Definições básicas dos contactos.  ##  Contacts basic settings.
@@ -273,46 +273,46 @@ Actualizações  ##  Updates
 Definição das actualizações.  ##  Update definitions.
 Definir como e quando Wippien pode fazer actualizções.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
-If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
+Determine as unidades máximas de transferência (MTU).  ##  Please determine maximum transfer unit.
+Se algum contacto não responder a pacotes grandes...  ##  If some peer doesn't respond to large packets...
 Sons  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
+Configure os sons a serem tocados em várias situações.  ##  Setup sounds to be played on various events.
+Escolha entre os da aplicação, ou procure por ficheiros WAV.  ##  Choose internal ones, or browse for WAV files.
 Contacto online  ##  Contact online
 Contacto offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
+Mensagem a entrar  ##  Message in
+Mensagem a sair  ##  Message out
 Error  ##  Error
-WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+Ficheiros WAV (*.wav)\0*.wav\0Todos os ficheiros (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Esconder  ##  Hide
 Esconder contactos.  ##  Hide contacts.
 Podes esconder alguns contactos.  ##  You can hide some contacts from your sight.
 Aparência  ##  Appearance
 Definições de aparência.  ##  Appearance settings.
-Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
+Defina como a interface do Wippien aparece.  ##  Define how will Wippien's GUI appear to you.
 Ordenar  ##  Sort
 Ordenar contactos  ##  Sorts contacts.
 Escolhe uma das opções.  ##  Pick one of sort options.
 Sala de chat  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
-- All gateways -  ##  - All gateways -
-Service gateway  ##  Service gateway
+Procure ou crie salas de conversa. (AINDA EM BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Especifique ou procure uma sala para se juntar, ou crie uma nova.  ##  Specify or browse for a room to join or create new one.
+- Todos os portos de saída -  ##  - All gateways -
+Serviço de saída (gateway).  ##  Service gateway
 Nome de sala  ##  Room name
 Firewall  ##  Firewall
 Define opções de firewall.  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
-  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
+Você pode determinar quais portas podem ser acessadas pelos seus contatos.  ##  You can set up which ports can be accessed by your contacts.
+*Todo o tráfico ICMP  ##  * All ICMP traffic
+Mas bloquear essas portas  ##  But block these ports
+Mas permitir essas portas  ##  But allow these ports
+Atualização do Wippien  ##  Wippien update
+Uma nova versão do Wippien está disponível. Baixar?  ##  New version of Wippien is available. Download?
+Clique aqui para ver o que há de novo.  ##  Click here to see what's new.
+Sua versão do Wippien está atualizada.  ##  Your version of Wippien is up-to-date.
+Erro ao conectar com o servidor remoto.  ##  Error connecting to remote server.
+Download completo. Substituir agora?  ##  Download successful. Replace now?
+Erro ao atualizar Wippien.  ##  Wippien update error!
+Uma nova versão do Wippien foi encontrada localmete. Substituir?  ##  New version of Wippien found localy. Replace?
 Nova versão  ##  New version
 Status mudado:  ##  Status changed:
 dia  ##  day
@@ -329,80 +329,80 @@ está bloqueado  ##  is blocked
 está ligado  ##  is offline
 Desbloquear  ##  Unblock
 Bloquear  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
+Você tem certeza que deseja remover o grupo %s  ##  Are you sure you want to remove group %s
 Remover grupo?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remover contacto?  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
-I have existing Jabber account  ##  I have existing Jabber account
+Você tem certeza que deseja remover o contato %s  ##  Are you sure you want to remove contact %s
+Remover contato?  ##  Remove contact?
+Erro no adaptador  ##  Adapter error
+Renomear grupo  ##  Rename group
+Entre o nome do grupo  ##  Enter new group name
+Baixar mais skins do website do Wippien  ##  Download more skins from Wippien website
+Clique na skin para realizar o download e instalar  ##  Click on the skin to download and install it.
+Eu preciso de uma nova conta Jabber  ##  I need new Jabber account
+Eu já tenho uma conta existente no Jabber  ##  I have existing Jabber account
 &Testa Conta  ##  &Test Account
 &Procurar  ##  &Search
-You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Você deve inserir sua ID do jabber(JID) aqui. O Wippen usa o Jabber para indicar a presença de rede - para notificar seus contatos que você está online, para ver outros contatos etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Se você não tem uma JID, você deve registrar uma nova. Você pode fazer isso em qualquer rede jabber que você quiser. Existem muitas redes públicas disponíveis. Você pode encontrar uma lista de servidores livres clicando nesse botão.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Password  ##  Password
 Server  ##  Server
 Port  ##  Port
-Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
-Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+Por favor clique em 'Testar Conta' para proceder.  ##  Please click on 'Test Account' to proceed.
+Usar criptografia SSL na porta 443 (para o GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Cancel  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
-Disconnect adapter on exit  ##  Disconnect adapter on exit
-UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-IP address for Wippien network adapter  ##  IP address for Wippien network adapter
-Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
-Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
-IP address  ##  IP address
+Por favor, digite a senha  ##  Please enter key passphrase
+Adicionar &Novo  ##  Add &New
+Mostrar notificação se o adaptador ethernet não estiver disponível.  ##  Show notification if ethernet adapter is unavailable.
+Desconectar adpatador ao sair  ##  Disconnect adapter on exit
+Porta UDP para pacotes de saída e entrada (0 para auto-seleção)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Endereço IP para o adaptador de rede do Wippen  ##  IP address for Wippien network adapter
+O IP será definido fora deste programa.  ##  Ignore. IP will be set outside of this program.
+Obtido no banco de dados do provedor do IP, na URL  ##  Obtained from IP provider database, on URL
+Usar os seguintes endereços estáticos  ##  Use following static address
+Endereço IP  ##  IP address
 Netmask  ##  Netmask
 Status  ##  Status
 URL  ##  URL
-Description  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
-Register!  ##  Register!
-Your current Instant messaging connections  ##  Your current Instant messaging connections
-Username  ##  Username
-Open new account  ##  Open new account
-Authorization request  ##  Authorization request
+Descrição  ##  Description
+Adicionar nova conta  ##  Add new account
+Remover conta  ##  Remove account
+Registrar!  ##  Register!
+Suas conexões de mensagens instantâneas atuais  ##  Your current Instant messaging connections
+Usuário  ##  Username
+Criar nova conta  ##  Open new account
+Autenticação  ##  Authorization request
 &Sim  ##  &Yes
 &Não  ##  &No
 &Detalhes  ##  &Details
-&Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
+&Aplicar a todos  ##  &Apply to all
+&Bloquear usuário(s)  ##  &Block user(s)
 Permite  ##  Do you allow
-to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
+para adicionar você a esta lista de contatos?  ##  to add you to his contact list?
+mais requisições aguardando...  ##  more requests waiting...
 Adicionar Grupo  ##  Add Group
 Remover Grupo  ##  Remove Group
 Adicionar Contacto  ##  Add Contact
-Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
+Colocar contanto no grupo  ##  Put contact to the group
+JID do Contato  ##  Contact JID
+Tipo de Contato  ##  Contact Type
 Nome visível  ##  Visible Name
 Renomear contacto  ##  Rename contact
 Novo nome do contacto  ##  Enter new contact name
 Configurações  ##  Settings
-< &Back  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
-Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
-Delete raw log on each  ##  Delete raw log on each
+< &Voltar  ##  < &Back
+Log de comunicações do Jabber  ##  Log Jabber communication
+Log de cominicações socket  ##  Log socket communication
+Logar chamadas de funções raw (pode crescer rapidamente!)  ##  Log raw function calls (may grow quickly!)
+Deletar log de raw cada um  ##  Delete raw log on each
 megabytes  ##  megabytes
-Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
-Following mediators can be used  ##  Following mediators can be used
-Allow new mediators to be added  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
-Show message history  ##  Show message history
+Logar comunicação VPN ao início do P2P  ##  Log VPN communication on P2P startup
+Os seguintes mediadores podem ser usados  ##  Following mediators can be used
+Permitir a adição de novos moderadores  ##  Allow new mediators to be added
+Várias configurações relacionadas a janela de chat  ##  Various settings regarding chat window
+Horário das mensagens  ##  Timestamp messages
+Mostar histórico de mensagens  ##  Show message history
 Alcunha  ##  Nickname
 Primeiro nome  ##  First name
 Último nome  ##  Last name
@@ -420,66 +420,66 @@ Fax  ##  Fax
 Título  ##  Title
 Empresa  ##  Company name
 Departamento  ##  Department
-Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
+Interfaces permitidas para conexão direta  ##  Allowed interfaces for direct connection
 Permitir tudo  ##  Allow All
-Click on first column to change values  ##  Click on first column to change values
-If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
-To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
-minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
-minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
-Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
-Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
-Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
-Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Password protect  ##  Password protect
-Settings only  ##  Settings only
-Everything  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
-Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
-Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Ask me  ##  Ask me
-Always authorize  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
-Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
-MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-&Play  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+Clique na primeira coluna para mudar valores  ##  Click on first column to change values
+Se você escolheu o valor 'não especificado', então o mesmo valor será usado na opção 'todos os outros'.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Os seguintes arquivos de skin foram encontrados  ##  Following skin files are found
+Aplicar  ##  Apply
+Para adicionar mais skins, você pode também colá-los na pasta 'Skin'. Adicionar o arquivo PNG 100x100 correspondente para previsão.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+&Mais skins...  ##  &More skins...
+Determinar meu status como 'de volta' quando forem detectadas atividades novamente.  ##  Set back when activity is detected again.
+Aguardar  ##  Wait
+minutos antes de tornar o status 'longe' (0 = disabilitado)  ##  minutes before going to away mode (0 = disable)
+minutos antes de tornar o status 'longe por algum temp' (0 = disabilitado)  ##  minutes before going to extended away mode (0 = disable)
+minutos antes de desconectar (0 = disabilitado)  ##  minutes before disconnecting (0 = disable)
+Mensagem automática de longe  ##  Auto-Away message
+Mensagem automática de longe-por-algum-tempo  ##  Extended-Away message
+Mostrar Wippien na barra de tarefas  ##  Show Wippien in taskbar
+Rearranjar área de trabalho quando o Wippen estiver alinhado com a margem  ##  Rearrange desktop when Wippien window is aligned to border
+Romper a margem da área de trabalho  ##  Snap to desktop border
+Esconder automáticamente se o Wippien estiver inativo por  ##  Auto hide if Wippien is inactive for
+Sempre em cima  ##  Always on top
+Confirmar saída da aplicação  ##  Confirm exit from application
+Desconectar quando o computador Dorme/Hiberna. Conectar ao Resumir  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Protegido por senha  ##  Password protect
+Configurações apenas  ##  Settings only
+Tudo  ##  Everything
+Pasta de configurações (a mudaça de valores abaixo exigem a o reinício do Wippen)  ##  Settings folder (changing below value requires wippien restart)
+Lista de contatos persistente  ##  Contact list persistance
+Deletar todos os contatos locais no início  ##  Delete all local contacts on startup
+Deletar todos os contatos locais ao conectar  ##  Delete all local contacts on connect
+Autorização de inscrição de contatos  ##  Contacts subscription authorization
+Nunca autorizar  ##  Never authorize
+Pergunte me  ##  Ask me
+Sempre autorizar  ##  Always authorize
+Estabelecer VPN no tráfico de rede automaticamente  ##  Automatically establish VPN on network traffic
+Estabelcer VPN automaticamente no início  ##  Automatically establish VPN on startup
+Progresso  ##  Progress
+Habilitar chat de voz  ##  Enable voice chat
+Dispositivo de ouvir gravações  ##  Playback device
+Dispositivo de gravação  ##  Recording device
+Checar por atualizações quando o Wippien iniciar  ##  Check for updates when Wippien starts
+Checar por atualiazações ao conectar  ##  Check for updates on Connect
+Checar por atualizações a cada  ##  Check for updates each
+Atualizar e reiniciar a aplicação silenciosamente  ##  Update and restart application silently
+Mostra mensagens do sistema recebidas do adaptador  ##  Show system messages received from updater
+&Checar agora  ##  &Check now
+As cofigurações MTU definem o máximo de pacotes UDP enviados aos peers. Se sua conexão de rede tem um MTU mais baixo que o Wippien é possível que o peer nunca receba pacotes grandes.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Usar MTU fixo  ##  Use fixed MTU
+Auto-detectar MTU  ##  Auto-detect MTU
+(será efetivado quando os peers reconectarem)  ##  (will become effective as peers reconnect)
+Som (deixar vazio para som padrão)  ##  Sound (leave empty for default sound)
+&Tocar  ##  &Play
+Eventos do Programa  ##  Program events
+Esconder novo contato  ##  Hide new contact
+Desesconder contato  ##  Unhide contact
+Contatos atualmentes escondidos  ##  Currently hidden contacts
+Todos os contatos listados aquis *NUNCA* iram aparecer no Wippien... Eles não existem mais para você. Dessa maneira você pode ignorar pessoas completamente.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Esconder contato  ##  Hide contact
+Entrar com JID de um contato  ##  Enter contact JID
+Permitir todo tráfico  ##  Allow all traffic
+Bloquear todo tráfico  ##  Block all traffic
 &Adicionar  ##  &Add
 &Remover  ##  &Remove
 Regra por defeito  ##  Default rule
@@ -498,8 +498,8 @@ por IP (sem IP vai para o fundo)  ##  by IP (without IP goes bottom)
 por IP (sem IP vai para cima)  ##  by IP (without IP goes top)
 Ordenar lista de contactos  ##  Sort contact list
 Alcunha para salas de conversa  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
+Mostar salas disponíveis nas seguintes nas seguintes entradas  ##  Show available rooms on following gateways
+Clique abaixo para selecionar uma sala, ou entre como detalhes para uma nova sala abaixo  ##  Click above to select room, or enter new chat room details below
 Nome da sala para criar ou juntar-se  ##  Room name to create or join
 Password  ##  Password (empty if none)
 Gateway  ##  Gateway
@@ -524,11 +524,11 @@ Fora à &Muito  ##  E&xtended Away
 &Invisivel  ##  &Invisible
 D&esligado  ##  O&ffline
 Mudar &Imagem  ##  Change &Picture
-Mudar &Password  ##  Change Pa&ssword
+Mudar &Senha  ##  Change Pa&ssword
 Os seus &Detalhes  ##  Your &Details
 Entre com frase chave  ##  Enter Passphrase
 Entre com a chave  ##  Enter password
-Entre com password protegida.  ##  Please enter protect password
+Entre com a senha protegida.  ##  Please enter protect password
 Linguagens  ##  Languages
 Configurar a linguagem usada.  ##  Setup language used in all Wippien texts.
 Podem aparecer novas traduções periódicamente.  ##  New languages may appear periodically.

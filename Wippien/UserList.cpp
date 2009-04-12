@@ -461,6 +461,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							continue;
 
 
+						RECT ChatWindowRect = {0};
+						BOOL ChatWindowRectUsed = FALSE;
+
 						BOOL found = FALSE;
 						CUser *user = NULL;
 						for (int k=0;!found && k<m_Users.size();k++)
@@ -468,6 +471,9 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							user = (CUser *)m_Users[k];
 							if ( !stricmp(user->m_JID, j))
 							{
+								memcpy(&ChatWindowRect, &user->m_ChatWindowRect, sizeof(ChatWindowRect));
+								ChatWindowRectUsed = TRUE;
+
 								// same user
 								if (user->m_Resource[0]) // resource already set?
 								{
@@ -516,7 +522,11 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							else
 							{
 								if (stat != (WODXMPPCOMLib::StatusEnum)8) // unsubscribed
+								{
 									user = AddNewUser(j, contact);
+									if (ChatWindowRectUsed)
+										memcpy(&user->m_ChatWindowRect, &ChatWindowRect, sizeof(ChatWindowRect));
+								}
 								else
 									user = NULL;
 							}
@@ -2492,7 +2502,7 @@ void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL
 																us1->InitData(vc);
 															}
 							}
-						}
+						} 
 						RefreshUser(Contact, NULL);
 					}
 				}

@@ -106,6 +106,10 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 		char *jd2 = strchr(jd1, '/');
 		if (jd2)
 			*jd2 = 0;
+
+		if (_Settings.IsHiddenContact(jd1))
+			return;
+
 		
 		BOOL found = FALSE;
 		for (int i=0;!found && i<_Settings.m_AuthRequests.size();i++)

@@ -302,14 +302,14 @@ CMsgWin::~CMsgWin()
 	{
 		WINDOWPLACEMENT wp = {0};
 		GetWindowPlacement(&wp);
-		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+		if (wp.flags != SW_SHOWMINIMIZED/* && wp.flags != SW_HIDE*/)
 			GetWindowRect(&m_User->m_ChatWindowRect);
 	}
 	if (IsWindow() && m_Room)
 	{
 		WINDOWPLACEMENT wp = {0};
 		GetWindowPlacement(&wp);
-		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+		if (wp.flags != SW_SHOWMINIMIZED /*&& wp.flags != SW_HIDE*/)
 			GetWindowRect(&m_Room->m_ChatWindowRect);
 	}
 //	delete m_Text;
@@ -502,6 +502,22 @@ LRESULT CMsgWin::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BO
 {
 	if (m_ChatBox)
 		m_ChatBox.Free();
+
+	if (m_User)
+	{
+		WINDOWPLACEMENT wp = {0};
+		GetWindowPlacement(&wp);
+		if (wp.flags != SW_SHOWMINIMIZED /*&& wp.flags != SW_HIDE*/)
+			GetWindowRect(&m_User->m_ChatWindowRect);
+	}
+	if (m_Room)
+	{
+		WINDOWPLACEMENT wp = {0};
+		GetWindowPlacement(&wp);
+		if (wp.flags != SW_SHOWMINIMIZED /*&& wp.flags != SW_HIDE*/)
+			GetWindowRect(&m_Room->m_ChatWindowRect);
+	}
+	
 	DestroyWindow();
 	
 	bHandled = TRUE;
@@ -616,14 +632,14 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 	{
 		WINDOWPLACEMENT wp = {0};
 		GetWindowPlacement(&wp);
-		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+		if (wp.flags != SW_SHOWMINIMIZED /*&& wp.flags != SW_HIDE*/)
 			GetWindowRect(&m_User->m_ChatWindowRect);
 	}
 	if (m_Room)
 	{
 		WINDOWPLACEMENT wp = {0};
 		GetWindowPlacement(&wp);
-		if (wp.flags != SW_SHOWMINIMIZED && wp.flags != SW_HIDE)
+		if (wp.flags != SW_SHOWMINIMIZED /*&& wp.flags != SW_HIDE*/)
 			GetWindowRect(&m_Room->m_ChatWindowRect);
 	}
 

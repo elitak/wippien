@@ -1358,7 +1358,7 @@ CUser *CUserList::GetUserByJID(char *JID, BOOL WithResource)
 		if ( !stricmp(user->m_JID, a1))
 		{
 			// same user
-			if (user->m_Resource[0]) // resource already set?
+			if (user->m_Resource[0] && a2 && *a2) // resource already set?
 			{
 				if (!stricmp(user->m_Resource, a2))
 					return user;

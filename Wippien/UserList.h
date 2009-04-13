@@ -37,6 +37,7 @@ public:
 	CCommandBarCtrlXP *m_UserPopupMenu, *m_SetupPopupMenu, *m_AwayPopupMenu, *m_ChatRoomPopupMenu, *m_GroupPopupMenu;
 	void RefreshView(BOOL updateonly);
 	void RefreshUser(void *cntc, char *chatroom);
+	void InitialUserList(void);
 
 	void Init(CMainDlg *Owner, HWND Parent);
 	HTREEITEM FindRoot(char *RootName);

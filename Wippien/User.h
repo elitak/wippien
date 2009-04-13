@@ -131,7 +131,7 @@ public:
 	char m_SubText[256];
 	char m_IPText[128];
 	char m_Group[128];
-	BOOL m_IsAway;
+	BOOL m_IsAway, m_IsOld;
 	char m_MyMediatorOffer[256], m_HisMediatorOffer[256];
 	int m_MyMediatorPort, m_HisMediatorPort;
 	int m_MyMediatorChoice, m_HisMediatorChoice;

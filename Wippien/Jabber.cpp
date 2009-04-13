@@ -1027,7 +1027,8 @@ void __stdcall CJabberEvents::DispContactList()
 {
 	_MainDlg.m_UserList.m_SortedUsersBuffer.Clear();
 	_Jabber->m_Initial = FALSE;
-	_MainDlg.m_UserList.RefreshUser(NULL, NULL);
+	//_MainDlg.m_UserList.RefreshUser(NULL, NULL);
+	_MainDlg.m_UserList.InitialUserList();
 }
 #ifdef _WODXMPPLIB
 void XMPPServiceRegister(void *wodXMPP, void  *Service, BOOL Success, char *Instructions)

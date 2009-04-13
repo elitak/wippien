@@ -387,6 +387,34 @@ void CUserList::SortUsers(void)
 	}
 }
 
+void CUserList::InitialUserList(void)
+{
+	int i;
+	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	{
+		CUser *us = _MainDlg.m_UserList.m_Users[i];
+		us->m_IsOld = FALSE;
+	}
+	RefreshUser(NULL, NULL);
+	BOOL changed = FALSE;
+	for (i=0;i<m_Users.size();i++)
+	{
+		CUser *us = m_Users[i];
+		if (!us->m_IsOld)
+		{
+			 // delete this user
+			m_Users.erase(m_Users.begin()+i);
+			i--;
+			changed = TRUE;
+		}
+	}
+
+	if (changed)
+		_MainDlg.m_UserList.PostMessage(WM_REFRESH, NULL, FALSE);
+
+
+}
+
 void CUserList::RefreshUser(void *cntc, char *chatroom1)
 {	
 
@@ -562,6 +590,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 						if (user)
 						{
+							user->m_IsOld = TRUE;
 							if (res && strlen(res)<sizeof(user->m_Resource))
 							{
 								strcpy(user->m_Resource, res);

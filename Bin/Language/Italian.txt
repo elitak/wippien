@@ -1,6 +1,6 @@
-# Italian template text
+# Italian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 7
+# Version: 8
 Nessun errore.  ##  No error.
 Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
@@ -31,7 +31,7 @@ Timeout della connessione.  ##  The current connection has timeout.
 La connessione è stata rifiutata dall'host remoto.  ##  The requested connection has been refused by the remote host.
 L'host name specificato è troppo lungo.  ##  Specified host name is too long.
 L'host remoto non è disponibile  ##  Remote host is currently unavailable.
-L'host remoto non è rintracciabile  ##  Remote host is currently unreachable. 
+L'host remoto non è rintracciabile  ##  Remote host is currently unreachable.
 Il sitema remoto non è pronto.  ##  Remote system is not ready.
 L'attuale versione del socket non è supportata dall'applicazione.  ##  Current socket version not supported by application.
 Socket API non inizializzata.  ##  Socket API is not initialized.
@@ -55,7 +55,7 @@ Canale rifiutato dal client remoto.  ##  Channel refused by remote side.
 Versione del protocollo non supportata.  ##  Unsupported remote protocol version.
 wodVPN non inizializzato. Selezionare Start.  ##  wodVPN not yet started. Use Start first.
 Canale chiuso.  ##  Channel was closed.
-MTU troppo grande. ##  MTU size too large.
+MTU troppo grande.  ##  MTU size too large.
 MTU troppo piccolo.  ##  MTU size too small.
 Ricchiesta non valida.  ##  Invalid socks request.
 Password non valida. Non corrisponde alla password remota.  ##  Invalid password. Does not match remote peer's password.
@@ -79,7 +79,7 @@ Prprietà Password non impostata.  ##  Password property not set.
 Pacchetto XML non valido.  ##  Invalid XML packet.
 ID del pacchetto XML non valido.  ##  Invalid XML packet sequence ID.
 Login non valido: %s.  ##  Invalid login: %s.
-Contatto già presente nella lista contatti.   ##  Contact already exists in the collection.
+Contatto già presente nella lista contatti.  ##  Contact already exists in the collection.
 Negoziazione SSL fallita.  ##  SSL could not be negotiated.
 Errore nella registrazione del nuovo utente: %s.  ##  Failed to register new user: %s.
 Notifica sconosciuta.  ##  Unknown notification.
@@ -103,18 +103,18 @@ Fallita l'inizializzazione del programma di aggiornamento.  ##  Failed to start 
 La firma del documento non è valida.  ##  Signature on retrieved document is invalid.
 Data non impostata.  ##  Date not set.
 Errore nella registrazione del server COM.  ##  Failed to register COM server.
-Pagina non trovata (errore 404). ##  Page not found (error 404) returned from the server.
+Pagina non trovata (errore 404).  ##  Page not found (error 404) returned from the server.
 Grandezza del file scaricato file non valida.  ##  Invalid file size after download.
 Checksum MD5 del file scaricato non valido.  ##  Invalid MD5 checksum after download.
 Attenzione  ##  Warning
-Offline
-Online
+Offline  ##  Offline
+Online  ##  Online
 Non al PC  ##  Away
 Libero  ##  Free for chat
 Non disturbare  ##  Do not disturb
 Non al PC da molto tempo  ##  Extended away
 Invisibile  ##  Invisible
-Chiede l'iscrizione ##  Asking for subscription
+Chiede l'iscrizione  ##  Asking for subscription
 Contatto non iscritto  ##  Contact not subscribed
 Disconnesso dal server  ##  Disconnected from server
 Connessione al server  ##  Connecting to server
@@ -149,7 +149,7 @@ E&sci  ##  E&xit
 Apri le Impostazioni  ##  Open settings
 &Impostazioni  ##  &Settings
 Apri AboutBox  ##  Show AboutBox
-&About
+&About  ##  &About
 Imposta stato (Non al PC, Invisibile...)  ##  Set your status (Away,Invisible...)
 Aggiungi contatti ed account.  ##  Add contacts and alien accounts
 Disattiva Audio  ##  Mute sound
@@ -217,12 +217,12 @@ Rete  ##  Network
 Seleziona l'indirizzo IP e la netmask.  ##  Please choose your IP address and netmask.
 Definisce il range ip che Wippien può usare.  ##  This defines network range to be used by wippien.
 Rete  ##  Network
-Mediator
+Mediator  ##  Mediator
 Seleziona il Mediator.  ##  Please choose who will be your mediator.
 Definisce gli utenti che medieranno le connessioni P2P.  ##  This defines people that mediate P2P connections.
-Ultimo controllo # Last check
+Ultimo controllo # Last check  ##  Last check
 Porta  ##  Port
-Hostname
+Hostname  ##  Hostname
 Permanente  ##  Permanent
 Temporaneo  ##  Temporary
 Inserisci i tuoi account qui.  ##  Enter all your accounts here.
@@ -254,14 +254,14 @@ Dettagli ufficio per  ##  Work details for
 altro  ##  all other
 indirizzo assegnato dal mediator  ##  address given by mediator
 Apparenza  ##  Appearance
-Skins
+Skins  ##  Skins
 Selezionare una skin dalla lista qui sotto.  ##  Choose skin from below list.
 Quale sarà il vestito di Wippien?  ##  What will Wippien wear?
 ... nessuno ..  ##  .. none ..
 "Non al PC" automatico  ##  Auto Away
 Impostazioni "Non al PC" automatico  ##  Auto away settings.
 Determina il comportamento di Wippien quando il sistema è inattivo.  ##  Determines how will Wippien behave when system is inactive.
-Sistema  ##  System
+  ##  System
 Messaggi di sistema.  ##  Basic system messages.
 Definisce il comportamento di Wippien.  ##  Define Wippien application's behavior.
 Chat vocale  ##  Voice Chat
@@ -272,7 +272,7 @@ Impostazioni base per i contatti.  ##  Contacts basic settings.
 Aggiornamenti  ##  Updates
 Aggiorna le definizioni.  ##  Update definitions.
 Definisce come Wippien di auto-aggiornerà.  ##  Define when and how will Wippien update itself.
-MTU
+MTU  ##  MTU
 Determinare la massima unità di trasferimento.  ##  Please determine maximum transfer unit.
 Se alcuni peer non rispondono all'invio di pacchetti grandi...  ##  If some peer doesn't respond to large packets...
 Suoni  ##  Sounds
@@ -293,13 +293,13 @@ Definisce come apparirŕ l'interfaccia di Wippien.  ##  Define how will Wippien'
 Ordina  ##  Sort
 Ordina contatti.  ##  Sorts contacts.
 Seleziona un'opzione di ordinamento.  ##  Pick one of sort options.
-ChatRoom
+ChatRoom  ##  ChatRoom
 Visualizza o crea chat room. (BETA!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Inserisci o seleziona una chat room o crea una nuova.  ##  Specify or browse for a room to join or create new one.
 - Tutti i gateway -  ##  - All gateways -
 Gateway di servizio  ##  Service gateway
 Nome della chat room  ##  Room name
-Firewall
+Firewall  ##  Firewall
 Imposta le regole del firewall.  ##  Set up firewall rules.
 Imposta quali porte sono accessibili ai tuoi contatti.  ##  You can set up which ports can be accessed by your contacts.
 * Tutto il traffico ICMP  ##  * All ICMP traffic
@@ -314,7 +314,7 @@ Scaricamento completato. Sostituire adesso?  ##  Download successful. Replace no
 Errore nell'aggiornamento di Wippien!  ##  Wippien update error!
 Una nuova versione di Wippien è stata trovata localmente. Sostituire?  ##  New version of Wippien found localy. Replace?
 Nuova versione  ##  New version
-Stato cambiato:  ##  Status changed: 
+Stato cambiato:  ##  Status changed:
 giorno  ##  day
 giorni  ##  days
 ora  ##  hour
@@ -339,14 +339,14 @@ Inserisci un nuovo nome per il gruppo  ##  Enter new group name
 Scarica più skin dal sito di Wippien  ##  Download more skins from Wippien website
 Clicca sulla skin per scaricarla ed installarla.  ##  Click on the skin to download and install it.
 Crea un nuovo account Jabber  ##  I need new Jabber account
-Utilizza un account Jabber esistente   ##  I have existing Jabber account
+Utilizza un account Jabber esistente  ##  I have existing Jabber account
 &Prova Account  ##  &Test Account
 &Cerca  ##  &Search
 Inserisci il tuo jabber ID (JID) qui. Wippien usa la rete Jabber per connetterti con i tuoi contatti.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 Se non disponi di un JID, devi crearne uno nuovo. Puoi utilizzare il server Jabber che preferisci; ce ne sono molti pubblici disponibili. Puoi avere una lista di server disponibili cliccando su questo pulsante.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
-JID
-Password
-Server
+JID  ##  JID
+Password  ##  Password
+Server  ##  Server
 Porta  ##  Port
 Clicca su 'Prova Account' per procedere.  ##  Please click on 'Test Account' to proceed.
 Usa SSL sulla porta 443 (per Gtalk)  ##  Use SSL wrapper on port 443 (for GTalk)
@@ -362,9 +362,9 @@ Ignora. L'IP verrà impostato fuori dal programma.  ##  Ignore. IP will be set o
 Ottenuto da un fornitore di indirizzi IP all'indirizzo:  ##  Obtained from IP provider database, on URL
 Usa il seguente IP statico  ##  Use following static address
 Indirizzo IP  ##  IP address
-Netmask
+Netmask  ##  Netmask
 Stato  ##  Status
-URL
+URL  ##  URL
 Descrizione  ##  Description
 Aggiungi nuovo account  ##  Add new account
 Rimuovi l'account  ##  Remove account
@@ -396,17 +396,17 @@ Tieni traccia delle comunicazioni Jabber  ##  Log Jabber communication
 Tieni traccia delle comunicazioni socket  ##  Log socket communication
 Tieni traccia delle chiamate alle funzioni (può ingrandirsi velocemente!)  ##  Log raw function calls (may grow quickly!)
 Elimina i log grezzi ogni  ##  Delete raw log on each
-megabytes
+megabytes  ##  megabytes
 Tieni traccia delle comunicazioni VPN all'avvio del P2P  ##  Log VPN communication on P2P startup
 Sono disponibili i seguenti Mediator  ##  Following mediators can be used
 Consenti l'aggiunta di nuovi Mediator  ##  Allow new mediators to be added
 Varie impostazioni per la finestra di chat  ##  Various settings regarding chat window
 Visualizza l'ora nei messaggi  ##  Timestamp messages
 Visualizza la cronologia dei messaggi  ##  Show message history
-Nickname
+Nickname  ##  Nickname
 Nome  ##  First name
 Cognome  ##  Last name
-Email
+Email  ##  Email
 Note  ##  Notes
 Indirizzo  ##  Address
 Indirizzo esteso  ##  Address Ext.
@@ -416,7 +416,7 @@ CAP  ##  ZIP
 Paese  ##  Country
 Data di nascita  ##  Birthday
 Telefono  ##  Voice Tel.
-Fax
+Fax  ##  Fax
 Titolo  ##  Title
 Nome Azienda  ##  Company name
 Reparto  ##  Department
@@ -502,11 +502,11 @@ Visualizza le chat room disponibili sui seguenti gateway  ##  Show available roo
 Clicca qui per selezionare la chat room, o inserisci i dati di una nuova chat room qui sotto  ##  Click above to select room, or enter new chat room details below
 Nome della chat room da creare o entrare  ##  Room name to create or join
 password (lasciare vuoto se nessuna password)  ##  Password (empty if none)
-Gateway
+Gateway  ##  Gateway
 Entra o Crea chat room  ##  Join or Create room
 Blocca gli utenti all'avvio  ##  Block users at startup
 &Copia IP  ##  &Copy IP
-C&hat
+C&hat  ##  C&hat
 Chat &Vocale  ##  &Voice Chat
 Invia &File  ##  Send &File
 Invia E&mail  ##  Send E&mail
@@ -516,13 +516,13 @@ E&limina  ##  &Delete
 De&ttagli  ##  De&tails
 Aggiungi/Rimuovi &Account  ##  Add/Remove &Accounts
 Aggiungi/Rimuovi &Contatti  ##  Add/Remove &Contacts
-&Online
+&Online  ##  &Online
 Non &al PC  ##  &Away
 L&ibero  ##  Free for &Chat
 Non &Disturbare  ##  &Do not Disturb
 Lonta&no dal PC da molto tempo  ##  E&xtended Away
 &Invisibile  ##  &Invisible
-O&ffline
+O&ffline  ##  O&ffline
 Cambia Immagine  ##  Change &Picture
 Cambia Pa&ssword  ##  Change Pa&ssword
 I tuoi &Dettagli  ##  Your &Details

@@ -1,8 +1,8 @@
 # French translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Regis DEBRAY
-# Version: 9
+# Version: 10
 Aucune Erreur.  ##  No error.
-Le fichier spécifié est introuvable.  ##  The system cannot find the file specified.
+Le système ne peut pas trouver le fichier spécifié  ##  The system cannot find the file specified.
 Le chemin spécifié est introuvable.  ##  The system cannot find the path specified.
 Impossible de trouver le chemin/dossier spécifié.  ##  The system cannot find the specified file/directory.
 Type incorrect.  ##  Type mismatch.

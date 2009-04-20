@@ -1,9 +1,9 @@
 # German translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: torsten.wagner@vnc-world.com
-# Version: 4
-Keine Fehler.  ##  No error.
-Das System kann die genannte Datei nicht finden.  ##  The system cannot find the file specified.
-Das System kann das genannte Verzeichnis nicht finden.  ##  The system cannot find the path specified.
+# Version: 5
+Keine Fehler  ##  No error.
+Das System kann die angegebene Datei nicht finden.  ##  The system cannot find the file specified.
+Das System kann den angegebenen Pfad nicht finden.  ##  The system cannot find the path specified.
 Das Systemm kann das Verzeichnis/die Datei nicht finden.  ##  The system cannot find the specified file/directory.
 Typ falsch angepasst.  ##  Type mismatch.
 Ich kann nicht eine Datei oder Ordner erstellen der schon vorhanden ist.  ##  Cannot create a file/directory when that file/directory already exists.
@@ -131,7 +131,7 @@ Der Wippien-Netzwerkadapter wird konfiguriert...  ##  Configuring Wippien networ
 Adapter \"%s\" mit der Adresse %s hat einen Konflikt mit Wippiens Adapter %s. Es ist möglich, dass Wippien nicht in der Lage ist Netzwerkdatenpakete zu senden und zu empfangen. Deinstalliere oder deaktiviere den Adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Der Netzwerkadapter steht nicht zur Verfügung!  ##  Network adapter disabled!
 Netzwerkadapter verfügbar  ##  Network adapter opened
-Der Wippien Netzwerkadapter ist nicht vorhanden. Wollen Sie nur den IM nutzen?  ##  Wippien network adapter not available. Proceed with IM only?
+Der Wippiennetzwerkadapter ist nicht verfügbar. Soll der IM gestartet werden?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien muss den Netzwerkadapter mit externen Tools konfigurieren und benutzt administrative Benutzerrechte. Starten Sie bitte Wippien unter Administratorrechten bzw. sorgen Sie für ausreichende Zugriffsrechte.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrationsrechte werden benötigt  ##  Admin privilege required!
 Verbindung unterbrochen  ##  Disconnected
@@ -144,7 +144,7 @@ VPN-Verbindung zurzeit nicht hergestellt.  ##  << VPN not established yet >>
 Verbindungswiederherstellung in %d Sekunden.  ##  Reconnect in %d seconds.
 Sekunden  ##  seconds
 Kein Netzwerk  ##  No network
-Wippien verlassen  ##  Exit Wippien
+Ausgang  ##  Exit Wippien
 Beenden  ##  E&xit
 Einstellungen anzeigen  ##  Open settings
 Einstellungen  ##  &Settings
@@ -541,5 +541,5 @@ Neue Sprachdateiversion ist verfügbar.  ##  New language files available. Downl
 Das Verbindungsfenster wird angezeigt wenn der Kontakt online oder offline geht  ##  Show notification popup window when contact goes online/offline
 Der Chatpartner gibt gerade einen Text ein ...  ##  Contact is typing...
 sagt  ##  says
-sagte  ##  said
-Sie können hier Ihr GMAIL Konto verwenden.  ##  You can use your GMAIL account here.
+gesagt  ##  said
+Du kannst deinen GMAIL Account hier benutzen.  ##  You can use your GMAIL account here.

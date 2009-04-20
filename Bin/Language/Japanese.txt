@@ -1,13 +1,13 @@
-# Finnish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
-# Author: Antti
-# Version: 2
-Ei virhettä.  ##  No error.
-Tiedostoa ei löydy.  ##  The system cannot find the file specified.
-Hakemistoa ei löydy.  ##  The system cannot find the path specified.
-Tiedostoa tai hakemistoa ei löydy.  ##  The system cannot find the specified file/directory.
+# Japanese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+# Author: roi
+# Version: 99
+エラーはあり&ま&せん。  ##  No error.
+The system cannot find the file specified.  ##  The system cannot find the file specified.
+The system cannot find the path specified.  ##  The system cannot find the path specified.
+The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
 Type mismatch.  ##  Type mismatch.
-Tiedostoa/hakemistoa ei voida luoda, jos se on jo olemassa.  ##  Cannot create a file/directory when that file/directory already exists.
-Laitteeseen ei voida kirjoittaa.  ##  The system cannot write to the specified device.
+Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
+The system cannot write to the specified device.  ##  The system cannot write to the specified device.
 Invalid Property Value.  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
@@ -18,8 +18,8 @@ Generic error for invalid format, entry, etc.  ##  Generic error for invalid for
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-Annettu osoite on jo käytössä.  ##  The specified address is already in use.
-Annettu osoite ei ole käytettävissä.  ##  The specified address is not available.
+The specified address is already in use.  ##  The specified address is already in use.
+The specified address is not available.  ##  The specified address is not available.
 The connected network is not available.  ##  The connected network is not available.
 The connected network is not reachable.  ##  The connected network is not reachable.
 The connected network connection has been reset.  ##  The connected network connection has been reset.
@@ -36,7 +36,7 @@ Remote system is not ready.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
-Host not found.  ##  Host not found.
+ホストが見つかり&ま&せん。  ##  Host not found.
 Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
 Unknown search type.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
@@ -45,7 +45,7 @@ Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Connection not established.  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
+不明なデータの型です。  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Unknown channel type.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
@@ -63,7 +63,7 @@ Local ID not set. It is required for Search method.  ##  Local ID not set. It is
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
+ファイルが見つかり&ま&amp;せん。  ##  File not found.
 Failed to write file.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
@@ -83,7 +83,7 @@ Contact already exists in the collection.  ##  Contact already exists in the col
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+ファイルが見つかり&ま&せん。  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Failed to import photo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
@@ -106,14 +106,14 @@ Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Varoitus  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Poissa  ##  Away
+Warning  ##  Warning
+オフライン  ##  Offline
+オンライン  ##  Online
+離席  ##  Away
 Free for chat  ##  Free for chat
-Älä häiritse  ##  Do not disturb
+Do not disturb  ##  Do not disturb
 Extended away  ##  Extended away
-Näy offline-tilassa  ##  Invisible
+Invisible  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
@@ -134,118 +134,118 @@ Network adapter opened  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
+切断  ##  Disconnected
+接続完了  ##  Connected
 Could not deliver message.  ##  Could not deliver message.
 Failed to change password  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
-sekunnit  ##  seconds
-Ei verkkoa  ##  No network
+seconds  ##  seconds
+No network  ##  No network
 Exit Wippien  ##  Exit Wippien
-Poistu  ##  E&xit
-Avaa asetukset  ##  Open settings
-&Asetukset  ##  &Settings
+E&xit  ##  E&xit
+Open settings  ##  Open settings
+&Settings  ##  &Settings
 Show AboutBox  ##  Show AboutBox
 &About  ##  &About
-Aseta statuksesi (Poissa,Näkymätön...)  ##  Set your status (Away,Invisible...)
+Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mykistä ääni  ##  Mute sound
-Avaa Chat-huone  ##  Open chat room
+Mute sound  ##  Mute sound
+Open chat room  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
-Idle  ##  Idle
-Haluatko todella poistua Wippienistä?  ##  Really exit Wippien?
-Oletko varma?  ##  Are you sure?
-Salasanasi on nyt vaihdettu.  ##  Your password is now changed.
+アイドル  ##  Idle
+Really exit Wippien?  ##  Really exit Wippien?
+Are you sure?  ##  Are you sure?
+Your password is now changed.  ##  Your password is now changed.
 Password changed  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
 Home Address  ##  Home Address
-Työosoite  ##  Work Address
-Haluatko Varmasti poistaa historian?  ##  Are you sure you want to delete the history?
-Poista historia?  ##  Delete history?
-Lähetä  ##  Send
-Lähetä tiedosto  ##  Send file
-Yksityiskohdat  ##  Details
-Yhteystieto  ##  Contact information
-Tyhjennä  ##  Clear
-Tyhjennä historia  ##  Clear history
-Mykistä  ##  Mute
-Lihavoitu  ##  Bold
-Italic  ##  Italic
-Alleviivaa  ##  Underline
-Lisää Hyperlinkki  ##  Insert hyperlink
-Pienennä fontin kokoa  ##  Decrease font size
-Aseta Fontti koko  ##  Reset font size
-Suurenna fontin kokoa  ##  Increase font size
-Aseta Edustan väri  ##  Set Foreground color
-Aseta Taustaväri  ##  Set Background color
+Work Address  ##  Work Address
+Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
+Delete history?  ##  Delete history?
+送&信  ##  Send
+Send file  ##  Send file
+Details  ##  Details
+Contact information  ##  Contact information
+クリア  ##  Clear
+Clear history  ##  Clear history
+ミュート  ##  Mute
+太字  ##  Bold
+斜体  ##  Italic
+Underline  ##  Underline
+リンクを挿入  ##  Insert hyperlink
+Decrease font size  ##  Decrease font size
+フォントサイズを戻す  ##  Reset font size
+Increase font size  ##  Increase font size
+Set Foreground color  ##  Set Foreground color
+Set Background color  ##  Set Background color
 Emoticons  ##  Emoticons
 New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
 New emoticons  ##  New emoticons
-  ##  You can now click again on emoticon button to see new installed emoticons.
-Tehty!  ##  Done!
-Yhteys  ##  Contact
-Connecting  ##  Connecting
+You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
+Done!  ##  Done!
+コンタクト  ##  Contact
+接続中  ##  Connecting
 Requesting  ##  Requesting
-Lataa  ##  Downloading
-Asetustiedosto  ##  Configuration file
-Yleistä  ##  General
+ダウンロード中  ##  Downloading
+Configuration file  ##  Configuration file
+General  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
-Poissa Pitkääään ajan  ##  Away for a loooong time.
-Salli  ##  allow
-Kiellä  ##  deny
-Ei Eritelty  ##  not specified
-&Loppu  ##  &Finish
-&Seuraava>  ##  &Next >
+Away for a loooong time.  ##  Away for a loooong time.
+許&可  ##  allow
+禁止  ##  deny
+not specified  ##  not specified
+&Finish  ##  &Finish
+&Next >  ##  &Next >
 Identity  ##  Identity
 Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
-Anna Jabber ID:si (JID)  ##  You must enter your JID.
-Anna Salasanasi  ##  You must enter your password.
-Jabber virhe  ##  Jabber error
-Hahmo  ##  Icon
-Valitse Hahmosi  ##  Please choose your icon.
-Tavallisesti näkyvissä yhteyksillesi  ##  This is usually visible to your contacts.
-Network  ##  Network
+You must enter your JID.  ##  You must enter your JID.
+You must enter your password.  ##  You must enter your password.
+Jabber error  ##  Jabber error
+アイコン  ##  Icon
+Please choose your icon.  ##  Please choose your icon.
+This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+ネットワーク  ##  Network
 Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
-Network  ##  Network
+ネットワーク  ##  Network
 Mediator  ##  Mediator
 Please choose who will be your mediator.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
 Last check  ##  Last check
-Portti  ##  Port
-Hostname  ##  Hostname
+ポート  ##  Port
+ホスト名  ##  Hostname
 Permanent  ##  Permanent
-Väliaikainen  ##  Temporary
+Temporary  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
 Delete registered account?  ##  Delete registered account?
-Accounts  ##  Accounts
+アカウント  ##  Accounts
 Show only gateways  ##  Show only gateways
-Näytä kaikki palvelut  ##  Show all services
-Yhteydet  ##  Contacts
-Lisää/Poista  ##  Add/Remove
-Etsi uusia kontakteja  ##  Find new contacts.
-Voit lisätä uuden Jabber, ICQ, MSN... yhteyden  ##  You can add new Jabber, ICQ, MSN... contacts
-Kaikki Tiedostot (*.*)\0*\0TXT tiedostot (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-Kaikki kuvatiedostot (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bittikartat (*.bmp)\0*.bmp\0Jpeg tiedostot (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF tiedostot (*.gif)\0*.gif\0PNG tiedostot (*.png)\0*.png\0Kaikki tiedostot (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-System  ##  System
-Logging  ##  Logging
+Show all services  ##  Show all services
+Contacts  ##  Contacts
+Add/Remove  ##  Add/Remove
+Find new contacts.  ##  Find new contacts.
+You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
+All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+システム  ##  System
+  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-Viestit  ##  Messages
+メッセージ  ##  Messages
 Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
-Yleistietoa  ##  General info
+General info  ##  General info
 General information about  ##  General information about
 Personal information  ##  Personal information
 Home details for  ##  Home details for
@@ -254,35 +254,35 @@ Work details for  ##  Work details for
 all other  ##  all other
 address given by mediator  ##  address given by mediator
 Appearance  ##  Appearance
-Skins  ##  Skins
+スキン  ##  Skins
 Choose skin from below list.  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
 .. none ..  ##  .. none ..
-Poissa (Automaattinen)  ##  Auto Away
+Auto Away  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-System  ##  System
+システム  ##  System
 Basic system messages.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-Voice Chat  ##  Voice Chat
+ボイスチャット  ##  Voice Chat
 Please setup your voice chat devices.  ##  Please setup your voice chat devices.
 Choose from list below.  ##  Choose from list below.
 <system default>  ##  <system default>
 Contacts basic settings.  ##  Contacts basic settings.
-Updates  ##  Updates
+アップデート  ##  Updates
 Update definitions.  ##  Update definitions.
 Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
 Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
-Sounds  ##  Sounds
+サウンド  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Yhteys päällä  ##  Contact online
-Yhteys pois päältä  ##  Contact offline
+Contact online  ##  Contact online
+Contact offline  ##  Contact offline
 Message in  ##  Message in
 Message out  ##  Message out
-Error  ##  Error
+エラー  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Hide  ##  Hide
 Hide contacts.  ##  Hide contacts.
@@ -290,16 +290,16 @@ You can hide some contacts from your sight.  ##  You can hide some contacts from
 Appearance  ##  Appearance
 Appearance settings.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
-Sort  ##  Sort
+ソート  ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
-ChatRoom  ##  ChatRoom
+チャットルーム  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
-Firewall  ##  Firewall
+部屋名  ##  Room name
+ファイヤーウォール  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
@@ -311,138 +311,138 @@ Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien päivityksessä tapahtui virhe!  ##  Wippien update error!
+Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-Uusi versio  ##  New version
-Tila vaihdettu:  ##  Status changed:
-päivä  ##  day
-päivää  ##  days
-tunti  ##  hour
-tuntia  ##  hours
-minuutti  ##  minute
-minuuttia  ##  minutes
-Nähty viimeksi: ei koskaan  ##  Last seen: never
-on tällä hetkellä offline  ##  is currently offline
-on nyt offline  ##  is now offline
-on nyt online  ##  is now online
-on estetty  ##  is blocked
-on offline  ##  is offline
-Poista esto  ##  Unblock
-Estä  ##  Block
-Oletko aivan varma että haluat poistaa ryhmän %s  ##  Are you sure you want to remove group %s
-Poista ryhmä?  ##  Remove group?
-Oletko aivan varma että haluat poistaa kontaktin %s  ##  Are you sure you want to remove contact %s
-Poista kontakti?  ##  Remove contact?
-Sovitin virhe  ##  Adapter error
-Nimeä ryhmä uudelleen  ##  Rename group
-Anna uusi ryhmänimi  ##  Enter new group name
-Lataa lisää nahkoja Wippien sivustolta.  ##  Download more skins from Wippien website
-Klikkaa nahkaa ladataksesi ja asentaaksesi se.  ##  Click on the skin to download and install it.
-Tarvitsen uuden Jabber tilin  ##  I need new Jabber account
-Minulla on jo Jabber tili  ##  I have existing Jabber account
-&Testaa tiliä  ##  &Test Account
-&Etsi  ##  &Search
+新しいバージョン  ##  New version
+Status changed:  ##  Status changed:
+day  ##  day
+days  ##  days
+hour  ##  hour
+hours  ##  hours
+minute  ##  minute
+minutes  ##  minutes
+Last seen: never  ##  Last seen: never
+is currently offline  ##  is currently offline
+is now offline  ##  is now offline
+is now online  ##  is now online
+is blocked  ##  is blocked
+is offline  ##  is offline
+Unblock  ##  Unblock
+ブロック  ##  Block
+Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
+Remove group?  ##  Remove group?
+Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
+Remove contact?  ##  Remove contact?
+アダプターエラー  ##  Adapter error
+Rename group  ##  Rename group
+Enter new group name  ##  Enter new group name
+Download more skins from Wippien website  ##  Download more skins from Wippien website
+Click on the skin to download and install it.  ##  Click on the skin to download and install it.
+I need new Jabber account  ##  I need new Jabber account
+I have existing Jabber account  ##  I have existing Jabber account
+&Test Account  ##  &Test Account
+&Search  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Salasana  ##  Password
-Palvelin  ##  Server
-Portti  ##  Port
+パスワード  ##  Password
+サーバ  ##  Server
+ポート  ##  Port
 Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
-&Peruuta  ##  &Cancel
+&Cancel  ##  &Cancel
 Please enter key passphrase  ##  Please enter key passphrase
-Lisää %uusi  ##  Add &New
+Add &New  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
 Disconnect adapter on exit  ##  Disconnect adapter on exit
 UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
 IP address for Wippien network adapter  ##  IP address for Wippien network adapter
 Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
 Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Käytä seuraavaa staattista osoitetta  ##  Use following static address
-IP osoite  ##  IP address
+Use following static address  ##  Use following static address
+IP アドレス  ##  IP address
 Netmask  ##  Netmask
-Tila  ##  Status
+ステータス  ##  Status
 URL  ##  URL
-Kuvaus  ##  Description
-Lisää uusi tili  ##  Add new account
-Poista tili  ##  Remove account
-Rekisteröi!  ##  Register!
+説明  ##  Description
+新しいアカウントを&追加  ##  Add new account
+アカウントを削除  ##  Remove account
+登録  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
-Käyttäjätili  ##  Username
-Avaa uusi tili  ##  Open new account
+ユーザネーム  ##  Username
+Open new account  ##  Open new account
 Authorization request  ##  Authorization request
-&Kyllä  ##  &Yes
-&Ei  ##  &No
-&Tiedot  ##  &Details
-&Lisää kaikkiin  ##  &Apply to all
-&Estä käyttäjä(t)  ##  &Block user(s)
-Sallitko  ##  Do you allow
-lisätä sinut kontakteihinsa?  ##  to add you to his contact list?
+&Yes  ##  &Yes
+&No  ##  &No
+&Details  ##  &Details
+&Apply to all  ##  &Apply to all
+&Block user(s)  ##  &Block user(s)
+Do you allow  ##  Do you allow
+to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
-Lisää ryhmä  ##  Add Group
-Poista kontakti  ##  Remove Group
-Lisää kontakti  ##  Add Contact
-Siirrä kontakti ryhmään  ##  Put contact to the group
-Kontaktin JID  ##  Contact JID
-Kontaktin tyyppi  ##  Contact Type
-Näkyvä nimi  ##  Visible Name
-Nimeä kontakti uudelleen  ##  Rename contact
-Annan uuden kontaktin nimi  ##  Enter new contact name
-Asetukset  ##  Settings
-< &Takaisin  ##  < &Back
+グループを&追加  ##  Add Group
+グループを削除  ##  Remove Group
+コンタクトを&追加  ##  Add Contact
+Put contact to the group  ##  Put contact to the group
+Contact JID  ##  Contact JID
+Contact Type  ##  Contact Type
+Visible Name  ##  Visible Name
+Rename contact  ##  Rename contact
+Enter new contact name  ##  Enter new contact name
+設定  ##  Settings
+< &Back  ##  < &Back
 Log Jabber communication  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
 Delete raw log on each  ##  Delete raw log on each
-megatavua  ##  megabytes
+megabytes  ##  megabytes
 Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
-Keskusteluikkunan asetuksia  ##  Various settings regarding chat window
-Viestin aikamerkintä  ##  Timestamp messages
-Näytä viestihistoria  ##  Show message history
-Nickname  ##  Nickname
-Etunimi  ##  First name
-Sukunimi  ##  Last name
-Sähköpostiosoite  ##  Email
-Muistiinpanot  ##  Notes
-Osoite  ##  Address
+Various settings regarding chat window  ##  Various settings regarding chat window
+Timestamp messages  ##  Timestamp messages
+Show message history  ##  Show message history
+ニックネーム  ##  Nickname
+名前  ##  First name
+苗字  ##  Last name
+Email  ##  Email
+Notes  ##  Notes
+Address  ##  Address
 Address Ext.  ##  Address Ext.
-Kaupunki  ##  City
-Osavaltio  ##  State
-Postinro.  ##  ZIP
-Maa  ##  Country
-Syntymäpäivä  ##  Birthday
-Puhelin nro.  ##  Voice Tel.
+市  ##  City
+県  ##  State
+ZIP  ##  ZIP
+国  ##  Country
+誕生日  ##  Birthday
+Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
-Titteli  ##  Title
-Yrityksen nimi  ##  Company name
+Title  ##  Title
+国名  ##  Company name
 Department  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Salli kaikki  ##  Allow All
+Allow All  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Seuraavat nahkat löytyivät  ##  Following skin files are found
-Käytä  ##  Apply
+Following skin files are found  ##  Following skin files are found
+適用  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&Lisää nahkoja  ##  &More skins...
-Aseta takaisin kun aktiviteetti havaittu jälleen  ##  Set back when activity is detected again.
-Odota  ##  Wait
+&More skins...  ##  &More skins...
+Set back when activity is detected again.  ##  Set back when activity is detected again.
+Wait  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
+自動離席時のメッセージ  ##  Auto-Away message
 Extended-Away message  ##  Extended-Away message
 Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
-Piilota Wippien automaattisesti jos käyttämättä  ##  Auto hide if Wippien is inactive for
-Aina päällimmäisenä  ##  Always on top
-Vahvista sovelluksen sulkeminen  ##  Confirm exit from application
+Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
+Always on top  ##  Always on top
+Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Suojaa salasanalla  ##  Password protect
+Password protect  ##  Password protect
 Settings only  ##  Settings only
 Everything  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
@@ -451,95 +451,95 @@ Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
 Never authorize  ##  Never authorize
-Kysy minulta  ##  Ask me
+Ask me  ##  Ask me
 Always authorize  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
 Progress  ##  Progress
 Enable voice chat  ##  Enable voice chat
-Toistolaite  ##  Playback device
-Nauhoituslaite  ##  Recording device
-Tarkista päivitykset käynnistettäessa Wippien  ##  Check for updates when Wippien starts
-Tarkista päivitykset muodostaessa yhteyttä  ##  Check for updates on Connect
-Tarkista päivitykset joka  ##  Check for updates each
-Päivitä ja käynnistä ohjelma uudelleen huomaamattomasti.  ##  Update and restart application silently
+Playback device  ##  Playback device
+Recording device  ##  Recording device
+Check for updates when Wippien starts  ##  Check for updates when Wippien starts
+Check for updates on Connect  ##  Check for updates on Connect
+Check for updates each  ##  Check for updates each
+Update and restart application silently  ##  Update and restart application silently
 Show system messages received from updater  ##  Show system messages received from updater
-&Tarkista nyt  ##  &Check now
+&Check now  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Käytä määrättyä MTU:ta  ##  Use fixed MTU
-Tunnista MTU automaattisesti  ##  Auto-detect MTU
+Use fixed MTU  ##  Use fixed MTU
+Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Ääni (jätä tyhjäksi halutessasi oletus äänen)  ##  Sound (leave empty for default sound)
-&Soita  ##  &Play
+Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
+再生  ##  &Play
 Program events  ##  Program events
-Piilota uusi kontakti  ##  Hide new contact
+Hide new contact  ##  Hide new contact
 Unhide contact  ##  Unhide contact
 Currently hidden contacts  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Piilota kontakti  ##  Hide contact
-Anna kontaktin JID  ##  Enter contact JID
-Salli kaikki liikenne  ##  Allow all traffic
-Estä kaikki liikenne  ##  Block all traffic
-&Lisää  ##  &Add
-&Poista  ##  &Remove
-Oletus sääntö  ##  Default rule
-Avatar kuva  ##  Avatar picture
-Nimi  ##  Name
-IP osoite  ##  IP address
-Tila teksti  ##  Status text
-Viimeksi ollut online  ##  Last online time
+Hide contact  ##  Hide contact
+Enter contact JID  ##  Enter contact JID
+Allow all traffic  ##  Allow all traffic
+Block all traffic  ##  Block all traffic
+&Add  ##  &Add
+&Remove  ##  &Remove
+Default rule  ##  Default rule
+Avatar picture  ##  Avatar picture
+名前  ##  Name
+IP address  ##  IP address
+Status text  ##  Status text
+Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
-Näkyvät tiedot  ##  Visible details
-Kontaktin näkyvät tiedot  ##  Contact's visible details
-järjestelemätön  ##  unsorted
-Nimen mukaan  ##  By name
-JID:n mukaan  ##  By JID
-IP:n mukaan (ilman IP:tä menee pohjalle)  ##  by IP (without IP goes bottom)
-IP:n mukaan (ilman IP:tä menee huopulle)  ##  by IP (without IP goes top)
-Järjestä kontaktilista  ##  Sort contact list
+Visible details  ##  Visible details
+Contact's visible details  ##  Contact's visible details
+unsorted  ##  unsorted
+By name  ##  By name
+By JID  ##  By JID
+by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
+by IP (without IP goes top)  ##  by IP (without IP goes top)
+Sort contact list  ##  Sort contact list
 Nickname for chatrooms  ##  Nickname for chatrooms
 Show available rooms on following gateways  ##  Show available rooms on following gateways
 Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Luotavan/liityttävän huoneen nimi  ##  Room name to create or join
-Salasana (voi jättää tyhjäksi)  ##  Password (empty if none)
+Room name to create or join  ##  Room name to create or join
+Password (empty if none)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Liity tai luo huone  ##  Join or Create room
-Estä käyttäjät käynnistyksessä  ##  Block users at startup
-&Kopioi IP  ##  &Copy IP
-&Keskustelu  ##  C&hat
-&Ääni keskustelu  ##  &Voice Chat
-Lähetä &tiedosto  ##  Send &File
-Lähetä %sähköposti  ##  Send E&mail
-&Estä  ##  &Block
-&Nimeä uudelleen  ##  &Rename
-&Poista  ##  &Delete
-&Tiedot  ##  De&tails
-Lisää/poista &tilejä  ##  Add/Remove &Accounts
-Lisää/poista &kontakteja  ##  Add/Remove &Contacts
+Join or Create room  ##  Join or Create room
+Block users at startup  ##  Block users at startup
+&Copy IP  ##  &Copy IP
+C&hat  ##  C&hat
+&Voice Chat  ##  &Voice Chat
+Send &File  ##  Send &File
+Send E&mail  ##  Send E&mail
+&Block  ##  &Block
+&Rename  ##  &Rename
+&Delete  ##  &Delete
+De&tails  ##  De&tails
+Add/Remove &Accounts  ##  Add/Remove &Accounts
+Add/Remove &Contacts  ##  Add/Remove &Contacts
 &Online  ##  &Online
-%Poissa  ##  &Away
-Vapaa &juttelemaan  ##  Free for &Chat
-%Älä häiritse  ##  &Do not Disturb
+&Away  ##  &Away
+Free for &Chat  ##  Free for &Chat
+&Do not Disturb  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
-&Näkymätön  ##  &Invisible
-O&ffline  ##  O&ffline
-Vaihda &kuva  ##  Change &Picture
-Vaihda sala&sana  ##  Change Pa&ssword
-Omat &tiedot  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
-Anna salasana  ##  Enter password
-Anna suojaus salasana  ##  Please enter protect password
-Kielet  ##  Languages
-Valitse kieli jota käytetään kaikissa Wippien teksteissä.  ##  Setup language used in all Wippien texts.
-Uusia kielia voi ilmaantua ajoittain.  ##  New languages may appear periodically.
-Seuraavat kielet ovat tarjolla paikallisella koneella  ##  Following languages are found as available on local computer
-&Vaihda  ##  &Change
+&Invisible  ##  &Invisible
+オフライン  ##  O&ffline
+Change &Picture  ##  Change &Picture
+パスワード変更  ##  Change Pa&ssword
+Your &Details  ##  Your &Details
+  ##  Enter Passphrase
+  ##  Enter password
+  ##  Please enter protect password
+言語  ##  Languages
+  ##  Setup language used in all Wippien texts.
+New languages may appear periodically.  ##  New languages may appear periodically.
+Following languages are found as available on local computer  ##  Following languages are found as available on local computer
+&Change  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Käytössä oleva kieli  ##  Currently used language
-Muutokset tulevat voimaan tarvittaessa. Wippien on käynnistettävä uudestaan, jos haluat nähdä koko muutoksen.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-Uusia kielitiedostoja tarjolla. Ladataanko?  ##  New language files available. Download?
-Näytä ilmoitus popup ikkunassa kun kontakti kirjautuu sisään tai ulos.  ##  Show notification popup window when contact goes online/offline
-Kontakti kirjoittaa...  ##  Contact is typing...
-sanoo  ##  says
-sanoi  ##  said
-Tässä voit käyttää vain GMAIL tiliä.  ##  You can use your GMAIL account here.
+Currently used language  ##  Currently used language
+Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+New language files available. Download?  ##  New language files available. Download?
+Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
+Contact is typing...  ##  Contact is typing...
+says  ##  says
+said  ##  said
+You can use your GMAIL account here.  ##  You can use your GMAIL account here.

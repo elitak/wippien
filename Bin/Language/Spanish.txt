@@ -1,6 +1,6 @@
 # Spanish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: tdknela@gmail.com
-# Version: 4
+# Version: 5
 Sin Errores.  ##  No error.
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
@@ -414,7 +414,7 @@ Ciudad  ##  City
 Provincia  ##  State
 CP  ##  ZIP
 País  ##  Country
-Cumpleańos  ##  Birthday
+Cumpleaños  ##  Birthday
 Teléfono  ##  Voice Tel.
 Fax  ##  Fax
 Título  ##  Title

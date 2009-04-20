@@ -1,6 +1,6 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 3
+# Version: 4
 Sem erro.  ##  No error.
 O sistema não consegue encontrar o ficheiro especificado.  ##  The system cannot find the file specified.
 O sistema não encontrou o caminho especificado.  ##  The system cannot find the path specified.
@@ -59,7 +59,7 @@ MTU muito grande.  ##  MTU size too large.
 MTU muito pequeno.  ##  MTU size too small.
 Pedido inválido de socket.  ##  Invalid socks request.
 Password inválida. Não coincide com o remoto.  ##  Invalid password. Does not match remote peer's password.
-Identificação local não atribuida. Ela é requerida pelo método  "Search".  ##  Local ID not set. It is required for Search method.
+Identificador (ID) local não atribuido. É requerido para o método de procura (Search).  ##  Local ID not set. It is required for Search method.
 Idetificação remota não atribuida. Ela é requerida pelo método  "Search".  ##  Remote ID not set. It is required for Search method.
 Não consigo atribuir o endereço IP especificado.  ##  Cannot bind to specified IP address.
 Já está a efectuar uma transferência de ficheiro.  ##  Already performing file transfer.
@@ -140,7 +140,7 @@ Não pude entregar a mensagem.  ##  Could not deliver message.
 Falhou a mudança de password  ##  Failed to change password
 Desconectado devido a inatividade.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  entrada: %s\r\nTotal saída: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<&lt; VPN ainda não estabelecido >&gt;  ##  << VPN not established yet >>
+VPN ainda não estabelecido  ##  << VPN not established yet >>
 A ligar dentro de %d segundos.  ##  Reconnect in %d seconds.
 Segundos  ##  seconds
 Sem rede  ##  No network
@@ -174,11 +174,11 @@ Detalhes  ##  Details
 Informação de contacto  ##  Contact information
 Apagar  ##  Clear
 Limpar histórico  ##  Clear history
-Mute  ##  Mute
-Bold  ##  Bold
-Italic  ##  Italic
-Underline  ##  Underline
-Inserir hyperlink  ##  Insert hyperlink
+Silêncio  ##  Mute
+Negrito  ##  Bold
+Italico  ##  Italic
+Sublinhado  ##  Underline
+Inserir ligação  ##  Insert hyperlink
 Diminuir tamanho das letras  ##  Decrease font size
 Reiniciar tamanho das letras  ##  Reset font size
 Aumentar tamanho das letras  ##  Increase font size
@@ -345,9 +345,9 @@ Eu já tenho uma conta existente no Jabber  ##  I have existing Jabber account
 Você deve inserir sua ID do jabber(JID) aqui. O Wippen usa o Jabber para indicar a presença de rede - para notificar seus contatos que você está online, para ver outros contatos etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 Se você não tem uma JID, você deve registrar uma nova. Você pode fazer isso em qualquer rede jabber que você quiser. Existem muitas redes públicas disponíveis. Você pode encontrar uma lista de servidores livres clicando nesse botão.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Password  ##  Password
-Server  ##  Server
-Port  ##  Port
+Palavra Chave  ##  Password
+Servidor  ##  Server
+Porta  ##  Port
 Por favor clique em 'Testar Conta' para proceder.  ##  Please click on 'Test Account' to proceed.
 Usar criptografia SSL na porta 443 (para o GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
@@ -362,8 +362,8 @@ O IP será definido fora deste programa.  ##  Ignore. IP will be set outside of 
 Obtido no banco de dados do provedor do IP, na URL  ##  Obtained from IP provider database, on URL
 Usar os seguintes endereços estáticos  ##  Use following static address
 Endereço IP  ##  IP address
-Netmask  ##  Netmask
-Status  ##  Status
+Máscara de rede  ##  Netmask
+Estado  ##  Status
 URL  ##  URL
 Descrição  ##  Description
 Adicionar nova conta  ##  Add new account
@@ -391,16 +391,16 @@ Nome visível  ##  Visible Name
 Renomear contacto  ##  Rename contact
 Novo nome do contacto  ##  Enter new contact name
 Configurações  ##  Settings
-< &Voltar  ##  < &Back
+&Voltar  ##  < &Back
 Log de comunicações do Jabber  ##  Log Jabber communication
-Log de cominicações socket  ##  Log socket communication
-Logar chamadas de funções raw (pode crescer rapidamente!)  ##  Log raw function calls (may grow quickly!)
+Log de comunicações socket  ##  Log socket communication
+Logar chamadas de funções raw (pode crescer rápidamente!)  ##  Log raw function calls (may grow quickly!)
 Deletar log de raw cada um  ##  Delete raw log on each
 megabytes  ##  megabytes
-Logar comunicação VPN ao início do P2P  ##  Log VPN communication on P2P startup
+Registar comunicação VPN ao início do P2P  ##  Log VPN communication on P2P startup
 Os seguintes mediadores podem ser usados  ##  Following mediators can be used
 Permitir a adição de novos moderadores  ##  Allow new mediators to be added
-Várias configurações relacionadas a janela de chat  ##  Various settings regarding chat window
+Várias configurações relacionadas à janela de chat  ##  Various settings regarding chat window
 Horário das mensagens  ##  Timestamp messages
 Mostar histórico de mensagens  ##  Show message history
 Alcunha  ##  Nickname
@@ -409,7 +409,7 @@ Primeiro nome  ##  First name
 Email  ##  Email
 Notas  ##  Notes
 Endereço  ##  Address
-Continuação End.  ##  Address Ext.
+Continuação Endereço  ##  Address Ext.
 Cidade  ##  City
 Estado  ##  State
 Código Postal  ##  ZIP
@@ -451,7 +451,7 @@ Deletar todos os contatos locais no início  ##  Delete all local contacts on st
 Deletar todos os contatos locais ao conectar  ##  Delete all local contacts on connect
 Autorização de inscrição de contatos  ##  Contacts subscription authorization
 Nunca autorizar  ##  Never authorize
-Pergunte me  ##  Ask me
+Pergunte-me  ##  Ask me
 Sempre autorizar  ##  Always authorize
 Estabelecer VPN no tráfico de rede automaticamente  ##  Automatically establish VPN on network traffic
 Estabelcer VPN automaticamente no início  ##  Automatically establish VPN on startup
@@ -464,7 +464,7 @@ Checar por atualiazações ao conectar  ##  Check for updates on Connect
 Checar por atualizações a cada  ##  Check for updates each
 Atualizar e reiniciar a aplicação silenciosamente  ##  Update and restart application silently
 Mostra mensagens do sistema recebidas do adaptador  ##  Show system messages received from updater
-&Checar agora  ##  &Check now
+&Verificar agora  ##  &Check now
 As cofigurações MTU definem o máximo de pacotes UDP enviados aos peers. Se sua conexão de rede tem um MTU mais baixo que o Wippien é possível que o peer nunca receba pacotes grandes.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 Usar MTU fixo  ##  Use fixed MTU
 Auto-detectar MTU  ##  Auto-detect MTU
@@ -501,8 +501,8 @@ Alcunha para salas de conversa  ##  Nickname for chatrooms
 Mostar salas disponíveis nas seguintes nas seguintes entradas  ##  Show available rooms on following gateways
 Clique abaixo para selecionar uma sala, ou entre como detalhes para uma nova sala abaixo  ##  Click above to select room, or enter new chat room details below
 Nome da sala para criar ou juntar-se  ##  Room name to create or join
-Password  ##  Password (empty if none)
-Gateway  ##  Gateway
+Senha  ##  Password (empty if none)
+Porta de saída  ##  Gateway
 Juntar-se ou criar sala  ##  Join or Create room
 Bloquear utilizadores no arranque  ##  Block users at startup
 &Copiar IP  ##  &Copy IP

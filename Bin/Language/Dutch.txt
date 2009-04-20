@@ -1,6 +1,6 @@
 # Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Wippien Fan
-# Version: 1
+# Version: 2
 Geen fout  ##  No error.
 Systeem kan opgegeven bestand niet vinden.  ##  The system cannot find the file specified.
 Systeem kan opgegeven pad niet vinden.  ##  The system cannot find the path specified.
@@ -11,11 +11,11 @@ Het system kan niet schrijven op de opgegeven schijf.  ##  The system cannot wri
 Onjuiste veld waarde.  ##  Invalid Property Value.
 De opdracht retourneerde door een timeout.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
+Algemene fout voor ongeldig formaat, ongeldig formaat.  ##  Generic error for invalid format, bad format.
 An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
+Algemen fout voor ongeldig formaat, invoer, enz.  ##  Generic error for invalid format, entry, etc.
+Er was een ongeldig argument opgegeven.  ##  An invalid argument was supplied.
 Het ip adres is niet geldig of bestaat niet.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 Dit adres is al in gebruik.  ##  The specified address is already in use.
@@ -24,84 +24,84 @@ Het verbonden netwerk is niet beschikbaar.  ##  The connected network is not ava
 Het gekozen netwerk is niet beschikbaar.  ##  The connected network is not reachable.
 De verbinding met het verbonden netwerk is gereset.  ##  The connected network connection has been reset.
 De verbinding is verbroken door het netwerk.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
-De verbinding is gesloten.  ##  The connection has been shutdown.
+De huidige socket verbinding is herstart.  ##  The current socket connection has been reset.
+De huidige socket is niet verbonden.  ##  The current socket has not been connected.
+De verbinding is afgebroken.  ##  The connection has been shutdown.
 The current connection has timeout.  ##  The current connection has timeout.
 The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
 De host naam is te lang.  ##  Specified host name is too long.
 Remote host is momenteel niet beschikbaar.  ##  Remote host is currently unavailable.
 Remote host is momenteel niet te bereiken.  ##  Remote host is currently unreachable.
 Remote system is niet klaar.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
+Huidige socket versie niet ondersteund door applicatie.  ##  Current socket version not supported by application.
+Socket API is niet geïnitialiseerd.  ##  Socket API is not initialized.
+Socket verbinding is verbroken.  ##  Socket has been disconnected.
 Host niet gevonden.  ##  Host not found.
 Er is onvoldoende geheugen beschikbaar voor deze handeling.  ##  Not enough memory is available to complete this operation.
 Onbekende zoek opdracht.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+Onbekend argument voor Zoek methode.  ##  Unknown argument for Search method.
 Is al reeds gestart.  ##  Already started.
-Channel already started.  ##  Channel already started.
+Kanaal is reeds gestart  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
+Verbinding kon niet worden gemaakt.  ##  Connection not established.
 Onbekende bestands type.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+Onbekend kanaal type  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
+Kanaal kan lokaal niet worden aangemaakt.  ##  Channel cannot be created by local side.
+Kanaal kan lokaal niet worden gestart.  ##  Channel cannot be started by local side.
+Kanaal geweigerd door andere partij.  ##  Channel refused by remote side.
+Protocol versie van andere partij wordt niet ondersteund.  ##  Unsupported remote protocol version.
+wodVPN nog niet gestart. Gebruik Start eerst.  ##  wodVPN not yet started. Use Start first.
+Kanaal was gesloten.  ##  Channel was closed.
+MTU waarde is te groot.  ##  MTU size too large.
+MTU waarde is te klein.  ##  MTU size too small.
+Ongeldige socks aanvraag.  ##  Invalid socks request.
 Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+Kan geen verbinding maken met het opgegeven IP adres.  ##  Cannot bind to specified IP address.
+Je bent al een bestand aan het verzenden.  ##  Already performing file transfer.
 Bestand niet gevonden.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
+Het schrijven naar bestand is mislukt.  ##  Failed to write file.
+Kon netwerk adapter niet openen.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
 Onbekende fout.  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
+Component is bezet.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
 Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
+Ongeldig XML pakket  ##  Invalid XML packet.
+Ongeldig XML pakket volgnummer.  ##  Invalid XML packet sequence ID.
+Ongeldige login: %s.  ##  Invalid login: %s.
+Contact bestaat reeds in de collectie.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
+Onbekende notificatie.  ##  Unknown notification.
 Bestand niet gevonden.  ##  File not found.
 Geef het bestands type op.(PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
+Importeren van foto is niet gelukt.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
+Ongeldige protocol data ontvangen.  ##  Invalid protocol data received.
+Er is niks om te verzenden inhoud is 0.  ##  There's nothing to send. File size is 0.
+Contact niet gevonden  ##  Contact not found.
 Bestands overdracht mislukt.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
+Kon niet schrijven naar bestand.  ##  Could not write to file.
+Checksum van ontvangen bestand is ongeldig.  ##  Checksum of received file is invalid.
+Overdracht geannuleerd.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
+Ongeldig protocol geselecteerd.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
+datum niet ingesteld.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Pagina niet gevonden(fout 404) bericht van de server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
@@ -112,26 +112,26 @@ Online  ##  Online
 Away  ##  Away
 Beschikbaar voor de chat.  ##  Free for chat
 Niet storen  ##  Do not disturb
-Extended away  ##  Extended away
+Lang afwezig  ##  Extended away
 Onzichtbaar  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
+Maakt verbinding met server  ##  Connecting to server
+Bezig met registreren nieuwe gebruiker  ##  Registering new user
+Initialiseren beveiligde verbinding  ##  Initializing secure connection
+Bezig met versturen van authenticatie gegevens  ##  Sending authentication data
+Verbonden met server  ##  Connected to server
 Ontvang data van de server.  ##  Receiving data from server
 zend data naar de server.  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
+Bezig met uitvoeren van commando op server  ##  Executing command on server
+Verbinding met server wordt verbroken  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization
 Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
+Netwerk adapter uitgeschakeld!  ##  Network adapter disabled!
+Netwerk adapter geopend  ##  Network adapter opened
+Wippien netwerk adapter niet beschikbaar. Doorgaan met enkel IM?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administratie rechten vereist !!!(administrator)  ##  Admin privilege required!
 Disconnected  ##  Disconnected
@@ -148,10 +148,10 @@ Sluit wippien  ##  Exit Wippien
 E&xit  ##  E&xit
 Open instellingen  ##  Open settings
 &Instellingen  ##  &Settings
-Show AboutBox  ##  Show AboutBox
+Toon Over scherm  ##  Show AboutBox
 &Over  ##  &About
 Stel u status in. (Afwezig,onzichtbaar...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
+Toevoegen contacten en vreemde accounts  ##  Add contacts and alien accounts
 Demp het geluid  ##  Mute sound
 Open chat room.  ##  Open chat room
 Machtig u vriend.  ##  Authorize your friends
@@ -211,8 +211,8 @@ U moet  JID invoeren.  ##  You must enter your JID.
 U moet u wachtwoord invoeren.  ##  You must enter your password.
 Jabber fout  ##  Jabber error
 Icon  ##  Icon
-Selecteer u icoon.  ##  Please choose your icon.
-Dit is zichtbaar  voor u contacten.  ##  This is usually visible to your contacts.
+Selecteer uw icoon.  ##  Please choose your icon.
+Dit is zichtbaar  voor uw contacten.  ##  This is usually visible to your contacts.
 Netwerk  ##  Network
 Selecteer u IP adres en netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
@@ -235,7 +235,7 @@ Toon alle services  ##  Show all services
 Contacten  ##  Contacts
 Voeg toe/verwijder  ##  Add/Remove
 Zoek nieuwe contacten.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
+U kunt nieuwe Jabber, ICQ, MSN... contacten toevoegen  ##  You can add new Jabber, ICQ, MSN... contacts
 Alle bestanden (*.*)\0*\0TXT bestanden (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Alle bestanden (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Systeem  ##  System
@@ -312,7 +312,7 @@ Deze versie van  Wippien is up-to-date.  ##  Your version of Wippien is up-to-da
 Error connecting to remote server.  ##  Error connecting to remote server.
 Downloaden gereed,nu vervangen?  ##  Download successful. Replace now?
 Wippien update fout!  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
+Nieuwere versie van Wippien lokaal gevonden. Vervangen?  ##  New version of Wippien found localy. Replace?
 Nieuwe versie.  ##  New version
 Status gewijzigd :  ##  Status changed:
 dag  ##  day
@@ -331,16 +331,16 @@ Vrijgeven  ##  Unblock
 blokkeren  ##  Block
 Weet u zeker dat u deze groep wil verwijdern %s  ##  Are you sure you want to remove group %s
 groep verwijderen?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
+Weet u zeker dat u contact %s wilt verwijderen  ##  Are you sure you want to remove contact %s
+Contact verwijderen?  ##  Remove contact?
+Adapter fout  ##  Adapter error
+Hernoem groep  ##  Rename group
+Voer nieuwe groep naam in  ##  Enter new group name
+Download meer skins van de Wippien website  ##  Download more skins from Wippien website
 Klik op een skin om het te downloaden en te installeren.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
+Ik heb een nieuw Jabber account nodig  ##  I need new Jabber account
 Ik heb een bestaand Jabber account.  ##  I have existing Jabber account
-&Test Account  ##  &Test Account
+&Test Account.  ##  &Test Account
 &Zoek  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
@@ -354,13 +354,13 @@ O&K  ##  O&K
 &Annuleer  ##  &Cancel
 Voer aub beveiligingscode in  ##  Please enter key passphrase
 Voeg toe &Nieuw  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
+Toon notificatie als ethernet adapter niet beschikbaar is  ##  Show notification if ethernet adapter is unavailable.
 Disconnect adapter on exit  ##  Disconnect adapter on exit
 UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
 IP address for Wippien network adapter  ##  IP address for Wippien network adapter
 Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
 Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
+Gebruik het volgende statistische adres  ##  Use following static address
 IP adres  ##  IP address
 Netmask  ##  Netmask
 Status  ##  Status
@@ -377,23 +377,23 @@ Authorization request  ##  Authorization request
 &Nee  ##  &No
 &Details  ##  &Details
 &Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
-Do you allow  ##  Do you allow
+&Blokkeer gebruiker(s)  ##  &Block user(s)
+Niet toestaan  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+Groep toevoegen  ##  Add Group
+Groep verwijderen  ##  Remove Group
+Contact toevoegen  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
   ##  Contact Type
 Zichtbare naam  ##  Visible Name
 Hernoem contact  ##  Rename contact
-Enter new contact name  ##  Enter new contact name
+Voer nieuwe contact naam in  ##  Enter new contact name
 Settings  ##  Settings
 < $Terug  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
+Log Jabber communicatie  ##  Log Jabber communication
+Log socket communicatie  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
 Delete raw log on each  ##  Delete raw log on each
 Megabytes  ##  megabytes
@@ -471,7 +471,7 @@ Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Geluid (leeg laten voor default)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
-Program events  ##  Program events
+Programma gebeurtenissen.  ##  Program events
 Verberg nieuw contact  ##  Hide new contact
 Maak contact zichtbaar  ##  Unhide contact
 Huidige verborgen contacten  ##  Currently hidden contacts
@@ -482,11 +482,11 @@ Sta al het verkeer toe  ##  Allow all traffic
 Blokker al het verkeer  ##  Block all traffic
 &Add  ##  &Add
 &Remove  ##  &Remove
-Default rule  ##  Default rule
+Standaard regel  ##  Default rule
 Avatar  ##  Avatar picture
 Naam  ##  Name
 IP-adres  ##  IP address
-  ##  Status text
+Status  text  ##  Status text
 Laatste keer online  ##  Last online time
 Activiteiten Monitor  ##  Activity Monitor
 Zichtbare details  ##  Visible details
@@ -498,9 +498,9 @@ bij IP (zonder IP gaat naar beneden)  ##  by IP (without IP goes bottom)
 bij IP (zonder IP gaat naar boven)  ##  by IP (without IP goes top)
 Sorteer contacten  ##  Sort contact list
 Nicknaam voor chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
+laat alle rooms zien op de gateways  ##  Show available rooms on following gateways
+klik hier boven om een room te selecteren, of betreed een chat room details staan onder.  ##  Click above to select room, or enter new chat room details below
+Room naam maken of inloggen.  ##  Room name to create or join
 Wachtwoord (leeg laten indien geen)  ##  Password (empty if none)
 Gateway  ##  Gateway
 open of maak een nieuw room  ##  Join or Create room
@@ -525,7 +525,7 @@ E&xtended Away  ##  E&xtended Away
 O&ffline  ##  O&ffline
 verander foto  ##  Change &Picture
 verander wachtwoord  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
+Uw &Details  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
 voer wachtwoord in.  ##  Enter password
 Please enter protect password  ##  Please enter protect password
@@ -536,9 +536,9 @@ de volgende talen zijn beschikbaar op de lokale pc  ##  Following languages are 
 &Verander  ##  &Change
 lokaal gebruik op de lokale pc  ##  Locale used on local computer
 voorkeurs taal  ##  Currently used language
-Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Alleen de noodzakelijke veranderingen worden nu door gevoerd,voor de rest dient u wippien op nieuw te starten.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 nieuwe update van de taal beschikbaar,downloaden ?  ##  New language files available. Download?
-Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
+Laat pop up zien wanneer concat offline/online gaat.  ##  Show notification popup window when contact goes online/offline
 contact is bericht aan het typen  ##  Contact is typing...
 zegt  ##  says
 zei  ##  said

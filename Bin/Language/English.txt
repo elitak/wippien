@@ -543,9 +543,10 @@ Contact is typing...
 says
 said
 You can use your GMAIL account here.
+Toggle voice chat
 Local echo
 UDP port 9913 busy
 Unable to listen for incoming voice chat
 Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-
+Voice chat does not seem to be set up. You must configure it before first use. Do it now?

@@ -23,6 +23,7 @@
 #include "SimpleXmlParser.h"
 #include "ChatRoom.h"
 #include "NotifyWindow.h"
+#include "VoiceChat.h"
 
 #ifdef _SKINMAGICKEY
 #include "SkinMagicLib.h"
@@ -68,6 +69,8 @@ extern CEthernet _Ethernet;
 extern CContactAuthDlg *_ContactAuthDlg;
 extern CMainDlg _MainDlg;
 extern CSDKMessageLink *_SDK;
+extern CVoiceChat _VoiceChat;
+
 UINT WM_TASKBARCREATEDMESSAGE = 0;
 
 
@@ -1856,7 +1859,8 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	
 	m_btnVoiceChat.SetToolTipText(_Settings.Translate("Toggle voice chat"));
 	m_btnVoiceChat.SubclassWindow(GetDlgItem(IDC_VOICECHAT));
-	m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT_SMALL); 
+	mutimg = _VoiceChat.m_Enabled?ID_PNG1_VOICECHAT_SMALL:ID_PNG1_VOICECHAT_SMALL_NO;
+	m_btnVoiceChat.LoadPNG(mutimg); 
 	m_btnVoiceChat.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 	
 	m_btnAuthDlg.SetToolTipText(_Settings.Translate("Authorize your friends"));
@@ -2589,14 +2593,10 @@ LRESULT CMainDlg::OnBtnChatRooms(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*
 
 LRESULT CMainDlg::OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-//	CSettingsDlg dlg(TRUE);
-//	CSettingsDlg::_CSettingsTemplate *pgchat = NULL;
-//	pgchat = new CSettingsDlg::CSettingsChatRooms();
-//	dlg.m_Dialogs.push_back(pgchat);
-	
-//	dlg.DoModal();
-//	delete pgchat;
-	
+	if (_VoiceChat.m_Enabled)
+		DisableVoiceChat(NULL);
+	else
+		EnableVoiceChat(NULL);
 	return 0;
 }
 
@@ -3232,6 +3232,100 @@ void CMainDlg::ToggleMute(void)
 	}
 	return;
 }
+
+void CMainDlg::EnableVoiceChat(CUser *user)
+{
+	if (!_VoiceChat.m_VadThreshold)
+	{
+		int mbok = MessageBox(_Settings.Translate("Voice chat does not seem to be set up. You must configure it before first use. Do it now?"), _Settings.Translate("Voice Chat"), MB_YESNO + MB_ICONQUESTION);
+		if (mbok == IDYES)
+		{
+			CSettingsDlg dlg(TRUE);
+			CSettingsDlg::_CSettingsTemplate *pgcon = NULL;
+			pgcon = new CSettingsDlg::CSettingsVoiceChat();
+			dlg.m_Dialogs.push_back(pgcon);
+			
+			dlg.DoModal();
+			delete pgcon;
+		}
+		if (!_VoiceChat.m_VadThreshold)
+			return;
+	}
+	_VoiceChat.m_Enabled = TRUE;
+	if (_VoiceChat.StartListen())
+	{
+//		_VoiceChat.StartWaveOut();
+//		if (_VoiceChat.m_LocalEcho)
+//			_VoiceChat.StartWaveIn();
+
+	
+	
+		// redraw main screen
+		m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT_SMALL);
+		m_btnVoiceChat.Invalidate();
+		
+		// redraw anywhere
+		for (int i=0;i<m_UserList.m_Users.size();i++)
+		{
+			CUser *us = (CUser *)m_UserList.m_Users[i];
+			if (us->IsMsgWindowOpen())
+			{
+				// toggle their button too
+				us->m_MessageWin->m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT);
+				us->m_MessageWin->m_btnVoiceChat.Invalidate();
+			}
+		}
+		// redraw anywhere
+		for (i=0;i<m_ChatRooms.size();i++)
+		{
+			CChatRoom *room = (CChatRoom *)m_ChatRooms[i];
+			if (room->IsMsgWindowOpen())
+			{
+				// toggle their button too
+				room->m_MessageWin->m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT);
+				room->m_MessageWin->m_btnVoiceChat.Invalidate();
+			}
+		}
+	}
+	else
+		DisableVoiceChat(NULL);
+}
+
+void CMainDlg::DisableVoiceChat(CUser *user)
+{
+	_VoiceChat.m_Enabled = FALSE;
+//	_VoiceChat.StopWaveIn();
+//	_VoiceChat.StopWaveOut();
+//	_VoiceChat.StopListen();
+	
+	// redraw main screen
+	m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT_SMALL_NO);
+	m_btnVoiceChat.Invalidate();
+	
+	// redraw anywhere
+	for (int i=0;i<m_UserList.m_Users.size();i++)
+	{
+		CUser *us = (CUser *)m_UserList.m_Users[i];
+		if (us->IsMsgWindowOpen())
+		{
+			// toggle their button too
+			us->m_MessageWin->m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT_NO);
+			us->m_MessageWin->m_btnVoiceChat.Invalidate();
+		}
+	}
+	// redraw anywhere
+	for (i=0;i<m_ChatRooms.size();i++)
+	{
+		CChatRoom *room = (CChatRoom *)m_ChatRooms[i];
+		if (room->IsMsgWindowOpen())
+		{
+			// toggle their button too
+			room->m_MessageWin->m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT_NO);
+			room->m_MessageWin->m_btnVoiceChat.Invalidate();
+		}
+	}
+}
+
 
 void DumpDebug(char *text,...)
 {

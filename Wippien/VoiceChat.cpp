@@ -22,7 +22,7 @@ CVoiceChat::CVoiceChat()
 	m_WaveOutStarted = FALSE;
 	m_WaveOutDevice = WAVE_MAPPER;
 
-	m_sock = INVALID_SOCKET;
+	m_sock = SOCKET_ERROR;
 	m_Enabled = FALSE;
 	m_LocalEcho = FALSE;
 
@@ -30,7 +30,7 @@ CVoiceChat::CVoiceChat()
 
 	memset(&m_LocalEchoSock, 0, sizeof(m_LocalEchoSock));
 	m_LocalEchoSock.sin_port = 47398;
-	m_LocalEchoSock.sin_addr.s_addr = INADDR_LOOPBACK;
+	m_LocalEchoSock.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	m_LocalEchoSock.sin_family = AF_INET;
 }
 
@@ -39,31 +39,78 @@ CVoiceChat::~CVoiceChat()
 	StopListen();
 }
 
+void CVoiceChat::FdReceive(int nErrorCode)
+{
+	char buff[8192];
+	SOCKADDR_IN addr = {0};
+	int addrlen = sizeof(addr);
+	int i = ::recvfrom(m_sock, buff, sizeof(buff), 0, (struct sockaddr *)&addr, &addrlen);
+	if (i>0)
+	{
+		if (m_WaveOutStarted)
+		{
+			int j;
+			for (j=0;j<SNDNBUF;j++)
+			{
+				if (!m_WaveHdrOut[j].dwUser)
+				{
+					m_WaveHdrOut[j].dwUser = TRUE;
+					float floatBuffer[SPEEX_FRAME_SIZE];
+					signed short *databuf = (signed short *)m_WaveHdrOut[j].lpData;
+					
+					// decompress
+					speex_bits_read_from(&m_SpeexBitsIn, buff, i);
+					speex_decode(m_SpeexDecStateIn, &m_SpeexBitsIn, floatBuffer);
+					
+					int thr = 0;
+					for (i = 0; i<SPEEX_FRAME_SIZE;i++)
+					{
+						if (databuf[i]>m_VadThreshold || databuf[i]<(- m_VadThreshold))
+							thr++;
+						databuf[i] = (short)floatBuffer[i];
+					}
+					
+					if (m_PlaybackActivity)
+						PostMessage(m_PlaybackActivity, PBM_SETPOS, thr/16, 0);
+					
+					m_WaveOutBusy++;
+					ATLTRACE("Before waveOutPrepareHeader\r\n");
+					if (waveOutPrepareHeader(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR)) == MMSYSERR_NOERROR)
+						waveOutWrite(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR));
+					ATLTRACE("After waveOutPrepareHeader\r\n");
+					break;
+				}
+			}
+		}
+	}
+}
+
 BOOL CVoiceChat::StartListen(void)
 {
-	if (m_sock != INVALID_SOCKET)
+	if (m_sock == SOCKET_ERROR)
 	{
 		// start to listen
-		m_sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_IP);
+		m_sock = ::socket(AF_INET, SOCK_DGRAM, IPPROTO_IP);
 		SOCKADDR_IN addr = {0};
 		addr.sin_family = AF_INET;
 		addr.sin_port = 47398; 
 		
 		addr.sin_addr.s_addr = INADDR_ANY;
-		if (bind(m_sock, (SOCKADDR *)&addr, sizeof(addr)))
+		if (::bind(m_sock, (SOCKADDR *)&addr, sizeof(addr)))
 		{
-			closesocket(m_sock);
-			m_sock = INVALID_SOCKET;
+			::closesocket(m_sock);
+			m_sock = SOCKET_ERROR;
 			return FALSE;
 		}
+		AsyncSelect(FD_READ);
 	}
 	return TRUE;
 }
 void CVoiceChat::StopListen(void)
 {
-	if (m_sock != INVALID_SOCKET)
-		closesocket(m_sock);
-	m_sock = INVALID_SOCKET;
+	if (m_sock != SOCKET_ERROR)
+		::closesocket(m_sock);
+	m_sock = SOCKET_ERROR;
 }
 
 void CVoiceChat::StopWaveIn(void)
@@ -148,8 +195,10 @@ long CVoiceChat::StartWaveIn(void)
 	{
 		for (int i=0;i<SNDNBUF;i++)
 		{
+			ATLTRACE("Before waveInPrepareHeader\r\n");
 			if (waveInPrepareHeader(m_hWavIn, &m_WaveHdrIn[i], sizeof(WAVEHDR)) == MMSYSERR_NOERROR)
 				waveInAddBuffer(m_hWavIn, &m_WaveHdrIn[i], sizeof(WAVEHDR));
+			ATLTRACE("After waveInPrepareHeader\r\n");
 		}
 		
 		if (waveInStart(m_hWavIn) == MMSYSERR_NOERROR)
@@ -266,10 +315,12 @@ void CVoiceChat::waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam
 					floatBuffer[i] = databuf[i];
 				}
 
-				if (me->m_PlaybackActivity)
-					SendMessage(me->m_PlaybackActivity, PBM_SETPOS, thr/16, 0);
+				if (me->m_RecordingActivity)
+					PostMessage(me->m_RecordingActivity, PBM_SETPOS, thr/16, 0);
 				
+				ATLTRACE("Before waveInAddBuffer\r\n");
 				waveInAddBuffer(me->m_hWavIn, (LPWAVEHDR)dwParam1, sizeof(WAVEHDR));
+				ATLTRACE("After waveInAddBuffer\r\n");
 				if (me->m_WaveOutDoSend || thr)
 				{
 					if (thr)
@@ -281,7 +332,7 @@ void CVoiceChat::waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam
 					
 					
 					if (me->m_LocalEcho)
-						sendto(me->m_sock, outbuff, total, 0, (struct sockaddr *)&me->m_LocalEchoSock, sizeof(SOCKADDR_IN));
+						::sendto(me->m_sock, outbuff, total, 0, (struct sockaddr *)&me->m_LocalEchoSock, sizeof(SOCKADDR_IN));
 				}
 			}
 			break;

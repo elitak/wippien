@@ -20,6 +20,7 @@
 #include "BaloonHelp.h"
 #include "MainDlg.h"
 #include "ProgressDlg.h"
+#include "VoiceChat.h"
 #include "../CxImage/zlib/zlib.h"
 #include <io.h>
 #include <fcntl.h>
@@ -29,6 +30,7 @@ extern CNotify _Notify;
 extern CSettings _Settings;
 extern CMainDlg _MainDlg;
 extern CJabber *_Jabber;
+extern CVoiceChat _VoiceChat;
 
 void ResampleImageIfNeeded(CxImage *img, int size);
 BOOL __LoadIconFromResource(CxImage *img, HINSTANCE hInst, char *restype, int imgformat, int resid);
@@ -846,7 +848,10 @@ LRESULT CMsgWin::OnBtnMuteOnOff(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 
 LRESULT CMsgWin::OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-	_MainDlg.ToggleMute();
+	if (_VoiceChat.m_Enabled)
+		_MainDlg.DisableVoiceChat(m_User);
+	else
+		_MainDlg.EnableVoiceChat(m_User);
 	return TRUE;
 }
 
@@ -1426,8 +1431,9 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 	m_btnMuteOnOff.SubclassWindow(GetDlgItem(ID_PNG1_MUTEONOFF));
 	m_btnMuteOnOff.SetToolTipText(_Settings.Translate("Mute sound"));
 
-	m_btnVoiceChat.SetCaption(_Settings.Translate("Voice chat"));
-	m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT);
+	m_btnVoiceChat.SetCaption(_Settings.Translate("Voice Chat"));
+	mutimg = _VoiceChat.m_Enabled?ID_PNG1_VOICECHAT:ID_PNG1_VOICECHAT_NO;
+	m_btnVoiceChat.LoadPNG(mutimg);
 	m_btnVoiceChat.SubclassWindow(GetDlgItem(IDC_VOICECHAT));
 	m_btnVoiceChat.SetToolTipText(_Settings.Translate("Toggle voice chat"));
 

@@ -230,6 +230,8 @@ public:
 	void CheckAppbar(void);
 	LRESULT CalcAlignment(RECT *rcin);
 	void ToggleMute(void);
+	void EnableVoiceChat(CUser *user);
+	void DisableVoiceChat(CUser *user);
 	BOOL ReloadEmoticons(BOOL ReleaseOnly);
 	void ChangeStatusFromEditBox(BOOL dochange);
 

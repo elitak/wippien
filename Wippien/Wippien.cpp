@@ -270,7 +270,11 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	if (_VoiceChat.m_Enabled)
 	{
 		if (_VoiceChat.StartListen())
+		{
 			_VoiceChat.StartWaveOut();
+			if (_VoiceChat.m_LocalEcho && _VoiceChat.m_VadThreshold)
+				_VoiceChat.StartWaveIn();
+		}
 		else
 		{
 			char buff[8192];

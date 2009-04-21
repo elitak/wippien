@@ -628,12 +628,12 @@ BEGIN
     CONTROL         "Local echo",IDC_VOICECHAT_LOCALECHO,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,9,71,202,9
     CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | 
-                    TBS_NOTICKS | WS_TABSTOP,17,99,118,6
+                    TBS_NOTICKS | WS_TABSTOP,33,95,118,14
     LTEXT           "Playback device",IDC_S1,9,44,229,8
     LTEXT           "Microphone sensitivity",IDC_MICROPHONESENS,9,86,202,8
     LTEXT           "Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.",
-                    IDC_MICROPHONESENSDESC,9,120,240,34
-    CTEXT           "500",IDC_MICROPHONESENSITIVITY,52,105,49,8
+                    IDC_MICROPHONESENSDESC,9,124,240,34
+    CTEXT           "500",IDC_MICROPHONESENSITIVITY,67,112,49,8
 END
 
 IDD_SETTINGS_SYSTEM_UPDATE DIALOG DISCARDABLE  0, 0, 262, 175

@@ -481,12 +481,13 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 	else
 		DestroyWindow();
 
-	while (m_Dialogs.size())
+/*	while (m_Dialogs.size())
 	{
 		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[0];
 		m_Dialogs.erase(m_Dialogs.begin());
 		delete tem;
 	}
+*/
 	return 0;
 }	
 LRESULT CSettingsDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
@@ -496,12 +497,13 @@ LRESULT CSettingsDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/,
 	else
 		DestroyWindow();
 
-	while (m_Dialogs.size())
+/*	while (m_Dialogs.size())
 	{
 		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[0];
 		m_Dialogs.erase(m_Dialogs.begin());
-		delete tem;
+//		delete tem;
 	}
+*/
 	return 0;
 }	
 

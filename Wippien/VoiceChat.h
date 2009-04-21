@@ -7,7 +7,7 @@
 
 #include <Mmsystem.h>
 #include "../speex-1.0.5/include/speex/speex.h"
-
+#include "CwodWinSocket.h"
 
 #if _MSC_VER > 1000
 #pragma once
@@ -17,7 +17,7 @@
 #define SPEEX_FRAME_SIZE	160
 
 
-class CVoiceChat  
+class CVoiceChat  : public CwodWinSocket
 {
 public:
 	CVoiceChat();
@@ -34,7 +34,6 @@ public:
 
 	HWND m_PlaybackActivity, m_RecordingActivity;
 
-	SOCKET m_sock;
 	SOCKADDR_IN m_LocalEchoSock;
 
 	BOOL m_WaveInStarted;
@@ -45,6 +44,8 @@ public:
 
 	SpeexBits m_SpeexBitsOut,m_SpeexBitsIn;
 	void *m_SpeexEncStateOut, *m_SpeexDecStateIn;
+
+	void FdReceive(int nErrorCode);
 
 	BOOL StartListen(void);
 	void StopListen(void);

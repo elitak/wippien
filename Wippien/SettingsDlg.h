@@ -521,6 +521,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		BEGIN_MSG_MAP(CSettingsVoiceChat)
 			MESSAGE_HANDLER(WM_PAINT, OnPaint)
 			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+			MESSAGE_HANDLER(WM_HSCROLL, OnHScroll)
 			COMMAND_ID_HANDLER(IDC_ENABLEVOICECHAT, OnEnableVoiceChat)
 			COMMAND_ID_HANDLER(IDC_VOICECHAT_LOCALECHO, OnLocalEcho)
 		END_MSG_MAP()
@@ -539,6 +540,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		LRESULT OnEnableVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 		LRESULT OnLocalEcho(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 		LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+		LRESULT OnHScroll(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		void Show(BOOL Show, RECT *rc);
 		void Init(HWND Owner);

@@ -570,7 +570,9 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "Skin", m_Skin, "");
 			ReadSettingsCfg(wip, "VoiceChatEnabled", &_VoiceChat.m_Enabled, FALSE);
 			ReadSettingsCfg(wip, "VoiceChatLocalEcho", &_VoiceChat.m_LocalEcho, FALSE);
-			ReadSettingsCfg(wip, "VoiceChatVadThreshold", &_VoiceChat.m_VadThreshold, 500);
+			ReadSettingsCfg(wip, "VoiceChatVadThreshold", &_VoiceChat.m_VadThreshold, 0);
+			ReadSettingsCfg(wip, "VoiceChatPlaybackDevice", &_VoiceChat.m_WaveOutDevice, 0);
+			ReadSettingsCfg(wip, "VoiceChatRecordingDevice", &_VoiceChat.m_WaveInDevice, 0);
 			CComBSTR2 donotshow;
 			ReadSettingsCfg(wip, "DoNotShow", donotshow, "00000000");
 			int dnsi = donotshow.Length();
@@ -1176,6 +1178,8 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("VoiceChatEnabled", _VoiceChat.m_Enabled?"1":"0");		
 	x.AddChildElem("VoiceChatLocalEcho", _VoiceChat.m_LocalEcho?"1":"0");		
 	x.AddChildElem("VoiceChatVadThreshold", _VoiceChat.m_VadThreshold);
+	x.AddChildElem("VoiceChatPlaybackDevice", _VoiceChat.m_WaveOutDevice);
+	x.AddChildElem("VoiceChatRecordingDevice", _VoiceChat.m_WaveInDevice);
 
 	x.Append("<Roster>\r\n");
 

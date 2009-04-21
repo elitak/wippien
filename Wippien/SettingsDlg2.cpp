@@ -513,6 +513,27 @@ CSettingsDlg::CSettingsVoiceChat::~CSettingsVoiceChat()
 	
 }
 
+LRESULT CSettingsDlg::CSettingsVoiceChat::OnHScroll(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+	ATLTRACE("wparam=%d\r\n", wParam);
+
+	switch (LOWORD(wParam))
+	{
+		case TB_THUMBTRACK:
+		case TB_THUMBPOSITION:
+		case TB_ENDTRACK:
+			{
+				int pos = SendDlgItemMessage(IDC_SLIDER1, TBM_GETPOS, 0, 0);
+				_VoiceChat.m_VadThreshold = pos * 25;
+				char buff[1024];
+				sprintf(buff, "%u", pos);
+				SetDlgItemText(IDC_MICROPHONESENSITIVITY, buff);
+			}
+			break;
+	}
+	return TRUE;
+}
+
 LRESULT CSettingsDlg::CSettingsVoiceChat::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CPaintDC dcPaint(m_hWnd);
@@ -568,6 +589,10 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	_VoiceChat.m_PlaybackActivity = h;
 	
 	
+	char buff[1024];
+	sprintf(buff, "%u", _VoiceChat.m_VadThreshold / 25);
+	SetDlgItemText(IDC_MICROPHONESENSITIVITY, buff);
+	SendDlgItemMessage(IDC_SLIDER1, TBM_SETPOS, 1, _VoiceChat.m_VadThreshold / 25);
 	return TRUE;
 }
 
@@ -604,10 +629,15 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnEnableVoiceChat(WORD /*wNotifyCode*/
 	if (_VoiceChat.m_Enabled)
 	{
 		if (_VoiceChat.StartListen())
+		{
 			_VoiceChat.StartWaveOut();
+			if (_VoiceChat.m_LocalEcho)
+				_VoiceChat.StartWaveIn();
+		}
 	}
 	else
 	{
+		_VoiceChat.StopWaveIn();
 		_VoiceChat.StopWaveOut();
 		_VoiceChat.StopListen();
 	}

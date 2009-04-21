@@ -264,8 +264,8 @@ Kako će se Wippien ponašati kad se računalo ne koristi.  ##  Determines how w
 Sistemske postavke  ##  System
 Osnovne sistemske poruke.  ##  Basic system messages.
 Kako će se Wippien ponašati.  ##  Define Wippien application's behavior.
-Glasovni razgovor  ##  Voice Chat
-Molim podesite uređaje za glasovni razgovor.  ##  Please setup your voice chat devices.
+Pričanje  ##  Voice Chat
+Molim podesite uređaje za pričanje.  ##  Please setup your voice chat devices.
 Odaberite sa donje liste.  ##  Choose from list below.
 <standardne postavke>  ##  <system default>
 Osnovne postavke o kontaktima.  ##  Contacts basic settings.
@@ -456,7 +456,7 @@ Uvijek autoriziraj  ##  Always authorize
 Automatski spoji VPN kad primjetiš aktivnost na mreži  ##  Automatically establish VPN on network traffic
 Automatski spoji VPN po pokretanju  ##  Automatically establish VPN on startup
 Progres  ##  Progress
-Uključi glasovni razgovor  ##  Enable voice chat
+Uključi pričanje  ##  Enable voice chat
 Uređaj za audio izlaz  ##  Playback device
 Uređaj za audio ulaz  ##  Recording device
 Aktualiziraj Wippien novom verzijom kad se pokrene  ##  Check for updates when Wippien starts
@@ -543,8 +543,10 @@ Kontakt tipka....  ##  Contact is typing...
 kaže  ##  says
 je rekao  ##  said
 Možete koristiti i vaš GMAIL račun.  ##  You can use your GMAIL account here.
+Uključi/Isključi pričanje  ##  Toggle voice chat
 Želim čuti samog sebe  ##  Local echo
 UDP port 9913 zauzet  ##  UDP port 9913 busy
-Ne mogu primati dolazni glasovni razgovor  ##  Unable to listen for incoming voice chat
+Ne mogu primati dolazno pričanje ##  Unable to listen for incoming voice chat
 Osjetljivost mikrofona  ##  Microphone sensitivity
 Pričajte u mikrofon i podešavajte klizač. Gornji pokazivač se ne bi smio micati kad šutite, a trebao bi ići do kraja kad pričate glasno.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Pričanje još nije podešeno. Da li da to učinimo sada?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

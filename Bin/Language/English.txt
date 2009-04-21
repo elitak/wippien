@@ -1,6 +1,6 @@
 # English template text
 # Author: Kresimir Petric
-# Version: 7
+# Version: 8
 No error.
 The system cannot find the file specified.
 The system cannot find the path specified.

@@ -844,6 +844,12 @@ LRESULT CMsgWin::OnBtnMuteOnOff(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	return TRUE;
 }
 
+LRESULT CMsgWin::OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	_MainDlg.ToggleMute();
+	return TRUE;
+}
+
 LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	CComBSTR2 a = _Settings.Translate("Are you sure you want to delete the history?");
@@ -931,6 +937,7 @@ BOOL CMsgWin::ArrangeLayout()
 		HWND hHumanHead = GetDlgItem(IDC_PERSON);
 		HWND hClearHistory = GetDlgItem(ID_PNG1_CLEARHISTORY);
 		HWND hRoomSettings = GetDlgItem(ID_PNG1_CHATROOMSETTINGS);
+		HWND hVoiceChat = GetDlgItem(IDC_VOICECHAT);
 
 		HWND hContactList = GetDlgItem(IDC_MSGWIN_USERS);
 		
@@ -953,9 +960,10 @@ BOOL CMsgWin::ArrangeLayout()
 		::MoveWindow(hSendFile,  rc.left + 5, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hDetails,  rc.left + 73, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hMuteOnOff,  rc.left + 141, rc.top+1, 68, 48, TRUE);
-		::MoveWindow(hClearHistory,  rc.left + 209, rc.top+1, 68, 48, TRUE);
+		::MoveWindow(hVoiceChat,  rc.left + 209, rc.top+1, 68, 48, TRUE);
+		::MoveWindow(hClearHistory,  rc.left + 277, rc.top+1, 68, 48, TRUE);
 		if (m_Room)
-			::MoveWindow(hRoomSettings,  rc.left + 277, rc.top+1, 68, 48, TRUE);
+			::MoveWindow(hRoomSettings,  rc.left + 345, rc.top+1, 68, 48, TRUE);
 		::MoveWindow(hHumanHead,  rc.right-48, rc.top, 48, 48, TRUE);
 
 		// middle toolbar elements
@@ -1417,6 +1425,11 @@ LRESULT CMsgWin::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHa
 	ResampleImageIfNeeded(&m_btnMuteOnOff.m_cxImage, 32);
 	m_btnMuteOnOff.SubclassWindow(GetDlgItem(ID_PNG1_MUTEONOFF));
 	m_btnMuteOnOff.SetToolTipText(_Settings.Translate("Mute sound"));
+
+	m_btnVoiceChat.SetCaption(_Settings.Translate("Voice chat"));
+	m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT);
+	m_btnVoiceChat.SubclassWindow(GetDlgItem(IDC_VOICECHAT));
+	m_btnVoiceChat.SetToolTipText(_Settings.Translate("Toggle voice chat"));
 
 	m_btnClearHistory.SetCaption(_Settings.Translate("Clear"));
 	m_btnClearHistory.LoadPNG(ID_PNG_CLEARHISTORY);

@@ -17,6 +17,7 @@
 #include "ContactAuthDlg.h"
 #include "UpdateHandler.h"
 #include "SDKMessageLink.h"
+#include "VoiceChat.h"
 #include <snmp.h>
 #pragma	comment(lib, "snmpapi.lib")
 
@@ -26,6 +27,7 @@ CAppModule _Module;
 CSettings _Settings;
 CEthernet _Ethernet;
 CMainDlg _MainDlg;
+CVoiceChat _VoiceChat;
 extern CJabber *_Jabber;
 extern CSDKMessageLink *_SDK;
 extern CContactAuthDlg *_ContactAuthDlg;
@@ -265,6 +267,18 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 		}
 	}
 
+	if (_VoiceChat.m_Enabled)
+	{
+		if (_VoiceChat.StartListen())
+			_VoiceChat.StartWaveOut();
+		else
+		{
+			char buff[8192];
+			sprintf(buff, "%s. %s?", _Settings.Translate("Unable to listen for incoming voice chat"), _Settings.Translate("UDP port 9913 busy"));
+			MessageBox(NULL, buff, _Settings.Translate("Error"), MB_OK);
+		}
+	}
+
 
 	CMessageLoop theLoop;
 	_Module.AddMessageLoop(&theLoop);
@@ -274,9 +288,6 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 
 	if(_MainDlg.Create(NULL) == NULL)
 	{
-#ifdef _DEBUGWNDMSG
-//		ATLTRACE(_T("Main dialog creation failed!\n"));
-#endif
 		return 0;
 	}
 

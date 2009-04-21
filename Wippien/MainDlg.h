@@ -66,7 +66,7 @@ public:
 	CHATROOMLIST m_ChatRooms;
 
 	CPNGButton m_btnOK, m_btnSettings, m_btnAbout;
-	CPNGButton m_btnMyStatus, m_btnMyContacts, m_btnAuthDlg, m_btnSmallMute, m_btnChatRooms;
+	CPNGButton m_btnMyStatus, m_btnMyContacts, m_btnAuthDlg, m_btnSmallMute, m_btnChatRooms, m_btnVoiceChat;
 	CUserList m_UserList;
 	char m_StatusMessage[256];
 	Buffer *m_MyStatusText;
@@ -88,8 +88,6 @@ public:
 	BOOL m_MouseOverStatus;
 	POINT m_MouseOverPoint;
 	CComBSTR m_NewPassword;
-
-//	CComPtr<WODVCHATComLib::IwodVChatCom> m_VoiceChat;
 
 	CRITICAL_SECTION m_SocketCS;
 
@@ -173,6 +171,7 @@ public:
 		COMMAND_ID_HANDLER(IDC_MYCONTACTS, OnBtnContacts)
 		COMMAND_ID_HANDLER(IDC_SMALLMUTE, OnBtnSmallMute)
 		COMMAND_ID_HANDLER(IDC_CHATROOMS, OnBtnChatRooms)
+		COMMAND_ID_HANDLER(IDC_VOICECHAT, OnBtnVoiceChat)
 		COMMAND_ID_HANDLER(IDC_MYAUTHDLG, OnBtnAuthDlg)
 //		COMMAND_ID_HANDLER(IDC_TREELIST, m_UserList.OnListCommand)
 		NOTIFY_ID_HANDLER(IDC_TREELIST, m_UserList.OnListNotify)
@@ -209,6 +208,7 @@ public:
 	LRESULT OnBtnContacts(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnSmallMute(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnChatRooms(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnStatus(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBtnAuthDlg(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnStatusMessage(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);

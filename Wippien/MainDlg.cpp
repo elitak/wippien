@@ -1365,6 +1365,7 @@ void CMainDlg::RecalcInternalItems(void)
 	HWND hBtn6 = GetDlgItem(IDC_CHATROOMS);
 	HWND hBtn7 = GetDlgItem(IDC_SMALLMUTE);
 	HWND hBtn8 = GetDlgItem(IDC_MYAUTHDLG);
+	HWND hBtn9 = GetDlgItem(IDC_VOICECHAT);
 
 
 	int size = rc.right/3;
@@ -1394,7 +1395,8 @@ void CMainDlg::RecalcInternalItems(void)
 	::SetWindowPos(hBtn5, NULL, rc.left + 20, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
 	::SetWindowPos(hBtn6, NULL, rc.left + 40, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
 	::SetWindowPos(hBtn7, NULL, rc.left + 60, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
-	::SetWindowPos(hBtn8, NULL, rc.left + 80, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
+	::SetWindowPos(hBtn9, NULL, rc.left + 80, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
+	::SetWindowPos(hBtn8, NULL, rc.left + 100, rc.top + hdrsize, 20, 20, SWP_NOZORDER);
 }
 
 
@@ -1852,6 +1854,11 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	m_btnChatRooms.LoadPNG(ID_PNG1_CHATROOMS);
 	m_btnChatRooms.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
 	
+	m_btnVoiceChat.SetToolTipText(_Settings.Translate("Toggle voice chat"));
+	m_btnVoiceChat.SubclassWindow(GetDlgItem(IDC_VOICECHAT));
+	m_btnVoiceChat.LoadPNG(ID_PNG1_VOICECHAT_SMALL); 
+	m_btnVoiceChat.LoadBack(IDB_BANNER_TOP_BACKGROUND2);
+	
 	m_btnAuthDlg.SetToolTipText(_Settings.Translate("Authorize your friends"));
 	m_btnAuthDlg.SubclassWindow(GetDlgItem(IDC_MYAUTHDLG));
 	m_btnAuthDlg.LoadPNG(IDC_MYAUTHDLG);
@@ -2234,6 +2241,9 @@ LRESULT CMainDlg::OnSetup(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL
 		pg = new CSettingsDlg::CSettingsSound();
 		m_SettingsDlg->m_Dialogs.push_back(pg);
 
+		pg = new CSettingsDlg::CSettingsVoiceChat();
+		m_SettingsDlg->m_Dialogs.push_back(pg);
+		
 #ifdef _SKINMAGICKEY
 		pg = new CSettingsDlg::CSettingsSkins();
 		m_SettingsDlg->m_Dialogs.push_back(pg);
@@ -2574,6 +2584,19 @@ LRESULT CMainDlg::OnBtnChatRooms(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*
 	dlg.DoModal();
 	delete pgchat;
 
+	return 0;
+}
+
+LRESULT CMainDlg::OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+//	CSettingsDlg dlg(TRUE);
+//	CSettingsDlg::_CSettingsTemplate *pgchat = NULL;
+//	pgchat = new CSettingsDlg::CSettingsChatRooms();
+//	dlg.m_Dialogs.push_back(pgchat);
+	
+//	dlg.DoModal();
+//	delete pgchat;
+	
 	return 0;
 }
 

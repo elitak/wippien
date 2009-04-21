@@ -512,6 +512,8 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 	public:
 		enum { IDD = IDD_SETTINGS_VOICECHAT};
 		CComboBox m_Combo1, m_Combo2;
+		int m_WaveInDevice, m_WaveOutDevice, m_VadThreshold;
+		
 
 		CSettingsVoiceChat();
 		~CSettingsVoiceChat();
@@ -519,6 +521,8 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		BEGIN_MSG_MAP(CSettingsVoiceChat)
 			MESSAGE_HANDLER(WM_PAINT, OnPaint)
 			MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+			COMMAND_ID_HANDLER(IDC_ENABLEVOICECHAT, OnEnableVoiceChat)
+			COMMAND_ID_HANDLER(IDC_VOICECHAT_LOCALECHO, OnLocalEcho)
 		END_MSG_MAP()
 
 
@@ -531,6 +535,9 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 //		LRESULT OnBtnTest(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 //		LRESULT OnBtnSearch(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 //		LRESULT OnVoiceChatChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+
+		LRESULT OnEnableVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+		LRESULT OnLocalEcho(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 		LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 		void Show(BOOL Show, RECT *rc);

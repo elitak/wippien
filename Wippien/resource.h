@@ -166,6 +166,7 @@
 #define IDC_CHATROOMS                   1142
 #define IDC_SMALLMUTE                   1143
 #define IDC_APPLYTOALL                  1144
+#define IDC_VOICECHAT                   1144
 #define IDC_DETAILS                     1145
 #define IDC_CONTACTJID                  1146
 #define IDC_LOG_JABBER                  1147
@@ -482,8 +483,19 @@
 #define IDC_S11                         1513
 #define IDC_LOCALLANGUAGES              1515
 #define IDC_SHOWNOTIFICATION            1516
-#define ID_PNG_CHATROOMSETTINGS			1517
-#define ID_PNG1_CHATROOMSETTINGS        1518
+#define ID_PNG_CHATROOMSETTINGS         1517
+#define IDC_PLAYBACKMONITOR             1518
+#define ID_PNG1_CHATROOMSETTINGS        1519
+#define IDC_RECORDINGMONITOR            1520
+#define ID_PNG1_VOICECHAT               1521
+#define ID_PNG1_VOICECHAT_SMALL         1522
+#define ID_PNG1_VOICECHAT_NO            1523
+#define ID_PNG1_VOICECHAT_SMALL_NO      1524
+#define IDC_VOICECHAT_LOCALECHO         1525
+#define IDC_SLIDER1                     1526
+#define IDC_MICROPHONESENSITIVITY       1527
+#define IDC_MICROPHONESENS              1529
+#define IDC_MICROPHONESENSDESC          1530
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -516,7 +528,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1392
 #define _APS_NEXT_COMMAND_VALUE         32798
-#define _APS_NEXT_CONTROL_VALUE         1517
+#define _APS_NEXT_CONTROL_VALUE         1531
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

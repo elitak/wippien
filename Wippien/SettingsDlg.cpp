@@ -481,6 +481,12 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 	else
 		DestroyWindow();
 
+	while (m_Dialogs.size())
+	{
+		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[0];
+		m_Dialogs.erase(m_Dialogs.begin());
+		delete tem;
+	}
 	return 0;
 }	
 LRESULT CSettingsDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
@@ -489,6 +495,13 @@ LRESULT CSettingsDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/,
 		EndDialog(0);
 	else
 		DestroyWindow();
+
+	while (m_Dialogs.size())
+	{
+		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[0];
+		m_Dialogs.erase(m_Dialogs.begin());
+		delete tem;
+	}
 	return 0;
 }	
 
@@ -5110,71 +5123,6 @@ void CSettingsDlg::CSettingsSystem::Init(HWND Owner)
 }
 
 void CSettingsDlg::CSettingsSystem::Show(BOOL Show, RECT *rc)
-{
-	if (IsWindow())
-	{
-		if (Show)
-		{
-			::SetWindowPos(m_hWnd, NULL, rc->left, rc->top, rc->right, rc->bottom, SWP_NOZORDER);
-			ShowWindow(SW_SHOW);
-			SetFocus();
-		}
-		else
-			ShowWindow(SW_HIDE);
-	}
-}
-
-CSettingsDlg::CSettingsVoiceChat::CSettingsVoiceChat() : _CSettingsTemplate()
-{
-	CComBSTR mp = _Settings.Translate("System");
-	mp += "\\";
-	mp += _Settings.Translate("Voice Chat");
-	mPATH = mp;
-	PATH = mPATH.ToString();
-	TEXT1 = _Settings.Translate("Please setup your voice chat devices.");
-	TEXT2 = _Settings.Translate("Choose from list below.");
-}
-
-CSettingsDlg::CSettingsVoiceChat::~CSettingsVoiceChat()
-{
-
-}
-
-LRESULT CSettingsDlg::CSettingsVoiceChat::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-{
-	CPaintDC dcPaint(m_hWnd);
-	return TRUE;
-}
-
-
-LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
-{
-	m_Combo1.Attach(GetDlgItem(IDC_VOICE_RECORDINGDEVICE));
-	m_Combo2.Attach(GetDlgItem(IDC_VOICE_PLAYBACKDEVICE));
-
-
-	m_Combo1.ResetContent();
-	m_Combo1.AddString(_Settings.Translate("<system default>"));
-
-	SetDlgItemText(IDC_ENABLEVOICECHAT, _Settings.Translate("Enable voice chat"));
-	SetDlgItemText(IDC_S1, _Settings.Translate("Playback device"));
-	SetDlgItemText(IDC_S2, _Settings.Translate("Recording device"));
-	return TRUE;
-}
-
-BOOL CSettingsDlg::CSettingsVoiceChat::Apply(void)
-{
-
-
-	return TRUE;
-}
-void CSettingsDlg::CSettingsVoiceChat::Init(HWND Owner)
-{
-	m_Owner = Owner;
-	Create(Owner);
-}
-
-void CSettingsDlg::CSettingsVoiceChat::Show(BOOL Show, RECT *rc)
 {
 	if (IsWindow())
 	{

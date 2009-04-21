@@ -1401,7 +1401,9 @@ void CUser::NotifyDisconnect(void)
 	}
 
 
+	BOOL iswip = m_IsUsingWippien;
 	ReInit(TRUE);
+	m_IsUsingWippien = iswip;
 }
 
 void CUser::NotifyConnect(void)

@@ -12,6 +12,7 @@
 #include "MainDlg.h"
 #include "ChatRoom.h"
 #include "Notify.h"
+#include "VoiceChat.h"
 #include <io.h>
 #include <fcntl.h>
 #include <sys\stat.h>
@@ -29,6 +30,7 @@ extern CJabber *_Jabber;
 extern CMainDlg _MainDlg;
 extern CEthernet _Ethernet;
 extern CNotify _Notify;
+extern CVoiceChat _VoiceChat;
 
 void ResampleImageIfNeeded(CxImage *img, int size);
 void ResampleImageIfNeeded(CxImage *img, int sizeX, int sizeY);
@@ -490,3 +492,141 @@ LRESULT CSettingsDlg::CSettingsLanguages::OnButtonReset(WORD wNotifyCode, WORD w
 	SetDlgItemText(IDC_S6, "English");
 	return TRUE;
 }
+
+CSettingsDlg::CSettingsVoiceChat::CSettingsVoiceChat() : _CSettingsTemplate()
+{
+	CComBSTR mp = _Settings.Translate("System");
+	mp += "\\";
+	mp += _Settings.Translate("Voice Chat");
+	mPATH = mp;
+	PATH = mPATH.ToString();
+	TEXT1 = _Settings.Translate("Please setup your voice chat devices.");
+	TEXT2 = _Settings.Translate("Choose from list below.");
+}
+
+CSettingsDlg::CSettingsVoiceChat::~CSettingsVoiceChat()
+{
+	_VoiceChat.m_RecordingActivity = NULL;
+	_VoiceChat.m_PlaybackActivity = NULL;
+	// reset devices to real values
+	MessageBeep(-1);
+	
+}
+
+LRESULT CSettingsDlg::CSettingsVoiceChat::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+	CPaintDC dcPaint(m_hWnd);
+	return TRUE;
+}
+
+
+LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+	m_WaveInDevice = _VoiceChat.m_WaveInDevice;
+	m_WaveOutDevice = _VoiceChat.m_WaveOutDevice;
+
+	m_Combo1.Attach(GetDlgItem(IDC_VOICE_RECORDINGDEVICE));
+	m_Combo2.Attach(GetDlgItem(IDC_VOICE_PLAYBACKDEVICE));
+	
+	
+	m_Combo1.ResetContent();
+	m_Combo1.AddString(_Settings.Translate("<system default>"));
+	
+	m_Combo2.ResetContent();
+	m_Combo2.AddString(_Settings.Translate("<system default>"));
+	
+	SetDlgItemText(IDC_ENABLEVOICECHAT, _Settings.Translate("Enable voice chat"));
+	SetDlgItemText(IDC_S1, _Settings.Translate("Playback device"));
+	SetDlgItemText(IDC_S2, _Settings.Translate("Recording device"));
+	SetDlgItemText(IDC_VOICECHAT_LOCALECHO, _Settings.Translate("Local echo"));
+	SetDlgItemText(IDC_MICROPHONESENS, _Settings.Translate("Microphone sensitivity"));
+	SetDlgItemText(IDC_MICROPHONESENSDESC, _Settings.Translate("Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud."));
+	
+	_VoiceChat.EnumerateInDevices(GetDlgItem(IDC_VOICE_RECORDINGDEVICE));
+	_VoiceChat.EnumerateOutDevices(GetDlgItem(IDC_VOICE_PLAYBACKDEVICE));
+	
+	m_Combo1.SetCurSel(_VoiceChat.m_WaveInDevice+1);
+	m_Combo2.SetCurSel(_VoiceChat.m_WaveOutDevice+1);
+	
+	if (_VoiceChat.m_Enabled)
+		::SendMessage(GetDlgItem(IDC_ENABLEVOICECHAT), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_ENABLEVOICECHAT), BM_SETCHECK, FALSE, NULL);
+	
+	if (_VoiceChat.m_LocalEcho)
+		::SendMessage(GetDlgItem(IDC_VOICECHAT_LOCALECHO), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_VOICECHAT_LOCALECHO), BM_SETCHECK, FALSE, NULL);
+
+
+	HWND h = GetDlgItem(IDC_RECORDINGMONITOR);
+	SendMessage(h, PBM_SETRANGE, 0, MAKELPARAM(0, SPEEX_FRAME_SIZE/16));
+	_VoiceChat.m_RecordingActivity = h;
+
+	h = GetDlgItem(IDC_PLAYBACKMONITOR);
+	SendMessage(h, PBM_SETRANGE, 0, MAKELPARAM(0, SPEEX_FRAME_SIZE/16));
+	_VoiceChat.m_PlaybackActivity = h;
+	
+	
+	return TRUE;
+}
+
+BOOL CSettingsDlg::CSettingsVoiceChat::Apply(void)
+{
+	
+	
+	return TRUE;
+}
+void CSettingsDlg::CSettingsVoiceChat::Init(HWND Owner)
+{
+	m_Owner = Owner;
+	Create(Owner);
+}
+
+void CSettingsDlg::CSettingsVoiceChat::Show(BOOL Show, RECT *rc)
+{
+	if (IsWindow())
+	{
+		if (Show)
+		{
+			::SetWindowPos(m_hWnd, NULL, rc->left, rc->top, rc->right, rc->bottom, SWP_NOZORDER);
+			ShowWindow(SW_SHOW);
+			SetFocus();
+		}
+		else
+			ShowWindow(SW_HIDE);
+	}
+}
+
+LRESULT CSettingsDlg::CSettingsVoiceChat::OnEnableVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	_VoiceChat.m_Enabled = ::SendMessage(GetDlgItem(IDC_ENABLEVOICECHAT), BM_GETCHECK, NULL, NULL);
+	if (_VoiceChat.m_Enabled)
+	{
+		if (_VoiceChat.StartListen())
+			_VoiceChat.StartWaveOut();
+	}
+	else
+	{
+		_VoiceChat.StopWaveOut();
+		_VoiceChat.StopListen();
+	}
+
+	return TRUE;
+}
+
+LRESULT CSettingsDlg::CSettingsVoiceChat::OnLocalEcho(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	_VoiceChat.m_LocalEcho = ::SendMessage(GetDlgItem(IDC_VOICECHAT_LOCALECHO), BM_GETCHECK, NULL, NULL);
+	if (_VoiceChat.m_Enabled)
+	{
+		if (_VoiceChat.m_LocalEcho)
+		{
+			if (!_VoiceChat.m_WaveInStarted)
+				_VoiceChat.StartWaveIn();
+		}
+	}
+	
+	return TRUE;
+}
+

@@ -1,10 +1,8 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
-#include "versionno.h"
-#ifdef _APPUPDLIB
-#include "\WeOnlyDo\wodAppUpdate\Code\Component\Resource.h"
-#endif
+
+#define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
@@ -13,6 +11,15 @@
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Croatian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)
+#ifdef _WIN32
+LANGUAGE LANG_CROATIAN, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -46,13 +53,13 @@ BEGIN
                     BS_AUTORADIOBUTTON | WS_TABSTOP,5,65,120,10
     CONTROL         "I have existing Jabber account",IDC_RADIO1_JID,"Button",
                     BS_AUTORADIOBUTTON | WS_TABSTOP,128,65,129,10
-    EDITTEXT        IDC_EDIT_JID,46,77,182,12,ES_AUTOHSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_EDIT2_JID,46,90,74,12,ES_PASSWORD | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_JID,46,77,182,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2_JID,46,90,74,12,ES_PASSWORD
     PUSHBUTTON      "&Test Account",IDC_TEST_JID,122,90,63,13
     COMBOBOX        IDC_RESOURCE,46,103,76,46,CBS_DROPDOWN | CBS_SORT | 
                     WS_VSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_EDIT_JID3,46,123,92,12,WS_TABSTOP
-    EDITTEXT        IDC_EDIT_JID4,46,136,40,12,ES_NUMBER | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_JID3,46,123,92,12
+    EDITTEXT        IDC_EDIT_JID4,46,136,40,12,ES_NUMBER
     CONTROL         "Use SSL wrapper on port 443 (for GTalk)",
                     IDC_USESSLWRAPPER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     88,137,170,10
@@ -153,6 +160,8 @@ BEGIN
                     47,17,14
     CONTROL         "+",IDC_CHATROOMS,"Button",BS_OWNERDRAW | WS_TABSTOP,117,
                     63,17,14
+    CONTROL         "+",IDC_VOICECHAT,"Button",BS_OWNERDRAW | WS_TABSTOP,117,
+                    79,17,14
 END
 
 IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 263, 204
@@ -206,15 +215,17 @@ BEGIN
                     134,40,38
     CONTROL         "<picture goes here>",IDC_PERSON,"Button",BS_OWNERDRAW | 
                     WS_TABSTOP,167,16,47,47
-    CONTROL         "<Send file>",ID_PNG1_SENDFILE,"Button",BS_OWNERDRAW | WS_DISABLED | WS_TABSTOP,1,2,33,15
-    PUSHBUTTON      "<Details>",ID_PNG1_DETAILS,41,3,47,13
+    CONTROL         "<Send file>",ID_PNG1_SENDFILE,"Button",BS_OWNERDRAW | 
+                    WS_DISABLED | WS_TABSTOP,1,2,33,15
+    PUSHBUTTON      "<Details>",ID_PNG1_DETAILS,41,3,34,13
     RTEXT           "Contact is typing...",IDC_ISTYPING,141,119,88,9,NOT 
                     WS_VISIBLE
-    PUSHBUTTON      "<Mute>",ID_PNG1_MUTEONOFF,95,3,47,13
-    PUSHBUTTON      "<Clear>",ID_PNG1_CLEARHISTORY,146,3,47,13
+    PUSHBUTTON      "<Mute>",ID_PNG1_MUTEONOFF,79,3,35,13
+    PUSHBUTTON      "<Clear>",ID_PNG1_CLEARHISTORY,150,3,47,13
     PUSHBUTTON      "<Settings>",ID_PNG1_CHATROOMSETTINGS,197,3,47,13
     LISTBOX         IDC_MSGWIN_USERS,175,68,53,45,LBS_SORT | 
                     LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "<Voice>",IDC_VOICECHAT,116,3,35,13
 END
 
 IDD_INSERTHYPERLINKDLG DIALOG DISCARDABLE  0, 0, 242, 66
@@ -610,13 +621,25 @@ STYLE DS_CONTROL | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     CONTROL         "Enable voice chat",IDC_ENABLEVOICECHAT,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,9,9,152,10
-    LTEXT           "Playback device",IDC_S1,9,34,178,8
-    COMBOBOX        IDC_VOICE_PLAYBACKDEVICE,9,44,194,39,CBS_DROPDOWNLIST | 
+                    BS_AUTOCHECKBOX | WS_TABSTOP,9,1,235,12
+    LTEXT           "Recording device",IDC_S2,9,17,215,8
+    COMBOBOX        IDC_VOICE_RECORDINGDEVICE,9,28,107,39,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Recording device",IDC_S2,9,68,171,8
-    COMBOBOX        IDC_VOICE_RECORDINGDEVICE,9,79,194,39,CBS_DROPDOWNLIST | 
+    CONTROL         "Progress1",IDC_RECORDINGMONITOR,"msctls_progress32",
+                    PBS_SMOOTH,121,32,84,5
+    COMBOBOX        IDC_VOICE_PLAYBACKDEVICE,9,52,107,39,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Progress1",IDC_PLAYBACKMONITOR,"msctls_progress32",
+                    PBS_SMOOTH,121,56,84,5
+    CONTROL         "Local echo",IDC_VOICECHAT_LOCALECHO,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,9,71,202,9
+    CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,17,99,118,6
+    LTEXT           "Playback device",IDC_S1,9,44,229,8
+    LTEXT           "Microphone sensitivity",IDC_MICROPHONESENS,9,86,202,8
+    LTEXT           "Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.",
+                    IDC_MICROPHONESENSDESC,9,120,240,34
+    CTEXT           "500",IDC_MICROPHONESENSITIVITY,52,105,49,8
 END
 
 IDD_SETTINGS_SYSTEM_UPDATE DIALOG DISCARDABLE  0, 0, 262, 175
@@ -1154,7 +1177,6 @@ IDB_HUMAN58             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Wall-E8.png"
 IDB_HUMAN59             PNG     DISCARDABLE     "..\\gfx\\Avatars\\Wall-E9.png"
 IDB_HUMAN60             PNG     DISCARDABLE     "..\\gfx\\Avatars\\witch_avatar.png"
 IDB_HUMAN61             PNG     DISCARDABLE     "..\\gfx\\Avatars\\wizard.gif"
-
 IDB_BELL                PNG     DISCARDABLE     "..\\gfx\\bell.png"
 IDB_BANNER_TOP_BACKGROUND PNG     DISCARDABLE     "..\\gfx\\mainwnd_banner_back.png"
 IDB_BANNER_TOP_BACKGROUND2 PNG     DISCARDABLE     "..\\gfx\\mainwnd_banner_2back.png"
@@ -1199,6 +1221,10 @@ ID_PNG_CLEARHISTORY     PNG     DISCARDABLE     "..\\Gfx\\clear_history.png"
 ID_PNG_CHATROOMSETTINGS PNG     DISCARDABLE     "..\\Gfx\\chat_room_settings.png"
 ID_PNG1_CHATROOMS       PNG     DISCARDABLE     "..\\gfx\\chatrooms.png"
 IDB_NOTIFYWINDOWBACK    PNG     DISCARDABLE     "..\\gfx\\notifywin.png"
+ID_PNG1_VOICECHAT_SMALL PNG     DISCARDABLE     "..\\gfx\\voicechat_small.png"
+ID_PNG1_VOICECHAT       PNG     DISCARDABLE     "..\\gfx\\voicechat.png"
+ID_PNG1_VOICECHAT_SMALL_NO PNG     DISCARDABLE     "..\\gfx\\voicechat_small_prekrizeno.png"
+ID_PNG1_VOICECHAT_NO    PNG     DISCARDABLE     "..\\gfx\\voicechat_prekizeno.png"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1341,8 +1367,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION FILEVER
- PRODUCTVERSION FILEVER
+ FILEVERSION 2,2,6,379
+ PRODUCTVERSION 2,2,6,379
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -1359,12 +1385,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "Wippien Module\0"
-            VALUE "FileVersion", STRFILEVER
+            VALUE "FileVersion", "2, 2, 6, 379\0"
             VALUE "InternalName", "Wippien\0"
             VALUE "LegalCopyright", "Copyright 2006-2008\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
-            VALUE "ProductVersion", STRFILEVER
+            VALUE "ProductVersion", "2, 2, 6, 379\0"
             VALUE "OLESelfRegister", "\0"
         END
     END
@@ -1394,6 +1420,7 @@ BEGIN
     IDS_SERVICENAME         "Wippien"
 END
 
+#endif    // Croatian resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -1408,7 +1435,3 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\Wippien.exe.manifest"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
-#ifdef _APPUPDLIB
-#define _LIB
-#include "\WeOnlyDo\wodAppUpdate\Code\Component\Component.rc"
-#endif

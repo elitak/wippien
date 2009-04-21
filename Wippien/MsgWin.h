@@ -74,7 +74,7 @@ public:
 	CPNGButton m_btnSend;
 
 	// main toolbar buttons
-	CPNGButton m_btnSendFile, m_btnDetails, m_btnMuteOnOff,m_btnClearHistory, m_btnRoomSettings;
+	CPNGButton m_btnSendFile, m_btnDetails, m_btnMuteOnOff,m_btnVoiceChat, m_btnClearHistory, m_btnRoomSettings;
 
 	// middle toolbar buttons
 	CPNGButton m_btnBold, m_btnItalic, m_btnUnderline, m_btnHyperlink, m_btnFontSizeDown, m_btnEmoticons, 
@@ -278,6 +278,7 @@ public:
 		COMMAND_ID_HANDLER(ID_PNG1_CLEARHISTORY, OnBtnClearHistory)
 		COMMAND_ID_HANDLER(ID_PNG1_CHATROOMSETTINGS, OnBtnChatRoomSettings)
 		COMMAND_ID_HANDLER(ID_PNG1_MUTEONOFF, OnBtnMuteOnOff)
+		COMMAND_ID_HANDLER(ID_PNG1_VOICECHAT, OnBtnVoiceChat)
 		CHAIN_MSG_MAP(CDialogResize<CMsgWin>)
 /*	ALT_MSG_MAP(1)	
 #ifdef _DEBUGWNDMSG
@@ -379,6 +380,7 @@ public:
 	LRESULT OnBtnMuteOnOff(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT	OnMeasureItem(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT	OnDrawItem(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	LRESULT OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 
 	class CInsertHyperlinkDlg: public CDialogImpl<CInsertHyperlinkDlg>, public CUpdateUI<CInsertHyperlinkDlg>,

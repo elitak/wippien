@@ -14,6 +14,7 @@
 #include <io.h>
 #include <fcntl.h>
 #include <sys\stat.h>
+#include "VoiceChat.h"
 
 #ifndef _WODVPNLIB
 const char *hex="0123456789abcdef";
@@ -29,6 +30,7 @@ char *EXTAWAY_MESSAGE = "Away for a loooong time.";
 extern CMainDlg _MainDlg;
 extern CNotify	_Notify;
 extern CEthernet _Ethernet;
+extern CVoiceChat _VoiceChat;
 
 char *trim(char *text);
 
@@ -53,11 +55,6 @@ CSettings::CSettings()
 
 	m_ServerPort = 5222;
 	m_UDPPort = 0;
-
-	m_EnableVoiceChat = TRUE;
-	m_VoiceChatRecordingDevice = -1;
-	m_VoiceChatPlaybackDevice = -1;
-
 
 	memset(m_DoNotShow, '0', sizeof(m_DoNotShow));
 	m_DoNotShow[MAXDONOTSHOWANYMORESETTINGS] = 0;
@@ -410,15 +407,6 @@ CXmlEntity *CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, Buffer *Valu
 	return NULL;
 }
 
-int CSettings::Load(void)
-{
-	if (LoadConfig())
-		if (LoadUsers())
-			return LoadRooms();
-
-	return FALSE;
-}
-
 int CSettings::LoadConfig(void)
 {
 	char buff[32768];
@@ -518,7 +506,6 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "AutoConnectVPNOnNetwork", &m_AutoConnectVPNOnNetwork, TRUE);
 			ReadSettingsCfg(wip, "AutoConnectVPNOnStartup", &m_AutoConnectVPNOnStartup, TRUE);
 			ReadSettingsCfg(wip, "ShowNotificationPopup", &m_ShowNotificationPopup, TRUE);
-			ReadSettingsCfg(wip, "VoiceChat", &m_EnableVoiceChat, TRUE);
 			ReadSettingsCfg(wip, "CheckUpdate", &m_CheckUpdate, TRUE);
 			ReadSettingsCfg(wip, "CheckUpdateConnect", &m_CheckUpdateConnect, TRUE);
 			ReadSettingsCfg(wip, "CheckUpdateTimed", &m_CheckUpdateTimed, TRUE);
@@ -530,8 +517,6 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "FixedMTU", &m_FixedMTU, FALSE);
 			ReadSettingsCfg(wip, "FixedMTUNum", &m_FixedMTUNum, 1200);
 			ReadSettingsCfg(wip, "SortContacts", &m_SortContacts, 1);
-			ReadSettingsCfg(wip, "VoiceChatRecordingDevice", &m_VoiceChatRecordingDevice, -1);
-			ReadSettingsCfg(wip, "VoiceChatPlaybackDevice", &m_VoiceChatPlaybackDevice, -1);
 			ReadSettingsCfg(wip, "LastOperatorMessageID", &m_LastOperatorMessageID, LASTOPERATORMSGID);
 			ReadSettingsCfg(wip, "JID", m_JID, "");
 			CComBSTR2 mj = m_JID;
@@ -583,6 +568,9 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "ShowMessageHistory", &m_ShowMessageHistory, TRUE);
 			ReadSettingsCfg(wip, "FirewallDefaultAllowRule", &m_FirewallDefaultAllowRule, TRUE);		
 			ReadSettingsCfg(wip, "Skin", m_Skin, "");
+			ReadSettingsCfg(wip, "VoiceChatEnabled", &_VoiceChat.m_Enabled, FALSE);
+			ReadSettingsCfg(wip, "VoiceChatLocalEcho", &_VoiceChat.m_LocalEcho, FALSE);
+			ReadSettingsCfg(wip, "VoiceChatVadThreshold", &_VoiceChat.m_VadThreshold, 500);
 			CComBSTR2 donotshow;
 			ReadSettingsCfg(wip, "DoNotShow", donotshow, "00000000");
 			int dnsi = donotshow.Length();
@@ -1094,7 +1082,6 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("AutoConnectVPNOnNetwork", m_AutoConnectVPNOnNetwork?"1":"0");
 	x.AddChildElem("AutoConnectVPNOnStartup", m_AutoConnectVPNOnStartup?"1":"0");
 	x.AddChildElem("ShowNotificationPopup", m_ShowNotificationPopup?"1":"0");
-	x.AddChildElem("VoiceChat", m_EnableVoiceChat?"1":"0");
 	x.AddChildElem("CheckUpdate", m_CheckUpdate?"1":"0");
 	x.AddChildElem("CheckUpdateConnect", m_CheckUpdateConnect?"1":"0");
 	x.AddChildElem("CheckUpdateTimed", m_CheckUpdateTimed?"1":"0");
@@ -1106,8 +1093,6 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("FixedMTU", m_FixedMTU?"1":"0");
 	x.AddChildElem("FixedMTUNum", m_FixedMTUNum);
 	x.AddChildElem("SortContacts", m_SortContacts);
-	x.AddChildElem("VoiceChatRecordingDevice", m_VoiceChatRecordingDevice);
-	x.AddChildElem("VoiceChatPlaybackDevice", m_VoiceChatPlaybackDevice);
 	x.AddChildElem("LastOperatorMessageID", m_LastOperatorMessageID);
 	
 	CComBSTR2 j = m_JID;
@@ -1178,7 +1163,6 @@ BOOL CSettings::SaveConfig(void)
 		close(handle);
 	}
 
-
 	x.AddChildElem("DoNotShow", m_DoNotShow);
 
 	long mip;
@@ -1189,6 +1173,9 @@ BOOL CSettings::SaveConfig(void)
 	
 	CComBSTR2 mssk = m_Skin;
 	x.AddChildElem("Skin", mssk.ToString());
+	x.AddChildElem("VoiceChatEnabled", _VoiceChat.m_Enabled?"1":"0");		
+	x.AddChildElem("VoiceChatLocalEcho", _VoiceChat.m_LocalEcho?"1":"0");		
+	x.AddChildElem("VoiceChatVadThreshold", _VoiceChat.m_VadThreshold);
 
 	x.Append("<Roster>\r\n");
 

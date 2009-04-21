@@ -106,7 +106,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 wsock32.lib Shell32.lib Comdlg32.lib winmm.lib ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib iphlpapi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /FIXED:NO
 # SUBTRACT BASE LINK32 /pdb:none
-# ADD LINK32 ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib iphlpapi.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib Secur32.lib wsock32.lib Shell32.lib Comdlg32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ssleay32.lib libeay32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32" /FIXED:NO
+# ADD LINK32 ..\Lib\Debug\cximage.lib ..\Lib\Debug\Jpeg.lib ..\Lib\Debug\png.lib ..\Lib\Debug\Tiff.lib ..\Lib\Debug\zlib.lib iphlpapi.lib ..\..\..\WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib ..\..\..\WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib ..\..\..\WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib ..\Lib\Debug\libspeex.lib Secur32.lib wsock32.lib Shell32.lib Comdlg32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wininet.lib version.lib ssleay32.lib libeay32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../Bin/Wippien.exe" /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32" /FIXED:NO
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "Wippien - Win32 LibRelease"
@@ -260,6 +260,10 @@ SOURCE=.\UserList.cpp
 # Begin Source File
 
 SOURCE=.\VividTree.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\VoiceChat.cpp
 # End Source File
 # Begin Source File
 
@@ -423,6 +427,10 @@ SOURCE=.\VividTree.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\VoiceChat.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\WebBrowserEvents.h
 # End Source File
 # End Group
@@ -511,6 +519,10 @@ SOURCE=.\Wippien.rgs
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\Avatars\wizard.gif
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\WizardImage.bmp
 # End Source File
 # Begin Source File
@@ -577,6 +589,14 @@ SOURCE="..\Gfx\Avatars\ALL CAPS!!!.png"
 # Begin Source File
 
 SOURCE=".\ALL CAPS!!!.png"
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\assassin_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\attendant_avatar.png
 # End Source File
 # Begin Source File
 
@@ -680,11 +700,27 @@ SOURCE="..\Gfx\co0017-24.png"
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\Avatars\commissar_avatar.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\Copy.png
 # End Source File
 # Begin Source File
 
 SOURCE=..\Gfx\RightClick\Copy.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\dad_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\designer_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\diver_avatar.png
 # End Source File
 # Begin Source File
 
@@ -709,6 +745,14 @@ SOURCE="..\Gfx\RightClick\ei0029-16.png"
 # Begin Source File
 
 SOURCE=..\Gfx\MsgWin\emoticons.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\engineer_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\fireman_avatar.png
 # End Source File
 # Begin Source File
 
@@ -777,6 +821,14 @@ SOURCE=.\Gamer.png
 # Begin Source File
 
 SOURCE=..\Gfx\google.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\gradfemale_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\gradmale_avatar.png
 # End Source File
 # Begin Source File
 
@@ -884,11 +936,19 @@ SOURCE=..\Gfx\mainwnd_banner_back.png
 # End Source File
 # Begin Source File
 
+SOURCE="..\Gfx\Avatars\Master-Joda-48x48.png"
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\Avatars\Moderator.png
 # End Source File
 # Begin Source File
 
 SOURCE=..\Gfx\Moderator.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\mom_avatar.png
 # End Source File
 # Begin Source File
 
@@ -976,6 +1036,10 @@ SOURCE=..\Gfx\notifywin.png
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\Avatars\nurse_avatar.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\off.wav
 # End Source File
 # Begin Source File
@@ -1016,6 +1080,10 @@ SOURCE="..\Gfx\Push My Button.png"
 # End Source File
 # Begin Source File
 
+SOURCE="..\Gfx\Avatars\R2D2-48x48.png"
+# End Source File
+# Begin Source File
+
 SOURCE="..\Gfx\Avatars\Ray of Sunshine.png"
 # End Source File
 # Begin Source File
@@ -1053,6 +1121,14 @@ SOURCE="..\Gfx\Avatars\Rumor Junkie.png"
 # Begin Source File
 
 SOURCE="..\Gfx\Rumor Junkie.png"
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\sexy_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\soldier_avatar.png
 # End Source File
 # Begin Source File
 
@@ -1128,6 +1204,46 @@ SOURCE=..\Gfx\Uptight.png
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\Avatars\v_avatar.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\voicechat.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\voicechat_prekizeno.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\voicechat_small.png
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\voicechat_small_prekrizeno.png
+# End Source File
+# Begin Source File
+
+SOURCE="..\Gfx\Avatars\Wall-E10.png"
+# End Source File
+# Begin Source File
+
+SOURCE="..\Gfx\Avatars\Wall-E5.png"
+# End Source File
+# Begin Source File
+
+SOURCE="..\Gfx\Avatars\Wall-E7.png"
+# End Source File
+# Begin Source File
+
+SOURCE="..\Gfx\Avatars\Wall-E8.png"
+# End Source File
+# Begin Source File
+
+SOURCE="..\Gfx\Avatars\Wall-E9.png"
+# End Source File
+# Begin Source File
+
 SOURCE="..\Gfx\RightClick\wi0041-16.png"
 # End Source File
 # Begin Source File
@@ -1185,6 +1301,10 @@ SOURCE=".\Windows Zealot.png"
 # Begin Source File
 
 SOURCE=..\WipUpd\Release\WipUpd.exe
+# End Source File
+# Begin Source File
+
+SOURCE=..\Gfx\Avatars\witch_avatar.png
 # End Source File
 # Begin Source File
 

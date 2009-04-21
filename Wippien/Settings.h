@@ -79,9 +79,6 @@ public:
 	BOOL m_AutoSetBack;
 	unsigned long m_MyLastNetwork, m_MyLastNetmask; // in NETWORK ORDER!!
 	
-	BOOL m_EnableVoiceChat;
-	unsigned long m_VoiceChatRecordingDevice, m_VoiceChatPlaybackDevice;
-
 	Buffer m_HiddenContactsBuffer;
 	typedef std::vector<long> HIDDENCONTACTS;
 	HIDDENCONTACTS m_HiddenContacts;
@@ -148,7 +145,6 @@ public:
 	MENUTOOLS m_MenuTools;
 	LINKMEDIATORS m_LinkMediators;
 
-	int Load(void);
 	int LoadConfig(void);
 	int LoadUsers(void);
 	int LoadRooms(void);

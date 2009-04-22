@@ -267,6 +267,9 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 		}
 	}
 
+	if (_VoiceChat.m_VadThreshold)
+		_VoiceChat.m_Enabled = FALSE;
+
 	if (_VoiceChat.m_Enabled)
 	{
 		if (_VoiceChat.StartListen())

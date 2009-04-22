@@ -15,7 +15,7 @@ CVoiceChat::CVoiceChat()
 	m_hWavOut = NULL;
 	m_WaveOutDoSend = 0;
 	m_WaveOutBusy = 0;
-	m_VadThreshold = 500;
+	m_VadThreshold = 0;
 	
 	m_WaveInStarted = FALSE;
 	m_WaveInDevice = WAVE_MAPPER;

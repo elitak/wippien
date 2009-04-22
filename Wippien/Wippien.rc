@@ -620,11 +620,11 @@ BEGIN
     COMBOBOX        IDC_VOICE_RECORDINGDEVICE,9,28,107,39,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
     CONTROL         "Progress1",IDC_RECORDINGMONITOR,"msctls_progress32",
-                    PBS_SMOOTH,121,32,84,5
+                    PBS_SMOOTH,121,32,84,8
     COMBOBOX        IDC_VOICE_PLAYBACKDEVICE,9,52,107,39,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
     CONTROL         "Progress1",IDC_PLAYBACKMONITOR,"msctls_progress32",
-                    PBS_SMOOTH,121,56,84,5
+                    PBS_SMOOTH,121,56,84,8
     CONTROL         "Local echo",IDC_VOICECHAT_LOCALECHO,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,9,71,202,9
     CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | 

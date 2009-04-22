@@ -507,7 +507,7 @@ Započni (novi) razgovor  ##  Join or Create room
 Ispočetka zablokiraj kontakte  ##  Block users at startup
 Kopiraj &IP  ##  &Copy IP
 &Razgovor  ##  C&hat
-&Zvučni razgovor  ##  &Voice Chat
+&Pričanje  ##  &Voice Chat
 Pošalji &Datoteku  ##  Send &File
 Pošalji &Email  ##  Send E&mail
 &Blokiraj  ##  &Block

@@ -1,3 +1,3 @@
-#define FILEVER        2,2,6,381
-#define STRFILEVER     "2, 2, 6, 381\0"
-#define MYDESCTEXTVER  "2.2.6.381"
+#define FILEVER        2,2,7,382
+#define STRFILEVER     "2, 2, 7, 382\0"
+#define MYDESCTEXTVER  "2.2.7.382"

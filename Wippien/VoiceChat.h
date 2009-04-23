@@ -16,6 +16,8 @@
 #define SNDNBUF	20
 #define SPEEX_FRAME_SIZE	160
 
+#include <vector>
+#include "User.h"
 
 class CVoiceChat  : public CwodWinSocket
 {
@@ -34,7 +36,7 @@ public:
 
 	HWND m_PlaybackActivity, m_RecordingActivity;
 
-	SOCKADDR_IN m_LocalEchoSock;
+	SOCKADDR_IN m_OutSock;
 
 	BOOL m_WaveInStarted;
 	int m_WaveInDevice;
@@ -44,6 +46,8 @@ public:
 
 	SpeexBits m_SpeexBitsOut,m_SpeexBitsIn;
 	void *m_SpeexEncStateOut, *m_SpeexDecStateIn;
+
+	std::vector <CUser *> m_Users;
 
 	void FdReceive(int nErrorCode);
 

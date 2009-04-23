@@ -5,6 +5,8 @@
 #include "stdafx.h"
 #include "VoiceChat.h"
 
+
+#define SAMPLES_PER_SEC	8000
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -28,15 +30,42 @@ CVoiceChat::CVoiceChat()
 
 	m_PlaybackActivity = m_RecordingActivity = NULL;
 
-	memset(&m_LocalEchoSock, 0, sizeof(m_LocalEchoSock));
-	m_LocalEchoSock.sin_port = 47398;
-	m_LocalEchoSock.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-	m_LocalEchoSock.sin_family = AF_INET;
+	memset(&m_OutSock, 0, sizeof(m_OutSock));
+	m_OutSock.sin_port = 47398;
+	m_OutSock.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+	m_OutSock.sin_family = AF_INET;
+
+
+
+	// init speex
+	speex_bits_init(&m_SpeexBitsOut);
+	m_SpeexEncStateOut = speex_encoder_init(&speex_nb_mode);
+	
+	int ehc=1;
+	int sps = SAMPLES_PER_SEC;
+	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_SAMPLING_RATE, &sps);
+	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_VBR, &ehc);
+	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_VAD, &ehc);
+	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_DTX, &ehc);
+
+	// init speex
+	speex_bits_init(&m_SpeexBitsIn);
+	m_SpeexDecStateIn= speex_decoder_init(&speex_nb_mode);	
+	
 }
 
 CVoiceChat::~CVoiceChat()
 {
 	StopListen();
+	
+	// destroy speex
+	speex_bits_destroy(&m_SpeexBitsOut);
+//	speex_encoder_destroy(&m_SpeexEncStateOut);
+
+
+	// destroy speex
+	speex_bits_destroy(&m_SpeexBitsIn);
+//	speex_decoder_destroy(&m_SpeexDecStateIn);
 }
 
 void CVoiceChat::FdReceive(int nErrorCode)
@@ -59,7 +88,7 @@ void CVoiceChat::FdReceive(int nErrorCode)
 					signed short *databuf = (signed short *)m_WaveHdrOut[j].lpData;
 					
 					// decompress
-					speex_bits_read_from(&m_SpeexBitsIn, buff, i);
+					speex_bits_read_from(&m_SpeexBitsIn, buff+1, i-1);
 					speex_decode(m_SpeexDecStateIn, &m_SpeexBitsIn, floatBuffer);
 					
 					int thr = 0;
@@ -74,10 +103,10 @@ void CVoiceChat::FdReceive(int nErrorCode)
 						PostMessage(m_PlaybackActivity, PBM_SETPOS, thr/16, 0);
 					
 					m_WaveOutBusy++;
-					ATLTRACE("Before waveOutPrepareHeader\r\n");
-					if (waveOutPrepareHeader(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR)) == MMSYSERR_NOERROR)
+					//ATLTRACE("Before waveOutPrepareHeader\r\n");
+//					if (waveOutPrepareHeader(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR)) == MMSYSERR_NOERROR)
 						waveOutWrite(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR));
-					ATLTRACE("After waveOutPrepareHeader\r\n");
+					//ATLTRACE("After waveOutPrepareHeader\r\n");
 					break;
 				}
 			}
@@ -127,9 +156,6 @@ void CVoiceChat::StopWaveIn(void)
 		waveInClose(m_hWavIn); 
 		m_hWavIn = NULL;
 		
-		// destroy speex
-		speex_bits_destroy(&m_SpeexBitsOut);
-		speex_encoder_destroy(&m_SpeexEncStateOut);
 	}
 }
 
@@ -145,11 +171,6 @@ BOOL CVoiceChat::StopWaveOut(void)
 			waveOutUnprepareHeader(m_hWavOut,&m_WaveHdrOut[i], sizeof(WAVEHDR));
 		waveOutClose(m_hWavOut); 
 		m_hWavOut = NULL;
-		
-		
-		// destroy speex
-		speex_bits_destroy(&m_SpeexBitsIn);
-		speex_decoder_destroy(&m_SpeexDecStateIn);
 	}
 	return TRUE;
 }
@@ -163,26 +184,14 @@ long CVoiceChat::StartWaveIn(void)
 	// let's start wavein
 	WAVEFORMATEX wfx;
 	wfx.cbSize = 0;
-	//wfx.nSamplesPerSec = 11025;
-	wfx.nSamplesPerSec = 8000;
+	wfx.nSamplesPerSec = SAMPLES_PER_SEC;
 	wfx.nChannels = 1;
 	wfx.wFormatTag = WAVE_FORMAT_PCM;
 	wfx.wBitsPerSample = 16;
 	wfx.nBlockAlign = wfx.nChannels * (wfx.wBitsPerSample / 8);
 	wfx.nAvgBytesPerSec = wfx.nSamplesPerSec*wfx.nBlockAlign;
-	
-	// init speex
-	speex_bits_init(&m_SpeexBitsOut);
-	m_SpeexEncStateOut = speex_encoder_init(&speex_nb_mode);
 		
-	int ehc=1;
-	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_SAMPLING_RATE, &wfx.nSamplesPerSec);
-	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_VBR, &ehc);
-	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_VAD, &ehc);
-	speex_encoder_ctl(m_SpeexEncStateOut, SPEEX_SET_DTX, &ehc);
-	
-	
-	
+
 	int i;
 	memset(m_WaveHdrIn, 0,sizeof(WAVEHDR)*SNDNBUF);
 	for(i=0;i<SNDNBUF;i++)
@@ -195,10 +204,10 @@ long CVoiceChat::StartWaveIn(void)
 	{
 		for (int i=0;i<SNDNBUF;i++)
 		{
-			ATLTRACE("Before waveInPrepareHeader\r\n");
+			//ATLTRACE("Before waveInPrepareHeader\r\n");
 			if (waveInPrepareHeader(m_hWavIn, &m_WaveHdrIn[i], sizeof(WAVEHDR)) == MMSYSERR_NOERROR)
 				waveInAddBuffer(m_hWavIn, &m_WaveHdrIn[i], sizeof(WAVEHDR));
-			ATLTRACE("After waveInPrepareHeader\r\n");
+			//ATLTRACE("After waveInPrepareHeader\r\n");
 		}
 		
 		if (waveInStart(m_hWavIn) == MMSYSERR_NOERROR)
@@ -220,18 +229,13 @@ long CVoiceChat::StartWaveOut(void)
 	// let's start waveout
 	WAVEFORMATEX wfx;
 	wfx.cbSize = 0;
-	//wfx.nSamplesPerSec = 11025;
-	wfx.nSamplesPerSec = 8000;
+	wfx.nSamplesPerSec = SAMPLES_PER_SEC;
 	wfx.nChannels = 1;
 	wfx.wFormatTag = WAVE_FORMAT_PCM;
 	wfx.wBitsPerSample = 16;
 	wfx.nBlockAlign = wfx.nChannels * (wfx.wBitsPerSample / 8);
 	wfx.nAvgBytesPerSec = wfx.nSamplesPerSec * wfx.nBlockAlign;
 
-	// init speex
-	speex_bits_init(&m_SpeexBitsIn);
-	m_SpeexDecStateIn= speex_decoder_init(&speex_nb_mode);	
-		
 	int i;
 	memset(m_WaveHdrOut, 0,sizeof(WAVEHDR)*SNDNBUF);
 	for(i=0;i<SNDNBUF;i++)
@@ -242,6 +246,12 @@ long CVoiceChat::StartWaveOut(void)
 	if (waveOutOpen(&m_hWavOut, m_WaveOutDevice, &wfx, (unsigned long)waveOutProc, (unsigned long)this, CALLBACK_FUNCTION) == MMSYSERR_NOERROR)
 	{
 		// all ok
+		for (int i=0;i<SNDNBUF;i++)
+		{
+			//ATLTRACE("Before waveOutPrepareHeader\r\n");
+			waveOutPrepareHeader(m_hWavOut, &m_WaveHdrOut[i], sizeof(WAVEHDR));
+			//ATLTRACE("After waveOutPrepareHeader\r\n");
+		}
 	}
 	m_WaveOutStarted = TRUE;
 	
@@ -318,9 +328,9 @@ void CVoiceChat::waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam
 				if (me->m_RecordingActivity)
 					PostMessage(me->m_RecordingActivity, PBM_SETPOS, thr/16, 0);
 				
-				ATLTRACE("Before waveInAddBuffer\r\n");
+				//ATLTRACE("Before waveInAddBuffer\r\n");
 				waveInAddBuffer(me->m_hWavIn, (LPWAVEHDR)dwParam1, sizeof(WAVEHDR));
-				ATLTRACE("After waveInAddBuffer\r\n");
+				//ATLTRACE("After waveInAddBuffer\r\n");
 				if (me->m_WaveOutDoSend || thr)
 				{
 					if (thr)
@@ -328,11 +338,25 @@ void CVoiceChat::waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam
 					me->m_WaveOutDoSend--;
 					speex_bits_reset(&me->m_SpeexBitsOut);
 					speex_encode(me->m_SpeexEncStateOut, floatBuffer, &me->m_SpeexBitsOut);
-					int total = speex_bits_write(&me->m_SpeexBitsOut, outbuff, sizeof(outbuff));
+					int total = speex_bits_write(&me->m_SpeexBitsOut, outbuff+1, sizeof(outbuff)-1);
 					
-					
+					outbuff[0] = 0; 
+					total++;
+
+					for (i=0;i<me->m_Users.size();i++)
+					{
+						CUser *u = (CUser *)me->m_Users[i];
+						if (u->m_WippienState == WipConnected)
+						{
+							me->m_OutSock.sin_addr.s_addr = u->m_HisVirtualIP;
+							::sendto(me->m_sock, outbuff, total, 0, (struct sockaddr *)&me->m_OutSock, sizeof(SOCKADDR_IN));
+						}
+					}
 					if (me->m_LocalEcho)
-						::sendto(me->m_sock, outbuff, total, 0, (struct sockaddr *)&me->m_LocalEchoSock, sizeof(SOCKADDR_IN));
+					{
+						me->m_OutSock.sin_addr.s_addr = 0x0100007f; // 127.0.0.1;
+						::sendto(me->m_sock, outbuff, total, 0, (struct sockaddr *)&me->m_OutSock, sizeof(SOCKADDR_IN));
+					}
 				}
 			}
 			break;
@@ -353,7 +377,7 @@ void CVoiceChat::waveOutProc(HWAVEOUT hwo,UINT uMsg,DWORD dwInstance,DWORD dwPar
 			break;
 		
 		case WOM_DONE:
-			waveOutUnprepareHeader(me->m_hWavOut,curhdr, sizeof(WAVEHDR));
+	//		waveOutUnprepareHeader(me->m_hWavOut,curhdr, sizeof(WAVEHDR));
 			curhdr->dwUser = FALSE;
 			me->m_WaveOutBusy--;
 			break;

@@ -848,10 +848,7 @@ LRESULT CMsgWin::OnBtnMuteOnOff(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 
 LRESULT CMsgWin::OnBtnVoiceChat(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-	if (_VoiceChat.m_Enabled)
-		_MainDlg.DisableVoiceChat(m_User);
-	else
-		_MainDlg.EnableVoiceChat(m_User);
+	_MainDlg.ToggleVoiceChat(m_User);
 	return TRUE;
 }
 

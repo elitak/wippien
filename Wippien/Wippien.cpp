@@ -267,26 +267,6 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 		}
 	}
 
-	if (_VoiceChat.m_VadThreshold)
-		_VoiceChat.m_Enabled = FALSE;
-
-	if (_VoiceChat.m_Enabled)
-	{
-		if (_VoiceChat.StartListen())
-		{
-			_VoiceChat.StartWaveOut();
-			if (_VoiceChat.m_LocalEcho && _VoiceChat.m_VadThreshold)
-				_VoiceChat.StartWaveIn();
-		}
-		else
-		{
-			char buff[8192];
-			sprintf(buff, "%s. %s?", _Settings.Translate("Unable to listen for incoming voice chat"), _Settings.Translate("UDP port 9913 busy"));
-			MessageBox(NULL, buff, _Settings.Translate("Error"), MB_OK);
-		}
-	}
-
-
 	CMessageLoop theLoop;
 	_Module.AddMessageLoop(&theLoop);
 
@@ -304,6 +284,21 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	if (_Settings.m_CheckUpdate)
 	{
 		::SetTimer(_MainDlg.m_hWnd, 111, 2000, NULL);
+	}
+
+
+	if (!_VoiceChat.m_VadThreshold)
+		_VoiceChat.m_Enabled = FALSE;
+	
+	if (_VoiceChat.m_Enabled)
+	{
+		_MainDlg.EnableVoiceChat(NULL);
+		if (!_VoiceChat.m_Enabled)
+		{
+			char buff[8192];
+			sprintf(buff, "%s. %s?", _Settings.Translate("Unable to listen for incoming voice chat"), _Settings.Translate("UDP port 9913 busy"));
+			MessageBox(NULL, buff, _Settings.Translate("Error"), MB_OK);
+		}
 	}
 
 

@@ -231,7 +231,9 @@ public:
 	LRESULT CalcAlignment(RECT *rcin);
 	void ToggleMute(void);
 	void EnableVoiceChat(CUser *user);
+	void ToggleVoiceChat(CUser *user);
 	void DisableVoiceChat(CUser *user);
+	void RedrawVoiceChatButton(void);
 	BOOL ReloadEmoticons(BOOL ReleaseOnly);
 	void ChangeStatusFromEditBox(BOOL dochange);
 

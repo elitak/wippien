@@ -3309,6 +3309,10 @@ void CMainDlg::EnableVoiceChat(CUser *user)
 		}
 	}
 
+	if (_VoiceChat.m_Enabled && _VoiceChat.m_Users.size())
+		if (!_VoiceChat.m_hWavIn)
+			_VoiceChat.StartWaveIn();
+
 	RedrawVoiceChatButton();
 		
 }

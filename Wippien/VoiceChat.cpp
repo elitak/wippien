@@ -57,7 +57,7 @@ CVoiceChat::CVoiceChat()
 CVoiceChat::~CVoiceChat()
 {
 	StopListen();
-	
+/*	
 	// destroy speex
 	speex_bits_destroy(&m_SpeexBitsOut);
 //	speex_encoder_destroy(&m_SpeexEncStateOut);
@@ -66,6 +66,7 @@ CVoiceChat::~CVoiceChat()
 	// destroy speex
 	speex_bits_destroy(&m_SpeexBitsIn);
 //	speex_decoder_destroy(&m_SpeexDecStateIn);
+*/
 }
 
 void CVoiceChat::FdReceive(int nErrorCode)

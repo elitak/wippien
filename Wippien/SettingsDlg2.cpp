@@ -628,6 +628,7 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnEnableVoiceChat(WORD /*wNotifyCode*/
 	_VoiceChat.m_Enabled = ::SendMessage(GetDlgItem(IDC_ENABLEVOICECHAT), BM_GETCHECK, NULL, NULL);
 	if (_VoiceChat.m_Enabled)
 	{
+//		_MainDlg.EnableVoiceChat(NULL);
 		if (_VoiceChat.StartListen())
 		{
 			_VoiceChat.StartWaveOut();
@@ -637,6 +638,7 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnEnableVoiceChat(WORD /*wNotifyCode*/
 	}
 	else
 	{
+//		_MainDlg.DisableVoiceChat(NULL);
 		_VoiceChat.StopWaveIn();
 		_VoiceChat.StopWaveOut();
 		_VoiceChat.StopListen();

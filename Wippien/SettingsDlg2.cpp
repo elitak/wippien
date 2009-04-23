@@ -598,7 +598,8 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 
 BOOL CSettingsDlg::CSettingsVoiceChat::Apply(void)
 {
-	
+	_VoiceChat.m_RecordingActivity = NULL;
+	_VoiceChat.m_PlaybackActivity = NULL;
 	
 	return TRUE;
 }

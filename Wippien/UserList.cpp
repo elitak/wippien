@@ -1013,6 +1013,7 @@ void CUserList::RefreshView(BOOL updateonly)
 							TreeItem.hParent = FindRoot((char *)GROUP_OFFLINE);
 							if (GetTickCount() - _Jabber->m_ConnectTime  > CONNECTQUIET)
 							{
+								_MainDlg.DisableVoiceChat(p);
 								if (p->m_ChangeNotify)
 								{
 									doblink = TRUE;

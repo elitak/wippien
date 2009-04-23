@@ -636,6 +636,7 @@ LRESULT CMsgWin::OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandl
 		GetWindowPlacement(&wp);
 		if (wp.flags != SW_SHOWMINIMIZED /*&& wp.flags != SW_HIDE*/)
 			GetWindowRect(&m_User->m_ChatWindowRect);
+		_MainDlg.DisableVoiceChat(m_User);
 	}
 	if (m_Room)
 	{

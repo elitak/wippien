@@ -276,6 +276,7 @@ CUser::~CUser()
 {
 	if (_MainDlg.IsWindow())
 	{
+		_MainDlg.DisableVoiceChat(this);
 		HTREEITEM show_item = _MainDlg.m_UserList.GetFirstVisibleItem();
 		if (show_item)
 		{
@@ -338,6 +339,8 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
+	if (_MainDlg.IsWindow())
+		_MainDlg.DisableVoiceChat(this);
 	SetTimer(1000, 8);
 	m_MyRandom = 0;
 	while (!m_MyRandom)

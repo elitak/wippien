@@ -4,7 +4,9 @@
 
 #include "stdafx.h"
 #include "VoiceChat.h"
+#include "MainDlg.h"
 
+extern CMainDlg _MainDlg;
 
 #define SAMPLES_PER_SEC	8000
 //////////////////////////////////////////////////////////////////////
@@ -52,6 +54,14 @@ CVoiceChat::CVoiceChat()
 	speex_bits_init(&m_SpeexBitsIn);
 	m_SpeexDecStateIn= speex_decoder_init(&speex_nb_mode);	
 	
+
+	for (int i=0;i<SPEEX_FRAME_SIZE;i++)
+		m_TempSlot[i] = 0;
+	m_TempSlotCtr = 0;
+	m_ThreadHandle = INVALID_HANDLE_VALUE;
+	m_PlayHandle = CreateEvent(NULL, FALSE, FALSE, NULL);
+	m_Die = FALSE;
+
 }
 
 CVoiceChat::~CVoiceChat()
@@ -67,7 +77,63 @@ CVoiceChat::~CVoiceChat()
 	speex_bits_destroy(&m_SpeexBitsIn);
 //	speex_decoder_destroy(&m_SpeexDecStateIn);
 */
+	
+	if (m_ThreadHandle != INVALID_HANDLE_VALUE)
+	{
+		m_Die = TRUE;
+		while (m_ThreadHandle != INVALID_HANDLE_VALUE)
+		{
+			SetEvent(m_PlayHandle);
+			Sleep(20);
+		}
+	}
+	CloseHandle(m_PlayHandle);
 }
+
+DWORD WINAPI PlayThreadProc(void *d)
+{
+	CVoiceChat *me = (CVoiceChat *)d;
+	while(!me->m_Die)
+	{
+		WaitForSingleObject(me->m_PlayHandle, INFINITE);
+		if (!me->m_Die)
+		{
+			if (me->m_TempSlotCtr)
+			{
+				int j,i;
+				for (j=0;j<SNDNBUF;j++)
+				{
+					if (!me->m_WaveHdrOut[j].dwUser)
+					{
+						ATLTRACE("ctr=%d\r\n", me->m_TempSlotCtr);
+						me->m_WaveHdrOut[j].dwUser = TRUE;
+												
+						signed short *databuf = (signed short *)me->m_WaveHdrOut[j].lpData;
+						int thr = 0;
+						for (i=0;i<SPEEX_FRAME_SIZE;i++)
+						{
+							databuf[i] = me->m_TempSlot[i]/me->m_TempSlotCtr;;
+							if (databuf[i]>me->m_VadThreshold || databuf[i]<(- me->m_VadThreshold))
+								thr++;
+							me->m_TempSlot[i] = 0;
+						}
+						InterlockedExchange(&me->m_TempSlotCtr, 0);
+						
+						me->m_WaveOutBusy++;
+						waveOutWrite(me->m_hWavOut, &me->m_WaveHdrOut[j], sizeof(WAVEHDR));
+						if (me->m_PlaybackActivity)
+							PostMessage(me->m_PlaybackActivity, PBM_SETPOS, thr/16, 0);
+						break;
+					}
+				}
+			}
+		}
+	}
+	CloseHandle(me->m_ThreadHandle);
+	me->m_ThreadHandle = INVALID_HANDLE_VALUE;
+	return 0;
+}
+
 
 void CVoiceChat::FdReceive(int nErrorCode)
 {
@@ -77,41 +143,19 @@ void CVoiceChat::FdReceive(int nErrorCode)
 	int i = ::recvfrom(m_sock, buff, sizeof(buff), 0, (struct sockaddr *)&addr, &addrlen);
 	if (i>0)
 	{
+		float floatBuffer[SPEEX_FRAME_SIZE];
+		
+		// decompress
+		speex_bits_read_from(&m_SpeexBitsIn, buff+1, i-1);
+		speex_decode(m_SpeexDecStateIn, &m_SpeexBitsIn, floatBuffer);
+		
+		InterlockedIncrement(&m_TempSlotCtr);
+		int thr = 0;
+		for (i = 0; i<SPEEX_FRAME_SIZE;i++)
+			m_TempSlot[i] += (short)floatBuffer[i];
+
 		if (m_WaveOutStarted)
-		{
-			int j;
-			for (j=0;j<SNDNBUF;j++)
-			{
-				if (!m_WaveHdrOut[j].dwUser)
-				{
-					m_WaveHdrOut[j].dwUser = TRUE;
-					float floatBuffer[SPEEX_FRAME_SIZE];
-					signed short *databuf = (signed short *)m_WaveHdrOut[j].lpData;
-					
-					// decompress
-					speex_bits_read_from(&m_SpeexBitsIn, buff+1, i-1);
-					speex_decode(m_SpeexDecStateIn, &m_SpeexBitsIn, floatBuffer);
-					
-					int thr = 0;
-					for (i = 0; i<SPEEX_FRAME_SIZE;i++)
-					{
-						if (databuf[i]>m_VadThreshold || databuf[i]<(- m_VadThreshold))
-							thr++;
-						databuf[i] = (short)floatBuffer[i];
-					}
-					
-					if (m_PlaybackActivity)
-						PostMessage(m_PlaybackActivity, PBM_SETPOS, thr/16, 0);
-					
-					m_WaveOutBusy++;
-					//ATLTRACE("Before waveOutPrepareHeader\r\n");
-//					if (waveOutPrepareHeader(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR)) == MMSYSERR_NOERROR)
-						waveOutWrite(m_hWavOut, &m_WaveHdrOut[j], sizeof(WAVEHDR));
-					//ATLTRACE("After waveOutPrepareHeader\r\n");
-					break;
-				}
-			}
-		}
+			SetEvent(m_PlayHandle);
 	}
 }
 
@@ -256,6 +300,11 @@ long CVoiceChat::StartWaveOut(void)
 	}
 	m_WaveOutStarted = TRUE;
 	
+	if (m_ThreadHandle == INVALID_HANDLE_VALUE)
+	{
+		DWORD id = 0;
+		m_ThreadHandle = CreateThread(NULL, 0, PlayThreadProc, this, 0, &id);
+	}
 	return 0; //S_OK
 }
 
@@ -344,10 +393,10 @@ void CVoiceChat::waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam
 					outbuff[0] = 0; 
 					total++;
 
-					for (i=0;i<me->m_Users.size();i++)
+					for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
 					{
-						CUser *u = (CUser *)me->m_Users[i];
-						if (u->m_WippienState == WipConnected)
+						CUser *u = (CUser *)_MainDlg.m_UserList.m_Users[i];
+						if (u->m_VoiceChatActive)
 						{
 							me->m_OutSock.sin_addr.s_addr = u->m_HisVirtualIP;
 							::sendto(me->m_sock, outbuff, total, 0, (struct sockaddr *)&me->m_OutSock, sizeof(SOCKADDR_IN));
@@ -378,9 +427,9 @@ void CVoiceChat::waveOutProc(HWAVEOUT hwo,UINT uMsg,DWORD dwInstance,DWORD dwPar
 			break;
 		
 		case WOM_DONE:
-	//		waveOutUnprepareHeader(me->m_hWavOut,curhdr, sizeof(WAVEHDR));
 			curhdr->dwUser = FALSE;
 			me->m_WaveOutBusy--;
+			SetEvent(me->m_PlayHandle);
 			break;
 	}
 }

@@ -214,6 +214,7 @@ CUser::CUser()
 	time_t now;
 	time( &now );
 	m_LastOnline = 0;
+	m_VoiceChatActive = FALSE;
 
 	memset(&m_ChatWindowRect, 0, sizeof(m_ChatWindowRect));
 	memset(m_VisibleName, 0, sizeof(m_VisibleName));
@@ -339,6 +340,7 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
+	m_VoiceChatActive = FALSE;
 	if (_MainDlg.IsWindow())
 		_MainDlg.DisableVoiceChat(this);
 	SetTimer(1000, 8);

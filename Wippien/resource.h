@@ -496,6 +496,7 @@
 #define IDC_MICROPHONESENSITIVITY       1527
 #define IDC_MICROPHONESENS              1529
 #define IDC_MICROPHONESENSDESC          1530
+#define ID_PNG1_VOICECHAT_ON			1531
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -528,7 +529,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1392
 #define _APS_NEXT_COMMAND_VALUE         32798
-#define _APS_NEXT_CONTROL_VALUE         1531
+#define _APS_NEXT_CONTROL_VALUE         1532
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

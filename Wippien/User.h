@@ -143,7 +143,7 @@ public:
 	_cryptoAES128 m_AES;
 	int m_MTU;
 	CDetectMTU *m_DetectMTU;
-	BOOL m_Saved;
+	BOOL m_Saved, m_VoiceChatActive;
 	unsigned long m_LastSent, m_LastReceive, m_TotalReceived, m_TotalSent;
 	int m_DisconnectedTimer;
 

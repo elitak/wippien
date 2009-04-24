@@ -1219,6 +1219,7 @@ ID_PNG1_VOICECHAT_SMALL PNG     DISCARDABLE     "..\\gfx\\voicechat_small.png"
 ID_PNG1_VOICECHAT       PNG     DISCARDABLE     "..\\gfx\\voicechat.png"
 ID_PNG1_VOICECHAT_SMALL_NO PNG     DISCARDABLE     "..\\gfx\\voicechat_small_prekrizeno.png"
 ID_PNG1_VOICECHAT_NO    PNG     DISCARDABLE     "..\\gfx\\voicechat_prekizeno.png"
+ID_PNG1_VOICECHAT_ON    PNG     DISCARDABLE     "..\\gfx\\voicechat_on.png"
 
 /////////////////////////////////////////////////////////////////////////////
 //

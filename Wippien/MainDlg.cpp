@@ -3242,16 +3242,10 @@ void CMainDlg::ToggleVoiceChat(CUser *user)
 		BOOL found = TRUE;
 		if (user)
 		{
-			found = FALSE;
-			int i;
-			for (i=0;!found && i<_VoiceChat.m_Users.size();i++)
+			if (user->m_VoiceChatActive)
 			{
-				CUser *u = (CUser *)_VoiceChat.m_Users[i];
-				if (u == user)
-				{
-					DisableVoiceChat(user);
-					return;
-				}
+				DisableVoiceChat(user);
+				return;
 			}
 
 			EnableVoiceChat(user);
@@ -3293,10 +3287,10 @@ void CMainDlg::EnableVoiceChat(CUser *user)
 
 	if (_VoiceChat.m_Enabled)
 	{	
-		int i;
 		if (user)
 		{
-			BOOL found = FALSE;
+			user->m_VoiceChatActive = TRUE;
+/*			BOOL found = FALSE;
 			for (i=0;!found && i<_VoiceChat.m_Users.size();i++)
 			{
 				CUser *u = (CUser *)_VoiceChat.m_Users[i];
@@ -3305,11 +3299,19 @@ void CMainDlg::EnableVoiceChat(CUser *user)
 			}
 			if (!found)
 				_VoiceChat.m_Users.push_back(user);
-
+*/
 		}
 	}
 
-	if (_VoiceChat.m_Enabled && _VoiceChat.m_Users.size())
+	int i;
+	BOOL found = FALSE;
+	for (i=0;!found && i<m_UserList.m_Users.size();i++)
+	{
+		CUser *u = (CUser *)m_UserList.m_Users[i];
+		if (u->m_VoiceChatActive)
+			found = TRUE;
+	}
+	if (_VoiceChat.m_Enabled && found)
 		if (!_VoiceChat.m_hWavIn)
 			_VoiceChat.StartWaveIn();
 
@@ -3319,10 +3321,10 @@ void CMainDlg::EnableVoiceChat(CUser *user)
 
 void CMainDlg::DisableVoiceChat(CUser *user)
 {
-	int i;
+//	int i;
 	if (user)
 	{
-		// let's remove
+/*		// let's remove
 		BOOL found = FALSE;
 		for (i=0;!found && i<_VoiceChat.m_Users.size();i++)
 		{
@@ -3333,15 +3335,33 @@ void CMainDlg::DisableVoiceChat(CUser *user)
 				break;
 			}
 		}
+*/
+		user->m_VoiceChatActive = FALSE;
 
-		if (!_VoiceChat.m_Users.size() && !_VoiceChat.m_LocalEcho)
-			user = NULL;
+		int i;
+		BOOL found = FALSE;
+		for (i=0;!found && i<m_UserList.m_Users.size();i++)
+		{
+			CUser *u = (CUser *)m_UserList.m_Users[i];
+			if (u->m_VoiceChatActive)
+				found = TRUE;
+		}
+
+		if (!found && !_VoiceChat.m_LocalEcho)
+		{
+			_VoiceChat.StopWaveIn();
+		}
 	}
-
-	if (!user)
+	else
 	{
+		int i;
+		for (i=0;i<m_UserList.m_Users.size();i++)
+		{
+			CUser *u = (CUser *)m_UserList.m_Users[i];
+			u->m_VoiceChatActive = FALSE;
+		}
+
 		_VoiceChat.m_Enabled = FALSE;
-		_VoiceChat.StopWaveIn();
 		_VoiceChat.StopWaveOut();
 		_VoiceChat.StopListen();
 	}
@@ -3371,7 +3391,7 @@ void CMainDlg::RedrawVoiceChatButton(void)
 		if (us->IsMsgWindowOpen())
 		{
 			// toggle their button too
-			us->m_MessageWin->m_btnVoiceChat.LoadPNG(big);
+			us->m_MessageWin->m_btnVoiceChat.LoadPNG(us->m_VoiceChatActive?ID_PNG1_VOICECHAT_ON:big);
 			us->m_MessageWin->m_btnVoiceChat.Invalidate();
 		}
 	}

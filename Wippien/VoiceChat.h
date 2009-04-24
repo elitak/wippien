@@ -16,7 +16,7 @@
 #define SNDNBUF	20
 #define SPEEX_FRAME_SIZE	160
 
-#include <vector>
+//#include <vector>
 #include "User.h"
 
 class CVoiceChat  : public CwodWinSocket
@@ -31,8 +31,14 @@ public:
 	HWAVEOUT m_hWavOut;
 	WAVEHDR m_WaveHdrIn[SNDNBUF],m_WaveHdrOut[SNDNBUF];
 	signed short m_WaveHdrDataIn[SNDNBUF][SPEEX_FRAME_SIZE], m_WaveHdrDataOut[SNDNBUF][SPEEX_FRAME_SIZE];
+
 	int m_WaveOutDoSend, m_WaveOutBusy;
 	int m_VadThreshold;
+
+	float m_TempSlot[SPEEX_FRAME_SIZE];
+	volatile long m_TempSlotCtr;
+	HANDLE m_ThreadHandle, m_PlayHandle;
+	BOOL m_Die;
 
 	HWND m_PlaybackActivity, m_RecordingActivity;
 
@@ -47,7 +53,7 @@ public:
 	SpeexBits m_SpeexBitsOut,m_SpeexBitsIn;
 	void *m_SpeexEncStateOut, *m_SpeexDecStateIn;
 
-	std::vector <CUser *> m_Users;
+	//std::vector <CUser *> m_Users;
 
 	void FdReceive(int nErrorCode);
 

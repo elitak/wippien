@@ -524,7 +524,7 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnHScroll(UINT uMsg, WPARAM wParam, LP
 		case TB_ENDTRACK:
 			{
 				int pos = SendDlgItemMessage(IDC_SLIDER1, TBM_GETPOS, 0, 0);
-				_VoiceChat.m_VadThreshold = pos * 25;
+				_VoiceChat.m_VadThreshold = pos * 50;
 				char buff[1024];
 				sprintf(buff, "%u", pos);
 				SetDlgItemText(IDC_MICROPHONESENSITIVITY, buff);
@@ -579,7 +579,6 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	else
 		::SendMessage(GetDlgItem(IDC_VOICECHAT_LOCALECHO), BM_SETCHECK, FALSE, NULL);
 
-
 	HWND h = GetDlgItem(IDC_RECORDINGMONITOR);
 	SendMessage(h, PBM_SETRANGE, 0, MAKELPARAM(0, SPEEX_FRAME_SIZE/16));
 	_VoiceChat.m_RecordingActivity = h;
@@ -590,9 +589,9 @@ LRESULT CSettingsDlg::CSettingsVoiceChat::OnInitDialog(UINT /*uMsg*/, WPARAM /*w
 	
 	
 	char buff[1024];
-	sprintf(buff, "%u", _VoiceChat.m_VadThreshold / 25);
+	sprintf(buff, "%u", _VoiceChat.m_VadThreshold / 50);
 	SetDlgItemText(IDC_MICROPHONESENSITIVITY, buff);
-	SendDlgItemMessage(IDC_SLIDER1, TBM_SETPOS, 1, _VoiceChat.m_VadThreshold / 25);
+	SendDlgItemMessage(IDC_SLIDER1, TBM_SETPOS, 1, _VoiceChat.m_VadThreshold / 50);
 	return TRUE;
 }
 

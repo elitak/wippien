@@ -341,6 +341,12 @@ CUser::~CUser()
 void CUser::ReInit(BOOL WithDirect)
 {
 	m_VoiceChatActive = FALSE;
+	
+	m_WaveHdrDataSet = FALSE;
+	int i;
+	for (i=0;i<SPEEX_FRAME_SIZE;i++)
+		m_WaveHdrData[i] = 0;
+
 	if (_MainDlg.IsWindow())
 		_MainDlg.DisableVoiceChat(this);
 	SetTimer(1000, 8);

@@ -18,6 +18,7 @@
 #include "openssl/rsa.h"
 #include "Crypto_AES.h"
 #include "CwodWinSocket.h"
+#include "VoiceChat.h"
 
 #ifdef _WODVPNLIB
 namespace WODVPNCOMLib
@@ -146,6 +147,8 @@ public:
 	BOOL m_Saved, m_VoiceChatActive;
 	unsigned long m_LastSent, m_LastReceive, m_TotalReceived, m_TotalSent;
 	int m_DisconnectedTimer;
+	float m_WaveHdrData[SPEEX_FRAME_SIZE];
+	BOOL m_WaveHdrDataSet;
 
 	char m_StatusText[128];
 	WippienState m_WippienState, m_RemoteWippienState;

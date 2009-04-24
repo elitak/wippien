@@ -38,6 +38,9 @@ int FindCxImageFormat(const CString& ext);
 void _CalcRect(int imgwidth, int imgheight, int rcwidth, int rcheight, long *xpos, long *ypos, long *xwidth, long *xheight, int size);
 void BufferUncompress(z_stream z_str, char *input_buffer, int len, _Buffer * output_buffer);
 
+char *DEFHTML = "<html><head><style type=\"text/css\">body{padding: 0px; font-family: verdana; font-size: 10px;}td{line-height: 11px; font-family: verdana; font-size: 10px; text-color: #C0C0C0;}td.caption{font-size: 12px; font-family: tahoma;}</style></head><body>";
+char *DEFHTMLINPUT = "<html><head><style type=\"text/css\">body{padding: 0px; font-family: arial; font-size: 13px;}</style></head><body>";
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -109,7 +112,7 @@ public:
 		if (_Settings.m_ShowMessageHistory)
 		{
 			Buffer c;
-			c.Append("<html><head><style type=\"text/css\">body{padding: 0px;}td{line-height: 11px;}</style></head><body>");
+			c.Append(DEFHTML);
 			m_ChatBox->m_ParentDlg->LoadHistory(&c);
 //			c.Append("</body>");
 			c.Append("\0", 1);
@@ -119,7 +122,7 @@ public:
 		else
 			m_ChatBox->AddHtml(m_ChatBox->m_ParentDlg->m_EmptyBody);
 
-		m_ChatBox->SetDefMargin();
+		//m_ChatBox->SetDefMargin();
 		m_IgnoreNavigate = FALSE;
 		if (m_ChatBox->m_AddHtml.Len())
 		{
@@ -275,7 +278,7 @@ void CMsgWin::Init(void)
 	
 	m_hSeparatorPen =	NULL;
     
-	CComBSTR b("<html><head><style type=\"text/css\">body {padding: 0px;}td{line-height: 10px;}</style></head><body>");
+	CComBSTR b(DEFHTML);
 	m_EmptyBody = b.Copy();
 	
 	m_BackBrush = CreateSolidBrush(RGB(209,226,251));
@@ -872,7 +875,7 @@ LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 
 
 		m_ChatBox.AddHtml(m_EmptyBody);
-		m_ChatBox.SetDefMargin();
+		//m_ChatBox.SetDefMargin();
 //		m_ChatBox.m_Events = new wWebEvents(m_ChatBox.m_wb2ChatBox);
 
 	}
@@ -1105,9 +1108,7 @@ BOOL CMsgWin::AddTimestamp(Buffer *b)
 		if (strcmp(buff, m_LastTimestamp))
 		{
 			strcpy(m_LastTimestamp, buff);
-			b->Append("<font face=\"Verdana\" size=\"1\">");
 			b->Append(buff);
-			b->Append("</font>");
 		}
 		else
 			b->Append("..");
@@ -1194,24 +1195,24 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 					{
 						char *n = (mine?j1:m_User->m_VisibleName);
 
-						c->Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top>");
+						c->Append("<table cellspacing=0 cellpadding=0><tr>");
 						if (!(last == n))
 						{
-							c->Append("<font face=\"Tahoma\" size=\"2\" color=\"C0C0C0\"><br><b>");
+							c->Append("<td class=\"caption\" width=99% valign=top><br><b>");
 							last = n;
 							c->Append(n);
 							c->Append(" ");
 							c->Append(_Settings.Translate("said"));
-							c->Append(":</b></b></font><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
-							c->Append("</td><td align=right valign=top width=1%>&nbsp;</td></tr><tr><td><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
+							c->Append(":</b></b><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
+							c->Append("</td><td align=right valign=top width=1%>&nbsp;</td></tr><tr><td>");
 						}
 						else
 						{
-							c->Append("<font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">");
+							c->Append("<td width=99% valign=top>");
 						}
 						
 						c->Append(a);
-						c->Append("</font></td><td valign=top align=right width=1%><font face=\"Verdana\" size=\"1\" color=\"C0C0C0\">(");
+						c->Append("</td><td valign=top align=right width=1%>(");
 						sprintf(buff, "%d:%d", st.wHour, st.wMinute);
 						char *b = buff;
 						while (*b)
@@ -1221,7 +1222,7 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 							b++;
 						}
 						c->Append(buff);
-						c->Append(")</font></td></tr></table>");
+						c->Append(")</td></tr></table>");
 						free(a);
 					}
 				}
@@ -1278,11 +1279,11 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char
 	Buffer *b = new Buffer();
 	b->Append("<table cellspacing=0 cellpadding=0 bgcolor=\"");
 	b->Append(BackColor);
-	b->Append("\"><tr><td width=99% valign=top>");
+	b->Append("\"><tr>");
 	if (!(m_LastSay == User))
 	{
 		m_LastTimestamp[0] = 0;
-		b->Append("<br><font face=\"Tahoma\" size=\"2\" color=\"");
+		b->Append("<td width=99% valign=top class=\"caption\"><br><font color=\"");
 		b->Append(Color);
 		b->Append("\"><b>");
 		m_LastSay = User;
@@ -1291,11 +1292,11 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char
 		b->Append(_Settings.Translate("says"));
 		b->Append("</b></b></font><hr style=\"border: 1px dotted #CCCCCC;\" />");
 		b->Append("</td><td align=right valign=top width=1%>&nbsp;");
-		b->Append("</td></tr><tr><td><font face=\"Verdana\" size=\"1\">");
+		b->Append("</td></tr><tr><td>");
 	}
 	else
 	{
-		b->Append("<font face=\"Verdana\" size=\"1\">");
+		b->Append("<td width=99% valign=top>");
 	}
 
 	if (Html && *Html)
@@ -1313,7 +1314,7 @@ Buffer *CMsgWin::CreateMsg(char *User, char *Text, char *Html, char *Color, char
 		b->Append(c2.GetBuffer(0));
 	}
 
-	b->Append("</font></td><td valign=top align=right width=1%>");
+	b->Append("</td><td valign=top align=right width=1%>");
 	AddTimestamp(b);
 	b->Append("</td></tr></table>");
 
@@ -1347,9 +1348,9 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 		m_LastSay.Empty();
 		m_LastTimestamp[0] = 0;
 		Buffer c;
-		c.Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top><font face=\"Tahoma\" size=\"2\" color=\"800080\">");
+		c.Append("<table cellspacing=0 cellpadding=0><tr><td width=99% valign=top class=\"caption\"><font color=\"800080\">");
 		c.Append(text);
-		c.Append("</td><td align=right valign=top width=1%>");
+		c.Append("</font></td><td align=right valign=top width=1%>");
 		AddTimestamp(&c);
 		c.Append("</td></tr></table>");
 		m_ChatBox.AddLine(&c, FALSE);
@@ -1818,39 +1819,6 @@ BOOL CMsgWin::CChatBox::Init(CMsgWin *dlg)
 	return SUCCEEDED(hr) ? TRUE : FALSE;
 }
 
-void CMsgWin::CChatBox::SetDefMargin(void)
-{
-
-		// change default font, margins, etc
-		IHTMLElement *body = NULL;
-		m_htmlChatBox->get_body(&body);
-		
-/*		if (body)
-		{
-			IHTMLStyle *style = NULL;
-			CComVariant vfontSize(CString("1px"));
-			VARIANT v0;
-			v0.vt = VT_I2;
-			v0.iVal = 0;
-			CComBSTR2 b2 = "Verdana";
-
-			body->get_style(&style);
-
-			if (style)
-			{
-				style->put_marginTop(v0);
-				style->put_marginLeft(v0);
-				style->put_marginRight(v0);
-				style->put_marginBottom(v0);
-				style->put_fontFamily(b2);
-				style->put_fontSize(vfontSize);
-				style->put_lineHeight(v0);
-			}
-		}
-*/
-}
-
-
 
 //////////////////////////////////////////////////////////////////////
 // Window message handlers
@@ -2067,7 +2035,8 @@ BOOL CMsgWin::CInputBox::Init(CMsgWin *dlg)
 	
 		m_ParentDlg = dlg;
 
-		AddHtml(m_ParentDlg->m_EmptyBody);
+		CComBSTR h = DEFHTMLINPUT;
+		AddHtml(h);
 		
 		// change default font, margins, etc
 		IHTMLElement *body;
@@ -2077,6 +2046,7 @@ BOOL CMsgWin::CInputBox::Init(CMsgWin *dlg)
 			return FALSE;
 		
 		IHTMLStyle *style;
+
 
 		m_fontBackColor = "transparent";
 		m_fontForeColor = "000000";
@@ -2091,8 +2061,8 @@ BOOL CMsgWin::CInputBox::Init(CMsgWin *dlg)
 		hr = style->put_marginLeft(v0);
 		hr = style->put_marginRight(v0);
 		hr = style->put_marginBottom(v0);
-		hr = style->put_fontFamily(CComBSTR("Arial"));
-		hr = style->put_fontSize(CComVariant(CString("x-small")));;
+//		hr = style->put_fontFamily(CComBSTR("Arial"));
+//		hr = style->put_fontSize(CComVariant(CString("x-small")));;
 		hr = style->put_backgroundColor(CComVariant(m_fontBackColor));
 		hr = style->put_color(CComVariant(m_fontForeColor));
 	

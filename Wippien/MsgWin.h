@@ -138,7 +138,7 @@ public:
 		BOOL m_fDocWindow;
 		BOOL Init(CMsgWin *dlg);
 		BOOL Free(void);
-		void SetDefMargin(void);
+		//void SetDefMargin(void);
 //		CComPtr<IWebBrowser2> m_wb2ChatBox;
 //		CComQIPtr<IHTMLDocument2, &IID_IHTMLDocument2> m_htmlChatBox;
 		IWebBrowser2 *m_wb2ChatBox;

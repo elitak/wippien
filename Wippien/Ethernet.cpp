@@ -614,6 +614,15 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 	{
 		while (eth->m_Alive && eth->m_Enabled && !ed->Occupied)			
 		{
+			rt = WaitForMultipleObjects(2, eth->Handles, FALSE, 100);
+			if (rt == WAIT_OBJECT_0)
+			{
+				eth->m_Alive = FALSE;
+				break;
+			}
+		}
+		while (eth->m_Alive && eth->m_Enabled && ed->Occupied)
+		{
 			if (eth->m_FirewallRulesChanged)
 			{
 				eth->m_FirewallRulesChanged = FALSE;
@@ -633,15 +642,6 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 				}
 			}
 
-			rt = WaitForMultipleObjects(2, eth->Handles, FALSE, 100);
-			if (rt == WAIT_OBJECT_0)
-			{
-				eth->m_Alive = FALSE;
-				break;
-			}
-		}
-		while (eth->m_Alive && eth->m_Enabled && ed->Occupied)
-		{
 			if (ed->DataLen)
 			{
 				// should we write?

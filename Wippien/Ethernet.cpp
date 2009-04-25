@@ -48,12 +48,15 @@ CEthernet::CEthernet()
 	WriteHandle = INVALID_HANDLE_VALUE;
 	DieHandle = INVALID_HANDLE_VALUE;
 
-	memset(m_EthWriteBuff, 0, sizeof(m_EthWriteBuff));
-	m_EthWriteEnd = m_EthWriteStart = 0;
+	int i;
+	for (i=0;i<ETH_TOT_PACKETS;i++)
+		m_EthWriteData[i].Occupied = FALSE;
+	m_EthWriteEnd = 0;
+	m_EthToWrite = &m_EthWriteData[0];
 
 		// init critsections
 //	InitializeCriticalSection(&ReadCS);
-//	InitializeCriticalSection(&WriteCS);
+	InitializeCriticalSection(&WriteCS);
 
 	hReadThread = INVALID_HANDLE_VALUE;
 	hWriteThread = INVALID_HANDLE_VALUE;
@@ -78,6 +81,7 @@ CEthernet::~CEthernet()
 {
 	if (DieHandle != INVALID_HANDLE_VALUE)
 		Die();
+	DeleteCriticalSection(&WriteCS);
 }
 
 void CEthernet::Die(void)
@@ -602,20 +606,33 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 
 	DWORD dwError;
 
+	unsigned int EthStart = 0;
+
 	int rt = 0;
-	BOOL mustread = FALSE;
+	EthWriteData *ed = &eth->m_EthWriteData[0];
 	while (eth->m_Alive && eth->m_Enabled)
 	{
-
-		while ((eth->m_Alive && eth->m_Enabled && eth->m_EthWriteStart == eth->m_EthWriteEnd) || mustread)			
+		while (eth->m_Alive && eth->m_Enabled && !ed->Occupied)			
 		{
-			mustread = FALSE;
-			if (eth->m_EthWriteStart == eth->m_EthWriteEnd)
+			if (eth->m_FirewallRulesChanged)
 			{
-				EthWriteData *ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
-				if (ed->Occupied) // all taken, go out!
-					break;
+				eth->m_FirewallRulesChanged = FALSE;
+				while (FirewallRules.size())
+				{
+					FirewallStruct *fs = (FirewallStruct *)FirewallRules[0];
+					delete fs;
+					FirewallRules.erase(FirewallRules.begin());
+				}
+				for (int i=0;i<_Settings.m_FirewallRules.size();i++)
+				{
+					FirewallStruct *orgfs = (FirewallStruct *)_Settings.m_FirewallRules[i];
+					FirewallStruct *fs = new FirewallStruct;
+					fs->Port = htons(orgfs->Port);
+					fs->Proto = orgfs->Proto;
+					FirewallRules.push_back(fs);
+				}
 			}
+
 			rt = WaitForMultipleObjects(2, eth->Handles, FALSE, 100);
 			if (rt == WAIT_OBJECT_0)
 			{
@@ -623,134 +640,91 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 				break;
 			}
 		}
-
-		if (eth->m_FirewallRulesChanged)
+		while (eth->m_Alive && eth->m_Enabled && ed->Occupied)
 		{
-			eth->m_FirewallRulesChanged = FALSE;
-			while (FirewallRules.size())
+			if (ed->DataLen)
 			{
-				FirewallStruct *fs = (FirewallStruct *)FirewallRules[0];
-				delete fs;
-				FirewallRules.erase(FirewallRules.begin());
-			}
-			for (int i=0;i<_Settings.m_FirewallRules.size();i++)
-			{
-				FirewallStruct *orgfs = (FirewallStruct *)_Settings.m_FirewallRules[i];
-				FirewallStruct *fs = new FirewallStruct;
-				fs->Port = htons(orgfs->Port);
-				fs->Proto = orgfs->Proto;
-				FirewallRules.push_back(fs);
-			}
-		}
-		if (eth->m_Alive && eth->m_Enabled)
-		{
-
-			EthWriteData *ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
-			if (eth->m_EthWriteEnd!=eth->m_EthWriteStart || ed->Occupied)
-			{
-				char *a = NULL;
-				while (eth->m_EthWriteEnd != eth->m_EthWriteStart || ed->Occupied)
+				// should we write?
+				IPHDR *ip = (IPHDR *)(ed->Buff + sizeof(ETH_HEADER));
+				UDPHDR *udp = (UDPHDR *)(ed->Buff + sizeof(ETH_HEADER) + sizeof(IPHDR));
+				TCPHDR *tcp = (TCPHDR *)(ed->Buff + sizeof(ETH_HEADER) + sizeof(IPHDR));
+				
+				BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
+				for (int i=0;i<FirewallRules.size();i++)
 				{
-					a = NULL;
-					if (ed->Occupied)
+					FirewallStruct *fs = (FirewallStruct *)FirewallRules[i];
+					if (fs->Proto == ip->protocol)
 					{
-						
-						a = (char *)ed;
-						a += sizeof(EthWriteData);
-
-						if (ed->DataLen && a)
+						switch (fs->Proto)
 						{
-
-							// should we write?
-							IPHDR *ip = (IPHDR *)(a + sizeof(ETH_HEADER));
-							UDPHDR *udp = (UDPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
-							TCPHDR *tcp = (TCPHDR *)(a + sizeof(ETH_HEADER) + sizeof(IPHDR));
+						case IPPROTO_ICMP:
+							cansend = !cansend;
+							break;
 							
-							BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
-							for (int i=0;i<FirewallRules.size();i++)
-							{
-								FirewallStruct *fs = (FirewallStruct *)FirewallRules[i];
-								if (fs->Proto == ip->protocol)
-								{
-									switch (fs->Proto)
-									{
-									case IPPROTO_ICMP:
-										cansend = !cansend;
-										break;
-										
-									case IPPROTO_UDP:
-										if (udp->dest == fs->Port)
-											cansend = !cansend;
-										break;
-										
-									case IPPROTO_TCP:
-										if (tcp->dest == fs->Port)
-											cansend = !cansend;
-										break;
-									}
-								}
-							}
+						case IPPROTO_UDP:
+							if (udp->dest == fs->Port)
+								cansend = !cansend;
+							break;
 							
-
-
-							DWORD nwrite = ed->DataLen;
-							if (cansend && ed->DataLen>0 && eth->m_AdapterHandle)
-							{
-								if (!WriteFile(eth->m_AdapterHandle, a, ed->DataLen, &nwrite, &overlap))
-								{
-									dwError = GetLastError();
-									switch (dwError)
-									{
-										case ERROR_MORE_DATA:
-											// loop more...
-											break;
-
-										case ERROR_HANDLE_EOF:
-										case ERROR_FILE_NOT_FOUND:
-											eth->m_Alive = FALSE;
-											break;
-
-										case ERROR_IO_PENDING: 
-											while(eth->m_Alive && eth->m_Enabled)
-											{
-												int ret = WaitForMultipleObjects(2, hs, FALSE, 1000);
-												if (ret == (WAIT_OBJECT_0) || !eth->m_Alive)
-												{
-													eth->m_Alive = FALSE;
-													break;
-												}
-												else
-												{
-													if (GetOverlappedResult(eth->m_AdapterHandle, &overlap, &nwrite, FALSE))
-													{
-														break;
-													}
-												}
-											} 
-											break;
-									}
-								}
-								ResetEvent(overlap.hEvent);
-							}
+						case IPPROTO_TCP:
+							if (tcp->dest == fs->Port)
+								cansend = !cansend;
+							break;
 						}
-						ed->Occupied = FALSE;
-						eth->m_EthWriteStart++;
-						if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
-							eth->m_EthWriteStart = 0;
-
-						// for next loop
-						ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
-					}
-					else
-					{
-						mustread = TRUE;
-						eth->m_EthWriteStart++;
-						if (eth->m_EthWriteStart >= ETH_TOT_PACKETS)
-							eth->m_EthWriteStart = 0;
-						ed = (EthWriteData *)(eth->m_EthWriteBuff + eth->m_EthWriteStart * (sizeof(EthWriteData)+ETH_MAX_PACKET));
 					}
 				}
+				
+
+
+				DWORD nwrite = ed->DataLen;
+				if (cansend && ed->DataLen>0 && eth->m_AdapterHandle)
+				{
+					if (!WriteFile(eth->m_AdapterHandle, ed->Buff, ed->DataLen, &nwrite, &overlap))
+					{
+						dwError = GetLastError();
+						switch (dwError)
+						{
+							case ERROR_MORE_DATA:
+								// loop more...
+								break;
+
+							case ERROR_HANDLE_EOF:
+							case ERROR_FILE_NOT_FOUND:
+								eth->m_Alive = FALSE;
+								break;
+
+							case ERROR_IO_PENDING: 
+								while(eth->m_Alive && eth->m_Enabled)
+								{
+									int ret = WaitForMultipleObjects(2, hs, FALSE, 1000);
+									if (ret == (WAIT_OBJECT_0) || !eth->m_Alive)
+									{
+										eth->m_Alive = FALSE;
+										break;
+									}
+									else
+									{
+										if (GetOverlappedResult(eth->m_AdapterHandle, &overlap, &nwrite, FALSE))
+										{
+											break;
+										}
+									}
+								} 
+								break;
+						}
+					}
+					ResetEvent(overlap.hEvent);
+				}
 			}
+			ed->Occupied = FALSE;
+			EthStart++;
+			if (EthStart >= ETH_TOT_PACKETS)
+			{
+				EthStart = 0;
+				ed = &eth->m_EthWriteData[0];
+			}
+			else
+				ed++;
 		}
 	}
 	CloseHandle(overlap.hEvent);
@@ -771,35 +745,32 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 	eth->m_AdapterHandle = INVALID_HANDLE_VALUE;
 	return 0;
 }
+
 void CEthernet::InjectPacket(char *packet, int len)
 {
-
-//	if (len > ETH_MAX_PACKET)
-//		MessageBeep(-1);
-/*	
 	EnterCriticalSection(&WriteCS);
-	WriteBuffer.PutString(packet, len);
-	LeaveCriticalSection(&WriteCS);
-*/
-
-	EthWriteData *ed = (EthWriteData *)(m_EthWriteBuff + m_EthWriteEnd * (sizeof(EthWriteData)+ETH_MAX_PACKET));
-	if (ed->Occupied)
+	if (m_EthToWrite->Occupied)
+	{
+		LeaveCriticalSection(&WriteCS);
 		return; // all filled up!
+	}
 
-	ed->DataLen = len;
-	char *d = (char *)ed;
-	d += sizeof(EthWriteData);
-	memcpy(d, packet, len);
+	m_EthToWrite->DataLen = len;
+	memcpy(m_EthToWrite->Buff, packet, len);
 
-	ed->Occupied = TRUE;
+	m_EthToWrite->Occupied = TRUE;
 
 	m_EthWriteEnd++;
 	if (m_EthWriteEnd >= ETH_TOT_PACKETS)
+	{
 		m_EthWriteEnd = 0;
+		m_EthToWrite = &m_EthWriteData[0];
+	}
+	else
+		m_EthToWrite++;
 
+	LeaveCriticalSection(&WriteCS);
 	SetEvent(WriteHandle);
-
-
 }
 
 

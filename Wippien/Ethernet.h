@@ -90,6 +90,7 @@ typedef struct EthWriteData
 {
 	BOOL Occupied; //1 means should be processed, 0 means it's already processed
 	int DataLen;
+	char Buff[ETH_MAX_PACKET];
 } EthWriteData;
 #pragma pack(pop,1)
 
@@ -97,8 +98,11 @@ class CEthernet
 {
 public:
 
-	char m_EthWriteBuff[(ETH_MAX_PACKET+sizeof(EthWriteData)) * ETH_TOT_PACKETS];
-	unsigned int m_EthWriteStart, m_EthWriteEnd;
+//	char m_EthWriteBuff[(ETH_MAX_PACKET+sizeof(EthWriteData)) * ETH_TOT_PACKETS];
+	unsigned int m_EthWriteEnd;
+	EthWriteData m_EthWriteData[ETH_TOT_PACKETS];
+	EthWriteData *m_EthToWrite;
+
 
 	static DWORD WINAPI ReadThreadFunc(LPVOID lpParam);
 	static DWORD WINAPI WriteThreadFunc(LPVOID lpParam);
@@ -106,7 +110,7 @@ public:
 	void ProcPacket(char *Packet, int len);
 	DWORD DoRenewRelease(BOOL ReleaseOnly);
 
-//	CRITICAL_SECTION WriteCS, ReadCS;
+	CRITICAL_SECTION WriteCS;
 	HANDLE m_AdapterHandle;
 	BOOL m_Alive, m_Available, m_Enabled;
 	BOOL m_FirewallRulesChanged;

@@ -105,14 +105,14 @@ DWORD WINAPI PlayThreadProc(void *d)
 				{
 					if (!me->m_WaveHdrOut[j].dwUser)
 					{
-						ATLTRACE("ctr=%d\r\n", me->m_TempSlotCtr);
+						//ATLTRACE("ctr=%d\r\n", me->m_TempSlotCtr);
 						me->m_WaveHdrOut[j].dwUser = TRUE;
 												
 						signed short *databuf = (signed short *)me->m_WaveHdrOut[j].lpData;
 						int thr = 0;
 						for (i=0;i<SPEEX_FRAME_SIZE;i++)
 						{
-							databuf[i] = me->m_TempSlot[i]/me->m_TempSlotCtr;;
+							databuf[i] = me->m_TempSlot[i];
 							if (databuf[i]>me->m_VadThreshold || databuf[i]<(- me->m_VadThreshold))
 								thr++;
 							me->m_TempSlot[i] = 0;

@@ -1,6 +1,6 @@
 # Czech translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sonyc
-# Version: 1
+# Version: 2
 Zadna chyba  ##  No error.
 System nemuze nalez uvedeny soubor.  ##  The system cannot find the file specified.
 System nemuze nalezt uvedenou cestu.  ##  The system cannot find the path specified.
@@ -137,44 +137,44 @@ Admin privilege required!  ##  Admin privilege required!
 Disconnected  ##  Disconnected
 Connected  ##  Connected
 Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
+Nesprávné heslo  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
-No network  ##  No network
+Není síť  ##  No network
 Exit Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
-Open settings  ##  Open settings
-&Settings  ##  &Settings
+Otevřít nastavení  ##  Open settings
+&Nastavení  ##  &Settings
 Show AboutBox  ##  Show AboutBox
 &About  ##  &About
 Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
+Vypnout zvuk  ##  Mute sound
+Otevřít chat místnost  ##  Open chat room
+Připojil se přítel  ##  Authorize your friends
 Idle  ##  Idle
 Really exit Wippien?  ##  Really exit Wippien?
 Are you sure?  ##  Are you sure?
 Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
+Změnit heslo  ##  Password changed
 Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
+Prosím zadejte nové heslo  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
-Home Address  ##  Home Address
+Domácí Adresa  ##  Home Address
 Work Address  ##  Work Address
 Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
-Send  ##  Send
-Send file  ##  Send file
+Smazat historii?  ##  Delete history?
+Hledat  ##  Send
+Hledat soubor  ##  Send file
 Details  ##  Details
-Contact information  ##  Contact information
-Clear  ##  Clear
-Clear history  ##  Clear history
-Mute  ##  Mute
+Kontaktní informace  ##  Contact information
+Vymazat  ##  Clear
+Vymazat historii  ##  Clear history
+Ticho  ##  Mute
 Bold  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
@@ -216,7 +216,7 @@ This is usually visible to your contacts.  ##  This is usually visible to your c
 Network  ##  Network
 Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
-Network  ##  Network
+Síť  ##  Network
 Mediator  ##  Mediator
 Please choose who will be your mediator.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
@@ -421,7 +421,7 @@ Titul  ##  Title
 Jmeno spolecnosti  ##  Company name
 Department  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
+Povolit vše  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
@@ -523,11 +523,11 @@ Free for &Chat  ##  Free for &Chat
 E&xtended Away  ##  E&xtended Away
 &Invisible  ##  &Invisible
 O&ffline  ##  O&ffline
-Change &Picture  ##  Change &Picture
+Změna &Barvy  ##  Change &Picture
 Change Pa&ssword  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
+Váš &Detail  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
-Enter password  ##  Enter password
+Zadej heslo  ##  Enter password
 Please enter protect password  ##  Please enter protect password
 Jazyky  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.

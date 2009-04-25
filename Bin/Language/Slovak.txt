@@ -1,11 +1,11 @@
 # Slovak translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: BesnyVlcik
-# Version: 175
-≈Ωiadna chyba  ##  No error.
-Syst√©m nem√¥≈ôH∞ËZúÒiH[∞ÔHÓòõ‹ã  ##  The system cannot find the file specified.
-Syst√©m nem√¥≈ôHÔøΩÔøΩZÔø{Ô÷îÅëÖæ˚˚ﬁ˚˚—é˚ısøΩ.  ##  The system cannot find the path specified.
+# Version: 187
+  ##  No error.
+  ##  The system cannot find the file specified.
+  ##  The system cannot find the path specified.
   ##  The system cannot find the specified file/directory.
-Nezhoda v p√≠san√≠.  ##  Type mismatch.
+  ##  Type mismatch.
 Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
 The system cannot write to the specified device.  ##  The system cannot write to the specified device.
 Invalid Property Value.  ##  Invalid Property Value.
@@ -73,9 +73,9 @@ Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this t
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
+Nespr√°vne zadan√Ω hodtiteƒæ.  ##  Hostname property not set.
+Nespr√°vne zadane meno.  ##  Login property not set.
+Nespr√°vne zadan√© heslo.  ##  Password property not set.
 Invalid XML packet.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
@@ -89,12 +89,12 @@ Failed to import photo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
+Kontakt sa nena≈°iel.  ##  Contact not found.
 File transfer failed.  ##  File transfer failed.
 Could not write to file.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
+Prenos Zru≈°en√Ω  ##  Transfer aborted.
+ƒåas poziadavky uplynul.  ##  Transfer has timed out.
 Invalid protocol selected.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.

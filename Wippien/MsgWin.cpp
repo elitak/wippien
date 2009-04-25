@@ -38,7 +38,7 @@ int FindCxImageFormat(const CString& ext);
 void _CalcRect(int imgwidth, int imgheight, int rcwidth, int rcheight, long *xpos, long *ypos, long *xwidth, long *xheight, int size);
 void BufferUncompress(z_stream z_str, char *input_buffer, int len, _Buffer * output_buffer);
 
-char *DEFHTML = "<html><head><style type=\"text/css\">body{padding: 0px; font-family: verdana; font-size: 10px;}td{line-height: 11px; font-family: verdana; font-size: 10px; text-color: #C0C0C0;}td.caption{font-size: 12px; font-family: tahoma;}</style></head><body>";
+char *DEFHTML = "<html><head><style type=\"text/css\">body{padding: 0px; font-family: verdana; font-size: 10px;}td{line-height: 11px; font-family: verdana; font-size: 10px;}td.caption{font-size: 12px; font-family: tahoma;}td.hcaption{font-size: 12px; font-family: tahoma; color: #C0C0C0;}td.h{line-height: 11px; font-family: verdana; font-size: 10px; color: #C0C0C0;}</style></head><body>";
 char *DEFHTMLINPUT = "<html><head><style type=\"text/css\">body{padding: 0px; font-family: arial; font-size: 13px;}</style></head><body>";
 
 //////////////////////////////////////////////////////////////////////
@@ -1198,21 +1198,21 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 						c->Append("<table cellspacing=0 cellpadding=0><tr>");
 						if (!(last == n))
 						{
-							c->Append("<td class=\"caption\" width=99% valign=top><br><b>");
+							c->Append("<td class=\"hcaption\" width=99% valign=top><br><b>");
 							last = n;
 							c->Append(n);
 							c->Append(" ");
 							c->Append(_Settings.Translate("said"));
 							c->Append(":</b></b><hr style=\"margin: 0; padding: 0; border: 1px dotted #C0C0C0;\" />");
-							c->Append("</td><td align=right valign=top width=1%>&nbsp;</td></tr><tr><td>");
+							c->Append("</td><td align=right valign=top width=1%>&nbsp;</td></tr><tr><td class=\"h\">");
 						}
 						else
 						{
-							c->Append("<td width=99% valign=top>");
+							c->Append("<td class=\"h\" width=99% valign=top>");
 						}
 						
 						c->Append(a);
-						c->Append("</td><td valign=top align=right width=1%>(");
+						c->Append("</td><td class=\"h\" valign=top align=right width=1%>(");
 						sprintf(buff, "%d:%d", st.wHour, st.wMinute);
 						char *b = buff;
 						while (*b)

@@ -1,6 +1,6 @@
 ﻿# Korean translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Chogosu
-# Version: 7
+# Version: 8
 오류 없음.  ##  No error.
 시스템에서 지정된 파일을 찾을 수 없습니다.  ##  The system cannot find the file specified.
 시스템에서 지정된 경로를 찾을 수 없습니다.  ##  The system cannot find the path specified.
@@ -543,3 +543,10 @@ Locale 은 개인 컴퓨터에서 사용합니다  ##  Locale used on local comp
 말함  ##  says
 말했음  ##  said
 당신의 GMAIL 계정을 사용할 수 있습니다.  ##  You can use your GMAIL account here.
+보이스 채팅 전환  ##  Toggle voice chat
+로컬 에코  ##  Local echo
+UDP 포트 9913 은 바쁩니다.  ##  UDP port 9913 busy
+들어오는 보이스 채팅을 들을 수 없습니다.  ## Unable to listen for incoming voice chat
+마이크 감도  ##  Microphone sensitivity
+마이크에 말하고 슬라이더를 조정하세요. 당신이 말하고 있지 않을때 위쪽 음성 감지기가 움직이지 않을 것입니다. 크게 말할때는 음성감지기가 만땅으로 갈 것 입니다.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+보이스 채팅을 설정하지 않으신 것 같습니다. 먼저 사용하시기 전에 설정을 하셔야합니다. 지금 할까요?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

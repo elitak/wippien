@@ -1,6 +1,6 @@
 # German translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: torsten.wagner@vnc-world.com
-# Version: 5
+# Version: 6
 Keine Fehler  ##  No error.
 Das System kann die angegebene Datei nicht finden.  ##  The system cannot find the file specified.
 Das System kann den angegebenen Pfad nicht finden.  ##  The system cannot find the path specified.
@@ -107,7 +107,7 @@ Websitefehler (Fehler 404) wurde vom Server gemeldet.  ##  Page not found (error
 Falsche Dateigrösse nach dem Download.  ##  Invalid file size after download.
 MD5 Prüfsumme nach dem Download ist falsch.  ##  Invalid MD5 checksum after download.
 Warnung  ##  Warning
-nicht aktive Verbindungen  ##  Offline
+nicht aktive Verbindung seit  ##  Offline
 Verbindung hergestellt  ##  Online
 Abwesend  ##  Away
 Gesprächsbereit  ##  Free for chat
@@ -138,7 +138,7 @@ Verbindung unterbrochen  ##  Disconnected
 Verbindung hergestellt  ##  Connected
 Nachricht konnte nicht versandt werden.  ##  Could not deliver message.
 Passwort konnte nicht geändert werden.  ##  Failed to change password
-Die Verbindung wird beenedet wenn nicht mehr benötigt.  ##  Disconnected due to inactivity rule
+Die Verbindung wird beendet wenn nicht mehr benötigt.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nSumme eingehend: %s\r\nSumme ausgehend: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 VPN-Verbindung zurzeit nicht hergestellt.  ##  << VPN not established yet >>
 Verbindungswiederherstellung in %d Sekunden.  ##  Reconnect in %d seconds.
@@ -224,7 +224,7 @@ Letzte Überprüfung  ##  Last check
 Port  ##  Port
 Computername  ##  Hostname
 Verb. besteht  ##  Permanent
-Temporär  ##  Temporary
+vorübergehend  ##  Temporary
 Geben Sie alle Konten hier an.  ##  Enter all your accounts here.
 Sie können diverse Jabberkonten an ihrem Jabberserver hinzufügen (typischerweise ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Sind Sie sicher das Sie das Konto löschen wollen '%s'?  ##  Are you sure you want to delete account '%s'?
@@ -294,7 +294,7 @@ sortieren  ##  Sort
 Verbindungen sortieren  ##  Sorts contacts.
 Wählen sie einen der aufgeführten Optionen aus.  ##  Pick one of sort options.
 Chatraum  ##  ChatRoom
-Einen Chatraum erstellen oder erforschen. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Einen Chatraum erstellen oder erforschen. (NUR in der beta!!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Definiere oder suche nach einem Chatraum den Sie erstellen oder in den sie wechseln wollen.  ##  Specify or browse for a room to join or create new one.
 alle Gateways  ##  - All gateways -
 Dienstschnittstelle  ##  Service gateway
@@ -316,7 +316,7 @@ Neue Wippienversion lokal gefunden. Aktualisieren?  ##  New version of Wippien f
 Neue Version  ##  New version
 Status geändert:  ##  Status changed:
 Tag  ##  day
-Tage  ##  days
+Tage(n)  ##  days
 Stunde  ##  hour
 Stunden  ##  hours
 Minute  ##  minute
@@ -539,7 +539,14 @@ Zurzeit verwendete Sprachdatei  ##  Currently used language
 Die Veränderungen wurden als notwendig angesehen. Sie sollten Wippien neu starten damit die Änderungen wirksam werden.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Neue Sprachdateiversion ist verfügbar.  ##  New language files available. Download?
 Das Verbindungsfenster wird angezeigt wenn der Kontakt online oder offline geht  ##  Show notification popup window when contact goes online/offline
-Der Chatpartner gibt gerade einen Text ein ...  ##  Contact is typing...
+Der Chatpartner gibt gerade Text ein ...  ##  Contact is typing...
 sagt  ##  says
 gesagt  ##  said
-Du kannst deinen GMAIL Account hier benutzen.  ##  You can use your GMAIL account here.
+Sie können auch Ihr GMAIL-Account hier angeben und verwenden.  ##  You can use your GMAIL account here.
+zum Sprachchat wechseln  ##  Toggle voice chat
+eigene Sprachreflektion(en)  ##  Local echo
+UDP Port 9913 nicht möglich  ##  UDP port 9913 busy
+der eingehende Sprachchat wird nicht erkannt  ##  Unable to listen for incoming voice chat
+Mikrofonempfindlichkeit hier einstellen  ##  Microphone sensitivity
+Um die Spracheingabe zu kalibrieren, sprechen Sie bitte in das Mikrofon. Wenn Sie nichts sagen, wird im oberen Anzeigebereich nichts zu erkennen sein. Ein Anzeigeausschlag wird nur zu erkennen sein, wenn Sie laut reden. ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Der Sprachchat wurde nocht nicht konfiguriert. Dies ist jedoch zwingend notwendig. Möchten Sie dies jetzt tun?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

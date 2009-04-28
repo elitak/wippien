@@ -134,6 +134,31 @@ DWORD WINAPI PlayThreadProc(void *d)
 	return 0;
 }
 
+CUser *CVoiceChat::FindUserByNetaddr(unsigned long addr)
+{
+	int i;
+	// who is this?
+	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	{
+		CUser *u = (CUser *)_MainDlg.m_UserList.m_Users[i];
+		if (u->m_HisVirtualIP == addr)
+		{
+			return u;
+		}
+	}
+	return NULL;
+}
+
+void CVoiceChat::NotifyUserStatus(CUser *user, BOOL isonline)
+{
+	if (m_sock != INVALID_SOCKET)
+	{
+		char outbuf[64];
+		outbuf[0] = isonline?VoicePktOnline:VoicePktOffline;
+		m_OutSock.sin_addr.s_addr = user->m_HisVirtualIP;
+		::sendto(m_sock, outbuf, sizeof(outbuf), 0, (struct sockaddr *)&m_OutSock, sizeof(SOCKADDR_IN));
+	}	
+}
 
 void CVoiceChat::FdReceive(int nErrorCode)
 {
@@ -145,17 +170,85 @@ void CVoiceChat::FdReceive(int nErrorCode)
 	{
 		float floatBuffer[SPEEX_FRAME_SIZE];
 		
-		// decompress
-		speex_bits_read_from(&m_SpeexBitsIn, buff+1, i-1);
-		speex_decode(m_SpeexDecStateIn, &m_SpeexBitsIn, floatBuffer);
-		
-		InterlockedIncrement(&m_TempSlotCtr);
-		int thr = 0;
-		for (i = 0; i<SPEEX_FRAME_SIZE;i++)
-			m_TempSlot[i] += (short)floatBuffer[i];
+		switch (buff[0])
+		{
+			case VoicePktOnline:
+				{
+					CUser *u = FindUserByNetaddr(addr.sin_addr.s_addr);
+					if (u)
+					{
+						if (u->IsMsgWindowOpen())
+						{
+							CComBSTR k = _Settings.Translate("Contact");
+							k += " ";
+							k += _Settings.Translate("has enabled");										
+							k += " ";
+							k += _Settings.Translate("Voice Chat");										
+							CComBSTR2 k2 = k;
+							u->PrintMsgWindow(TRUE, k2.ToString(), NULL);
+						}
+					}
+				}
+				break;
 
-		if (m_WaveOutStarted)
-			SetEvent(m_PlayHandle);
+			case VoicePktOffline:
+				{
+					CUser *u = FindUserByNetaddr(addr.sin_addr.s_addr);
+					if (u)
+					{
+						if (u->IsMsgWindowOpen())
+						{
+							CComBSTR k = _Settings.Translate("Contact");
+							k += " ";
+							k += _Settings.Translate("has disabled");										
+							k += " ";
+							k += _Settings.Translate("Voice Chat");										
+							CComBSTR2 k2 = k;
+							u->PrintMsgWindow(TRUE, k2.ToString(), NULL);
+						}
+					}
+				}
+				break;
+					
+			case VoicePktData:
+				{
+					// decompress
+					speex_bits_read_from(&m_SpeexBitsIn, buff+1, i-1);
+					speex_decode(m_SpeexDecStateIn, &m_SpeexBitsIn, floatBuffer);
+					
+					InterlockedIncrement(&m_TempSlotCtr);
+					int thr = 0;
+					for (i = 0; i<SPEEX_FRAME_SIZE;i++)
+						m_TempSlot[i] += (short)floatBuffer[i];
+					
+					if (m_WaveOutStarted)
+						SetEvent(m_PlayHandle);				
+				}
+				break;
+
+		}
+	}
+	else
+	{
+		CUser *u = FindUserByNetaddr(addr.sin_addr.s_addr);
+		if (u)
+		{
+			// disable voice chat
+			if (u->m_VoiceChatActive)
+			{
+				if (u->IsMsgWindowOpen())
+				{
+					CComBSTR k = _Settings.Translate("Contact");
+					k += " ";
+					k += _Settings.Translate("has disabled");										
+					k += " ";
+					k += _Settings.Translate("Voice Chat");										
+					CComBSTR2 k2 = k;
+					u->PrintMsgWindow(TRUE, k2.ToString(), NULL);					
+				}
+				_MainDlg.DisableVoiceChat(u);
+			}
+		}
 	}
 }
 
@@ -390,7 +483,7 @@ void CVoiceChat::waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam
 					speex_encode(me->m_SpeexEncStateOut, floatBuffer, &me->m_SpeexBitsOut);
 					int total = speex_bits_write(&me->m_SpeexBitsOut, outbuff+1, sizeof(outbuff)-1);
 					
-					outbuff[0] = 0; 
+					outbuff[0] = VoicePktData; 
 					total++;
 
 					for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)

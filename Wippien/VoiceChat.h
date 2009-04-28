@@ -16,8 +16,17 @@
 #define SNDNBUF	20
 #define SPEEX_FRAME_SIZE	160
 
+enum VoiceChatPktTypeStruct
+{
+	VoicePktData,
+	VoicePktSetCodec,
+	VoicePktOnline,
+	VoicePktOffline
+};
+
 //#include <vector>
 #include "User.h"
+class CUser;
 
 class CVoiceChat  : public CwodWinSocket
 {
@@ -56,6 +65,9 @@ public:
 	//std::vector <CUser *> m_Users;
 
 	void FdReceive(int nErrorCode);
+	CUser *FindUserByNetaddr(unsigned long addr);
+	void NotifyUserStatus(CUser *user, BOOL isonline);
+
 
 	BOOL StartListen(void);
 	void StopListen(void);

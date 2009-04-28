@@ -1,6 +1,6 @@
 # Croatian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Kresimir Petric
-# Version: 10
+# Version: 11
 Bez greške.  ##  No error.
 Ne mogu pronaći datoteku.  ##  The system cannot find the file specified.
 Ne mogu pronaći putanju.  ##  The system cannot find the path specified.
@@ -550,3 +550,5 @@ Ne mogu primati dolazno pričanje ##  Unable to listen for incoming voice chat
 Osjetljivost mikrofona  ##  Microphone sensitivity
 Pričajte u mikrofon i podešavajte klizač. Gornji pokazivač se ne bi smio micati kad šutite, a trebao bi ići do kraja kad pričate glasno.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Pričanje još nije podešeno. Da li da to učinimo sada?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+je uključio
+je isključio

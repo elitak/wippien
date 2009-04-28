@@ -3289,7 +3289,11 @@ void CMainDlg::EnableVoiceChat(CUser *user)
 	{	
 		if (user)
 		{
+			if (!user->m_VoiceChatActive)
+				_VoiceChat.NotifyUserStatus(user, TRUE);
 			user->m_VoiceChatActive = TRUE;
+			// send out packet
+
 /*			BOOL found = FALSE;
 			for (i=0;!found && i<_VoiceChat.m_Users.size();i++)
 			{
@@ -3336,6 +3340,8 @@ void CMainDlg::DisableVoiceChat(CUser *user)
 			}
 		}
 */
+		if (user->m_VoiceChatActive)
+			_VoiceChat.NotifyUserStatus(user, FALSE);
 		user->m_VoiceChatActive = FALSE;
 
 		int i;

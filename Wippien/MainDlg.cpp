@@ -981,13 +981,13 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								j1 += _Settings.m_Resource;
 							}
 							CComBSTR2 j2 = j1;
-							m_SimpleHttpRequest->Get(j2.ToString());
+							m_SimpleHttpRequest->Get(j2.ToUTF8String());
 						}
 
 						
 						// now connect!
 						WODXMPPCOMLib::XMPP_SetCombineResources(_Jabber->m_Jabb, FALSE);
-						_Jabber->Connect(j.ToString(), p.ToString(), s.ToString(), _Settings.m_ServerPort, _Settings.m_UseSSLWrapper);
+						_Jabber->Connect(j.ToUTF8String(), p.ToUTF8String(), s.ToString(), _Settings.m_ServerPort, _Settings.m_UseSSLWrapper);
 					}
 					
 					if (m_ReconnectWait>0)
@@ -1522,11 +1522,13 @@ LRESULT CMainDlg::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, B
 	if (_Settings.m_ShowMyName)
 	{
 		CComBSTR2 j = _Settings.m_JID;
-		char *j1 = j.ToString();
+		char *j1 = j.ToUTF8String();
 		char *j2 = strchr(j1, '@');
 		if (j2)
 			*j2 = 0;
-		::DrawText(dc_ff, j1, strlen(j1), &rt, DT_LEFT | DT_NOPREFIX); 
+		j.Empty();
+		j.FromUTF8String(j1, strlen(j1));
+		::DrawTextW(dc_ff, j, j.Length(), &rt, DT_LEFT | DT_NOPREFIX); 
 		//::TextOut(dc, ps.rcPaint.left, ps.rcPaint.top, _Settings.Nickname, strlen(_Settings.Nickname));
 		rt.top += 20;
 	}	

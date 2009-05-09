@@ -595,10 +595,8 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 		else
 			j = "newuser@wippien.com";
 	}
-	CComBSTR2 p;
-	p = _Settings.m_Password;
-	SetDlgItemText(IDC_EDIT_JID, j.ToString());
-	SetDlgItemText(IDC_EDIT2_JID, p.ToString());
+	::SetDlgItemTextW(m_hWnd, IDC_EDIT_JID, _Settings.m_JID);
+	::SetDlgItemTextW(m_hWnd, IDC_EDIT2_JID, _Settings.m_Password);
 	
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Home"));
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Work"));
@@ -653,16 +651,15 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 
 BOOL CSettingsDlg::CSettingsJID::Apply(void)
 {
-	// check key here
-	char buff[16384];
-	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
+	CComBSTR2 cb;
+	cb.FromTextBox(GetDlgItem(IDC_EDIT_JID));
+	char *buff = cb.ToUTF8String();
+	if (buff && buff[0])
 	{
 		char *a = strchr(buff, '@');
 		if (a && *++a)
 		{
-			_Settings.m_JID = buff;			
+			_Settings.m_JID = cb;			
 		}
 		else
 		{
@@ -678,10 +675,11 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 		return FALSE;
 	}			
 
-	*buff = 0;
-	::SendMessage(GetDlgItem(IDC_EDIT2_JID), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
-		_Settings.m_Password = buff;
+	cb.Empty();
+	cb.FromTextBox(GetDlgItem(IDC_EDIT2_JID));
+	buff = cb.ToUTF8String();
+	if (buff && buff[0])
+		_Settings.m_Password = cb;
 	else
 	{
 		::SetFocus(GetDlgItem(IDC_EDIT2_JID));
@@ -690,31 +688,32 @@ BOOL CSettingsDlg::CSettingsJID::Apply(void)
 		return FALSE;
 	}			
 
-	*buff = 0;
-	::SendMessage(GetDlgItem(IDC_RESOURCE), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
+	char bf[16384];
+	*bf = 0;
+	::SendMessage(GetDlgItem(IDC_RESOURCE), WM_GETTEXT, 16384, (LPARAM)bf);
+	if (bf[0])
 	{
-		char *p = buff;
+		char *p = bf;
 		while (*p)
 		{
 			if (!isalnum(*p))
 				*p='_';
 			p++;
 		}
-		_Settings.m_Resource = buff;
-		_Settings.m_StaticResource = buff;
+		_Settings.m_Resource = bf;
+		_Settings.m_StaticResource = bf;
 	}
 
-	*buff = 0;
-	::SendMessage(GetDlgItem(IDC_EDIT_JID3), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
-		_Settings.m_ServerHost = buff;
+	*bf = 0;
+	::SendMessage(GetDlgItem(IDC_EDIT_JID3), WM_GETTEXT, 16384, (LPARAM)bf);
+	if (bf[0])
+		_Settings.m_ServerHost = bf;
 
-	*buff = 0;
-	::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
+	*bf = 0;
+	::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_GETTEXT, 16384, (LPARAM)bf);
+	if (bf[0])
 	{
-		_Settings.m_ServerPort = atol(buff);
+		_Settings.m_ServerPort = atol(bf);
 		if (_Settings.m_ServerPort<=0)
 			_Settings.m_ServerPort = 5222;
 	}
@@ -738,10 +737,10 @@ LRESULT CSettingsDlg::CSettingsJID::OnJIDPassChange(WORD wNotifyCode, WORD wID, 
 {
 	m_TestSuccess = FALSE;
 	BOOL cantest = TRUE;
-	char buff[16384];
-	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
+	CComBSTR2 b;
+	b.FromTextBox(GetDlgItem(IDC_EDIT_JID));
+	char *buff = b.ToUTF8String();
+	if (buff && buff[0])
 	{
 		strlwr(buff);
 		char *a = trim(buff);
@@ -759,11 +758,10 @@ LRESULT CSettingsDlg::CSettingsJID::OnJIDPassChange(WORD wNotifyCode, WORD wID, 
 
 LRESULT CSettingsDlg::CSettingsJID::OnJIDChange(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	// check key here
-	char buff[16384];
-	memset(buff, 0, 16384);
-	::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, 16384, (LPARAM)buff);
-	if (buff[0])
+	CComBSTR2 b;
+	b.FromTextBox(GetDlgItem(IDC_EDIT_JID));
+	char *buff = b.ToUTF8String();
+	if (buff && buff[0])
 	{
 		char *a = strchr(buff, '@');
 		if (a)
@@ -783,9 +781,12 @@ LRESULT CSettingsDlg::CSettingsJID::OnJIDChange(WORD wNotifyCode, WORD wID, HWND
 
 LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
-	char bufjid[1024], bufpass[1024], bufserv[1024], bufport[1024];
-	::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, sizeof(bufjid), (LPARAM)bufjid);
-	::SendMessage(GetDlgItem(IDC_EDIT2_JID), WM_GETTEXT, sizeof(bufpass), (LPARAM)bufpass);
+	CComBSTR2 bufj, bufp;
+	bufj.FromTextBox(GetDlgItem(IDC_EDIT_JID));
+	bufp.FromTextBox(GetDlgItem(IDC_EDIT2_JID));
+	char bufserv[1024], bufport[1024];
+//	::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, sizeof(bufjid), (LPARAM)bufjid);
+//	::SendMessage(GetDlgItem(IDC_EDIT2_JID), WM_GETTEXT, sizeof(bufpass), (LPARAM)bufpass);
 	
 	::SendMessage(GetDlgItem(IDC_EDIT_JID3), WM_GETTEXT, sizeof(bufserv), (LPARAM)bufserv);
 	::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_GETTEXT, sizeof(bufport), (LPARAM)bufport);
@@ -804,7 +805,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND h
 		delete m_Jabber;
 	}
 	m_Jabber = new CJabberWiz(this);
-	m_Jabber->Connect(bufjid, bufpass, bufserv, port, regnew, usessl);
+	m_Jabber->Connect(bufj.ToUTF8String(), bufp.ToUTF8String(), bufserv, port, regnew, usessl);
 //			GetPropertySheet().SetWizardButtons(PSWIZB_BACK | PSWIZB_NEXT);
 	return 0;
 }
@@ -972,7 +973,9 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 	if (a)
 		*a = 0;
 
-	CComBSTR l = JID,p = pass, h = hostname;
+	CComBSTR2 _l;
+	_l.FromUTF8String(JID, strlen(JID));
+	CComBSTR l = _l ,p = pass, h = hostname;
 	l += "/WippienTest";
 
 	VARIANT var;
@@ -1015,7 +1018,7 @@ void CSettingsDlg::CSettingsJID::CJabberWiz::Connect(char *JID, char *pass, char
 
 #else
 	CComBSTR2 l1 = l;
-	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
+	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToUTF8String());
 	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
 	if (port)
 		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, port);

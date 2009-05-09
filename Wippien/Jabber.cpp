@@ -99,10 +99,10 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 	char bf[1024];
 	int bfl = sizeof(bf);
 	WODXMPPCOMLib::XMPP_Contact_GetJID(Contact, bf, &bfl);
-	j = bf;
+	j.FromUTF8String(bf, strlen(bf));
 #endif
 	{
-		char *jd1 = j.ToString();
+		char *jd1 = j.ToUTF8String();
 		char *jd2 = strchr(jd1, '/');
 		if (jd2)
 			*jd2 = 0;
@@ -115,13 +115,14 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 		for (int i=0;!found && i<_Settings.m_AuthRequests.size();i++)
 		{
 			CComBSTR2 b = _Settings.m_AuthRequests[i];
-			if (!stricmp(b.ToString(), jd1)) // if they are same
+			if (!stricmp(b.ToUTF8String(), jd1)) // if they are same
 				found = TRUE;
 		}
 
 		if (!found)
 		{
-			CComBSTR j3 = jd1;
+			CComBSTR2 j3;
+			j3.FromUTF8String(jd1, strlen(jd1));
 			_Settings.m_AuthRequests.push_back(j3.Copy());
 		}
 	}
@@ -291,7 +292,10 @@ void __stdcall CJabberEvents::DispConnected ()
 		*j1 = 0;
 		j1++;
 	}
-	_Settings.m_JID = buff;
+	CComBSTR2 mj;
+	mj.FromUTF8String(buff, strlen(buff));
+	_Settings.m_JID.Empty();
+	_Settings.m_JID.Attach(mj.Detach());
 	if (j1)
 		_Settings.m_Resource = j1;
 
@@ -1311,7 +1315,11 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	if (a)
 		*a = 0;
 
-	CComBSTR l = JID,p = pass,h = hostname;
+	CComBSTR2 _l;
+	_l.FromUTF8String(JID, strlen(JID));
+	CComBSTR l;
+	l.Attach(_l.Detach());
+	CComBSTR p = pass,h = hostname;
 	int prt = port;
 	
 	l += "/";
@@ -1366,7 +1374,7 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	}
 
 	CComBSTR2 l1 = l;
-	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
+	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToUTF8String());
 	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
 	if (prt)
 		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, prt);

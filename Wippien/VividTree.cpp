@@ -218,7 +218,8 @@ void CVividTree::DrawItems(CDC *pDC)
 						cf = RGB(96,96,96);
 
 					pDC->SetTextColor(RGB(0,0,0));
-					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
+					::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), &rcc, DT_LEFT | DT_CALCRECT);
+					//pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 					if (_Settings.m_ShowContactActivity)
 					{
 						int l = rc_item.left;
@@ -249,11 +250,13 @@ void CVividTree::DrawItems(CDC *pDC)
 					}
 
 
-					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
+					::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), rc_item, DT_LEFT);
+					//pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (user->m_Block)
 					{
 						RECT rc2 = {0};
-						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rc2, DT_LEFT | DT_CALCRECT);
+						::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), &rc2, DT_LEFT | DT_CALCRECT);
+//						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rc2, DT_LEFT | DT_CALCRECT);
 //						rc2.left += rc_item.left;
 //						rc2.top += rc_item.top;
 						m_LockContact.Draw(pDC->m_hDC, rc_item.left+rc2.right+2, rc_item.top+2);
@@ -265,7 +268,8 @@ void CVividTree::DrawItems(CDC *pDC)
 					if (!selected)
 						pDC->SetTextColor(RGB(56,56,56));
 
-					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
+					::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), rc_item, DT_LEFT);
+//					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (!user->m_Online && user->m_WippienState==WipConnected)
 						pDC->SetTextColor(RGB(127,127,127));
 					else
@@ -278,8 +282,10 @@ void CVividTree::DrawItems(CDC *pDC)
 					memcpy(&rc1,&rc_item, sizeof(RECT));
 					if (_Settings.m_ShowContactStatus && !user->m_ChatRoomPtr)
 					{
-						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
-						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
+//						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
+//						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
+						::DrawTextW(pDC->m_hDC, user->m_bstrSubText, user->m_bstrSubText.Length(), &rc1, DT_LEFT | DT_CALCRECT);
+						::DrawTextW(pDC->m_hDC, user->m_bstrSubText, user->m_bstrSubText.Length(), rc_item, DT_LEFT);
 					}
 					if (_Settings.m_ShowContactIP)
 					{

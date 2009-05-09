@@ -996,6 +996,8 @@ void CUser::SetSubtext(void)
 		}
 		else
 			sprintf(m_SubText, "%s", m_StatusText);
+		
+		m_bstrSubText.FromUTF8String(m_SubText);
 	}
 	else
 	{
@@ -1031,6 +1033,9 @@ void CUser::SetSubtext(void)
 		}
 		else
 			strcpy(m_SubText, m_StatusText);
+
+
+		m_bstrSubText.FromUTF8String(m_SubText);
 	}
 	if (ison && m_HisVirtualIP)
 	{

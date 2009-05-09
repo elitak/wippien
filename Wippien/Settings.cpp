@@ -373,11 +373,19 @@ CXmlEntity *CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, CComBSTR &Va
 	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
 	if (ent)
 	{
-		Value = ent->Value;
+		CComBSTR2 v;
+		v.FromUTF8String(ent->Value, strlen(ent->Value));
+		Value.Empty();
+		Value.Attach(v.Detach());
 		return ent;
 	}
 	else
-		Value = default_value;
+	{
+		CComBSTR2 v;
+		v.FromUTF8String(default_value, strlen(default_value));
+		Value.Empty();
+		Value.Attach(v.Detach());
+	}
 	return NULL;
 }
 CXmlEntity *CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, char *Value, char *default_value)
@@ -520,7 +528,7 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "LastOperatorMessageID", &m_LastOperatorMessageID, LASTOPERATORMSGID);
 			ReadSettingsCfg(wip, "JID", m_JID, "");
 			CComBSTR2 mj = m_JID;
-			char *mj2 = mj.ToString();
+			char *mj2 = mj.ToUTF8String();
 			char *mj3 = strchr(mj2, '@');
 			if (mj3)
 				*mj3 = NULL;
@@ -784,7 +792,8 @@ int CSettings::LoadConfig(void)
 					ent = CXmlEntity::FindByName(auth, "JID", 1);
 					if (ent)
 					{
-						CComBSTR2 d = ent->Value;
+						CComBSTR2 d;
+						d.FromUTF8String(ent->Value, strlen(ent->Value));
 						m_AuthRequests.push_back(d.Copy());
 						ent->Name[0] = 0;
 					}
@@ -925,6 +934,7 @@ int CSettings::LoadUsers(void)
 
 						ReadSettingsCfg(ent, "Name", user->m_JID, "");
 						ReadSettingsCfg(ent, "VisibleName", user->m_VisibleName, user->m_JID);
+						user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 						ReadSettingsCfg(ent, "Block", &user->m_Block, FALSE);
 						ReadSettingsCfg(ent, "VCard", &user->m_GotVCard, 0);
 						ReadSettingsCfg(ent, "Group", user->m_Group, "");
@@ -1098,10 +1108,10 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("LastOperatorMessageID", m_LastOperatorMessageID);
 	
 	CComBSTR2 j = m_JID;
-	x.AddChildElem("JID", j.ToString());
+	x.AddChildElem("JID", j.ToUTF8String());
 	j.Empty();
 	j = m_Nick;
-	x.AddChildElem("Nick", j.ToString());
+	x.AddChildElem("Nick", j.ToUTF8String());
 	x.AddChildElem("UseSSLWrapper", m_UseSSLWrapper?"1":"0");
 
 
@@ -1253,7 +1263,7 @@ BOOL CSettings::SaveConfig(void)
 	for (i=0;i<m_AuthRequests.size();i++)
 	{
 		CComBSTR2 b = m_AuthRequests[i];
-		x.AddChildElem("JID", b.ToString());
+		x.AddChildElem("JID", b.ToUTF8String());
 	}
 	x.Append("</AuthRequests>\r\n");
 

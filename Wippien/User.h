@@ -19,6 +19,7 @@
 #include "Crypto_AES.h"
 #include "CwodWinSocket.h"
 #include "VoiceChat.h"
+#include "ComBSTR2.h"
 
 #ifdef _WODVPNLIB
 namespace WODVPNCOMLib
@@ -128,6 +129,7 @@ public:
 	char m_JID[256];
 	char m_Resource[256], m_LastResource[256];;
 	char m_VisibleName[256];
+	CComBSTR2 m_bstrVisibleName, m_bstrSubText;
 	char m_Email[128];
 	char m_SubText[256];
 	char m_IPText[128];

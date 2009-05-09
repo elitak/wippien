@@ -171,7 +171,7 @@ void CSDKMessageLink::CJabberWiz::Connect(char *JID, char *pass, char *hostname,
 
 #else
 	CComBSTR2 l1 = l;
-	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToString());
+	WODXMPPCOMLib::XMPP_SetLogin(m_Jabb, l1.ToUTF8String());
 	WODXMPPCOMLib::XMPP_SetPassword(m_Jabb, pass);
 	if (port)
 		WODXMPPCOMLib::XMPP_SetPort(m_Jabb, port);
@@ -895,6 +895,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 								if (a)
 								{
 									strcpy(user->m_VisibleName, a);
+									user->m_bstrVisibleName.FromUTF8String(a);
 									free(a);
 								}
 							}

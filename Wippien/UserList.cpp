@@ -235,6 +235,7 @@ CUser *CUserList::AddNewUser(char *j, void *contact)
 
 			gblen = sizeof(user->m_VisibleName);
 			WODXMPPCOMLib::XMPP_Contact_GetNick(contact, user->m_VisibleName, &gblen);
+			user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 			
 #endif
 		}
@@ -463,12 +464,14 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 					char jdbuff[1024];
 					int jdlen = sizeof(jdbuff);
 					WODXMPPCOMLib::XMPP_Contact_GetJID(contact, jdbuff, &jdlen);
-					CComBSTR2 jid, jd = jdbuff, jdnew = jdbuff;
+					CComBSTR2 /*jid, */jd, jdnew;
+					jd.FromUTF8String(jdbuff);
+					jdnew.FromUTF8String(jdbuff);
 
 					{
 #endif
 						char *res = NULL;
-						char *jd1 = jdnew.ToString();
+						char *jd1 = jdnew.ToUTF8String();
 						char *jd2 = strchr(jd1, '/');
 						if (jd2)
 						{
@@ -478,14 +481,14 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						}
 						else
 							jd2="";
-						jid = jd1;
+//						jid = jd1;
 //						ATLTRACE("user=%s \r\n", jd.ToString());
 //						if (res)
 //							ATLTRACE("res=%s \r\n", res);
 
 
-						char *j = jid.ToString();						
-						if (_Settings.IsHiddenContact(j))
+//						char *j = jid.ToString();						
+						if (_Settings.IsHiddenContact(jd1))
 							continue;
 
 
@@ -497,7 +500,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						for (int k=0;!found && k<m_Users.size();k++)
 						{
 							user = (CUser *)m_Users[k];
-							if ( !stricmp(user->m_JID, j))
+							if ( !stricmp(user->m_JID, jd1))
 							{
 								memcpy(&ChatWindowRect, &user->m_ChatWindowRect, sizeof(ChatWindowRect));
 								ChatWindowRectUsed = TRUE;
@@ -545,13 +548,14 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								user = AddNewUser(jd1, contact);
 								strcpy(user->m_VisibleName, jd2);
 								strcpy(user->m_Resource, res);
+								user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 								user->SetDebugLogFile();
 							}
 							else
 							{
 								if (stat != (WODXMPPCOMLib::StatusEnum)8) // unsubscribed
 								{
-									user = AddNewUser(j, contact);
+									user = AddNewUser(jd1, contact);
 									if (ChatWindowRectUsed)
 										memcpy(&user->m_ChatWindowRect, &ChatWindowRect, sizeof(ChatWindowRect));
 								}
@@ -699,6 +703,8 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 														{
 															*nlend = 0;
 															strcpy(user->m_VisibleName, trim(nickbuff));
+															user->m_bstrVisibleName.Empty();
+															user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 														}
 
 														if (!user->m_IsUsingWippien)
@@ -2090,6 +2096,8 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 				if (ndlg.m_VisibleName[0])
 				{
 					strcpy(user->m_VisibleName, ndlg.m_VisibleName);
+					user->m_bstrVisibleName.Empty();
+					user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 					user->m_Changed = TRUE;
 //					user->m_TreeItem = (HTREEITEM)-1;
 					m_SortedUsersBuffer.Clear();
@@ -2454,7 +2462,8 @@ void CUserList::OnVCard(WODXMPPCOMLib::IXMPPContact *Contact, BOOL Partial, BOOL
 								{
 									if (vis.Length()<sizeof(user->m_VisibleName))
 									{
-										strcpy(user->m_VisibleName , vis.ToString());
+										strcpy(user->m_VisibleName , vis.ToUTF8String());
+										user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 									}
 								}
 							}

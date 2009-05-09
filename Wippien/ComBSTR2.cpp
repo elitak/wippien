@@ -131,3 +131,62 @@ char *CComBSTR2::ToPersistentString()
 	else
 		return ToString();
 }
+
+void CComBSTR2::FromUTF8String(char *Source, int nLen)
+{
+	::SysFreeString(m_str);
+	int nConvertedLen = MultiByteToWideChar(CP_UTF8, 0, Source, nLen+1, NULL, NULL)-1;
+	m_str = ::SysAllocStringLen(NULL, nConvertedLen);
+	if (m_str != NULL)
+	{
+		MultiByteToWideChar(CP_UTF8, 0, Source, -1,
+			m_str, nConvertedLen);
+	}
+}
+void CComBSTR2::FromUTF8String(char *Source)
+{
+	FromUTF8String(Source, strlen(Source));
+}
+
+char *CComBSTR2::ToUTF8String()
+{
+	return ToUTF8String(NULL);
+}
+char *CComBSTR2::ToUTF8String(int *Len)
+{
+	if (m_Buffer)
+		free(m_Buffer);
+	m_Buffer = NULL;
+
+	if (Len)
+		*Len = 0;
+	int result = ::WideCharToMultiByte(CP_UTF8, 0, m_str, Length() ,0,0 , NULL, NULL);
+	if (result<1)
+		return ToString();
+
+	m_Buffer = (char *)malloc(result + 1);
+	memset(m_Buffer, 0, result+1);
+	::WideCharToMultiByte(CP_UTF8, 0, m_str, Length() ,m_Buffer,result , NULL, NULL);
+	m_Buffer[result]=0;
+
+	if (Len)
+		*Len = result;
+	return m_Buffer;
+}
+
+void CComBSTR2::FromTextBox(HWND h)
+{
+	::SysFreeString(m_str);
+	int cch = GetWindowTextLengthW(h);
+	WCHAR *pszTitle = new WCHAR[cch + 1];
+    pszTitle[0] = '\0';
+
+	GetWindowTextW(h, pszTitle, cch + 1);
+    pszTitle[cch] = '\0';
+
+    CComBSTR cbstrTitle;
+    cbstrTitle = pszTitle;
+    delete [] pszTitle;
+
+	Attach(cbstrTitle.Detach());
+}

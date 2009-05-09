@@ -20,6 +20,13 @@ public:
 		char *ToString(void);
 		char *ToString(int *Len);
 		char *ToPersistentString(void);
+		void FromUTF8String(char *Source, int nLen);
+		void FromUTF8String(char *Source);
+		void FromTextBox(HWND h);
+		char *ToUTF8String(int *Len);
+		char *ToUTF8String(void);
+
+
 		char *m_Buffer;
 
 		CComBSTR2();
@@ -29,7 +36,6 @@ public:
 		CComBSTR2(const CComBSTR& src );
 		CComBSTR2(REFGUID src); 
 		CComBSTR2(LPCSTR pSrc);
-
 
 		virtual ~CComBSTR2();
 };

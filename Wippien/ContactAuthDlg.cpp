@@ -203,7 +203,7 @@ BOOL CContactAuthDlg::UpdateWin()
 	}
 #else
 	void *ct;
-	if (SUCCEEDED(WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, jid.ToString(), &ct)))
+	if (SUCCEEDED(WODXMPPCOMLib::XMPP_ContactsGetContactByJID(_Jabber->m_Jabb, jid.ToUTF8String(), &ct)))
 	{
 		if (ct)
 		{
@@ -215,7 +215,9 @@ BOOL CContactAuthDlg::UpdateWin()
 				*jd2 = 0;
 			m_JID = jfb;
 			WODXMPPCOMLib::XMPP_Contacts_Free(ct);
-			SetDlgItemText(IDC_CONTACTJID, jfb);
+			CComBSTR2 j2;
+			j2.FromUTF8String(jfb, strlen(jfb));
+			::SetDlgItemTextW(m_hWnd, IDC_CONTACTJID, j2);
 		}
 	}
 #endif

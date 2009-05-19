@@ -1,6 +1,6 @@
 # Danish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Darkeydence
-# Version: 61
+# Version: 67
 Ingen fejl.  ##  No error.
 Systemet kan ikke finde den specificerede fil.  ##  The system cannot find the file specified.
 Systemet kan ikke finde den specificerede sti.  ##  The system cannot find the path specified.
@@ -18,7 +18,7 @@ Generic error for invalid format, entry, etc.  ##  Generic error for invalid for
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-  ##  The specified address is already in use.
+Den angivne adresse er allerede i brug.  ##  The specified address is already in use.
 The specified address is not available.  ##  The specified address is not available.
 The connected network is not available.  ##  The connected network is not available.
 The connected network is not reachable.  ##  The connected network is not reachable.
@@ -81,7 +81,7 @@ Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
+  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
 Filen blev ikke fundet.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
@@ -543,3 +543,10 @@ Contact is typing...  ##  Contact is typing...
 says  ##  says
 said  ##  said
 You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

@@ -1,6 +1,6 @@
 # Slovenian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: _black_cell_
-# Version: 178
+# Version: 181
 Ni napak.  ##  No error.
 Sistem ne more najti iskane datoteke.  ##  The system cannot find the file specified.
 Sistem ne najde iskane poti.  ##  The system cannot find the path specified.
@@ -352,7 +352,7 @@ Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' t
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Prekliči  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
+  ##  Please enter key passphrase
 Add &New  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
 Disconnect adapter on exit  ##  Disconnect adapter on exit
@@ -543,3 +543,10 @@ Stik piše...  ##  Contact is typing...
 pravi  ##  says
 je rekel  ##  said
 Tukaj lahko uporabite vaš GMAIL račun.  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

@@ -1,6 +1,6 @@
 # Italian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 8
+# Version: 11
 Nessun errore.  ##  No error.
 Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
@@ -261,7 +261,7 @@ Quale sarà il vestito di Wippien?  ##  What will Wippien wear?
 "Non al PC" automatico  ##  Auto Away
 Impostazioni "Non al PC" automatico  ##  Auto away settings.
 Determina il comportamento di Wippien quando il sistema è inattivo.  ##  Determines how will Wippien behave when system is inactive.
-  ##  System
+Sistema  ##  System
 Messaggi di sistema.  ##  Basic system messages.
 Definisce il comportamento di Wippien.  ##  Define Wippien application's behavior.
 Chat vocale  ##  Voice Chat
@@ -543,3 +543,10 @@ Il contatto sta scrivendo...  ##  Contact is typing...
 dice  ##  says
 ha detto  ##  said
 Puoi utilizzare un account GMAIL.  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+Sensibilità del microfono  ##  Microphone sensitivity
+Parla nel tuo microfono e aggiusta la barra. Non ci dovrebbero essere movimenti nell'attività del tuo monitor se non parli, al contrario dovrebbero essere al massimo se parli a voce alta.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

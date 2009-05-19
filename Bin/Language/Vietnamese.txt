@@ -1,51 +1,51 @@
-# Vietnamese template text
+# Vietnamese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Nguyen Hung
-# Version: 3
+# Version: 15
 Không có lỗi.  ##  No error.
 Hệ thống không thể tìm thấy tệp được định dạng.  ##  The system cannot find the file specified.
-Hệ thống không thể tìm thấy đường dẫn được định dạng.  ##   The system cannot find the path specified.
+Hệ thống không thể tìm thấy đường dẫn được định dạng.  ##  The system cannot find the path specified.
 Hệ thống không thể tìm thấy tệp/ thư mục được định dạng.  ##  The system cannot find the specified file/directory.
 Lỗi đánh máy.  ##  Type mismatch.
-Tệp/thư mục đã tồn tại không thể tạo lại.  ## Cannot create a file/directory when that file/directory already exists.
-Hệ thống không thể ghi đè lên thiết bị đã định dạng.  ##The system cannot write to the specified device.
-Giá trị thuộc tính không phù hợp.   ##  Invalid Property Value.
+Tệp/thư mục đã tồn tại không thể tạo lại.  ##  Cannot create a file/directory when that file/directory already exists.
+Hệ thống không thể ghi đè lên thiết bị đã định dạng.  ##  The system cannot write to the specified device.
+Giá trị thuộc tính không phù hợp.  ##  Invalid Property Value.
 Quá trình đã quay lại do thời gian diễn ra đã hết.  ##  This operation returned because the timeout period expired.
 Hệ thống gián đoạn trong quá trình kết nối.  ##  System level interrupt interrupted socket operation.
 Lỗi chung do định dạng không phù hợp, định dạng kém.  ##  Generic error for invalid format, bad format.
 Cố gắng đã được tạo ra để truy cập vào một kết nối theo cách bị cấm bởi quyền truy cập của nó.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 Hệ thống phát hiện địa chỉ con trỏ không tương thích trong quá trình cố gắng sử dụng một hàm con trỏ trong việc gọi ra.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Lỗi chung do không tương thích định dạng, nhập vào, v.v.  ##  Generic error for invalid format, entry, etc.
-Hàm đã cung cấp không tương thích.   ## An invalid argument was supplied.
+Hàm đã cung cấp không tương thích.  ##  An invalid argument was supplied.
 Địa chỉ IP cung cấp không đúng hoặc máy chủ được định dạng bởi  địa chỉ IP này không tồn tại.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Khe kết nối không tương thích hoặc không kết nối được tới trình điều khiển.   ##  Invalid socket or not connected to remote.
+Khe kết nối không tương thích hoặc không kết nối được tới trình điều khiển.  ##  Invalid socket or not connected to remote.
 Địa chỉ định dạng đã được sử dụng.  ##  The specified address is already in use.
 Địa chỉ định dạng không tồn tại.  ##  The specified address is not available.
 Kết nối vào mạng chưa sẵn sàng..  ##  The connected network is not available.
-Không thể kết nối được vào mạng.   ##  The connected network is not reachable.
+Không thể kết nối được vào mạng.  ##  The connected network is not reachable.
 Kết nối vào mạng đang được khởi động lại.  ##  The connected network connection has been reset.
 Kết nối hiện tại đang bị loại ra bởi hệ thống mạng hoặc dịch vụ trung gian.  ##  The current connection has been aborted by the network or intermediate services.
-Khe kết nối hiện tại đang được khởi động lại.   ##  The current socket connection has been reset.
+Khe kết nối hiện tại đang được khởi động lại.  ##  The current socket connection has been reset.
 Khe kết nối hiện tại không thể kết nối.  ##  The current socket has not been connected.
 Kết nối đã bị đóng.  ##  The connection has been shutdown.
 Kết nối hiện tại đang bị ngừng tạm thời.  ##  The current connection has timeout.
 Yêu cầu kết nối bị từ chối bởi trình điều khiển máy chủ.  ##  The requested connection has been refused by the remote host.
 Định dạng tên máy chủ quá dài.  ##  Specified host name is too long.
 Trình điều khiển máy chủ hiện tại không tồn tại.  ##  Remote host is currently unavailable.
-Trình điều khiển máy chủ hiện tại không thể kết nối tới.  ##  Remote host is currently unreachable. 
+Trình điều khiển máy chủ hiện tại không thể kết nối tới.  ##  Remote host is currently unreachable.
 Trình điều khiển máy chủ  chưa sẵn sàng.  ##  Remote system is not ready.
 Phiên bản khe kết nối hiện tại không hỗ trợ bởi ứng dụng.  ##  Current socket version not supported by application.
 Khe kết nối API (giao diện chương trình ứng dụng) không được sử dụng.  ##  Socket API is not initialized.
 Khe kết nối bị ngắt.  ##  Socket has been disconnected.
 Không tìm thấy máy chủ.  ##  Host not found.
-Không đủ bộ nhớ để hoàn thành quá trình.Not enough memory is available to complete this operation.
+Không đủ bộ nhớ để hoàn thành quá trình.Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
 Từ tìm kiếm không xác định được.  ##  Unknown search type.
 Hàm cho phương thức tìm kiếm không xác định được.  ##  Unknown argument for Search method.
-Sẵn sàng khởi động.   ##  Already started.
-Kênh đã sẵn sàng khởi động.   ##  Channel already started.
+Sẵn sàng khởi động.  ##  Already started.
+Kênh đã sẵn sàng khởi động.  ##  Channel already started.
 Không thể thay đổi thiết lập kênh khi kênh đã bắt đầu.  ##  Cannot change channel setup while channel is started.
 Quá nhiều dữ liệu trên khe kết nối. Thử lại sau.  ##  Too much data on the socket. Try later.
 Kết nối không được thiết lập.  ##  Connection not established.
-Kiểu dữ liệu không được biết đến.    ##Unknown data type.
+Kiểu dữ liệu không được biết đến.  ##  Unknown data type.
 Lỗi khi tạo luồng  khe kết nối.  ##  Failed to create socket thread.
 Kiểu kênh không được biết đến.  ##  Unknown channel type.
 Thuộc tính địa chỉ máy chạm đã cung cấp hàm không tương thích.  ##  Invalid argument was supplied in LocalAddress property.
@@ -55,17 +55,17 @@ Kênh bị từ chối bởi phía máy chủ.  ##  Channel refused by remote si
 Phiên bản trình điều khiển giao thức không được hỗ trợ.  ##  Unsupported remote protocol version.
 wodVPN chưa sẵn sàng. Sử dụng "Bắt đầu" trước.  ##  wodVPN not yet started. Use Start first.
 Kênh đã được đóng.  ##  Channel was closed.
-Kích cỡ MTU quá lớn.   ##  MTU size too large.
+Kích cỡ MTU quá lớn.  ##  MTU size too large.
 Kích cỡ MTU quá nhỏ.  ##  MTU size too small.
 Yêu cầu gửi không tương thích.  ##  Invalid socks request.
-Mật khẩu không tương thích. Sai mật khẩu.   ##  Invalid password. Does not match remote peer's password.
+Mật khẩu không tương thích. Sai mật khẩu.  ##  Invalid password. Does not match remote peer's password.
 ID máy chạm chưa thiết lập. Phương thức tìm kiếm được đòi hỏi.  ##  Local ID not set. It is required for Search method.
 ID Điều khiển chưa thiết lập. Phương thức tìm kiếm được đòi hỏi.  ##  Remote ID not set. It is required for Search method.
 Không thể gán địa chỉ IP đã định dạng.  ##  Cannot bind to specified IP address.
 Quá trình chuyển tệp đã sắn sàng.  ##  Already performing file transfer.
 Tệp không được tìm thấy.  ##  File not found.
 Lỗi ghi tệp.  ##  Failed to write file.
-Không thể mở cổng kết nối mạng.   ##  Could not open network adapter.
+Không thể mở cổng kết nối mạng.  ##  Could not open network adapter.
 Chỉ một cổng kết nối mạng có thể được sử dụng lúc này.  ##  Only one adapter can be used at a time.
 Mã cấp phép sai. Bạn không thể sử dụng thành phần này trong môi trường thiết kế.  ##  License key missing. You can not use this component in design environment.
 Không nhận dạng được lỗi.  ##  Unrecognized Error.
@@ -79,11 +79,11 @@ Thuộc tính "Mật khẩu" chưa thiết lập.  ##  Password property not set
 Gói XML không tương thích.  ##  Invalid XML packet.
 Gói XML nối tiếp ID không tương thích.  ##  Invalid XML packet sequence ID.
 Đăng nhập không tương thích: %s  ##  Invalid login: %s.
-Đối tác đã tồn tại trong danh mục.   ##  Contact already exists in the collection.
+Đối tác đã tồn tại trong danh mục.  ##  Contact already exists in the collection.
 SSL không thể vượt qua được.  ##  SSL could not be negotiated.
 Lỗi đăng ký người dùng mới: %s.  ##  Failed to register new user: %s.
 Khai báo không được biết đến.  ##  Unknown notification.
-Tệp không được tìm thấy.   ## File not found.
+Tệp không được tìm thấy.  ##  File not found.
 Bạn phải định dạng kiểu ảnh (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Lỗi trích xuất ảnh.  ##  Failed to import photo.
 Phương thức khác đang bị khóa trong quá trình.  ##  Another blocking method in progress.
@@ -128,7 +128,7 @@ Thực thi lệnh trên máy chủ.  ##  Executing command on server
 Ngắt kết nối khỏi máy chủ.  ##  Disconnecting from the server
 Yêu cầu xác nhận.  ##  Requested authorization
 Đang điều chỉnh cổng kết nối mạng Wippien.  ##  Configuring Wippien network adapter...
-Cổng kết nối \"%s\" với địa chỉ %s xung đột với  cổng kết nối %s của Wippien. Có khả năng Wippien sẽ không gửi hoặc nhận các gói thông tin. Vui lòng gỡ bỏ hoặc ngắt cổng kết nối này.   ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Cổng kết nối \"%s\" với địa chỉ %s xung đột với  cổng kết nối %s của Wippien. Có khả năng Wippien sẽ không gửi hoặc nhận các gói thông tin. Vui lòng gỡ bỏ hoặc ngắt cổng kết nối này.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Cổng kết nối mạng bị ngắt.  ##  Network adapter disabled!
 Cổng kết nối mạng được mở.  ##  Network adapter opened
 Cổng kết nối mạng Wippien chưa sẵn sàng. Bạn có muốn tiếp tục chỉ với IM?  ##  Wippien network adapter not available. Proceed with IM only?
@@ -173,7 +173,7 @@ Gửi tệp.  ##  Send file
 Chi tiết.  ##  Details
 Thông tin đối tác.  ##  Contact information
 Xóa.  ##  Clear
-Xóa lịch sử.   ## Clear history
+Xóa lịch sử.  ##  Clear history
 Câm.  ##  Mute
 Đậm.  ##  Bold
 Nghiêng.  ##  Italic
@@ -181,7 +181,7 @@ Gạch chân.  ##  Underline
 Chèn link.  ##  Insert hyperlink
 Giảm kích cỡ font chữ.  ##  Decrease font size
 Để mặc định kích cỡ font chữ.  ##  Reset font size
-Tăng kích cỡ font chữ.   ##Increase font size
+Tăng kích cỡ font chữ.  ##  Increase font size
 Thiết lập mầu chữ.  ##  Set Foreground color
 Thiết lập mầu nền.  ##  Set Background color
 Biểu tượng.  ##  Emoticons
@@ -223,7 +223,7 @@ Cái này sẽ xác định người sẽ giúp đỡ chia sẻ kết nối ngan
 Kiểm tra lần cuối.  ##  Last check
 Cổng.  ##  Port
 Máy chủ.  ##  Hostname
-Cố định.   ## Permanent
+Cố định.  ##  Permanent
 Tạm thời.  ##  Temporary
 Nhập tất cả tài khoản của bạn vào đây.  ##  Enter all your accounts here.
 Bạn có thể thêm bất cứ tài khoản nào được hỗ trợ bỏi máy chủ Jabber( mặc định như: ICQ,MSN...)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
@@ -235,7 +235,7 @@ Hiển thị tất cả các dịch vụ.  ##  Show all services
 Bạn bè.  ##  Contacts
 Thêm/ Xóa bỏ.  ##  Add/Remove
 Tìm bạn bè mới.  ##  Find new contacts.
-Bạn có thể thêm bạn bè mới của mạng Jabber, ICQ, MSN ...  You can add new Jabber, ICQ, MSN... contacts
+Bạn có thể thêm bạn bè mới của mạng Jabber, ICQ, MSN ...  You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 Tất cả các tệp (*.*)\0*\0TXT các tệp (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Tất cả các dạng tệp ảnh (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Định dạng ảnh của Windows (*.bmp)\0*.bmp\0Tệp Jpeg (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0Tệp GIF (*.gif)\0*.gif\0Tệp PNG  (*.png)\0*.png\0Tất cả các tệp (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Hệ thống.  ##  System
@@ -248,7 +248,7 @@ Cho tất cả của sổ chat mở  ##  For all open chat windows.
 Giới thiệu chung  ##  General info
 Về thông tin chung  ##  General information about
 Thông tin cá nhân  ##  Personal information
-Về chi tiết nơi ở   ##  Home details for
+Về chi tiết nơi ở  ##  Home details for
 Thông tin công việc  ##  Business information
 Về chi tiết công việc  ##  Work details for
 Các thứ khác  ##  all other
@@ -256,7 +256,7 @@ Các thứ khác  ##  all other
 Giao diện  ##  Appearance
 Lớp vỏ  ##  Skins
 Chọn lớp vỏ từ danh sách dưới đây.  ##  Choose skin from below list.
-Wippien sẽ mặc gì?  What will Wippien wear?
+Wippien sẽ mặc gì?  What will Wippien wear?  ##  What will Wippien wear?
 ..Không có gì..  ##  .. none ..
 Tự động ra ngoài.  ##  Auto Away
 Thiết lập tự đông ra ngoài  ##  Auto away settings.
@@ -267,7 +267,7 @@ Các tin nhắn hệ thống cơ bản  ##  Basic system messages.
 Chat thoại  ##  Voice Chat
 Vui lòng thiết lập phương tiện chat thoại  ##  Please setup your voice chat devices.
 Lựa chọn từ danh sách dưới đây.  ##  Choose from list below.
-<Mặc định hệ thống>   ##  <system default>
+<Mặc định hệ thống>  ##  <system default>
 Thiết lập cơ bản cho đối tác  ##  Contacts basic settings.
 Cập nhật  ##  Updates
 Xác định cập nhật  ##  Update definitions.
@@ -282,7 +282,7 @@ Bạn bè đang trên mạng  ##  Contact online
 Bạn bè không trên mạng  ##  Contact offline
 Tin nhắn đến  ##  Message in
 Tin nhắn đi  ##  Message out
-Lỗi   ## Error
+Lỗi  ##  Error
 Tệp WAV  (*.wav)\0*.wav\0Tất cả các tệp (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Ẩn  ##  Hide
 Ẩn bạn bè  ##  Hide contacts.
@@ -302,24 +302,24 @@ Tên phòng  ##  Room name
 Tường lửa  ##  Firewall
 Thiết lập qui tắc của tường lửa  ##  Set up firewall rules.
 Bạn có thể thiết lập cổng chỉ có thể truy cập bởi bạn bè của bạn  ##  You can set up which ports can be accessed by your contacts.
-* Tất cả lộ tuyến ICMP* All ICMP traffic
+* Tất cả lộ tuyến ICMP* All ICMP traffic  ##  * All ICMP traffic
 Nhưng khóa lại những cổng này  ##  But block these ports
 Nhưng cho phép những cổng này  ##  But allow these ports
 Cập nhật Wippien  ##  Wippien update
-Đã có phiên bản mới của Wippien. Tải về?   ##New version of Wippien is available. Download?
-Click vào đây để xem những gì mới.  ## Click here to see what's new.
+Đã có phiên bản mới của Wippien. Tải về?  ##  New version of Wippien is available. Download?
+Click vào đây để xem những gì mới.  ##  Click here to see what's new.
 Phiên bản Wippien của bạn được cập nhật ngày  ##  Your version of Wippien is up-to-date.
-Lỗi kết nối tới máy chủ điều khiển  ## Error connecting to remote server.
+Lỗi kết nối tới máy chủ điều khiển  ##  Error connecting to remote server.
 Tải về xong. Bạn có muốn thay thế ngay bây giờ?  ##  Download successful. Replace now?
 Lỗi cập nhật Wippien!  ##  Wippien update error!
 Phiên bản mới của Wippien được tìm thấy tại máy bạn. Thay thế nhé?  ##  New version of Wippien found localy. Replace?
 Phiên bản mới  ##  New version
-Thay đổi trạng thái:  ##  Status changed: 
-ngày  ## day
+Thay đổi trạng thái:  ##  Status changed:
+ngày  ##  day
 các ngày  ##  days
-giờ  ## hour
+giờ  ##  hour
 các giờ  ##  hours
-phút   ##  minute
+phút  ##  minute
 các phút  ##  minutes
 Lần gặp cuối: chưa bao giờ  ##  Last seen: never
 hiện tại đang không ở trên mạng  ##  is currently offline
@@ -344,7 +344,7 @@ Tôi đã có tài khoản Jabber  ##  I have existing Jabber account
 &Tìm kiếm  ##  &Search
 Bạn nên nhập ID Jabber của bạn (JID) ở đây. Wippien sử dụng mạng Jabber để hiển thị-thông báo với bạn bè của bạn rằng bạn đang trên mạng, để xem thông tin của bạn bè v.v.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 Nếu bạn không có JID bạn nên đăng ký một cái mới. Bạn có thể thực hiện trên máy chủ Jabber nêu muốn. Có rất nhiều máy chủ sẵn sàng. Bạn có thể tìm thấy danh sách máy chủ hiện tại đang mở bằng cách ấn vào nút bên.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
-JID   ## JID
+JID  ##  JID
 Mật khẩu  ##  Password
 Máy chủ  ##  Server
 Cổng  ##  Port
@@ -354,7 +354,7 @@ O&K  ##  O&K
 &Hủy bỏ  ##  &Cancel
 Vui lòng chọn phím từ kiểm tra.  ##  Please enter key passphrase
 Thêm & Mới  ##  Add &New
-Hiển thị thông báo khi cổng kết nối cạc mạng không sẵn sàng.   ## Show notification if ethernet adapter is unavailable.
+Hiển thị thông báo khi cổng kết nối cạc mạng không sẵn sàng.  ##  Show notification if ethernet adapter is unavailable.
 Ngát kết nối khỏi cổng khi thoát.  ##  Disconnect adapter on exit
 Cổng UDP dành cho gói dữ liệu vào ra(0 cho tự động lựa chọn).  ##  UDP port fort for outoing and incoming packets (0 for auto select)
 Địa chỉ IP cho cổng kết nối mạng Wippien  ##  IP address for Wippien network adapter
@@ -370,7 +370,7 @@ Thêm tài khoản mới  ##  Add new account
 Xóa tài khoản  ##  Remove account
 Đăng ký  ##  Register!
 Kết nối tin nhắn hiện tại của bạn  ##  Your current Instant messaging connections
-Tên đăng nhập   ## Username
+Tên đăng nhập  ##  Username
 Mở tài khoản mới  ##  Open new account
 Yêu cầu xác nhận  ##  Authorization request
 &Vâng  ##  &Yes
@@ -379,12 +379,12 @@ Yêu cầu xác nhận  ##  Authorization request
 &Đáp ứng tất cả  ##  &Apply to all
 &Khóa người dùng  ##  &Block user(s)
 Bạn có cho phép  ##  Do you allow
-để thêm bạn vào danh sách của bạn bè?  ##   to add you to his contact list?
+để thêm bạn vào danh sách của bạn bè?  ##  to add you to his contact list?
 chờ đợi yêu cầu thêm...  ##  more requests waiting...
 Thêm nhóm  ##  Add Group
 Xóa nhóm  ##  Remove Group
 Thêm bạn bè  ##  Add Contact
-Đặt bạn bè vào nhóm   ## Put contact to the group
+Đặt bạn bè vào nhóm  ##  Put contact to the group
 JID của bạn bè  ##  Contact JID
 Loại bạn bè  ##  Contact Type
 Hiển thị tên  ##  Visible Name
@@ -411,8 +411,8 @@ Chú ý  ##  Notes
 Địa chỉ  ##  Address
 Địa chỉ mở rộng  ##  Address Ext.
 Thành phố  ##  City
-Vùng  ## State
-ZIP   ## ZIP
+Vùng  ##  State
+ZIP  ##  ZIP
 Nước  ##  Country
 Ngày sinh  ##  Birthday
 Điện thoại  ##  Voice Tel.
@@ -424,7 +424,7 @@ Cho phép các giao diện cho kết nối trực tiếp  ##  Allowed interfaces
 Cho phép tất cả  ##  Allow All
 Nhấn lên cột đầu để thay đổi giá trị  ##  Click on first column to change values
 Nếu bạn chọn các giá trị không định dạng thì các giá trị tương tự sẽ được dùng như thiết lập'cho tất cả'  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found
+OK Lets Go  ##  Following skin files are found
 Ứng dụng  ##  Apply
 Để thêm nhiều giao diện, bạn cũng có thể dán chúng vào thư mục 'Skin'. Thêm các tệp PNG kích cỡ 100x100 để hiển thị  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 Nhiều giao diện hơn  ##  &More skins...
@@ -454,14 +454,14 @@ Không bao giờ xác nhận  ##  Never authorize
 Hỏi lại tôi  ##  Ask me
 Luôn xác nhận  ##  Always authorize
 Tự động thiết lập VPN trên tuyến mạng  ##  Automatically establish VPN on network traffic
-Tự động thiết lập VPN khi khởi động   ## Automatically establish VPN on startup
+Tự động thiết lập VPN khi khởi động  ##  Automatically establish VPN on startup
 Tiến trình  ##  Progress
 Sẵn sàng chat thoại  ##  Enable voice chat
 Quay lại thành phần  ##  Playback device
 Lưu lại thành phần  ##  Recording device
 Kiểm tra cập nhật khi Wippien khởi động  ##  Check for updates when Wippien starts
 Kiểm tra cập nhật khi kết nối.  ##  Check for updates on Connect
-Kiểm tra cho mỗi chi tiết cập nhật   ## Check for updates each
+Kiểm tra cho mỗi chi tiết cập nhật  ##  Check for updates each
 Cập nhật và khởi động lại ứng dụng trong yên lặng  ##  Update and restart application silently
 Hiển thị tin nhắn hệ thống từ bộ phận cập nhật  ##  Show system messages received from updater
 Kiểm tra ngay bây giờ  ##  &Check now
@@ -484,12 +484,12 @@ Thêm  ##  &Add
 Xóa  ##  &Remove
 Mặc định qui tắc.  ##  Default rule
 Ảnh đại diện  ##  Avatar picture
-Tên   ##  Name
+Tên  ##  Name
 Địa chỉ IP  ##  IP address
 Trang thái  ##  Status text
 Lần trên mạng gần đây nhất  ##  Last online time
-Màn hinh động   ##  Activity Monitor
-Hiển thị chi tiết   ##Visible details
+Màn hinh động  ##  Activity Monitor
+Hiển thị chi tiết  ##  Visible details
 Hiển thị chi tiết bạn bè  ##  Contact's visible details
 không được sắp xếp  ##  unsorted
 Bằng tên  ##  By name
@@ -514,7 +514,7 @@ Khóa  ##  &Block
 Thay tên  ##  &Rename
 Xóa  ##  &Delete
 Chi tiết  ##  De&tails
-Thêm/ Xóa tài khoản   ##Add/Remove &Accounts
+Thêm/ Xóa tài khoản  ##  Add/Remove &Accounts
 Thêm/ Xóa bạn bè  ##  Add/Remove &Contacts
 Trên mạng  ##  &Online
 Ra ngoài  ##  &Away
@@ -539,6 +539,14 @@ Hiện đang sử dụng ngôn ngữ  ##  Currently used language
 Thay đổi sẽ có hiệu lực trên nền tảng cần thiết. Bạn cần khởi động lại Wippien nếu bạn muốn thấy toàn bộ thay đổi.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Đã có ngôn ngữ mới. Tải về nhé?  ##  New language files available. Download?
 Hiển thị thông báo khi bạn bè lên mạng/rời mạng  ##  Show notification popup window when contact goes online/offline
-Bạn bè đang chat lại ...  ##   Contact is typing...
+Bạn bè đang chat lại ...  ##  Contact is typing...
 nói  ##  says
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+You can use your GMAIL account here.  ##  said
+Not Know  ##  You can use your GMAIL account here.
+Not Know  ##  Toggle voice chat
+Erorr  ##  Local echo
+Error  ##  UDP port 9913 busy
+Fuck You  ##  Unable to listen for incoming voice chat
+Co  ##  Microphone sensitivity
+mple  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+te  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

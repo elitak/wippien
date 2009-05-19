@@ -1,14 +1,14 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 4
+# Version: 30
 Sem erro.  ##  No error.
-O sistema não consegue encontrar o ficheiro especificado.  ##  The system cannot find the file specified.
-O sistema não encontrou o caminho especificado.  ##  The system cannot find the path specified.
-O sistema não consegue encontrar o Ficheiro/Directoria especificado.  ##  The system cannot find the specified file/directory.
-Erro de tipo de dados.  ##  Type mismatch.
-Não posso criar um ficheiro/directoria, quando já existe.  ##  Cannot create a file/directory when that file/directory already exists.
-O sistema não consegue escrever para o dispositivo especificado.  ##  The system cannot write to the specified device.
-Valor inválido para a Propriedade.  ##  Invalid Property Value.
+O Sistema não conseguiu encontrar o arquivo especificado  ##  The system cannot find the file specified.
+O Sistema não conseguiu encontrar o caminho especificado  ##  The system cannot find the path specified.
+O Sistema não conseguiu encontrar o arquivo/diretório especificado  ##  The system cannot find the specified file/directory.
+  ##  Type mismatch.
+Não é possivel criar arquivo/pasta quando elas já existem.  ##  Cannot create a file/directory when that file/directory already exists.
+O sistema não consegue gravar no dispositivo especificado  ##  The system cannot write to the specified device.
+  ##  Invalid Property Value.
 Esta operação acabou porque foi atingido o tempo de espera.  ##  This operation returned because the timeout period expired.
 Uma interrupção ao nível do Sistema, interrompeu a operação de Socket.  ##  System level interrupt interrupted socket operation.
 Erro genérico para formato inválido, formato errado.  ##  Generic error for invalid format, bad format.
@@ -16,7 +16,7 @@ Foi feito uma tentativa de acesso a um socket, de uma maneira que é proíbida p
 O sistema detectou um endereço inválido, numa tentativa de chamada através de endereço.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Erro genérico para formato inválido, entrada errada, etc.  ##  Generic error for invalid format, entry, etc.
 Foi fornecido um argumento inválido.  ##  An invalid argument was supplied.
-O endereço IP não é válido, ou o computador especificado pelo IP não existe.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Socket inválido, ou não está ligado ao remoto.  ##  Invalid socket or not connected to remote.
 O endereço especificado já está em uso.  ##  The specified address is already in use.
 O endereço especificado não está disponível.  ##  The specified address is not available.
@@ -26,8 +26,8 @@ A rede a que está ligado foi reiniciada.  ##  The connected network connection 
 A ligação actual foi interrompida pela rede ou serviços intermédios.  ##  The current connection has been aborted by the network or intermediate services.
 A ligação de socket foi reiniciada.  ##  The current socket connection has been reset.
 O socket actual ainda não está ligado.  ##  The current socket has not been connected.
-A ligação foi desligada.  ##  The connection has been shutdown.
-A ligação actual atingiu o timeout.  ##  The current connection has timeout.
+A conexão foi encerrada  ##  The connection has been shutdown.
+A conexão atingiu tempo limite  ##  The current connection has timeout.
 A ligação pedida foi recusada pelo computador remoto.  ##  The requested connection has been refused by the remote host.
 O nome de computador fornecido é muito comprido.  ##  Specified host name is too long.
 O computador remoto está indisponível.  ##  Remote host is currently unavailable.
@@ -537,9 +537,16 @@ As seguintes traduções estão disponíveis neste computador  ##  Following lan
 Definições de localização usadas neste computador  ##  Locale used on local computer
 Linguagem actual  ##  Currently used language
 Para aplicar todas as alterações deve reiniciar o Wippien.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-Novos ficheiros de linguagens. Descarrega ?  ##  New language files available. Download?
+Novos arquivos de linguagem disponiveis, baixar?  ##  New language files available. Download?
 Mostrar notificação quando o contacto está ligado/desligado  ##  Show notification popup window when contact goes online/offline
 O contacto está a escrever...  ##  Contact is typing...
 diz  ##  says
 disse  ##  said
 Pode usar a sua conta de GMAIL aqui.  ##  You can use your GMAIL account here.
+Trocar entre conversação de voz  ##  Toggle voice chat
+Echo Local  ##  Local echo
+porta UDP 9913 ocupada  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+Sencibilidade do Microfone  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Chat com voz não configurado. Tem que ser configurado antes de ser possivel usar. Configurar agora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

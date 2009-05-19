@@ -1,6 +1,6 @@
 # ChineseTraditional translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Taiwan
-# Version: 74
+# Version: 86
 沒有錯誤  ##  No error.
 系統無法批b,9�!�k��-��o�  ##  The system cannot find the file specified.
 系統無法批b,9�!�k��-��o�  ##  The system cannot find the path specified.
@@ -106,14 +106,14 @@ Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Warning  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Away  ##  Away
+警告  ##  Warning
+離線  ##  Offline
+上線  ##  Online
+離開  ##  Away
 Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
+請勿打�  ##  Do not disturb
 Extended away  ##  Extended away
-Invisible  ##  Invisible
+隱藏  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
@@ -174,10 +174,10 @@ Details  ##  Details
 Contact information  ##  Contact information
 Clear  ##  Clear
 Clear history  ##  Clear history
-Mute  ##  Mute
-Bold  ##  Bold
+靜�  ##  Mute
+粗體  ##  Bold
 Italic  ##  Italic
-Underline  ##  Underline
+底線  ##  Underline
 Insert hyperlink  ##  Insert hyperlink
 Decrease font size  ##  Decrease font size
 Reset font size  ##  Reset font size
@@ -189,8 +189,8 @@ New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will
 New emoticons  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 完成!  ##  Done!
-Contact  ##  Contact
-Connecting  ##  Connecting
+聯絡人  ##  Contact
+正在連線  ##  Connecting
 需求  ##  Requesting
 下載  ##  Downloading
 Configuration file  ##  Configuration file
@@ -329,7 +329,7 @@ is blocked  ##  is blocked
 is offline  ##  is offline
 解鎖  ##  Unblock
 封鎖  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
+  ##  Are you sure you want to remove group %s
 Remove group?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
 Remove contact?  ##  Remove contact?
@@ -543,3 +543,10 @@ Contact is typing...  ##  Contact is typing...
 says  ##  says
 said  ##  said
   ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

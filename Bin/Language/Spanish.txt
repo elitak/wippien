@@ -1,6 +1,6 @@
 # Spanish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: tdknela@gmail.com
-# Version: 5
+# Version: 20
 Sin Errores.  ##  No error.
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
@@ -140,7 +140,7 @@ Imposible dejar el mensaje.  ##  Could not deliver message.
 Fallo al cambiar la contraseńa  ##  Failed to change password
 Desconectado por inactividad  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  entrante: %s\r\nTotal saliente: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN no establecida >>  ##  << VPN not established yet >>
+<&lt; VPN no establecida >&gt;  ##  << VPN not established yet >>
 Reconexión en %d segundos.  ##  Reconnect in %d seconds.
 segundos  ##  seconds
 No hay red  ##  No network
@@ -535,11 +535,18 @@ Nuevos idiomas irán apareciendo próximamente  ##  New languages may appear per
 Están disponibles los siguientes idiomas actualmente en este ordenador  ##  Following languages are found as available on local computer
 &Cambiar  ##  &Change
 Idioma utilizado por vuestro ordenador  ##  Locale used on local computer
-Idioma en uso (Wippien)  ##  Currently used language
+Lenguaje usado actualmente  ##  Currently used language
 Los cambios más relevantes se aplicarán de forma inmediata. Deberás reiniciar Wippien para poder apreciar los cambios por completo.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Nuevos archivos de idioma disponibles. żDescargarlos?  ##  New language files available. Download?
 Mostrar una ventana emergente notificando al conectarse un contacto  ##  Show notification popup window when contact goes online/offline
 Escribiendo...  ##  Contact is typing...
 dice  ##  says
 dijo  ##  said
-Aquí puede usar su cuenta GMAIL.  ##  You can use your GMAIL account here.
+Puede usar su cuenta GMAIL aqui  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+Puerto UDP 9913 Ocupado  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+Sensibilidad del Micrófono  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

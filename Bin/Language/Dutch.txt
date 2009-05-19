@@ -1,6 +1,6 @@
 # Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Wippien Fan
-# Version: 2
+# Version: 18
 Geen fout  ##  No error.
 Systeem kan opgegeven bestand niet vinden.  ##  The system cannot find the file specified.
 Systeem kan opgegeven pad niet vinden.  ##  The system cannot find the path specified.
@@ -9,7 +9,7 @@ Verkeerd type  ##  Type mismatch.
 Het systeem kan geen file/directory maken wanneer deze file/directory al bestaat.  ##  Cannot create a file/directory when that file/directory already exists.
 Het system kan niet schrijven op de opgegeven schijf.  ##  The system cannot write to the specified device.
 Onjuiste veld waarde.  ##  Invalid Property Value.
-De opdracht retourneerde door een timeout.  ##  This operation returned because the timeout period expired.
+  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
 Algemene fout voor ongeldig formaat, ongeldig formaat.  ##  Generic error for invalid format, bad format.
 An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
@@ -27,8 +27,8 @@ De verbinding is verbroken door het netwerk.  ##  The current connection has bee
 De huidige socket verbinding is herstart.  ##  The current socket connection has been reset.
 De huidige socket is niet verbonden.  ##  The current socket has not been connected.
 De verbinding is afgebroken.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
+De huidige verbinding heeft een timeout.  ##  The current connection has timeout.
+De gewenste verbinding is geweigerd door de remote host.  ##  The requested connection has been refused by the remote host.
 De host naam is te lang.  ##  Specified host name is too long.
 Remote host is momenteel niet beschikbaar.  ##  Remote host is currently unavailable.
 Remote host is momenteel niet te bereiken.  ##  Remote host is currently unreachable.
@@ -66,7 +66,7 @@ Je bent al een bestand aan het verzenden.  ##  Already performing file transfer.
 Bestand niet gevonden.  ##  File not found.
 Het schrijven naar bestand is mislukt.  ##  Failed to write file.
 Kon netwerk adapter niet openen.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
+Er kan maar één netwerkadapter tegelijk worden gebruikt.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
 Onbekende fout.  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
@@ -117,7 +117,7 @@ Onzichtbaar  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
-Maakt verbinding met server  ##  Connecting to server
+  ##  Connecting to server
 Bezig met registreren nieuwe gebruiker  ##  Registering new user
 Initialiseren beveiligde verbinding  ##  Initializing secure connection
 Bezig met versturen van authenticatie gegevens  ##  Sending authentication data
@@ -180,8 +180,8 @@ Schuin  ##  Italic
 Onderstreep  ##  Underline
 Voeg hyperlink in  ##  Insert hyperlink
 Verklein font grootte  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
+Herstel tekstgrootte  ##  Reset font size
+Vergroot tekstgrootte  ##  Increase font size
 Stel de voor grond kleur in.  ##  Set Foreground color
 Stel de achtergrond kleur in.  ##  Set Background color
 Emoticons  ##  Emoticons
@@ -531,7 +531,7 @@ voer wachtwoord in.  ##  Enter password
 Please enter protect password  ##  Please enter protect password
 Talen  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
+Van tijd tot tijd kunnen nieuwe talen worden vrijgegeven.  ##  New languages may appear periodically.
 de volgende talen zijn beschikbaar op de lokale pc  ##  Following languages are found as available on local computer
 &Verander  ##  &Change
 lokaal gebruik op de lokale pc  ##  Locale used on local computer
@@ -543,3 +543,10 @@ contact is bericht aan het typen  ##  Contact is typing...
 zegt  ##  says
 zei  ##  said
 Je kan je gmail acount hier gebruiken  ##  You can use your GMAIL account here.
+Schakel tussen Voice Chat aan/uit  ##  Toggle voice chat
+  ##  Local echo
+UDP poort 9913 is bezet  ##  UDP port 9913 busy
+Kan geen inkomende Voice Chat ontvangen  ##  Unable to listen for incoming voice chat
+Microfoon gevoeligheid  ##  Microphone sensitivity
+Praat in uw microfoon en verplaats de schuif. Als u niet praat, hoort er geen beweging zichtbaar te zijn op de bovenste monitor, en de monitor moet volledig uitslaan als u luid spreekt.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Voice chat lijkt niet ingesteld. U moet dit configureren vóór eerste gebruik. Nu configureren?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

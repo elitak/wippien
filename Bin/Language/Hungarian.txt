@@ -1,6 +1,6 @@
 # Hungarian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Péter Varga
-# Version: 63
+# Version: 224
 Nincs hiba  ##  No error.
 A rendszer nem találja a megadott fájlt  ##  The system cannot find the file specified.
 A rendszer nem találja a megadott mappát  ##  The system cannot find the path specified.
@@ -44,7 +44,7 @@ Already started.  ##  Already started.
 Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
+A kapcsolat nem jött létre.  ##  Connection not established.
 Nem ismert data típus.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Unknown channel type.  ##  Unknown channel type.
@@ -64,11 +64,11 @@ Remote ID not set. It is required for Search method.  ##  Remote ID not set. It 
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
 Nem található a fájl.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
+Hiba a fájl írása közben.  ##  Failed to write file.
+A hálózati adapter megnyitása nem lehetsges.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
+Nem felismerhető hiba.  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
@@ -76,16 +76,16 @@ Cannot change property at this time. Use Disconnect first.  ##  Cannot change pr
 Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
+Hibás XML csomag.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+A fájl nem található.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
+A kép importálása nem sikerült.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
@@ -93,7 +93,7 @@ Contact not found.  ##  Contact not found.
 File transfer failed.  ##  File transfer failed.
 Could not write to file.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
+Átvitel megszakítva.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
 Invalid protocol selected.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
@@ -103,25 +103,25 @@ Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
 Dátum nincs beálítva.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
+Az oldal nem megjelíthető (hiba 404)  ##  Page not found (error 404) returned from the server.
+Hibás fájl méret a letöltés után.  ##  Invalid file size after download.
+Hibás MD5 ellenőrzőösszeg a letöltés után.  ##  Invalid MD5 checksum after download.
 Figyelmeztetés  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
+Kijelentkezve  ##  Offline
+Bejelentkezve  ##  Online
 Távol  ##  Away
 Free for chat  ##  Free for chat
 Ne zavarj  ##  Do not disturb
 Extended away  ##  Extended away
-Invisible  ##  Invisible
+Láthatatlan  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
 Csatlakozás a szerverhez  ##  Connecting to server
-Registering new user  ##  Registering new user
+Új felhasználó regisztrálása  ##  Registering new user
 Initializing secure connection  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
+Szerverhez kapcsolódva  ##  Connected to server
 Receiving data from server  ##  Receiving data from server
 Data elküldése a szerverhez.  ##  Sending data to server
 Executing command on server  ##  Executing command on server
@@ -129,139 +129,139 @@ Disconnecting from the server  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization
 Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
+Hálózati adapter letiltva!  ##  Network adapter disabled!
+Hálózati adapter megnyitva  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
 Disconnected  ##  Disconnected
 Connected  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
+Az üzenet nem kézbesíthető.  ##  Could not deliver message.
+Nem sikerült a jelszót megváltoztatni  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+Újrakapcsolódás %d másodperc múlva.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
-No network  ##  No network
-Exit Wippien  ##  Exit Wippien
+Nincs hálózat  ##  No network
+Kilépés a Wippienből  ##  Exit Wippien
 E&xit  ##  E&xit
-Open settings  ##  Open settings
+Beállítások megnyitása  ##  Open settings
 &Settings  ##  &Settings
 Show AboutBox  ##  Show AboutBox
 &About  ##  &About
 Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
+Némítás  ##  Mute sound
+Chat szoba megnyitása  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
-Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
+  ##  Idle
+Biztosan kilép a Wippien-ből?  ##  Really exit Wippien?
+Biztosan?  ##  Are you sure?
 Your password is now changed.  ##  Your password is now changed.
 Password changed  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
+Otthoni cím  ##  Home Address
+Munkahelyi cím  ##  Work Address
 Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
 Delete history?  ##  Delete history?
-Send  ##  Send
-Send file  ##  Send file
-Details  ##  Details
+Küldés  ##  Send
+Fájl küldése  ##  Send file
+Részletek  ##  Details
 Contact information  ##  Contact information
 Clear  ##  Clear
 Clear history  ##  Clear history
-Mute  ##  Mute
+Némít  ##  Mute
 Bold  ##  Bold
-Italic  ##  Italic
-Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
+Dőlt  ##  Italic
+Aláhúzott  ##  Underline
+Hiperhivatkozás beszúrása  ##  Insert hyperlink
 Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
+Alapértelmezett betűméret  ##  Reset font size
+Betűméret növelése  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
-Emoticons  ##  Emoticons
+Háttérszín beállítása  ##  Set Background color
+Hangulatjelek  ##  Emoticons
 New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
+Új hangulatjelek  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-Done!  ##  Done!
-Contact  ##  Contact
-Connecting  ##  Connecting
-Requesting  ##  Requesting
-Downloading  ##  Downloading
-Configuration file  ##  Configuration file
-General  ##  General
+Kész!  ##  Done!
+  ##  Contact
+Kapcsolódás  ##  Connecting
+  ##  Requesting
+Letöltés  ##  Downloading
+Konfigurációs fájl  ##  Configuration file
+Általános  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
-allow  ##  allow
-deny  ##  deny
+engedélyez  ##  allow
+tilt  ##  deny
 not specified  ##  not specified
-&Finish  ##  &Finish
+  ##  &Finish
 &Next >  ##  &Next >
-Identity  ##  Identity
+  ##  Identity
 Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
 You must enter your JID.  ##  You must enter your JID.
 You must enter your password.  ##  You must enter your password.
-Jabber error  ##  Jabber error
-Icon  ##  Icon
-Please choose your icon.  ##  Please choose your icon.
+Jabber hiba  ##  Jabber error
+Ikon  ##  Icon
+Kérlek válassz ikont!  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
-Network  ##  Network
+  ##  Network
 Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
-Network  ##  Network
+Hálózat  ##  Network
 Mediator  ##  Mediator
 Kérlek válaszd ki,hogy ki legyen a mediator-od  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Utolsó megvizsgálás  ##  Last check
+Utolsó ellenőrzés  ##  Last check
 Port  ##  Port
-Hostname  ##  Hostname
-Permanent  ##  Permanent
-Temporary  ##  Temporary
+  ##  Hostname
+  ##  Permanent
+Idéglenes  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
 Delete registered account?  ##  Delete registered account?
-Accounts  ##  Accounts
+  ##  Accounts
 Show only gateways  ##  Show only gateways
 Show all services  ##  Show all services
-Contacts  ##  Contacts
-Add/Remove  ##  Add/Remove
+  ##  Contacts
+  ##  Add/Remove
 Find new contacts.  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-System  ##  System
-Logging  ##  Logging
+Rendszer  ##  System
+  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-Messages  ##  Messages
-Chat ablak beállítások  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
+  ##  Messages
+  ##  Chat window settings.
+  ##  For all open chat windows.
+Általános információk  ##  General info
 General information about  ##  General information about
 Personal information  ##  Personal information
 Home details for  ##  Home details for
 Business information  ##  Business information
 Work details for  ##  Work details for
-minden más  ##  all other
+egyéb  ##  all other
 address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
-Skins  ##  Skins
+Kinézet  ##  Appearance
+Bőrök  ##  Skins
 Choose skin from below list.  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
 .. none ..  ##  .. none ..
-Automatikus távollét  ##  Auto Away
+  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-System  ##  System
+  ##  System
 Basic system messages.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
 Voice Chat  ##  Voice Chat
@@ -269,51 +269,51 @@ Please setup your voice chat devices.  ##  Please setup your voice chat devices.
 Choose from list below.  ##  Choose from list below.
 <system default>  ##  <system default>
 Contacts basic settings.  ##  Contacts basic settings.
-Updates  ##  Updates
+Frissítések  ##  Updates
 Update definitions.  ##  Update definitions.
 Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
 Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
-Sounds  ##  Sounds
+Hangok  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
 Contact online  ##  Contact online
 Contact offline  ##  Contact offline
 Message in  ##  Message in
 Message out  ##  Message out
-Error  ##  Error
+Hiba  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-Hide  ##  Hide
+Elrejt  ##  Hide
 Hide contacts.  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-Appearance  ##  Appearance
+  ##  Appearance
 Appearance settings.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
-Sort  ##  Sort
+  ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Válasz a felsorolt opcíók közül.  ##  Pick one of sort options.
 Chat szoba  ##  ChatRoom
-Böngéssz, vagy csinálj chat szobát. (MÉG BÉTA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Böngéssz vagy csinálj chat szobát. (MÉG BÉTA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
-Firewall  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
+Szoba neve  ##  Room name
+Tűzfal  ##  Firewall
+Tűzfal szabályok beállítása  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
+* Összes ICMP forgalom  ##  * All ICMP traffic
 But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
+Wippien frissítés  ##  Wippien update
 New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
 Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien update error!  ##  Wippien update error!
+Wippien frissítési hiba!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
+Új verzió  ##  New version
 Status changed:  ##  Status changed:
 nap  ##  day
 napok  ##  days
@@ -327,15 +327,15 @@ is now offline  ##  is now offline
 is now online  ##  is now online
 blokkolva van  ##  is blocked
 is offline  ##  is offline
-Unblock  ##  Unblock
-Block  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
+Kiblokkol  ##  Unblock
+Blokkol  ##  Block
+Biztos, hogy törlöd a %s csoportot?  ##  Are you sure you want to remove group %s
+Csoport törlése?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
 Remove contact?  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
+Adapter hiba  ##  Adapter error
+Csoport átnevezése  ##  Rename group
+Új csoport név megadása  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
 I need new Jabber account  ##  I need new Jabber account
@@ -350,8 +350,8 @@ Server  ##  Server
 Port  ##  Port
 Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
-  ##  O&K
-&Cancel  ##  &Cancel
+O&K  ##  O&K
+&Mégsem  ##  &Cancel
 Please enter key passphrase  ##  Please enter key passphrase
 Add &New  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
@@ -361,32 +361,32 @@ IP address for Wippien network adapter  ##  IP address for Wippien network adapt
 Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
 Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
 Use following static address  ##  Use following static address
-IP address  ##  IP address
-Netmask  ##  Netmask
-Status  ##  Status
+IP cím  ##  IP address
+  ##  Netmask
+  ##  Status
 URL  ##  URL
-Description  ##  Description
+  ##  Description
 Add new account  ##  Add new account
 Remove account  ##  Remove account
 Regisztrálás!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
-Username  ##  Username
+Felhasználónév  ##  Username
 Open new account  ##  Open new account
 Authorization request  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
-&Details  ##  &Details
+&Igen  ##  &Yes
+&Nem  ##  &No
+  ##  &Details
 &Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
+&Felhasználó(k) törlése  ##  &Block user(s)
 Do you allow  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
+Csoport hozzáadása  ##  Add Group
+Csoport törlése  ##  Remove Group
 Add Contact  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
+Kapcsolat típusa  ##  Contact Type
 Látható név  ##  Visible Name
 Rename contact  ##  Rename contact
 Enter new contact name  ##  Enter new contact name
@@ -406,30 +406,30 @@ Show message history  ##  Show message history
 Nickname  ##  Nickname
 Vezeték név.  ##  First name
 Kereszt név.  ##  Last name
-Email  ##  Email
-Notes  ##  Notes
+E-mail  ##  Email
+Jegyzetek  ##  Notes
 Cím  ##  Address
 Address Ext.  ##  Address Ext.
 Város  ##  City
-State  ##  State
-ZIP  ##  ZIP
+  ##  State
+  ##  ZIP
 Country  ##  Country
-Birthday  ##  Birthday
+Születésnap  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
-Title  ##  Title
-Company name  ##  Company name
-Department  ##  Department
+  ##  Title
+Cég neve  ##  Company name
+  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
+Mindet engedélyez  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
+Elfogad  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+Várakozás  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
@@ -439,12 +439,12 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
+Mindig legfelül  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
 Settings only  ##  Settings only
-Everything  ##  Everything
+Minden  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup
@@ -455,8 +455,8 @@ Kérdezz engem  ##  Ask me
 Always authorize  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
+Folyamatban  ##  Progress
+  ##  Enable voice chat
 Playback device  ##  Playback device
 Recording device  ##  Recording device
 Check for updates when Wippien starts  ##  Check for updates when Wippien starts
@@ -469,7 +469,7 @@ MTU setting defines maximum UDP packet that can be sent to peers. If your networ
 Use fixed MTU  ##  Use fixed MTU
 Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
+Hangok (hagyd üresen az alapértelmezett hangokhoz)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
 Program events  ##  Program events
 Hide new contact  ##  Hide new contact
@@ -478,22 +478,22 @@ Currently hidden contacts  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
 Hide contact  ##  Hide contact
 Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
-&Add  ##  &Add
-&Remove  ##  &Remove
+Minden forgalom engedélyezése  ##  Allow all traffic
+Mineden forgalom tiltása  ##  Block all traffic
+&Hozzáad  ##  &Add
+&Eltávolítás  ##  &Remove
 Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
-Name  ##  Name
-IP address  ##  IP address
+Avatar kép  ##  Avatar picture
+Név  ##  Name
+IP cím  ##  IP address
 Status text  ##  Status text
 Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
+Látható részletek  ##  Visible details
 Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
-By name  ##  By name
-By JID  ##  By JID
+  ##  unsorted
+Név szerint  ##  By name
+JID alapján  ##  By JID
 by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
 by IP (without IP goes top)  ##  by IP (without IP goes top)
 Sort contact list  ##  Sort contact list
@@ -501,7 +501,7 @@ Nickname for chatrooms  ##  Nickname for chatrooms
 Show available rooms on following gateways  ##  Show available rooms on following gateways
 Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
 Room name to create or join  ##  Room name to create or join
-Password (empty if none)  ##  Password (empty if none)
+Jelszó (üres ha nincs)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Join or Create room  ##  Join or Create room
 Block users at startup  ##  Block users at startup
@@ -518,7 +518,7 @@ Add/Remove &Accounts  ##  Add/Remove &Accounts
 Add/Remove &Contacts  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
-Free for &Chat  ##  Free for &Chat
+&Chat  ##  Free for &Chat
 &Do not Disturb  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
 &Invisible  ##  &Invisible
@@ -528,7 +528,7 @@ Change Pa&ssword  ##  Change Pa&ssword
 Your &Details  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
 Jelszó  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+  ##  Please enter protect password
 nyelvek  ##  Languages
   ##  Setup language used in all Wippien texts.
 New languages may appear periodically.  ##  New languages may appear periodically.
@@ -543,3 +543,10 @@ Contact is typing...  ##  Contact is typing...
 mondja  ##  says
 mondta  ##  said
 Használhaod itt a Gmail-os címedet  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

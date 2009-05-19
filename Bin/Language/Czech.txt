@@ -1,6 +1,6 @@
 # Czech translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sonyc
-# Version: 2
+# Version: 3
 Zadna chyba  ##  No error.
 System nemuze nalez uvedeny soubor.  ##  The system cannot find the file specified.
 System nemuze nalezt uvedenou cestu.  ##  The system cannot find the path specified.
@@ -17,7 +17,7 @@ The system detected an invalid pointer address in attempting to use a pointer ar
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 *Zadana IP adresa je neplatna nebo host server neexistuje*  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+Špatná synchronizace nebo jste odpojen od hostitele.  ##  Invalid socket or not connected to remote.
 Adresa se pouziva.  ##  The specified address is already in use.
 Adresa neni k dispozici.  ##  The specified address is not available.
 Sit neni k dispozici.  ##  The connected network is not available.
@@ -34,12 +34,12 @@ Vzdaleny hostitel neni k dispozici.  ##  Remote host is currently unavailable.
 *Pozadovany host server je v soucasne dobe nedostupny*  ##  Remote host is currently unreachable.
 Remote system is not ready.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
+Nebylo inicializovano API.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
 *Server nenalezen*  ##  Host not found.
 *Nedostatek pameti pro dokonceni pozadovane operace*  ##  Not enough memory is available to complete this operation.
 *Neznamy vyhledavaci prikaz*  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+Neznamy argument pro vyhledávání.  ##  Unknown argument for Search method.
 *Jiz bezi*  ##  Already started.
 *Tento kanal je jiz aktivni*  ##  Channel already started.
 *Nelze zmenit nastaveni kanalu, pokud je tento kanal aktivni*  ##  Cannot change channel setup while channel is started.
@@ -62,8 +62,8 @@ Spatne heslo  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
+Jiz se pokousite o prenos souboru!!!  ##  Already performing file transfer.
+Soubor nenalezen.  ##  File not found.
 Failed to write file.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
@@ -111,7 +111,7 @@ Offline  ##  Offline
 Online  ##  Online
 Away  ##  Away
 Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
+Nerušit  ##  Do not disturb
 Extended away  ##  Extended away
 Invisible  ##  Invisible
 Asking for subscription  ##  Asking for subscription
@@ -144,33 +144,33 @@ Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
 Není síť  ##  No network
-Exit Wippien  ##  Exit Wippien
-E&xit  ##  E&xit
+Ukončit Wippien  ##  Exit Wippien
+Ukončit  ##  E&xit
 Otevřít nastavení  ##  Open settings
-&Nastavení  ##  &Settings
+Nastavení  ##  &Settings
 Show AboutBox  ##  Show AboutBox
-&About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+About  ##  &About
+Váš aktuální stav (Pryč, Nedostupný...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
 Vypnout zvuk  ##  Mute sound
 Otevřít chat místnost  ##  Open chat room
 Připojil se přítel  ##  Authorize your friends
 Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
+Opravdu chcete ukončit Wippien?  ##  Really exit Wippien?
+Jste si jist?  ##  Are you sure?
+Vaše heslo bylo změněno.  ##  Your password is now changed.
 Změnit heslo  ##  Password changed
-Change account password  ##  Change account password
+Změnit heslo vašeho účtu.  ##  Change account password
 Prosím zadejte nové heslo  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
 Domácí Adresa  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
+Adresa do práce  ##  Work Address
+Opravdu chcete smazat historii chatu?  ##  Are you sure you want to delete the history?
 Smazat historii?  ##  Delete history?
 Hledat  ##  Send
 Hledat soubor  ##  Send file
-Details  ##  Details
+Detaily  ##  Details
 Kontaktní informace  ##  Contact information
 Vymazat  ##  Clear
 Vymazat historii  ##  Clear history
@@ -178,24 +178,24 @@ Ticho  ##  Mute
 Bold  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
+Vložit odkaz  ##  Insert hyperlink
+Zmenšit velikost písma  ##  Decrease font size
+obnovit velikost písma  ##  Reset font size
+Zvětšit velikost písma  ##  Increase font size
+Nastavit barvu popředí  ##  Set Foreground color
+Nastavit barvu pozadí  ##  Set Background color
 Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-Done!  ##  Done!
+Noví smajlící budou staženi a nainstalováni. Souhlasíte?  ##  New emoticons will be downloaded and installed. Proceed?
+Noví smajlíci  ##  New emoticons
+Nyní můžete znovu kliknout na tlačitko "smajlík" k prohlížení nových smajlíků.  ##  You can now click again on emoticon button to see new installed emoticons.
+Hotovo!  ##  Done!
 Contact  ##  Contact
-Connecting  ##  Connecting
+Připojování  ##  Connecting
 Requesting  ##  Requesting
-Downloading  ##  Downloading
-Configuration file  ##  Configuration file
-General  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
+Stahování  ##  Downloading
+Konfigurační soubor  ##  Configuration file
+Hlavní  ##  General
+  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
 allow  ##  allow
 deny  ##  deny
@@ -209,7 +209,7 @@ JID should contain server name, formatted like user@server.com  ##  JID should c
 Invalid logon details  ##  Invalid logon details
 You must enter your JID.  ##  You must enter your JID.
 You must enter your password.  ##  You must enter your password.
-Jabber error  ##  Jabber error
+  ##  Jabber error
 Icon  ##  Icon
 Please choose your icon.  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
@@ -323,8 +323,8 @@ minuta  ##  minute
 minut  ##  minutes
 Naposledy aktivni : nikdy  ##  Last seen: never
 je zrovna offline  ##  is currently offline
-je nyni offline  ##  is now offline
-je nyni online  ##  is now online
+je nyní offline  ##  is now offline
+je nyní online  ##  is now online
 je blokovan  ##  is blocked
 je offline  ##  is offline
 Odblokovat  ##  Unblock
@@ -335,9 +335,9 @@ Jste si jisti ze chcete odebrat %s  ##  Are you sure you want to remove contact 
 Odebrat kontakt  ##  Remove contact?
 Chyba rozhrani  ##  Adapter error
 Prejmenovat skupinu  ##  Rename group
-Enter new group name  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
+Vložte jméno nové skupiny  ##  Enter new group name
+Stáhnout více skinů z Wippien.com  ##  Download more skins from Wippien website
+  ##  Click on the skin to download and install it.
 I need new Jabber account  ##  I need new Jabber account
 I have existing Jabber account  ##  I have existing Jabber account
 &Test Account  ##  &Test Account
@@ -353,7 +353,7 @@ Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GT
 O&K  ##  O&K
 &Cancel  ##  &Cancel
 Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
+Pridat novy  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
 Disconnect adapter on exit  ##  Disconnect adapter on exit
 UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
@@ -377,7 +377,7 @@ Pozadovana autorizace  ##  Authorization request
 &No  ##  &No
 &Details  ##  &Details
 &Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
+  ##  &Block user(s)
 Povolit  ##  Do you allow
 aby si Vas pridal ke kontaktum?  ##  to add you to his contact list?
 vytorena fronta dotazu . . .  ##  more requests waiting...
@@ -543,3 +543,10 @@ Contact is typing...  ##  Contact is typing...
 says  ##  says
 said  ##  said
 Zde muzete pouzivat vas GMAIL ucet.  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

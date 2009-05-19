@@ -1,408 +1,408 @@
 # Hebrew translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Khir
-# Version: 106
+# Version: 565
 אין שגיאות.  ##  No error.
 המערכת לא מצליחה למצוא את הקובץ הנדרש.  ##  The system cannot find the file specified.
 המערכת לא יכולה למצוא את היעד המבוקש.  ##  The system cannot find the path specified.
-  ##  The system cannot find the specified file/directory.
-Type mismatch.  ##  Type mismatch.
-Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
-The system cannot write to the specified device.  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+.המערכת לא יכולה למצוא את הקובץ/תיקיה  ##  The system cannot find the specified file/directory.
+.שגיאת כתיב  ##  Type mismatch.
+.לא יכול ליצור קובץ/תיקיה כשהקובץ/תיקיה קיים כבר  ##  Cannot create a file/directory when that file/directory already exists.
+.המערכת לא יכולה לכתוב להתקן המפורט  ##  The system cannot write to the specified device.
+.ערך שגוי  ##  Invalid Property Value.
+.פעולה זו חזרה בגלל שהקצבת פסק הזמן נגמרה  ##  This operation returned because the timeout period expired.
+.הפרעה ברמת המערכת, פעולה קטועה של שקע  ##  System level interrupt interrupted socket operation.
+.שגיאה כללית בגלל פורמט לא נכון, פורמט שגוי  ##  Generic error for invalid format, bad format.
+זוהה ניסיון גישה בדרך בלתי מורשת ל-Socket  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
+שגיאה כללית בגלל פורמט שגוי, ערך וכדומה..  ##  Generic error for invalid format, entry, etc.
+סופק ארגומנט לא תקין  ##  An invalid argument was supplied.
+כתובת ה-IP אינה זמינה או אינה קיימת  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+שקע שגוי או לא מחובר למרוחק.  ##  Invalid socket or not connected to remote.
+הכתובת המצוינת כבר בשימוש  ##  The specified address is already in use.
+הכתובת המצוינת לא זמינה.  ##  The specified address is not available.
+הרשת המחוברת לא זמינה.  ##  The connected network is not available.
+הרשת המחוברת לא נגישה.  ##  The connected network is not reachable.
+החיבור לרשת המחוברת אותחל.  ##  The connected network connection has been reset.
 The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
 The current socket connection has been reset.  ##  The current socket connection has been reset.
 The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
+החיבור נותק.  ##  The connection has been shutdown.
+ניסיון חיבור כשל  ##  The current connection has timeout.
+.החיבור המבוקש סורב על ידי המארח המרוחק  ##  The requested connection has been refused by the remote host.
+שם המארח הנתון יותר מידי ארוך.  ##  Specified host name is too long.
+מארח מרוחק כרגע לא זמין.  ##  Remote host is currently unavailable.
+מארח מרוחק כרגע לא נגיש.  ##  Remote host is currently unreachable.
+המערכת המרוחקת לא מוכנה.  ##  Remote system is not ready.
+גירסת השקע העכשבי לא נתמך על ידי התוכנה.  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
+שקע נותק.  ##  Socket has been disconnected.
 מארח לא נמצא  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
+אין מספיק זיכרון בשביל להשלים את הפעולה.  ##  Not enough memory is available to complete this operation.
+סוג חיפוש לא ידוע.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
-Channel already started.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+כבר התחיל.  ##  Already started.
+ערוץ כבר התחיל.  ##  Channel already started.
+לא יכול לשנות את הגדרות הערוץ כשהערוץ כבר התחיל.  ##  Cannot change channel setup while channel is started.
+יותר מידי נתונים על השקע, נסה מאוחר יותר.  ##  Too much data on the socket. Try later.
+חיבור לא הוקם.  ##  Connection not established.
+נתונים מסוג לא ידוע.  ##  Unknown data type.
+נכשל ביצירת שירשור השקע.  ##  Failed to create socket thread.
+ערוץ מסוג לא ידוע.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
+ערוץ לא יכול להווצר על ידי צד מקומי  ##  Channel cannot be created by local side.
+ערוץ לא יכול להתחיל על ידי צד מקומי  ##  Channel cannot be started by local side.
+ערוץ סורב על ידי צד מרוחק  ##  Channel refused by remote side.
+גירסת פרוטוקול מרוחק לא נתמכת.  ##  Unsupported remote protocol version.
 wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
+הערוץ נסגר.  ##  Channel was closed.
+(MTU).יחידת התמסורת המקסימלית יותר מידי גדולה  ##  MTU size too large.
+(MTU).יחידת התמסורת המקסימלית יותר מידי קטנה  ##  MTU size too small.
+בקשת שקע שגויה.  ##  Invalid socks request.
 Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+.תעודת זהות מקומית לא הוגדרה. היא נדרשת לשיטת החיפוש  ##  Local ID not set. It is required for Search method.
+.תעודת זהות מרוחקת לא נקבעה. היא נדרשת לשיטת החיפוש  ##  Remote ID not set. It is required for Search method.
+.לא יכול להדביק לכתובת רשת ספציפית  ##  Cannot bind to specified IP address.
+כבר מבצע העברת קבצים.  ##  Already performing file transfer.
 קובץ לא נמצא.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
+.נכשל בכתיבת קובץ  ##  Failed to write file.
+.לא יכול לפתוח מתאם רשת  ##  Could not open network adapter.
+.רק מתאם רשת אחד יכול להיות בשימוש כל פעם  ##  Only one adapter can be used at a time.
+.מפתח רישיון חסר. אתה לא יכול להשתמש ברכיב זה בתוך סביבת תיכנון  ##  License key missing. You can not use this component in design environment.
+.שגיאה לא מזוהה  ##  Unrecognized Error.
+.לא יכול להתחבר בזמן זה. השתמש בהתנתקות קודם  ##  Cannot Connect at this time. Use Disconnect first.
+.לא יכול לבצע, עדיין לא מחובר  ##  Cannot execute, not yet connected.
+.הרכיב עסוק  ##  Component busy.
+.לא יכול לשנות ערך בזמן זה. השתמש בהתנתקות קודם  ##  Cannot change property at this time. Use Disconnect first.
+.ערך שם המארח לא נקבע  ##  Hostname property not set.
+ערך כניסה לא נקבע.  ##  Login property not set.
+ערך סיסמה לא נקבע.  ##  Password property not set.
 Invalid XML packet.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
+.איש קשר כבר קיים באוסף  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
+%s נכשל ברישום משתמש קיים  ##  Failed to register new user: %s.
+.הודעה לא ידועה  ##  Unknown notification.
 קובץ לא נמצא.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
+(PNG/JPG/BMP/GIF).אתה חייב לציין סוג תמונה  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+נכש ביבוא התמונה  ##  Failed to import photo.
+עוד שיטת חסימה בתהליך.  ##  Another blocking method in progress.
+נתוני פרוטוקול שגויים התקבלו.  ##  Invalid protocol data received.
+אין שום דבר לשלוח, גודל הקובץ שווה לאפס  ##  There's nothing to send. File size is 0.
+איש קשר לא נימצא.  ##  Contact not found.
+.הערבת הקובץ נכשלה  ##  File transfer failed.
+לא יכול לכתוב לקובץ.  ##  Could not write to file.
+בדיקת הסיכום של הקובץ שהתקבל שגויה.  ##  Checksum of received file is invalid.
+.העברה בוטלה  ##  Transfer aborted.
+.העברה לא מגיבה  ##  Transfer has timed out.
+בחירת פרוטוקול פסול.  ##  Invalid protocol selected.
+  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
+שיטה בוטלה.  ##  Method was cancelled.
+.נכשל בלהתחיל את תוכנת העידכון  ##  Failed to start updater program.
+.החתימה על המסמך המתקבל שגויה  ##  Signature on retrieved document is invalid.
+תאריך לא נקבע.  ##  Date not set.
+COMנכשל ברישום שרת ה  ##  Failed to register COM server.
+.דף לא נמצא (שגיאת 404) חזר מהשרת  ##  Page not found (error 404) returned from the server.
+.גודל שגוי אחרי הורדה  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
 אזהרה  ##  Warning
 לא מחובר  ##  Offline
 מחובר  ##  Online
 לא נמצא  ##  Away
-Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
-Extended away  ##  Extended away
+פנוי לשיחה  ##  Free for chat
+לא להפריע  ##  Do not disturb
+מצב "לא כאן" מוארך  ##  Extended away
 בלתי נראה  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
+שואל להרשמה  ##  Asking for subscription
+איש קשר לא רשום  ##  Contact not subscribed
+מנותק מהשרת  ##  Disconnected from server
+מתחבר לשרת  ##  Connecting to server
+רושם משתמש חדש  ##  Registering new user
+מאתחל חיבור בטוח  ##  Initializing secure connection
+שולח נתוני אימות  ##  Sending authentication data
 מחובר לשרת  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
+מקבל נתונים מהשרת  ##  Receiving data from server
+שולח נתונים לשרת  ##  Sending data to server
+מבצע פקודה על השרת  ##  Executing command on server
+מתנתק מהשרת  ##  Disconnecting from the server
+הרשאה מבוקשת  ##  Requested authorization
+מגדיר את מתאם רשת של וויפיאן...  ##  Configuring Wippien network adapter...
+.של וויפיאן. יכול להיות שוויפיאן לא תוכל לשלוח או לקבל נתונים. בבקשה נטרל את מתאם הרשת הזה%s מתנגש עם ה %s עם כתובת הרשת \"%s\" המתאם  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+מתאם רשת מנוטרל!  ##  Network adapter disabled!
+.מתאם רשת נפתח  ##  Network adapter opened
+מתאם הרשת של וויפיאן לא זמין, להמשיך עם תוכנת מסרים בלבד?  ##  Wippien network adapter not available. Proceed with IM only?
+.וויפיאן חייב להגדיר כתובת רשת למתאם על ידי כלי חיצוני - וזקוק לזכויות מנהל. בבקשה הרץ את וויפיאן לפחות פעם אחת כמנהל בכדי להשיג מספיק הרשאות  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+!נדרש זכויות מנהל  ##  Admin privilege required!
 מנותק  ##  Disconnected
 מחובר  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
+.לא יכול להעביר את ההודעה  ##  Could not deliver message.
+.כישלון בשינוי הסיסמה  ##  Failed to change password
+נותק בגלל חוק חוסר הפעולה  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+<&lt; VPN not established yet >&gt;  ##  << VPN not established yet >>
+שניות %d מתחבר מחדש ב  ##  Reconnect in %d seconds.
 שניות  ##  seconds
 אין רשת  ##  No network
 יציאה  ##  Exit Wippien
 E&xit  ##  E&xit
 פתח הגדרות  ##  Open settings
 &הגדרות  ##  &Settings
-Show AboutBox  ##  Show AboutBox
+הראה את קופסאת הפרטים  ##  Show AboutBox
 &אודות  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
-Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
+קבע את הסטטוס שלך (זמין,בלתי ניראה...)  ##  Set your status (Away,Invisible...)
+הוסף אנשי קשר וחשבונות זרים.  ##  Add contacts and alien accounts
+השתק קול  ##  Mute sound
+פתח חדר שיחה  ##  Open chat room
+אשר את חבריך  ##  Authorize your friends
+דומם  ##  Idle
+בטוח שרוצה לצאת מוויפיאן?  ##  Really exit Wippien?
 האם אתה בטוח?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
+הסיסמא שלך עכשיו שונתה.  ##  Your password is now changed.
 שינוי סיסמה  ##  Password changed
 שינוי סיסמת חשבון  ##  Change account password
 הכנס סיסמה חדשה  ##  Please enter new password
 Identity  ##  Identity
-ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
+כרטיס זהות  ##  ID Card
+כתובת בית  ##  Home Address
+כתובת עבודה  ##  Work Address
+אתה בטוח שאתה רוצה למחוק את ההיסטוריה?  ##  Are you sure you want to delete the history?
 מחק היסטוריה?  ##  Delete history?
 שלח  ##  Send
 שלח קובץ  ##  Send file
 Details  ##  Details
-Contact information  ##  Contact information
+פרטי איש קשר  ##  Contact information
 נקה  ##  Clear
 נקה היסטוריה  ##  Clear history
 השתק  ##  Mute
 מודגש  ##  Bold
 נטוי  ##  Italic
 Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
+הכנס לינק  ##  Insert hyperlink
+הקטן גופן  ##  Decrease font size
+אתחל גודל גופן  ##  Reset font size
+הגדל גופן  ##  Increase font size
+קבע את צבע החזית.  ##  Set Foreground color
+קבע צבע רקע  ##  Set Background color
 Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
+רגשונים חדשים יורדו ויותקנו, להמשיך?  ##  New emoticons will be downloaded and installed. Proceed?
+רגשונים חדשים  ##  New emoticons
+.עכשיו אתה יכול ללחוץ בשנית על כפתור הריגושון בשביל לראות רגשונים מותקנים חדשים.  ##  You can now click again on emoticon button to see new installed emoticons.
 בוצע!  ##  Done!
 אנשי קשר  ##  Contact
 מתחבר  ##  Connecting
 Requesting  ##  Requesting
 מוריד  ##  Downloading
-Configuration file  ##  Configuration file
-General  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
+קובץ הגדרות  ##  Configuration file
+כללי  ##  General
+לא כאן בשל חוסר פעילות.  ##  Away due to inactivity.
+לא כאן כבר הרבההה זמן  ##  Away for a loooong time.
 אפשר  ##  allow
 סרב  ##  deny
-not specified  ##  not specified
+לא מצויין  ##  not specified
 &Finish  ##  &Finish
 &הבא  ##  &Next >
 מאמת  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
-Jabber error  ##  Jabber error
+בבקשה בחר את פרטי ההתחברות שלך.  ##  Please choose your logon information.
+זה מוצג ברשימת החברים שלך.  ##  This is shown on your friend's list.
+user@server.com כתובת הג'בר צריכה לכלול את שם השרת, כמו  ##  JID should contain server name, formatted like user@server.com
+פרטי התחברות שגויים.  ##  Invalid logon details
+אתה חייב להכניס את כתובת הג'בר שלך.  ##  You must enter your JID.
+אתה חייב להכניס את ססמתך.  ##  You must enter your password.
+שגיאת ג'בר.  ##  Jabber error
 סמל  ##  Icon
 אנא בחר סמל  ##  Please choose your icon.
-This is usually visible to your contacts.  ##  This is usually visible to your contacts.
-Network  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
-This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+זה בדרך כלל גלוי לאנשי הקשר שלך.  ##  This is usually visible to your contacts.
 רשת  ##  Network
-Mediator  ##  Mediator
-Please choose who will be your mediator.  ##  Please choose who will be your mediator.
+בבקשה בחר את כתובת הרשת ואת כתובת מסכת הרשת שלך.  ##  Please choose your IP address and netmask.
+.זה מגדיר את טווח הרשת שישומש עלידי וויפיאן  ##  This defines network range to be used by wippien.
+רשת  ##  Network
+מתווך  ##  Mediator
+.בבקשה בחר מי יהיה המתווך שלך  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
+בדיקה אחרונה  ##  Last check
 פורט  ##  Port
 Hostname  ##  Hostname
 Permanent  ##  Permanent
 Temporary  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+הכנס את כל חשבונותיך כאן.  ##  Enter all your accounts here.
+( ICQ, MSN, ect..) אתה יכול להוסיף כל סוג של חשבון שנתמך עלידי שרת הג'בר שלך  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+?'%s' אתה בטוח שברצונך למחוק את החשבון  ##  Are you sure you want to delete account '%s'?
+למחוק חשבון רשום?  ##  Delete registered account?
 חשבונות  ##  Accounts
-Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
-Contacts  ##  Contacts
+הראה רק שערים  ##  Show only gateways
+הראה את כל השירותים  ##  Show all services
+אנשי קשר  ##  Contacts
 Add/Remove  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
+מצא אנשי קשר חדשים.  ##  Find new contacts.
+אתה יכול להוסיף אנשי קשר חדשים של ג'בר, אייסיקיו ומסנג'ר  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 מערכת  ##  System
 Logging  ##  Logging
-Setup log files and debug info.  ##  Setup log files and debug info.
-Specify paths below  ##  Specify paths below
+.קבצי לוג התקנה ומידע של תיקון שגיאות  ##  Setup log files and debug info.
+ציין נתיבים למטה  ##  Specify paths below
 הודעה  ##  Messages
-Chat window settings.  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
-General information about  ##  General information about
-Personal information  ##  Personal information
-Home details for  ##  Home details for
-Business information  ##  Business information
-Work details for  ##  Work details for
-all other  ##  all other
-address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
+הגדרות חלון השיחה.  ##  Chat window settings.
+לכל חלונות השיחה הפתוחים.  ##  For all open chat windows.
+מידע כללי.  ##  General info
+מידע כללי לגבי.  ##  General information about
+מידע אישי.  ##  Personal information
+פרטי בית בשביל  ##  Home details for
+פרטי עסק  ##  Business information
+פרטי עבודה בשביל  ##  Work details for
+כל השאר  ##  all other
+כתובת ניתנה על ידי המתווך  ##  address given by mediator
+מראה  ##  Appearance
 ערכת נושא  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-System  ##  System
-Basic system messages.  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
+בחר סקין מהרשימה למטה.  ##  Choose skin from below list.
+מה וויפיאן תלבוש?  ##  What will Wippien wear?
+.. כלום ..  ##  .. none ..
+מצב "לא כאן" אוטומטי  ##  Auto Away
+הגדרות המצב האוטומטי "לא כאן"  ##  Auto away settings.
+קובע איך וויפיאן יתנהג כאשר המערכת לא פעילה.  ##  Determines how will Wippien behave when system is inactive.
+מערכת  ##  System
+הודעות מערכת בסיסיות.  ##  Basic system messages.
+.הגדר את התנהגות התוכנה וויפיאן  ##  Define Wippien application's behavior.
 שיחת קול  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
-Updates  ##  Updates
-Update definitions.  ##  Update definitions.
-Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
+בבקשה הגדר את התקני הצ'אט הקולי שלך.  ##  Please setup your voice chat devices.
+בחר מהרשימה למטה.  ##  Choose from list below.
+<בררת מחדל של המערכת>  ##  <system default>
+הגדרות בסיסיות של אנשי קשר.  ##  Contacts basic settings.
+עדכונים  ##  Updates
+עדכן מונחים.  ##  Update definitions.
+הגדר מתי וכיצד וויפיאן תגדיר את עצמה.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
+(MTU) בבקשה קבע את יחידת התמסורת המקסימלית  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
-Sounds  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
+צלילים  ##  Sounds
+.הגדרת צלילים לניגון באירועים שונים  ##  Setup sounds to be played on various events.
+WAV בחר כאלו פנימיים או ברור לקבצי  ##  Choose internal ones, or browse for WAV files.
+איש קשר מחובר  ##  Contact online
+איש קשר לא מחובר  ##  Contact offline
+הודעה נכנסת  ##  Message in
+הודעה יוצאת  ##  Message out
 שגיאה  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 הסתר  ##  Hide
-Hide contacts.  ##  Hide contacts.
-You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
+הסתר אנשי קשר.  ##  Hide contacts.
+אתה יכול להחביא אנשי קשר מראיתך.  ##  You can hide some contacts from your sight.
 Appearance  ##  Appearance
-Appearance settings.  ##  Appearance settings.
-Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
+הגדרות מראה.  ##  Appearance settings.
+הגדר איך הממשק של וויפיאן יופיע בשבילך.  ##  Define how will Wippien's GUI appear to you.
 Sort  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+מיין אנשי קשר.  ##  Sorts contacts.
+בחר אחד מאפשרויות המיון.  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
-- All gateways -  ##  - All gateways -
-Service gateway  ##  Service gateway
-Room name  ##  Room name
+סייר או צור חדרי שיחה (עדיין בשלב בטא)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+.צין או סייר אחרי חדר בשביל להצטרף אליו או ליצור אחד חדש  ##  Specify or browse for a room to join or create new one.
+- כל השערים -  ##  - All gateways -
+שער שירות  ##  Service gateway
+שם החדר  ##  Room name
 חומת אש  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
+הגדר כללי חומת אש.  ##  Set up firewall rules.
+.אתה יכול לקבוע מאילו פורטים אנשי הקשר שלך יכולים לקבל גישה  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien update error!  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
+.אך חסום את הפורטים האלו  ##  But block these ports
+אך אפשר את הפורטים האלו.  ##  But allow these ports
+עידכון וויפיאן  ##  Wippien update
+גירסה חדשה של וויפיאן זמינה, להוריד?  ##  New version of Wippien is available. Download?
+לחץ כאן בכדי לראות מה חדש.  ##  Click here to see what's new.
+גירסת הוויפיאן שלך עדכנית.  ##  Your version of Wippien is up-to-date.
+שגיאה בהתחברות לשרת מרוחק.  ##  Error connecting to remote server.
+הורדה הושלמה, החלף עכשיו?  ##  Download successful. Replace now?
+שגיאת עידכון וויפיאן!  ##  Wippien update error!
+גירסה חדשה של וויפיאן נמצאה מקומית, להחליף?  ##  New version of Wippien found localy. Replace?
 גירסה חדשה  ##  New version
-Status changed:  ##  Status changed:
+סטטוס השתנה:  ##  Status changed:
 יום  ##  day
 ימים  ##  days
 שעה  ##  hour
 שעות  ##  hours
 דקה  ##  minute
 דקות  ##  minutes
-Last seen: never  ##  Last seen: never
-is currently offline  ##  is currently offline
-is now offline  ##  is now offline
-is now online  ##  is now online
-is blocked  ##  is blocked
-is offline  ##  is offline
-Unblock  ##  Unblock
-Block  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
-I have existing Jabber account  ##  I have existing Jabber account
-&Test Account  ##  &Test Account
+לאחרונה ניראה: אף פעם  ##  Last seen: never
+כרגע לא מחובר  ##  is currently offline
+עכשיו לא מחובר  ##  is now offline
+מחובר  ##  is now online
+חסום  ##  is blocked
+לא מחובר  ##  is offline
+הסר חסימה  ##  Unblock
+חסום  ##  Block
+%s האם אתה בטוח שברצונך להסיר את הקבוצה  ##  Are you sure you want to remove group %s
+להסיר קבוצה?  ##  Remove group?
+%s האם אתה בטוח שברצונך להסיר את איש הקשר  ##  Are you sure you want to remove contact %s
+להסיר איש קשר?  ##  Remove contact?
+שגיאת מתאם!  ##  Adapter error
+שנה שם לקבוצה  ##  Rename group
+הכנס שם לקבוצה החדשה  ##  Enter new group name
+הורד עוד סקינים מהאתר של וויפיאן.  ##  Download more skins from Wippien website
+הקלק על הסקין בכדי להוריד ולהתקין אותו.  ##  Click on the skin to download and install it.
+אני צריך חשבון ג'בר חדש.  ##  I need new Jabber account
+יש לי חשבון ג'בר קיים.  ##  I have existing Jabber account
+&בחן חשבון  ##  &Test Account
 &חיפוש  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 סיסמה  ##  Password
-Server  ##  Server
+שרת  ##  Server
 Port  ##  Port
-Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
+בבקשה לחץ על 'בחן חשבון' בכדי להמשיך.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Cancel  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
-Disconnect adapter on exit  ##  Disconnect adapter on exit
+בבקשה הכנס מילת סיסמא.  ##  Please enter key passphrase
+הוסף &חדש  ##  Add &New
+הראה הודעה כאשר מתאם הרשת לא זמין.  ##  Show notification if ethernet adapter is unavailable.
+נתק מתאם רשת ביציאה  ##  Disconnect adapter on exit
 UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-IP address for Wippien network adapter  ##  IP address for Wippien network adapter
-Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
-Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
-IP address  ##  IP address
+כתובות רשת למתאם הרשת של וויפיאן.  ##  IP address for Wippien network adapter
+התעלם. כתובת הרשת תקבע מחוץ לתוכנה הזאת.  ##  Ignore. IP will be set outside of this program.
+השג ממאגר הנתונים של ספק כתובות הרשת, בכתובת האינטרנט  ##  Obtained from IP provider database, on URL
+השתמש בכתובת הקבועה הבאה  ##  Use following static address
+כתובת רשת  ##  IP address
 Netmask  ##  Netmask
 מצב  ##  Status
 כתובת  ##  URL
-Description  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
-Register!  ##  Register!
-Your current Instant messaging connections  ##  Your current Instant messaging connections
+תיאור  ##  Description
+הוסף חשבון חדש  ##  Add new account
+הסר חשבון  ##  Remove account
+הרשם!  ##  Register!
+חיבורי המסרים המידיים שלך כרגע.  ##  Your current Instant messaging connections
 Username  ##  Username
-Open new account  ##  Open new account
-Authorization request  ##  Authorization request
+פתח חשבון חדש  ##  Open new account
+דרישת אישור  ##  Authorization request
 &כן  ##  &Yes
 &לא  ##  &No
 &Details  ##  &Details
-&Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
-Do you allow  ##  Do you allow
-to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
+&החל על הכל  ##  &Apply to all
+&חסום משתמש/ים  ##  &Block user(s)
+האם אתה מאשר  ##  Do you allow
+להוסיף אותך לרשימת אנשי הקשר שלו?  ##  to add you to his contact list?
+עוד בקשות ממתינות...  ##  more requests waiting...
+הוספת קבוצה  ##  Add Group
+הסרת בוצה  ##  Remove Group
 הוספת איש קשר  ##  Add Contact
-Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
-Visible Name  ##  Visible Name
-Rename contact  ##  Rename contact
-Enter new contact name  ##  Enter new contact name
+הכנס איש קשר לקבוצה  ##  Put contact to the group
+כתובת הג'בר של איש הקשר  ##  Contact JID
+סוג איש קשר  ##  Contact Type
+שם ניראה  ##  Visible Name
+שנה שם לאיש קשר  ##  Rename contact
+הכנס שם חדש לאיש הקשר  ##  Enter new contact name
 הגדרות  ##  Settings
-< &Back  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
+< &אחורה  ##  < &Back
+נתר תיקשורת של ג'בר  ##  Log Jabber communication
+נתר תקשורת של השקעים  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
-Delete raw log on each  ##  Delete raw log on each
-megabytes  ##  megabytes
+מחק לוג גולמי בכל אחד  ##  Delete raw log on each
+מגהבייט  ##  megabytes
 Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
-Following mediators can be used  ##  Following mediators can be used
-Allow new mediators to be added  ##  Allow new mediators to be added
+במתווכים הבאים אפשר להשתמש  ##  Following mediators can be used
+אפשר למתווכים חדשים להתווסף  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
-Show message history  ##  Show message history
+הראה היסטורית הודעות  ##  Show message history
 כינוי  ##  Nickname
 שם פרטי  ##  First name
 שם משפחה  ##  Last name
@@ -420,126 +420,133 @@ Voice Tel.  ##  Voice Tel.
 Title  ##  Title
 חברה  ##  Company name
 Department  ##  Department
-Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
+ממשקים מורשים לחיבור ישיר.  ##  Allowed interfaces for direct connection
 אפשר הכל  ##  Allow All
-Click on first column to change values  ##  Click on first column to change values
+לחץ על העמודה הראשונה בכדי לשנות ערכים.  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found  ##  Following skin files are found
+קבצי הסקינים הבאים נמצאו.  ##  Following skin files are found
 החל  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
+&יותר סקינים...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+חכה  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
-Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
+הודעת ה"לא כאן" האוטומטי שלך  ##  Auto-Away message
+הודעת "לא כאן" מוארך  ##  Extended-Away message
+הצג את וויפיאן בשורת המשימות  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
+החבא אוטומטית אם וויפיאן לא פעיל ל  ##  Auto hide if Wippien is inactive for
+תמיד מעל  ##  Always on top
+ודא יציאה מהתוכנה.  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Password protect  ##  Password protect
-Settings only  ##  Settings only
-Everything  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
-Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
-Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
+הגנת סיסמא  ##  Password protect
+הגדרות בלבד  ##  Settings only
+הכל  ##  Everything
+(תיקית הגדרות (שינויים למטה דורשים את הפעלת וויפיאן מחדש  ##  Settings folder (changing below value requires wippien restart)
+קביעות רשימת אנשי הקשר  ##  Contact list persistance
+מחק את כל אנשי הקשר המקומיים שלך על ההתחלה.  ##  Delete all local contacts on startup
+מחק את כל אנשי הקשר המקומיים שלך על התחברות.  ##  Delete all local contacts on connect
+אישור רישום של אנשי קשר  ##  Contacts subscription authorization
+לעולם אל תאשר  ##  Never authorize
 שאל אותי  ##  Ask me
-Always authorize  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
+תמיד תאשר  ##  Always authorize
+הקם רשת פרטית וירטואלית אוטומטית עם תנועה ברשת  ##  Automatically establish VPN on network traffic
+הקם אוטומטית רשת פרטית מדומה על ההתחלה.  ##  Automatically establish VPN on startup
 Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
-Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
+אפשר צ'אט קולי.  ##  Enable voice chat
+התקן ניגון  ##  Playback device
+התקן קלט  ##  Recording device
+בדוק לעידכונים כאשר וויפיאן מתחילה  ##  Check for updates when Wippien starts
+בדוק לעידכונים בהתחברות  ##  Check for updates on Connect
+בדוק לעדכונים כל  ##  Check for updates each
+עדכן ואתחל את התוכנה בשקט  ##  Update and restart application silently
+הראה הודעות מערכת שמתקבלות מהמעדכן  ##  Show system messages received from updater
+&בדוק עכשיו  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
+קבוע MTU השתמש ב  ##  Use fixed MTU
+MTU זיהוי אוטומטי של  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-&Play  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
+צליל (השאר ריק בשביל ברירת מחדל)  ##  Sound (leave empty for default sound)
+&נגן  ##  &Play
+אירועי תוכנה  ##  Program events
+הסתר אנשי קשר חדשים  ##  Hide new contact
+גלה אנשי קשר  ##  Unhide contact
+אנשי קשר שמוסתרים כרגע  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+הסתר אנשי קשר  ##  Hide contact
+הכנס את כתובת הג'בר של איש הקשר  ##  Enter contact JID
+אפשר את כל זרימת הנתונים  ##  Allow all traffic
+חסום את כל זרימת הנתונים  ##  Block all traffic
 &הוספה  ##  &Add
 &הסרה  ##  &Remove
-Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
+כלל ברירת מחדל  ##  Default rule
+תמונת התגלמות  ##  Avatar picture
 שם  ##  Name
 כתובת איפיי  ##  IP address
-Status text  ##  Status text
-Last online time  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
-Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
+הודעת מצב  ##  Status text
+זמן החיבור האחרון  ##  Last online time
+משגוח הפעילות  ##  Activity Monitor
+פרטים ניראים  ##  Visible details
+הפרטים הגלויים של אנשי הקשר  ##  Contact's visible details
+לא ממוין  ##  unsorted
 לפי שם  ##  By name
-By JID  ##  By JID
+על ידי כתובת ג'בר  ##  By JID
 by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
 by IP (without IP goes top)  ##  by IP (without IP goes top)
-Sort contact list  ##  Sort contact list
-Nickname for chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
-Password (empty if none)  ##  Password (empty if none)
-Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
-Block users at startup  ##  Block users at startup
-&Copy IP  ##  &Copy IP
-C&hat  ##  C&hat
-&Voice Chat  ##  &Voice Chat
+מיין רשימת אנשי קשר  ##  Sort contact list
+כינוי בשביל חדרי שיחה  ##  Nickname for chatrooms
+הראה חדרים זמינים בערוצים הבאים  ##  Show available rooms on following gateways
+לחץ לעיל בכדי לבחור חדר או הכנס פרטים לגבי חדר שיחה חדש למטה  ##  Click above to select room, or enter new chat room details below
+שם החדר בשביל ליצור או לשנות  ##  Room name to create or join
+סיסמא (ריק אם אין)  ##  Password (empty if none)
+שער  ##  Gateway
+הצטרף או צור חדר  ##  Join or Create room
+חסום משתמשים בהתחלה  ##  Block users at startup
+העתק כתובת רשת  ##  &Copy IP
+צ&'אט  ##  C&hat
+צ'אט קולי  ##  &Voice Chat
 שלח &קובץ  ##  Send &File
-Send E&mail  ##  Send E&mail
+שלח דואר אלקטרוני  ##  Send E&mail
 &חסום  ##  &Block
 &שינוי שם  ##  &Rename
 &מחיקה  ##  &Delete
 De&tails  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
+הוספת/הסרת חשבונות  ##  Add/Remove &Accounts
+הוספת/הסרת אנשי קשר  ##  Add/Remove &Contacts
 &מחובר  ##  &Online
-&Away  ##  &Away
-Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
-E&xtended Away  ##  E&xtended Away
-&Invisible  ##  &Invisible
+&לא כאן  ##  &Away
+פנוי לשיחה  ##  Free for &Chat
+לא להפריע  ##  &Do not Disturb
+לא כאן מוארך  ##  E&xtended Away
+&בלתי ניראה  ##  &Invisible
 O&ffline  ##  O&ffline
 שינוי &תמונה  ##  Change &Picture
 שינוי סיסמה  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
+הפרטים שלך  ##  Your &Details
+הכנס משפט סיסמא  ##  Enter Passphrase
 הכנס סיסמה  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+בבקשה הכנס סיסמת הגנה  ##  Please enter protect password
 שפות  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
+שפות חדשות עלולות להופיע לעיתים קרובות.  ##  New languages may appear periodically.
+השפות להלן נמצאו כזמינות במחשב המקומי  ##  Following languages are found as available on local computer
 &שינוי  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
+השפה הנוכחית  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
-Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
-Contact is typing...  ##  Contact is typing...
-says  ##  says
-said  ##  said
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+נמצא עידכון שפת מערכת, האם לעדכן?  ##  New language files available. Download?
+חלון הודעה קופצת כאשר איש קשר מתחבר/מתנתק  ##  Show notification popup window when contact goes online/offline
+איש קשר מקליד...  ##  Contact is typing...
+אומר  ##  says
+אמר  ##  said
+אתה יכול להשתמש בחשבון הג'י-מייל שלך כאן.  ##  You can use your GMAIL account here.
+הפעל/כבה צ'אט קולי  ##  Toggle voice chat
+הד מקומי  ##  Local echo
+UDP port 9913 תפוס  ##  UDP port 9913 busy
+לא יכול להקשיב לצ'אט קולי נכנס  ##  Unable to listen for incoming voice chat
+.רגישות המיקרופון  ##  Microphone sensitivity
+.דבר אל המקרופון שלך והתאם את המחוון. לא אמור להיות שום תנועה בצג התנועה העליון כאשר אתה לא מדבר ותנועה גדולה שמגיעה כמעט עד הסוף כאשר אתה מדבר בקול רם  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+הצ'אט הקולי לא ניראה מוגדר. אתה חייב להגדיר אותו לפני השימוש הראשוני. לעשות זאת עכשיו?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

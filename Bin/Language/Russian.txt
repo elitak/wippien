@@ -81,7 +81,7 @@ Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
-Ошибка регистрации новогЈ4/�/�.�c4-�/�,�,4`�-t.�c�  ##  Failed to register new user: %s.
+  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
 Файл не найден.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
@@ -90,8 +90,8 @@ Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
 Контакт не найден.  ##  Contact not found.
-Передача файла неудалась.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
+Передача файла не удалась.  ##  File transfer failed.
+  ##  Could not write to file.
   ##  Checksum of received file is invalid.
 Передача отменена.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
@@ -111,7 +111,7 @@ Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
 В сети  ##  Online
   ##  Away
   ##  Free for chat
-Не беспд.�/�.4`�c  ##  Do not disturb
+  ##  Do not disturb
 Extended away  ##  Extended away
 Невидимый  ##  Invisible
 Asking for subscription  ##  Asking for subscription
@@ -131,7 +131,7 @@ Configuring Wippien network adapter...  ##  Configuring Wippien network adapter.
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Network adapter disabled!  ##  Network adapter disabled!
 Network adapter opened  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
+  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
 Disconnected  ##  Disconnected
@@ -214,7 +214,7 @@ You must enter your password.  ##  You must enter your password.
 Please choose your icon.  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
 Сеть  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
+Выберите ваш IP адрес и netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Сеть  ##  Network
 Посредник  ##  Mediator
@@ -237,7 +237,7 @@ Show all services  ##  Show all services
   ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Все картинки (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 System  ##  System
 Logging  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
@@ -261,7 +261,7 @@ What will Wippien wear?  ##  What will Wippien wear?
 Auto Away  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-  ##  System
+Система  ##  System
 Basic system messages.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
   ##  Voice Chat
@@ -279,8 +279,8 @@ Sounds  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
 Контакт в сети  ##  Contact online
-Contact offline  ##  Contact offline
-Message in  ##  Message in
+Юзер оффлайн  ##  Contact offline
+  ##  Message in
 Message out  ##  Message out
 Ошибка  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
@@ -310,11 +310,11 @@ New version of Wippien is available. Download?  ##  New version of Wippien is av
 Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien update error!  ##  Wippien update error!
+  ##  Download successful. Replace now?
+  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
 Новая версия  ##  New version
-Status changed:  ##  Status changed:
+Статус поменен:  ##  Status changed:
 день  ##  day
 days  ##  days
 hour  ##  hour
@@ -326,32 +326,32 @@ minutes  ##  minutes
 не в сети  ##  is now offline
 в сети  ##  is now online
 забло кирован  ##  is blocked
-is offline  ##  is offline
+не в сети  ##  is offline
   ##  Unblock
 Забло кировать  ##  Block
 Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
 Удалить группу?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
 Удалить контакт?  ##  Remove contact?
-Adapter error  ##  Adapter error
+Ошибка адаптера  ##  Adapter error
 Пере именовать группу  ##  Rename group
 Введите новое имя группы  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
 У меня нет учетной записи  ##  I need new Jabber account
 Я уже зарегистрирован  ##  I have existing Jabber account
-  ##  &Test Account
-&Search  ##  &Search
+&Test Aккаунт  ##  &Test Account
+&Поиск  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Password  ##  Password
-Server  ##  Server
-Port  ##  Port
+Пароль  ##  Password
+Сервер  ##  Server
+Порт  ##  Port
 Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
-&Cancel  ##  &Cancel
+&Отмена  ##  &Cancel
 Please enter key passphrase  ##  Please enter key passphrase
 Add &New  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
@@ -361,37 +361,37 @@ IP address for Wippien network adapter  ##  IP address for Wippien network adapt
 Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
 Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
 Use following static address  ##  Use following static address
-IP address  ##  IP address
+IP адрес  ##  IP address
 Netmask  ##  Netmask
-Status  ##  Status
+Статус  ##  Status
 URL  ##  URL
 Description  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
+Добавить new aккаунт  ##  Add new account
+Удалить aккаунт  ##  Remove account
 Register!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
 Username  ##  Username
-Open new account  ##  Open new account
+Открыть new aккаунт  ##  Open new account
 Authorization request  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
-&Details  ##  &Details
+&Да  ##  &Yes
+&Нет  ##  &No
+&Детали  ##  &Details
 &Apply to all  ##  &Apply to all
 &Block user(s)  ##  &Block user(s)
 Do you allow  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
 Add Group  ##  Add Group
-Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+Удалить Группу  ##  Remove Group
+  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
 Contact Type  ##  Contact Type
 Visible Name  ##  Visible Name
 Rename contact  ##  Rename contact
 Enter new contact name  ##  Enter new contact name
-Settings  ##  Settings
-< &Back  ##  < &Back
+  ##  Settings
+< &Назад  ##  < &Back
 Log Jabber communication  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
@@ -403,20 +403,20 @@ Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
 Show message history  ##  Show message history
-Nickname  ##  Nickname
+Никнэйм  ##  Nickname
 First name  ##  First name
 Last name  ##  Last name
 Email  ##  Email
 Notes  ##  Notes
 Address  ##  Address
 Address Ext.  ##  Address Ext.
-City  ##  City
+Город  ##  City
 State  ##  State
-ZIP  ##  ZIP
+Зип  ##  ZIP
 Country  ##  Country
 Birthday  ##  Birthday
 Voice Tel.  ##  Voice Tel.
-Fax  ##  Fax
+Факс  ##  Fax
 Title  ##  Title
 Company name  ##  Company name
 Department  ##  Department
@@ -429,7 +429,7 @@ Apply  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+Ждать  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
@@ -452,7 +452,7 @@ Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
 Never authorize  ##  Never authorize
 Спроси меня  ##  Ask me
-Всегда автд`4.4-�/�,�b�,�,4`�c4`tc  ##  Always authorize
+  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
 Progress  ##  Progress
@@ -472,7 +472,7 @@ Auto-detect MTU  ##  Auto-detect MTU
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
 Program events  ##  Program events
-Прятать новые кд/t`�,4.�`�b  ##  Hide new contact
+  ##  Hide new contact
 Unhide contact  ##  Unhide contact
 Currently hidden contacts  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
@@ -510,12 +510,12 @@ Gateway  ##  Gateway
   ##  &Voice Chat
 Отправить файл  ##  Send &File
 Отправить письмо  ##  Send E&mail
-Заблокирд,�,4`�c  ##  &Block
-Переименд,�,4`�c  ##  &Rename
+  ##  &Block
+  ##  &Rename
 Удалить  ##  &Delete
 Детали  ##  De&tails
 добавление/удаление аккаунта  ##  Add/Remove &Accounts
-Добавить/Удалить кд/t`�,4.�`�b  ##  Add/Remove &Contacts
+  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
 Free for &Chat  ##  Free for &Chat
@@ -535,11 +535,18 @@ New languages may appear periodically.  ##  New languages may appear periodicall
 Following languages are found as available on local computer  ##  Following languages are found as available on local computer
 &Изменить  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
+Текущий язык  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+  ##  New language files available. Download?
   ##  Show notification popup window when contact goes online/offline
 печатает...  ##  Contact is typing...
 говорит  ##  says
 сказал  ##  said
   ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

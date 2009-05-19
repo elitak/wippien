@@ -1,7 +1,7 @@
 # Slovak translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: BesnyVlcik
-# Version: 187
-  ##  No error.
+# Version: 274
+Žiadna chyba.  ##  No error.
   ##  The system cannot find the file specified.
   ##  The system cannot find the path specified.
   ##  The system cannot find the specified file/directory.
@@ -63,37 +63,37 @@ Local ID not set. It is required for Search method.  ##  Local ID not set. It is
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
+Súbor nenájdený.  ##  File not found.
 Failed to write file.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
+Neznáma chyba.  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Nesprávne zadaný hodtiteľ.  ##  Hostname property not set.
-Nesprávne zadane meno.  ##  Login property not set.
+Nesprávne zadaný hostiteľ.  ##  Hostname property not set.
+Nesprávne zadané meno.  ##  Login property not set.
 Nesprávne zadané heslo.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
+Neplatný XML packet.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
+Neplatný login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+Súbor sa nenašiel.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Failed to import photo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
 Kontakt sa nenašiel.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
+Prenos súboru sa prerušil.  ##  File transfer failed.
 Could not write to file.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Prenos Zrušený  ##  Transfer aborted.
+Prenos zrušený.  ##  Transfer aborted.
 Čas poziadavky uplynul.  ##  Transfer has timed out.
 Invalid protocol selected.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
@@ -101,7 +101,7 @@ Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name
 Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
+Dátum nebol nastavený.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
@@ -116,21 +116,21 @@ Extended away  ##  Extended away
 Neviditeľný  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
+Odpojený zo serveru  ##  Disconnected from server
+Pripájanie na server  ##  Connecting to server
+Registrujem nového užívateľa  ##  Registering new user
 Initializing secure connection  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
+Pripojený k serveru  ##  Connected to server
+Sťahujem dáta zo serveru  ##  Receiving data from server
+Posielam dáta na server  ##  Sending data to server
+Spúšťam príkaz na servery  ##  Executing command on server
+Odpojený zo serveru  ##  Disconnecting from the server
+Vyžadovaná autorizácia  ##  Requested authorization
+Nastavujem sieťový adaptér Wippien...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
+Sieťový adaptér vypnutý!  ##  Network adapter disabled!
+Sieťový adaptér otvorený  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrátorské práva potrebné!  ##  Admin privilege required!
@@ -154,7 +154,7 @@ Nastaviť váš status (Neprítomný,Neviditeľný...)  ##  Set your status (Awa
 Pridať kontakty a alien účty  ##  Add contacts and alien accounts
 Vypnúť zvuk  ##  Mute sound
 Otvoriť chatovaciu miestnosť  ##  Open chat room
-Dať autorizáciu vašim priateě�  ##  Authorize your friends
+Autorizovať priateě�  ##  Authorize your friends
 Idle  ##  Idle
 Naozaj opustiť Wippien?  ##  Really exit Wippien?
 Ste si istí?  ##  Are you sure?
@@ -176,7 +176,7 @@ Clear  ##  Clear
 Vyprázdniť históriu  ##  Clear history
 Umlčať  ##  Mute
 Tučné  ##  Bold
-Italic  ##  Italic
+Šikmé  ##  Italic
 Podčiarknuté  ##  Underline
 Vložiť hyperlink  ##  Insert hyperlink
 Zmenšiť veľkosť písma  ##  Decrease font size
@@ -190,7 +190,7 @@ Nové emotikony  ##  New emoticons
 Teraz môžete kliknúť na emotikony aby ste si mohli prezrieť novo nainštalované emotikony.  ##  You can now click again on emoticon button to see new installed emoticons.
 Hotovo!  ##  Done!
 Kontakt  ##  Contact
-Pripajanie  ##  Connecting
+Pripájanie  ##  Connecting
 Žiadanie  ##  Requesting
 Sťahovanie  ##  Downloading
 Súbor s nastaveniami  ##  Configuration file
@@ -207,8 +207,8 @@ Prosím zvoľte vaše prihlasovacie údaje.  ##  Please choose your logon inform
   ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
+Musíte zadať svoje JID.  ##  You must enter your JID.
+Musíte zadať svoje heslo.  ##  You must enter your password.
 Chyba v Jabber  ##  Jabber error
 Ikona  ##  Icon
 Prosím zvoľte vašu ikonu.  ##  Please choose your icon.
@@ -220,7 +220,7 @@ Sieť  ##  Network
 Prostredník  ##  Mediator
 Please choose who will be your mediator.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
+Posledná kontrola  ##  Last check
 Port  ##  Port
 Hostname  ##  Hostname
 Trvalý  ##  Permanent
@@ -231,19 +231,19 @@ Are you sure you want to delete account '%s'?  ##  Are you sure you want to dele
 Delete registered account?  ##  Delete registered account?
 Kontá  ##  Accounts
 Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
+Ukázať všetky služby  ##  Show all services
 Kontakty  ##  Contacts
 Pridať/Odstrániť  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-Všetky obrázkové súbory (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Nájsť nové kontakty  ##  Find new contacts.
+Môžete pridať nové Jabber, ICQ, MSN... kontakty  ##  You can add new Jabber, ICQ, MSN... contacts
+Všetky súbory (*.*)\0*\0TXT súbory (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Všetky obrázkové súbory (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmapy (*.bmp)\0*.bmp\0Jpeg súbory (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF súbory (*.gif)\0*.gif\0PNG súbory (*.png)\0*.png\0Všetky súbory (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Systém  ##  System
 Logging  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
 Správy  ##  Messages
-Chat window settings.  ##  Chat window settings.
+Nastavenia chatového okna.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
 General info  ##  General info
 General information about  ##  General information about
@@ -280,18 +280,18 @@ Setup sounds to be played on various events.  ##  Setup sounds to be played on v
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
 Contact online  ##  Contact online
 Contact offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
+Odoslaná správa  ##  Message in
+Prijatá správa  ##  Message out
 Chyba  ##  Error
-WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-Schovať  ##  Hide
-Hide contacts.  ##  Hide contacts.
+WAV súbory (*.wav)\0*.wav\0Všetky súbory (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+Skryť  ##  Hide
+Skryť kontakty.  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
 Vzhľad  ##  Appearance
-Appearance settings.  ##  Appearance settings.
+Nastavenia vzhľadu.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Usporiadať  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
+Zoradiť kontakty.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
 Chatovacia miestnosť  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
@@ -329,18 +329,18 @@ je blokovaný/á  ##  is blocked
 je offline  ##  is offline
 Odblokovať  ##  Unblock
 Blokovať  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
+Skutočne chcete zmazať skupinu %s  ##  Are you sure you want to remove group %s
+Zmazať skupinu?  ##  Remove group?
+Skutočne chcete zmazať kontakt %s  ##  Are you sure you want to remove contact %s
+Zmazať kontakt?  ##  Remove contact?
+Chyba adaptéru  ##  Adapter error
+Premenovať skupinu  ##  Rename group
 Enter new group name  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
-I have existing Jabber account  ##  I have existing Jabber account
-&Test Account  ##  &Test Account
+Potrebujem nový Jabber účet  ##  I need new Jabber account
+  ##  I have existing Jabber account
+O&testovať účet  ##  &Test Account
 &Hľadať  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
@@ -366,29 +366,29 @@ Netmask  ##  Netmask
 Status  ##  Status
 URL  ##  URL
 Popis  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
+Pridať nový účet  ##  Add new account
+Zmazať účet  ##  Remove account
 Registruj!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
 Používaťeľské meno  ##  Username
-Open new account  ##  Open new account
+Otvoriť nový účet  ##  Open new account
 Authorization request  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
-&Details  ##  &Details
+Án&o  ##  &Yes
+&Nie  ##  &No
+&Detaily  ##  &Details
 &Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
+&Blokovať užívateľa(ov)  ##  &Block user(s)
 Do you allow  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+Pridať skupinu  ##  Add Group
+Zmazať skupinu  ##  Remove Group
+Pridať kontakt  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
 Contact Type  ##  Contact Type
 Visible Name  ##  Visible Name
-Rename contact  ##  Rename contact
+Premenovať kontakt  ##  Rename contact
 Enter new contact name  ##  Enter new contact name
 Nastavenia  ##  Settings
 < &Back  ##  < &Back
@@ -403,9 +403,9 @@ Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
 Show message history  ##  Show message history
-Nickname  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
+Prezývka  ##  Nickname
+Krstné meno  ##  First name
+Priezvisko  ##  Last name
 Email  ##  Email
 Poznámky  ##  Notes
 Adresa  ##  Address
@@ -417,8 +417,8 @@ Krajina  ##  Country
 Narodeniny  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
-Title  ##  Title
-Company name  ##  Company name
+Titul  ##  Title
+Názov spoločnosti  ##  Company name
 Department  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
 Allow All  ##  Allow All
@@ -542,4 +542,11 @@ Show notification popup window when contact goes online/offline  ##  Show notifi
 Kontakt píše...  ##  Contact is typing...
 says  ##  says
 said  ##  said
-Takže tu môř]H�qf�ZRl:Zt���;�H�W@  ##  You can use your GMAIL account here.
+  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

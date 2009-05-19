@@ -1,13 +1,13 @@
 # ChineseSimplified translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: fluxray
-# Version: 102
+# Version: 108
 æ²¡æœ‰é”™è«  ##  No error.
 ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦¹¥¡ù.í  ##  The system cannot find the file specified.
 ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦º-ëùo¡8à  ##  The system cannot find the path specified.
 ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦¹¥¡ù.í¹¢%¹æë¹oe  ##  The system cannot find the specified file/directory.
-ç±»å‹ä¸åŒ¹é…  ##  Type mismatch.
-æ— æ³•åˆ›å»ºå·²ç»å­˜åœ¨çš„æ–‡ä»¶æˆ–è€…ç›®å½•  ##  Cannot create a file/directory when that file/directory already exists.
-ç³»ç»Ÿæ— æ³•å‘æŒ‡å®šè®¹i!ùa¦yai  ##  The system cannot write to the specified device.
+  ##  Type mismatch.
+  ##  Cannot create a file/directory when that file/directory already exists.
+  ##  The system cannot write to the specified device.
 æ— æ•ˆå±æ€§å€¼  ##  Invalid Property Value.
 æ“ä½œè¶…æ—¶  ##  This operation returned because the timeout period expired.
 ç³»ç»Ÿçº§interruptä¸­æ–­socketæ“ä½œ  ##  System level interrupt interrupted socket operation.
@@ -58,7 +58,7 @@ wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start 
 MTUå¤ªå¤§  ##  MTU size too large.
 MTUå¤ªå°  ##  MTU size too small.
 ç«¯åˆú+~k.iziX  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
+æ— æ•ˆåˆù.é8à ¹.#º-Îzˆ¾zºşy¨NX’î“’â7²›–B  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
@@ -543,3 +543,10 @@ Show notification popup window when contact goes online/offline  ##  Show notifi
 è­  ##  says
 è­  ##  said
 è¶zaã9bşKº^KÛşyJKÚy¨N‹~jØÎ˜*îK»  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

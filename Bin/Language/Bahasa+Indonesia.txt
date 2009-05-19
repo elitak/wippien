@@ -1,35 +1,35 @@
 # Bahasa+Indonesia translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sumabek
-# Version: 50
-Tidak ditemukan kesalahan  ##  No error.
-The system cannot find the file specified.  ##  The system cannot find the file specified.
-The system cannot find the path specified.  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
-Type mismatch.  ##  Type mismatch.
-Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
-The system cannot write to the specified device.  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
+# Version: 51
+Tidak ditemukan kesalahan.  ##  No error.
+Sistem tidak dapat menemukan kesalahan yang dimaksud.  ##  The system cannot find the file specified.
+Sistem tidak dapat menemukan jalur yang dimaksud.  ##  The system cannot find the path specified.
+Sistem tidak dapat menemukan data/direktori yang dimaksud.  ##  The system cannot find the specified file/directory.
+Ketidakpasan tipe.  ##  Type mismatch.
+Tidak dapat menciptakan data/direktori apabila data/direktori tersebut sudah ada.  ##  Cannot create a file/directory when that file/directory already exists.
+Sistem tidak dapat menulis ke alat yang dimaksud.  ##  The system cannot write to the specified device.
+Nilai properti tidak valid.  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Interupsi level sistem telah menginterupsi operasi soket.  ##  System level interrupt interrupted socket operation.
+Kesalahan generik untuk format yang tidak valid, format gagal.  ##  Generic error for invalid format, bad format.
+Sebuah usaha untuk mengakses sebuah soket dengan cara yang dilarang oleh ijin aksesnya telah dilakukan.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
+Kesalahan generik untuk format, masukan, dll yang tidak valid.  ##  Generic error for invalid format, entry, etc.
+Argumen tidak valid diberikan.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
+Alamat yang diberikan sudah terpakai.  ##  The specified address is already in use.
+Alamat yang dimaksud tidak tersedia.  ##  The specified address is not available.
+Jaringan yang terhubung tidak tersedia.  ##  The connected network is not available.
+Jaringan yang terhubung tidak dapat dicapai.  ##  The connected network is not reachable.
+Hubungan jaringan yang terhubung telah di-reset.  ##  The connected network connection has been reset.
 The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
 The current socket connection has been reset.  ##  The current socket connection has been reset.
 The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
+Hubungan telah diputuskan.  ##  The connection has been shutdown.
 The current connection has timeout.  ##  The current connection has timeout.
 The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
+Nama host yang diberikan terlalu panjang  ##  Specified host name is too long.
 Remote host is currently unavailable.  ##  Remote host is currently unavailable.
 Remote host is currently unreachable.  ##  Remote host is currently unreachable.
 Remote system is not ready.  ##  Remote system is not ready.
@@ -424,11 +424,11 @@ Allowed interfaces for direct connection  ##  Allowed interfaces for direct conn
 Allow All  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Skin file berikut ditemukan  ##  Following skin files are found
+  ##  Following skin files are found
 Apply  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
+  ##  Set back when activity is detected again.
 Wait  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
@@ -439,7 +439,7 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Otomatis sembunyi jika wippien tidak aktif untuk  ##  Auto hide if Wippien is inactive for
-Selalu diatas  ##  Always on top
+  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
@@ -543,3 +543,10 @@ kontak sedang mengetik  ##  Contact is typing...
 says  ##  says
 said  ##  said
 Anda dapat menggunakan Akun GMAIL Anda disini  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

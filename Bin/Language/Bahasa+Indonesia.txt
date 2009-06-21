@@ -1,6 +1,6 @@
 # Bahasa+Indonesia translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sumabek
-# Version: 51
+# Version: 104
 Tidak ditemukan kesalahan.  ##  No error.
 Sistem tidak dapat menemukan kesalahan yang dimaksud.  ##  The system cannot find the file specified.
 Sistem tidak dapat menemukan jalur yang dimaksud.  ##  The system cannot find the path specified.
@@ -9,25 +9,25 @@ Ketidakpasan tipe.  ##  Type mismatch.
 Tidak dapat menciptakan data/direktori apabila data/direktori tersebut sudah ada.  ##  Cannot create a file/directory when that file/directory already exists.
 Sistem tidak dapat menulis ke alat yang dimaksud.  ##  The system cannot write to the specified device.
 Nilai properti tidak valid.  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
+Operasi dibatalkan, waktu yang ditentukan telah habis.  ##  This operation returned because the timeout period expired.
 Interupsi level sistem telah menginterupsi operasi soket.  ##  System level interrupt interrupted socket operation.
 Kesalahan generik untuk format yang tidak valid, format gagal.  ##  Generic error for invalid format, bad format.
 Sebuah usaha untuk mengakses sebuah soket dengan cara yang dilarang oleh ijin aksesnya telah dilakukan.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+System mendeteksi adanya kesalahan penunjukan alamat dalam penggunaan argumentasi panggilan.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Kesalahan generik untuk format, masukan, dll yang tidak valid.  ##  Generic error for invalid format, entry, etc.
 Argumen tidak valid diberikan.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+Alamat Provider IP tidak benar atau Host IP tidak tersedia.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Socket salah atau tidak terkoneksi ke jaringan.  ##  Invalid socket or not connected to remote.
 Alamat yang diberikan sudah terpakai.  ##  The specified address is already in use.
 Alamat yang dimaksud tidak tersedia.  ##  The specified address is not available.
 Jaringan yang terhubung tidak tersedia.  ##  The connected network is not available.
 Jaringan yang terhubung tidak dapat dicapai.  ##  The connected network is not reachable.
 Hubungan jaringan yang terhubung telah di-reset.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
+Koneksi yg sedang digunakan telah diputuskan oleh ISP Anda.  ##  The current connection has been aborted by the network or intermediate services.
+Jalur Koneksi telah diperbaharui.  ##  The current socket connection has been reset.
+Jalur Koneksi tidak tersambung.  ##  The current socket has not been connected.
 Hubungan telah diputuskan.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
+Koneksi yg sedang digunakan telah habis masa waktunya  ##  The current connection has timeout.
 The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
 Nama host yang diberikan terlalu panjang  ##  Specified host name is too long.
 Remote host is currently unavailable.  ##  Remote host is currently unavailable.
@@ -107,13 +107,13 @@ Page not found (error 404) returned from the server.  ##  Page not found (error 
 Invalid file size after download.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
 Warning  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Away  ##  Away
-Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
-Extended away  ##  Extended away
-Invisible  ##  Invisible
+Tidak terhubung  ##  Offline
+Terhubung  ##  Online
+Keluar  ##  Away
+Siap ngobrol  ##  Free for chat
+Sibuk  ##  Do not disturb
+  ##  Extended away
+Tidak terlihat  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
@@ -134,10 +134,10 @@ Network adapter opened  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
+Terputus  ##  Disconnected
+Tersambung  ##  Connected
+Tidak dapat mengirim pesan  ##  Could not deliver message.
+Perubahan Password gagal  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
@@ -145,24 +145,24 @@ Reconnect in %d seconds.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
 No network  ##  No network
 Exit Wippien  ##  Exit Wippien
-E&xit  ##  E&xit
+&Keluar  ##  E&xit
 Open settings  ##  Open settings
 &Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
-&About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+  ##  Show AboutBox
+&Tentang  ##  &About
+Ubah status Anda (Keluar, Tidak terlihat...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
+Tidak bersuara  ##  Mute sound
 Open chat room  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
 Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
+Apa kamu yakin?  ##  Are you sure?
+Password Anda telah berubah.  ##  Your password is now changed.
+Password telah berubah.  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
-Identity  ##  Identity
+Mengidentitas  ##  Identity
 ID Card  ##  ID Card
 Home Address  ##  Home Address
 Work Address  ##  Work Address
@@ -510,38 +510,38 @@ C&hat  ##  C&hat
 &Voice Chat  ##  &Voice Chat
 Send &File  ##  Send &File
 Send E&mail  ##  Send E&mail
-&Block  ##  &Block
-&Rename  ##  &Rename
-&Delete  ##  &Delete
-De&tails  ##  De&tails
+&Blokir  ##  &Block
+&Ganti Nama  ##  &Rename
+&Hapus  ##  &Delete
+Ri&ncian  ##  De&tails
 Add/Remove &Accounts  ##  Add/Remove &Accounts
 Add/Remove &Contacts  ##  Add/Remove &Contacts
 &Online  ##  &Online
-&Away  ##  &Away
+&Keluar  ##  &Away
 Free for &Chat  ##  Free for &Chat
 &Do not Disturb  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
-&Invisible  ##  &Invisible
-O&ffline  ##  O&ffline
+&Tidak terlihat  ##  &Invisible
+Tidak ter&hubung  ##  O&ffline
 Ubah gambar  ##  Change &Picture
 Ubah password  ##  Change Pa&ssword
 Your &Details  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
 Masukan password  ##  Enter password
-Please enter protect password  ##  Please enter protect password
-Languages  ##  Languages
+Silahkan masukan password terlindungi.  ##  Please enter protect password
+Bahasa bahasa  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
 New languages may appear periodically.  ##  New languages may appear periodically.
 Following languages are found as available on local computer  ##  Following languages are found as available on local computer
-&Change  ##  &Change
+&Ganti  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Bahasa yang sedang dipakai  ##  Currently used language
+Bahasa yang sedang digunakan  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 File bahasa baru tersedia. Download?  ##  New language files available. Download?
-Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
+Tampilkan pemberitahuan ketika ada yang online atau offline.  ##  Show notification popup window when contact goes online/offline
 kontak sedang mengetik  ##  Contact is typing...
-says  ##  says
-said  ##  said
+mengatakan  ##  says
+berkata  ##  said
 Anda dapat menggunakan Akun GMAIL Anda disini  ##  You can use your GMAIL account here.
   ##  Toggle voice chat
   ##  Local echo
@@ -550,3 +550,5 @@ Anda dapat menggunakan Akun GMAIL Anda disini  ##  You can use your GMAIL accoun
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+telah diaktifkan  ##  has enabled
+telah dimatikan  ##  has disabled

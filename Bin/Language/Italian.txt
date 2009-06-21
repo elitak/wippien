@@ -1,8 +1,8 @@
 # Italian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 11
+# Version: 19
 Nessun errore.  ##  No error.
-Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
+Il Sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
 Il sistema non riesce a trovare il percorso/file specificato.  ##  The system cannot find the specified file/directory.
 Formato non corretto.  ##  Type mismatch.
@@ -543,10 +543,12 @@ Il contatto sta scrivendo...  ##  Contact is typing...
 dice  ##  says
 ha detto  ##  said
 Puoi utilizzare un account GMAIL.  ##  You can use your GMAIL account here.
-  ##  Toggle voice chat
-  ##  Local echo
-  ##  UDP port 9913 busy
-  ##  Unable to listen for incoming voice chat
+Attiva\Disattiva la Chat vocale.  ##  Toggle voice chat
+Echo locale.  ##  Local echo
+La porta UDP 9913 è occupata.  ##  UDP port 9913 busy
+Fallito l'ascolto di Chat vocali in ingresso.  ##  Unable to listen for incoming voice chat
 Sensibilità del microfono  ##  Microphone sensitivity
 Parla nel tuo microfono e aggiusta la barra. Non ci dovrebbero essere movimenti nell'attività del tuo monitor se non parli, al contrario dovrebbero essere al massimo se parli a voce alta.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+La Chat vocale non risulta ancora configurata. Procedere con la configurazione?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

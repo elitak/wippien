@@ -1,21 +1,21 @@
 # Finnish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Antti
-# Version: 3
+# Version: 15
 Ei virhettä.  ##  No error.
 Tiedostoa ei löydy.  ##  The system cannot find the file specified.
 Hakemistoa ei löydy.  ##  The system cannot find the path specified.
 Tiedostoa tai hakemistoa ei löydy.  ##  The system cannot find the specified file/directory.
-  ##  Type mismatch.
+Tyyppiristiriita  ##  Type mismatch.
 Tiedostoa/hakemistoa ei voida luoda, jos se on jo olemassa.  ##  Cannot create a file/directory when that file/directory already exists.
 Laitteeseen ei voida kirjoittaa.  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
+Virheellinen ominaisuusarvo  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
 Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
 An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
+Argumentti on virheellinen  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 Annettu osoite on jo käytössä.  ##  The specified address is already in use.
@@ -36,18 +36,18 @@ Remote system is not ready.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
-Host not found.  ##  Host not found.
+Isäntää ei löydy  ##  Host not found.
 Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
+Tuntematon hakutyyppi  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
 Already started.  ##  Already started.
 Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
+Yhteyttä ei ole muodostettu  ##  Connection not established.
+Tuntematon tietolaji  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+Tuntematon kanavalaji  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.
@@ -162,9 +162,9 @@ Salasanasi on nyt vaihdettu.  ##  Your password is now changed.
 Password changed  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
-Identity  ##  Identity
+  ##  Identity
 ID Card  ##  ID Card
-Home Address  ##  Home Address
+Asunto-osoite  ##  Home Address
 Työosoite  ##  Work Address
 Haluatko Varmasti poistaa historian?  ##  Are you sure you want to delete the history?
 Poista historia?  ##  Delete history?
@@ -550,3 +550,5 @@ Tässä voit käyttää vain GMAIL tiliä.  ##  You can use your GMAIL account h
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

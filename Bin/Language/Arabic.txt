@@ -1,6 +1,6 @@
 # Arabic translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: ahmad
-# Version: 19
+# Version: 43
 لا يوجد خطأ.  ##  No error.
 النظام لم يجد الملف المحدد.  ##  The system cannot find the file specified.
 النظام لم يجد المسار المحدد.  ##  The system cannot find the path specified.
@@ -18,8 +18,8 @@ Generic error for invalid format, entry, etc.  ##  Generic error for invalid for
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
+العنوان المحدد مستخدم بالفعل  ##  The specified address is already in use.
+العنوان المحدد غير متاح  ##  The specified address is not available.
 The connected network is not available.  ##  The connected network is not available.
 The connected network is not reachable.  ##  The connected network is not reachable.
 The connected network connection has been reset.  ##  The connected network connection has been reset.
@@ -44,7 +44,7 @@ Already started.  ##  Already started.
 Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
+لم يتم انشاء الاتصال  ##  Connection not established.
 Unknown data type.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Unknown channel type.  ##  Unknown channel type.
@@ -439,10 +439,10 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
+دائما في المقدمة  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Password protect  ##  Password protect
+حماية كلمة السر  ##  Password protect
 Settings only  ##  Settings only
 Everything  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
@@ -451,12 +451,12 @@ Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
 Never authorize  ##  Never authorize
-Ask me  ##  Ask me
-Always authorize  ##  Always authorize
+اسألني  ##  Ask me
+السماح بتصريح دائم  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
 Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
+تمكين المحادثة الصوتية  ##  Enable voice chat
 Playback device  ##  Playback device
 Recording device  ##  Recording device
 Check for updates when Wippien starts  ##  Check for updates when Wippien starts
@@ -472,16 +472,16 @@ Auto-detect MTU  ##  Auto-detect MTU
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
 Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
+اخفاء جهات الاتصال الجديدة  ##  Hide new contact
+اظهار جهات الاتصال  ##  Unhide contact
 Currently hidden contacts  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
+اخفاء جهات الاتصال  ##  Hide contact
 Enter contact JID  ##  Enter contact JID
 Allow all traffic  ##  Allow all traffic
 Block all traffic  ##  Block all traffic
-&Add  ##  &Add
-&Remove  ##  &Remove
+اضافة  ##  &Add
+حذف  ##  &Remove
 Default rule  ##  Default rule
 Avatar picture  ##  Avatar picture
 Name  ##  Name
@@ -491,29 +491,29 @@ Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
 Visible details  ##  Visible details
 Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
-By name  ##  By name
+غير مخزن  ##  unsorted
+عن طريق الاسم  ##  By name
 By JID  ##  By JID
 by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
 by IP (without IP goes top)  ##  by IP (without IP goes top)
 Sort contact list  ##  Sort contact list
-Nickname for chatrooms  ##  Nickname for chatrooms
+الاسم المستعار لغرف المحادثة  ##  Nickname for chatrooms
 Show available rooms on following gateways  ##  Show available rooms on following gateways
 Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
 Room name to create or join  ##  Room name to create or join
 Password (empty if none)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Join or Create room  ##  Join or Create room
-Block users at startup  ##  Block users at startup
+حجب المتصلين عند بداية التشغيل  ##  Block users at startup
 &Copy IP  ##  &Copy IP
 C&hat  ##  C&hat
 &Voice Chat  ##  &Voice Chat
 Send &File  ##  Send &File
 Send E&mail  ##  Send E&mail
-&Block  ##  &Block
-&Rename  ##  &Rename
-&Delete  ##  &Delete
-De&tails  ##  De&tails
+حجب  ##  &Block
+اعادة تسمية  ##  &Rename
+حذف  ##  &Delete
+تفاصيل  ##  De&tails
 Add/Remove &Accounts  ##  Add/Remove &Accounts
 Add/Remove &Contacts  ##  Add/Remove &Contacts
 &Online  ##  &Online
@@ -527,7 +527,7 @@ Change &Picture  ##  Change &Picture
 تغير كلمة المرور  ##  Change Pa&ssword
 أدخل تفاصيلك  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
-Enter password  ##  Enter password
+ادخل كلمة السر  ##  Enter password
 Please enter protect password  ##  Please enter protect password
 اللغات  ##  Languages
 .Wippien أدخل اللغة المستعملة في كل نصوص  ##  Setup language used in all Wippien texts.
@@ -543,3 +543,12 @@ Show notification popup window when contact goes online/offline  ##  Show notifi
 says  ##  says
 said  ##  said
 . هناGMAILيمكنك استعمال حساب  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

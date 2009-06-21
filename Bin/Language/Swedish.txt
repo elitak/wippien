@@ -1,6 +1,6 @@
 # Swedish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: MrMust
-# Version: 327
+# Version: 381
 Inget fel uppstod  ##  No error.
 Systemet kunde inte hitta den specifierade filen.  ##  The system cannot find the file specified.
 Systemet kunde inte hitta den specificerade sökvägen  ##  The system cannot find the path specified.
@@ -58,8 +58,8 @@ Kanalen var stängd.  ##  Channel was closed.
 MTU- storlek för stor.  ##  MTU size too large.
 MTU- storlek för liten.  ##  MTU size too small.
 Ogiltig socks- begäran.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
+Fel lösenord. Lösenordet matchar inte det andra lösenordet.  ##  Invalid password. Does not match remote peer's password.
+Ditt lokala ID är inte infogat. Det behövs för att kunna använda Sökningsmetoden.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Utför redan filöverföring.  ##  Already performing file transfer.
@@ -67,18 +67,18 @@ Filen kunde inte hittas.  ##  File not found.
 Misslyckades att skriva till fil.  ##  Failed to write file.
 Kunde inte öppna nätverksadapter.  ##  Could not open network adapter.
 Bara en adapter kan användas i taget.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Licensnyckel saknas. Du kan inte använda denna komponent i en utvecklingsmiljö.  ##  License key missing. You can not use this component in design environment.
 Okänt fel.  ##  Unrecognized Error.
 Kan inte ansluta. Koppla ner först.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
+Komponent upptagen.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
 Värdnamn är inte korrekt angivet.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Lösenord är inte korrekt angivet.  ##  Password property not set.
 Ogiltigt XML paket.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
+Ogiltig inloggning: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Misslyckades med att registrera ny användare: %s.  ##  Failed to register new user: %s.
@@ -110,7 +110,7 @@ Varning  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
 Borta  ##  Away
-Free for chat  ##  Free for chat
+Tillgänglig för chat  ##  Free for chat
 Stör ej  ##  Do not disturb
 Extended away  ##  Extended away
 Osynlig  ##  Invisible
@@ -138,7 +138,7 @@ Disconnected  ##  Disconnected
 Connected  ##  Connected
 Kunde inte leverera meddelande.  ##  Could not deliver message.
 Misslyckades med att ändra lösenord  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
+Frånkopplad på grund av inaktivitet  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
   ##  << VPN not established yet >>
 Återansluter om %d sekunder.  ##  Reconnect in %d seconds.
@@ -153,7 +153,7 @@ Visa information  ##  Show AboutBox
 Ställ in din status (Borta, osynlig...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
 Stäng av ljud  ##  Mute sound
-Open chat room  ##  Open chat room
+Öppna chatrum  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
 Vill du verkligen avsluta Wippien?  ##  Really exit Wippien?
@@ -174,7 +174,7 @@ Detaljer  ##  Details
 Kontaktinformation  ##  Contact information
 Rensa  ##  Clear
 Rensa historik  ##  Clear history
-  ##  Mute
+Tysta  ##  Mute
 Fet  ##  Bold
 Kursiv  ##  Italic
 Understruken  ##  Underline
@@ -182,12 +182,12 @@ Infoga hyperlänk  ##  Insert hyperlink
 Minska textstorlek  ##  Decrease font size
 Återställ textstorlek  ##  Reset font size
 Öka textstorlek  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
+Välj förgrundsfärg  ##  Set Foreground color
 Välj bakgrundsfärg  ##  Set Background color
 Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
+Nya emoticoner kommer laddas ner och installeras. Fortsätta?  ##  New emoticons will be downloaded and installed. Proceed?
+Nya emoticoner  ##  New emoticons
+Du kan nu klicka igen på emoticon-knappen för att se nyinstallerade emoticoner  ##  You can now click again on emoticon button to see new installed emoticons.
 Färdigt!  ##  Done!
 Kontakt  ##  Contact
 Ansluter  ##  Connecting
@@ -196,26 +196,26 @@ Laddar ner  ##  Downloading
 Konfigurationsfil  ##  Configuration file
 Generell  ##  General
 Borta på grund av inaktivitet.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
+Borta läääänge  ##  Away for a loooong time.
 tillåt  ##  allow
 neka  ##  deny
 inte specifierad  ##  not specified
 &Slutför  ##  &Finish
 &Nästa  ##  &Next >
 Identitet  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
+Välj din inloggningsinformation  ##  Please choose your logon information.
+Detta visas på din väns lista.  ##  This is shown on your friend's list.
+JID måste innehålla servernamn, formaterad som user@server.com  ##  JID should contain server name, formatted like user@server.com
+Ogiltig inloggningsinformation  ##  Invalid logon details
+Du måste ange ditt JID.  ##  You must enter your JID.
 Du måste fylla i ditt lösenord.  ##  You must enter your password.
-Jabber error  ##  Jabber error
+Jabber-fel  ##  Jabber error
 Ikon  ##  Icon
 Vänligen välj din ikon  ##  Please choose your icon.
-This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+Detta visas vanligen för dina kontakter.  ##  This is usually visible to your contacts.
 Nätverk  ##  Network
 Vänligen fyll i din IP-adress och nätmask.  ##  Please choose your IP address and netmask.
-This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+Detta anger nätverksområde att användas av wippien.  ##  This defines network range to be used by wippien.
 Network  ##  Network
 Mediator  ##  Mediator
 Please choose who will be your mediator.  ##  Please choose who will be your mediator.
@@ -225,48 +225,48 @@ Port  ##  Port
 Värdnamn  ##  Hostname
 Permanent  ##  Permanent
 Tillfällig  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+Ange alla dina konton här  ##  Enter all your accounts here.
+Du kan lägga till valfritt konto som stöds av din Jabber-server (exempelvis ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Är du säker på att du vill radera konto '%s'?  ##  Are you sure you want to delete account '%s'?
+Radera registrerat konto?  ##  Delete registered account?
 Accounts  ##  Accounts
-Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
+Visa endast gateways  ##  Show only gateways
+Visa alla tjänster  ##  Show all services
 Kontakter  ##  Contacts
 Lägg till/Ta bort  ##  Add/Remove
 Hitta nya kontakter.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Du kan lägga till nya Jabber, ICQ, MSN... kontakter  ##  You can add new Jabber, ICQ, MSN... contacts
+Alla filer (*.*)\0*\0TXT filer (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Alla bildfiler (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmappar (*.bmp)\0*.bmp\0Jpeg-filer (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF-filer (*.gif)\0*.gif\0PNG-filer (*.png)\0*.png\0Alla filer (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 System  ##  System
 Loggning  ##  Logging
 Konfigurera loggfiler och felsökningsinformation.  ##  Setup log files and debug info.
 Specificera sökvägar nedan  ##  Specify paths below
 Messages  ##  Messages
-Chat window settings.  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
+Chattfönster-inställningar.  ##  Chat window settings.
+För alla öppna chattfönster.  ##  For all open chat windows.
 Generell information  ##  General info
 Generell information om  ##  General information about
-Personal information  ##  Personal information
-Home details for  ##  Home details for
-Business information  ##  Business information
-Work details for  ##  Work details for
-all other  ##  all other
+Personlig information  ##  Personal information
+Hemmadetaljer för  ##  Home details for
+Arbetsinformation  ##  Business information
+Arbetsdetaljer för  ##  Work details for
+alla övriga  ##  all other
 address given by mediator  ##  address given by mediator
 Appearance  ##  Appearance
 Skins  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
+Välj skal från nedanståede lista.  ##  Choose skin from below list.
+Vad ska Wippien ha på sig?  ##  What will Wippien wear?
+.. inget ..  ##  .. none ..
 Auto Away  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+Bestämmer hur Wippien uppträder vid systeminaktivitet.  ##  Determines how will Wippien behave when system is inactive.
 System  ##  System
-Basic system messages.  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-Voice Chat  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
+Grundläggande systemmeddelanden  ##  Basic system messages.
+Bestäm Wippien programbetende.  ##  Define Wippien application's behavior.
+Röstchatt  ##  Voice Chat
+Ställ in dina röstchattenheter.  ##  Please setup your voice chat devices.
+Välj från listan nedan  ##  Choose from list below.
 <system default>  ##  <system default>
 Contacts basic settings.  ##  Contacts basic settings.
 Uppdateringar  ##  Updates
@@ -550,3 +550,5 @@ Du kan använda ditt Gmail- konto här  ##  You can use your GMAIL account here.
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

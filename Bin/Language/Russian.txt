@@ -1,6 +1,6 @@
 # Russian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Flex
-# Version: 1
+# Version: 25
   ##  No error.
 Системе не удается найти указанный файл.  ##  The system cannot find the file specified.
 Системе не удается найти указанный путь.  ##  The system cannot find the path specified.
@@ -19,7 +19,7 @@ An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 The specified address is already in use.  ##  The specified address is already in use.
-Указанный адрес недоступен.  ##  The specified address is not available.
+  ##  The specified address is not available.
 Сеть недоступна.  ##  The connected network is not available.
 Сеть недостижима.  ##  The connected network is not reachable.
   ##  The connected network connection has been reset.
@@ -32,7 +32,7 @@ The requested connection has been refused by the remote host.  ##  The requested
 Specified host name is too long.  ##  Specified host name is too long.
 Remote host is currently unavailable.  ##  Remote host is currently unavailable.
 Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
+Удаленная система не готова.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
   ##  Socket API is not initialized.
 Сокет был отключен.  ##  Socket has been disconnected.
@@ -104,8 +104,8 @@ Signature on retrieved document is invalid.  ##  Signature on retrieved document
 Дата не указана.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Страница не найдена (error 404).  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
+Неправильный размер файла после загрузки.  ##  Invalid file size after download.
+Неправильная контрольная сумма(MD5) после загрузки.  ##  Invalid MD5 checksum after download.
 Предупреждение  ##  Warning
 Не в сети  ##  Offline
 В сети  ##  Online
@@ -119,7 +119,7 @@ Contact not subscribed  ##  Contact not subscribed
 Отключен от сервера.  ##  Disconnected from server
 Подключение к серверу  ##  Connecting to server
 Регистрация  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
+  ##  Initializing secure connection
 Отправка данных авторизации  ##  Sending authentication data
 Подключение к серверу  ##  Connected to server
 Receiving data from server  ##  Receiving data from server
@@ -141,10 +141,10 @@ Failed to change password  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+  ##  Reconnect in %d seconds.
   ##  seconds
 Нет сети  ##  No network
-Exit Wippien  ##  Exit Wippien
+Закрыть Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
   ##  Open settings
 &Settings  ##  &Settings
@@ -158,7 +158,7 @@ Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
 Really exit Wippien?  ##  Really exit Wippien?
 Вы уверены?  ##  Are you sure?
-  ##  Your password is now changed.
+Ваш пард.�c4.4-�/4-t/t-t/K  ##  Your password is now changed.
 Пароль изменен  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
@@ -228,13 +228,13 @@ Hostname  ##  Hostname
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+Удалить регистрационную запись?  ##  Delete registered account?
 Accounts  ##  Accounts
 Show only gateways  ##  Show only gateways
 Show all services  ##  Show all services
 Контакты  ##  Contacts
 Добавить/удалить  ##  Add/Remove
-  ##  Find new contacts.
+Найти нд,�b�-H4.�/�/t`�,4.�`�b  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Все картинки (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
@@ -550,3 +550,5 @@ Changes will take affect on 'as needed' basis. You should restart Wippien if you
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

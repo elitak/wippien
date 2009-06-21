@@ -1,6 +1,6 @@
 # Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Wippien Fan
-# Version: 18
+# Version: 75
 Geen fout  ##  No error.
 Systeem kan opgegeven bestand niet vinden.  ##  The system cannot find the file specified.
 Systeem kan opgegeven pad niet vinden.  ##  The system cannot find the path specified.
@@ -8,16 +8,16 @@ Systeem kan opgegeven bestand/pad niet vinden  ##  The system cannot find the sp
 Verkeerd type  ##  Type mismatch.
 Het systeem kan geen file/directory maken wanneer deze file/directory al bestaat.  ##  Cannot create a file/directory when that file/directory already exists.
 Het system kan niet schrijven op de opgegeven schijf.  ##  The system cannot write to the specified device.
-Onjuiste veld waarde.  ##  Invalid Property Value.
+Onjuiste veldwaarde.  ##  Invalid Property Value.
   ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
 Algemene fout voor ongeldig formaat, ongeldig formaat.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Algemen fout voor ongeldig formaat, invoer, enz.  ##  Generic error for invalid format, entry, etc.
+Algemene fout voor ongeldig formaat, invoer, enz.  ##  Generic error for invalid format, entry, etc.
 Er was een ongeldig argument opgegeven.  ##  An invalid argument was supplied.
 Het ip adres is niet geldig of bestaat niet.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+Ongeldig slot of niet verbonden met pc op afstand.  ##  Invalid socket or not connected to remote.
 Dit adres is al in gebruik.  ##  The specified address is already in use.
 Dit adres is niet beschikbaar.  ##  The specified address is not available.
 Het verbonden netwerk is niet beschikbaar.  ##  The connected network is not available.
@@ -29,7 +29,7 @@ De huidige socket is niet verbonden.  ##  The current socket has not been connec
 De verbinding is afgebroken.  ##  The connection has been shutdown.
 De huidige verbinding heeft een timeout.  ##  The current connection has timeout.
 De gewenste verbinding is geweigerd door de remote host.  ##  The requested connection has been refused by the remote host.
-De host naam is te lang.  ##  Specified host name is too long.
+De hostnaam is te lang.  ##  Specified host name is too long.
 Remote host is momenteel niet beschikbaar.  ##  Remote host is currently unavailable.
 Remote host is momenteel niet te bereiken.  ##  Remote host is currently unreachable.
 Remote system is niet klaar.  ##  Remote system is not ready.
@@ -38,27 +38,27 @@ Socket API is niet geïnitialiseerd.  ##  Socket API is not initialized.
 Socket verbinding is verbroken.  ##  Socket has been disconnected.
 Host niet gevonden.  ##  Host not found.
 Er is onvoldoende geheugen beschikbaar voor deze handeling.  ##  Not enough memory is available to complete this operation.
-Onbekende zoek opdracht.  ##  Unknown search type.
+Onbekende zoekopdracht.  ##  Unknown search type.
 Onbekend argument voor Zoek methode.  ##  Unknown argument for Search method.
-Is al reeds gestart.  ##  Already started.
+Is reeds gestart.  ##  Already started.
 Kanaal is reeds gestart  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Verbinding kon niet worden gemaakt.  ##  Connection not established.
-Onbekende bestands type.  ##  Unknown data type.
+Onbekend bestandstype.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Onbekend kanaal type  ##  Unknown channel type.
+Onbekend kanaaltype  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Kanaal kan lokaal niet worden aangemaakt.  ##  Channel cannot be created by local side.
 Kanaal kan lokaal niet worden gestart.  ##  Channel cannot be started by local side.
 Kanaal geweigerd door andere partij.  ##  Channel refused by remote side.
-Protocol versie van andere partij wordt niet ondersteund.  ##  Unsupported remote protocol version.
+Protocolversie van andere partij wordt niet ondersteund.  ##  Unsupported remote protocol version.
 wodVPN nog niet gestart. Gebruik Start eerst.  ##  wodVPN not yet started. Use Start first.
 Kanaal was gesloten.  ##  Channel was closed.
 MTU waarde is te groot.  ##  MTU size too large.
 MTU waarde is te klein.  ##  MTU size too small.
 Ongeldige socks aanvraag.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
+Ongeldig wachtwoord. Wachtwoorden zijn ongelijk.  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Kan geen verbinding maken met het opgegeven IP adres.  ##  Cannot bind to specified IP address.
@@ -69,7 +69,7 @@ Kon netwerk adapter niet openen.  ##  Could not open network adapter.
 Er kan maar één netwerkadapter tegelijk worden gebruikt.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
 Onbekende fout.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
+Deze verbinding kan op dit moment niet worden gemaakt. Verbreek eerst de bestaande verbinding.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component is bezet.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
@@ -104,8 +104,8 @@ Signature on retrieved document is invalid.  ##  Signature on retrieved document
 datum niet ingesteld.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Pagina niet gevonden(fout 404) bericht van de server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
+Ongeldige bestandsgrootte na download.  ##  Invalid file size after download.
+Ongeldige MD5 checksum na download.  ##  Invalid MD5 checksum after download.
 Waarschuwing  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
@@ -116,8 +116,8 @@ Lang afwezig  ##  Extended away
 Onzichtbaar  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-  ##  Connecting to server
+Verbinding met de server is verbroken  ##  Disconnected from server
+Verbinding met de server wordt tot stand gebracht  ##  Connecting to server
 Bezig met registreren nieuwe gebruiker  ##  Registering new user
 Initialiseren beveiligde verbinding  ##  Initializing secure connection
 Bezig met versturen van authenticatie gegevens  ##  Sending authentication data
@@ -126,14 +126,14 @@ Ontvang data van de server.  ##  Receiving data from server
 zend data naar de server.  ##  Sending data to server
 Bezig met uitvoeren van commando op server  ##  Executing command on server
 Verbinding met server wordt verbroken  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
+Authorisatie is aangevraagd  ##  Requested authorization
+De Wippien netwerk adapter wordt geconfigureerd...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Netwerk adapter uitgeschakeld!  ##  Network adapter disabled!
 Netwerk adapter geopend  ##  Network adapter opened
 Wippien netwerk adapter niet beschikbaar. Doorgaan met enkel IM?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Administratie rechten vereist !!!(administrator)  ##  Admin privilege required!
+Administrator rechten vereist !!! [Administrator]  ##  Admin privilege required!
 Disconnected  ##  Disconnected
 Connected  ##  Connected
 Kon bericht niet bezorgen.  ##  Could not deliver message.
@@ -218,7 +218,7 @@ Selecteer u IP adres en netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Netwerk  ##  Network
 Mediator  ##  Mediator
-Please choose who will be your mediator.  ##  Please choose who will be your mediator.
+Maak alstublieft een keuze wie u als mediator (tussenpersoon) wilt gebruiken.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
 Laatste controle.  ##  Last check
 Poort  ##  Port
@@ -309,7 +309,7 @@ Wippien  update  ##  Wippien update
 Nieuwe versie beschikbaar ,Downloaden?  ##  New version of Wippien is available. Download?
 Klik hier om te kijken wat er nieuw is.  ##  Click here to see what's new.
 Deze versie van  Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
+Fout bij verbinden pc op afstand.  ##  Error connecting to remote server.
 Downloaden gereed,nu vervangen?  ##  Download successful. Replace now?
 Wippien update fout!  ##  Wippien update error!
 Nieuwere versie van Wippien lokaal gevonden. Vervangen?  ##  New version of Wippien found localy. Replace?
@@ -453,8 +453,8 @@ Contacts subscription authorization  ##  Contacts subscription authorization
 Nooit toestemmen  ##  Never authorize
 Vraag mij  ##  Ask me
 Altijd toestemmen  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
+Zet automatisch VPN op zodra er netwerk verkeer is  ##  Automatically establish VPN on network traffic
+Zet automatisch VPN op bij opstarten  ##  Automatically establish VPN on startup
 Progress  ##  Progress
 Zet voice chat aan  ##  Enable voice chat
 Afspeelapparaat  ##  Playback device
@@ -466,8 +466,8 @@ Herstart applicatie en update verborgen  ##  Update and restart application sile
 toon de systeem berichten van de updater.  ##  Show system messages received from updater
 controleer nu.  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
+Gebruik een vaste MTU grootte  ##  Use fixed MTU
+  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Geluid (leeg laten voor default)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
@@ -475,7 +475,7 @@ Programma gebeurtenissen.  ##  Program events
 Verberg nieuw contact  ##  Hide new contact
 Maak contact zichtbaar  ##  Unhide contact
 Huidige verborgen contacten  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Contacten hier in de lijst verschijnen niet in Wippien  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
 Verberg contacten  ##  Hide contact
 Voeg contact's JID in  ##  Enter contact JID
 Sta al het verkeer toe  ##  Allow all traffic
@@ -503,7 +503,7 @@ klik hier boven om een room te selecteren, of betreed een chat room details staa
 Room naam maken of inloggen.  ##  Room name to create or join
 Wachtwoord (leeg laten indien geen)  ##  Password (empty if none)
 Gateway  ##  Gateway
-open of maak een nieuw room  ##  Join or Create room
+open of maak een nieuwe room  ##  Join or Create room
 Blokkeer gebruikers bij opstarten  ##  Block users at startup
 &Kopieër IP-adres  ##  &Copy IP
 C&hat  ##  C&hat
@@ -526,9 +526,9 @@ O&ffline  ##  O&ffline
 verander foto  ##  Change &Picture
 verander wachtwoord  ##  Change Pa&ssword
 Uw &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
+Voer wachtwoord in.  ##  Enter Passphrase
 voer wachtwoord in.  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+Gelieve een paswoord in te voegen  ##  Please enter protect password
 Talen  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
 Van tijd tot tijd kunnen nieuwe talen worden vrijgegeven.  ##  New languages may appear periodically.
@@ -544,9 +544,11 @@ zegt  ##  says
 zei  ##  said
 Je kan je gmail acount hier gebruiken  ##  You can use your GMAIL account here.
 Schakel tussen Voice Chat aan/uit  ##  Toggle voice chat
-  ##  Local echo
+Lokale echo  ##  Local echo
 UDP poort 9913 is bezet  ##  UDP port 9913 busy
 Kan geen inkomende Voice Chat ontvangen  ##  Unable to listen for incoming voice chat
 Microfoon gevoeligheid  ##  Microphone sensitivity
 Praat in uw microfoon en verplaats de schuif. Als u niet praat, hoort er geen beweging zichtbaar te zijn op de bovenste monitor, en de monitor moet volledig uitslaan als u luid spreekt.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat lijkt niet ingesteld. U moet dit configureren vóór eerste gebruik. Nu configureren?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+is vrijgegeven  ##  has enabled
+is geblokkeerd  ##  has disabled

@@ -1,6 +1,6 @@
 # Slovenian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: _black_cell_
-# Version: 181
+# Version: 182
 Ni napak.  ##  No error.
 Sistem ne more najti iskane datoteke.  ##  The system cannot find the file specified.
 Sistem ne najde iskane poti.  ##  The system cannot find the path specified.
@@ -102,7 +102,7 @@ Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
 Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
+  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
@@ -550,3 +550,5 @@ Tukaj lahko uporabite vaš GMAIL račun.  ##  You can use your GMAIL account her
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

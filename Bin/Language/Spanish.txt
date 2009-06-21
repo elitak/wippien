@@ -1,6 +1,6 @@
 # Spanish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: tdknela@gmail.com
-# Version: 20
+# Version: 41
 Sin Errores.  ##  No error.
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
@@ -140,7 +140,7 @@ Imposible dejar el mensaje.  ##  Could not deliver message.
 Fallo al cambiar la contraseńa  ##  Failed to change password
 Desconectado por inactividad  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  entrante: %s\r\nTotal saliente: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<&lt; VPN no establecida >&gt;  ##  << VPN not established yet >>
+<&lt; VPN no establecido aún >&gt;  ##  << VPN not established yet >>
 Reconexión en %d segundos.  ##  Reconnect in %d seconds.
 segundos  ##  seconds
 No hay red  ##  No network
@@ -155,7 +155,7 @@ Agregar contactos y administrar cuentas  ##  Add contacts and alien accounts
 Silenciar Sonidos  ##  Mute sound
 Abrir sala de charla  ##  Open chat room
 Autorizar a tus amigos  ##  Authorize your friends
-Parado  ##  Idle
+Detenido  ##  Idle
 żSalir de Wippien?  ##  Really exit Wippien?
 żEstá seguro?  ##  Are you sure?
 Su contraseńa ha sido modificada.  ##  Your password is now changed.
@@ -543,10 +543,12 @@ Escribiendo...  ##  Contact is typing...
 dice  ##  says
 dijo  ##  said
 Puede usar su cuenta GMAIL aqui  ##  You can use your GMAIL account here.
-  ##  Toggle voice chat
-  ##  Local echo
+Activar el chat por voz  ##  Toggle voice chat
+Eco local  ##  Local echo
 Puerto UDP 9913 Ocupado  ##  UDP port 9913 busy
-  ##  Unable to listen for incoming voice chat
+Incapaz de recibir comunicación por voz entrante.  ##  Unable to listen for incoming voice chat
 Sensibilidad del Micrófono  ##  Microphone sensitivity
-  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+Hablar al microfono y ajustar el volumen.No deberia haber actividad en el monitor superior cuando no se hable, y la actividad del monitor deberia ser maxima cuando se hable.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+La comunicación por voz no está configurada. Debe configurarla antes de su primer uso. ¿Hacerlo ahora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+Fue activado  ##  has enabled
+Fue desactviado  ##  has disabled

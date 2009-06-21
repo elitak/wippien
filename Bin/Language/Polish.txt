@@ -1,6 +1,6 @@
 # Polish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Poliman.pl - info@poliman.pl
-# Version: 13
+# Version: 15
 Brak błędu.  ##  No error.
 System nie może znaleźć wybranego pliku.  ##  The system cannot find the file specified.
 System nie może znaleźć wybranej ścieżki.  ##  The system cannot find the path specified.
@@ -550,3 +550,5 @@ Niezdolny do wysłuchania przychodzących chatów głosowych  ##  Unable to list
 Czułość mikrofonu  ##  Microphone sensitivity
 Mów do mikrofonu i reguluj suwak. Gdy nie mówisz wskaźnik nie powinie się poruszać , a podczas głośnego mówienia powinien osiągać maksymalne wartości .  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Rozmowy głosowe nie wyglądają na skonfigurowane. Musisz ostawić parametry rozmów głosowych przed pierwszym użyciem .  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

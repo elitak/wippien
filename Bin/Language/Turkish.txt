@@ -1,207 +1,207 @@
-# ChineseTraditional translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
-# Author: Taiwan
-# Version: 132
-沒有錯誤  ##  No error.
-系統批.#yb,9�!�k����9�b  ##  The system cannot find the file specified.
-系統批.#yb,9�!�k��-��o�  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
-類別不符合  ##  Type mismatch.
-  ##  Cannot create a file/directory when that file/directory already exists.
-系統無法��aiy�!�k��*+y`�  ##  The system cannot write to the specified device.
-無效屬性值  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-無法連接至遠端  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-指定主機名稱過長  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API 未初始  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
-批.#yb,9..��g  ##  Host not found.
-沒有足夠記憶體容量完成此操作  ##  Not enough memory is available to complete this operation.
-未�y�9�'9l"�hg�g�  ##  Unknown search type.
-搜尋方式未�y�9`>i[  ##  Unknown argument for Search method.
-已經啟動  ##  Already started.
-頻道已經啟用  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
-未�y�:,����zhg�b)  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
-Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-已��(c9��9�b9`��/.  ##  Already performing file transfer.
-檔案未批b,  ##  File not found.
-��aiyi,y�e  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-元件繁�  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-登入屬性未設置  ##  Login property not set.
-Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
-檔案未批b,  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-警告  ##  Warning
-離線  ##  Offline
-上線  ##  Online
-離開  ##  Away
-Free for chat  ##  Free for chat
-請勿打�  ##  Do not disturb
-Extended away  ##  Extended away
-隱藏  ##  Invisible
+# Turkish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+# Author: Xasf
+# Version: 314
+Hata yok.  ##  No error.
+Sistem belirtilen dosyayı bulamıyor.  ##  The system cannot find the file specified.
+Sistem belirtilen yolu bulamıyor.  ##  The system cannot find the path specified.
+Sistem belirtilen dosyayı/dizini bulamıyor.  ##  The system cannot find the specified file/directory.
+Uyumsuz tür.  ##  Type mismatch.
+Zaten varolan bir dosya/dizin varken aynı dosya/dizin yaratılamaz.  ##  Cannot create a file/directory when that file/directory already exists.
+Sistem belirtilen aygıta yazamıyor.  ##  The system cannot write to the specified device.
+Hatalı özellik değeri.  ##  Invalid Property Value.
+İşlem zaman aşımına uğradı.  ##  This operation returned because the timeout period expired.
+Soket işlevleri sistem tarafından kesildi.  ##  System level interrupt interrupted socket operation.
+Yanlış biçimlendirme için genel hata.  ##  Generic error for invalid format, bad format.
+Bir sokete erişim izinlerinin engel olduğu bir şekilde ulaşılmaya çalışıldı.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Sistem bir çağrı içerisinde işaretçi kullanırken geçersiz bir işaretçi adresi tespit etti.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Geçersiz giriş veya biçimlendirme için genel hata.  ##  Generic error for invalid format, entry, etc.
+Yanlış bir değer verildi.  ##  An invalid argument was supplied.
+IP adresi geçersiz veya belirtilen IP adresinde ana makina yok.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Geçersiz soket veya uzak bağlantı yok.  ##  Invalid socket or not connected to remote.
+Belirtilen adres zaten kullanımda.  ##  The specified address is already in use.
+Belirtilen adres uygun değil.  ##  The specified address is not available.
+Bağlanılan ağ uygun değil.  ##  The connected network is not available.
+Bağlanılan ağa erişilemiyor.  ##  The connected network is not reachable.
+Bağlanılan ağ bağlantısı sıfırlandı.  ##  The connected network connection has been reset.
+Geçerli bağlantı ağ yapısı veya aracı hizmetler tarafından iptal edildi.  ##  The current connection has been aborted by the network or intermediate services.
+Geçerli soket bağlantısı sıfırlandı.  ##  The current socket connection has been reset.
+Geçerli soket bağlı değil.  ##  The current socket has not been connected.
+Bağlantı kapandı.  ##  The connection has been shutdown.
+Bağlantı zaman aşımına uğradı.  ##  The current connection has timeout.
+İstenilen bağlantıyı karşı makina reddetti.  ##  The requested connection has been refused by the remote host.
+Belirtilen ana makina adı fazla uzun.  ##  Specified host name is too long.
+Uzaktaki cihaz şu anda uygun değil.  ##  Remote host is currently unavailable.
+Uzaktaki cihaza şu anda erişilemiyor.  ##  Remote host is currently unreachable.
+Uzaktaki sistem hazır değil.  ##  Remote system is not ready.
+Geçerli soket sürümü uygulama tarafından desteklenmiyor.  ##  Current socket version not supported by application.
+Soket API ilk kullanım için hazırlanmamış.  ##  Socket API is not initialized.
+Soket bağlantısı kesildi.  ##  Socket has been disconnected.
+Cihaz bulunamadı.  ##  Host not found.
+Bu işlemi gerçekleştirmek için yeterli hafıza yok.  ##  Not enough memory is available to complete this operation.
+Bilinmeyen arama türü.  ##  Unknown search type.
+Arama işlevi için bilinmeyen girdi.  ##  Unknown argument for Search method.
+Zaten başlamış durumda.  ##  Already started.
+Kanal zaten başlamış durumda.  ##  Channel already started.
+Kanal açıkken kanal ayarları değiştirilemiyor.  ##  Cannot change channel setup while channel is started.
+Sokette aşırı veri var. Daha sonra tekrar deneyin.  ##  Too much data on the socket. Try later.
+Bağlantı kurulmadı.  ##  Connection not established.
+Bilinmeyen veri türü.  ##  Unknown data type.
+Soket dizisi yaratılamadı.  ##  Failed to create socket thread.
+Bilinmeyen kanal türü.  ##  Unknown channel type.
+YerelAdres değeri hatalı verildi.  ##  Invalid argument was supplied in LocalAddress property.
+Kanal yerel taraftan yaratılamaz.  ##  Channel cannot be created by local side.
+Kanal yerel taraftan başlatılamaz.  ##  Channel cannot be started by local side.
+Kanal karşı taraftan reddedildi.  ##  Channel refused by remote side.
+Desteklenmeyen karşı protokol sürümü.  ##  Unsupported remote protocol version.
+wodVPN henüz başlamamış, önce Başlat kullanın.  ##  wodVPN not yet started. Use Start first.
+Kanal kapandı.  ##  Channel was closed.
+MTU boyutu fazla büyük.  ##  MTU size too large.
+MTU boyutu fazla küçük.  ##  MTU size too small.
+Socks istemi hatalı.  ##  Invalid socks request.
+Hatalı şifre. Karşı tarafın şifresiyle eşleşmiyor.  ##  Invalid password. Does not match remote peer's password.
+Yerel ID ayarlanmamış. Arama işlevi için gereklidir.  ##  Local ID not set. It is required for Search method.
+Uzak ID ayarlanmamış. Arama işlevi için gereklidir.  ##  Remote ID not set. It is required for Search method.
+Belirtilen IP adresine bağlanılamıyor.  ##  Cannot bind to specified IP address.
+Dosya aktarımı zaten yapılıyor.  ##  Already performing file transfer.
+Dosya bulunamadı.  ##  File not found.
+Dosya yazılamadı.  ##  Failed to write file.
+Ağ bağdaştırıcısı açılamadı.  ##  Could not open network adapter.
+Aynı anda sadece bir bağdaştırıcı kullanılabilir.  ##  Only one adapter can be used at a time.
+Lisans anahtarı yok. Bu bileşeni tasarım ortamında kullanamazsınız.  ##  License key missing. You can not use this component in design environment.
+Bilinmeyen hata.  ##  Unrecognized Error.
+Şu anda bağlantı kurulamıyor, önce Bağlantıyı Kes kullanın.  ##  Cannot Connect at this time. Use Disconnect first.
+Yürütülemiyor, henüz bağlı değil.  ##  Cannot execute, not yet connected.
+Bileşen meşgul.  ##  Component busy.
+Şu anda özellik değiştirilemiyor, önce Bağlantıyı Kes kullanın.  ##  Cannot change property at this time. Use Disconnect first.
+Sunucu adı özelliği ayarlanmamış.  ##  Hostname property not set.
+Giriş özelliği ayarlanmamış.  ##  Login property not set.
+Şifre özelliği ayarlanmamış.  ##  Password property not set.
+Geçersiz XML paketi.  ##  Invalid XML packet.
+Geçersiz XML paket dizisi.  ##  Invalid XML packet sequence ID.
+Geçersiz giriş: %s.  ##  Invalid login: %s.
+Kontak koleksiyonda zaten mevcut.  ##  Contact already exists in the collection.
+SSL arabuluculuğu yapılamadı.  ##  SSL could not be negotiated.
+Yeni kullanıcı kaydı başarısız: %s.  ##  Failed to register new user: %s.
+Bilinmeyen uyarı.  ##  Unknown notification.
+Dosya bulunamadı.  ##  File not found.
+Resim türü belirtilmeli (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Resim eklenemedi.  ##  Failed to import photo.
+Başka bir engelleyici işlev devrede.  ##  Another blocking method in progress.
+Geçersiz protokol verisi alındı.  ##  Invalid protocol data received.
+Gönderecek bir şey yok. Dosya boyutu 0.  ##  There's nothing to send. File size is 0.
+Kontak bulunamadı.  ##  Contact not found.
+Dosya aktarımı başarısız.  ##  File transfer failed.
+Dosyaya yazılamadı.  ##  Could not write to file.
+Alınan dosyanın kontrol değeri geçersiz.  ##  Checksum of received file is invalid.
+Aktarım iptal edildi.  ##  Transfer aborted.
+Aktarım zaman aşımına uğradı.  ##  Transfer has timed out.
+Geçersiz protokol seçildi.  ##  Invalid protocol selected.
+Geçersiz durum. Bileşen zaten meşgul.  ##  Invalid state. Component already busy.
+İsim benzersiz değil, kilit sağlanamadı. Lütfen farklı bir Güncelleyiciİsmi kullanın.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+İşlev iptal edildi.  ##  Method was cancelled.
+Güncelleme programı başlayamadı.  ##  Failed to start updater program.
+Alınan belgedeki imza geçersiz.  ##  Signature on retrieved document is invalid.
+Tarih ayarlanmadı.  ##  Date not set.
+COM sunucu kaydı başarısız.  ##  Failed to register COM server.
+Sunucu sayfa bulunamadı (Hata 404) döndürdü.  ##  Page not found (error 404) returned from the server.
+Hatali dosya boyutu indirildi.  ##  Invalid file size after download.
+MD5 Dogrulamasi hatali  ##  Invalid MD5 checksum after download.
+Uyari  ##  Warning
+Offline  ##  Offline
+Online  ##  Online
+Uzakta  ##  Away
+Sohbete Hazir  ##  Free for chat
+Rahatsiz etme  ##  Do not disturb
+Cok uzakta  ##  Extended away
+Gorunmez  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
 Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
+Sunucuya baglaniyor  ##  Connecting to server
+Yeni kullanici kaydi yapiliyor  ##  Registering new user
+Guvenli baglanti kuruluyor  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
+Sunucuya baglanildi  ##  Connected to server
+Sunucudan bilgi aliniyor  ##  Receiving data from server
+Sunucuya bilgi gonderiliyor  ##  Sending data to server
+Sunucuda islem yapiliyor  ##  Executing command on server
+Sunucudan baglanti kopariliyor  ##  Disconnecting from the server
+Onaylama istendi  ##  Requested authorization
+Wippien Ag cihazi kuruluyor......  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
+Ag cihazi acik  ##  Network adapter opened
+Wippien ag cihazi hazir degil. Sadece IM ile devam etmek istermisiniz?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
-未連接  ##  Disconnected
-已連接  ##  Connected
-無法傳送訊息  ##  Could not deliver message.
-仹�.yhnz+�ZKiY  ##  Failed to change password
+  ##  Disconnected
+  ##  Connected
+Could not deliver message.  ##  Could not deliver message.
+Parola degistirilemedi  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
-seconds  ##  seconds
-沒有網路  ##  No network
-Exit Wippien  ##  Exit Wippien
-E&xit  ##  E&xit
-開啟設定  ##  Open settings
-&Settings  ##  &Settings
-顯示關於  ##  Show AboutBox
-&關於  ##  &About
-設定您的狀態 (離開,隱藏...)  ##  Set your status (Away,Invisible...)
+  ##  seconds
+Ag yok  ##  No network
+Wippienden cik  ##  Exit Wippien
+Cikis  ##  E&xit
+Ayarlari Ac  ##  Open settings
+Ayarlar  ##  &Settings
+Hakkinda goster  ##  Show AboutBox
+Hakkinda  ##  &About
+Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-開啟聊天室  ##  Open chat room
-允許你的朋�  ##  Authorize your friends
-閒置  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-您確定嗎 ?  ##  Are you sure?
-您的塹�9�*���9�.  ##  Your password is now changed.
-塹�9.�y��9�.  ##  Password changed
-更��n,��-�hnz+  ##  Change account password
-Please enter new password  ##  Please enter new password
-Identity  ##  Identity
-ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-刪除歷匹� :c!  ##  Delete history?
-Send  ##  Send
-Send file  ##  Send file
-Details  ##  Details
+Sesi kapat  ##  Mute sound
+Open chat room  ##  Open chat room
+Authorize your friends  ##  Authorize your friends
+  ##  Idle
+Wippienden gercekten cik?  ##  Really exit Wippien?
+Eminmisiniz?  ##  Are you sure?
+Parola simdi degistirildi.  ##  Your password is now changed.
+Parola degistirildi  ##  Password changed
+Hesap parolasini degistir  ##  Change account password
+Yeni parolay giriniz  ##  Please enter new password
+Kimlik  ##  Identity
+Kimlik Karti  ##  ID Card
+Ev Adresi  ##  Home Address
+Is Adresi  ##  Work Address
+gecmisi silmek istediginizden eminmisiniz  ##  Are you sure you want to delete the history?
+Gecmisi Sil?  ##  Delete history?
+Gonder  ##  Send
+Dosya gonder  ##  Send file
+Detaylar  ##  Details
 Contact information  ##  Contact information
-Clear  ##  Clear
-清除歷匹� :c!  ##  Clear history
-靜�  ##  Mute
-粗體  ##  Bold
-Italic  ##  Italic
-底線  ##  Underline
+Temizle  ##  Clear
+Gecmisi Temizle  ##  Clear history
+  ##  Mute
+  ##  Bold
+  ##  Italic
+  ##  Underline
 Insert hyperlink  ##  Insert hyperlink
 Decrease font size  ##  Decrease font size
 Reset font size  ##  Reset font size
 Increase font size  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
 Set Background color  ##  Set Background color
-Emoticons  ##  Emoticons
+  ##  Emoticons
 New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
 New emoticons  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-完成!  ##  Done!
-聯絡人  ##  Contact
-正在連線  ##  Connecting
-需求  ##  Requesting
-下載  ##  Downloading
-設定檔  ##  Configuration file
-一般  ##  General
+Tamam  ##  Done!
+  ##  Contact
+Baglaniyor  ##  Connecting
+Isteniyor  ##  Requesting
+Indiriliyor  ##  Downloading
+Configuration file  ##  Configuration file
+Genel  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
-允許  ##  allow
-否定  ##  deny
+Izin ver  ##  allow
+Izin verme  ##  deny
 not specified  ##  not specified
-&Finish  ##  &Finish
-&Next >  ##  &Next >
+Bitir  ##  &Finish
+Sonraki  ##  &Next >
 Identity  ##  Identity
 Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
@@ -210,39 +210,39 @@ Invalid logon details  ##  Invalid logon details
 You must enter your JID.  ##  You must enter your JID.
 You must enter your password.  ##  You must enter your password.
 Jabber error  ##  Jabber error
-圖示  ##  Icon
-請選擇你的圖示  ##  Please choose your icon.
+Ikon  ##  Icon
+Please choose your icon.  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
 Network  ##  Network
 Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Network  ##  Network
-Mediator  ##  Mediator
+Ara bulucu  ##  Mediator
 Please choose who will be your mediator.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
 Last check  ##  Last check
 Port  ##  Port
 Hostname  ##  Hostname
-Permanent  ##  Permanent
-Temporary  ##  Temporary
+Kalici  ##  Permanent
+Gecici  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
 Delete registered account?  ##  Delete registered account?
-Accounts  ##  Accounts
+Hesaplar  ##  Accounts
 Show only gateways  ##  Show only gateways
-顯示全部伺服器  ##  Show all services
-Contacts  ##  Contacts
-新增移除  ##  Add/Remove
+Butun servisleri goster  ##  Show all services
+  ##  Contacts
+Ekle/Kaldir  ##  Add/Remove
 Find new contacts.  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-System  ##  System
-Logging  ##  Logging
+Sistem  ##  System
+  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-訊息  ##  Messages
+Mesajlar  ##  Messages
 Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
 General info  ##  General info
@@ -253,105 +253,105 @@ Business information  ##  Business information
 Work details for  ##  Work details for
 all other  ##  all other
 address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
+Goruntu  ##  Appearance
 Skins  ##  Skins
 Choose skin from below list.  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
-.. 無 ..  ##  .. none ..
-自動閒置  ##  Auto Away
-自動閒置設定  ##  Auto away settings.
+.. none ..  ##  .. none ..
+Auto Away  ##  Auto Away
+Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-系統  ##  System
+Sistem  ##  System
 Basic system messages.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-語�� b�i*  ##  Voice Chat
+Sesli Chat  ##  Voice Chat
 Please setup your voice chat devices.  ##  Please setup your voice chat devices.
 Choose from list below.  ##  Choose from list below.
-<糹�lzh$:*+O  ##  <system default>
+<system default>  ##  <system default>
 Contacts basic settings.  ##  Contacts basic settings.
-Updates  ##  Updates
+Guncellemeler  ##  Updates
 Update definitions.  ##  Update definitions.
 Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
 Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
-Sounds  ##  Sounds
+Sesler  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
 Contact online  ##  Contact online
 Contact offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
-錯誤  ##  Error
+Gelen mesajlar  ##  Message in
+Giden mesajlar  ##  Message out
+Hata  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-隱藏  ##  Hide
-Hide contacts.  ##  Hide contacts.
+Gizle  ##  Hide
+  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-Appearance  ##  Appearance
+Goruntu  ##  Appearance
 Appearance settings.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
-Sort  ##  Sort
+  ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
-聊天室  ##  ChatRoom
+  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-房間名稱  ##  Room name
-防火牆  ##  Firewall
+Room name  ##  Room name
+Firewall  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
 But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
-Wippien 更新  ##  Wippien update
+Wippien update  ##  Wippien update
 New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
 Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien 更新失敗!  ##  Wippien update error!
+Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-新版本  ##  New version
-狀態切�Έ  ##  Status changed:
-day  ##  day
-days  ##  days
-hour  ##  hour
-hours  ##  hours
-minute  ##  minute
-minutes  ##  minutes
+New version  ##  New version
+Status changed:  ##  Status changed:
+gun  ##  day
+gun  ##  days
+saat  ##  hour
+saat  ##  hours
+dakika  ##  minute
+dakika  ##  minutes
 Last seen: never  ##  Last seen: never
 is currently offline  ##  is currently offline
 is now offline  ##  is now offline
 is now online  ##  is now online
 is blocked  ##  is blocked
 is offline  ##  is offline
-解鎖  ##  Unblock
-封鎖  ##  Block
-  ##  Are you sure you want to remove group %s
-移除群組?  ##  Remove group?
+Engellemeyi kaldir  ##  Unblock
+Engelle  ##  Block
+Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
+Remove group?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
 Remove contact?  ##  Remove contact?
 Adapter error  ##  Adapter error
-重新命名群組  ##  Rename group
-輸入新群組名稱  ##  Enter new group name
+Rename group  ##  Rename group
+Enter new group name  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
 I need new Jabber account  ##  I need new Jabber account
 I have existing Jabber account  ##  I have existing Jabber account
 &Test Account  ##  &Test Account
-&搜尋  ##  &Search
+Ara  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Password  ##  Password
-Server  ##  Server
+Parola  ##  Password
+Sunucu  ##  Server
 Port  ##  Port
 Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
-&OK  ##  O&K
-&Cancel  ##  &Cancel
+OK  ##  O&K
+Iptal  ##  &Cancel
 Please enter key passphrase  ##  Please enter key passphrase
 Add &New  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
@@ -361,27 +361,27 @@ IP address for Wippien network adapter  ##  IP address for Wippien network adapt
 Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
 Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
 Use following static address  ##  Use following static address
-IP 位址  ##  IP address
-Netmask  ##  Netmask
-Status  ##  Status
+IP address  ##  IP address
+  ##  Netmask
+Durum  ##  Status
 URL  ##  URL
-Description  ##  Description
-增加新帳號  ##  Add new account
-移除帳號  ##  Remove account
-Register!  ##  Register!
+  ##  Description
+Yeni hesap ac  ##  Add new account
+Hesabi kapat  ##  Remove account
+Kayit ol  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
-Username  ##  Username
-Open new account  ##  Open new account
+Kullanici  ##  Username
+Yeni hesap ac  ##  Open new account
 Authorization request  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
-&Details  ##  &Details
-  ##  &Apply to all
+Evet  ##  &Yes
+Hayir  ##  &No
+Detaylar  ##  &Details
+&Apply to all  ##  &Apply to all
 &Block user(s)  ##  &Block user(s)
 Do you allow  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
-增加群組  ##  Add Group
+Add Group  ##  Add Group
 Remove Group  ##  Remove Group
 Add Contact  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
@@ -390,7 +390,7 @@ Contact Type  ##  Contact Type
 Visible Name  ##  Visible Name
 Rename contact  ##  Rename contact
 Enter new contact name  ##  Enter new contact name
-Settings  ##  Settings
+Ayarlar  ##  Settings
 < &Back  ##  < &Back
 Log Jabber communication  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
@@ -404,32 +404,32 @@ Various settings regarding chat window  ##  Various settings regarding chat wind
 Timestamp messages  ##  Timestamp messages
 Show message history  ##  Show message history
 Nickname  ##  Nickname
-名字  ##  First name
-姓氏  ##  Last name
+Isim  ##  First name
+Soyad  ##  Last name
 Email  ##  Email
-Notes  ##  Notes
-Address  ##  Address
-Address Ext.  ##  Address Ext.
-City  ##  City
-State  ##  State
-ZIP  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+Notlar  ##  Notes
+Addres  ##  Address
+Addres devam  ##  Address Ext.
+Sehir  ##  City
+Eyalet  ##  State
+Posta Kodu  ##  ZIP
+Ulke  ##  Country
+Dogum Gunu  ##  Birthday
+Telefon  ##  Voice Tel.
 Fax  ##  Fax
-Title  ##  Title
-公�  ##  Company name
-Department  ##  Department
+Unvan  ##  Title
+Sirket adi  ##  Company name
+Departman  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-全部允許  ##  Allow All
+Allow All  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
+Uygula  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+Bekle  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
@@ -442,23 +442,23 @@ Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
 Always on top  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-塹�9-ފ�  ##  Password protect
+Parola Korumali  ##  Password protect
 Settings only  ##  Settings only
-Everything  ##  Everything
+Hersey  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
 Never authorize  ##  Never authorize
-詢問我  ##  Ask me
-總是允許  ##  Always authorize
+Bana Sor  ##  Ask me
+Always authorize  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
-啟用語�� b�i*  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
+Surec  ##  Progress
+Sesli chat'i aktiflestir  ##  Enable voice chat
+  ##  Playback device
+Kayit cihazi  ##  Recording device
 Check for updates when Wippien starts  ##  Check for updates when Wippien starts
 Check for updates on Connect  ##  Check for updates on Connect
 Check for updates each  ##  Check for updates each
@@ -470,7 +470,7 @@ Use fixed MTU  ##  Use fixed MTU
 Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-&Play  ##  &Play
+  ##  &Play
 Program events  ##  Program events
 Hide new contact  ##  Hide new contact
 Unhide contact  ##  Unhide contact
@@ -480,23 +480,23 @@ Hide contact  ##  Hide contact
 Enter contact JID  ##  Enter contact JID
 Allow all traffic  ##  Allow all traffic
 Block all traffic  ##  Block all traffic
-&Add  ##  &Add
-&Remove  ##  &Remove
+Ekle  ##  &Add
+Kaldir  ##  &Remove
 Default rule  ##  Default rule
 Avatar picture  ##  Avatar picture
-Name  ##  Name
-IP address  ##  IP address
+Isim  ##  Name
+IP addresi  ##  IP address
 Status text  ##  Status text
 Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
 Visible details  ##  Visible details
 Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
-以名字  ##  By name
-以JID  ##  By JID
+  ##  unsorted
+By name  ##  By name
+By JID  ##  By JID
 by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
 by IP (without IP goes top)  ##  by IP (without IP goes top)
-列表排序  ##  Sort contact list
+Sort contact list  ##  Sort contact list
 Nickname for chatrooms  ##  Nickname for chatrooms
 Show available rooms on following gateways  ##  Show available rooms on following gateways
 Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
@@ -506,49 +506,49 @@ Gateway  ##  Gateway
 Join or Create room  ##  Join or Create room
 Block users at startup  ##  Block users at startup
 &Copy IP  ##  &Copy IP
-C&hat  ##  C&hat
+  ##  C&hat
 &Voice Chat  ##  &Voice Chat
 Send &File  ##  Send &File
 Send E&mail  ##  Send E&mail
-&Block  ##  &Block
-&Rename  ##  &Rename
-&Delete  ##  &Delete
-De&tails  ##  De&tails
+  ##  &Block
+  ##  &Rename
+  ##  &Delete
+  ##  De&tails
 Add/Remove &Accounts  ##  Add/Remove &Accounts
 Add/Remove &Contacts  ##  Add/Remove &Contacts
-&Online  ##  &Online
-&Away  ##  &Away
+  ##  &Online
+  ##  &Away
 Free for &Chat  ##  Free for &Chat
 &Do not Disturb  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
-&Invisible  ##  &Invisible
-O&ffline  ##  O&ffline
+Gorunmez  ##  &Invisible
+  ##  O&ffline
 Change &Picture  ##  Change &Picture
 Change Pa&ssword  ##  Change Pa&ssword
 Your &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
-輸入塹�  ##  Enter password
-請輸入�z+m�hnz+  ##  Please enter protect password
-Languages  ##  Languages
+  ##  Enter Passphrase
+Parolayi giriniz  ##  Enter password
+Please enter protect password  ##  Please enter protect password
+Lisanlar  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
 New languages may appear periodically.  ##  New languages may appear periodically.
 Following languages are found as available on local computer  ##  Following languages are found as available on local computer
-&Change  ##  &Change
+  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-  ##  Currently used language
+Currently used language  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+Yeni lisan dosyasi bulundu. Indirilsinmi?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
-Contact is typing...  ##  Contact is typing...
-says  ##  says
-said  ##  said
-  ##  You can use your GMAIL account here.
-  ##  Toggle voice chat
-  ##  Local echo
-  ##  UDP port 9913 busy
-  ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
-  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-已經啟用  ##  has enabled
-已經停用  ##  has disabled
+Yaziyor...  ##  Contact is typing...
+soyler  ##  says
+soyledi  ##  said
+You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+Toggle voice chat  ##  Toggle voice chat
+Local echo  ##  Local echo
+UDP port 9913 busy  ##  UDP port 9913 busy
+Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
+Microphone sensitivity  ##  Microphone sensitivity
+Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+has enabled  ##  has enabled
+has disabled  ##  has disabled

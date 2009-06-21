@@ -1,7 +1,7 @@
 # Persian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ehsan Faramarzi (adifferentboy)
-# Version: 41
-No error.  ##  No error.
+# Version: 43
+بدون خطا.  ##  No error.
 The system cannot find the file specified.  ##  The system cannot find the file specified.
 The system cannot find the path specified.  ##  The system cannot find the path specified.
 The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
@@ -550,3 +550,5 @@ Unable to listen for incoming voice chat  ##  Unable to listen for incoming voic
 Microphone sensitivity  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

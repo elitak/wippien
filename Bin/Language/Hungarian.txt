@@ -1,6 +1,6 @@
 # Hungarian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Péter Varga
-# Version: 224
+# Version: 280
 Nincs hiba  ##  No error.
 A rendszer nem találja a megadott fájlt  ##  The system cannot find the file specified.
 A rendszer nem találja a megadott mappát  ##  The system cannot find the path specified.
@@ -47,7 +47,7 @@ Too much data on the socket. Try later.  ##  Too much data on the socket. Try la
 A kapcsolat nem jött létre.  ##  Connection not established.
 Nem ismert data típus.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+Ismeretlen csatornatípus.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.
@@ -66,7 +66,7 @@ Already performing file transfer.  ##  Already performing file transfer.
 Nem található a fájl.  ##  File not found.
 Hiba a fájl írása közben.  ##  Failed to write file.
 A hálózati adapter megnyitása nem lehetsges.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
+Csak egy adapter használható egy időben.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
 Nem felismerhető hiba.  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
@@ -77,8 +77,8 @@ Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
 Hibás XML csomag.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
+Érvénytelen XML csomag műveletsorozat azonosító.  ##  Invalid XML packet sequence ID.
+Érvénztelen bejelentkezés.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
@@ -90,7 +90,7 @@ Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
 Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
+A file-küldés sikertelen.  ##  File transfer failed.
 Could not write to file.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
 Átvitel megszakítva.  ##  Transfer aborted.
@@ -158,8 +158,8 @@ Authorize your friends  ##  Authorize your friends
   ##  Idle
 Biztosan kilép a Wippien-ből?  ##  Really exit Wippien?
 Biztosan?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
+A jelszava most megváltozott.  ##  Your password is now changed.
+A jelszó megváltozott.  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
 Identity  ##  Identity
@@ -189,9 +189,9 @@ New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will
 Új hangulatjelek  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 Kész!  ##  Done!
-  ##  Contact
+Elérhetőség.  ##  Contact
 Kapcsolódás  ##  Connecting
-  ##  Requesting
+Kérés  ##  Requesting
 Letöltés  ##  Downloading
 Konfigurációs fájl  ##  Configuration file
 Általános  ##  General
@@ -199,9 +199,9 @@ Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
 engedélyez  ##  allow
 tilt  ##  deny
-not specified  ##  not specified
-  ##  &Finish
-&Next >  ##  &Next >
+Nem meghatározott  ##  not specified
+&Vége  ##  &Finish
+&Következő >  ##  &Next >
   ##  Identity
 Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
@@ -213,7 +213,7 @@ Jabber hiba  ##  Jabber error
 Ikon  ##  Icon
 Kérlek válassz ikont!  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
-  ##  Network
+Hálózat.  ##  Network
 Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Hálózat  ##  Network
@@ -222,28 +222,28 @@ Kérlek válaszd ki,hogy ki legyen a mediator-od  ##  Please choose who will be 
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
 Utolsó ellenőrzés  ##  Last check
 Port  ##  Port
-  ##  Hostname
-  ##  Permanent
-Idéglenes  ##  Temporary
+Hosztnév  ##  Hostname
+Végleges  ##  Permanent
+Ideiglenes  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
 Delete registered account?  ##  Delete registered account?
-  ##  Accounts
+Felhasználók  ##  Accounts
 Show only gateways  ##  Show only gateways
 Show all services  ##  Show all services
   ##  Contacts
-  ##  Add/Remove
+Hozzáadás / Eltávolítás  ##  Add/Remove
 Find new contacts.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Felveheti új Jabber, ICQ, MSN ... névjegyzékek  ##  You can add new Jabber, ICQ, MSN... contacts
+Minden fájl (*.*) \ 0 * \ 0TXT fájlok (*. txt) \ 0 *. txt \ 0 \ 0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Minden Képfájl (*. bmp, *. jpg, *. jpeg, *. png, *. gif) \ 0 *. bmp, *. jpg, *. jpeg, *. gif, *. png \ 0Windows bitképeket (* . bmp) \ 0 *. bmp \ 0Jpeg fájlok (*. jpg, *. jpeg) \ 0 *. jpeg, *. jpg \ 0GIF fájlok (*. gif) \ 0 *. gif \ 0PNG fájlok (*. png) \ 0 *. png \ 0All (*.*) Files \ 0 * \ 0 \ 0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Rendszer  ##  System
-  ##  Logging
+Naplózás  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-  ##  Messages
-  ##  Chat window settings.
+Üzenetek  ##  Messages
+Chat ablak beállításai.  ##  Chat window settings.
   ##  For all open chat windows.
 Általános információk  ##  General info
 General information about  ##  General information about
@@ -257,12 +257,12 @@ Kinézet  ##  Appearance
 Bőrök  ##  Skins
 Choose skin from below list.  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
+.. Nincs ..  ##  .. none ..
   ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-  ##  System
-Basic system messages.  ##  Basic system messages.
+Rendszer  ##  System
+Alapvető rendszer üzenetek.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
 Voice Chat  ##  Voice Chat
 Please setup your voice chat devices.  ##  Please setup your voice chat devices.
@@ -287,8 +287,8 @@ WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0
 Elrejt  ##  Hide
 Hide contacts.  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-  ##  Appearance
-Appearance settings.  ##  Appearance settings.
+Kinézet  ##  Appearance
+Kinézet beállitásai  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
   ##  Sort
 Sorts contacts.  ##  Sorts contacts.
@@ -314,15 +314,15 @@ Download successful. Replace now?  ##  Download successful. Replace now?
 Wippien frissítési hiba!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
 Új verzió  ##  New version
-Status changed:  ##  Status changed:
+Állapot megváltozott:  ##  Status changed:
 nap  ##  day
 napok  ##  days
 óra  ##  hour
 órák  ##  hours
 perc  ##  minute
 percek  ##  minutes
-Last seen: never  ##  Last seen: never
-is currently offline  ##  is currently offline
+Utoljára megtekintve: soha  ##  Last seen: never
+Jelenleg offline  ##  is currently offline
 is now offline  ##  is now offline
 is now online  ##  is now online
 blokkolva van  ##  is blocked
@@ -341,7 +341,7 @@ Click on the skin to download and install it.  ##  Click on the skin to download
 I need new Jabber account  ##  I need new Jabber account
 I have existing Jabber account  ##  I have existing Jabber account
 &Test Account  ##  &Test Account
-&Search  ##  &Search
+&Keresés  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
@@ -363,11 +363,11 @@ Obtained from IP provider database, on URL  ##  Obtained from IP provider databa
 Use following static address  ##  Use following static address
 IP cím  ##  IP address
   ##  Netmask
-  ##  Status
+Állapot  ##  Status
 URL  ##  URL
-  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
+Leírás  ##  Description
+Új felhasználó hozzáadása  ##  Add new account
+Felhasználó törlése  ##  Remove account
 Regisztrálás!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
 Felhasználónév  ##  Username
@@ -375,10 +375,10 @@ Open new account  ##  Open new account
 Authorization request  ##  Authorization request
 &Igen  ##  &Yes
 &Nem  ##  &No
-  ##  &Details
-&Apply to all  ##  &Apply to all
+&Részletek  ##  &Details
+&Alkalmazni az összesre  ##  &Apply to all
 &Felhasználó(k) törlése  ##  &Block user(s)
-Do you allow  ##  Do you allow
+Engedélyezi  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
 Csoport hozzáadása  ##  Add Group
@@ -391,7 +391,7 @@ Látható név  ##  Visible Name
 Rename contact  ##  Rename contact
 Enter new contact name  ##  Enter new contact name
 Settings  ##  Settings
-< &Back  ##  < &Back
+< &Vissza  ##  < &Back
 Log Jabber communication  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
@@ -411,13 +411,13 @@ Jegyzetek  ##  Notes
 Cím  ##  Address
 Address Ext.  ##  Address Ext.
 Város  ##  City
-  ##  State
+Állam  ##  State
   ##  ZIP
 Country  ##  Country
 Születésnap  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
-  ##  Title
+Cím  ##  Title
 Cég neve  ##  Company name
   ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
@@ -427,7 +427,7 @@ If you choose 'not specified' value, then same value is used as in 'all other' s
 Following skin files are found  ##  Following skin files are found
 Elfogad  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
+&További bőrök ...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
 Várakozás  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
@@ -443,7 +443,7 @@ Mindig legfelül  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
-Settings only  ##  Settings only
+Csak Beállítások  ##  Settings only
 Minden  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
@@ -505,7 +505,7 @@ Jelszó (üres ha nincs)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Join or Create room  ##  Join or Create room
 Block users at startup  ##  Block users at startup
-&Copy IP  ##  &Copy IP
+&IP Másolása  ##  &Copy IP
 C&hat  ##  C&hat
 &Voice Chat  ##  &Voice Chat
 Send &File  ##  Send &File
@@ -550,3 +550,5 @@ Használhaod itt a Gmail-os címedet  ##  You can use your GMAIL account here.
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

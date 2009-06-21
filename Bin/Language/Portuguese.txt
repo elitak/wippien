@@ -1,14 +1,14 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 30
+# Version: 39
 Sem erro.  ##  No error.
 O Sistema não conseguiu encontrar o arquivo especificado  ##  The system cannot find the file specified.
 O Sistema não conseguiu encontrar o caminho especificado  ##  The system cannot find the path specified.
 O Sistema não conseguiu encontrar o arquivo/diretório especificado  ##  The system cannot find the specified file/directory.
-  ##  Type mismatch.
+Tipo incompatível  ##  Type mismatch.
 Não é possivel criar arquivo/pasta quando elas já existem.  ##  Cannot create a file/directory when that file/directory already exists.
 O sistema não consegue gravar no dispositivo especificado  ##  The system cannot write to the specified device.
-  ##  Invalid Property Value.
+Valor de propriedade inválido  ##  Invalid Property Value.
 Esta operação acabou porque foi atingido o tempo de espera.  ##  This operation returned because the timeout period expired.
 Uma interrupção ao nível do Sistema, interrompeu a operação de Socket.  ##  System level interrupt interrupted socket operation.
 Erro genérico para formato inválido, formato errado.  ##  Generic error for invalid format, bad format.
@@ -16,7 +16,7 @@ Foi feito uma tentativa de acesso a um socket, de uma maneira que é proíbida p
 O sistema detectou um endereço inválido, numa tentativa de chamada através de endereço.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Erro genérico para formato inválido, entrada errada, etc.  ##  Generic error for invalid format, entry, etc.
 Foi fornecido um argumento inválido.  ##  An invalid argument was supplied.
-  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+O endereço IP fornecido não é válido ou o host especificado pelo IP não existe  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Socket inválido, ou não está ligado ao remoto.  ##  Invalid socket or not connected to remote.
 O endereço especificado já está em uso.  ##  The specified address is already in use.
 O endereço especificado não está disponível.  ##  The specified address is not available.
@@ -103,7 +103,7 @@ O programa de actualização falhou ao iniciar.  ##  Failed to start updater pro
 A assinatura no documento obtido é inválida.  ##  Signature on retrieved document is invalid.
 Data não especificada.  ##  Date not set.
 Falhou o registo do servidor  "COM".  ##  Failed to register COM server.
-O servidor devolveu o erro de "Página não encontrada (erro 404).  ##  Page not found (error 404) returned from the server.
+  ##  Page not found (error 404) returned from the server.
 Tamanho de ficheiro errado após a descarga.  ##  Invalid file size after download.
 Erro de soma de controlo (MD5) após a descarga.  ##  Invalid MD5 checksum after download.
 Aviso  ##  Warning
@@ -550,3 +550,5 @@ porta UDP 9913 ocupada  ##  UDP port 9913 busy
 Sencibilidade do Microfone  ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Chat com voz não configurado. Tem que ser configurado antes de ser possivel usar. Configurar agora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

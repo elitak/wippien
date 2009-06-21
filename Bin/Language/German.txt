@@ -1,7 +1,7 @@
 # German translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: torsten.wagner@vnc-world.com
-# Version: 148
-Kein Fehler.  ##  No error.
+# Version: 228
+Kein Fehler  ##  No error.
 Gewünschte Datei kann nicht gefunden werden.  ##  The system cannot find the file specified.
 Das System kann den angegebenen Pfad nicht finden.  ##  The system cannot find the path specified.
 Das System kann den angegebenen Pfad / die angegebene Datei nicht finden.  ##  The system cannot find the specified file/directory.
@@ -9,7 +9,7 @@ Falscher Typ...  ##  Type mismatch.
 Kann Datei / Verzeichnis nicht erstellen, wenn die Datei / das Verzeichnis bereits existiert.  ##  Cannot create a file/directory when that file/directory already exists.
 Das System kann nicht auf das angegebene Gerät schreiben.  ##  The system cannot write to the specified device.
 Ungültiger Eigenschaftswert.  ##  Invalid Property Value.
-Der Vorgang konnte auf Grund einer Zeitüberschreitung nicht ausgeführt werden.  ##  This operation returned because the timeout period expired.
+Diese Anwendung wurde aufgrund einer Zeitüberschreitung abgebrochen  ##  This operation returned because the timeout period expired.
 Der Systemstatus ist defekt und beeinträchtigt die Schnittstellenfunktionen.  ##  System level interrupt interrupted socket operation.
 Allgemeiner Fehler für defekte Formate, falsche Formate etc. ...  ##  Generic error for invalid format, bad format.
 Es wurde versucht auf eine Schnittstelle zuzugreifen, die für die vorliegenden Zugriffsrechte verboten ist.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
@@ -17,10 +17,10 @@ Das System entdeckte eine nicht zulässige Adresse während des Versuchs, einen 
 Allgemeiner Fehler für defekte Formate, Einträge etc. ...  ##  Generic error for invalid format, entry, etc.
 Ein unzulässiges Argument wird unterstützt.  ##  An invalid argument was supplied.
 Die angegebene IP Adresse ist nicht gültig oder der definierte Host mit der IP Adresse existiert nicht.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Unzulässige Schnittstelle oder keine Verbidnung zum Remotehost.  ##  Invalid socket or not connected to remote.
+  ##  Invalid socket or not connected to remote.
 Die angegebene Adresse ist in Benutzung.  ##  The specified address is already in use.
 Die angegebene Adresse ist nicht verfügbar.  ##  The specified address is not available.
-Das verbundene Netzwerk ist nicht verfügbar.  ##  The connected network is not available.
+Das zu verbindende Netzwerk ist nicht erreichbar  ##  The connected network is not available.
 Das verbundene Netzwerk ist nicht erreichbar.  ##  The connected network is not reachable.
 Die Netzwerkverbindung wird neu eingestellt.  ##  The connected network connection has been reset.
 Die Verbindung wurde deaktiviert oder stellt den Dienst nicht mehr zur Verfügung.  ##  The current connection has been aborted by the network or intermediate services.
@@ -41,7 +41,7 @@ Es ist nicht genügend Arbeitsspeicher für die Operation vorhanden.  ##  Not en
 Unbekannter Suchtyp.  ##  Unknown search type.
 Unbekannter Parameter für die Suche.  ##  Unknown argument for Search method.
 Bereits gestartet  ##  Already started.
-  ##  Channel already started.
+Channel  bereits gestartet  ##  Channel already started.
 Während eine bestehenden Verbindung kann keine Änderung vorgenomen werden.  ##  Cannot change channel setup while channel is started.
 Zu hoher Datenverkehr. Später noch einmal versuchen.  ##  Too much data on the socket. Try later.
 Verbindung kann nicht hergestellt werden.  ##  Connection not established.
@@ -121,17 +121,17 @@ Verbindung zum Server  ##  Connecting to server
 Neuen Benutzer registrieren  ##  Registering new user
 Sichere Verbindung wird aufgebaut.  ##  Initializing secure connection
 Authentifizierungsdaten werden gesendet.  ##  Sending authentication data
-Verbindungsaufbau zum Server  ##  Connected to server
+Verbunden mit dem Server  ##  Connected to server
 Datenanforderung vom Server  ##  Receiving data from server
 Daten zum Server senden  ##  Sending data to server
 Befehl am Server ausführen  ##  Executing command on server
 Verbindung zum Server unterbrechen  ##  Disconnecting from the server
 Authorisierung anfordern  ##  Requested authorization
 Der Wippien-Netzwerkadapter wird konfiguriert...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" mit der Adresse %s hat einen Konflikt mit Wippiens Adapter %s. Es ist möglich, dass Wippien nicht in der Lage ist Netzwerkdatenpakete zu senden und zu empfangen. Deinstalliere oder deaktiviere den Adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Der Netzwerkadapter steht nicht zur Verfügung!  ##  Network adapter disabled!
+Adapter \"%s\" mit der Adresse %s ist nicht nutzbar mit Wippien's %s. Es ist möglich das Wippien keine Datenpacke senden und empfangen kann.  Bitte deinstallieren Sie oder schalten Sie den Adapter aus.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Netzwerkadapter ausgeschalten  ##  Network adapter disabled!
 Netzwerkadapter verfügbar  ##  Network adapter opened
-Der Wippien Netzwerkadapter ist nicht verfügbat. Nur mit IM fortfahren?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien Netzwerkadapter nicht verfügbar. Nur mit Instant Messaging fortfahren?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien muss den Netzwerkadapter mit externen Tools konfigurieren und benutzt administrative Benutzerrechte. Starten Sie bitte Wippien unter Administratorrechten bzw. sorgen Sie für ausreichende Zugriffsrechte.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrationsrechte werden benötigt  ##  Admin privilege required!
 Verbindung unterbrochen  ##  Disconnected
@@ -320,7 +320,7 @@ Tage(n)  ##  days
 Stunde  ##  hour
 Stunden  ##  hours
 Minute  ##  minute
-Minuten  ##  minutes
+minutes  ##  minutes
 Zuletzt gesehen: nie  ##  Last seen: never
 ist zurzeit offline  ##  is currently offline
 ist jetzt offline  ##  is now offline
@@ -549,4 +549,6 @@ UDP Port 9913 nicht möglich  ##  UDP port 9913 busy
 der eingehende Sprachchat wird nicht erkannt  ##  Unable to listen for incoming voice chat
 Mikrofonempfindlichkeit hier einstellen  ##  Microphone sensitivity
 Um die Spracheingabe zu kalibrieren, sprechen Sie bitte in das Mikrofon. Wenn Sie nichts sagen, wird im oberen Anzeigebereich nichts zu erkennen sein. Ein Anzeigeausschlag wird nur zu erkennen sein, wenn Sie laut reden.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-Der Sprachchat wurde nocht nicht konfiguriert. Dies ist jedoch zwingend notwendig. Möchten Sie dies jetzt tun?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+Der Sprachchat wurde noch nicht konfiguriert. Dies ist jedoch zwingend notwendig. Möchten Sie dies jetzt tun?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+wurde aktiviert  ##  has enabled
+wurde aktiviert  ##  has disabled

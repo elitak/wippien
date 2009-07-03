@@ -1067,7 +1067,28 @@ BOOL CMsgWin::Show(void)
 {
 	m_Button.SubclassWindow ( GetDlgItem(IDB_SEND) );
 
-
+	
+	// let's see if window is out of visible screen
+	RECT rcDesktop;
+	::GetWindowRect(GetDesktopWindow(), &rcDesktop);
+	
+	while (m_User && m_User->m_ChatWindowRect.left < rcDesktop.left)
+	{
+		m_User->m_ChatWindowRect.left++;m_User->m_ChatWindowRect.right++;
+	}
+	while (m_User && m_User->m_ChatWindowRect.top < rcDesktop.top)
+	{
+		m_User->m_ChatWindowRect.top++;m_User->m_ChatWindowRect.bottom++;
+	}
+	while (m_User && m_User->m_ChatWindowRect.right > rcDesktop.right)
+		m_User->m_ChatWindowRect.right--;	
+	while (m_User && m_User->m_ChatWindowRect.bottom > rcDesktop.bottom)
+		m_User->m_ChatWindowRect.bottom--;
+	if (m_User && m_User->m_ChatWindowRect.right-m_User->m_ChatWindowRect.left<200)
+		m_User->m_ChatWindowRect.right = m_User->m_ChatWindowRect.left+200;
+	if (m_User && m_User->m_ChatWindowRect.bottom-m_User->m_ChatWindowRect.top<200)
+		m_User->m_ChatWindowRect.bottom = m_User->m_ChatWindowRect.top+200;
+	
 	if (m_User && m_User->m_ChatWindowRect.right > m_User->m_ChatWindowRect.left)
 		SetWindowPos(NULL, &m_User->m_ChatWindowRect, SWP_NOZORDER);
 	if (m_Room && m_Room->m_ChatWindowRect.right > m_Room->m_ChatWindowRect.left)

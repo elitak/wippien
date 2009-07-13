@@ -134,7 +134,11 @@ CSettings::CSettings()
 						if (!stricmp(ms1, valname))
 						{
 							err = ERROR_NO_MORE_ITEMS;
-							b1.Append((char *)valdata);
+							char *env = getenv(ms1);
+							if (env)
+								b1.Append(env);
+							else
+								b1.Append((char *)valdata);
 							found = TRUE;
 						}
 					}

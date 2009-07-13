@@ -17,13 +17,14 @@
 #include <io.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-
+#include "VoiceChat.h"
 
 extern CSettings _Settings;
 extern CJabber *_Jabber;
 extern CMainDlg _MainDlg;
 extern CEthernet _Ethernet;
 extern CSDKMessageLink *_SDK;
+extern CVoiceChat _VoiceChat;
 
 const char *WippienStateString[] = {"WipWaitingInitRequest","WipWaitingInitResponse","WipDisconnected","WipConnecting","WipNegotiating","WipConnected","WipUndefined",
 "7","8","9",
@@ -340,6 +341,8 @@ CUser::~CUser()
 
 void CUser::ReInit(BOOL WithDirect)
 {
+	if (m_VoiceChatActive)
+		_VoiceChat.NotifyUserStatus(this, FALSE);
 	m_VoiceChatActive = FALSE;
 	
 	m_WaveHdrDataSet = FALSE;

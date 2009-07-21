@@ -1,554 +1,554 @@
-# Russian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+﻿# Russian translation file
 # Author: Flex
-# Version: 25
-  ##  No error.
-Системе не удается найти указанный файл.  ##  The system cannot find the file specified.
-Системе не удается найти указанный путь.  ##  The system cannot find the path specified.
-Системе не удается найти указанный файл/директорию.  ##  The system cannot find the specified file/directory.
-Несоответсвие типа.  ##  Type mismatch.
-Файл\папка уже существует.  ##  Cannot create a file/directory when that file/directory already exists.
-  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-  ##  The specified address is not available.
+# Version: 30
+Нет ошибки.  ##  No error.
+Невозможно найти файл.  ##  The system cannot find the file specified.
+Невозможно найти путь.  ##  The system cannot find the path specified.
+Невозможно найти файл/папку.  ##  The system cannot find the specified file/directory.
+Несовместимый тип.  ##  Type mismatch.
+Невозможно создать файл/папку, уже существует.  ##  Cannot create a file/directory when that file/directory already exists.
+Запись на указанное устройство невозможна.  ##  The system cannot write to the specified device.
+Неверное значение.  ##  Invalid Property Value.
+операция не удалась из-за таймаута.  ##  This operation returned because the timeout period expired.
+Прерывание системного уровня прервало операцию на сокете.  ##  System level interrupt interrupted socket operation.
+Несовместимый формат.  ##  Generic error for invalid format, bad format.
+Доступ к сокету запрещен.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Система обнаружила неверный указатель адреса в попытке использовать указатель в вызове.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Несовместимый формат, запись и т.д.  ##  Generic error for invalid format, entry, etc.
+Неверный аргумент.  ##  An invalid argument was supplied.
+Неверный IP или хост не существует.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Неверный сокет или нет соединения.  ##  Invalid socket or not connected to remote.
+Адрес уже используется.  ##  The specified address is already in use.
+Адрес недоступен.  ##  The specified address is not available.
 Сеть недоступна.  ##  The connected network is not available.
-Сеть недостижима.  ##  The connected network is not reachable.
-  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
-Связь прервана.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
+Сеть недоступна.  ##  The connected network is not reachable.
+Соединение с сетью перезапущено.  ##  The connected network connection has been reset.
+Соединение разорвано сетью или сервисом-посредником.  ##  The current connection has been aborted by the network or intermediate services.
+Текущее соединение сокета перезапущено.  ##  The current socket connection has been reset.
+Сокет не подключен.  ##  The current socket has not been connected.
+Соединение разорвано.  ##  The connection has been shutdown.
+Текущее соединение превысило время ожидания (таймаут).  ##  The current connection has timeout.
+Удаленный хост отклонил соединение.  ##  The requested connection has been refused by the remote host.
+Имя хоста слишком длинное.  ##  Specified host name is too long.
+Удаленный хост недоступен.  ##  Remote host is currently unavailable.
+Удаленный хост недоступен.  ##   Remote host is currently unreachable. 
 Удаленная система не готова.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-  ##  Socket API is not initialized.
-Сокет был отключен.  ##  Socket has been disconnected.
+Версия сокета не поддерживается приложением.  ##  Current socket version not supported by application.
+API сокета не инициализировано.  ##  Socket API is not initialized.
+Сокет отсоединен.  ##  Socket has been disconnected.
 Хост не найден.  ##  Host not found.
-  ##  Not enough memory is available to complete this operation.
+Недостаточно памяти для выполнения операции.  ##  Not enough memory is available to complete this operation.
 Неизвестный тип поиска.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+Неверный аргумент для поиска.  ##  Unknown argument for Search method.
 Уже запущено.  ##  Already started.
-Канал уже создан.  ##  Channel already started.
-  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-  ##  Connection not established.
-Неизвестный тип даты  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
-Неизвестный тип канала  ##  Unknown channel type.
-Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
+Канал уже запущен.  ##  Channel already started.
+Невозможно сменить настройки канала, пока тот запущен.  ##  Cannot change channel setup while channel is started.
+Слишком много информации на сокете. Попробуйте позже.  ##  Too much data on the socket. Try later.
+Соединение не установлено.  ##  Connection not established.
+Неизвестный тип информации.  ##  Unknown data type.
+Не удалось создать поток сокета.  ##  Failed to create socket thread.
+Неизвестный тип канала.  ##  Unknown channel type.
+Неверный аргумент в LocalAddress.  ##  Invalid argument was supplied in LocalAddress property.
+Канал не может быть создан клиентом.  ##  Channel cannot be created by local side.
+Канал не может быть запущен клиентом.  ##  Channel cannot be started by local side.
+Канал отклонен удаленной стороной.  ##  Channel refused by remote side.
+Неподдерживаемая версия протокола удаленного доступа.  ##  Unsupported remote protocol version.
+wodVPN не запущен.  ## Сначала используйте Start.  ##  wodVPN not yet started. Use Start first.
 Канал был закрыт.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-  ##  Already performing file transfer.
+Размер MTU слишком велик.  ##  MTU size too large.
+Размер MTU слишком мал.  ##  MTU size too small.
+Неверный запрос socks.  ##  Invalid socks request.
+Неверный пароль.  ## Не совпадает с паролем удаленного пользователя.  ##  Invalid password. Does not match remote peer's password.
+Local ID не указан.  ## Он необходим для метода поиска.  ##  Local ID not set. It is required for Search method.
+Remote ID не указан.  ## Он необходим для метода поиска.  ##  Remote ID not set. It is required for Search method.
+Невозможно использовать указанный IP адрес.  ##  Cannot bind to specified IP address.
+Передача файлов уже в процессе.  ##  Already performing file transfer.
 Файл не найден.  ##  File not found.
-Невозможно записать файл.  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Невозможна запись в файл.  ##  Failed to write file.
+Невозможно открыть сетевой адаптер.  ##  Could not open network adapter.
+Только один адаптер может быть использован единомоментно.  ##  Only one adapter can be used at a time.
+Нет лицензионного ключа.  ## Вы не можете использовать этот компонент.  ##  License key missing. You can not use this component in design environment.
 Неизвестная ошибка.  ##  Unrecognized Error.
-  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
+Соединение невозможно.  ## Сначала отключитесь.  ##  Cannot Connect at this time. Use Disconnect first.
+Невозможно выполнить, соединения нет.  ##  Cannot execute, not yet connected.
 Компонент занят.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
-  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
+Невозможно изменить собственность(?) сейчас. Сначала отключитесь.  ##  Cannot change property at this time. Use Disconnect first.
+Хост не указан.  ##  Hostname property not set.
+Логин не указан.  ##  Login property not set.
+Пароль не указан.  ##  Password property not set.
+Неверный пакет XML.  ##  Invalid XML packet.
+Неверный ID последовательности XML пакетов.  ##  Invalid XML packet sequence ID.
+Неверный логин: %s.  ##  Invalid login: %s.
+Контакт уже существует.  ##  Contact already exists in the collection.
+SSL не может быть установлен.  ##  SSL could not be negotiated.
+Регистрация нового пользователя не удалась: %s.  ##  Failed to register new user: %s.
+Неизвестное уведомление.  ##  Unknown notification.
 Файл не найден.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
+Необходимо указать тип файла (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Не удалось импортировать фото.  ##  Failed to import photo.
+Заблокировано другим методом.  ##  Another blocking method in progress.
+Получена неверная информация протокола.  ##  Invalid protocol data received.
+Нечего посылать.  ## Размер файла 0.  ##  There's nothing to send. File size is 0.
 Контакт не найден.  ##  Contact not found.
-Передача файла не удалась.  ##  File transfer failed.
-  ##  Could not write to file.
-  ##  Checksum of received file is invalid.
+Передача файлов не удалась.  ##  File transfer failed.
+Невозможна запись в файл.  ##  Could not write to file.
+Размер полученного файла не совпадает (поврежден).  ##  Checksum of received file is invalid.
 Передача отменена.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Превышено время ожидания передачи.  ##  Transfer has timed out.
+Выбран неверный протокол.  ##  Invalid protocol selected.
+Неверный статус. Компонент уже занят.  ##  Invalid state. Component already busy.
+Имя не уникально, невозможно получить блокировку(?). Пожалуйста, используйте другой UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 Метод был отменен.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
+Не удалось запустить обновление.  ##  Failed to start updater program.
+Подпись на полученном документе неверна.  ##  Signature on retrieved document is invalid.
 Дата не указана.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
-Страница не найдена (error 404).  ##  Page not found (error 404) returned from the server.
-Неправильный размер файла после загрузки.  ##  Invalid file size after download.
-Неправильная контрольная сумма(MD5) после загрузки.  ##  Invalid MD5 checksum after download.
+Не удалось зарегистрировать COM сервер.  ##  Failed to register COM server.
+Страница не найдена (ошибка 404).  ##  Page not found (error 404) returned from the server.
+Неверный размер файла после скачки.  ##  Invalid file size after download.
+Неверный хэш после скачки (поврежден).  ##  Invalid MD5 checksum after download.
 Предупреждение  ##  Warning
 Не в сети  ##  Offline
 В сети  ##  Online
-  ##  Away
-  ##  Free for chat
-  ##  Do not disturb
-Extended away  ##  Extended away
+Отошел  ##  Away
+Готов поболтать  ##  Free for chat
+Не беспокоить  ##  Do not disturb
+Давно отошел  ##  Extended away
 Невидимый  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
-Отключен от сервера.  ##  Disconnected from server
+Запрос подписки  ##  Asking for subscription
+Контакт не подписан  ##  Contact not subscribed
+Отключен от сервера  ##  Disconnected from server
 Подключение к серверу  ##  Connecting to server
-Регистрация  ##  Registering new user
-  ##  Initializing secure connection
-Отправка данных авторизации  ##  Sending authentication data
-Подключение к серверу  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-отправка данных на сервер  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-отключен от сервера  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
-  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
-%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
-  ##  Reconnect in %d seconds.
-  ##  seconds
+Регистрация нового пользователя  ##  Registering new user
+Инициализация безопасного соединения  ##  Initializing secure connection
+Посылается информация для аутентификации  ##  Sending authentication data
+Подключен к серверу  ##  Connected to server
+Получение информации с сервера  ##  Receiving data from server
+Отправление информации на сервер  ##  Sending data to server
+Выполнение команды на сервере  ##  Executing command on server
+Отключение от сервера  ##  Disconnecting from the server
+Запрос авторизации  ##  Requested authorization
+Настройка сетевого адаптера Wippien...  ##  Configuring Wippien network adapter...
+Адаптер \"%s\" с адресом %s конфликтует с Wippien %s. Возможно, что Wippien не сможет принимать и отправлять данные. Пожалуйста, удалите или отключите этот адаптер.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Сетевой адаптер отключен!  ##  Network adapter disabled!
+Сетевой адаптер открыт  ##  Network adapter opened
+Сетевой адаптер Wippien недоступен. Продолжить только с возможностью общения?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien указать адаптеру IP адрес, используя внешний инструмент - это требует административных привилегий. Пожалуйста, запустите Wippien хотя бы раз как администратор для получения необходимых разрешений.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Получена привилегия администратора!  ##  Admin privilege required!
+Отключен  ##  Disconnected
+Подключен  ##  Connected
+Невозможно доставить сообщение.  ##  Could not deliver message.
+Не удалось сменить пароль  ##  Failed to change password
+Отключен из-за неактивности  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\nВсего вход.: %s\r\nВсего исх.: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<< VPN еще не соединен >>  ##  << VPN not established yet >>
+Переподключение через %d секунд.  ##  Reconnect in %d seconds.
+секунд  ##  seconds
 Нет сети  ##  No network
-Закрыть Wippien  ##  Exit Wippien
-E&xit  ##  E&xit
-  ##  Open settings
-&Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
-&About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
-Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
+Выйти из Wippien  ##  Exit Wippien
+Вы&ход  ##  E&xit
+Открыть настройки  ##  Open settings
+&Настройки  ##  &Settings
+Показать информацию о программе  ##  Show AboutBox
+&О программе  ##  &About
+Укажите свой статус (Отшел,Невидимый...)  ##  Set your status (Away,Invisible...)
+Добавить контакты и внешние аккаунты  ##  Add contacts and alien accounts
+Выключить звук  ##  Mute sound
+Открыть чат  ##  Open chat room
+Авторизовать друзей  ##  Authorize your friends
+Бездействует  ##  Idle
+Вы уверены, что хотите выйти из Wippien?  ##  Really exit Wippien?
 Вы уверены?  ##  Are you sure?
-Ваш пард.�c4.4-�/4-t/t-t/K  ##  Your password is now changed.
+Ваш пароль изменен.  ##  Your password is now changed.
 Пароль изменен  ##  Password changed
-Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
-Identity  ##  Identity
-ID Card  ##  ID Card
+Сменить пароль от аккаунта  ##  Change account password
+Пожалуйста, введите новый пароль  ##  Please enter new password
+Профиль  ##  Identity
+ID карточка  ##  ID Card
 Домашний адрес  ##  Home Address
 Рабочий адрес  ##  Work Address
-Вы уверены?  ##  Are you sure you want to delete the history?
-Удалить историю?  ##  Delete history?
+Вы действительно хотите очистить историю?  ##  Are you sure you want to delete the history?
+Очистить историю?  ##  Delete history?
 Послать  ##  Send
 Передать файл  ##  Send file
 Детали  ##  Details
-Contact information  ##  Contact information
+Контактная информация  ##  Contact information
 Очистить  ##  Clear
 Очистить историю  ##  Clear history
-Заглушить  ##  Mute
+Выключить звук  ##  Mute
 Жирный  ##  Bold
 Курсив  ##  Italic
 Подчеркивание  ##  Underline
 Вставить ссылку  ##  Insert hyperlink
-Уменьшить шрифт  ##  Decrease font size
+Уменьшить размер шрифта  ##  Decrease font size
 Сбросить размер шрифта  ##  Reset font size
-Увеличить шрифт  ##  Increase font size
-Цвет текста  ##  Set Foreground color
-Цвет фона  ##  Set Background color
+Увеличить размер шрифта  ##  Increase font size
+Указать цвет шрифта  ##  Set Foreground color
+Указать цвет фона  ##  Set Background color
 Смайлы  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-Сделано!  ##  Done!
+Новые смайлы будут скачаны и установлены. Продолжить?  ##  New emoticons will be downloaded and installed. Proceed?
+Новые смайлы  ##  New emoticons
+Откройте список смайлов еще раз, чтобы увидеть новые смайлы.  ##  You can now click again on emoticon button to see new installed emoticons.
+Готово!  ##  Done!
 Контакт  ##  Contact
-Connecting  ##  Connecting
-Requesting  ##  Requesting
-Downloading  ##  Downloading
-Конфигурация файла  ##  Configuration file
-General  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
+Соединение  ##  Connecting
+Запрос  ##  Requesting
+Соединение  ##  Downloading
+Конфигурационный файл  ##  Configuration file
+Общие  ##  General
+Отошел (бездействие)  ##  Away due to inactivity.
+Отошел (давно).  ##  Away for a loooong time.
 разрешить  ##  allow
 запретить  ##  deny
-not specified  ##  not specified
-&Finish  ##  &Finish
-следующий  ##  &Next >
-Identity  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
-  ##  Jabber error
-  ##  Icon
-Please choose your icon.  ##  Please choose your icon.
-This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+не указано  ##  not specified
+&Финиш  ##  &Finish
+&Дальше>  ##  &Next >
+Профиль  ##  Identity
+Пожалуйста, укажите настройки аккаунта.  ##  Please choose your logon information.
+Данная информация видна в вашем списке друзей.  ##  This is shown on your friend's list.
+JID должен содержать название сервера, вида имя_пользователя@grenka.net.ru  ##  JID should contain server name, formatted like user@server.com
+Неверные настройки аккаунта  ##  Invalid logon details
+Вы должны ввести Ваш JID.  ##  You must enter your JID.
+Вы должны ввести Ваш пароль.  ##  You must enter your password.
+ошибка Jabber  ##  Jabber error
+Аватар  ##  Icon
+Пожалуйста, выберите Ваш аватар.  ##  Please choose your icon.
+Этот аватар видно Вашим контактам.  ##  This is usually visible to your contacts.
 Сеть  ##  Network
-Выберите ваш IP адрес и netmask.  ##  Please choose your IP address and netmask.
-This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+Пожалуйста, укажите IP адрес и маску.  ##  Please choose your IP address and netmask.
+Диапазон, используемый Wippien.  ##  This defines network range to be used by wippien.
 Сеть  ##  Network
 Посредник  ##  Mediator
-  ##  Please choose who will be your mediator.
-This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
+Укажите Вашего посредника.  ##  Please choose who will be your mediator.
+Посредники для P2P соединений.  ##  This defines people that mediate P2P connections.
 Последняя проверка  ##  Last check
 Порт  ##  Port
-Hostname  ##  Hostname
+Хост  ##  Hostname
 Постоянный  ##  Permanent
 Временный  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Удалить регистрационную запись?  ##  Delete registered account?
-Accounts  ##  Accounts
-Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
+Укажите все Ваши аккаунты здесь.  ##  Enter all your accounts here.
+Вы можете добавить любые аккаунты, поддерживаемые Вашим Jabber сервером (обычно ICQ, MSN, и т.д.)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Вы уверены, что хотите удалить '%s'?  ##  Are you sure you want to delete account '%s'?
+Удалить зарегистрированный аккаунт?  ##  Delete registered account?
+Аккаунты  ##  Accounts
+Показывать только gateways  ##  Show only gateways
+Показывать все сервисы  ##  Show all services
 Контакты  ##  Contacts
-Добавить/удалить  ##  Add/Remove
-Найти нд,�b�-H4.�/�/t`�,4.�`�b  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-Все картинки (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-System  ##  System
-Logging  ##  Logging
-Setup log files and debug info.  ##  Setup log files and debug info.
-Specify paths below  ##  Specify paths below
-Собщения  ##  Messages
-  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
-General information about  ##  General information about
-Персональная инфд`4/4,4a�.4c  ##  Personal information
-Home details for  ##  Home details for
-Бизнесс информация  ##  Business information
-Work details for  ##  Work details for
-all other  ##  all other
-address given by mediator  ##  address given by mediator
+Добавить\Удалить  ##  Add/Remove
+Найти новые контакты.  ##  Find new contacts.
+Вы можете добавить новые Jabber, ICQ, MSN... контакты  ##  You can add new Jabber, ICQ, MSN... contacts
+Все файлы (*.*)\0*\0TXT файлы (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Все изображения (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF файлы (*. gif)\0*.gif\0PNG файлы (*.png)\0*.png\0Все файлы (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Система  ##  System
+Логи  ##  Logging
+Настройка логов и информации для отладки.  ##  Setup log files and debug info.
+Укажите пути ниже  ##  Specify paths below
+Сообщения  ##  Messages
+Настройки окна чата.  ##  Chat window settings.
+Для всех открытых окон чата.  ##  For all open chat windows.
+Общая информация  ##  General info
+Общая информация о  ##  General information about
+Персональная информация  ##  Personal information
+Домашняя информация о  ##  Home details for
+Рабочая информация  ##  Business information
+Рабочая информация о  ##  Work details for
+все другие  ##  all other
+адрес, выданный посредником  ##  address given by mediator
 Внешний вид  ##  Appearance
 Темы  ##  Skins
-Выберите скин  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+Выберите тему из списка.  ##  Choose skin from below list.
+Как будет выглядеть Wippien?  ##  What will Wippien wear?
+.. ничего ..  ##  .. none ..
+Автоуход  ##  Auto Away
+Настройки автоухода.  ##  Auto away settings.
+Задайте поведение Wippien, когда система неактивна.  ##  Determines how will Wippien behave when system is inactive.
 Система  ##  System
-Basic system messages.  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
-Updates  ##  Updates
-Update definitions.  ##  Update definitions.
-Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
+Базовые системные сообщения.  ##  Basic system messages.
+Задайте настройки поведения Wippien.  ##  Define Wippien application's behavior.
+Голосовой чат  ##  Voice Chat
+Пожалуйста, настройте  устройство для голосового чата.  ##  Please setup your voice chat devices.
+Выберите из списка ниже.  ##  Choose from list below.
+<по умолчанию>  ##  <system default>
+Базовые настройки контакта.  ##  Contacts basic settings.
+Обновления  ##  Updates
+Настройки обновления.  ##  Update definitions.
+Задайте частоту обновлений.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
-If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
-Sounds  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
+Пожалуйста, определите максимум передачи пакетов.  ##  Please determine maximum transfer unit.
+Если пользователь не отвечает на большие пакеты...  ##  If some peer doesn't respond to large packets...
+Звуки  ##  Sounds
+Настройте звуковую тему.  ##  Setup sounds to be played on various events.
+Выберите звуки по умолчанию или свои WAV файлы.  ##  Choose internal ones, or browse for WAV files.
 Контакт в сети  ##  Contact online
-Юзер оффлайн  ##  Contact offline
-  ##  Message in
-Message out  ##  Message out
+Контакт не в сети  ##  Contact offline
+Входящее сообщение  ##  Message in
+Исходящее сообщение  ##  Message out
 Ошибка  ##  Error
-WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+WAV файлы (*.wav)\0*.wav\0Все файлы (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Скрыть  ##  Hide
-Скрыть контакты  ##  Hide contacts.
-You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
+Скрыть контакты.  ##  Hide contacts.
+Вы можете скрыть некоторые контакты.  ##  You can hide some contacts from your sight.
 Внешний вид  ##  Appearance
-  ##  Appearance settings.
-  ##  Define how will Wippien's GUI appear to you.
-Сортировать  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
-ChatRoom  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
+Настройки внешнего вида.  ##  Appearance settings.
+Настройте внешний вид.  ##  Define how will Wippien's GUI appear to you.
+Сортировка  ##  Sort
+Сортировка контактов.  ##  Sorts contacts.
+Выберите опцию сортировки.  ##  Pick one of sort options.
+Чат  ##  ChatRoom
+Поиск и создание чатов. (ТЕСТОВАЯ ВЕРСИЯ!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Укажите настройки чата для входа или создания.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
-Firewall  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-  ##  Download successful. Replace now?
-  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
+Название чата  ##  Room name
+Файрволл  ##  Firewall
+Настройки файрволла.  ##  Set up firewall rules.
+Настройка доступных для контактов портов.  ##  You can set up which ports can be accessed by your contacts.
+* Весь ICMP трафик  ##  * All ICMP traffic
+Но блокировать эти порты  ##  But block these ports
+Но разрешать эти порты  ##  But allow these ports
+Обновление Wippien  ##  Wippien update
+Доступна новая версия Wippien. Скачать?  ##  New version of Wippien is available. Download?
+Узнать, что нового.  ##  Click here to see what's new.
+Ваша версия Wippien самая новая.  ##  Your version of Wippien is up-to-date.
+Ошибка подключения к удаленному серверу.  ##  Error connecting to remote server.
+Скачка успешно завершена. Заменить сейчас?  ##  Download successful. Replace now?
+Ошибка обновления Wippien!  ##  Wippien update error!
+Найдена новая версия Wippien. Заменить?  ##  New version of Wippien found localy. Replace?
 Новая версия  ##  New version
-Статус поменен:  ##  Status changed:
+Статус изменен:  ##  Status changed: 
 день  ##  day
-days  ##  days
-hour  ##  hour
-hours  ##  hours
-minute  ##  minute
-minutes  ##  minutes
-Последняя встреча: никогда  ##  Last seen: never
+дней  ##  days
+час  ##  hour
+часов  ##  hours
+минута  ##  minute
+минут  ##  minutes
+Последний раз в сети: никогда  ##  Last seen: never
 сейчас не в сети  ##  is currently offline
-не в сети  ##  is now offline
-в сети  ##  is now online
-забло кирован  ##  is blocked
+теперь не в сети  ##  is now offline
+теперь в сети  ##  is now online
+заблокирован  ##  is blocked
 не в сети  ##  is offline
-  ##  Unblock
-Забло кировать  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
+Разблокировать  ##  Unblock
+Блокировать  ##  Block
+Вы уверены, что хотите удалить группу %s  ##  Are you sure you want to remove group %s
 Удалить группу?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
+Вы уверены, что хотите удалить контакт %s  ##  Are you sure you want to remove contact %s
 Удалить контакт?  ##  Remove contact?
 Ошибка адаптера  ##  Adapter error
-Пере именовать группу  ##  Rename group
-Введите новое имя группы  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-У меня нет учетной записи  ##  I need new Jabber account
-Я уже зарегистрирован  ##  I have existing Jabber account
-&Test Aккаунт  ##  &Test Account
+Переименовать группу  ##  Rename group
+Введите новое название группы  ##  Enter new group name
+Скачать больше тем с сайта Wippien  ##  Download more skins from Wippien website
+Кликните на теме, чтобы скачать и установить её.  ##  Click on the skin to download and install it.
+Мне нужен новый аккаунт Jabber  ##  I need new Jabber account
+У меня уже есть аккаунт Jabber  ##  I have existing Jabber account
+&Тест аккаунта  ##  &Test Account
 &Поиск  ##  &Search
-You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Wippien использует сеть Jabber для уведомления Ваших контактов о том, что Вы в сети, просмотра других контактов и т.д.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Введите свой Jabber ID (JID). Если у Вас нет JID, Вы должны его зарегистрировать. Вы можете посмотреть список доступных публичных серверов, нажав на эту кнопку.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Пароль  ##  Password
 Сервер  ##  Server
 Порт  ##  Port
-Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
-Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+Пожалуйста, кликните 'Тест аккаунта' для продолжения.  ##  Please click on 'Test Account' to proceed.
+Использовать SSL wrapper на порте 443 (для GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Отмена  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
-Disconnect adapter on exit  ##  Disconnect adapter on exit
-UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-IP address for Wippien network adapter  ##  IP address for Wippien network adapter
-Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
-Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
+Пожалуйста, введите ключевую фразу  ##  Please enter key passphrase
+Добавить &новый  ##  Add &New
+Показывать уведомление, если сетевой адаптер недоступен.  ##  Show notification if ethernet adapter is unavailable.
+Отключать адаптер при выходе  ##  Disconnect adapter on exit
+UDP порт для исход. и вход. соединений (0 для автоматического выбора)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+IP адрес для сетевого адаптера Wippien  ##  IP address for Wippien network adapter
+Игнорировать. IP будет указан внешне.  ##  Ignore. IP will be set outside of this program.
+Получать от базы данных IP провайдера, через URL  ##  Obtained from IP provider database, on URL
+Использовать следующий статический адрес  ##  Use following static address
 IP адрес  ##  IP address
-Netmask  ##  Netmask
+Маска  ##  Netmask
 Статус  ##  Status
 URL  ##  URL
-Description  ##  Description
-Добавить new aккаунт  ##  Add new account
-Удалить aккаунт  ##  Remove account
-Register!  ##  Register!
-Your current Instant messaging connections  ##  Your current Instant messaging connections
-Username  ##  Username
-Открыть new aккаунт  ##  Open new account
-Authorization request  ##  Authorization request
+Описание  ##  Description
+Добавить новый аккаунт  ##  Add new account
+Удалить аккаунт  ##  Remove account
+Регистрация!  ##  Register!
+Ваши текущие аккаунты служб IM  ##  Your current Instant messaging connections
+Имя пользователя  ##  Username
+Открыть новый аккаунт  ##  Open new account
+Запрос авторизации  ##  Authorization request
 &Да  ##  &Yes
 &Нет  ##  &No
 &Детали  ##  &Details
-&Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
-Do you allow  ##  Do you allow
-to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Удалить Группу  ##  Remove Group
-  ##  Add Contact
-Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
-Visible Name  ##  Visible Name
-Rename contact  ##  Rename contact
-Enter new contact name  ##  Enter new contact name
-  ##  Settings
+&Применить ко всем  ##  &Apply to all
+&Блокировать пользователя(ей)  ##  &Block user(s)
+Вы разрешаете  ##  Do you allow
+добавить Вас к нему в контакт лист?  ##  to add you to his contact list?
+больше запросов ожидает...  ##  more requests waiting...
+Добавить группу  ##  Add Group
+Удалить группу  ##  Remove Group
+Добавить контакт  ##  Add Contact
+Поместить контакт в группу  ##  Put contact to the group
+JID контакта  ##  Contact JID
+Тип контакта  ##  Contact Type
+Видимое имя  ##  Visible Name
+Переименовать контакт  ##  Rename contact
+Введите новое имя контакта  ##  Enter new contact name
+Настройки  ##  Settings
 < &Назад  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
-Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
-Delete raw log on each  ##  Delete raw log on each
-megabytes  ##  megabytes
-Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
-Following mediators can be used  ##  Following mediators can be used
-Allow new mediators to be added  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
-Show message history  ##  Show message history
-Никнэйм  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
+Логировать общение в Jabber  ##  Log Jabber communication
+Логировать сокет соединения  ##  Log socket communication
+Логировать вызовы исходных функций (raw) (быстро растет!)  ##  Log raw function calls (may grow quickly!)
+Удалять лог raw через каждые  ##  Delete raw log on each
+мегабайтов  ##  megabytes
+Логировать VPN соединение при запуске P2P  ##  Log VPN communication on P2P startup
+Могут быть использованы следующие посредники:  ##  Following mediators can be used
+Разрешить добавление новых посредников  ##  Allow new mediators to be added
+Различные настройки окна чата  ##  Various settings regarding chat window
+Добавлять дату к сообщениям  ##  Timestamp messages
+Показывать историю сообщений  ##  Show message history
+Ник  ##  Nickname
+Имя  ##  First name
+Фамилия  ##  Last name
 Email  ##  Email
-Notes  ##  Notes
-Address  ##  Address
-Address Ext.  ##  Address Ext.
+Разное  ##  Notes
+Адрес  ##  Address
+Адрес+  ##  Address Ext.
 Город  ##  City
-State  ##  State
-Зип  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+Штат  ##  State
+Почтовый индекс  ##  ZIP
+Страна  ##  Country
+ДР  ##  Birthday
+Телефон  ##  Voice Tel.
 Факс  ##  Fax
-Title  ##  Title
-Company name  ##  Company name
-Department  ##  Department
-Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
-Click on first column to change values  ##  Click on first column to change values
-If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
-To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
+Заголовок  ##  Title
+Место работы  ##  Company name
+Отдел  ##  Department
+Разрешенные интерфейсы для прямого соединения  ##  Allowed interfaces for direct connection
+Разрешить всё  ##  Allow All
+Кликните первый столбец для изменения  ##  Click on first column to change values
+Если Вы выберете 'не указано', тогда это будет использована в настройках 'всё остальное'.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Найдены следующие темы  ##  Following skin files are found
+Применить  ##  Apply
+Вы можете добавлять темы, поместив их в папку 'Skin'. Не забудьте соответствующее 100x100 PNG изображение, для предпросмотра.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+&Больше тем...  ##  &More skins...
+Возвращать статус обратно, когда замечена активность.  ##  Set back when activity is detected again.
 Ждать  ##  Wait
-minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
-minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
-Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
-Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
-Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
-Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Password protect  ##  Password protect
-Settings only  ##  Settings only
-Постоянн�  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
-Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
-Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Спроси меня  ##  Ask me
-  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
-Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
-MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-&Play  ##  &Play
-Program events  ##  Program events
-  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
-&Add  ##  &Add
-&Remove  ##  &Remove
-Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
-Name  ##  Name
+минут до перехода в состояние 'отошел' (0 = отключить)  ##  minutes before going to away mode (0 = disable)
+минут до перехода в состояние 'отошел (давно)' (0 = отключить)  ##  minutes before going to extended away mode (0 = disable)
+минут до отключения (0 = отключить)  ##  minutes before disconnecting (0 = disable)
+Сообщения для автоухода  ##  Auto-Away message
+Сообщения для автоухода (давно)  ##  Extended-Away message
+Показывать Wippien на панели задач  ##  Show Wippien in taskbar
+Выравнивать значки на раб. столе, когда окно выровнено по краю  ##  Rearrange desktop when Wippien window is aligned to border
+Прилипать к краям  ##  Snap to desktop border
+Автом. скрывать окно, если неактивен  ##  Auto hide if Wippien is inactive for
+Поверх всех окон  ##  Always on top
+Подтверждать выход  ##  Confirm exit from application
+Отключаться при спящем режиме, подключаться при возврате к работе  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Защита паролем  ##  Password protect
+Только настройки  ##  Settings only
+Всё  ##  Everything
+Папка настроек (требует перезапуска)  ##  Settings folder (changing below value requires wippien restart)
+Синхронизация контакт-листа  ##  Contact list persistance
+Удалять все локальные контакты при запуске  ##  Delete all local contacts on startup
+Удалять все локальные контакты при подключении  ##  Delete all local contacts on connect
+Запрос подписки контактов  ##  Contacts subscription authorization
+Никогда не авторизовывать  ##  Never authorize
+Спрашивать  ##  Ask me
+Всегда авторизовывать  ##  Always authorize
+Автоматически соединять VPN при обмене данными  ##  Automatically establish VPN on network traffic
+Автоматически соединять VPN при запуске  ##  Automatically establish VPN on startup
+Прогресс  ##  Progress
+Включить голосовой чат  ##  Enable voice chat
+Устройство для воспроизведения  ##  Playback device
+Устройство для записи  ##  Recording device
+Проверять обновления при запуске  ##  Check for updates when Wippien starts
+Проверять обновления при соединении  ##  Check for updates on Connect
+Проверять обновл. каждые  ##  Check for updates each
+Обновлять и перезапускать Wippien по-тихому (автоматически)  ##  Update and restart application silently
+Показывать системные сообщения от сервера обновлений  ##  Show system messages received from updater
+&Проверить сейчас  ##  &Check now
+MTU определяет максимум UDP пакетов, который может быть послан пользователям. Если сетевое соединение имеет меньший MTU чем Wippien, возможно, что этот пользователь никогда не получит больших пакетов.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Использовать статичный MTU  ##  Use fixed MTU
+Автоматически определять MTU  ##  Auto-detect MTU
+(после переподключения пользователей)  ##  (will become effective as peers reconnect)
+Звук (оставить пустым для стандартного звука)  ##  Sound (leave empty for default sound)
+&Проиграть  ##  &Play
+Программные события  ##  Program events
+Скрыть новый контакт  ##  Hide new contact
+Показать контакт  ##  Unhide contact
+Скрытые контакты  ##  Currently hidden contacts
+Вы можете полностью игнорировать пользователей, скрывая контакты.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Скрыть контакт  ##  Hide contact
+Введите JID контакта  ##  Enter contact JID
+Разрешить весь трафик  ##  Allow all traffic
+Запретить весь трафик  ##  Block all traffic
+&Добавить  ##  &Add
+&Удалить  ##  &Remove
+По умолчанию  ##  Default rule
+Аватар  ##  Avatar picture
+Имя  ##  Name
 IP адрес  ##  IP address
-  ##  Status text
-Last online time  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
-Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
-By name  ##  By name
-By JID  ##  By JID
-by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
-by IP (without IP goes top)  ##  by IP (without IP goes top)
-Sort contact list  ##  Sort contact list
-Ник для чат-комнаты  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-  ##  Room name to create or join
-  ##  Password (empty if none)
+Текст статуса  ##  Status text
+Последнее время в сети  ##  Last online time
+Статистика активности  ##  Activity Monitor
+Видимые детали  ##  Visible details
+Видимые детали контакта  ##  Contact's visible details
+Не отсортировано  ##  unsorted
+По имени  ##  By name
+По JID  ##  By JID
+По IP (без IP внизу)  ##  by IP (without IP goes bottom)
+По IP (без IP вверху)  ##  by IP (without IP goes top)
+Сортировать контакт-лист  ##  Sort contact list
+Ник для чатов  ##  Nickname for chatrooms
+Показывать доступные чаты на следующих gateways  ##  Show available rooms on following gateways
+Кликните выше для выбора чата или заполните данные ниже, для создания  ##  Click above to select room, or enter new chat room details below
+Название чата для входа или создания  ##  Room name to create or join
+Пароль (пусто, если нет)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Присоединиться или создать комнату  ##  Join or Create room
-  ##  Block users at startup
-  ##  &Copy IP
-Чат  ##  C&hat
-  ##  &Voice Chat
-Отправить файл  ##  Send &File
-Отправить письмо  ##  Send E&mail
-  ##  &Block
-  ##  &Rename
-Удалить  ##  &Delete
-Детали  ##  De&tails
-добавление/удаление аккаунта  ##  Add/Remove &Accounts
-  ##  Add/Remove &Contacts
-&Online  ##  &Online
-&Away  ##  &Away
-Free for &Chat  ##  Free for &Chat
+Войти или создать чат  ##  Join or Create room
+Блокировать пользователей при запуске  ##  Block users at startup
+&Копировать IP  ##  &Copy IP
+Ч&ат  ##  C&hat
+&Голосовой чат  ##  &Voice Chat
+Передать &Файл  ##  Send &File
+Послать E&mail  ##  Send E&mail
+&Блокировать  ##  &Block
+&Переименовать  ##  &Rename
+&Удалить  ##  &Delete
+Де&тали  ##  De&tails
+Добавить/Удалить &аккаунты  ##  Add/Remove &Accounts
+Добавить/Удалить &контакты  ##  Add/Remove &Contacts
+&В сети  ##  &Online
+&Отошел  ##  &Away
+Готов &поболтать  ##  Free for &Chat
 &Не беспокоить  ##  &Do not Disturb
-E&xtended Away  ##  E&xtended Away
-&Invisible  ##  &Invisible
-ОФФ лайн  ##  O&ffline
-Поменять картинку  ##  Change &Picture
-Поменять пароль  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
+О&тошел (давно)  ##  E&xtended Away
+&Невидимый  ##  &Invisible
+Не&в сети  ##  O&ffline
+Изменить &аватар  ##  Change &Picture
+Изменить Па&роль  ##  Change Pa&ssword
+Ваши &данные  ##  Your &Details
+Введите Passphrase  ##  Enter Passphrase
 Введите пароль  ##  Enter password
-Пожалуйста введите пароль продукта  ##  Please enter protect password
-Languages  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
+Пожалуйста, введите пароль для защиты  ##  Please enter protect password
+Языки  ##  Languages
+Язык настроек, используемый во всех текстах Wippien.  ##  Setup language used in all Wippien texts.
+Время от времени могут появляться новые языки.  ##  New languages may appear periodically.
+Доступны следующие языки  ##  Following languages are found as available on local computer
 &Изменить  ##  &Change
-Locale used on local computer  ##  Locale used on local computer
-Текущий язык  ##  Currently used language
-Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-  ##  New language files available. Download?
-  ##  Show notification popup window when contact goes online/offline
+Язык на компьютере  ##  Locale used on local computer
+Текущий используемый язык  ##  Currently used language
+Изменения вступят в силу 'когда потребуются'. Следует перезапустить Wippien для полных изменений.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Доступны новые языки. Скачать?  ##  New language files available. Download?
+Показывать уведомление, когда контакт в сети/не в сети  ##  Show notification popup window when contact goes online/offline
 печатает...  ##  Contact is typing...
 говорит  ##  says
-сказал  ##  said
-  ##  You can use your GMAIL account here.
-  ##  Toggle voice chat
-  ##  Local echo
-  ##  UDP port 9913 busy
-  ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
-  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+сказал(а)  ##  said
+Вы можете использовать ваш аккаунт Gmail.  ##  You can use your GMAIL account here.
+Включить-выключить голосовой чат  ##  Toggle voice chat
+Локальное эхо  ##  Local echo
+UDP порт 9913 занят  ##  UDP port 9913 busy
+Невозможно  принять входящий голосовой чат ##  Unable to listen for incoming voice chat
+Чуствительность микрофона  ##  Microphone sensitivity
+Говорите в микрофон и настройте ползунок. Когда вы молчите, уровень активности на мониторе выше должен быть нулевый, а когда говорите - полным.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Голосовой чат не настроен. Вы должны настроить его перед использованием. Сделать это сейчас?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+включил(а)  ##  has enabled
+выключил(а)  ##  has disabled

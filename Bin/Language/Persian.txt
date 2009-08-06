@@ -1,12 +1,12 @@
 # Persian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ehsan Faramarzi (adifferentboy)
-# Version: 43
+# Version: 212
 بدون خطا.  ##  No error.
-The system cannot find the file specified.  ##  The system cannot find the file specified.
-The system cannot find the path specified.  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
-Type mismatch.  ##  Type mismatch.
-Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
+  ##  The system cannot find the file specified.
+  ##  The system cannot find the path specified.
+  ##  The system cannot find the specified file/directory.
+  ##  Type mismatch.
+  ##  Cannot create a file/directory when that file/directory already exists.
 The system cannot write to the specified device.  ##  The system cannot write to the specified device.
 Invalid Property Value.  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
@@ -57,75 +57,75 @@ wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start 
 Channel was closed.  ##  Channel was closed.
 اندازه MTU بسیار بزرگ است.  ##  MTU size too large.
 اندازه MTU بسیار کوچک است.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
+درخواست socks نامعتبر است  ##  Invalid socks request.
+پسورد نامعتبر. با سیستم جفت تناسب ندارد  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
+قادر به اتصال آی پی به نیست  ##  Cannot bind to specified IP address.
 جابجایی پرونده از پیش آغاز گشته است.  ##  Already performing file transfer.
 پرونده یافت نشد.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
-  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+خطا در نوشتن فایل  ##  Failed to write file.
+خطا در باز کردن کارت شبکه  ##  Could not open network adapter.
+تنها یک کارت شبکه در آن واحد می تواند فعال باشد  ##  Only one adapter can be used at a time.
+فایل لایسنس موجود نیست. استفاده تنها در محیط طراحی  ##  License key missing. You can not use this component in design environment.
 خطای شناسایی نشده.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
+خطا در وصل شدن. لطفا اول قطع ارتباط کنید  ##  Cannot Connect at this time. Use Disconnect first.
+خطا در اجرا، هنوز متصل نشده اید.  ##  Cannot execute, not yet connected.
+عنصر مشغول است  ##  Component busy.
+خطا در تغییر تنظیمات. تا وصل شدن صبر کنید  ##  Cannot change property at this time. Use Disconnect first.
+گزینه هاست نیم تنظیم نشده  ##  Hostname property not set.
+گزینه لاگین ست نشده  ##  Login property not set.
+گزینه پسورد ست نشده  ##  Password property not set.
 Invalid XML packet.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
+خطا در مذاکره SSL  ##  SSL could not be negotiated.
+خطا در ساخت کاربر جدید  ##  Failed to register new user: %s.
+یادآور ناشناس  ##  Unknown notification.
 پرونده یافت نشد.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
+شما ملزم به نوشتن پسوند فایل هستید  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+خطا در ورود تصویر  ##  Failed to import photo.
+یک روش بلوکه دیگر در جریان است  ##  Another blocking method in progress.
+داده پروتکل اشتباه است  ##  Invalid protocol data received.
+چیزی برای ارسال موجود نیست، سایز فایل صفر است  ##  There's nothing to send. File size is 0.
+کانتکت مورد نظر موجود نیست  ##  Contact not found.
 ناتوانی در جابجایی پرونده.  ##  File transfer failed.
 ناتوانی در نوشتن در پرونده  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
+فایل دریافتی دارای اشکال است  ##  Checksum of received file is invalid.
+ارسال مختل شد  ##  Transfer aborted.
+خطای تایم آوت  ##  Transfer has timed out.
+پروتکل اشتباه انتخاب شده  ##  Invalid protocol selected.
+  ##  Invalid state. Component already busy.
+نام مورد نظر یکتا نیست. لطفا نام آپدیتر را عوض کنید  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+روش کنسل شد  ##  Method was cancelled.
+خطا در اجرای نرم افزار به روز رسانی  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Warning  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Away  ##  Away
-Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
+تاریخ تنظیم نشده است  ##  Date not set.
+خطا در ثبت سرور کام  ##  Failed to register COM server.
+خطای عدم وجود صفحه از سرور دریافت شد  ##  Page not found (error 404) returned from the server.
+سایز فایل دریافتی درست نیست  ##  Invalid file size after download.
+خطای MD5 فایل دریافتی  ##  Invalid MD5 checksum after download.
+هشدار  ##  Warning
+آفلاین  ##  Offline
+آنلاین  ##  Online
+پای سیستم نیست  ##  Away
+آزاد برای گفتگو  ##  Free for chat
+مزاحم نشوید  ##  Do not disturb
 Extended away  ##  Extended away
-Invisible  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
+نامرئی  ##  Invisible
+درخواست اشتراک  ##  Asking for subscription
+طرف مشترک نیست  ##  Contact not subscribed
+قطع شدن از سرور  ##  Disconnected from server
+در حال اتصال به سرور  ##  Connecting to server
+ثبت کاربر جدید  ##  Registering new user
+ایجاد کانکشن امن  ##  Initializing secure connection
+ارسال اطلاعات لاگین امن  ##  Sending authentication data
+متصل به سرور  ##  Connected to server
+دریافت اطلاعات از سرور  ##  Receiving data from server
 فرستادن داده ها به سرور  ##  Sending data to server
 انجام دستور در سرور  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
+در حال قطع شدن از سرور  ##  Disconnecting from the server
 بررسی درخواست  ##  Requested authorization
 Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
@@ -133,108 +133,108 @@ Network adapter disabled!  ##  Network adapter disabled!
 Network adapter opened  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
+نیازمند قدرت ادمین هستید  ##  Admin privilege required!
+قطع شد  ##  Disconnected
+متصل شد  ##  Connected
+خطا در رسیدن مسیج  ##  Could not deliver message.
+خطا در تغییر پسورد  ##  Failed to change password
+قطع شدن به خاطر زمان بیکاری  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
-seconds  ##  seconds
-No network  ##  No network
-  ##  Exit Wippien
-E&xit  ##  E&xit
-Open settings  ##  Open settings
-&Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
-&About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
+هنوز اتصال برقرار نیست  ##  << VPN not established yet >>
+امتحان مجدد در %d ثانیه  ##  Reconnect in %d seconds.
+ثانیه  ##  seconds
+شبکه ای موجود نیست  ##  No network
+Wippien خروج از  ##  Exit Wippien
+خروج  ##  E&xit
+باز کردن تنظیمات  ##  Open settings
+تنظیمات  ##  &Settings
+...بازکردن درباره  ##  Show AboutBox
+درباره  ##  &About
+تعیین وضعیتتان (نامرئی و آفلاین)  ##  Set your status (Away,Invisible...)
+افزودن دوستان و فضایی ها  ##  Add contacts and alien accounts
+قطع صدا  ##  Mute sound
+باز کردن چت روم  ##  Open chat room
+ثبت دوستانتان  ##  Authorize your friends
 Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
-Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
-Identity  ##  Identity
-ID Card  ##  ID Card
+واقعا خارج میشوید  ##  Really exit Wippien?
+آیا مطمئنید؟  ##  Are you sure?
+رمز شما اکنون تغییر یافته است  ##  Your password is now changed.
+رمز عوض شد  ##  Password changed
+تغییر رمز اکانت  ##  Change account password
+لطفا رمز جدید را بزنید  ##  Please enter new password
+هویت  ##  Identity
+کارت شناسایی  ##  ID Card
 نشانی خانه  ##  Home Address
 نشانی کار  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
-Send  ##  Send
-Send file  ##  Send file
-Details  ##  Details
-Contact information  ##  Contact information
-Clear  ##  Clear
-Clear history  ##  Clear history
-Mute  ##  Mute
-Bold  ##  Bold
+آیا مطمئن به حذف این گذشته هستید؟  ##  Are you sure you want to delete the history?
+حذف گذشته ها  ##  Delete history?
+ارسال  ##  Send
+ارسال فایل  ##  Send file
+جزئیات  ##  Details
+اطلاعات فرد  ##  Contact information
+خال کردن  ##  Clear
+خالی کردن تاریخ  ##  Clear history
+قطع صدا  ##  Mute
+برجسته  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
-Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-Done!  ##  Done!
-Contact  ##  Contact
-Connecting  ##  Connecting
-Requesting  ##  Requesting
-Downloading  ##  Downloading
-Configuration file  ##  Configuration file
-General  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
-allow  ##  allow
-deny  ##  deny
-not specified  ##  not specified
-&Finish  ##  &Finish
-&Next >  ##  &Next >
-Identity  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
+لینک را وارد کنید  ##  Insert hyperlink
+کاهش سایز فونت  ##  Decrease font size
+بازگرداندن سایز فونت  ##  Reset font size
+افزایش سایز فونت  ##  Increase font size
+تنظیم رنگ پیش زمینه  ##  Set Foreground color
+تنظیم رنگ پس زمینه  ##  Set Background color
+اسمایلی ها  ##  Emoticons
+اسمایلی های جدید دانلود شوند؟  ##  New emoticons will be downloaded and installed. Proceed?
+اسمایلی های جدید  ##  New emoticons
+حال با کلیک مجدد روی دکمه اسمالی. موارد جدید را می بینید  ##  You can now click again on emoticon button to see new installed emoticons.
+تمام شد!  ##  Done!
+فرد  ##  Contact
+در حال اتصال  ##  Connecting
+درخواست نمودن  ##  Requesting
+در حال دانلود  ##  Downloading
+فایل تنظیمات  ##  Configuration file
+کلی  ##  General
+حالت نبود. به دلیل عدم حضور  ##  Away due to inactivity.
+مدت زیادی است که حاضر نیست  ##  Away for a loooong time.
+موافقم  ##  allow
+مخالفم  ##  deny
+نامشخص  ##  not specified
+پایان  ##  &Finish
+بعدی  ##  &Next >
+هویت  ##  Identity
+لطفا اطلاعات لاگین خود را مشخص کنید  ##  Please choose your logon information.
+این در لیست دوستانتان نشان داده می شود  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
-Jabber error  ##  Jabber error
-Icon  ##  Icon
+خطا در ورود اطلاعات لاگین  ##  Invalid logon details
+شما باید JID خود را وارد کنید  ##  You must enter your JID.
+باید رمز خود را وارد کنید  ##  You must enter your password.
+خطای jabber  ##  Jabber error
+آیکن  ##  Icon
 نشانه خود را برگزینید.  ##  Please choose your icon.
-This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+این برای دوستانتان قابل مشاهده است  ##  This is usually visible to your contacts.
 شبکه  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
-This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+لطفا آی پی و سابنت مسک خود را وارد کنید  ##  Please choose your IP address and netmask.
+این مشخص کننده شبکه مورد استفاده برنامه است  ##  This defines network range to be used by wippien.
 شبکه  ##  Network
-Mediator  ##  Mediator
-Please choose who will be your mediator.  ##  Please choose who will be your mediator.
-This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
+مدیاتور  ##  Mediator
+لطفا مدیاتور خود را مشخص کنید  ##  Please choose who will be your mediator.
+این مشخص کننده افرادی است که از P2P استفاده می کنند  ##  This defines people that mediate P2P connections.
+آخرین چک  ##  Last check
 درگاه  ##  Port
-Hostname  ##  Hostname
-Permanent  ##  Permanent
-Temporary  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
+هاست نیم  ##  Hostname
+دائمی  ##  Permanent
+موقت  ##  Temporary
+همه اکانت هایتان را اینجا وارد کنید  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
-Accounts  ##  Accounts
-Show only gateways  ##  Show only gateways
+%s آیا مطمئن به حذف اکانت هستید؟  ##  Are you sure you want to delete account '%s'?
+حذف اکانت ثب شده تان؟  ##  Delete registered account?
+اکانت ها  ##  Accounts
+تنها نمایش دروازه ها  ##  Show only gateways
 نمایش همه سرویس ها  ##  Show all services
-Contacts  ##  Contacts
-Add/Remove  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
+افراد  ##  Contacts
+اضافه/حذف  ##  Add/Remove
+پیدا کردن افراد جدید  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0

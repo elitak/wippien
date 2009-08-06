@@ -1,12 +1,12 @@
 # Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Wippien Fan
-# Version: 75
+# Version: 109
 Geen fout  ##  No error.
-Systeem kan opgegeven bestand niet vinden.  ##  The system cannot find the file specified.
+  ##  The system cannot find the file specified.
 Systeem kan opgegeven pad niet vinden.  ##  The system cannot find the path specified.
 Systeem kan opgegeven bestand/pad niet vinden  ##  The system cannot find the specified file/directory.
 Verkeerd type  ##  Type mismatch.
-Het systeem kan geen file/directory maken wanneer deze file/directory al bestaat.  ##  Cannot create a file/directory when that file/directory already exists.
+Het systeem kan geen bestand/map maken wanneer dit bestand/deze map al bestaat.  ##  Cannot create a file/directory when that file/directory already exists.
 Het system kan niet schrijven op de opgegeven schijf.  ##  The system cannot write to the specified device.
 Onjuiste veldwaarde.  ##  Invalid Property Value.
   ##  This operation returned because the timeout period expired.
@@ -15,7 +15,7 @@ Algemene fout voor ongeldig formaat, ongeldig formaat.  ##  Generic error for in
   ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Algemene fout voor ongeldig formaat, invoer, enz.  ##  Generic error for invalid format, entry, etc.
-Er was een ongeldig argument opgegeven.  ##  An invalid argument was supplied.
+  ##  An invalid argument was supplied.
 Het ip adres is niet geldig of bestaat niet.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Ongeldig slot of niet verbonden met pc op afstand.  ##  Invalid socket or not connected to remote.
 Dit adres is al in gebruik.  ##  The specified address is already in use.
@@ -28,7 +28,7 @@ De huidige socket verbinding is herstart.  ##  The current socket connection has
 De huidige socket is niet verbonden.  ##  The current socket has not been connected.
 De verbinding is afgebroken.  ##  The connection has been shutdown.
 De huidige verbinding heeft een timeout.  ##  The current connection has timeout.
-De gewenste verbinding is geweigerd door de remote host.  ##  The requested connection has been refused by the remote host.
+  ##  The requested connection has been refused by the remote host.
 De hostnaam is te lang.  ##  Specified host name is too long.
 Remote host is momenteel niet beschikbaar.  ##  Remote host is currently unavailable.
 Remote host is momenteel niet te bereiken.  ##  Remote host is currently unreachable.
@@ -42,8 +42,8 @@ Onbekende zoekopdracht.  ##  Unknown search type.
 Onbekend argument voor Zoek methode.  ##  Unknown argument for Search method.
 Is reeds gestart.  ##  Already started.
 Kanaal is reeds gestart  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
+Kan kanaal niet wijzingen terwijl die gestart wordt.  ##  Cannot change channel setup while channel is started.
+Teveel verkeer op de poort. Probeer later nog eens.  ##  Too much data on the socket. Try later.
 Verbinding kon niet worden gemaakt.  ##  Connection not established.
 Onbekend bestandstype.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
@@ -67,10 +67,10 @@ Bestand niet gevonden.  ##  File not found.
 Het schrijven naar bestand is mislukt.  ##  Failed to write file.
 Kon netwerk adapter niet openen.  ##  Could not open network adapter.
 Er kan maar één netwerkadapter tegelijk worden gebruikt.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Licentie sleutel ontbreekt. Je kunt dit onderdeel niet gebruiken in de ontwerp omgeving.  ##  License key missing. You can not use this component in design environment.
 Onbekende fout.  ##  Unrecognized Error.
 Deze verbinding kan op dit moment niet worden gemaakt. Verbreek eerst de bestaande verbinding.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
+Kan niet uitvoeren, nog niet verbonden.  ##  Cannot execute, not yet connected.
 Component is bezet.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
 Hostname property not set.  ##  Hostname property not set.
@@ -86,7 +86,7 @@ Onbekende notificatie.  ##  Unknown notification.
 Bestand niet gevonden.  ##  File not found.
 Geef het bestands type op.(PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Importeren van foto is niet gelukt.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
+Andere blokkeermethode bezig.  ##  Another blocking method in progress.
 Ongeldige protocol data ontvangen.  ##  Invalid protocol data received.
 Er is niks om te verzenden inhoud is 0.  ##  There's nothing to send. File size is 0.
 Contact niet gevonden  ##  Contact not found.
@@ -99,8 +99,8 @@ Ongeldig protocol geselecteerd.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
+Updater starten is mislukt.  ##  Failed to start updater program.
+Handtekening van opgehaald document is ongeldig.  ##  Signature on retrieved document is invalid.
 datum niet ingesteld.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Pagina niet gevonden(fout 404) bericht van de server.  ##  Page not found (error 404) returned from the server.
@@ -109,7 +109,7 @@ Ongeldige MD5 checksum na download.  ##  Invalid MD5 checksum after download.
 Waarschuwing  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
-Away  ##  Away
+Afwezig  ##  Away
 Beschikbaar voor de chat.  ##  Free for chat
 Niet storen  ##  Do not disturb
 Lang afwezig  ##  Extended away
@@ -134,8 +134,8 @@ Netwerk adapter geopend  ##  Network adapter opened
 Wippien netwerk adapter niet beschikbaar. Doorgaan met enkel IM?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrator rechten vereist !!! [Administrator]  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
+Niet verbonden  ##  Disconnected
+Verbonden  ##  Connected
 Kon bericht niet bezorgen.  ##  Could not deliver message.
 Wachtwoord wijzigen mislukt.  ##  Failed to change password
 Verbinding verbroken door geen activiteit.  ##  Disconnected due to inactivity rule
@@ -366,9 +366,9 @@ Netmask  ##  Netmask
 Status  ##  Status
 URL  ##  URL
 Beschrijving  ##  Description
-Voeg een nieuw account toe  ##  Add new account
+  ##  Add new account
 Verwijder account  ##  Remove account
-Registreer!  ##  Register!
+  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
 Username  ##  Username
 Maak een new account.  ##  Open new account
@@ -401,7 +401,7 @@ Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
+  ##  Timestamp messages
 Laat berichtgeschiedenis zien  ##  Show message history
 Nicknaam  ##  Nickname
 Voornaam  ##  First name
@@ -427,7 +427,7 @@ If you choose 'not specified' value, then same value is used as in 'all other' s
 Following skin files are found  ##  Following skin files are found
 Aanpassen  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
+&Meer Skins..  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
 Wacht  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
@@ -455,7 +455,7 @@ Vraag mij  ##  Ask me
 Altijd toestemmen  ##  Always authorize
 Zet automatisch VPN op zodra er netwerk verkeer is  ##  Automatically establish VPN on network traffic
 Zet automatisch VPN op bij opstarten  ##  Automatically establish VPN on startup
-Progress  ##  Progress
+Voortgang  ##  Progress
 Zet voice chat aan  ##  Enable voice chat
 Afspeelapparaat  ##  Playback device
 Opneemapparaat  ##  Recording device
@@ -467,7 +467,7 @@ toon de systeem berichten van de updater.  ##  Show system messages received fro
 controleer nu.  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 Gebruik een vaste MTU grootte  ##  Use fixed MTU
-  ##  Auto-detect MTU
+Detecteer MTU automatisch  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Geluid (leeg laten voor default)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
@@ -486,7 +486,7 @@ Standaard regel  ##  Default rule
 Avatar  ##  Avatar picture
 Naam  ##  Name
 IP-adres  ##  IP address
-Status  text  ##  Status text
+Status  tekst  ##  Status text
 Laatste keer online  ##  Last online time
 Activiteiten Monitor  ##  Activity Monitor
 Zichtbare details  ##  Visible details
@@ -510,9 +510,9 @@ C&hat  ##  C&hat
 &Bellen  ##  &Voice Chat
 Stuur &Bestand  ##  Send &File
 Stuur E&mail  ##  Send E&mail
-&Block  ##  &Block
-&Rename  ##  &Rename
-&Delete  ##  &Delete
+&Blokkeer  ##  &Block
+He&rnoem  ##  &Rename
+&Verwijderen  ##  &Delete
 De&tails  ##  De&tails
 &Accounts toevoegen/verwijderen  ##  Add/Remove &Accounts
 &Contacten toevoegen/verwijderen  ##  Add/Remove &Contacts
@@ -520,7 +520,7 @@ De&tails  ##  De&tails
 &Away  ##  &Away
 beschikbaar voor de chat  ##  Free for &Chat
 niet storen  ##  &Do not Disturb
-E&xtended Away  ##  E&xtended Away
+&Langere Afwezigheid  ##  E&xtended Away
 &Onzichtbaar  ##  &Invisible
 O&ffline  ##  O&ffline
 verander foto  ##  Change &Picture
@@ -530,7 +530,7 @@ Voer wachtwoord in.  ##  Enter Passphrase
 voer wachtwoord in.  ##  Enter password
 Gelieve een paswoord in te voegen  ##  Please enter protect password
 Talen  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
+Configuratietaal die wordt gebruikt in alle Wippien dialogen.  ##  Setup language used in all Wippien texts.
 Van tijd tot tijd kunnen nieuwe talen worden vrijgegeven.  ##  New languages may appear periodically.
 de volgende talen zijn beschikbaar op de lokale pc  ##  Following languages are found as available on local computer
 &Verander  ##  &Change
@@ -542,7 +542,7 @@ Laat pop up zien wanneer concat offline/online gaat.  ##  Show notification popu
 contact is bericht aan het typen  ##  Contact is typing...
 zegt  ##  says
 zei  ##  said
-Je kan je gmail acount hier gebruiken  ##  You can use your GMAIL account here.
+Je kan je Gmail acount hier gebruiken  ##  You can use your GMAIL account here.
 Schakel tussen Voice Chat aan/uit  ##  Toggle voice chat
 Lokale echo  ##  Local echo
 UDP poort 9913 is bezet  ##  UDP port 9913 busy

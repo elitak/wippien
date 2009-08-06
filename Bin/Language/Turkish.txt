@@ -1,6 +1,6 @@
 # Turkish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Xasf
-# Version: 314
+# Version: 357
 Hata yok.  ##  No error.
 Sistem belirtilen dosyayı bulamıyor.  ##  The system cannot find the file specified.
 Sistem belirtilen yolu bulamıyor.  ##  The system cannot find the path specified.
@@ -134,14 +134,14 @@ Ag cihazi acik  ##  Network adapter opened
 Wippien ag cihazi hazir degil. Sadece IM ile devam etmek istermisiniz?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
-  ##  Disconnected
-  ##  Connected
+Bağlantı Koptu  ##  Disconnected
+Bağlandı  ##  Connected
 Could not deliver message.  ##  Could not deliver message.
 Parola degistirilemedi  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+%d saniye içinde tekrar bağlanmayı deneyecek.  ##  Reconnect in %d seconds.
   ##  seconds
 Ag yok  ##  No network
 Wippienden cik  ##  Exit Wippien
@@ -174,26 +174,26 @@ Detaylar  ##  Details
 Contact information  ##  Contact information
 Temizle  ##  Clear
 Gecmisi Temizle  ##  Clear history
-  ##  Mute
-  ##  Bold
-  ##  Italic
-  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
-  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
+Sesi Kapat  ##  Mute
+Kalın  ##  Bold
+İtalik  ##  Italic
+Altıçizgili  ##  Underline
+Bağlantı ekle  ##  Insert hyperlink
+Font boyutunu küçült  ##  Decrease font size
+Font boyutunu varsayılan ayarlara çevir  ##  Reset font size
+Font boyutunu büyüt  ##  Increase font size
+Yüzey rengini belirle  ##  Set Foreground color
+Arkaplan rengini belirle  ##  Set Background color
+İfadeler  ##  Emoticons
+Yeni ifadeler indirilip yüklenecek. Devam etmek istiyor musunuz ?  ##  New emoticons will be downloaded and installed. Proceed?
+Yeni İfadeler  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 Tamam  ##  Done!
   ##  Contact
 Baglaniyor  ##  Connecting
 Isteniyor  ##  Requesting
 Indiriliyor  ##  Downloading
-Configuration file  ##  Configuration file
+Ayar dosyası  ##  Configuration file
 Genel  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
@@ -208,7 +208,7 @@ This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
 You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
+Şifrenizi girmelisiniz.  ##  You must enter your password.
 Jabber error  ##  Jabber error
 Ikon  ##  Icon
 Please choose your icon.  ##  Please choose your icon.
@@ -287,34 +287,34 @@ WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0
 Gizle  ##  Hide
   ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-Goruntu  ##  Appearance
-Appearance settings.  ##  Appearance settings.
+Görüntü  ##  Appearance
+Görüntü Ayarları.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
   ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
-  ##  ChatRoom
+Chat Odası  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
+Oda İsmi  ##  Room name
 Firewall  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
 But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
+Wippien güncelleme  ##  Wippien update
+Wippien'in yeni versiyonu mevcut. İndirmek ister misiniz ?  ##  New version of Wippien is available. Download?
 Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
 Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
-Status changed:  ##  Status changed:
+Yeni versiyon  ##  New version
+Durum değiştirildi :  ##  Status changed:
 gun  ##  day
 gun  ##  days
 saat  ##  hour
@@ -361,16 +361,16 @@ IP address for Wippien network adapter  ##  IP address for Wippien network adapt
 Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
 Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
 Use following static address  ##  Use following static address
-IP address  ##  IP address
+IP Adresi  ##  IP address
   ##  Netmask
 Durum  ##  Status
 URL  ##  URL
-  ##  Description
+Açıklama  ##  Description
 Yeni hesap ac  ##  Add new account
 Hesabi kapat  ##  Remove account
 Kayit ol  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
-Kullanici  ##  Username
+Kullanıcı  ##  Username
 Yeni hesap ac  ##  Open new account
 Authorization request  ##  Authorization request
 Evet  ##  &Yes
@@ -378,18 +378,18 @@ Hayir  ##  &No
 Detaylar  ##  &Details
 &Apply to all  ##  &Apply to all
 &Block user(s)  ##  &Block user(s)
-Do you allow  ##  Do you allow
+Kabul Ediyor Musunuz ?  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+Daha fazla istek beklemede...  ##  more requests waiting...
+Grup Ekleyin  ##  Add Group
+Grup Kaldırın  ##  Remove Group
+Kişi Ekleyin.  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
 Contact Type  ##  Contact Type
 Visible Name  ##  Visible Name
-Rename contact  ##  Rename contact
-Enter new contact name  ##  Enter new contact name
+Kişiyi yeniden adlandırın  ##  Rename contact
+Yeni bir kişi ismi girin  ##  Enter new contact name
 Ayarlar  ##  Settings
 < &Back  ##  < &Back
 Log Jabber communication  ##  Log Jabber communication
@@ -402,7 +402,7 @@ Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
-Show message history  ##  Show message history
+Mesaj geçmişini göster  ##  Show message history
 Nickname  ##  Nickname
 Isim  ##  First name
 Soyad  ##  Last name
@@ -542,7 +542,7 @@ Show notification popup window when contact goes online/offline  ##  Show notifi
 Yaziyor...  ##  Contact is typing...
 soyler  ##  says
 soyledi  ##  said
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+Burası için GMAIL hesabınızı kullanabilirsiniz.  ##  You can use your GMAIL account here.
 Toggle voice chat  ##  Toggle voice chat
 Local echo  ##  Local echo
 UDP port 9913 busy  ##  UDP port 9913 busy

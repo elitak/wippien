@@ -2070,8 +2070,11 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 				user->OpenMsgWindow(TRUE);
 				if (!wasopen && user->m_MessageWin)
 				{
-					strcpy(user->m_MessageWin->m_JID, user->m_JID);
-					user->m_MessageWin->SetTitle();
+					if (!user->m_ChatRoomPtr)
+					{
+						strcpy(user->m_MessageWin->m_JID, user->m_JID);
+						user->m_MessageWin->SetTitle();
+					}
 				}
 			}
 			break;

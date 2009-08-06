@@ -1352,12 +1352,17 @@ BOOL CMsgWin::Incoming(char *User, BOOL IsSystem, char *text, char *Html)
 	{
 		SaveHistory(FALSE, text);
 		CComBSTR2 u = User;
+		if (!User || !*User)
+		{
+			if (m_Room)
+				u = m_Room->m_Nick;
+		}
 		char *u1 = u.ToString();
 		char *u2 = strchr(u1, '@');
 		if (u2)
 			*u2 = 0;
 
-		Buffer *b = CreateMsg(User, text, Html, "559040", "FFFFFF");
+		Buffer *b = CreateMsg(u1, text, Html, "559040", "FFFFFF");
 
 		BOOL didplayemoticonsound = m_ChatBox.AddLine(b, FALSE);
 		delete b;
@@ -2359,17 +2364,15 @@ HRESULT CMsgWin::CInputBox::Send()
 					*b7 = 0;
 				CComBSTR2 b3(bstr2);
 				CComBSTR2 b2(bstr);
-				Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000", "EEEEEE");
-
-							
 
 				if (m_ParentDlg->m_User)
 				{
+					Buffer *b1 = m_ParentDlg->CreateMsg(b6, b3.ToString(), b2.ToString(), "000000", "EEEEEE");
 					m_ParentDlg->m_ChatBox.AddLine(b1, TRUE);
 					m_ParentDlg->SaveHistory(TRUE, b3.ToString());
 					_Jabber->Message(NULL, m_ParentDlg->m_JID, b3.ToUTF8String(), b2.ToUTF8String());
+					delete b1;
 				}
-				delete b1;
 
 				if (m_ParentDlg->m_Room)
 				{
@@ -2394,7 +2397,7 @@ HRESULT CMsgWin::CInputBox::Send()
 #endif
 
 					if (croom)
-						_Jabber->ChatRoomMessage(croom, b3.ToString(), b2.ToString());
+						_Jabber->ChatRoomMessage(croom, b3.ToUTF8String(), b2.ToUTF8String());
 
 #ifndef _WODXMPPLIB
 					if (croom)

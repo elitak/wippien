@@ -1,13 +1,13 @@
 # Bulgarian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Barracuda
-# Version: 158
-No error.  ##  No error.
-The system cannot find the file specified.  ##  The system cannot find the file specified.
-The system cannot find the path specified.  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
-Type mismatch.  ##  Type mismatch.
-Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
-The system cannot write to the specified device.  ##  The system cannot write to the specified device.
+# Version: 201
+Без грешки.  ##  No error.
+Системата не намира дадения файл.  ##  The system cannot find the file specified.
+Системата не намира дадената папка.  ##  The system cannot find the path specified.
+Системата не можа да намери дадения файл/папка.  ##  The system cannot find the specified file/directory.
+Вид разминаване.  ##  Type mismatch.
+  ##  Cannot create a file/directory when that file/directory already exists.
+  ##  The system cannot write to the specified device.
 Invalid Property Value.  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
@@ -36,18 +36,18 @@ Remote system is not ready.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
-Host not found.  ##  Host not found.
+Хоста не е д`�.�`4.4`�  ##  Host not found.
 Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
 Unknown search type.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
-Channel already started.  ##  Channel already started.
+Вече е стартирана.  ##  Already started.
+Този канал е вече стартиран.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Connection not established.  ##  Connection not established.
 Unknown data type.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.
@@ -63,7 +63,7 @@ Local ID not set. It is required for Search method.  ##  Local ID not set. It is
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
+Файла не е д.�`4.4`�  ##  File not found.
 Failed to write file.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
@@ -83,7 +83,7 @@ Contact already exists in the collection.  ##  Contact already exists in the col
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+Файла не е д`�.�`4.4`�  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Failed to import photo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
@@ -251,15 +251,15 @@ Personal information  ##  Personal information
 Home details for  ##  Home details for
 Business information  ##  Business information
 Work details for  ##  Work details for
-all other  ##  all other
+всички д`t`�,4/t,4.�.  ##  all other
 address given by mediator  ##  address given by mediator
-  ##  Appearance
-Skins  ##  Skins
+Външен вид  ##  Appearance
+Скинове  ##  Skins
 Choose skin from below list.  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
 .. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
+  ##  Auto Away
+  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
 Система  ##  System
 Basic system messages.  ##  Basic system messages.
@@ -293,13 +293,13 @@ Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI 
 Sort  ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
-ChatRoom  ##  ChatRoom
+Чат стая  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
 Име на стая  ##  Room name
-Firewall  ##  Firewall
+Защитна стена  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
@@ -314,21 +314,21 @@ Download successful. Replace now?  ##  Download successful. Replace now?
 Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
 Нова версия  ##  New version
-Status changed:  ##  Status changed:
-day  ##  day
-days  ##  days
-hour  ##  hour
-hours  ##  hours
-minute  ##  minute
-minutes  ##  minutes
+Статут променен:  ##  Status changed:
+ден  ##  day
+дни  ##  days
+час  ##  hour
+часове  ##  hours
+минута  ##  minute
+минути  ##  minutes
 Последно е видян: никога  ##  Last seen: never
 в момента не е на линия  ##  is currently offline
-is now offline  ##  is now offline
-is now online  ##  is now online
+в момента е офлайн  ##  is now offline
+в момента е онлайн  ##  is now online
   ##  is blocked
-is offline  ##  is offline
-Unblock  ##  Unblock
-Block  ##  Block
+е офлайн  ##  is offline
+Отблокирай  ##  Unblock
+  ##  Block
 Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
 Премахни група?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
@@ -519,7 +519,7 @@ Add/Remove &Contacts  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
 Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
+  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
 &Invisible  ##  &Invisible
 O&ffline  ##  O&ffline
@@ -540,7 +540,7 @@ Changes will take affect on 'as needed' basis. You should restart Wippien if you
 New language files available. Download?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
 Contact is typing...  ##  Contact is typing...
-says  ##  says
+  ##  says
 said  ##  said
 You can use your GMAIL account here.  ##  You can use your GMAIL account here.
 Toggle voice chat  ##  Toggle voice chat
@@ -550,5 +550,5 @@ Unable to listen for incoming voice chat  ##  Unable to listen for incoming voic
 Microphone sensitivity  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-has enabled  ##  has enabled
-has disabled  ##  has disabled
+е пуснат  ##  has enabled
+е спрян  ##  has disabled

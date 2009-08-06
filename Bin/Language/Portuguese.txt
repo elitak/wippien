@@ -1,6 +1,6 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 39
+# Version: 66
 Sem erro.  ##  No error.
 O Sistema não conseguiu encontrar o arquivo especificado  ##  The system cannot find the file specified.
 O Sistema não conseguiu encontrar o caminho especificado  ##  The system cannot find the path specified.
@@ -12,7 +12,7 @@ Valor de propriedade inválido  ##  Invalid Property Value.
 Esta operação acabou porque foi atingido o tempo de espera.  ##  This operation returned because the timeout period expired.
 Uma interrupção ao nível do Sistema, interrompeu a operação de Socket.  ##  System level interrupt interrupted socket operation.
 Erro genérico para formato inválido, formato errado.  ##  Generic error for invalid format, bad format.
-Foi feito uma tentativa de acesso a um socket, de uma maneira que é proíbida pelas permissões de acesso.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Uma tentativa de obter acesso no socket de modo proibido.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 O sistema detectou um endereço inválido, numa tentativa de chamada através de endereço.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Erro genérico para formato inválido, entrada errada, etc.  ##  Generic error for invalid format, entry, etc.
 Foi fornecido um argumento inválido.  ##  An invalid argument was supplied.
@@ -103,7 +103,7 @@ O programa de actualização falhou ao iniciar.  ##  Failed to start updater pro
 A assinatura no documento obtido é inválida.  ##  Signature on retrieved document is invalid.
 Data não especificada.  ##  Date not set.
 Falhou o registo do servidor  "COM".  ##  Failed to register COM server.
-  ##  Page not found (error 404) returned from the server.
+Página da web não encontrada (erro 404) retornou do servidor.  ##  Page not found (error 404) returned from the server.
 Tamanho de ficheiro errado após a descarga.  ##  Invalid file size after download.
 Erro de soma de controlo (MD5) após a descarga.  ##  Invalid MD5 checksum after download.
 Aviso  ##  Warning
@@ -140,7 +140,7 @@ Não pude entregar a mensagem.  ##  Could not deliver message.
 Falhou a mudança de password  ##  Failed to change password
 Desconectado devido a inatividade.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  entrada: %s\r\nTotal saída: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-VPN ainda não estabelecido  ##  << VPN not established yet >>
+<&lt; VPN não foi concluida. >&gt;  ##  << VPN not established yet >>
 A ligar dentro de %d segundos.  ##  Reconnect in %d seconds.
 Segundos  ##  seconds
 Sem rede  ##  No network
@@ -321,7 +321,7 @@ hora  ##  hour
 horas  ##  hours
 minuto  ##  minute
 minutos  ##  minutes
-Último visto: nunca  ##  Last seen: never
+Última vez visto: nunca  ##  Last seen: never
 está desligado  ##  is currently offline
 está agora desligado  ##  is now offline
 está agora ligado  ##  is now online
@@ -537,7 +537,7 @@ As seguintes traduções estão disponíveis neste computador  ##  Following lan
 Definições de localização usadas neste computador  ##  Locale used on local computer
 Linguagem actual  ##  Currently used language
 Para aplicar todas as alterações deve reiniciar o Wippien.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-Novos arquivos de linguagem disponiveis, baixar?  ##  New language files available. Download?
+Novos arquivos de linguagem disponíveis, baixar?  ##  New language files available. Download?
 Mostrar notificação quando o contacto está ligado/desligado  ##  Show notification popup window when contact goes online/offline
 O contacto está a escrever...  ##  Contact is typing...
 diz  ##  says
@@ -546,9 +546,9 @@ Pode usar a sua conta de GMAIL aqui.  ##  You can use your GMAIL account here.
 Trocar entre conversação de voz  ##  Toggle voice chat
 Echo Local  ##  Local echo
 porta UDP 9913 ocupada  ##  UDP port 9913 busy
-  ##  Unable to listen for incoming voice chat
-Sencibilidade do Microfone  ##  Microphone sensitivity
-  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Impossível escutar voz de entrada em conversação de voz.  ##  Unable to listen for incoming voice chat
+Sensibilidade do Microfone  ##  Microphone sensitivity
+Fale no seu microfone e ajuste o menu deslizante. O sensor não pode se movimentar quando você não fala, e deverá ficar cheio quando você falar alto.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Chat com voz não configurado. Tem que ser configurado antes de ser possivel usar. Configurar agora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+habilitado  ##  has enabled
+desabilitado  ##  has disabled

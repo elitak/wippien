@@ -1,23 +1,23 @@
 # German translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: torsten.wagner@vnc-world.com
-# Version: 228
-Kein Fehler  ##  No error.
-Gewünschte Datei kann nicht gefunden werden.  ##  The system cannot find the file specified.
+# Version: 824
+Keine Fehler.  ##  No error.
+Das System kann die angegebene Datei nicht finden.  ##  The system cannot find the file specified.
 Das System kann den angegebenen Pfad nicht finden.  ##  The system cannot find the path specified.
 Das System kann den angegebenen Pfad / die angegebene Datei nicht finden.  ##  The system cannot find the specified file/directory.
-Falscher Typ...  ##  Type mismatch.
+Falscher Typ.  ##  Type mismatch.
 Kann Datei / Verzeichnis nicht erstellen, wenn die Datei / das Verzeichnis bereits existiert.  ##  Cannot create a file/directory when that file/directory already exists.
 Das System kann nicht auf das angegebene Gerät schreiben.  ##  The system cannot write to the specified device.
 Ungültiger Eigenschaftswert.  ##  Invalid Property Value.
 Diese Anwendung wurde aufgrund einer Zeitüberschreitung abgebrochen  ##  This operation returned because the timeout period expired.
 Der Systemstatus ist defekt und beeinträchtigt die Schnittstellenfunktionen.  ##  System level interrupt interrupted socket operation.
-Allgemeiner Fehler für defekte Formate, falsche Formate etc. ...  ##  Generic error for invalid format, bad format.
+Generischer Fehler in einem falschem Format.  ##  Generic error for invalid format, bad format.
 Es wurde versucht auf eine Schnittstelle zuzugreifen, die für die vorliegenden Zugriffsrechte verboten ist.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 Das System entdeckte eine nicht zulässige Adresse während des Versuchs, einen zentralen Parameter aufzurufen.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Allgemeiner Fehler für defekte Formate, Einträge etc. ...  ##  Generic error for invalid format, entry, etc.
 Ein unzulässiges Argument wird unterstützt.  ##  An invalid argument was supplied.
-Die angegebene IP Adresse ist nicht gültig oder der definierte Host mit der IP Adresse existiert nicht.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-  ##  Invalid socket or not connected to remote.
+Die angegebene IP-Adresse ist ungültig bzw. der durch die IP festgelegte Host existiert nicht.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Kann sich nicht verbinden.  ##  Invalid socket or not connected to remote.
 Die angegebene Adresse ist in Benutzung.  ##  The specified address is already in use.
 Die angegebene Adresse ist nicht verfügbar.  ##  The specified address is not available.
 Das zu verbindende Netzwerk ist nicht erreichbar  ##  The connected network is not available.
@@ -36,7 +36,7 @@ Remotesystem ist nicht bereit.  ##  Remote system is not ready.
 Die aktuelle Schnittstellenausführung wird von der Anwendung nicht unterstützt.  ##  Current socket version not supported by application.
 Softwareschnittstelle kann nicht zur Verfügung gestellt werden.  ##  Socket API is not initialized.
 Die Anbindung wurde unterbrochen.  ##  Socket has been disconnected.
-Host nicht gefunden.  ##  Host not found.
+Namenauflösungs- (DNS) oder Timeoutfehler.  ##  Host not found.
 Es ist nicht genügend Arbeitsspeicher für die Operation vorhanden.  ##  Not enough memory is available to complete this operation.
 Unbekannter Suchtyp.  ##  Unknown search type.
 Unbekannter Parameter für die Suche.  ##  Unknown argument for Search method.
@@ -44,7 +44,7 @@ Bereits gestartet  ##  Already started.
 Channel  bereits gestartet  ##  Channel already started.
 Während eine bestehenden Verbindung kann keine Änderung vorgenomen werden.  ##  Cannot change channel setup while channel is started.
 Zu hoher Datenverkehr. Später noch einmal versuchen.  ##  Too much data on the socket. Try later.
-Verbindung kann nicht hergestellt werden.  ##  Connection not established.
+Verbindung nicht hergestellt.  ##  Connection not established.
 Unbekannter Dateityp.  ##  Unknown data type.
 Socketverbindung fehlgeschlagen.  ##  Failed to create socket thread.
 Unbekannter Verbindungstyp  ##  Unknown channel type.
@@ -59,7 +59,7 @@ MTU Wert zu gross.  ##  MTU size too large.
 MTU Wert zu klein.  ##  MTU size too small.
 Unzulässige Verbindungsanfrage  ##  Invalid socks request.
 Ungültiges Passwort. Es stimmt nicht mit dem hinterlegten Passwort überein.  ##  Invalid password. Does not match remote peer's password.
-Die lokale ID ist nicht vergeben. Sie wird für die Suchanfrage benötigt.  ##  Local ID not set. It is required for Search method.
+Lokale ID nicht gesetzt. Es wird für die Suchmethode benötigt.  ##  Local ID not set. It is required for Search method.
 Die Remote ID ist nicht vergeben. Sie wird für die Suchanfrage benötigt.  ##  Remote ID not set. It is required for Search method.
 Die lokale IP Adresse kann nicht verwendet werden.  ##  Cannot bind to specified IP address.
 Die Datenübertragung besteht bereits.  ##  Already performing file transfer.
@@ -92,7 +92,7 @@ Es kann nicht gesendet werden. Dateigrösse ist 0.  ##  There's nothing to send.
 Kontakt nicht gefunden.  ##  Contact not found.
 Dateifransfer fehlerhaft  ##  File transfer failed.
 Konnte Datei nicht schreiben.  ##  Could not write to file.
-Die Prüfsumme der angeforderten Datei ist nicht korrekt.  ##  Checksum of received file is invalid.
+Die Prüfsumme der empfangenen Datei ist nicht korrekt.  ##  Checksum of received file is invalid.
 Übertragung abgebrochen  ##  Transfer aborted.
 Übertragung unterbrochen  ##  Transfer has timed out.
 Unzulässiges Protokoll ausgewählt.  ##  Invalid protocol selected.
@@ -107,7 +107,7 @@ Websitefehler (Fehler 404) wurde vom Server gemeldet.  ##  Page not found (error
 Falsche Dateigrösse nach dem Download.  ##  Invalid file size after download.
 MD5 Prüfsumme nach dem Download ist falsch.  ##  Invalid MD5 checksum after download.
 Warnung  ##  Warning
-Offline  ##  Offline
+nicht aktive Verbindungen  ##  Offline
 Verbindung hergestellt  ##  Online
 Abwesend  ##  Away
 Gesprächsbereit  ##  Free for chat
@@ -119,7 +119,7 @@ nicht übernommene Kontakte  ##  Contact not subscribed
 Verbindungsabbruch zum Server  ##  Disconnected from server
 Verbindung zum Server  ##  Connecting to server
 Neuen Benutzer registrieren  ##  Registering new user
-Sichere Verbindung wird aufgebaut.  ##  Initializing secure connection
+Initialisiere gesicherte Verbindung.  ##  Initializing secure connection
 Authentifizierungsdaten werden gesendet.  ##  Sending authentication data
 Verbunden mit dem Server  ##  Connected to server
 Datenanforderung vom Server  ##  Receiving data from server
@@ -131,7 +131,7 @@ Der Wippien-Netzwerkadapter wird konfiguriert...  ##  Configuring Wippien networ
 Adapter \"%s\" mit der Adresse %s ist nicht nutzbar mit Wippien's %s. Es ist möglich das Wippien keine Datenpacke senden und empfangen kann.  Bitte deinstallieren Sie oder schalten Sie den Adapter aus.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Netzwerkadapter ausgeschalten  ##  Network adapter disabled!
 Netzwerkadapter verfügbar  ##  Network adapter opened
-Wippien Netzwerkadapter nicht verfügbar. Nur mit Instant Messaging fortfahren?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien Netzwerkadapter nicht verfügbar. Weiter mit IM?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien muss den Netzwerkadapter mit externen Tools konfigurieren und benutzt administrative Benutzerrechte. Starten Sie bitte Wippien unter Administratorrechten bzw. sorgen Sie für ausreichende Zugriffsrechte.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrationsrechte werden benötigt  ##  Admin privilege required!
 Verbindung unterbrochen  ##  Disconnected
@@ -140,12 +140,12 @@ Nachricht konnte nicht versandt werden.  ##  Could not deliver message.
 Passwort konnte nicht geändert werden.  ##  Failed to change password
 Die Verbindung wird beendet wenn nicht mehr benötigt.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nSumme eingehend: %s\r\nSumme ausgehend: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<&lt; VPN not established yet >&gt;  ##  << VPN not established yet >>
+<&lt; VPN not established yet >&amp;gt;  ##  << VPN not established yet >>
 Verbindungswiederherstellung in %d Sekunden.  ##  Reconnect in %d seconds.
 Sekunden  ##  seconds
 Kein Netzwerk  ##  No network
 Ausgang  ##  Exit Wippien
-Exit  ##  E&xit
+Beenden  ##  E&xit
 Einstellungen anzeigen  ##  Open settings
 Einstellungen  ##  &Settings
 Hilfe anzeigen  ##  Show AboutBox
@@ -194,7 +194,7 @@ Verbindungsaufbau  ##  Connecting
 Anfrage  ##  Requesting
 Dateidownload  ##  Downloading
 Konfigurationsdatei  ##  Configuration file
-Online  ##  General
+Onlineverbindungen  ##  General
 abwesend wenn nicht aktiv verwendet  ##  Away due to inactivity.
 Für lange Zeit abwesend.  ##  Away for a loooong time.
 erlauben  ##  allow
@@ -330,7 +330,7 @@ ist offline  ##  is offline
 Entsperren  ##  Unblock
 Sperren  ##  Block
 Sind Sie sicher das Sie die Gruppe in %s verlassen wollen?  ##  Are you sure you want to remove group %s
-Gruppe verlassen?  ##  Remove group?
+  ##  Remove group?
 Sind Sie sicher das sie den Kontakt in %s abbrechen wollen?  ##  Are you sure you want to remove contact %s
 Kontakt abbrechen  ##  Remove contact?
 Adapterfehler  ##  Adapter error
@@ -338,14 +338,14 @@ Gruppe umbenennen  ##  Rename group
 Neuen Gruppennamen eingeben  ##  Enter new group name
 Download mehr Skins von der Wippien website  ##  Download more skins from Wippien website
 Klicken Sie auf das Skin um es herunterzuladen und zu installieren.  ##  Click on the skin to download and install it.
-Erstelle ein Jabberkonto  ##  I need new Jabber account
+  ##  I need new Jabber account
 Verwende existierendes Jabberkonto  ##  I have existing Jabber account
 Testkonto  ##  &Test Account
 Suchen  ##  &Search
 Jabber ID (JID) hier eingeben. Wippien nutzt das Jabbernetzwerk - damit zeigen Sie das sie online sind, andere sehen können und mehr...  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 Wenn Sie keine JID haben, müssen Sie sich für eine registrieren lassen. Sie können dies bei einem beliebigen Jabberserver tun. Es gibt viele öffentliche Server. Sie können eine akt. Liste der verfügbaren Server durch klicken der Taste `Suchen` einsehen.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Passwort  ##  Password
+  ##  Password
 Server  ##  Server
 Port  ##  Port
 Bitte klicken Sie auf `Testkonto` um fortzufahren  ##  Please click on 'Test Account' to proceed.
@@ -452,7 +452,7 @@ Alle lokalen Kontakte nach dem Verbindungsaufbau löschen  ##  Delete all local 
 Bestätigte oder authorisiere Kontakte  ##  Contacts subscription authorization
 noch nicht authorisiert  ##  Never authorize
 zuerst mich fragen  ##  Ask me
-bereits authorisiert  ##  Always authorize
+Immer erlauben  ##  Always authorize
 VPN beim Netzwerkverkehr automatisch starten  ##  Automatically establish VPN on network traffic
 VPN automatisch beim Start aufbauen  ##  Automatically establish VPN on startup
 In Bearbeitung  ##  Progress
@@ -504,7 +504,7 @@ Raumname eingeben oder aufrufen  ##  Room name to create or join
 Passwort (leer lassen wenn keines verwendet wird)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Erstellen Sie oder wechseln sie zu einem Chatraum  ##  Join or Create room
-Sperre Benutzer von Anfangan  ##  Block users at startup
+Sperre Benutzer von Anfang an  ##  Block users at startup
 Kopiere IP  ##  &Copy IP
 Chat  ##  C&hat
 Sprachchat  ##  &Voice Chat
@@ -516,13 +516,13 @@ Löschen  ##  &Delete
 Details  ##  De&tails
 Konto Hinzufügen/Löschen  ##  Add/Remove &Accounts
 Kontakt Hinzufügen/Löschen  ##  Add/Remove &Contacts
-Online  ##  &Online
+Anwesend  ##  &Online
 Nicht anwesend  ##  &Away
 Chat möglich  ##  Free for &Chat
 Bitte nicht stören  ##  &Do not Disturb
 Länger abwesend  ##  E&xtended Away
 Zu sehen  ##  &Invisible
-Offline  ##  O&ffline
+Abwesend  ##  O&ffline
 Bild austauschen  ##  Change &Picture
 Passwort ändern  ##  Change Pa&ssword
 Ihre Daten  ##  Your &Details
@@ -530,7 +530,7 @@ Passphrase eingeben  ##  Enter Passphrase
 Passwort eingeben  ##  Enter password
 Bitte Passwort eingeben  ##  Please enter protect password
 Sprachen  ##  Languages
-Die Sprache in Wippien einstellen.  ##  Setup language used in all Wippien texts.
+Sprache wählen  ##  Setup language used in all Wippien texts.
 Neue Sprachen können hinzugefügt werden.  ##  New languages may appear periodically.
 Die nachfolgenden möglichen Sprachdateien wurden auf dem Computer gefunden  ##  Following languages are found as available on local computer
 Veränderungen  ##  &Change
@@ -548,7 +548,7 @@ eigene Sprachreflektion(en)  ##  Local echo
 UDP Port 9913 nicht möglich  ##  UDP port 9913 busy
 der eingehende Sprachchat wird nicht erkannt  ##  Unable to listen for incoming voice chat
 Mikrofonempfindlichkeit hier einstellen  ##  Microphone sensitivity
-Um die Spracheingabe zu kalibrieren, sprechen Sie bitte in das Mikrofon. Wenn Sie nichts sagen, wird im oberen Anzeigebereich nichts zu erkennen sein. Ein Anzeigeausschlag wird nur zu erkennen sein, wenn Sie laut reden.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Um die Spracheingabe zu kalibrieren, sprechen Sie bitte in das Mikrofon. Wenn Sie nichts sagen, wird im oberen Anzeigebereich nichts zu erkennen sein. Ein Anzeigeausschlag wird nur zu erkennen sein, wenn Sie deutlich reden.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Der Sprachchat wurde noch nicht konfiguriert. Dies ist jedoch zwingend notwendig. Möchten Sie dies jetzt tun?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 wurde aktiviert  ##  has enabled
-wurde aktiviert  ##  has disabled
+wurde deaktiviert  ##  has disabled

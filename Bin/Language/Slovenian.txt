@@ -1,6 +1,6 @@
 # Slovenian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: _black_cell_
-# Version: 182
+# Version: 192
 Ni napak.  ##  No error.
 Sistem ne more najti iskane datoteke.  ##  The system cannot find the file specified.
 Sistem ne najde iskane poti.  ##  The system cannot find the path specified.
@@ -164,12 +164,12 @@ Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
 Identiteta  ##  Identity
 ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
+Domači naslov  ##  Home Address
+Delovni naslov  ##  Work Address
+Ali ste prepričani, da želite izbrisati zgodovino?  ##  Are you sure you want to delete the history?
+Zbrišem zgodovino?  ##  Delete history?
 Pošlji  ##  Send
-Send file  ##  Send file
+Pošlji datoteko  ##  Send file
 Podrobnosti  ##  Details
 Contact information  ##  Contact information
 Počisti  ##  Clear
@@ -179,21 +179,21 @@ Bold  ##  Bold
 Italic  ##  Italic
 Podčrtaj  ##  Underline
 Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
+Zmanjšaj velikost pisave  ##  Decrease font size
+Ponastavi velokost pisave  ##  Reset font size
+Povečaj velikost pisave  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
 Set Background color  ##  Set Background color
 Smeški  ##  Emoticons
 New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
+Novi smeški  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 Opravljeno!  ##  Done!
 Stik  ##  Contact
 Povezujem  ##  Connecting
 Requesting  ##  Requesting
 Prenašam  ##  Downloading
-Configuration file  ##  Configuration file
+Konfiguracijska datoteka  ##  Configuration file
 Osnovno  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.

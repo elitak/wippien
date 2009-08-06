@@ -1,6 +1,6 @@
 # Swedish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: MrMust
-# Version: 381
+# Version: 514
 Inget fel uppstod  ##  No error.
 Systemet kunde inte hitta den specifierade filen.  ##  The system cannot find the file specified.
 Systemet kunde inte hitta den specificerade sökvägen  ##  The system cannot find the path specified.
@@ -60,8 +60,8 @@ MTU- storlek för liten.  ##  MTU size too small.
 Ogiltig socks- begäran.  ##  Invalid socks request.
 Fel lösenord. Lösenordet matchar inte det andra lösenordet.  ##  Invalid password. Does not match remote peer's password.
 Ditt lokala ID är inte infogat. Det behövs för att kunna använda Sökningsmetoden.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
+Fjärrid krävs för sökning.  ##  Remote ID not set. It is required for Search method.
+Kan inte binda socket till specifik ID-adress.  ##  Cannot bind to specified IP address.
 Utför redan filöverföring.  ##  Already performing file transfer.
 Filen kunde inte hittas.  ##  File not found.
 Misslyckades att skriva till fil.  ##  Failed to write file.
@@ -70,23 +70,23 @@ Bara en adapter kan användas i taget.  ##  Only one adapter can be used at a ti
 Licensnyckel saknas. Du kan inte använda denna komponent i en utvecklingsmiljö.  ##  License key missing. You can not use this component in design environment.
 Okänt fel.  ##  Unrecognized Error.
 Kan inte ansluta. Koppla ner först.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
+Kan inte köra kommandot, ingen uppkoppling tillgänglig.  ##  Cannot execute, not yet connected.
 Komponent upptagen.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
+Kan ej ändra vid denna tidpunkt. Koppla bort först.  ##  Cannot change property at this time. Use Disconnect first.
 Värdnamn är inte korrekt angivet.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
+Login-värde ej satt.  ##  Login property not set.
 Lösenord är inte korrekt angivet.  ##  Password property not set.
-Ogiltigt XML paket.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
+Ogiltigt XML-paket.  ##  Invalid XML packet.
+Fel: Ogiltig XML-sekvens.  ##  Invalid XML packet sequence ID.
 Ogiltig inloggning: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
+Fel: Kontakten existerar redan.  ##  Contact already exists in the collection.
+Fel: SSL-anslutning kunde ej förhandlas.  ##  SSL could not be negotiated.
 Misslyckades med att registrera ny användare: %s.  ##  Failed to register new user: %s.
 Okänd notifiering.  ##  Unknown notification.
 Filen kunde inte hittas.  ##  File not found.
 Du måste specificera typ av bild (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Kunde inte importera bild.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
+En annan blockmetod håller på att utföras.  ##  Another blocking method in progress.
 Ogiltig protokolldata mottagen.  ##  Invalid protocol data received.
 Det finns ingenting att skicka. Filstorleken är 0.  ##  There's nothing to send. File size is 0.
 Kontakten kunde inte hittas.  ##  Contact not found.
@@ -94,7 +94,7 @@ Filöverföring misslyckades.  ##  File transfer failed.
 Kunde inte skriva till filen.  ##  Could not write to file.
 Mottagna filen har en felaktig checksum.  ##  Checksum of received file is invalid.
 Överföring avbruten.  ##  Transfer aborted.
-  ##  Transfer has timed out.
+Överföringen har misslyckats  ##  Transfer has timed out.
 Ogiltigt protokoll valt.  ##  Invalid protocol selected.
 Ogiltigt tillstånd. Komponenten är redan upptagen.  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
@@ -102,7 +102,7 @@ Metoden avbröts.  ##  Method was cancelled.
 Misslyckades med att starta uppdateringshanteraren.  ##  Failed to start updater program.
 Signaturen på mottaget dokument är ogiltig.  ##  Signature on retrieved document is invalid.
 Datum är inte inställt.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
+Kan ej registrera COM-server.  ##  Failed to register COM server.
 Felkod 404: Sidan kan inte hittas returnerades från servern.  ##  Page not found (error 404) returned from the server.
 Felaktig filstorlek efter nedladdning.  ##  Invalid file size after download.
 Felaktig MD5 checksum efter nedladdning.  ##  Invalid MD5 checksum after download.
@@ -112,25 +112,25 @@ Online  ##  Online
 Borta  ##  Away
 Tillgänglig för chat  ##  Free for chat
 Stör ej  ##  Do not disturb
-Extended away  ##  Extended away
+Frånvarande  ##  Extended away
 Osynlig  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
+Ber om att få prenumerera  ##  Asking for subscription
+Kontakten prenumererar ej!  ##  Contact not subscribed
 Bortkopplad från värddatorn  ##  Disconnected from server
 Ansluter till värddator  ##  Connecting to server
 Registrerar ny användare  ##  Registering new user
 Initialiserar säker anslutning  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
+Skickar verifieringsdata  ##  Sending authentication data
 Ansluten till värddator  ##  Connected to server
 Tar emot data från värddator  ##  Receiving data from server
 Skickar data till värddator  ##  Sending data to server
-Executing command on server  ##  Executing command on server
+Kör kommandot på server  ##  Executing command on server
 Kopplar ner från värddator  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
+Begär autentisering  ##  Requested authorization
 Konfigurerar Wippien nätverksadapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Nätverksadapter inaktiverad!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
+Nätverksadapter startad  ##  Network adapter opened
 Wippien nätverksadapter är inte tillgänglig. Fortsätt med endast IM?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrationsprivilegier krävs!  ##  Admin privilege required!
@@ -140,7 +140,7 @@ Kunde inte leverera meddelande.  ##  Could not deliver message.
 Misslyckades med att ändra lösenord  ##  Failed to change password
 Frånkopplad på grund av inaktivitet  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-  ##  << VPN not established yet >>
+<< VPN-tunnel är ännu ej etablerad >  ##  << VPN not established yet >>
 Återansluter om %d sekunder.  ##  Reconnect in %d seconds.
 sekunder  ##  seconds
 Inget nätverk  ##  No network
@@ -151,10 +151,10 @@ Visa inställningar  ##  Open settings
 Visa information  ##  Show AboutBox
 &Om  ##  &About
 Ställ in din status (Borta, osynlig...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
+Lägg till kontakter  ##  Add contacts and alien accounts
 Stäng av ljud  ##  Mute sound
 Öppna chatrum  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
+Authorisera dina vänner  ##  Authorize your friends
 Idle  ##  Idle
 Vill du verkligen avsluta Wippien?  ##  Really exit Wippien?
 Är du säker?  ##  Are you sure?
@@ -163,7 +163,7 @@ Lösenord ändrat  ##  Password changed
 Ändra lösenord  ##  Change account password
 Vänligen mata in nytt lösenord  ##  Please enter new password
 Identitet  ##  Identity
-ID Card  ##  ID Card
+ID-kort  ##  ID Card
 Hemadress  ##  Home Address
 Arbetsadress  ##  Work Address
 Är du säker på att du vill rensa historiken?  ##  Are you sure you want to delete the history?
@@ -217,8 +217,8 @@ Nätverk  ##  Network
 Vänligen fyll i din IP-adress och nätmask.  ##  Please choose your IP address and netmask.
 Detta anger nätverksområde att användas av wippien.  ##  This defines network range to be used by wippien.
 Network  ##  Network
-Mediator  ##  Mediator
-Please choose who will be your mediator.  ##  Please choose who will be your mediator.
+Medlare  ##  Mediator
+Var god välj medlare  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
 Senaste kontroll  ##  Last check
 Port  ##  Port
@@ -252,14 +252,14 @@ Hemmadetaljer för  ##  Home details for
 Arbetsinformation  ##  Business information
 Arbetsdetaljer för  ##  Work details for
 alla övriga  ##  all other
-address given by mediator  ##  address given by mediator
+adress given av medlaren  ##  address given by mediator
 Appearance  ##  Appearance
 Skins  ##  Skins
 Välj skal från nedanståede lista.  ##  Choose skin from below list.
 Vad ska Wippien ha på sig?  ##  What will Wippien wear?
 .. inget ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
+Auto-frånvarande  ##  Auto Away
+Auto-frånvarandeinställningar  ##  Auto away settings.
 Bestämmer hur Wippien uppträder vid systeminaktivitet.  ##  Determines how will Wippien behave when system is inactive.
 System  ##  System
 Grundläggande systemmeddelanden  ##  Basic system messages.
@@ -267,54 +267,54 @@ Bestäm Wippien programbetende.  ##  Define Wippien application's behavior.
 Röstchatt  ##  Voice Chat
 Ställ in dina röstchattenheter.  ##  Please setup your voice chat devices.
 Välj från listan nedan  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
+<Systemstandard>  ##  <system default>
+Allmänna inställningar kontakt  ##  Contacts basic settings.
 Uppdateringar  ##  Updates
 Uppdatera definitioner.  ##  Update definitions.
 Bestäm när och hur Wippien skall uppdatera sig själv.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
+Fastställ maximal MTU  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
 Sounds  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
+Välj mellan de interna ljuden eller sök efter WAV-filer på din dator  ##  Choose internal ones, or browse for WAV files.
+Kontakt loggade in!  ##  Contact online
+Kontakt loggade ut!  ##  Contact offline
+Meddelande in  ##  Message in
+Meddelande ut  ##  Message out
 Error  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Hide  ##  Hide
-Hide contacts.  ##  Hide contacts.
+Göm kontakter.  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
 Appearance  ##  Appearance
-Appearance settings.  ##  Appearance settings.
-Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
+Visningsinställningar  ##  Appearance settings.
+Ändra GUI-utseende  ##  Define how will Wippien's GUI appear to you.
 Sort  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+Sorterar kontakter.  ##  Sorts contacts.
+Välj ett sorteringsalternativ  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Sök efter eller skapa chat rum. (Fortfarande i beta!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
 Room name  ##  Room name
 Firewall  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
+Sätt upp brandväggsregler  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien update error!  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
-Status changed:  ##  Status changed:
+* All ICMP-trafik (Ping)  ##  * All ICMP traffic
+Blockera följande portar  ##  But block these ports
+Tillåt följande portar  ##  But allow these ports
+Uppdatering  ##  Wippien update
+Ny version tillgänglig! Ladda hem?  ##  New version of Wippien is available. Download?
+Klicka här för att se förändringsloggen  ##  Click here to see what's new.
+Din version är fullt uppdaterat!  ##  Your version of Wippien is up-to-date.
+Problem vid uppkoppling  ##  Error connecting to remote server.
+Nedladdning lyckades! Installera nu?  ##  Download successful. Replace now?
+Uppdateringsfel!  ##  Wippien update error!
+Tidigare nedladdad uppdatering hittad. Uppdatera nu?  ##  New version of Wippien found localy. Replace?
+Ny version  ##  New version
+Status ändrad:  ##  Status changed:
 dag  ##  day
 dagar  ##  days
 timme  ##  hour
@@ -333,11 +333,11 @@ Blockera  ##  Block
 Ta bort grupp?  ##  Remove group?
 Är du säker på att du vill ta bort kontakten %s  ##  Are you sure you want to remove contact %s
 Ta bort kontakt?  ##  Remove contact?
-Adapter error  ##  Adapter error
+Nätverksadapterfel  ##  Adapter error
 Byt namn på grupp  ##  Rename group
 Mata in nytt gruppnamn  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
+Flera skal kan laddas hem på Wippiens hemsida  ##  Download more skins from Wippien website
+Klicka på skalet för att ladda hem och installera det  ##  Click on the skin to download and install it.
 Jag behöver ett nytt Jabber-konto  ##  I need new Jabber account
 Jag har redan ett Jabber-konto  ##  I have existing Jabber account
 &Kontrollera konto  ##  &Test Account
@@ -349,34 +349,34 @@ Lösenord  ##  Password
 Värddator  ##  Server
 Port  ##  Port
 Vänligen klicka på "Kontrollera konto" för att fortsätta.  ##  Please click on 'Test Account' to proceed.
-Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+Använd SSL på port 443 (för Gmail/GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Cancel  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
-Disconnect adapter on exit  ##  Disconnect adapter on exit
-UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-IP address for Wippien network adapter  ##  IP address for Wippien network adapter
-Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
-Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
-IP address  ##  IP address
+Ange lösenordsfrasen  ##  Please enter key passphrase
+Lägg till &Ny  ##  Add &New
+Visa meddelande om nätverksadaptern är otillgänglig.  ##  Show notification if ethernet adapter is unavailable.
+Koppla bort nätverksadaptern när jag avslutar Wippien  ##  Disconnect adapter on exit
+UDP-port för inkommande och utgående paket (0 för automatisk konfiguration)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Din IP-adress på Wippien-nätverket  ##  IP address for Wippien network adapter
+Ignorera - IP-adressen sätts manuellt utanför programmet.  ##  Ignore. IP will be set outside of this program.
+IP-adress hämtad från databas  ##  Obtained from IP provider database, on URL
+Använd följande statiska IP-adress:  ##  Use following static address
+IP-adress  ##  IP address
 Nätmask  ##  Netmask
 Status  ##  Status
 URL  ##  URL
 Beskrivning  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
+Lägg till ett nytt konto  ##  Add new account
+Ta bort ett konto  ##  Remove account
 Registrera!  ##  Register!
-Your current Instant messaging connections  ##  Your current Instant messaging connections
+Dina IM-konton  ##  Your current Instant messaging connections
 Användarnamn  ##  Username
-Open new account  ##  Open new account
-Authorization request  ##  Authorization request
+Skapa nytt konto  ##  Open new account
+Skapar...  ##  Authorization request
 &Ja  ##  &Yes
 &Nej  ##  &No
 &Detaljer  ##  &Details
-&Apply to all  ##  &Apply to all
+&Applicera på alla  ##  &Apply to all
 &Blockera användare  ##  &Block user(s)
 Tillåter du  ##  Do you allow
 att lägga till dig på sin kontaktlista?  ##  to add you to his contact list?
@@ -385,22 +385,22 @@ Lägg till grupp  ##  Add Group
 Ta bort grupp  ##  Remove Group
 Lägg till kontakt  ##  Add Contact
 Lägg till kontakt i grupp  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
+Kontakt-JID  ##  Contact JID
+Kontakttyp  ##  Contact Type
 Visningsnamn  ##  Visible Name
 Döp om kontakt  ##  Rename contact
 Mata in nytt namn på kontakt  ##  Enter new contact name
 Inställningar  ##  Settings
 < &Bakåt  ##  < &Back
 Logga Jabberkommunikation  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
-Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
+Logga all kommunikation  ##  Log socket communication
+Logga råa funktionsanrop (Logg kan bli stor snabbt!)  ##  Log raw function calls (may grow quickly!)
 Delete raw log on each  ##  Delete raw log on each
 megabytes  ##  megabytes
-Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
-Following mediators can be used  ##  Following mediators can be used
-Allow new mediators to be added  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
+Logga VPN-kommunikation vid P2P-initiering med klient  ##  Log VPN communication on P2P startup
+Följande medlare kan användas:  ##  Following mediators can be used
+Tillåt nya medlare att läggas till  ##  Allow new mediators to be added
+Diverse inställningar för chattfönstret  ##  Various settings regarding chat window
 Tidsstämpla meddelanden  ##  Timestamp messages
 Visa meddelandehistorik  ##  Show message history
 Smeknamn  ##  Nickname
@@ -415,7 +415,7 @@ Län  ##  State
 Postkod  ##  ZIP
 Land  ##  Country
 Födelsedag  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+Rösttelefon.  ##  Voice Tel.
 Fax  ##  Fax
 Titel  ##  Title
 Företagsnamn  ##  Company name
@@ -424,10 +424,10 @@ Allowed interfaces for direct connection  ##  Allowed interfaces for direct conn
 Tillåt alla  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found  ##  Following skin files are found
+Följande skal hittade  ##  Following skin files are found
 Apply  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
+&Flera skal...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
 Vänta  ##  Wait
 minuter innan frånvaroläget aktiveras (0 för att inaktivera)  ##  minutes before going to away mode (0 = disable)
@@ -466,27 +466,27 @@ Update and restart application silently  ##  Update and restart application sile
 Show system messages received from updater  ##  Show system messages received from updater
 &Check now  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
+Använd fixat MTU-värde  ##  Use fixed MTU
+Auto-dekektera optimal MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
 Spela  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
+Programhändelser  ##  Program events
+Göm ny kontakt  ##  Hide new contact
+Ångra "göm kontakt"  ##  Unhide contact
+Gömda kontakter  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+Göm kontakt  ##  Hide contact
+Ange kontakt-JID  ##  Enter contact JID
+Tillåt all trafik  ##  Allow all traffic
+Blockera all trafik  ##  Block all traffic
 Lägg till  ##  &Add
 Ta bort  ##  &Remove
-Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
+Grundregel  ##  Default rule
+Avatar-bild  ##  Avatar picture
 Namn  ##  Name
-IP address  ##  IP address
-Status text  ##  Status text
+IP-adress  ##  IP address
+Statustext  ##  Status text
 Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
 Visible details  ##  Visible details
@@ -501,10 +501,10 @@ Nickname for chatrooms  ##  Nickname for chatrooms
 Show available rooms on following gateways  ##  Show available rooms on following gateways
 Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
 Room name to create or join  ##  Room name to create or join
-Password (empty if none)  ##  Password (empty if none)
+Lösenord (tomt om inget)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Joina eller Skapa rum  ##  Join or Create room
-Block users at startup  ##  Block users at startup
+Blockera inkommande VPN-anslutningar vid start  ##  Block users at startup
 &Kopiera IP  ##  &Copy IP
 C&hat  ##  C&hat
 &Röstchat  ##  &Voice Chat
@@ -514,25 +514,25 @@ Skicka E&mail  ##  Send E&mail
 &Rename  ##  &Rename
 &Delete  ##  &Delete
 De&tails  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
+Lägg till/Ta bort &Konton  ##  Add/Remove &Accounts
+Lägg till/Ta bort &Kontakter  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
-Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
-E&xtended Away  ##  E&xtended Away
+Fri för &Chatt  ##  Free for &Chat
+&Upptagen  ##  &Do not Disturb
+F&rånvarande  ##  E&xtended Away
 &Invisible  ##  &Invisible
 O&ffline  ##  O&ffline
 Ändra bild  ##  Change &Picture
 Ändra lösenord  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
+Dina &Detaljer  ##  Your &Details
+Var god ange lösenordsfras  ##  Enter Passphrase
 Skriv in ditt lösenord.  ##  Enter password
 Var god skriv in skyddslösenord.  ##  Please enter protect password
 Languages  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
+Installationsspråk  ##  Setup language used in all Wippien texts.
+Nya språk tillkommer periodiskt.  ##  New languages may appear periodically.
+Följande språk är tillgängliga på datorn:  ##  Following languages are found as available on local computer
 &Change  ##  &Change
 Platsinställningarna som används på den lokala datorn  ##  Locale used on local computer
 Valt språk  ##  Currently used language
@@ -543,12 +543,12 @@ Kontakten skriver ett meddelande...  ##  Contact is typing...
 säger  ##  says
 sade  ##  said
 Du kan använda ditt Gmail- konto här  ##  You can use your GMAIL account here.
-  ##  Toggle voice chat
-  ##  Local echo
-  ##  UDP port 9913 busy
+Sätt på/stäng av röstsamtal.  ##  Toggle voice chat
+Lokal eko  ##  Local echo
+UDP-port 9913 används redan.  ##  UDP port 9913 busy
   ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
+Mikrofonkänslighet  ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+har aktiverat  ##  has enabled
+har avaktiverat  ##  has disabled

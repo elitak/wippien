@@ -1006,7 +1006,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #else
 					tblen = sizeof(tb);
 					WODXMPPCOMLib::XMPP_Message_GetText(Message, tb, &tblen);
-					t = tb;
+					t.FromUTF8String(tb);
 #endif
 					CComBSTR2 ht;
 #ifndef _WODXMPPLIB
@@ -1014,7 +1014,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 #else
 					tblen = sizeof(tb);
 					WODXMPPCOMLib::XMPP_Message_GetHTMLText(Message, tb, &tblen);
-					ht = tb;
+					ht.FromUTF8String(tb);
 #endif
 					_MainDlg.OnIncomingMessage(NULL, j.ToString(), t.ToString(), ht.ToString());
 				}

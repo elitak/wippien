@@ -2367,7 +2367,7 @@ HRESULT CMsgWin::CInputBox::Send()
 				{
 					m_ParentDlg->m_ChatBox.AddLine(b1, TRUE);
 					m_ParentDlg->SaveHistory(TRUE, b3.ToString());
-					_Jabber->Message(NULL, m_ParentDlg->m_JID, b3.ToString(), b2.ToString());
+					_Jabber->Message(NULL, m_ParentDlg->m_JID, b3.ToUTF8String(), b2.ToUTF8String());
 				}
 				delete b1;
 

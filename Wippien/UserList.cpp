@@ -863,7 +863,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							char stbuf[1024];
 							int stlen = sizeof(stbuf);
 							WODXMPPCOMLib::XMPP_Contact_GetStatusText(contact, stbuf, &stlen);
-							s = stbuf;
+							s.FromUTF8String(stbuf);
 #endif
 							{
 								char *s1 = _Settings.Translate(s.ToString());

@@ -1,6 +1,6 @@
 # Bahasa+Indonesia translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sumabek
-# Version: 113
+# Version: 114
 Tidak ditemukan kesalahan.  ##  No error.
 Sistem tidak dapat menemukan kesalahan yang dimaksud.  ##  The system cannot find the file specified.
 Sistem tidak dapat menemukan jalur yang dimaksud.  ##  The system cannot find the path specified.

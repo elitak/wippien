@@ -65,7 +65,7 @@ CSettings::CSettings()
 
 	m_MyLastNetwork = m_MyLastNetmask = 0;
 	m_AllowAnyMediator = TRUE;
-	m_IPProviderURL = "http://wippien.com/ip/?jid=";
+	m_IPProviderURL = "http://www.wippien.com/ip/?jid=";
 	LinkMediatorStruct *st1 = AddLinkMediator("mediator.wippien.com", 8000);
 	st1->Permanent = TRUE;
 	m_ObtainIPAddress = 1;
@@ -248,7 +248,7 @@ CSettings::CSettings()
 	m_UseSSLWrapper = FALSE;
 	m_UsePowerOptions = TRUE;
 
-	m_UpdateURL = "http://wippien.com/Download/update.php";
+	m_UpdateURL = "http://www.wippien.com/Download/update.php";
 
 	m_FirewallDefaultAllowRule = TRUE;
 	m_DisconnectEthernetOnExit = FALSE;
@@ -553,8 +553,12 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
 			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
-			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://wippien.com/ip/?jid=");
-			ReadSettingsCfg(wip, "UpdateURL", m_UpdateURL, "http://wippien.com/Download/update.php");
+			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://www.wippien.com/ip/?jid=");
+			if (m_IPProviderURL == "http://wippien.com/ip/?jid=")
+				m_IPProviderURL = "http://www.wippien.com/ip/?jid=";
+			ReadSettingsCfg(wip, "UpdateURL", m_UpdateURL, "http://www.wippien.com/Download/update.php");
+			if (m_UpdateURL == "http://wippien.com/Download/update.php")
+				m_UpdateURL = "http://www.wippien.com/Download/update.php";
 			CComBSTR2 mlm;
 			int mlmport = 0;
 			ReadSettingsCfg(wip, "LinkMediator", mlm, "mediator.wippien.com");

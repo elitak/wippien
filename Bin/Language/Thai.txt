@@ -1,7 +1,7 @@
 # Thai translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Injected
-# Version: 35
-ไม่ผิดพลาด  ##  No error.
+# Version: 36
+sin errores  ##  No error.
 ระบบไม่สามรถหาไฟล์ที่ระบุ  ##  The system cannot find the file specified.
 ระบบไม่สามารถหาพาธที่ระบุ  ##  The system cannot find the path specified.
 ระบบไม่สามารถหาไฟล์ที่ระบุ / ไดเรคทอรี่  ##  The system cannot find the specified file/directory.
@@ -141,7 +141,7 @@ Failed to change password  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-เชื่อมต่ออีกครั้ง เ.&H	Y8.)�.-8.&x.,�.%�.-  ##  Reconnect in %d seconds.
+เชื่อมต่ออีกครั้ง เ.&H	Y8.)�.-8.&x.,�.%�.-  ##  Reconnect in %d seconds.
 วินาที  ##  seconds
 No network  ##  No network
 ออกจาก Wippien  ##  Exit Wippien

@@ -76,7 +76,7 @@ LRESULT CDownloadSkinDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM 
     {
 		CComVariant v;  // empty variant
  
-		m_pWB2->Navigate ( CComBSTR("http://wippien.com/SkinUpdate.php"), &v, &v, &v, &v );
+		m_pWB2->Navigate ( CComBSTR("http://www.wippien.com/SkinUpdate.php"), &v, &v, &v, &v );
     }	
 
 

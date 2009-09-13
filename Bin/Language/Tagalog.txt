@@ -1,14 +1,14 @@
-# Persian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
-# Author: Ehsan Faramarzi (adifferentboy)
-# Version: 221
-بدون خطا.  ##  No error.
-سيستم نمي‌تواند فايل مورد نظر را بيابد.  ##  The system cannot find the file specified.
-سيستم نمي‌تواند مسير تعيين شده را بيابد.  ##  The system cannot find the path specified.
-سيستم نمي‌تواند فايل/شاخه مورد نظر را بيابد.  ##  The system cannot find the specified file/directory.
-خطاي نوشتاري.  ##  Type mismatch.
-نمي‌توان فايل/شاخه‌اي را ساخت وقتي كه آن فايل/شاخه  موجود هست.  ##  Cannot create a file/directory when that file/directory already exists.
-سيستم نمي‌تواند درون وسيله تعيين شده بنويسد.  ##  The system cannot write to the specified device.
-مقدار ورودي غير قابل قبول  ##  Invalid Property Value.
+# Tagalog translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+# Author: Jerome Dumlao
+# Version: 106
+Walang "error".  ##  No error.
+The system cannot find the file specified.  ##  The system cannot find the file specified.
+The system cannot find the path specified.  ##  The system cannot find the path specified.
+The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
+Mali ang "Type".  ##  Type mismatch.
+Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
+The system cannot write to the specified device.  ##  The system cannot write to the specified device.
+Mali ang "Property Value".  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
 Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
@@ -17,10 +17,10 @@ The system detected an invalid pointer address in attempting to use a pointer ar
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
+Hindi wastong socket o hindi konektado sa remote.  ##  Invalid socket or not connected to remote.
+Ang kinauriang address ay ginagamit na.  ##  The specified address is already in use.
+Ang kinauriang address ay hindi available.  ##  The specified address is not available.
+  ##  The connected network is not available.
 The connected network is not reachable.  ##  The connected network is not reachable.
 The connected network connection has been reset.  ##  The connected network connection has been reset.
 The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
@@ -29,212 +29,212 @@ The current socket has not been connected.  ##  The current socket has not been 
 The connection has been shutdown.  ##  The connection has been shutdown.
 The current connection has timeout.  ##  The current connection has timeout.
 The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
+Ang kinauriang host name ay masyadong mahaba.  ##  Specified host name is too long.
 Remote host is currently unavailable.  ##  Remote host is currently unavailable.
 Remote host is currently unreachable.  ##  Remote host is currently unreachable.
 Remote system is not ready.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
-میزبان یافت نشد.  ##  Host not found.
+Host not found.  ##  Host not found.
 Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
 Unknown search type.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
-از پیش آغاز شده است.  ##  Already started.
-Channel already started.  ##  Channel already started.
+Nagsimula na.  ##  Already started.
+Nagsimula na ang Channel.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Connection not established.  ##  Connection not established.
-گونه داده ناشناخته.  ##  Unknown data type.
+Unknown data type.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+Hindi wastong kaurian ng channel.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.
 Channel refused by remote side.  ##  Channel refused by remote side.
 Unsupported remote protocol version.  ##  Unsupported remote protocol version.
 wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-اندازه MTU بسیار بزرگ است.  ##  MTU size too large.
-اندازه MTU بسیار کوچک است.  ##  MTU size too small.
-درخواست socks نامعتبر است  ##  Invalid socks request.
-پسورد نامعتبر. با سیستم جفت تناسب ندارد  ##  Invalid password. Does not match remote peer's password.
+Sinarado ang Channel.  ##  Channel was closed.
+MTU size too large.  ##  MTU size too large.
+MTU size too small.  ##  MTU size too small.
+Hindi wastong socks request.  ##  Invalid socks request.
+Hindi wastong password. Hindi katugma ang password ng remote peer.  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-قادر به اتصال آی پی به نیست  ##  Cannot bind to specified IP address.
-جابجایی پرونده از پیش آغاز گشته است.  ##  Already performing file transfer.
-پرونده یافت نشد.  ##  File not found.
-خطا در نوشتن فایل  ##  Failed to write file.
-خطا در باز کردن کارت شبکه  ##  Could not open network adapter.
-تنها یک کارت شبکه در آن واحد می تواند فعال باشد  ##  Only one adapter can be used at a time.
-فایل لایسنس موجود نیست. استفاده تنها در محیط طراحی  ##  License key missing. You can not use this component in design environment.
-خطای شناسایی نشده.  ##  Unrecognized Error.
-خطا در وصل شدن. لطفا اول قطع ارتباط کنید  ##  Cannot Connect at this time. Use Disconnect first.
-خطا در اجرا، هنوز متصل نشده اید.  ##  Cannot execute, not yet connected.
-عنصر مشغول است  ##  Component busy.
-خطا در تغییر تنظیمات. تا وصل شدن صبر کنید  ##  Cannot change property at this time. Use Disconnect first.
-گزینه هاست نیم تنظیم نشده  ##  Hostname property not set.
-گزینه لاگین ست نشده  ##  Login property not set.
-گزینه پسورد ست نشده  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
+Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
+Already performing file transfer.  ##  Already performing file transfer.
+File not found.  ##  File not found.
+Failed to write file.  ##  Failed to write file.
+Could not open network adapter.  ##  Could not open network adapter.
+Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
+License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Kamalian hindi pangkaraniwan.  ##  Unrecognized Error.
+Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
+Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
+Component busy.  ##  Component busy.
+Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
+Hostname property not set.  ##  Hostname property not set.
+Login property not set.  ##  Login property not set.
+Password property not set.  ##  Password property not set.
+Hindi wastong XML packet.  ##  Invalid XML packet.
+Hindi wastong XML packet sequence ID.  ##  Invalid XML packet sequence ID.
+Hindi wastong login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
-خطا در مذاکره SSL  ##  SSL could not be negotiated.
-خطا در ساخت کاربر جدید  ##  Failed to register new user: %s.
-یادآور ناشناس  ##  Unknown notification.
-پرونده یافت نشد.  ##  File not found.
-شما ملزم به نوشتن پسوند فایل هستید  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-خطا در ورود تصویر  ##  Failed to import photo.
-یک روش بلوکه دیگر در جریان است  ##  Another blocking method in progress.
-داده پروتکل اشتباه است  ##  Invalid protocol data received.
-چیزی برای ارسال موجود نیست، سایز فایل صفر است  ##  There's nothing to send. File size is 0.
-کانتکت مورد نظر موجود نیست  ##  Contact not found.
-ناتوانی در جابجایی پرونده.  ##  File transfer failed.
-ناتوانی در نوشتن در پرونده  ##  Could not write to file.
-فایل دریافتی دارای اشکال است  ##  Checksum of received file is invalid.
-ارسال مختل شد  ##  Transfer aborted.
-خطای تایم آوت  ##  Transfer has timed out.
-پروتکل اشتباه انتخاب شده  ##  Invalid protocol selected.
-  ##  Invalid state. Component already busy.
-نام مورد نظر یکتا نیست. لطفا نام آپدیتر را عوض کنید  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-روش کنسل شد  ##  Method was cancelled.
-خطا در اجرای نرم افزار به روز رسانی  ##  Failed to start updater program.
+SSL could not be negotiated.  ##  SSL could not be negotiated.
+Failed to register new user: %s.  ##  Failed to register new user: %s.
+Unknown notification.  ##  Unknown notification.
+File not found.  ##  File not found.
+You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Failed to import photo.  ##  Failed to import photo.
+Another blocking method in progress.  ##  Another blocking method in progress.
+Hindi wastong protocol data ang natanggap.  ##  Invalid protocol data received.
+There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
+Contact not found.  ##  Contact not found.
+File transfer failed.  ##  File transfer failed.
+Could not write to file.  ##  Could not write to file.
+Checksum ng natanggap na file ay hindi wasto.  ##  Checksum of received file is invalid.
+Transfer aborted.  ##  Transfer aborted.
+Transfer has timed out.  ##  Transfer has timed out.
+Hindi wastong protocol ang napili.  ##  Invalid protocol selected.
+Invalid state. Component already busy.  ##  Invalid state. Component already busy.
+Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Method was cancelled.  ##  Method was cancelled.
+Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-تاریخ تنظیم نشده است  ##  Date not set.
-خطا در ثبت سرور کام  ##  Failed to register COM server.
-خطای عدم وجود صفحه از سرور دریافت شد  ##  Page not found (error 404) returned from the server.
-سایز فایل دریافتی درست نیست  ##  Invalid file size after download.
-خطای MD5 فایل دریافتی  ##  Invalid MD5 checksum after download.
-هشدار  ##  Warning
-آفلاین  ##  Offline
-آنلاین  ##  Online
-پای سیستم نیست  ##  Away
-آزاد برای گفتگو  ##  Free for chat
-مزاحم نشوید  ##  Do not disturb
+Date not set.  ##  Date not set.
+Failed to register COM server.  ##  Failed to register COM server.
+Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
+Hindi wastong file size matapos ang download.  ##  Invalid file size after download.
+Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
+Babala!  ##  Warning
+Offline  ##  Offline
+Online  ##  Online
+Away  ##  Away
+Free for chat  ##  Free for chat
+Do not disturb  ##  Do not disturb
 Extended away  ##  Extended away
-نامرئی  ##  Invisible
-درخواست اشتراک  ##  Asking for subscription
-طرف مشترک نیست  ##  Contact not subscribed
-قطع شدن از سرور  ##  Disconnected from server
-در حال اتصال به سرور  ##  Connecting to server
-ثبت کاربر جدید  ##  Registering new user
-ایجاد کانکشن امن  ##  Initializing secure connection
-ارسال اطلاعات لاگین امن  ##  Sending authentication data
-متصل به سرور  ##  Connected to server
-دریافت اطلاعات از سرور  ##  Receiving data from server
-فرستادن داده ها به سرور  ##  Sending data to server
-انجام دستور در سرور  ##  Executing command on server
-در حال قطع شدن از سرور  ##  Disconnecting from the server
-بررسی درخواست  ##  Requested authorization
+Invisible  ##  Invisible
+Asking for subscription  ##  Asking for subscription
+Contact not subscribed  ##  Contact not subscribed
+Disconnected from server  ##  Disconnected from server
+Connecting to server  ##  Connecting to server
+Registering new user  ##  Registering new user
+Initializing secure connection  ##  Initializing secure connection
+Sending authentication data  ##  Sending authentication data
+Connected to server  ##  Connected to server
+Receiving data from server  ##  Receiving data from server
+Sending data to server  ##  Sending data to server
+Executing command on server  ##  Executing command on server
+Disconnecting from the server  ##  Disconnecting from the server
+Requested authorization  ##  Requested authorization
 Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Network adapter disabled!  ##  Network adapter disabled!
 Network adapter opened  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-نیازمند قدرت ادمین هستید  ##  Admin privilege required!
-قطع شد  ##  Disconnected
-متصل شد  ##  Connected
-خطا در رسیدن مسیج  ##  Could not deliver message.
-خطا در تغییر پسورد  ##  Failed to change password
-قطع شدن به خاطر زمان بیکاری  ##  Disconnected due to inactivity rule
+Admin privilege required!  ##  Admin privilege required!
+Disconnected  ##  Disconnected
+Connected  ##  Connected
+Could not deliver message.  ##  Could not deliver message.
+Failed to change password  ##  Failed to change password
+Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-هنوز اتصال برقرار نیست  ##  << VPN not established yet >>
-امتحان مجدد در %d ثانیه  ##  Reconnect in %d seconds.
-ثانیه  ##  seconds
-شبکه ای موجود نیست  ##  No network
-Wippien خروج از  ##  Exit Wippien
-خروج  ##  E&xit
-باز کردن تنظیمات  ##  Open settings
-تنظیمات  ##  &Settings
-...بازکردن درباره  ##  Show AboutBox
-درباره  ##  &About
-تعیین وضعیتتان (نامرئی و آفلاین)  ##  Set your status (Away,Invisible...)
-افزودن دوستان و فضایی ها  ##  Add contacts and alien accounts
-قطع صدا  ##  Mute sound
-باز کردن چت روم  ##  Open chat room
-ثبت دوستانتان  ##  Authorize your friends
+<< VPN not established yet >>  ##  << VPN not established yet >>
+Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+segundos  ##  seconds
+No network  ##  No network
+Exit Wippien  ##  Exit Wippien
+E&xit  ##  E&xit
+Open settings  ##  Open settings
+&Settings  ##  &Settings
+Show AboutBox  ##  Show AboutBox
+&About  ##  &About
+Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+Add contacts and alien accounts  ##  Add contacts and alien accounts
+Patahimikin ang tunog  ##  Mute sound
+Open chat room  ##  Open chat room
+Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
-واقعا خارج میشوید  ##  Really exit Wippien?
-آیا مطمئنید؟  ##  Are you sure?
-رمز شما اکنون تغییر یافته است  ##  Your password is now changed.
-رمز عوض شد  ##  Password changed
-تغییر رمز اکانت  ##  Change account password
-لطفا رمز جدید را بزنید  ##  Please enter new password
-هویت  ##  Identity
-کارت شناسایی  ##  ID Card
-نشانی خانه  ##  Home Address
-نشانی کار  ##  Work Address
-آیا مطمئن به حذف این گذشته هستید؟  ##  Are you sure you want to delete the history?
-حذف گذشته ها  ##  Delete history?
-ارسال  ##  Send
-ارسال فایل  ##  Send file
-جزئیات  ##  Details
-اطلاعات فرد  ##  Contact information
-خال کردن  ##  Clear
-خالی کردن تاریخ  ##  Clear history
-قطع صدا  ##  Mute
-برجسته  ##  Bold
+Really exit Wippien?  ##  Really exit Wippien?
+Sigurado?  ##  Are you sure?
+Ang iyong password ay napalitan na.  ##  Your password is now changed.
+Napalitan ang Password  ##  Password changed
+Change account password  ##  Change account password
+Please enter new password  ##  Please enter new password
+Identity  ##  Identity
+ID Card  ##  ID Card
+Home Address  ##  Home Address
+Work Address  ##  Work Address
+Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
+Delete history?  ##  Delete history?
+Send  ##  Send
+Send file  ##  Send file
+Details  ##  Details
+Contact information  ##  Contact information
+Clear  ##  Clear
+Clear history  ##  Clear history
+Mute  ##  Mute
+Bold  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
-لینک را وارد کنید  ##  Insert hyperlink
-کاهش سایز فونت  ##  Decrease font size
-بازگرداندن سایز فونت  ##  Reset font size
-افزایش سایز فونت  ##  Increase font size
-تنظیم رنگ پیش زمینه  ##  Set Foreground color
-تنظیم رنگ پس زمینه  ##  Set Background color
-اسمایلی ها  ##  Emoticons
-اسمایلی های جدید دانلود شوند؟  ##  New emoticons will be downloaded and installed. Proceed?
-اسمایلی های جدید  ##  New emoticons
-حال با کلیک مجدد روی دکمه اسمالی. موارد جدید را می بینید  ##  You can now click again on emoticon button to see new installed emoticons.
-تمام شد!  ##  Done!
-فرد  ##  Contact
-در حال اتصال  ##  Connecting
-درخواست نمودن  ##  Requesting
-در حال دانلود  ##  Downloading
-فایل تنظیمات  ##  Configuration file
-کلی  ##  General
-حالت نبود. به دلیل عدم حضور  ##  Away due to inactivity.
-مدت زیادی است که حاضر نیست  ##  Away for a loooong time.
-موافقم  ##  allow
-مخالفم  ##  deny
-نامشخص  ##  not specified
-پایان  ##  &Finish
-بعدی  ##  &Next >
-هویت  ##  Identity
-لطفا اطلاعات لاگین خود را مشخص کنید  ##  Please choose your logon information.
-این در لیست دوستانتان نشان داده می شود  ##  This is shown on your friend's list.
+Insert hyperlink  ##  Insert hyperlink
+Decrease font size  ##  Decrease font size
+Reset font size  ##  Reset font size
+Increase font size  ##  Increase font size
+Set Foreground color  ##  Set Foreground color
+Set Background color  ##  Set Background color
+Emotikon  ##  Emoticons
+New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
+New emoticons  ##  New emoticons
+You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
+Done!  ##  Done!
+Contact  ##  Contact
+Connecting  ##  Connecting
+Requesting  ##  Requesting
+Downloading  ##  Downloading
+Configuration file  ##  Configuration file
+General  ##  General
+Away due to inactivity.  ##  Away due to inactivity.
+Away for a loooong time.  ##  Away for a loooong time.
+allow  ##  allow
+deny  ##  deny
+not specified  ##  not specified
+&Finish  ##  &Finish
+&Next >  ##  &Next >
+Identity  ##  Identity
+Please choose your logon information.  ##  Please choose your logon information.
+This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-خطا در ورود اطلاعات لاگین  ##  Invalid logon details
-شما باید JID خود را وارد کنید  ##  You must enter your JID.
-باید رمز خود را وارد کنید  ##  You must enter your password.
-خطای jabber  ##  Jabber error
-آیکن  ##  Icon
-نشانه خود را برگزینید.  ##  Please choose your icon.
-این برای دوستانتان قابل مشاهده است  ##  This is usually visible to your contacts.
-شبکه  ##  Network
-لطفا آی پی و سابنت مسک خود را وارد کنید  ##  Please choose your IP address and netmask.
-این مشخص کننده شبکه مورد استفاده برنامه است  ##  This defines network range to be used by wippien.
-شبکه  ##  Network
-مدیاتور  ##  Mediator
-لطفا مدیاتور خود را مشخص کنید  ##  Please choose who will be your mediator.
-این مشخص کننده افرادی است که از P2P استفاده می کنند  ##  This defines people that mediate P2P connections.
-آخرین چک  ##  Last check
-درگاه  ##  Port
-هاست نیم  ##  Hostname
-دائمی  ##  Permanent
-موقت  ##  Temporary
-همه اکانت هایتان را اینجا وارد کنید  ##  Enter all your accounts here.
+Invalid logon details  ##  Invalid logon details
+You must enter your JID.  ##  You must enter your JID.
+You must enter your password.  ##  You must enter your password.
+Kamaliang dulot sa Jabber  ##  Jabber error
+Icon  ##  Icon
+Pumili ng icon.  ##  Please choose your icon.
+This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+Network  ##  Network
+Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
+This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+Network  ##  Network
+Mediator  ##  Mediator
+Please choose who will be your mediator.  ##  Please choose who will be your mediator.
+This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
+Last check  ##  Last check
+Port  ##  Port
+Hostname  ##  Hostname
+Permanent  ##  Permanent
+Temporary  ##  Temporary
+Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-%s آیا مطمئن به حذف اکانت هستید؟  ##  Are you sure you want to delete account '%s'?
-حذف اکانت ثب شده تان؟  ##  Delete registered account?
-اکانت ها  ##  Accounts
-تنها نمایش دروازه ها  ##  Show only gateways
-نمایش همه سرویس ها  ##  Show all services
-افراد  ##  Contacts
-اضافه/حذف  ##  Add/Remove
-پیدا کردن افراد جدید  ##  Find new contacts.
+Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
+Delete registered account?  ##  Delete registered account?
+Accounts  ##  Accounts
+Show only gateways  ##  Show only gateways
+Show all services  ##  Show all services
+Contacts  ##  Contacts
+Dagdagan/Tanggalan  ##  Add/Remove
+Find new contacts.  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
@@ -242,26 +242,26 @@ System  ##  System
 Logging  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-پیام ها  ##  Messages
+Mensahe  ##  Messages
 Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
-General information about  ##  General information about
-Personal information  ##  Personal information
+Pangkaraniwang kaalaman  ##  General info
+Pangkaraniwang kaalaman tungkol  ##  General information about
+Impormasyong Personal  ##  Personal information
 Home details for  ##  Home details for
 Business information  ##  Business information
 Work details for  ##  Work details for
 all other  ##  all other
 address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
-پوسته ها  ##  Skins
+Anyo  ##  Appearance
+Balat  ##  Skins
 Choose skin from below list.  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
 .. none ..  ##  .. none ..
 Auto Away  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-سیستم  ##  System
+System  ##  System
 Basic system messages.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
 Voice Chat  ##  Voice Chat
@@ -269,36 +269,36 @@ Please setup your voice chat devices.  ##  Please setup your voice chat devices.
 Choose from list below.  ##  Choose from list below.
 <system default>  ##  <system default>
 Contacts basic settings.  ##  Contacts basic settings.
-بروزآوری ها  ##  Updates
+Updates  ##  Updates
 Update definitions.  ##  Update definitions.
 Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
 Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
-آوا ها  ##  Sounds
+Tunog  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
-ناتوانی  ##  Error
+Kontak online  ##  Contact online
+Kontak offline  ##  Contact offline
+Mensaheng pumasok  ##  Message in
+Mensaheng  lumabas  ##  Message out
+kamalian  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-پنهان کردن  ##  Hide
+Hide  ##  Hide
 Hide contacts.  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-Appearance  ##  Appearance
+Anyo  ##  Appearance
 Appearance settings.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Sort  ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
-- All gateways -  ##  - All gateways -
+Maghanap o lumikha ng "chat rooms". (BETA pa lamang!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Uriin o maghanap ng "room to join" o lumikha ng bago.  ##  Specify or browse for a room to join or create new one.
+- Lahat ng "gateways" -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
+Pangalan ng "Room"  ##  Room name
 Firewall  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
@@ -307,26 +307,26 @@ But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
 Wippien update  ##  Wippien update
 New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
+Click dito upang makita kung ano ang bago.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
+Kamalian ng pagkonekta sa remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
 Wippien update error!  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
+Bagong salin ng Wippien nahanap localy. Palitan?  ##  New version of Wippien found localy. Replace?
+Bagong salin  ##  New version
 Status changed:  ##  Status changed:
-day  ##  day
-days  ##  days
-ساعت  ##  hour
-ساعت  ##  hours
-minute  ##  minute
-minutes  ##  minutes
+araw  ##  day
+araw  ##  days
+oras  ##  hour
+oras  ##  hours
+minuto  ##  minute
+minuto  ##  minutes
 Last seen: never  ##  Last seen: never
-is currently offline  ##  is currently offline
-is now offline  ##  is now offline
-is now online  ##  is now online
-is blocked  ##  is blocked
-is offline  ##  is offline
+ay kasalukuyang offline  ##  is currently offline
+ay offline ngayon  ##  is now offline
+ay online ngayon  ##  is now online
+ay blocked  ##  is blocked
+ay offline  ##  is offline
 Unblock  ##  Unblock
 Block  ##  Block
 Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
@@ -338,17 +338,17 @@ Rename group  ##  Rename group
 Enter new group name  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
-I have existing Jabber account  ##  I have existing Jabber account
-&Test Account  ##  &Test Account
+Kaylangan ko ng bagong Jabber account  ##  I need new Jabber account
+Mayroon na akong Jabber account  ##  I have existing Jabber account
+&Subukan ang Account  ##  &Test Account
 &Search  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Password  ##  Password
 Server  ##  Server
-درگاه  ##  Port
-Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
+Port  ##  Port
+Click 'Subukan ang Account' upang magpatuloy.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Cancel  ##  &Cancel
@@ -404,22 +404,22 @@ Various settings regarding chat window  ##  Various settings regarding chat wind
 Timestamp messages  ##  Timestamp messages
 Show message history  ##  Show message history
 Nickname  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
+  ##  First name
+Apelyedo  ##  Last name
 Email  ##  Email
-Notes  ##  Notes
+Notas  ##  Notes
 Address  ##  Address
 Address Ext.  ##  Address Ext.
 City  ##  City
 State  ##  State
 ZIP  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
+Bansa  ##  Country
+Kaarawan  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
 Title  ##  Title
 Company name  ##  Company name
-Department  ##  Department
+Departmento  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
 Allow All  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
@@ -439,7 +439,7 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
+Ibabaw palagi  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
@@ -450,12 +450,12 @@ Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Ask me  ##  Ask me
-Always authorize  ##  Always authorize
+Kaylan man ay hwag mag-authorize  ##  Never authorize
+Tanungin ako  ##  Ask me
+Palaging mag-authorize  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
+Progreso  ##  Progress
 Enable voice chat  ##  Enable voice chat
 Playback device  ##  Playback device
 Recording device  ##  Recording device
@@ -469,7 +469,7 @@ MTU setting defines maximum UDP packet that can be sent to peers. If your networ
 Use fixed MTU  ##  Use fixed MTU
 Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
+Tunog (iwanang blanko para sa default sound)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
 Program events  ##  Program events
 Hide new contact  ##  Hide new contact
@@ -483,8 +483,8 @@ Block all traffic  ##  Block all traffic
 &Add  ##  &Add
 &Remove  ##  &Remove
 Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
-Name  ##  Name
+Letratong Avatar  ##  Avatar picture
+Pangalan  ##  Name
 IP address  ##  IP address
 Status text  ##  Status text
 Last online time  ##  Last online time
@@ -505,7 +505,7 @@ Password (empty if none)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Join or Create room  ##  Join or Create room
 Block users at startup  ##  Block users at startup
-&Copy IP  ##  &Copy IP
+  ##  &Copy IP
 C&hat  ##  C&hat
 &Voice Chat  ##  &Voice Chat
 Send &File  ##  Send &File
@@ -519,12 +519,12 @@ Add/Remove &Contacts  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
 Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
+&Huwag gambalain  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
 &Invisible  ##  &Invisible
 O&ffline  ##  O&ffline
-Change &Picture  ##  Change &Picture
-Change Pa&ssword  ##  Change Pa&ssword
+Palitan ang &Letrato  ##  Change &Picture
+Palitan ang Pa&ssword  ##  Change Pa&ssword
 Your &Details  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
 Enter password  ##  Enter password
@@ -542,7 +542,7 @@ Show notification popup window when contact goes online/offline  ##  Show notifi
 Contact is typing...  ##  Contact is typing...
 says  ##  says
 said  ##  said
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+Maaaring gamitin ang iyong GMAIL account dito.  ##  You can use your GMAIL account here.
 Toggle voice chat  ##  Toggle voice chat
 Local echo  ##  Local echo
 UDP port 9913 busy  ##  UDP port 9913 busy

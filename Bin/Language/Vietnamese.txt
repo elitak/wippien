@@ -1,6 +1,6 @@
 # Vietnamese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Nguyen Hung
-# Version: 15
+# Version: 24
 Không có lỗi.  ##  No error.
 Hệ thống không thể tìm thấy tệp được định dạng.  ##  The system cannot find the file specified.
 Hệ thống không thể tìm thấy đường dẫn được định dạng.  ##  The system cannot find the path specified.
@@ -16,7 +16,7 @@ Cố gắng đã được tạo ra để truy cập vào một kết nối theo 
 Hệ thống phát hiện địa chỉ con trỏ không tương thích trong quá trình cố gắng sử dụng một hàm con trỏ trong việc gọi ra.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Lỗi chung do không tương thích định dạng, nhập vào, v.v.  ##  Generic error for invalid format, entry, etc.
 Hàm đã cung cấp không tương thích.  ##  An invalid argument was supplied.
-Địa chỉ IP cung cấp không đúng hoặc máy chủ được định dạng bởi  địa chỉ IP này không tồn tại.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Khe kết nối không tương thích hoặc không kết nối được tới trình điều khiển.  ##  Invalid socket or not connected to remote.
 Địa chỉ định dạng đã được sử dụng.  ##  The specified address is already in use.
 Địa chỉ định dạng không tồn tại.  ##  The specified address is not available.
@@ -160,7 +160,7 @@ Bạn có chắc muốn thoát khỏi Wippien?  ##  Really exit Wippien?
 Bạn chắc chứ?  ##  Are you sure?
 Mật khẩu của bạn đã được thay đổi.  ##  Your password is now changed.
 Mật khẩu đã đổi.  ##  Password changed
-Thay đổi mật khẩu tài khoản.  ##  Change account password
+  ##  Change account password
 Vui lòng nhập mật khẩu mới.  ##  Please enter new password
 Xác nhận.  ##  Identity
 Thẻ ID.  ##  ID Card
@@ -305,8 +305,8 @@ Bạn có thể thiết lập cổng chỉ có thể truy cập bởi bạn bè 
 * Tất cả lộ tuyến ICMP* All ICMP traffic  ##  * All ICMP traffic
 Nhưng khóa lại những cổng này  ##  But block these ports
 Nhưng cho phép những cổng này  ##  But allow these ports
-Cập nhật Wippien  ##  Wippien update
-Đã có phiên bản mới của Wippien. Tải về?  ##  New version of Wippien is available. Download?
+@n�\�8n�]�\Y[  ##  Wippien update
+  ##  New version of Wippien is available. Download?
 Click vào đây để xem những gì mới.  ##  Click here to see what's new.
 Phiên bản Wippien của bạn được cập nhật ngày  ##  Your version of Wippien is up-to-date.
 Lỗi kết nối tới máy chủ điều khiển  ##  Error connecting to remote server.
@@ -550,3 +550,5 @@ Fuck You  ##  Unable to listen for incoming voice chat
 Co  ##  Microphone sensitivity
 mple  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 te  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

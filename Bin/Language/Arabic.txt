@@ -1,21 +1,21 @@
 # Arabic translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: ahmad
-# Version: 43
+# Version: 86
 لا يوجد خطأ.  ##  No error.
 النظام لم يجد الملف المحدد.  ##  The system cannot find the file specified.
 النظام لم يجد المسار المحدد.  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
-Type mismatch.  ##  Type mismatch.
-Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
-The system cannot write to the specified device.  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
+.النظام لم يجد الملف/المجلد المحدد  ##  The system cannot find the specified file/directory.
+عدم تطابق في النوع  ##  Type mismatch.
+.لا يمكن انشاء ملف/مجلد عندما يكون الملف/المجلد موجود حاليا  ##  Cannot create a file/directory when that file/directory already exists.
+هذا النظام لا يمكن الكتابة إلى الجهاز المحدد  ##  The system cannot write to the specified device.
+قيمة الممتلكات غير صالحة.  ##  Invalid Property Value.
+وعادت هذه العملية ، لأن مهلة انقضت فترة.  ##  This operation returned because the timeout period expired.
+تقاطع مستوى النظام انقطاع المقبس.  ##  System level interrupt interrupted socket operation.
+عام غير صالح للخطأ بشكل سيء الشكل.  ##  Generic error for invalid format, bad format.
+بذلت محاولة للوصول إلى مقبس في الطريق قبل الوصول ممنوع الاذونات.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+اكتشاف نظام صحيح معالجة نقاط في محاولة لاستخدام هذه الحجة في مؤشر الدعوة.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+العامة للخطأ صحيح ، الدخول ، الخ.  ##  Generic error for invalid format, entry, etc.
+صحيح الحجة المقدمة.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 العنوان المحدد مستخدم بالفعل  ##  The specified address is already in use.
@@ -63,8 +63,8 @@ Local ID not set. It is required for Search method.  ##  Local ID not set. It is
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
+الملف غير موجود  ##  File not found.
+فشل في كتابة الملف  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
@@ -245,7 +245,7 @@ Specify paths below  ##  Specify paths below
 Messages  ##  Messages
 Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
+المعلومات العامة  ##  General info
 General information about  ##  General information about
 Personal information  ##  Personal information
 Home details for  ##  Home details for
@@ -370,7 +370,7 @@ Add new account  ##  Add new account
 Remove account  ##  Remove account
 Register!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
-Username  ##  Username
+اسم المستخدم  ##  Username
 Open new account  ##  Open new account
 Authorization request  ##  Authorization request
 &Yes  ##  &Yes
@@ -381,9 +381,9 @@ Authorization request  ##  Authorization request
 Do you allow  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
+إضافة مجموعة  ##  Add Group
 Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
 Contact Type  ##  Contact Type
@@ -401,25 +401,25 @@ Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
+  ##  Timestamp messages
 Show message history  ##  Show message history
-Nickname  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
-Email  ##  Email
-Notes  ##  Notes
-Address  ##  Address
+الاسم المستعار  ##  Nickname
+الاسم الأول  ##  First name
+الاسم الأخير  ##  Last name
+البريد الإلكتروني  ##  Email
+ملاحظات  ##  Notes
+العنوان  ##  Address
 Address Ext.  ##  Address Ext.
-City  ##  City
-State  ##  State
-ZIP  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
+المدينة  ##  City
+الولاية  ##  State
+صندوق البريد  ##  ZIP
+الدولة  ##  Country
+تاريخ الميلاد  ##  Birthday
 Voice Tel.  ##  Voice Tel.
-Fax  ##  Fax
-Title  ##  Title
+ناسوخ  ##  Fax
+  ##  Title
 Company name  ##  Company name
-Department  ##  Department
+  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
 Allow All  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
@@ -443,7 +443,7 @@ Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 حماية كلمة السر  ##  Password protect
-Settings only  ##  Settings only
+الإعدادت فقط  ##  Settings only
 Everything  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
@@ -485,7 +485,7 @@ Block all traffic  ##  Block all traffic
 Default rule  ##  Default rule
 Avatar picture  ##  Avatar picture
 Name  ##  Name
-IP address  ##  IP address
+Ip عنوان  ##  IP address
 Status text  ##  Status text
 Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
@@ -503,11 +503,11 @@ Click above to select room, or enter new chat room details below  ##  Click abov
 Room name to create or join  ##  Room name to create or join
 Password (empty if none)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
+شارك أو أنشئ غرفة  ##  Join or Create room
 حجب المتصلين عند بداية التشغيل  ##  Block users at startup
-&Copy IP  ##  &Copy IP
-C&hat  ##  C&hat
-&Voice Chat  ##  &Voice Chat
+&نسخ IP  ##  &Copy IP
+د&ردشة  ##  C&hat
+&دردشة صوتية  ##  &Voice Chat
 Send &File  ##  Send &File
 Send E&mail  ##  Send E&mail
 حجب  ##  &Block

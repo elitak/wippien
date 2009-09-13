@@ -362,7 +362,7 @@ public:
 					nv += "<br>\r\n<br>\r\n";
 					if (m_Owner->m_NewLanguageFiles != NewFiles)
 					{
-						nv += "<a href=\"http://wippien.com/notes.php\">";
+						nv += "<a href=\"http://www.wippien.com/notes.php\">";
 						nv += _Settings.Translate("Click here to see what's new.");
 						nv += "</a>";
 					}

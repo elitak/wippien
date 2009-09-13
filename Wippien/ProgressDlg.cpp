@@ -210,7 +210,7 @@ BOOL CProgressDlg::DownloadFile(BOOL issecure, char *URL, Buffer *data, BOOL upd
 	}
 //	issecure = FALSE;
 //	Connection = InternetConnect(Initialize,"linux.weonlydo.com",issecure?INTERNET_DEFAULT_HTTPS_PORT:INTERNET_DEFAULT_HTTP_PORT,NULL,NULL,INTERNET_SERVICE_HTTP,0,0);
-	Connection = InternetConnect(Initialize,"wippien.com",issecure?INTERNET_DEFAULT_HTTPS_PORT:INTERNET_DEFAULT_HTTP_PORT,NULL,NULL,INTERNET_SERVICE_HTTP,0,0);
+	Connection = InternetConnect(Initialize,"www.wippien.com",issecure?INTERNET_DEFAULT_HTTPS_PORT:INTERNET_DEFAULT_HTTP_PORT,NULL,NULL,INTERNET_SERVICE_HTTP,0,0);
 	/*open up an HTTP request*/
 	if (updateprogress)
 	{

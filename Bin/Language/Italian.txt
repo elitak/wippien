@@ -1,8 +1,8 @@
 # Italian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 35
+# Version: 57
 Nessun errore.  ##  No error.
-  ##  The system cannot find the file specified.
+Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
 Il sistema non riesce a trovare il percorso/file specificato.  ##  The system cannot find the specified file/directory.
 Formato non corretto.  ##  Type mismatch.
@@ -167,7 +167,7 @@ Carta Identità  ##  ID Card
 Indirizzo di casa  ##  Home Address
 Indirizzo ufficio  ##  Work Address
 Vuoi veramente cancellare la cronologia?  ##  Are you sure you want to delete the history?
-Cancellare la cronologia'  ##  Delete history?
+Cancellare la cronologia?  ##  Delete history?
 Invia  ##  Send
 Invia file  ##  Send file
 Dettagli  ##  Details
@@ -202,7 +202,7 @@ nega  ##  deny
 non pecificato  ##  not specified
 &Finisci  ##  &Finish
 &Avanti  ##  &Next >
-Identitŕ  ##  Identity
+Identità  ##  Identity
 Inserire le informazioni di Logon.  ##  Please choose your logon information.
 Questo viene mostrato nella lista dei tuoi amici.  ##  This is shown on your friend's list.
 JID deve contenere il nome del server, formattato come user@server.com  ##  JID should contain server name, formatted like user@server.com
@@ -271,7 +271,7 @@ Segliere dalla lista qui sotto.  ##  Choose from list below.
 Impostazioni base per i contatti.  ##  Contacts basic settings.
 Aggiornamenti  ##  Updates
 Aggiorna le definizioni.  ##  Update definitions.
-Definisce come Wippien di auto-aggiornerà.  ##  Define when and how will Wippien update itself.
+Definisce quando e come Wippien si auto-aggiornerà.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
 Determinare la massima unità di trasferimento.  ##  Please determine maximum transfer unit.
 Se alcuni peer non rispondono all'invio di pacchetti grandi...  ##  If some peer doesn't respond to large packets...
@@ -342,7 +342,7 @@ Crea un nuovo account Jabber  ##  I need new Jabber account
 Utilizza un account Jabber esistente  ##  I have existing Jabber account
 &Prova Account  ##  &Test Account
 &Cerca  ##  &Search
-Inserisci il tuo jabber ID (JID) qui. Wippien usa la rete Jabber per connetterti con i tuoi contatti.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Inserisci il tuo jabber ID (JID) qui. Wippien usa la rete Jabber per connetterti ai tuoi contatti.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 Se non disponi di un JID, devi crearne uno nuovo. Puoi utilizzare il server Jabber che preferisci; ce ne sono molti pubblici disponibili. Puoi avere una lista di server disponibili cliccando su questo pulsante.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Password  ##  Password

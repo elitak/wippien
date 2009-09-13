@@ -1,75 +1,75 @@
 # ChineseSimplified translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: fluxray
-# Version: 108
-æ²¡æœ‰é”™è«  ##  No error.
-ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦¹¥¡ù.í  ##  The system cannot find the file specified.
-ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦º-ëùo¡8à  ##  The system cannot find the path specified.
+# Version: 182
+æ²¡æœ‰é”™ï¿{ï  ##  No error.
+ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦¹¥¡ù.í¸à  ##  The system cannot find the file specified.
+ç³»ç»Ÿæ— æ³•æ‰¹b,9£!ùk¦º-ëùo¡8à  ##  The system cannot find the path specified.
 ç³»ç»Ÿæ‰¹.#yb,9£!ùk¦¹¥¡ù.í¹¢%¹æë¹oe  ##  The system cannot find the specified file/directory.
-  ##  Type mismatch.
-  ##  Cannot create a file/directory when that file/directory already exists.
-  ##  The system cannot write to the specified device.
+ç±»å‹ä¸åŒ¹é…  ##  Type mismatch.
+ä¸èƒ½åˆ›å»ºæ–‡ä»¶æˆ–æ–‡ä»¶å¤¹å½“è¶y.*¹¥¡ù.í¹¢%¹¥¡ù.í¹i.ymì¹kf9g*  ##  Cannot create a file/directory when that file/directory already exists.
+ç³»ç»Ÿä¸èƒ½å†™å…¥æŒ‡å®šè®¹i!  ##  The system cannot write to the specified device.
 æ— æ•ˆå±æ€§å€¼  ##  Invalid Property Value.
 æ“ä½œè¶…æ—¶  ##  This operation returned because the timeout period expired.
 ç³»ç»Ÿçº§interruptä¸­æ–­socketæ“ä½œ  ##  System level interrupt interrupted socket operation.
 ä¸€èˆ¬é”™è«ûï"9¥è9¥b9¨/9o#ûï#9gcù¨/9o#ûï"  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
+ä¸€ä¸ªè¥yfîŠëş™zîZY~hê^ZÙ~y¨Nik[ÈşyKK¨îX[nŠëş™zîiØ>™™Š*¾zhjÚ.8  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+è©yìîùîçùg*9l'z)^KÛşyJhÈ~™(XšVÃ–r£¢ÂR£š^ÛššÖ/–"Ã’â’â«š^ƒšV#jš2¦J#–rÃ–v  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+æ— æ•ˆæ ¼å¼ï¼Œå…¥åˆùëby. :"+9 )úe&z*  ##  Generic error for invalid format, entry, etc.
 æ‰€æ„9/¦ù`.i[iziX  ##  An invalid argument was supplied.
 æ‰€æ„9/¦ÒT9g,9g`9¥è9¥b9¢%º !z+éRT9£!Zé®y¨NK‹šrë’â7–¶c–r   ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+æ— æ•ˆå¥—æ¥å­—æˆ–è€…æ²¡æœ‰é“¹£©z-Îzˆ  ##  Invalid socket or not connected to remote.
 æŒ‡å®šåœ°å€å·²ç»è¢«ä½¿ç”¨  ##  The specified address is already in use.
 æŒ‡å®šåœ°å€ä¸å‹ùå*  ##  The specified address is not available.
 å½“å‰ç½‘ç»œä¸å‹ùå*  ##  The connected network is not available.
 æ— æ³•è”ç³»åˆ°å½“å‰ç½‘ç»œ  ##  The connected network is not reachable.
 å½“å‰ç½‘ç»œè·¹£©z(ªúaãyïk  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
+ç›®å‰çš„è·¹£©z`&º,~{Ù{¹Îh‰nKŠŞK¸¾iÈŞXªŠ*¾KŠŞijŞ8  ##  The current connection has been aborted by the network or intermediate services.
+å½“å‰å¥—æ¥å­—è·¹£©z(ªúaãyïk  ##  The current socket connection has been reset.
 å½“å‰ç«¯åˆù¬¨y§"z-îhê  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
+è·¹£©ymì¹îãú(ªùalúeë  ##  The connection has been shutdown.
 å½“å‰è·¹£©z-¡y¥í  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
+è­ù¬`º-îhê^[{.{¸şŠ*¾‹s¢/’âïšrëš.Kîw  ##  The requested connection has been refused by the remote host.
 æŒ‡å®šçš„ä¸»æœºåè±úeo  ##  Specified host name is too long.
 è·9ê"ù..ù§.¹odùbcy.#ybşyJ  ##  Remote host is currently unavailable.
 è·9ê"ù..ù§.¹odùbcy¥è9¬åz-îhê  ##  Remote host is currently unreachable.
 è·9ê"ùìîùîçù§*¹aá¹i!ùio  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
+å½“å‰å¥—æ¥å­—ç‰ˆæœ¬ä¸è¢«åº”ç”¨ç¨‹åºæ”¯æŒ  ##  Current socket version not supported by application.
+å¥—æ¥å­—APIæ²¡æœ‰åˆå§‹åŒ–ã€‚  ##  Socket API is not initialized.
+å¥—æ¥è¢«æ–­å¼€ã€‚  ##  Socket has been disconnected.
 æ‰¹.#yb,9..ù§.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+æ²¡æœ‰è¶³å¤Ÿçš„å†…å­˜å®Œæˆè¶y«(y¤ãy/g8à  ##  Not enough memory is available to complete this operation.
+æœªç™y¤'9í(¹ìnùg¢øà  ##  Unknown search type.
+æœªç™yæ¡9¤'9í(¹¥®y¬åy`.i[  ##  Unknown argument for Search method.
 å·²ç»å¼€å§‹  ##  Already started.
-Channel already started.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
+é¢‘é“å·²ç»å¼€å§‹  ##  Channel already started.
+é¢‘é“å¼€å§‹åä¸èƒ½è¶ú(c:h¤z`dú+®{Úî8  ##  Cannot change channel setup while channel is started.
+è±ùi&¹¥l9£k¹g*9ieù£©{ï#9. 9/&¹a£z)^8  ##  Too much data on the socket. Try later.
+è·¹£©y¬¨y§"ynî¹êâøà  ##  Connection not established.
+æœªç™y¥l9£k¹ìnùg¢øà  ##  Unknown data type.
+åˆ›å»ºå¥—æ¥çº¿ç¨‹å¤±è´¥ã€‚  ##  Failed to create socket thread.
 æœªç™zh¤z`dùìnùg¢  ##  Unknown channel type.
-Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
+æœ¬åœ°åœ°å€å±æ€§è¢«è®¹ïk¹¥è9¥b9`.i[8  ##  Invalid argument was supplied in LocalAddress property.
+é¢‘é“ä¸èƒ½è¢«æœ¬åœ°ç«¯å»ºç«‹ã€‚  ##  Channel cannot be created by local side.
+é¢‘é“ä¸èƒ½è¢«æœ¬åœ°ç«¯å¼€å§‹ã€‚  ##  Channel cannot be started by local side.
+é¢‘é“è¢«è·9êëù¢ä¹îçxà  ##  Channel refused by remote side.
+ä¸æ”¯æŒçš„è·9ê"ùccú+«¹âb9§+8à  ##  Unsupported remote protocol version.
+wodVPNè¶9¬¨y§"yo 9iâøà ¹/oùå*ÕT•:i¥¹ab8à  ##  wodVPN not yet started. Use Start first.
 é¢‘é“å·²ç»å…³é—­  ##  Channel was closed.
 MTUå¤ªå¤§  ##  MTU size too large.
 MTUå¤ªå°  ##  MTU size too small.
 ç«¯åˆú+~k.iziX  ##  Invalid socks request.
 æ— æ•ˆåˆù.é8à ¹.#º-Îzˆ¾zºşy¨NX’î“’â7²›–B  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+æœ¬åœ°IDæœªè®¾ç½®ã€‚æœç´¢æ–¹æ³•è¦æ±‚ã€‚  ##  Local ID not set. It is required for Search method.
+è·9ê"ÒQ9§*º+¯¹ïk¸à ¹¤'9í(¹¥®y¬åz) y¬`¸à  ##  Remote ID not set. It is required for Search method.
+ä¸èƒ½ç»‘å®šæŒ‡å®šIPã€‚  ##  Cannot bind to specified IP address.
+å·²ç»ä¼˜åŒ–æ–‡ä»¶ä¼ è¾“ã€‚  ##  Already performing file transfer.
 æ²¡æœ‰æ‰¹b,9¥¡ù.í  ##  File not found.
 æ–‡ä»¶å†™å…¥å¤±è´¥  ##  Failed to write file.
 æ— æ³•æ‰“å¼€ç½‘ç»œé€‚é…å™¨  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
+ä¸€æ¬¡åŠº ïy§"y. 9.*º` ºacyfj9méy/g8à  ##  Only one adapter can be used at a time.
+æ³¨å†Œå¡ºd©y.(¹i,xà ¹/h9.#z ïyå*:-KŠ®YšK»nYÊŠë¢º‡:¿–Š  ##  License key missing. You can not use this component in design environment.
+  ##  Unrecognized Error.
+  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
@@ -408,20 +408,20 @@ First name  ##  First name
 Last name  ##  Last name
 Email  ##  Email
 Notes  ##  Notes
-Address  ##  Address
-Address Ext.  ##  Address Ext.
-City  ##  City
-State  ##  State
-ZIP  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
-Voice Tel.  ##  Voice Tel.
-Fax  ##  Fax
-Title  ##  Title
-Company name  ##  Company name
+åœ°å€  ##  Address
+åœ°å€æ‰©å±•  ##  Address Ext.
+å¸‚  ##  City
+çœ  ##  State
+é‚®ç¼–  ##  ZIP
+å›½å®¶  ##  Country
+ç”Ÿæ—¥  ##  Birthday
+ç”µè§  ##  Voice Tel.
+ä¼ çœŸ  ##  Fax
+èŒåŠ¡  ##  Title
+å…¬å9d#yéì  ##  Company name
 Department  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
+å…è®¸æ‰€æœ‰  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
@@ -439,7 +439,7 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
+æ€»åœ¨æœ€ä¸Š  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
@@ -457,11 +457,11 @@ Automatically establish VPN on network traffic  ##  Automatically establish VPN 
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
 Progress  ##  Progress
 Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
+å›æ”º+®ZH  ##  Playback device
+å½•åƒè®¹i!  ##  Recording device
+  ##  Check for updates when Wippien starts
+å½“è”æœºæ—¶æ£€æ™y¦í9¥¬  ##  Check for updates on Connect
+æ£ù«(y¨à9¦^i»Nik  ##  Check for updates each
 Update and restart application silently  ##  Update and restart application silently
 Show system messages received from updater  ##  Show system messages received from updater
 &Check now  ##  &Check now
@@ -485,11 +485,11 @@ Block all traffic  ##  Block all traffic
 Default rule  ##  Default rule
 Avatar picture  ##  Avatar picture
 Name  ##  Name
-IP address  ##  IP address
-Status text  ##  Status text
-Last online time  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
+IPåœ°å€  ##  IP address
+çŠ¶æ€æ–‡å­—  ##  Status text
+ä¸Šæ¬¡ä¸Šçº¿æ—¶é—´  ##  Last online time
+æ´»åŠ¨çš„ç›‘æ§  ##  Activity Monitor
+å‹ú)àyîáº"   ##  Visible details
 Contact's visible details  ##  Contact's visible details
 unsorted  ##  unsorted
 By name  ##  By name
@@ -545,8 +545,10 @@ Show notification popup window when contact goes online/offline  ##  Show notifi
 è¶zaã9bşKº^KÛşyJKÚy¨N‹~jØÎ˜*îK»  ##  You can use your GMAIL account here.
   ##  Toggle voice chat
   ##  Local echo
-  ##  UDP port 9913 busy
+UDPç«¯åˆÎNLLÈ9oæ  ##  UDP port 9913 busy
   ##  Unable to listen for incoming voice chat
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+å·²å‹ùå*  ##  has enabled
+å·²ç¦ç”¨  ##  has disabled

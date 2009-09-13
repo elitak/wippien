@@ -1,6 +1,6 @@
 # Turkish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Xasf
-# Version: 357
+# Version: 368
 Hata yok.  ##  No error.
 Sistem belirtilen dosyayı bulamıyor.  ##  The system cannot find the file specified.
 Sistem belirtilen yolu bulamıyor.  ##  The system cannot find the path specified.
@@ -189,7 +189,7 @@ Yeni ifadeler indirilip yüklenecek. Devam etmek istiyor musunuz ?  ##  New emot
 Yeni İfadeler  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 Tamam  ##  Done!
-  ##  Contact
+Kontak  ##  Contact
 Baglaniyor  ##  Connecting
 Isteniyor  ##  Requesting
 Indiriliyor  ##  Downloading
@@ -330,17 +330,17 @@ is offline  ##  is offline
 Engellemeyi kaldir  ##  Unblock
 Engelle  ##  Block
 Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
+Grubu sil  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
+Kişi sil  ##  Remove contact?
+Adaptör hatası  ##  Adapter error
+Grubu adlandır  ##  Rename group
+Yeni grup ismi gir  ##  Enter new group name
+Wippien sitesinden yeni temalar indir  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
 I need new Jabber account  ##  I need new Jabber account
 I have existing Jabber account  ##  I have existing Jabber account
-&Test Account  ##  &Test Account
+Accountu test et  ##  &Test Account
 Ara  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
@@ -350,7 +350,7 @@ Sunucu  ##  Server
 Port  ##  Port
 Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
-OK  ##  O&K
+Tamam  ##  O&K
 Iptal  ##  &Cancel
 Please enter key passphrase  ##  Please enter key passphrase
 Add &New  ##  Add &New

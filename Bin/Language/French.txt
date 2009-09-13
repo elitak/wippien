@@ -1,6 +1,6 @@
-# French translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+﻿# French translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Regis DEBRAY
-# Version: 40
+# Version: 41
 erreur  ##  No error.
 Le système ne peut pas trouver le fichier spécifié  ##  The system cannot find the file specified.
 Le chemin spécifié est introuvable.  ##  The system cannot find the path specified.
@@ -550,5 +550,5 @@ Unable  ##  Unable to listen for incoming voice chat
 Microphone  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up.  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+est activé  ##  has enabled
+est désactivé  ##  has disabled

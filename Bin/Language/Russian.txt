@@ -1,6 +1,6 @@
-﻿# Russian translation file
+# Russian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Flex
-# Version: 30
+# Version: 41
 Нет ошибки.  ##  No error.
 Невозможно найти файл.  ##  The system cannot find the file specified.
 Невозможно найти путь.  ##  The system cannot find the path specified.
@@ -31,7 +31,7 @@
 Удаленный хост отклонил соединение.  ##  The requested connection has been refused by the remote host.
 Имя хоста слишком длинное.  ##  Specified host name is too long.
 Удаленный хост недоступен.  ##  Remote host is currently unavailable.
-Удаленный хост недоступен.  ##   Remote host is currently unreachable. 
+Удаленный хост недоступен.  ##  Remote host is currently unreachable.
 Удаленная система не готова.  ##  Remote system is not ready.
 Версия сокета не поддерживается приложением.  ##  Current socket version not supported by application.
 API сокета не инициализировано.  ##  Socket API is not initialized.
@@ -53,23 +53,23 @@ API сокета не инициализировано.  ##  Socket API is not i
 Канал не может быть запущен клиентом.  ##  Channel cannot be started by local side.
 Канал отклонен удаленной стороной.  ##  Channel refused by remote side.
 Неподдерживаемая версия протокола удаленного доступа.  ##  Unsupported remote protocol version.
-wodVPN не запущен.  ## Сначала используйте Start.  ##  wodVPN not yet started. Use Start first.
+wodVPN не запущен.  ##  wodVPN not yet started. Use Start first.
 Канал был закрыт.  ##  Channel was closed.
 Размер MTU слишком велик.  ##  MTU size too large.
 Размер MTU слишком мал.  ##  MTU size too small.
 Неверный запрос socks.  ##  Invalid socks request.
-Неверный пароль.  ## Не совпадает с паролем удаленного пользователя.  ##  Invalid password. Does not match remote peer's password.
-Local ID не указан.  ## Он необходим для метода поиска.  ##  Local ID not set. It is required for Search method.
-Remote ID не указан.  ## Он необходим для метода поиска.  ##  Remote ID not set. It is required for Search method.
+Неверный пароль.  ##  Invalid password. Does not match remote peer's password.
+Local ID не указан.  ##  Local ID not set. It is required for Search method.
+Remote ID не указан.  ##  Remote ID not set. It is required for Search method.
 Невозможно использовать указанный IP адрес.  ##  Cannot bind to specified IP address.
 Передача файлов уже в процессе.  ##  Already performing file transfer.
 Файл не найден.  ##  File not found.
 Невозможна запись в файл.  ##  Failed to write file.
 Невозможно открыть сетевой адаптер.  ##  Could not open network adapter.
 Только один адаптер может быть использован единомоментно.  ##  Only one adapter can be used at a time.
-Нет лицензионного ключа.  ## Вы не можете использовать этот компонент.  ##  License key missing. You can not use this component in design environment.
+Нет лицензионного ключа.  ##  License key missing. You can not use this component in design environment.
 Неизвестная ошибка.  ##  Unrecognized Error.
-Соединение невозможно.  ## Сначала отключитесь.  ##  Cannot Connect at this time. Use Disconnect first.
+Соединение невозможно.  ##  Cannot Connect at this time. Use Disconnect first.
 Невозможно выполнить, соединения нет.  ##  Cannot execute, not yet connected.
 Компонент занят.  ##  Component busy.
 Невозможно изменить собственность(?) сейчас. Сначала отключитесь.  ##  Cannot change property at this time. Use Disconnect first.
@@ -88,7 +88,7 @@ SSL не может быть установлен.  ##  SSL could not be negotia
 Не удалось импортировать фото.  ##  Failed to import photo.
 Заблокировано другим методом.  ##  Another blocking method in progress.
 Получена неверная информация протокола.  ##  Invalid protocol data received.
-Нечего посылать.  ## Размер файла 0.  ##  There's nothing to send. File size is 0.
+Нечего посылать.  ##  There's nothing to send. File size is 0.
 Контакт не найден.  ##  Contact not found.
 Передача файлов не удалась.  ##  File transfer failed.
 Невозможна запись в файл.  ##  Could not write to file.
@@ -314,7 +314,7 @@ Service gateway  ##  Service gateway
 Ошибка обновления Wippien!  ##  Wippien update error!
 Найдена новая версия Wippien. Заменить?  ##  New version of Wippien found localy. Replace?
 Новая версия  ##  New version
-Статус изменен:  ##  Status changed: 
+Статус изменен:  ##  Status changed:
 день  ##  day
 дней  ##  days
 час  ##  hour
@@ -546,7 +546,7 @@ Gateway  ##  Gateway
 Включить-выключить голосовой чат  ##  Toggle voice chat
 Локальное эхо  ##  Local echo
 UDP порт 9913 занят  ##  UDP port 9913 busy
-Невозможно  принять входящий голосовой чат ##  Unable to listen for incoming voice chat
+Невозможно  принять входящий голосовой чат  ##  Unable to listen for incoming voice chat
 Чуствительность микрофона  ##  Microphone sensitivity
 Говорите в микрофон и настройте ползунок. Когда вы молчите, уровень активности на мониторе выше должен быть нулевый, а когда говорите - полным.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Голосовой чат не настроен. Вы должны настроить его перед использованием. Сделать это сейчас?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

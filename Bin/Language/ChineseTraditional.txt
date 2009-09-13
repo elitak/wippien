@@ -1,6 +1,6 @@
 # ChineseTraditional translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Taiwan
-# Version: 132
+# Version: 133
 æ²’æœ‰éŒ¯èª¤  ##  No error.
 ç³»çµ±æ‰¹.#yb,9£!ùk¦¹ª¥9¨b  ##  The system cannot find the file specified.
 ç³»çµ±æ‰¹.#yb,9£!ùk¦º-ëùo¤  ##  The system cannot find the path specified.
@@ -12,7 +12,7 @@ The system cannot find the specified file/directory.  ##  The system cannot find
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
 Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
   ##  An invalid argument was supplied.

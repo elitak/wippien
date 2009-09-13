@@ -1,6 +1,6 @@
 # Slovak translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: BesnyVlcik
-# Version: 274
+# Version: 311
 Žiadna chyba.  ##  No error.
   ##  The system cannot find the file specified.
   ##  The system cannot find the path specified.
@@ -26,7 +26,7 @@ The connected network connection has been reset.  ##  The connected network conn
 The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
 The current socket connection has been reset.  ##  The current socket connection has been reset.
 The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
+  ##  The connection has been shutdown.
 The current connection has timeout.  ##  The current connection has timeout.
 The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
 Specified host name is too long.  ##  Specified host name is too long.
@@ -64,14 +64,14 @@ Remote ID not set. It is required for Search method.  ##  Remote ID not set. It 
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
 Súbor nenájdený.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
+Zlyhal zápis súboru.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
 Neznáma chyba.  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
+Komponent je zaneprázdnený.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
 Nesprávne zadaný hostiteľ.  ##  Hostname property not set.
 Nesprávne zadané meno.  ##  Login property not set.
@@ -81,11 +81,11 @@ Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Neplatný login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
+  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
 Súbor sa nenašiel.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
+Špecifikujte typ súboru (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Pridanie obrázku zlyhalo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
@@ -124,10 +124,10 @@ Sending authentication data  ##  Sending authentication data
 Pripojený k serveru  ##  Connected to server
 Sťahujem dáta zo serveru  ##  Receiving data from server
 Posielam dáta na server  ##  Sending data to server
-Spúšťam príkaz na servery  ##  Executing command on server
+  ##  Executing command on server
 Odpojený zo serveru  ##  Disconnecting from the server
 Vyžadovaná autorizácia  ##  Requested authorization
-Nastavujem sieťový adaptér Wippien...  ##  Configuring Wippien network adapter...
+  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Sieťový adaptér vypnutý!  ##  Network adapter disabled!
 Sieťový adaptér otvorený  ##  Network adapter opened
@@ -278,8 +278,8 @@ If some peer doesn't respond to large packets...  ##  If some peer doesn't respo
 Zvuky  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
+Kontakt online  ##  Contact online
+Kontakt offline  ##  Contact offline
 Odoslaná správa  ##  Message in
 Prijatá správa  ##  Message out
 Chyba  ##  Error
@@ -292,21 +292,21 @@ Nastavenia vzhľadu.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Usporiadať  ##  Sort
 Zoradiť kontakty.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+Vyberte jednu z možností.  ##  Pick one of sort options.
 Chatovacia miestnosť  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+vyhladať alebo vytvorit chatovaciu miestnosť (len beta verzia)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
+Názov miestnosti  ##  Room name
 Firewall  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
+Nastavte pravidlá Firewall-u.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
 But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
+Wippien aktualizácia  ##  Wippien update
+Nová verzia Wippien je dostupná. Stiahnuť?  ##  New version of Wippien is available. Download?
 Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
@@ -376,9 +376,9 @@ Authorization request  ##  Authorization request
 Án&o  ##  &Yes
 &Nie  ##  &No
 &Detaily  ##  &Details
-&Apply to all  ##  &Apply to all
+&pouŚ]�H�hY]�  ##  &Apply to all
 &Blokovať užívateľa(ov)  ##  &Block user(s)
-Do you allow  ##  Do you allow
+chcete povoliť  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
 Pridať skupinu  ##  Add Group
@@ -421,7 +421,7 @@ Titul  ##  Title
 Názov spoločnosti  ##  Company name
 Department  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
+Povoliť všetky  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
@@ -439,7 +439,7 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
+  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
@@ -480,20 +480,20 @@ Hide contact  ##  Hide contact
 Enter contact JID  ##  Enter contact JID
 Allow all traffic  ##  Allow all traffic
 Block all traffic  ##  Block all traffic
-&Add  ##  &Add
+  ##  &Add
 &Remove  ##  &Remove
 Prednastavené pravidlo  ##  Default rule
 Avatar  ##  Avatar picture
 Name  ##  Name
 IP adresa  ##  IP address
 Status text  ##  Status text
-Last online time  ##  Last online time
+naposledy prihláseny  ##  Last online time
 Activity Monitor  ##  Activity Monitor
 Visible details  ##  Visible details
 Contact's visible details  ##  Contact's visible details
 nezoradené  ##  unsorted
 Podľa mena  ##  By name
-Podľa JID  ##  By JID
+  ##  By JID
 by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
 by IP (without IP goes top)  ##  by IP (without IP goes top)
 Sort contact list  ##  Sort contact list
@@ -503,19 +503,19 @@ Click above to select room, or enter new chat room details below  ##  Click abov
 Room name to create or join  ##  Room name to create or join
 Password (empty if none)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
+Pripojiť sa alebo vytvoriť miestnosť  ##  Join or Create room
 Block users at startup  ##  Block users at startup
 &Copy IP  ##  &Copy IP
 C&hat  ##  C&hat
 &Voice Chat  ##  &Voice Chat
-Send &File  ##  Send &File
-Send E&mail  ##  Send E&mail
+Poslať &File  ##  Send &File
+Poslať E&mail  ##  Send E&mail
 &Block  ##  &Block
 &Rename  ##  &Rename
 &Delete  ##  &Delete
 De&tails  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
+pridať/odstrániť &účty  ##  Add/Remove &Accounts
+pridať/odstrániť &kontakty  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
 Free for &Chat  ##  Free for &Chat
@@ -547,6 +547,8 @@ said  ##  said
   ##  Local echo
   ##  UDP port 9913 busy
   ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
+Citlivosť mikrofónu  ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+bol aktivovaný  ##  has enabled
+bol deaktivovaný  ##  has disabled

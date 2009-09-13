@@ -1,6 +1,6 @@
 # Czech translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ch Proios
-# Version: 40
+# Version: 71
 Zadna chyba.  ##  No error.
 System nemuze najit uvedeny soubor.  ##  The system cannot find the file specified.
 System nemuze najit uvedenou cestu.  ##  The system cannot find the path specified.
@@ -11,18 +11,18 @@ System nemuze zapisovat na uvedene zarizeni.  ##  The system cannot write to the
 Nespravne zadana hodnota.  ##  Invalid Property Value.
 Operace nebyla provedena, protoze vyprsel casovy limit.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
+  ##  Generic error for invalid format, bad format.
 An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
+Tato adresa je již využívána.  ##  The specified address is already in use.
+Tato adresa není dostupná.  ##  The specified address is not available.
+Připojení k síti není k dispozici  ##  The connected network is not available.
+Připojení k síti je nedosažitelné.  ##  The connected network is not reachable.
+Připojení k síti bylo obnoveno.  ##  The connected network connection has been reset.
 The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
 The current socket connection has been reset.  ##  The current socket connection has been reset.
 The current socket has not been connected.  ##  The current socket has not been connected.
@@ -37,17 +37,17 @@ Current socket version not supported by application.  ##  Current socket version
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
 Host not found.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
-Channel already started.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
+Nedostatek paměti k dokončení operace  ##  Not enough memory is available to complete this operation.
+Neznámý typ vyhledávání.  ##  Unknown search type.
+Neznámý argument pro Vyhledávací metodu.  ##  Unknown argument for Search method.
+Již běží.  ##  Already started.
+Kanál již běží.  ##  Channel already started.
+Pro nastavení vypněte prosím kanál  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Connection not established.  ##  Connection not established.
 Unknown data type.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+Neznámý kanál  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.
@@ -63,8 +63,8 @@ Local ID not set. It is required for Search method.  ##  Local ID not set. It is
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
+soubor nenalezen  ##  File not found.
+chyba zapsání souboru  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
@@ -143,7 +143,7 @@ Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 << VPN not established yet >>  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
-No network  ##  No network
+  ##  No network
 Exit Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
 Open settings  ##  Open settings
@@ -178,8 +178,8 @@ Mute  ##  Mute
 Bold  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
+  ##  Insert hyperlink
+  ##  Decrease font size
 Reset font size  ##  Reset font size
 Increase font size  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
@@ -245,7 +245,7 @@ Specify paths below  ##  Specify paths below
 Messages  ##  Messages
 Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
+  ##  General info
 General information about  ##  General information about
 Personal information  ##  Personal information
 Home details for  ##  Home details for
@@ -278,14 +278,14 @@ If some peer doesn't respond to large packets...  ##  If some peer doesn't respo
 Sounds  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
+kotakt je online  ##  Contact online
+kontakt je offline  ##  Contact offline
 Message in  ##  Message in
 Message out  ##  Message out
 Error  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Hide  ##  Hide
-Hide contacts.  ##  Hide contacts.
+skrýt kontakty  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
 Appearance  ##  Appearance
 Appearance settings.  ##  Appearance settings.
@@ -298,9 +298,9 @@ Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms.
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
+název místnosti  ##  Room name
 Firewall  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
+nastavit pravidla firewallu  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
 But block these ports  ##  But block these ports
@@ -323,16 +323,16 @@ minute  ##  minute
 minutes  ##  minutes
 Last seen: never  ##  Last seen: never
 is currently offline  ##  is currently offline
-is now offline  ##  is now offline
-is now online  ##  is now online
-is blocked  ##  is blocked
-is offline  ##  is offline
+je offline  ##  is now offline
+je online  ##  is now online
+je blokovaný  ##  is blocked
+je offline  ##  is offline
 Unblock  ##  Unblock
 Block  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
+  ##  Are you sure you want to remove group %s
+odstranit skupinu ?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
+odstranit kontakt  ##  Remove contact?
 Adapter error  ##  Adapter error
 Rename group  ##  Rename group
 Enter new group name  ##  Enter new group name

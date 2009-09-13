@@ -1,10 +1,10 @@
 # Japanese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: roi
-# Version: 99
+# Version: 111
 エラーはあり&ま&せん。  ##  No error.
-The system cannot find the file specified.  ##  The system cannot find the file specified.
-The system cannot find the path specified.  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
+指定されたファイルは見つかり&ま&せんでした。  ##  The system cannot find the file specified.
+指定されたパスは見つかり&ま&せんでした。  ##  The system cannot find the path specified.
+指定されたファイル�8�k���x�x�k��o��i8�b�ࢉ��o���f����i��e��g��  ##  The system cannot find the specified file/directory.
 Type mismatch.  ##  Type mismatch.
 Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
 The system cannot write to the specified device.  ##  The system cannot write to the specified device.
@@ -543,3 +543,12 @@ Contact is typing...  ##  Contact is typing...
 says  ##  says
 said  ##  said
 You can use your GMAIL account here.  ##  You can use your GMAIL account here.
+  ##  Toggle voice chat
+  ##  Local echo
+  ##  UDP port 9913 busy
+  ##  Unable to listen for incoming voice chat
+  ##  Microphone sensitivity
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

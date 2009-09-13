@@ -1,6 +1,6 @@
 # Lithuanian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: r00lz
-# Version: 443
+# Version: 456
 Nėra klaidos.  ##  No error.
 The system cannot find the file specified.  ##  The system cannot find the file specified.
   ##  The system cannot find the path specified.
@@ -18,8 +18,8 @@ Generic error for invalid format, entry, etc.  ##  Generic error for invalid for
 An invalid argument was supplied.  ##  An invalid argument was supplied.
 The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
+Nurodytas adresas jau naudojamas.  ##  The specified address is already in use.
+Nurodyas adresas nepasiekiamas.  ##  The specified address is not available.
   ##  The connected network is not available.
 Prisijungtas tinklas nepasiekiamas.  ##  The connected network is not reachable.
 The connected network connection has been reset.  ##  The connected network connection has been reset.
@@ -88,7 +88,7 @@ You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type 
 Nepavyko įkelti nuotraukos.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
+Nėra ko siūsti. Faily dydis yra 0.  ##  There's nothing to send. File size is 0.
 Kontaktas nerastas  ##  Contact not found.
 Siuntimas nepavyko.  ##  File transfer failed.
 Negali įrašyti į failą.  ##  Could not write to file.
@@ -141,7 +141,7 @@ Nepavyko pakeisti password  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+  ##  Reconnect in %d seconds.
 sekundės  ##  seconds
 Nėra tinklo  ##  No network
 Išjungti Wippien  ##  Exit Wippien
@@ -220,7 +220,7 @@ Tinklas  ##  Network
 Tarpininkas  ##  Mediator
 Pasirink kas bus tarpininkas.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
+Paskutinis patikrinimas  ##  Last check
 Prievadas  ##  Port
   ##  Hostname
 Ilgalaikis  ##  Permanent
@@ -230,8 +230,8 @@ You can add any of accounts supported by your Jabber server (typically ICQ, MSN,
 Ar tikrai nori ištrinti paskyrą '%s'?  ##  Are you sure you want to delete account '%s'?
 Ištrinti registruotą paskyrą?  ##  Delete registered account?
 Paskyros  ##  Accounts
-Rodyti tik šliuű!  ##  Show only gateways
-Show all services  ##  Show all services
+  ##  Show only gateways
+Parodyti visas paslaugas  ##  Show all services
 Kontaktai  ##  Contacts
 Pridėti/Pašalinti  ##  Add/Remove
 Rasti naujus kontaktus.  ##  Find new contacts.
@@ -471,7 +471,7 @@ Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
-Program events  ##  Program events
+Programos įvykiai  ##  Program events
 Slėpti naują kontaktą  ##  Hide new contact
 Neslėpti kontakto  ##  Unhide contact
 Šiuo metu paslėpti kontaktai  ##  Currently hidden contacts
@@ -527,7 +527,7 @@ Keiti &Paveiksliuką  ##  Change &Picture
 Keisti &Slaptažodį  ##  Change Pa&ssword
 Your &Details  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
-  ##  Enter password
+Įvesti slaptažodį  ##  Enter password
 Please enter protect password  ##  Please enter protect password
 Pasirinkti kalbą  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.

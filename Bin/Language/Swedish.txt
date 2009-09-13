@@ -1,6 +1,6 @@
 # Swedish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: MrMust
-# Version: 514
+# Version: 515
 Inget fel uppstod  ##  No error.
 Systemet kunde inte hitta den specifierade filen.  ##  The system cannot find the file specified.
 Systemet kunde inte hitta den specificerade sökvägen  ##  The system cannot find the path specified.
@@ -298,7 +298,7 @@ Sök efter eller skapa chat rum. (Fortfarande i beta!!)  ##  Browse or create ch
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
+Rums Namn  ##  Room name
 Firewall  ##  Firewall
 Sätt upp brandväggsregler  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.

@@ -54,7 +54,7 @@ CSettings::CSettings()
 	m_LastOperatorMessageID = LASTOPERATORMSGID;
 
 	m_ServerPort = 5222;
-	m_UDPPort = 0;
+//	m_UDPPort = 0;
 
 	memset(m_DoNotShow, '0', sizeof(m_DoNotShow));
 	m_DoNotShow[MAXDONOTSHOWANYMORESETTINGS] = 0;
@@ -63,7 +63,8 @@ CSettings::CSettings()
 
 	memset(&m_RosterRect, 0, sizeof(RECT));
 
-	m_MyLastNetwork = m_MyLastNetmask = 0;
+	m_MyLastNetwork = m_MyLastNetmask = m_Gateway = 0;
+	m_UseGateway = TRUE;
 	m_AllowAnyMediator = TRUE;
 	m_IPProviderURL = "http://www.wippien.com/ip/?jid=";
 	LinkMediatorStruct *st1 = AddLinkMediator("mediator.wippien.com", 8000);
@@ -552,7 +553,7 @@ int CSettings::LoadConfig(void)
 
 			ReadSettingsCfg(wip, "ServerHost", m_ServerHost, "");
 			ReadSettingsCfg(wip, "ServerPort", &m_ServerPort, 5222);
-			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
+//			ReadSettingsCfg(wip, "UDPPort", &m_UDPPort, 0);
 			ReadSettingsCfg(wip, "IPProviderURL", m_IPProviderURL, "http://www.wippien.com/ip/?jid=");
 			if (m_IPProviderURL == "http://wippien.com/ip/?jid=")
 				m_IPProviderURL = "http://www.wippien.com/ip/?jid=";
@@ -598,6 +599,8 @@ int CSettings::LoadConfig(void)
 			ReadSettingsCfg(wip, "LastNetwork", &m_MyLastNetwork, 0);
 			m_MyLastNetmask &= 0x00FFFFFF;
 			ReadSettingsCfg(wip, "LastNetmask", &m_MyLastNetmask, FALSE);
+			ReadSettingsCfg(wip, "Gateway", &m_Gateway, FALSE);
+			ReadSettingsCfg(wip, "UseGateway", &m_UseGateway, TRUE);
 			ReadSettingsCfg(wip, "Icon", &m_Icon);
 
 			char icobuf[1024];
@@ -1149,7 +1152,7 @@ BOOL CSettings::SaveConfig(void)
 	CComBSTR2 msh = m_ServerHost;
 	x.AddChildElem("ServerHost", msh.ToString());
 	x.AddChildElem("ServerPort", m_ServerPort);
-	x.AddChildElem("UDPPort", m_UDPPort);
+//	x.AddChildElem("UDPPort", m_UDPPort);
 	
 	CComBSTR2 m = m_IPProviderURL;
 	x.AddChildElem("IPProviderURL", m.ToString());
@@ -1190,6 +1193,9 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("LastNetwork", mip);
 	memcpy(&mip, &m_MyLastNetmask, sizeof(long));
 	x.AddChildElem("LastNetmask", mip);
+	memcpy(&mip, &m_Gateway, sizeof(long));
+	x.AddChildElem("Gateway", mip);
+	x.AddChildElem("UseGateway", m_UseGateway?"1":"0");		
 	
 	CComBSTR2 mssk = m_Skin;
 	x.AddChildElem("Skin", mssk.ToString());
@@ -2059,7 +2065,7 @@ BOOL CSettings::LoadLanguage(char *Language)
 			AWAY_MESSAGE = Translate("Away due to inactivity.");
 			EXTAWAY_MESSAGE = Translate("Away for a loooong time.");
 			CONFIGURING_ADAPTER_TEXT = Translate("Configuring Wippien network adapter...");
-
+			
 			return TRUE;
 		}
 		if (m_LanguageEnglishTotal>m_LanguageOtherTotal)

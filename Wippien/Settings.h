@@ -65,7 +65,7 @@ public:
 	BOOL m_ShowNotificationPopup;
 	BOOL	m_UseSSLWrapper, m_AutoHide, m_DisconnectEthernetOnExit;
 	int m_AutoHideSeconds;
-	int m_ServerPort, m_UDPPort, m_LastOperatorMessageID;
+	int m_ServerPort, /*m_UDPPort, */m_LastOperatorMessageID;
 	long m_DeleteFunctionLogMb;
 	Buffer m_Icon;
 	RSA *m_RSA;
@@ -77,7 +77,8 @@ public:
 	unsigned long m_AutoAwayMinutes, m_ExtendedAwayMinutes, m_AutoDisconnectMinutes;
 	CComBSTR m_AutoAwayMessage, m_ExtendedAwayMessage;
 	BOOL m_AutoSetBack;
-	unsigned long m_MyLastNetwork, m_MyLastNetmask; // in NETWORK ORDER!!
+	unsigned long m_MyLastNetwork, m_MyLastNetmask, m_Gateway; // in NETWORK ORDER!!
+	BOOL m_UseGateway;
 	
 	Buffer m_HiddenContactsBuffer;
 	typedef std::vector<long> HIDDENCONTACTS;

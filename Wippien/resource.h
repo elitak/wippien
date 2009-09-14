@@ -26,6 +26,7 @@
 #define IDC_CHATROOM_JOIN               1009
 #define IDC_FIREWALLRULE_ADD            1009
 #define IDC_CHANGE_LANGUAGE             1009
+#define IDC_ETHERNET_APPLYNOW           1009
 #define IDC_ADDNEW                      1010
 #define IDC_RESET_ENGLISH               1010
 #define IDC_SETTINGS_USER4_RESETALL     1011
@@ -446,6 +447,7 @@
 #define IDC_IPADDRESSBYIPMEDIATOR       1478
 #define IDC_IPADDRESSSTATIC             1479
 #define IDC_ETHERNET_IP                 1480
+#define IDC_ETHERNET_GATEWAY            1481
 #define IDC_USESSLWRAPPER               1482
 #define IDC_LOG_VPNSOCKET               1483
 #define IDI_STATUS_ONLINE               1484
@@ -496,7 +498,8 @@
 #define IDC_MICROPHONESENSITIVITY       1527
 #define IDC_MICROPHONESENS              1529
 #define IDC_MICROPHONESENSDESC          1530
-#define ID_PNG1_VOICECHAT_ON			1531
+#define ID_PNG1_VOICECHAT_ON            1531
+#define IDC_GATEWAY                     1533
 #define ID_POPUP1_CHAT                  32770
 #define ID_POPUP1_SENDFILE              32771
 #define ID_POPUP1_SENDEMAIL             32772
@@ -529,7 +532,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        1392
 #define _APS_NEXT_COMMAND_VALUE         32798
-#define _APS_NEXT_CONTROL_VALUE         1532
+#define _APS_NEXT_CONTROL_VALUE         1534
 #define _APS_NEXT_SYMED_VALUE           1576
 #endif
 #endif

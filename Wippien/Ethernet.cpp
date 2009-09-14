@@ -406,21 +406,63 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 								pNext = pNext->Next;
 							}
 
+							if (IsValid) // let's check gateways too
+							{
+								BOOL found = FALSE;
+								if (!_Settings.m_Gateway || !_Settings.m_UseGateway)
+									found = TRUE;
+
+								IP_ADDR_STRING* pNext = NULL;
+								pNext = &(ad_info->GatewayList);
+								while(pNext) 
+								{
+									found = FALSE;
+
+									if (_Settings.m_UseGateway)
+									{
+										// is our IP on the list?
+										struct  in_addr sa;
+										sa.S_un.S_addr = _Settings.m_Gateway;
+										char *ips = inet_ntoa(sa);
+										if (ips)
+										{
+											if (!strcmp(pNext->IpAddress.String, ips))
+												found = TRUE;
+										}
+									}
+										
+									pNext = pNext->Next;
+								}
+
+								if (!found)
+									IsValid = FALSE;
+							}
+
+
 						}
 
 						if (!IsValid)
 						{
 							char buff[2048];
 
-							struct  in_addr sa1, sa2;
+							struct  in_addr sa1, sa2, sa3;
 							sa1.S_un.S_addr = _Settings.m_MyLastNetwork;
 							sa2.S_un.S_addr = _Settings.m_MyLastNetmask;
+							sa3.S_un.S_addr = _Settings.m_Gateway;
 
 //							strcpy(buff, "netsh interface ip set address name=\"Wippien\" static ");
 							strcpy(buff, "interface ip set address name=\"Wippien\" static ");
 							strcat(buff, inet_ntoa(sa1));
 							strcat(buff, " ");
 							strcat(buff, inet_ntoa(sa2));	
+							strcat(buff, " ");
+							if (_Settings.m_Gateway && _Settings.m_UseGateway)
+							{
+								strcat(buff, inet_ntoa(sa3));	
+								strcat(buff, " 1500");	
+							}
+							else
+								strcat(buff, "none");
 
 							ExecNETSH(buff);
 						}

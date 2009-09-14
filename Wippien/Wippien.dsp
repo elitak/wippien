@@ -1212,6 +1212,10 @@ SOURCE=..\Gfx\voicechat.png
 # End Source File
 # Begin Source File
 
+SOURCE=..\Gfx\voicechat_on.png
+# End Source File
+# Begin Source File
+
 SOURCE=..\Gfx\voicechat_prekizeno.png
 # End Source File
 # Begin Source File

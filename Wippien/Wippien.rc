@@ -104,27 +104,29 @@ BEGIN
                     7,12,251,10
     CONTROL         "Disconnect adapter on exit",IDC_DISCONNECT_ETHERNET,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,25,244,10
-    RTEXT           "UDP port fort for outoing and incoming packets (0 for auto select)",
-                    IDC_S1,7,42,213,8
-    EDITTEXT        IDC_UDP_PORT,224,40,32,12,ES_NUMBER | WS_DISABLED
-    GROUPBOX        "IP address for Wippien network adapter",IDC_S2,3,65,255,
-                    94
+    GROUPBOX        "IP address for Wippien network adapter",IDC_S2,3,37,255,
+                    78
     CONTROL         "Ignore. IP will be set outside of this program.",
-                    IDC_IPADDRESSIGNORE,"Button",BS_AUTORADIOBUTTON,6,77,237,
+                    IDC_IPADDRESSIGNORE,"Button",BS_AUTORADIOBUTTON,6,49,237,
                     10
     CONTROL         "Obtained from IP provider database, on URL",
                     IDC_IPADDRESSBYIPMEDIATOR,"Button",BS_AUTORADIOBUTTON,6,
-                    103,232,10
-    EDITTEXT        IDC_IPOBTAINURL,16,113,226,13,ES_AUTOHSCROLL
+                    62,232,10
+    EDITTEXT        IDC_IPOBTAINURL,16,72,226,13,ES_AUTOHSCROLL
     CONTROL         "Use following static address",IDC_IPADDRESSSTATIC,
-                    "Button",BS_AUTORADIOBUTTON,6,131,105,10
+                    "Button",BS_AUTORADIOBUTTON,6,89,105,10
     CONTROL         "IPAddress1",IDC_ETHERNET_IP,"SysIPAddress32",WS_TABSTOP,
-                    153,131,88,11
+                    153,89,88,11
     CONTROL         "IPAddress1",IDC_NETMASK_ETHERNET,"SysIPAddress32",
-                    WS_TABSTOP,153,142,88,11
-    RTEXT           "IP address",IDC_S3,108,133,43,8
-    RTEXT           "Netmask",IDC_S4,107,145,45,8
+                    WS_TABSTOP,153,100,88,11
+    RTEXT           "IP address",IDC_S3,107,91,43,8
+    RTEXT           "Netmask",IDC_S4,106,103,45,8
+    CONTROL         "IPAddress1",IDC_ETHERNET_GATEWAY,"SysIPAddress32",
+                    WS_TABSTOP,92,118,88,11
+    CONTROL         "Gateway",IDC_GATEWAY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,5,119,82,11
 END
+
 
 IDD_MAINDLG DIALOGEX 0, 0, 172, 294
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME

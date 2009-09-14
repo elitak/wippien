@@ -1372,15 +1372,15 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnChange(WORD wNotifyCode, WORD wID, HW
 	if (m_Starting)
 		return TRUE;
 
-	switch (wID)
-	{
+//	switch (wID)
+//	{
 //		case IDC_NETWORK_ETHERNET:
 //		case IDC_NETMASK_ETHERNET:
-		case IDC_UDP_PORT:
-			NeedRestart();
-			break;
-
-	}
+//		case IDC_UDP_PORT:
+//			NeedRestart();
+//			break;
+//
+//	}
 	return FALSE;
 }
 
@@ -1408,6 +1408,16 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	else
 		SendDlgItemMessage(IDC_NETMASK_ETHERNET, IPM_SETADDRESS, 0, 4294967040L);
 
+	if (_Settings.m_Gateway)
+		SendDlgItemMessage(IDC_ETHERNET_GATEWAY, IPM_SETADDRESS, 0, ntohl(_Settings.m_Gateway));
+
+
+	if (_Settings.m_UseGateway)
+		::SendMessage(GetDlgItem(IDC_GATEWAY), BM_SETCHECK, TRUE, NULL);
+	else
+		::SendMessage(GetDlgItem(IDC_GATEWAY), BM_SETCHECK, FALSE, NULL);
+
+
 	if (_Settings.m_ObtainIPAddress == 0)
 		::SendMessage(GetDlgItem(IDC_IPADDRESSIGNORE), BM_SETCHECK, BST_CHECKED, NULL);
 	else
@@ -1421,9 +1431,9 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	CComBSTR2 m = _Settings.m_IPProviderURL;
 	SetDlgItemText(IDC_IPOBTAINURL, m.ToString());
 
-	char buff[1024];
-	itoa(_Settings.m_UDPPort, buff, 10);
-	SetDlgItemText(IDC_UDP_PORT, buff);
+//	char buff[1024];
+//	itoa(_Settings.m_UDPPort, buff, 10);
+//	SetDlgItemText(IDC_UDP_PORT, buff);
 
 	if (_Settings.m_DoNotShow[DONOTSHOW_NOETHERNET] == '1')
 		::SendMessage(GetDlgItem(IDC_CHECK_ETHERNET), BM_SETCHECK, FALSE, NULL);
@@ -1437,6 +1447,7 @@ LRESULT CSettingsDlg::CSettingsEthernet::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 
 	SetDlgItemText(IDC_CHECK_ETHERNET, _Settings.Translate("Show notification if ethernet adapter is unavailable."));
 	SetDlgItemText(IDC_DISCONNECT_ETHERNET, _Settings.Translate("Disconnect adapter on exit"));
+	SetDlgItemText(IDC_GATEWAY, _Settings.Translate("Gateway"));
 	SetDlgItemText(IDC_S1, _Settings.Translate("UDP port fort for outoing and incoming packets (0 for auto select)"));
 	SetDlgItemText(IDC_S2, _Settings.Translate("IP address for Wippien network adapter"));
 	SetDlgItemText(IDC_IPADDRESSIGNORE, _Settings.Translate("Ignore. IP will be set outside of this program."));
@@ -1462,12 +1473,25 @@ BOOL CSettingsDlg::CSettingsEthernet::Apply(void)
 		_Settings.m_MyLastNetwork = htonl(mip);
 	}
 
+
+	BOOL usegate = FALSE;
+	if (::SendMessage(GetDlgItem(IDC_GATEWAY), BM_GETSTATE, NULL, NULL))
+		usegate = TRUE;
+	else
+		usegate = FALSE;
 	SendDlgItemMessage(IDC_NETMASK_ETHERNET, IPM_GETADDRESS, 0, (LPARAM)&mip);
 
-	if (htonl(mip) != _Settings.m_MyLastNetmask)
+	if (htonl(mip) != _Settings.m_MyLastNetmask || usegate != _Settings.m_UseGateway)
 		changed = TRUE;
 	_Settings.m_MyLastNetmask = htonl(mip);
+	_Settings.m_UseGateway = usegate;
 
+	SendDlgItemMessage(IDC_ETHERNET_GATEWAY, IPM_GETADDRESS, 0, (LPARAM)&mip);
+	
+	if (htonl(mip) != _Settings.m_Gateway)
+		changed = TRUE;
+	_Settings.m_Gateway = htonl(mip);
+	
 	int oldobtain = _Settings.m_ObtainIPAddress;
 	if (::SendMessage(GetDlgItem(IDC_IPADDRESSIGNORE), BM_GETSTATE, NULL, NULL))
 		_Settings.m_ObtainIPAddress = 0;
@@ -1491,12 +1515,17 @@ BOOL CSettingsDlg::CSettingsEthernet::Apply(void)
 	else
 		_Settings.m_DisconnectEthernetOnExit = FALSE;
 
+	if (::SendMessage(GetDlgItem(IDC_GATEWAY), BM_GETSTATE, NULL, NULL))
+		_Settings.m_UseGateway = TRUE;
+	else
+		_Settings.m_UseGateway = FALSE;
+
 
 	char buff[1024];
-	if (::SendMessage(GetDlgItem(IDC_UDP_PORT), WM_GETTEXT, 1024, (LPARAM)buff))
-	{
-		_Settings.m_UDPPort = atoi(buff);
-	}
+//	if (::SendMessage(GetDlgItem(IDC_UDP_PORT), WM_GETTEXT, 1024, (LPARAM)buff))
+//	{
+//		_Settings.m_UDPPort = atoi(buff);
+//	}
 	
 	if (::SendMessage(GetDlgItem(IDC_IPOBTAINURL), WM_GETTEXT, 1024, (LPARAM)buff))
 	{

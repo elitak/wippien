@@ -890,8 +890,9 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 								CXmlEntity *virtmask = CXmlEntity::FindByName(xmlent, "VirtualMask", 1);
 								if (virtmask)
 								{
-//									_Settings.m_MyLastNetwork = 0;
-//									_Settings.m_MyLastNetmask = 0;
+									CXmlEntity *virtgateway = CXmlEntity::FindByName(xmlent, "VirtualGateway", 1);
+									if (virtgateway)
+										_Settings.m_Gateway = inet_addr(virtgateway->Value);
 									_Ethernet.Start(inet_addr(virtip->Value), inet_addr(virtmask->Value));
 									_Settings.SaveConfig();
 								}

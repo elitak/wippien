@@ -6,6 +6,8 @@
 extern CJabber *_Jabber;
 
 
+char LastReceiveBuff[10] = "<>\0";
+char DrawItemsName[1024];
 void CVividTree::DrawItems(CDC *pDC)
 {
 	unsigned long tick = GetTickCount();
@@ -20,8 +22,6 @@ void CVividTree::DrawItems(CDC *pDC)
 	BOOL selected, highlited;
 	bool has_children;
 	CUser *user = NULL;
-	char LastReceiveBuff[4] = "<>\0";
-	char name[1024];
 	
 	show_item = GetFirstVisibleItem();
 	if (show_item == NULL)
@@ -50,21 +50,21 @@ void CVividTree::DrawItems(CDC *pDC)
 			selected = (state & TVIS_SELECTED) && ((this->m_hWnd == GetFocus()) || (tree_style & TVS_SHOWSELALWAYS));
 			highlited = (state & TVIS_DROPHILITED);
 
-			name[0] = 0;
+			DrawItemsName[0] = 0;
 			tg = NULL;
 			TVITEMEX lvitem = { 0 };
 			lvitem.hItem = show_item;
-			lvitem.pszText = name;
-			lvitem.cchTextMax = sizeof(name);
+			lvitem.pszText = DrawItemsName;
+			lvitem.cchTextMax = sizeof(DrawItemsName);
 			lvitem.mask = TVIF_PARAM | TVIF_TEXT | TVIF_INTEGRAL;
 			
 			::SendMessage(m_hWnd, TVM_GETITEM, 0, (LPARAM)&lvitem);
 			user = (CUser *)lvitem.lParam;
 			if (!user)
 			{
-				tg = _Settings.GetGroupByName(name);
+				tg = _Settings.GetGroupByName(DrawItemsName);
 				if (tg && tg->VisibleName)
-					strcpy(name, tg->VisibleName);
+					strcpy(DrawItemsName, tg->VisibleName);
 			}
 
 			if (GetItemRect(show_item, rc_item, TRUE))
@@ -184,11 +184,11 @@ void CVividTree::DrawItems(CDC *pDC)
 						rc.left -= 8;
 						rc.top += 10;
 						HFONT oldfont = pDC->SelectFont(m_hGroupFont);
-						pDC->DrawText(name, strlen(name), &rc, DT_LEFT);
+						pDC->DrawText(DrawItemsName, strlen(DrawItemsName), &rc, DT_LEFT);
 						if (tg->Block)
 						{
 							RECT rc2 = {0};
-							pDC->DrawText(name, strlen(name), &rc2, DT_LEFT | DT_CALCRECT);
+							pDC->DrawText(DrawItemsName, strlen(DrawItemsName), &rc2, DT_LEFT | DT_CALCRECT);
 							m_LockContact.Draw(pDC->m_hDC, rc.left+rc2.right+2, rc.top+4);
 						}
 						pDC->SelectFont(m_hSubFont);
@@ -219,7 +219,6 @@ void CVividTree::DrawItems(CDC *pDC)
 
 					pDC->SetTextColor(RGB(0,0,0));
 					::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), &rcc, DT_LEFT | DT_CALCRECT);
-					//pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rcc, DT_LEFT | DT_CALCRECT);
 					if (_Settings.m_ShowContactActivity)
 					{
 						int l = rc_item.left;
@@ -229,15 +228,21 @@ void CVividTree::DrawItems(CDC *pDC)
 						else
 							rc_item.left = rcc.right + 2;
 
-						if (user->m_LastReceive + 500 > tick)
-							LastReceiveBuff[1] = '.';
-						else
-							LastReceiveBuff[1] = ' ';
-						if (user->m_LastSent + 500 > tick)
-							LastReceiveBuff[0] = '.';
-						else
-							LastReceiveBuff[0] = ' ';
-						pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
+						if (user->m_WippienState == WipConnected)
+						{
+							if (user->m_LastReceive + 500 > tick)
+								LastReceiveBuff[1] = '.';
+							else
+								LastReceiveBuff[1] = ' ';
+							if (user->m_LastSent + 500 > tick)
+								LastReceiveBuff[0] = '.';
+							else
+								LastReceiveBuff[0] = ' ';
+							LastReceiveBuff[2] = 0;							
+
+							pDC->DrawText(LastReceiveBuff, 2, rc_item, DT_LEFT);
+						}
+						
 						if (_Settings.m_ShowContactPicture)
 						{
 							rc_item.top -= 20;
@@ -251,25 +256,18 @@ void CVividTree::DrawItems(CDC *pDC)
 
 
 					::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), rc_item, DT_LEFT);
-					//pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (user->m_Block)
 					{
 						RECT rc2 = {0};
 						::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), &rc2, DT_LEFT | DT_CALCRECT);
-//						pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), &rc2, DT_LEFT | DT_CALCRECT);
-//						rc2.left += rc_item.left;
-//						rc2.top += rc_item.top;
 						m_LockContact.Draw(pDC->m_hDC, rc_item.left+rc2.right+2, rc_item.top+2);
 
-//						pDC->SetTextColor(RGB(255,32,32));
 					}
-//					else
 
 					if (!selected)
 						pDC->SetTextColor(RGB(56,56,56));
 
 					::DrawTextW(pDC->m_hDC, user->m_bstrVisibleName, user->m_bstrVisibleName.Length(), rc_item, DT_LEFT);
-//					pDC->DrawText(user->m_VisibleName, strlen(user->m_VisibleName), rc_item, DT_LEFT);
 					if (!user->m_Online && user->m_WippienState==WipConnected)
 						pDC->SetTextColor(RGB(127,127,127));
 					else
@@ -277,15 +275,23 @@ void CVividTree::DrawItems(CDC *pDC)
 					rc_item.top += 12;
 					rc_item.left += 3;
 					pDC->SelectFont(m_hSubFont);
-					RECT rc1;
+					RECT rc1, rc2;
 					rc_item.right-=2;
 					memcpy(&rc1,&rc_item, sizeof(RECT));
+					memcpy(&rc2,&rc_item, sizeof(RECT));
 					if (_Settings.m_ShowContactStatus && !user->m_ChatRoomPtr)
 					{
-//						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), &rc1, DT_LEFT | DT_CALCRECT);
-//						pDC->DrawText(user->m_SubText, strlen(user->m_SubText), rc_item, DT_LEFT);
 						::DrawTextW(pDC->m_hDC, user->m_bstrSubText, user->m_bstrSubText.Length(), &rc1, DT_LEFT | DT_CALCRECT);
 						::DrawTextW(pDC->m_hDC, user->m_bstrSubText, user->m_bstrSubText.Length(), rc_item, DT_LEFT);
+
+						if (user->m_WippienState == WipConnecting && _Settings.m_ShowContactPicture)
+						{
+							rc2.top += 10;
+							rc2.bottom += 10;
+							if (user->m_HisMediatorOffer && user->m_HisMediatorOffer[0])
+								pDC->DrawText(user->_m_HisMediatorOffer, strlen(user->_m_HisMediatorOffer), &rc2, DT_LEFT);
+						}
+
 					}
 					if (_Settings.m_ShowContactIP)
 					{

@@ -135,7 +135,7 @@ public:
 	char m_IPText[128];
 	char m_Group[128];
 	BOOL m_IsAway, m_IsOld;
-	char m_MyMediatorOffer[256], m_HisMediatorOffer[256];
+	char m_MyMediatorOffer[256], _m_HisMediatorOffer[256], *m_HisMediatorOffer;
 	int m_MyMediatorPort, m_HisMediatorPort;
 	int m_MyMediatorChoice, m_HisMediatorChoice;
 	RECT m_ChatWindowRect;

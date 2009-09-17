@@ -257,12 +257,13 @@ CUser::CUser()
 	memset(m_MyMediatorOffer, 0, sizeof(m_MyMediatorOffer));
 	m_MyMediatorPort = 0;
 
+	strcpy(_m_HisMediatorOffer, "try ");
+	m_HisMediatorOffer = _m_HisMediatorOffer+4;
 	CSettings::LinkMediatorStruct *st = _Settings.m_LinkMediators[0];
 	if (st)
 	{
 		strcpy(m_HisMediatorOffer,st->Host);
-		m_HisMediatorPort = st->Port;
-		
+		m_HisMediatorPort = st->Port;		
 	}
 	m_MyMediatorChoice = (-1);
 	m_LastSent = m_LastReceive = 0;

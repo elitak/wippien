@@ -374,6 +374,13 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 				if (!_Settings.m_UseGateway)
 					Gateway = 0;
 
+				if (Gateway && _Settings.m_Gateway)
+				{
+					if ((_Settings.m_MyLastNetwork & _Settings.m_MyLastNetmask) != (_Settings.m_MyLastNetmask & Gateway))
+						Gateway = 0;
+				}
+
+
 				int cnt = len/sizeof(IP_ADAPTER_INFO);
 				for (int i=0;i<cnt;i++)
 				{
@@ -464,7 +471,7 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 							strcat(buff, " ");
 							strcat(buff, inet_ntoa(sa2));	
 							strcat(buff, " ");
-							if (_Settings.m_Gateway && _Settings.m_UseGateway)
+							if (Gateway)
 							{
 								strcat(buff, inet_ntoa(sa3));	
 								strcat(buff, " 1500");	

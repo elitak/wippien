@@ -370,6 +370,10 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 			result = GetAdaptersInfo(ad_info, &len);
 			if (result == ERROR_SUCCESS)
 			{
+				unsigned long Gateway = _Settings.m_Gateway;
+				if (!_Settings.m_UseGateway)
+					Gateway = 0;
+
 				int cnt = len/sizeof(IP_ADAPTER_INFO);
 				for (int i=0;i<cnt;i++)
 				{
@@ -409,7 +413,7 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 							if (IsValid) // let's check gateways too
 							{
 								BOOL found = FALSE;
-								if (!_Settings.m_Gateway || !_Settings.m_UseGateway)
+								if (!Gateway)
 									found = TRUE;
 
 								IP_ADDR_STRING* pNext = NULL;
@@ -418,7 +422,7 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 								{
 									found = FALSE;
 
-									if (_Settings.m_UseGateway)
+									if (Gateway)
 									{
 										// is our IP on the list?
 										struct  in_addr sa;
@@ -430,6 +434,10 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 												found = TRUE;
 										}
 									}
+									else
+										if (!strcmp(pNext->IpAddress.String, ""))
+											found = TRUE;
+
 										
 									pNext = pNext->Next;
 								}

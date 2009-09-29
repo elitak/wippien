@@ -118,7 +118,6 @@ int prepare_domainsocket(char *name)
 	int fd, result;
 	struct sockaddr_un domaddr;
 	socklen_t domaddr_len = sizeof(domaddr);
-	struct stat domstat;
 	
 	fd = socket(AF_UNIX, SOCK_STREAM, 0);
 	if (fd < 0)
@@ -155,7 +154,6 @@ int connect_domainsocket(char *name)
 	int fd, result;
 	struct sockaddr_un domaddr;
 	socklen_t domaddr_len = sizeof(domaddr);
-	struct stat domstat;
 	
 	fd = socket(AF_UNIX, SOCK_STREAM, 0);
 	if (fd < 0)
@@ -351,6 +349,7 @@ long EventStateChange(void *wodVPN, StatesEnum OldState)
 	char buff[1024];
 	int len = sizeof(buff);
 	VPN_GetStateText(wodVPN, st, buff, &len);
+	return 1;
 }
 
 long EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
@@ -366,6 +365,7 @@ long EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
 			break;
 		}
 	}
+	return 1;
 }
 
 long EventDisconnected(void *wodVPN, long ErrorCode, char * ErrorText)
@@ -381,6 +381,7 @@ long EventDisconnected(void *wodVPN, long ErrorCode, char * ErrorText)
 			break;
 		}
 	}
+	return 1;
 }
 
 long EventSearchDone(void *wodVPN, char * IP, long Port, long ErrorCode, char * ErrorText)
@@ -395,15 +396,17 @@ long EventSearchDone(void *wodVPN, char * IP, long Port, long ErrorCode, char * 
 	{   
 		printf("Search error: %s\n", ErrorText);
 	}
+	return 1;
 }
 
 
 long EventIncomingData(void *wodVPN, void *Data, int Len)
 {
 	// send to socket
-	ETH_HEADER *ethr = (ETH_HEADER *) Data;
+//	ETH_HEADER *ethr = (ETH_HEADER *) Data;
 //	printf("INCOMING %x packet from %x:%x:%x:%x:%x:%x to %x:%x:%x:%x:%x:%x\n", ethr->proto, ethr->src[0], ethr->src[1], ethr->src[2], ethr->src[3], ethr->src[4], ethr->src[5], ethr->dest[0], ethr->dest[1], ethr->dest[2], ethr->dest[3], ethr->dest[4], ethr->dest[5]); 
-	int result = send(domsocket, Data, Len, 0);
+	/*int result = */send(domsocket, Data, Len, 0);
+	return 1;
 }
 
 void checkWippienState(user *u)
@@ -420,7 +423,7 @@ void checkWippienState(user *u)
 		
 		WIPNUX::Buffer b1;
 		buffer_init(&b1);
-		buffer_put_cstring(&b1, "wippien.com");
+		buffer_put_cstring(&b1, "mediator.wippien.com");
 		buffer_put_int(&b1, 8000);
 		buffer_put_string(&b, (char *)buffer_ptr(&b1), buffer_len(&b1));
 		buffer_free(&b1);
@@ -507,7 +510,7 @@ void checkWippienState(user *u)
 
 user *getWippienUser(char *from)
 {
-	int iswippien = 0;
+//	int iswippien = 0;
 	int i;
 	
 	//printf("checking if %s is wippien\n", from);
@@ -790,6 +793,7 @@ void *MsgProc(void *lpParam)
             }
         }
     }	
+    return NULL;
 }
 
 #define MAC_EQUAL(a,b)      (memcmp ((a), (b), sizeof (MACADDR)) == 0)
@@ -881,8 +885,8 @@ void *PumpProc(void *lpParam)
 //						printf("Got %x packet from %x:%x:%x:%x:%x:%x to %x:%x:%x:%x:%x:%x\n", ethr->proto, ethr->src[0], ethr->src[1], ethr->src[2], ethr->src[3], ethr->src[4], ethr->src[5], ethr->dest[0], ethr->dest[1], ethr->dest[2], ethr->dest[3], ethr->dest[4], ethr->dest[5]); 
 						for (i=0;i<TOTALUSERS;i++)
 						{
-							user *u = USERLIST[i];
-							if (USERLIST[i]->Connected && MAC_EQUAL(USERLIST[i]->MAC, ethr->dest) || MAC_EQUAL(MAC_BROADCAST, ethr->dest))
+							//user *u = USERLIST[i];
+							if (USERLIST[i]->Connected && (MAC_EQUAL(USERLIST[i]->MAC, ethr->dest) || MAC_EQUAL(MAC_BROADCAST, ethr->dest)))
 							{
 //								printf("Sending data to user\n");
 								VPN_SendData(USERLIST[i]->VPNHandle, packet, result, 0);
@@ -903,7 +907,9 @@ void *PumpProc(void *lpParam)
 void ReadMAC(char *dev)
 {
 	int fd;
-	struct ifreq ifr = {0};
+	struct ifreq ifr;
+	memset(&ifr, 0, sizeof(struct ifreq));
+	
 	
 	fd = socket(AF_INET, SOCK_DGRAM, 0);
 	

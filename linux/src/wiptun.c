@@ -126,7 +126,7 @@ int do_child(int client_sock, struct sockaddr_in *sockaddr)
     if (IP.s_addr && Netmask.s_addr)
     {
       memset(buff, 0, sizeof(buff));
-      strcpy((unsigned char *)buff, "wip%d");
+      strcpy((char *)buff, "wip%d");
       int fd = tun_alloc(buff);
       if (fd>=0)
       {
@@ -214,7 +214,7 @@ int main(void)
     {
       cli_len = sizeof (cli_addr);
       bzero((char *) &cli_addr, sizeof (cli_addr));
-      client_sock = accept(domsocket, (struct sockaddr *) &cli_addr, &cli_len);
+      client_sock = accept(domsocket, (struct sockaddr *) &cli_addr, (unsigned int *)&cli_len);
       if (client_sock >= 0)
       {
         // accept and deal

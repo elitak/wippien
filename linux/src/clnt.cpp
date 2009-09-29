@@ -36,7 +36,7 @@ const char *WIPPIENDETAILSTHREAD = "ExchangeDetailsThread";
 const char *_hex="0123456789abcdef";
 
 const char * DOMAINSOCKET_NAME="/var/run/wippien.sock";
-const char * IPProviderHost = "wippien.com";
+const char * IPProviderHost = "www.wippien.com";
 const char * IPProviderURI = "/ip/?jid=";
 const char * MediatorHost = "mediator.wippien.com";
 const int MediatorPort = 8000;

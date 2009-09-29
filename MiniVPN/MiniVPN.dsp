@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /I "\WeOnlyDo\OpenSSL\x86\inc32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x41a /d "NDEBUG"
@@ -53,7 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib gdi32.lib wsock32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Release\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Release\zlib.lib \WeOnlyDo\wodXMPP\Code\Component\ssleay32.lib \WeOnlyDo\wodXMPP\Code\Component\libeay32.lib Secur32.lib /nologo /subsystem:windows /machine:I386
+# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib gdi32.lib wsock32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Release\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Release\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /machine:I386 /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
 
 !ELSEIF  "$(CFG)" == "MiniVPN - Win32 Debug"
 
@@ -69,7 +69,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "\WeOnlyDo\OpenSSL\x86\inc32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x41a /d "_DEBUG"
@@ -79,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib wsock32.lib gdi32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib \WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Debug\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Debug\zlib.lib \WeOnlyDo\wodXMPP\Code\Component\ssleay32.lib \WeOnlyDo\wodXMPP\Code\Component\libeay32.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib wsock32.lib gdi32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib \WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Debug\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Debug\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
 
 !ENDIF 
 

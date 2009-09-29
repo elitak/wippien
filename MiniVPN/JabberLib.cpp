@@ -10,6 +10,7 @@ extern CEthernet *_Ethernet;
 void SetStatus(char *Text);
 
 #define WIPPIENRESOURCE			"WippienIM3"
+#define MYRESOURCE				"MiniVPN"
 #define WIPPIENINITREQUEST		"WippienInitRequest"
 #define WIPPIENINITRESPONSE		"WippienInitResponse"
 #define WIPPIENCONNECT			"WippienConnect"
@@ -271,6 +272,7 @@ void CJabberLib::EventStateChange(void *wodXMPP, WODXMPP::StatesEnum OldState)
 }
 void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *ChatRoom, WODXMPP::StatusEnum NewStatus, WODXMPP::StatusEnum OldStatus)
 {
+	LVITEM li1 = {0};
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
@@ -279,6 +281,44 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 		WODXMPP::XMPP_Contact_GetJID(Contact, jid, &jidsize);
 
 		LVITEM *li = me->GetItemByJID(jid);
+		if (!li)
+		{
+			CJabberLib *me;
+			if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
+			{
+				
+				CUser *user = new CUser();
+				strcpy(user->m_JID, jid);
+				/*me->*/m_Users.push_back(user);
+				char *j = strchr(user->m_JID, '/');
+				if (j)
+					*j =0;
+				jidsize = sizeof(sizeof(user->m_Resource));
+				WODXMPP::XMPP_Contact_GetResource(Contact, user->m_Resource, &jidsize);
+
+				li1.mask = LVIF_PARAM | LVIF_TEXT;
+									
+				li1.lParam = (LONG)user;
+				li1.pszText = jid;
+				li1.cchTextMax = strlen(jid);
+									
+				if (SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_INSERTITEM, 0, (LPARAM)&li1) != -1)
+				{
+					
+					li1.mask = LVIF_TEXT;
+					li1.iSubItem = 2;
+					sprintf(jid, "Offline");
+					SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_SETITEM, 0, (LPARAM)&li1);
+					
+					if (me->IsRemoteWippienUser(Contact))
+					{
+						SetTimer(user->m_hWnd, 1, rand()%2000, NULL); // TIMER1 do something
+					}					
+				}
+				li = &li1;
+			}
+		}
+		
 		if (li)
 		{
 			WODXMPP::StatusEnum st;
@@ -316,60 +356,8 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 }
 void CJabberLib::EventContactList(void *wodXMPP)
 {
-	CJabberLib *me;
-	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
-	{
-		SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_DELETEALLITEMS, 0, 0);
+	SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_DELETEALLITEMS, 0, 0);
 
-		// let's loop through contact list
-		short count = 0;
-		int err = WODXMPP::XMPP_ContactsGetCount(wodXMPP, &count);
-		if (!err)
-		{
-			for (int i=0;i<count;i++)
-			{
-				void *ct = NULL;
-				if (!WODXMPP::XMPP_ContactsGetContact(wodXMPP, (short)i, &ct))
-				{
-					if (ct)
-					{
-						char buff[1024];
-						int bflen = sizeof(buff);
-						if (!WODXMPP::XMPP_Contact_GetJID(ct, buff, &bflen))
-						{
-
-							CUser *user = new CUser();
-							strcpy(user->m_JID, buff);
-							/*me->*/m_Users.push_back(user);
-
-							LVITEM li = {0};
-							li.mask = LVIF_PARAM | LVIF_TEXT;
-
-							li.lParam = (LONG)user;
-							li.pszText = buff;
-							li.cchTextMax = strlen(buff);
-
-							if (SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_INSERTITEM, 0, (LPARAM)&li) != -1)
-							{
-
-								li.mask = LVIF_TEXT;
-								li.iSubItem = 2;
-								sprintf(buff, "Offline");
-								SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_SETITEM, 0, (LPARAM)&li);
-
-								if (me->IsRemoteWippienUser(ct))
-								{
-									SetTimer(user->m_hWnd, 1, rand()%2000, NULL); // TIMER1 do something
-								}
-
-							}
-						}
-						WODXMPP::XMPP_Contacts_Free(ct);
-					}
-				}
-			}
-		}
-	}
 }
 
 void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatRoom, void  *Message)
@@ -445,7 +433,26 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 									}
 
 									if (len>0)
+									{
 										us->m_RemoteState = (WippienState)(char)(*d);
+										len--;
+										d++;
+									}
+
+
+									if (len>0)
+									{
+										// ignore mediator, use only ours
+										unsigned long l = GET_32BIT(d);
+										len -= l;
+										d+=l;
+									}
+
+									if (len>0)
+									{
+										us->m_HisRandom = GET_32BIT(d);
+									}
+
 
 									LVITEM *li = me->GetItemByJID(jid);
 									if (li)
@@ -601,9 +608,15 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 			d+=4;
 			memcpy(d, _Ethernet->m_MAC, 6);
 			d+=6;
+			if (!m_RSA->e) m_RSA->e = BN_new();
+			if (!m_RSA->n) m_RSA->n = BN_new();
 			d += PutBignum(m_RSA->e, d);
 			d += PutBignum(m_RSA->n, d);
 			*d++ = (char)us->m_State;
+			PUT_32BIT(d, 0);
+			d+=4;
+			PUT_32BIT(d, us->m_MyRandom);
+			d+=4;
 
 			ToHex(buff, d-buff, out);
 			subject = WIPPIENINITREQUEST;	
@@ -647,18 +660,36 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				
 //				EnterCriticalSection(&m_CritCS);
 				WODVPN::VPN_Stop(us->m_Handle);
+
+				char myid[1024];
 				strcpy(out, us->m_JID);
 				char *slash = strchr(out, '/');
 				if (slash)
 					*slash = 0;
-				char myid[1024];
-				sprintf(myid, "%s_%s", m_JID, out);
+
+				if (us->m_MyRandom && us->m_HisRandom)
+				{
+					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, MYRESOURCE, us->m_MyRandom, out, WIPPIENRESOURCE, us->m_HisRandom);
+				}
+				else
+				{
+					sprintf(myid, "%s_%s", m_JID, out);
+				}
 				strlwr(myid);
-				WODVPN::VPN_SetMyID(us->m_Handle, myid);
 
 				char hisid[1024];
-				sprintf(hisid, "%s_%s", out, m_JID);
+				if (us->m_MyRandom && us->m_HisRandom)
+				{
+					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, WIPPIENRESOURCE, us->m_HisRandom, m_JID, MYRESOURCE, us->m_MyRandom);
+				}
+				else
+				{
+					sprintf(hisid, "%s_%s", out, m_JID);
+				}
 				strlwr(hisid);
+
+				WODVPN::VPN_SetMyID(us->m_Handle, myid);
+
 
 
 				VARIANT varhost;
@@ -738,8 +769,8 @@ LVITEM *CJabberLib::GetItemByJID(char *jid)
 {
 	char jidbuff[1024], outbuff[1024];
 	strcpy(jidbuff, jid);
-	char *s = strchr(jidbuff, '/');
-	if (s) *s = 0;
+//	char *s = strchr(jidbuff, '/');
+//	if (s) *s = 0;
 
 	if (!IsWindow(hMainWnd))
 		return NULL;
@@ -795,9 +826,18 @@ BOOL CJabberLib::IsRemoteWippienUser(void *Contact)
 	// get JID
 	char subjbuff[16384];
 	int bflen = sizeof(subjbuff);
+	subjbuff[0] = 0;
 	if (!WODXMPP::XMPP_Contact_GetResource(Contact, subjbuff, &bflen))
 	{
 		if (!strcmp(subjbuff, WIPPIENRESOURCE))
+		{
+			return TRUE;
+		}
+	}
+	bflen = sizeof(subjbuff);
+	if (!WODXMPP::XMPP_Contact_GetCapabilities(Contact, subjbuff, &bflen))
+	{
+		if (strstr(subjbuff, WIPPIENRESOURCE))
 		{
 			return TRUE;
 		}
@@ -815,7 +855,21 @@ void CJabberLib::Connect(char *JID, char *Password)
 {
 	int err;
 	char buff[1024];
-	sprintf(buff, "%s/%s", JID, WIPPIENRESOURCE);
+	buff[0] = 0;
+	int bflen = sizeof(buff);
+	if (!WODXMPP::XMPP_GetCapabilities(m_Handle, buff, &bflen))
+	{
+		if (!strstr(buff, WIPPIENRESOURCE))
+		{
+			strcat(buff, " ");
+			strcat(buff, WIPPIENRESOURCE);
+			WODXMPP::XMPP_SetCapabilities(m_Handle, buff);
+		}
+	}
+	WODXMPP::XMPP_SetCombineResources(m_Handle, FALSE);
+
+
+	sprintf(buff, "%s/%s", JID, MYRESOURCE);
 	err = WODXMPP::XMPP_SetLogin(m_Handle, buff);
 
 	strcpy(m_JID, JID);

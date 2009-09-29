@@ -26,7 +26,7 @@ CUser::CUser()
 	m_BlinkCounter = 0;
 	m_RemoteIP = 0;
 	memset(&m_MAC, 0, sizeof(m_MAC));
-	m_JID[0] = 0;
+	m_JID[0] = m_Resource[0];
 	m_RSA = NULL;
 	for (int i = 0; i < 16; i++) m_MyKey[i] = rand();
 
@@ -36,7 +36,7 @@ CUser::CUser()
 
 
     WNDCLASS wndclass = {0};
-	wndclass.lpszClassName = "ComodoVPNWindowClass";
+	wndclass.lpszClassName = "MiniVPNWindowClass";
 	
     if(!gClassRegistered) // thread safety not important
 	{
@@ -47,10 +47,15 @@ CUser::CUser()
         gClassRegistered = TRUE;
     }
 	
-	m_hWnd = CreateWindow(wndclass.lpszClassName,"ComodoVPNWindow",WS_POPUP,0, 0, 0, 0,NULL,NULL,hMainInstance,NULL);
+	m_hWnd = CreateWindow(wndclass.lpszClassName,"MiniVPNWindow",WS_POPUP,0, 0, 0, 0,NULL,NULL,hMainInstance,NULL);
 	if(m_hWnd) SetWindowLong(m_hWnd, GWL_USERDATA, (LONG)this);
 
 	WODVPN::VPN_SetTag(m_Handle, this);
+	m_HisRandom = m_MyRandom = 0;
+	while (!m_MyRandom)
+	{
+		m_MyRandom = (rand()%1024)+1;
+	}
 
 }
 

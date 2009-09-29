@@ -334,7 +334,7 @@ BOOL CEthernet::Start(unsigned long IP, unsigned long Netmask)
 	if ((_Settings.m_MyLastNetwork) != IP || _Settings.m_MyLastNetmask != Netmask)
 	{
 		char buff[1024];
-		if (!CheckIfIPRangeIsFree(htonl(IP), htonl(Netmask), buff))
+		if (m_Guid[0] && !CheckIfIPRangeIsFree(htonl(IP), htonl(Netmask), buff))
 			MessageBox(NULL, buff, _Settings.Translate("Warning"), MB_OK);
 
 		// let's store these values	

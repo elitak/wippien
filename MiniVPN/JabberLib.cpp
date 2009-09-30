@@ -344,10 +344,13 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 						}
 						else
 						{
-							// user left
-							us->m_State = WipWaitingInitRequest;
-							us->m_RemoteState = WipWaitingInitRequest;
-						}
+							if (us)
+							{
+								// user left
+								us->m_State = WipWaitingInitRequest;
+								us->m_RemoteState = WipWaitingInitRequest;
+							}
+						}	
 					}
 				}
 			}
@@ -446,6 +449,8 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 										unsigned long l = GET_32BIT(d);
 										len -= l;
 										d+=l;
+										len-=4;
+										d+=4;
 									}
 
 									if (len>0)
@@ -474,6 +479,11 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 						else
 						if (!strcmp(subjbuff, WIPPIENINITRESPONSE))
 						{
+							GetDlgItemText(hMainWnd, IDC_MEDIATOR, us->m_MediatorHost, sizeof(us->m_MediatorHost));
+							us->m_MediatorPort = 8000;
+
+							char hidmediatorhost[1024];
+							int hismediatorport = 0;
 							sprintf(dbg, "got initresponse from %s\r\n", us->m_JID);
 							bflen = sizeof(subjbuff);
 							if (!WODXMPP::XMPP_Message_GetText(Message, subjbuff, &bflen))
@@ -481,6 +491,36 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 								int len = FromHex(subjbuff, data);
 								if (len>128)
 									us->m_RemoteState = (WippienState)(char)data[128];
+								if (len>=131)
+								{
+									char *d = data+129;
+									int l = len-129;
+									if (l)
+									{
+										int l1 = GET_32BIT(d);
+										if (l1)
+										{
+											d+=4;
+											memset(hidmediatorhost, 0, sizeof(hidmediatorhost));
+											memcpy(hidmediatorhost, d, l1);
+											d += l1;
+											hismediatorport = GET_32BIT(d);
+											d += 4;
+
+											int hischoice = GET_32BIT(d);
+
+
+											int ch = 0;
+											if ((hischoice) % 2 != 0)
+											{
+												strcpy(us->m_MediatorHost, hidmediatorhost);
+												us->m_MediatorPort = hismediatorport;
+											}
+
+										}
+									}
+								}
+
 								if (len)
 								{
 									if (us->m_State == WipWaitingInitResponse)
@@ -592,6 +632,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 		return;
 	
 	char dbg[1024];
+	char mediatorbuff[1024];
 
 	char *subject = NULL;
 	void *Message = NULL;
@@ -613,7 +654,16 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 			d += PutBignum(m_RSA->e, d);
 			d += PutBignum(m_RSA->n, d);
 			*d++ = (char)us->m_State;
-			PUT_32BIT(d, 0);
+
+			GetDlgItemText(hMainWnd, IDC_MEDIATOR, mediatorbuff, sizeof(mediatorbuff));
+			PUT_32BIT(d, 8+strlen(mediatorbuff));
+			d+=4;
+			PUT_32BIT(d, strlen(mediatorbuff));
+			d+=4;
+			memcpy(d, mediatorbuff, strlen(mediatorbuff));
+			d+=strlen(mediatorbuff);
+			int p = 8000;
+			PUT_32BIT(d, p);
 			d+=4;
 			PUT_32BIT(d, us->m_MyRandom);
 			d+=4;
@@ -627,13 +677,28 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 		{
 			if (us->m_State < WipDisconnected || us->m_RemoteState < WipDisconnected)
 			{
-				char src[128 - RSA_PKCS1_PADDING_SIZE], dst[129];
-				for (int i=0;i<sizeof(src);i++)
+				int i;
+				char src[128 - RSA_PKCS1_PADDING_SIZE], dst[1024];
+				for (i=0;i<sizeof(src);i++)
 					src[i]=rand();
 				memcpy(src + 24, us->m_MyKey, 16); // this is stupid, ok?...
 				RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, us->m_RSA, RSA_PKCS1_PADDING);
 				dst[128] = (char)us->m_State;
-				ToHex(dst, 129, out);
+				char *d = dst+129;
+				GetDlgItemText(hMainWnd, IDC_MEDIATOR, mediatorbuff, sizeof(mediatorbuff));
+				PUT_32BIT(d, strlen(mediatorbuff));
+				d += 4;
+				memcpy(d, mediatorbuff, strlen(mediatorbuff));
+				d += strlen(mediatorbuff);
+				i = 8000;
+				PUT_32BIT(d, i);
+				d += 4;
+				i = 0;
+				PUT_32BIT(d, i);
+				d += 4;
+
+					
+				ToHex(dst, d-dst, out);
 				subject = WIPPIENINITRESPONSE;
 				sprintf(dbg, "sending initresponse to %s\r\n", us->m_JID);
 				OutputDebugString(dbg);
@@ -694,13 +759,11 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 				VARIANT varhost;
 				varhost.vt = VT_BSTR;
-				char mediatorbuff[1024];
-				GetDlgItemText(hMainWnd, IDC_MEDIATOR, mediatorbuff, sizeof(mediatorbuff));
-				varhost.bstrVal = AllocSysString(mediatorbuff);
+				varhost.bstrVal = AllocSysString(us->m_MediatorHost);
 
 				VARIANT varport;
 				varport.vt = VT_I4;
-				varport.lVal = 8000;
+				varport.lVal = us->m_MediatorPort;
 				
 				VARIANT varempty;
 				varempty.vt = VT_ERROR;

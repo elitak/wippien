@@ -47,8 +47,8 @@ public:
 
 	HWND m_hWnd;
 	char m_MyKey[16], m_SharedKey[16];
-	char m_JID[1024], m_Resource[1024];
-	int	 m_HisRandom, m_MyRandom;
+	char m_JID[1024], m_Resource[1024], m_MediatorHost[1024];
+	int	 m_HisRandom, m_MyRandom, m_MediatorPort;
 
 	int m_BlinkCounter;
 

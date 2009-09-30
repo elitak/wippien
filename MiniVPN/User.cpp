@@ -56,7 +56,7 @@ CUser::CUser()
 	{
 		m_MyRandom = (rand()%1024)+1;
 	}
-
+	m_MediatorHost[0] = 0;
 }
 
 CUser::~CUser()

@@ -79,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib wsock32.lib gdi32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib \WeOnlyDo\wodAppUpdate\Code\Win32LIB\Debug\wodAppUp.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Debug\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Debug\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
+# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib wsock32.lib gdi32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Debug\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Debug\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
 
 !ENDIF 
 

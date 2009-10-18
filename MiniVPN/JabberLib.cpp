@@ -734,7 +734,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 				if (us->m_MyRandom && us->m_HisRandom)
 				{
-					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, MYRESOURCE, us->m_MyRandom, out, WIPPIENRESOURCE, us->m_HisRandom);
+					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, MYRESOURCE, us->m_MyRandom, out, us->m_Resource, us->m_HisRandom);
 				}
 				else
 				{
@@ -745,7 +745,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				char hisid[1024];
 				if (us->m_MyRandom && us->m_HisRandom)
 				{
-					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, WIPPIENRESOURCE, us->m_HisRandom, m_JID, MYRESOURCE, us->m_MyRandom);
+					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, us->m_Resource, us->m_HisRandom, m_JID, MYRESOURCE, us->m_MyRandom);
 				}
 				else
 				{
@@ -757,6 +757,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 
 
+				//OutputDebugString(us->m_MediatorHost);
 				VARIANT varhost;
 				varhost.vt = VT_BSTR;
 				varhost.bstrVal = AllocSysString(us->m_MediatorHost);

@@ -49,7 +49,7 @@ BOOL LoadConfig(void)
 			{
 				*a = 0;
 				a++;
-				strcpy(gResource, tempbuff);
+				strcpy(gResource, a);
 			}
 			strcpy(gJID, tempbuff);
 		}

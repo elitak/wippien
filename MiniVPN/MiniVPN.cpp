@@ -46,11 +46,12 @@ BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			{
 				a = strchr(tempbuff, '\r');if (a) *a = 0;
 				a = strchr(tempbuff, '\n');if (a) *a = 0;
+				a = strchr(tempbuff, '/');
 				if (a)
 				{
 					*a = 0;
 					a++;
-					strcpy(gResource, tempbuff);
+					strcpy(gResource, a);
 				}
 				strcpy(JIDbuff, tempbuff);
 			}

@@ -1,6 +1,6 @@
 # Thai translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Injected
-# Version: 36
+# Version: 41
 sin errores  ##  No error.
 ระบบไม่สามรถหาไฟล์ที่ระบุ  ##  The system cannot find the file specified.
 ระบบไม่สามารถหาพาธที่ระบุ  ##  The system cannot find the path specified.
@@ -106,7 +106,7 @@ Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Warning  ##  Warning
+คำเตือน  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
 Away  ##  Away

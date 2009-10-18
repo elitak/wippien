@@ -1,12 +1,12 @@
 # Polish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Poliman.pl - info@poliman.pl
-# Version: 15
-Brak błędu.  ##  No error.
-System nie może znaleźć wybranego pliku.  ##  The system cannot find the file specified.
+# Version: 39
+  ##  No error.
+  ##  The system cannot find the file specified.
 System nie może znaleźć wybranej ścieżki.  ##  The system cannot find the path specified.
 System nie może znaleźć wybranego pliku/katalogu.  ##  The system cannot find the specified file/directory.
 Niezgodność typów.  ##  Type mismatch.
-Nie można utworzyć pliku/katalogu gdyż ten plik/katalog już istnieje.  ##  Cannot create a file/directory when that file/directory already exists.
+Nie można utworzyć pliku/katalogu jeśli ten plik/katalog istnieje.  ##  Cannot create a file/directory when that file/directory already exists.
 System nie może zapisać na wybrane urządzenie.  ##  The system cannot write to the specified device.
 Błędna wartość właściwości.  ##  Invalid Property Value.
 Operacja została zwrócona gdyż zakończył się czas oczekiwania.  ##  This operation returned because the timeout period expired.
@@ -46,12 +46,12 @@ Nie można zmienić ustawień kanału gdy jest uruchomiony.  ##  Cannot change c
 Zbyt dużo danych na gnieździe. Spróbuj później.  ##  Too much data on the socket. Try later.
 Połączenie nie nawiązane.  ##  Connection not established.
 Nieznany typ danych.  ##  Unknown data type.
-Nie udało się stworzyć wątku gniazda.  ##  Failed to create socket thread.
-Nieznany typ kanału.  ##  Unknown channel type.
+  ##  Failed to create socket thread.
+Nieznany typ kanału  ##  Unknown channel type.
 Błędny argument wpisany we właściwościach lokalnego adresu.  ##  Invalid argument was supplied in LocalAddress property.
 Kanał nie może być utworzony po stronie lokalnej.  ##  Channel cannot be created by local side.
 Kanał nie może być zainicjowany po stronie lokalnej.  ##  Channel cannot be started by local side.
-Kanał odrzucony po stronie zdalnej.  ##  Channel refused by remote side.
+  ##  Channel refused by remote side.
 Nie obsługiwana wersja protokołu po stronie zdalnej .  ##  Unsupported remote protocol version.
 wodVPN jeszcze nie zainicjowany. Użyj najpierw Start.  ##  wodVPN not yet started. Use Start first.
 Kanał został zamknięty.  ##  Channel was closed.
@@ -131,7 +131,7 @@ Konfigurowanie urządzenia sieciowego Wippien...  ##  Configuring Wippien networ
 Urządzenie sieciowe \"%s\" o adresie %s ma konflikt z adresem Wippien %s. Jest możliwe że Wippien nie będzie mógł wysyłać ani odbierać pakietów sieciowych. Proszę odinstalować lub wyłączyć to urządzenie.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Urządzenie sieciowe wyłączone!  ##  Network adapter disabled!
 Urzadzenie sieciowe otwarte  ##  Network adapter opened
-Urządzenie sieciowe Wippien niedostępne. Kontynuować tylko z IM?  ##  Wippien network adapter not available. Proceed with IM only?
+  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien musi ustawić adres sieciowy IP urządzenia przy użyciu zewnętrznego narzędzia - potrzebuje uprawnień admistratora. Proszę uruchomić Wippien chociaż raz jako administrator aby uzyskać uprawnienia  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Potrzebne uprawnienia Administratora  ##  Admin privilege required!
 Rozłączony  ##  Disconnected
@@ -368,7 +368,7 @@ URL  ##  URL
 Opis  ##  Description
 Dodaj nowe konto  ##  Add new account
 Usuń konto  ##  Remove account
-Zarejestruj!  ##  Register!
+Zarejestruj (się)!  ##  Register!
 Twoje obecne połączenia komunikatorów  ##  Your current Instant messaging connections
 Nazwa użytkownika  ##  Username
 Otwórz nowe konto  ##  Open new account
@@ -549,6 +549,6 @@ UDP port 9913 zajęty  ##  UDP port 9913 busy
 Niezdolny do wysłuchania przychodzących chatów głosowych  ##  Unable to listen for incoming voice chat
 Czułość mikrofonu  ##  Microphone sensitivity
 Mów do mikrofonu i reguluj suwak. Gdy nie mówisz wskaźnik nie powinie się poruszać , a podczas głośnego mówienia powinien osiągać maksymalne wartości .  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-Rozmowy głosowe nie wyglądają na skonfigurowane. Musisz ostawić parametry rozmów głosowych przed pierwszym użyciem .  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+Rozmowy głosowe prawdopodobnie nie zostały skonfigurowane. Musisz ustawić parametry rozmów głosowych przed pierwszym użyciem .  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
   ##  has enabled
   ##  has disabled

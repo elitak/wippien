@@ -1,6 +1,6 @@
 # Czech translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ch Proios
-# Version: 71
+# Version: 138
 Zadna chyba.  ##  No error.
 System nemuze najit uvedeny soubor.  ##  The system cannot find the file specified.
 System nemuze najit uvedenou cestu.  ##  The system cannot find the path specified.
@@ -15,8 +15,8 @@ System level interrupt interrupted socket operation.  ##  System level interrupt
 An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Byl poskytnut nesprávný parametr  ##  An invalid argument was supplied.
+Poskytnutá IP adresa není správná, nebo hostitel neexistuje  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 Tato adresa je již využívána.  ##  The specified address is already in use.
 Tato adresa není dostupná.  ##  The specified address is not available.
@@ -65,10 +65,10 @@ Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
 soubor nenalezen  ##  File not found.
 chyba zapsání souboru  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
+Nelze otevřít síťový adaptér  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
+Nespecifikovaná chyba!  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
@@ -76,22 +76,22 @@ Cannot change property at this time. Use Disconnect first.  ##  Cannot change pr
 Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
+Nesprávný XML paket  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+Soubor nenalezen  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Failed to import photo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
+Kontakt nebyl nalezen  ##  Contact not found.
+Přenos souborů selhal  ##  File transfer failed.
+Nelze zapsat do souboru  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
 Transfer aborted.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
@@ -143,7 +143,7 @@ Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 << VPN not established yet >>  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
-  ##  No network
+Žádná síť  ##  No network
 Exit Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
 Open settings  ##  Open settings
@@ -157,7 +157,7 @@ Open chat room  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
 Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
+Jistě ?  ##  Are you sure?
 Your password is now changed.  ##  Your password is now changed.
 Password changed  ##  Password changed
 Change account password  ##  Change account password
@@ -537,7 +537,7 @@ Following languages are found as available on local computer  ##  Following lang
 Locale used on local computer  ##  Locale used on local computer
 Currently used language  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+Nové jazykové soubory k dispozici, stáhnout ?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
 Uzivatel pise...  ##  Contact is typing...
 says  ##  says

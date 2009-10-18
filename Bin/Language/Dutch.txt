@@ -1,21 +1,21 @@
 # Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Wippien Fan
-# Version: 109
+# Version: 125
 Geen fout  ##  No error.
-  ##  The system cannot find the file specified.
+Het systeem kan het opgegeven bestand niet vinden.  ##  The system cannot find the file specified.
 Systeem kan opgegeven pad niet vinden.  ##  The system cannot find the path specified.
 Systeem kan opgegeven bestand/pad niet vinden  ##  The system cannot find the specified file/directory.
 Verkeerd type  ##  Type mismatch.
 Het systeem kan geen bestand/map maken wanneer dit bestand/deze map al bestaat.  ##  Cannot create a file/directory when that file/directory already exists.
 Het system kan niet schrijven op de opgegeven schijf.  ##  The system cannot write to the specified device.
 Onjuiste veldwaarde.  ##  Invalid Property Value.
-  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
+De gevraagde verbinding is geweigerd door de remote host.  ##  This operation returned because the timeout period expired.
+Systeem level interrupt heeft de socket interrupt onderbroken  ##  System level interrupt interrupted socket operation.
 Algemene fout voor ongeldig formaat, ongeldig formaat.  ##  Generic error for invalid format, bad format.
-  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Er is een poging gedaan om toegang te krijgen tot een socket op een manier die verboden is volgens de toeganspermissies  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Ongeldige pointer gedetecteerd door het systeem tijdens poging tot uitvoeren van een argument in een functie aanroep  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Algemene fout voor ongeldig formaat, invoer, enz.  ##  Generic error for invalid format, entry, etc.
-  ##  An invalid argument was supplied.
+Er is een ongeldig argument opgegeven  ##  An invalid argument was supplied.
 Het ip adres is niet geldig of bestaat niet.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Ongeldig slot of niet verbonden met pc op afstand.  ##  Invalid socket or not connected to remote.
 Dit adres is al in gebruik.  ##  The specified address is already in use.
@@ -23,7 +23,7 @@ Dit adres is niet beschikbaar.  ##  The specified address is not available.
 Het verbonden netwerk is niet beschikbaar.  ##  The connected network is not available.
 Het gekozen netwerk is niet beschikbaar.  ##  The connected network is not reachable.
 De verbinding met het verbonden netwerk is gereset.  ##  The connected network connection has been reset.
-De verbinding is verbroken door het netwerk.  ##  The current connection has been aborted by the network or intermediate services.
+  ##  The current connection has been aborted by the network or intermediate services.
 De huidige socket verbinding is herstart.  ##  The current socket connection has been reset.
 De huidige socket is niet verbonden.  ##  The current socket has not been connected.
 De verbinding is afgebroken.  ##  The connection has been shutdown.
@@ -46,7 +46,7 @@ Kan kanaal niet wijzingen terwijl die gestart wordt.  ##  Cannot change channel 
 Teveel verkeer op de poort. Probeer later nog eens.  ##  Too much data on the socket. Try later.
 Verbinding kon niet worden gemaakt.  ##  Connection not established.
 Onbekend bestandstype.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
+Kon geen socket thread aanmaken  ##  Failed to create socket thread.
 Onbekend kanaaltype  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Kanaal kan lokaal niet worden aangemaakt.  ##  Channel cannot be created by local side.

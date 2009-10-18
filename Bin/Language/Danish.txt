@@ -1,6 +1,6 @@
 # Danish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Darkeydence
-# Version: 67
+# Version: 79
 Ingen fejl.  ##  No error.
 Systemet kan ikke finde den specificerede fil.  ##  The system cannot find the file specified.
 Systemet kan ikke finde den specificerede sti.  ##  The system cannot find the path specified.
@@ -46,9 +46,9 @@ Cannot change channel setup while channel is started.  ##  Cannot change channel
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Forbindelse ikke etableret.  ##  Connection not established.
 Ukendt data type.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
+  ##  Failed to create socket thread.
 Unknown channel type.  ##  Unknown channel type.
-Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
+  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
   ##  Channel cannot be started by local side.
 Channel refused by remote side.  ##  Channel refused by remote side.
@@ -123,7 +123,7 @@ Initializing secure connection  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
 Connected to server  ##  Connected to server
 Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
+Sender Data til server  ##  Sending data to server
 Executing command on server  ##  Executing command on server
 Disconnecting from the server  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization
@@ -171,7 +171,7 @@ Delete history?  ##  Delete history?
 Send  ##  Send
 Send file  ##  Send file
 Details  ##  Details
-Contact information  ##  Contact information
+Kontakt information  ##  Contact information
 Ryd  ##  Clear
 Ryd historie  ##  Clear history
 Mute  ##  Mute
@@ -401,7 +401,7 @@ Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
+  ##  Timestamp messages
 Show message history  ##  Show message history
 Nickname  ##  Nickname
 First name  ##  First name
@@ -550,3 +550,5 @@ You can use your GMAIL account here.  ##  You can use your GMAIL account here.
   ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+  ##  has enabled
+  ##  has disabled

@@ -1,6 +1,6 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 66
+# Version: 69
 Sem erro.  ##  No error.
 O Sistema não conseguiu encontrar o arquivo especificado  ##  The system cannot find the file specified.
 O Sistema não conseguiu encontrar o caminho especificado  ##  The system cannot find the path specified.
@@ -21,7 +21,7 @@ Socket inválido, ou não está ligado ao remoto.  ##  Invalid socket or not con
 O endereço especificado já está em uso.  ##  The specified address is already in use.
 O endereço especificado não está disponível.  ##  The specified address is not available.
 A rede a que está ligado não está disponível.  ##  The connected network is not available.
-A rede a que está ligado não está desligada.  ##  The connected network is not reachable.
+A rede conectada não está ao alcance  ##  The connected network is not reachable.
 A rede a que está ligado foi reiniciada.  ##  The connected network connection has been reset.
 A ligação actual foi interrompida pela rede ou serviços intermédios.  ##  The current connection has been aborted by the network or intermediate services.
 A ligação de socket foi reiniciada.  ##  The current socket connection has been reset.

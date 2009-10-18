@@ -400,6 +400,7 @@ void CUser::ReInit(BOOL WithDirect)
 	m_BlinkTimerCounter = 0;
 
 	m_MyMediatorChoice = (-1);
+	m_MyMediatorOffer[0] = 0;
 	m_MTU = 0;
 	m_DetectMTU = NULL;
 //	ATLTRACE("2Set %s away to FALSE\r\n", m_JID);

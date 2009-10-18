@@ -1,6 +1,6 @@
 # Argentina translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Alejandro73
-# Version: 14
+# Version: 212
 Ningun error.  ##  No error.
 El sistema no puede encontrar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede encontrar el directorio especificado.  ##  The system cannot find the path specified.
@@ -10,61 +10,61 @@ No se pudo crear el archivo/carpeta porque ya existe.  ##  Cannot create a file/
 El sistema no puede escribir sobre el dispositovo especificado.  ##  The system cannot write to the specified device.
 Valor de propiedad invalido.  ##  Invalid Property Value.
 Esta operacion termino debido a que el tiempo de espera a terminado.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Interrupción a nivel de sistema ha interrumpido la operación de socket.  ##  System level interrupt interrupted socket operation.
+Error generico por formato invalido, formato erroneo.  ##  Generic error for invalid format, bad format.
+Un intento de acceder a socket fue denegado por sus permisos de acceso.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
-The specified address is already in use.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
-Host not found.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
-Channel already started.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
-Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
+Error generico por formato inválido, entrada inválida, etc.  ##  Generic error for invalid format, entry, etc.
+Se proveyó un argumento inválido.  ##  An invalid argument was supplied.
+La dirección IP provista no es válida o el host (anfitrión) especificado por la IP no existe.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Socket inválido o no conectado a remoto.  ##  Invalid socket or not connected to remote.
+La dirección especificada se encuentra en uso.  ##  The specified address is already in use.
+La dirección especificada no se encuentra disponible.  ##  The specified address is not available.
+La red a la que se conectó no está disponible.  ##  The connected network is not available.
+La red conectada no es alcanzable.  ##  The connected network is not reachable.
+La conexión a la red ha sido reiniciada.  ##  The connected network connection has been reset.
+La conexión actual ha sido abortada por la red o algún servicio intermedio.  ##  The current connection has been aborted by the network or intermediate services.
+La actual conexión socket ha sido reiniciada.  ##  The current socket connection has been reset.
+El socket actual no ha conectado.  ##  The current socket has not been connected.
+La conexión ha sido apagada.  ##  The connection has been shutdown.
+La conexión actual ha caducado.  ##  The current connection has timeout.
+La conexión actual ha sido rechazada por el host remoto.  ##  The requested connection has been refused by the remote host.
+El nombre de host es demasiado largo.  ##  Specified host name is too long.
+El host remoto no está disponible actualmente.  ##  Remote host is currently unavailable.
+El host remoto no puede ser alcanzado en este momento.  ##  Remote host is currently unreachable.
+El sistema remono no se encuentra preparado.  ##  Remote system is not ready.
+La versión actual del socket no es soportada por la aplicación.  ##  Current socket version not supported by application.
+Socket API no está inicializada.  ##  Socket API is not initialized.
+Socket ha sido desconectado.  ##  Socket has been disconnected.
+Host no encontrado.  ##  Host not found.
+No hay suficiente memoria disponible para completar esta operación.  ##  Not enough memory is available to complete this operation.
+Tipo de búsqueda desconocido.  ##  Unknown search type.
+Argumento desconocido para el método de búsqueda.  ##  Unknown argument for Search method.
+Ya comenzado.  ##  Already started.
+Canal ya comenzado.  ##  Channel already started.
+No puede cambiarse la configuración del canal una vez que éste ha sido comenzado.  ##  Cannot change channel setup while channel is started.
+Demasiados datos en socket. Intente más tarde.  ##  Too much data on the socket. Try later.
+La conexión no se ha establecido.  ##  Connection not established.
+Tipo de dato desconocido.  ##  Unknown data type.
+Failed to create socket thread. Fallo al crear hilo de socket.  ##  Failed to create socket thread.
+Tipo de canal desconocido.  ##  Unknown channel type.
+Argumento inválido en propiedad LocalAddress.  ##  Invalid argument was supplied in LocalAddress property.
+El canal no puede ser creado del lado local.  ##  Channel cannot be created by local side.
+El canal no puede ser inicializado por el lado local.  ##  Channel cannot be started by local side.
+Canal rechazado por el lado remoto.  ##  Channel refused by remote side.
+Versión de protocolo remoto no soportada.  ##  Unsupported remote protocol version.
+wodVPN no esta inicializado todavía. Use Comenzar primero.  ##  wodVPN not yet started. Use Start first.
+El canal fue cerrado.  ##  Channel was closed.
+Medida de MTU demasiado larga.  ##  MTU size too large.
+Medida de MTU demasiado corta.  ##  MTU size too small.
+Petición de socket inválida.  ##  Invalid socks request.
+Contraseña inválida. No concuerda con la contraseña en el punto remoto.  ##  Invalid password. Does not match remote peer's password.
+ID local no definida. Esto es requerido por el método Search.  ##  Local ID not set. It is required for Search method.
+ID remota no definida. Esto es requerido por el método Search.  ##  Remote ID not set. It is required for Search method.
+Cannot bind to specified IP address. No se puede enlazar con la dirección IP especificada.  ##  Cannot bind to specified IP address.
+Ya se está ejecutando una trasferencia de archivo.  ##  Already performing file transfer.
+Archivo no encontrado.  ##  File not found.
+Fallo al escribir archivo.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
@@ -80,20 +80,20 @@ Invalid XML packet.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
+No pudo negociarse SSL.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+Notificción desconocida.  ##  Unknown notification.
+Archivo no encontrado.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
+Fallo al importar foto.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
+Contacto no encontrado.  ##  Contact not found.
+Fallo en la transferencia de archivo.  ##  File transfer failed.
+No se puede escribir a un archivo.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
+Transferencia abortada.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
 Invalid protocol selected.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
@@ -101,36 +101,36 @@ Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name
 Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
+Fecha no definida.  ##  Date not set.
+Fallo al registrar servidor COM.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
+Tamaño de archivo inválido luego de descargar.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
 Warning  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
 Away  ##  Away
-Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
+Disponible para chatear  ##  Free for chat
+No molestar  ##  Do not disturb
 Extended away  ##  Extended away
 Invisible  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
+Desconectado del servidor  ##  Disconnected from server
+Conectando al servidor  ##  Connecting to server
+Registrando nuevo usuario  ##  Registering new user
+Inicializando conexión segura  ##  Initializing secure connection
+Enviando datos de autenticación  ##  Sending authentication data
+Conectado al servidor  ##  Connected to server
+Reciviendo datos del servidor  ##  Receiving data from server
+Enviando datos al servidor  ##  Sending data to server
+Ejecutando comandos en el servidor  ##  Executing command on server
+Desconectando al servidor  ##  Disconnecting from the server
+Pidiendo autorización  ##  Requested authorization
+Configurando adaptador de red Wippien  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
+Adaptador de red deshabilitado!  ##  Network adapter disabled!
+Adaptador de red abierto  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Admin privilege required!  ##  Admin privilege required!
@@ -373,9 +373,9 @@ Your current Instant messaging connections  ##  Your current Instant messaging c
 Username  ##  Username
 Open new account  ##  Open new account
 Authorization request  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
-&Details  ##  &Details
+Si  ##  &Yes
+No  ##  &No
+Detalles  ##  &Details
 &Apply to all  ##  &Apply to all
 &Block user(s)  ##  &Block user(s)
 Do you allow  ##  Do you allow
@@ -383,10 +383,10 @@ to add you to his contact list?  ##  to add you to his contact list?
 more requests waiting...  ##  more requests waiting...
 Add Group  ##  Add Group
 Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+Agregar Contacto  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
 Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
+Tipo de Contacto  ##  Contact Type
 Visible Name  ##  Visible Name
 Rename contact  ##  Rename contact
 Enter new contact name  ##  Enter new contact name
@@ -403,33 +403,33 @@ Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
 Show message history  ##  Show message history
-Nickname  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
+Apodo  ##  Nickname
+Nombre  ##  First name
+Apellido  ##  Last name
 Email  ##  Email
-Notes  ##  Notes
-Address  ##  Address
-Address Ext.  ##  Address Ext.
-City  ##  City
-State  ##  State
-ZIP  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+Notas  ##  Notes
+Dirección  ##  Address
+Dirección Extendida  ##  Address Ext.
+Ciudad  ##  City
+Provincia  ##  State
+Código Postal  ##  ZIP
+País  ##  Country
+Cumpleaños  ##  Birthday
+Teléfono  ##  Voice Tel.
 Fax  ##  Fax
-Title  ##  Title
-Company name  ##  Company name
-Department  ##  Department
+Título  ##  Title
+Compañía  ##  Company name
+Departamento  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
+Permitir Todo  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
+Aplicar  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+Esperar  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
@@ -439,116 +439,116 @@ Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
 Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
+Siempre visible  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
 Settings only  ##  Settings only
-Everything  ##  Everything
+Todo  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Ask me  ##  Ask me
+No autorizar nunca  ##  Never authorize
+Pregúntame  ##  Ask me
 Always authorize  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
 Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
+Activar chat de voz  ##  Enable voice chat
+Dispositivo de reproducción  ##  Playback device
 Recording device  ##  Recording device
 Check for updates when Wippien starts  ##  Check for updates when Wippien starts
 Check for updates on Connect  ##  Check for updates on Connect
 Check for updates each  ##  Check for updates each
 Update and restart application silently  ##  Update and restart application silently
 Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
+Revisar ahora  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
+Usar MTU fijo  ##  Use fixed MTU
+Auto-detectar MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-&Play  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+Reproducir  ##  &Play
+Eventos de programa  ##  Program events
+Ocualtar nuevos contactos  ##  Hide new contact
+Mostrar contactos  ##  Unhide contact
+Contactos actualmente ocultos  ##  Currently hidden contacts
+Todos los contactos listados aquí *NUNCA* aparecerán en Wippien... No existirán para ti nunca más. De esta manera puede ignorar personas completamente.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Esconder contacto  ##  Hide contact
+Entre JID del contacto  ##  Enter contact JID
+Permitir todo el tráfico  ##  Allow all traffic
+Bloquear todo el tráfico  ##  Block all traffic
 &Add  ##  &Add
 &Remove  ##  &Remove
-Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
-Name  ##  Name
-IP address  ##  IP address
-Status text  ##  Status text
-Last online time  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
-Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
-By name  ##  By name
-By JID  ##  By JID
-by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
-by IP (without IP goes top)  ##  by IP (without IP goes top)
-Sort contact list  ##  Sort contact list
-Nickname for chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
-Password (empty if none)  ##  Password (empty if none)
+Regla por defecto  ##  Default rule
+Imágen de Avatar  ##  Avatar picture
+Nombre  ##  Name
+dirección IP  ##  IP address
+Texto de estado  ##  Status text
+Último momento en línea  ##  Last online time
+Monitor de actividad  ##  Activity Monitor
+Detalles visibles  ##  Visible details
+Detalles visibles del contacto  ##  Contact's visible details
+Desordenado  ##  unsorted
+por nombre  ##  By name
+por JID  ##  By JID
+por IP (sin IP hacia el fondo)  ##  by IP (without IP goes bottom)
+por IP (sin IP hacia arriba)  ##  by IP (without IP goes top)
+Ordenar lista de contactos  ##  Sort contact list
+Apodo para salas de chat  ##  Nickname for chatrooms
+Muestra las salas disponibles en las siguientes pasarelas  ##  Show available rooms on following gateways
+Click arriba para seleccionar la sala, o entrar a los detalles de la nueva sala debajo  ##  Click above to select room, or enter new chat room details below
+Nombre de la sala a crear o unirse  ##  Room name to create or join
+Password (empty if none) Contraseña (dejar en blanco para desactivar)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
-Block users at startup  ##  Block users at startup
-&Copy IP  ##  &Copy IP
-C&hat  ##  C&hat
-&Voice Chat  ##  &Voice Chat
-Send &File  ##  Send &File
-Send E&mail  ##  Send E&mail
-&Block  ##  &Block
-&Rename  ##  &Rename
-&Delete  ##  &Delete
-De&tails  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
-&Online  ##  &Online
-&Away  ##  &Away
-Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
-E&xtended Away  ##  E&xtended Away
-&Invisible  ##  &Invisible
-O&ffline  ##  O&ffline
-Change &Picture  ##  Change &Picture
-Change Pa&ssword  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
-Enter password  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+Unirse o crear sala  ##  Join or Create room
+Bloquear usuarios al inicio  ##  Block users at startup
+Copiar IP  ##  &Copy IP
+Chat  ##  C&hat
+Chat por voz  ##  &Voice Chat
+Enviar Archivo  ##  Send &File
+Enviar EMail  ##  Send E&mail
+Bloquear  ##  &Block
+Renombrar  ##  &Rename
+Borrar  ##  &Delete
+Detalles  ##  De&tails
+Agregar/Quitar Cuentas  ##  Add/Remove &Accounts
+Agregar/Quitar Contactos  ##  Add/Remove &Contacts
+Online  ##  &Online
+Away  ##  &Away
+Disponible para chatear  ##  Free for &Chat
+No molestar  ##  &Do not Disturb
+No disponible extendido  ##  E&xtended Away
+Invisible  ##  &Invisible
+Offline  ##  O&ffline
+Cambiar Imágen  ##  Change &Picture
+Cambiar Password  ##  Change Pa&ssword
+Tus Detalles  ##  Your &Details
+Entre Frase de Paso  ##  Enter Passphrase
+Entre contraseña  ##  Enter password
+Por favor, ingrese contraseña de protección  ##  Please enter protect password
 Languages  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
+Configuración de lenguaje usada en todos los textos de Wippien.  ##  Setup language used in all Wippien texts.
+Nuevos lenguajes pueden aparecer periodicamente.  ##  New languages may appear periodically.
+Los siguientes lenguajes fueron encontrados en la computadora.  ##  Following languages are found as available on local computer
 &Change  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
+Lenguaje usado actualmente  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+Nuevo archivo de lenguaje disponible. Descargar?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
-Contact is typing...  ##  Contact is typing...
+El contacto esta tipeando...  ##  Contact is typing...
 says  ##  says
 said  ##  said
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
-Toggle voice chat  ##  Toggle voice chat
-Local echo  ##  Local echo
-UDP port 9913 busy  ##  UDP port 9913 busy
+Puedes usar tu cuenta GMAIL aquí.  ##  You can use your GMAIL account here.
+Activar/Desactivar chat por voz.  ##  Toggle voice chat
+Eco local  ##  Local echo
+El puerto 9913 UDP está ocupado.  ##  UDP port 9913 busy
 Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
-Microphone sensitivity  ##  Microphone sensitivity
+Sensibilidad del micrófono  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-has enabled  ##  has enabled
-has disabled  ##  has disabled
+ha sido actidavo  ##  has enabled
+ha sido desactivado  ##  has disabled

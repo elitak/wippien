@@ -1,6 +1,6 @@
 # Romana translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: mo0n_sniper
-# Version: 24
+# Version: 25
 Nicio eroare.  ##  No error.
 Sistemul nu gaseste fisierul specificat  ##  The system cannot find the file specified.
 Sistemul nu gaseste calea specificata  ##  The system cannot find the path specified.
@@ -28,7 +28,7 @@ The current socket connection has been reset.  ##  The current socket connection
 The current socket has not been connected.  ##  The current socket has not been connected.
 Conexiunea a fost oprita.  ##  The connection has been shutdown.
 The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
+Conexiunea ceruta a fost refuzata de gazda  ##  The requested connection has been refused by the remote host.
 Specified host name is too long.  ##  Specified host name is too long.
 Remote host is currently unavailable.  ##  Remote host is currently unavailable.
 Remote host is currently unreachable.  ##  Remote host is currently unreachable.

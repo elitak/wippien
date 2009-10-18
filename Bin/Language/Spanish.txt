@@ -1,10 +1,10 @@
 # Spanish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: tdknela@gmail.com
-# Version: 41
+# Version: 70
 Sin Errores.  ##  No error.
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
-El sistema no puede hallar el archivo/directorio especificado.  ##  The system cannot find the specified file/directory.
+El sistema no puede encontrar el archivo/carpeta especificado  ##  The system cannot find the specified file/directory.
 Formato incorrecto.  ##  Type mismatch.
 No se ha podido crear un archivo/directorio porque ya existe.  ##  Cannot create a file/directory when that file/directory already exists.
 No se ha podido escribir sobre el dispositivo especificado.  ##  The system cannot write to the specified device.
@@ -41,7 +41,7 @@ Memoria insuficiente para completar esta operación.  ##  Not enough memory is a
 Modo de búsqueda desconocido.  ##  Unknown search type.
 Parámetro de modo de busqueda desconocido.  ##  Unknown argument for Search method.
 Ya iniciado.  ##  Already started.
-Canal ya iniciado.  ##  Channel already started.
+Canal ya iniciado  ##  Channel already started.
 Imposible cambiar de canal mientras el canal esté iniciado.  ##  Cannot change channel setup while channel is started.
 Zócalo saturado. Inténtelo más tarde.  ##  Too much data on the socket. Try later.
 Conexión no establecida.  ##  Connection not established.
@@ -127,7 +127,7 @@ Enviando datos al servidor  ##  Sending data to server
 Ejecutando comandos en el servidor  ##  Executing command on server
 Desconectándose del servidor  ##  Disconnecting from the server
 Autorización requerida  ##  Requested authorization
-Configurando el adaptador de red de Wippien...  ##  Configuring Wippien network adapter...
+Configurando adaptador de red Wippien  ##  Configuring Wippien network adapter...
 El adaptador \"%s\" con la dirección %s se encuentra en conflicto con el del Wippien %s. Puede que entonces Wippien no sea capaz de enviar y recibir paquetes. Por favor desinstala o deshabilita ese adaptador.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 ˇAdaptador de red deshabilitado!  ##  Network adapter disabled!
 Adaptador de red inciado  ##  Network adapter opened
@@ -226,7 +226,7 @@ Nombre de Anfitrión (Hostname)  ##  Hostname
 Permanente  ##  Permanent
 Temporal  ##  Temporary
 Introduzca todas sus cuentas aquí.  ##  Enter all your accounts here.
-Puede ańadir cualquier cuenta soportada por el servidor Jabber (generalmente ICQ, MSN, etc...)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Puedes añadir cualquier cuenta que soporte el servidor Jabber (normalmente ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 żEstá seguro de que quiere eliminar la cuenta '%s'?  ##  Are you sure you want to delete account '%s'?
 żEliminar la cuenta registrada?  ##  Delete registered account?
 Cuentas  ##  Accounts
@@ -359,7 +359,7 @@ Desconectar el adaptador al salir  ##  Disconnect adapter on exit
 Puerto UDP para los paquetes entrantes y salientes (0 para auto)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
 Dirección IP para el adaptador de red de Wippien  ##  IP address for Wippien network adapter
 Ignorar. La IP será configurada fuera de este programa.  ##  Ignore. IP will be set outside of this program.
-Obtener IP de la base de datos del proveedor, cuya URL es:  ##  Obtained from IP provider database, on URL
+IP recuperado desde la base de datos (de la dirección web)  ##  Obtained from IP provider database, on URL
 Dirección estática:  ##  Use following static address
 Dirección IP  ##  IP address
 Másc.Subred  ##  Netmask
@@ -408,7 +408,7 @@ Nombre  ##  First name
 Apellidos  ##  Last name
 Email  ##  Email
 Notas  ##  Notes
-Dirección  ##  Address
+Address  ##  Address
 Dirección+  ##  Address Ext.
 Ciudad  ##  City
 Provincia  ##  State
@@ -505,7 +505,7 @@ Contraseńa (opcional)  ##  Password (empty if none)
 Puerta de enlace  ##  Gateway
 Crear/Entrar en una sala  ##  Join or Create room
 Bloquear usuarios al inicio  ##  Block users at startup
-&Copiar IP  ##  &Copy IP
+Copiar IP  ##  &Copy IP
 C&harlar  ##  C&hat
 Charlar por &Voz  ##  &Voice Chat
 Enviar &Archivo  ##  Send &File

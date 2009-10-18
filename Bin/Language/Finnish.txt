@@ -1,6 +1,6 @@
 # Finnish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Antti
-# Version: 351
+# Version: 353
 Ei virhettä.  ##  No error.
 Tiedostoa ei löydy.  ##  The system cannot find the file specified.
 Hakemistoa ei löydy.  ##  The system cannot find the path specified.

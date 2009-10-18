@@ -589,13 +589,14 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 		}
 		if (strlen(buff2))
 		{
+			srand(time(NULL));
 			sprintf(buff, "%s%d@wippien.com", buff2, rand()%99);
 			j = buff;
 		}
 		else
 			j = "newuser@wippien.com";
 	}
-	::SetDlgItemTextW(m_hWnd, IDC_EDIT_JID, _Settings.m_JID);
+	SetDlgItemTextW(m_hWnd, IDC_EDIT_JID, j);
 	::SetDlgItemTextW(m_hWnd, IDC_EDIT2_JID, _Settings.m_Password);
 	
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Home"));
@@ -783,13 +784,25 @@ LRESULT CSettingsDlg::CSettingsJID::OnBtnTest(WORD wNotifyCode, WORD wID, HWND h
 {
 	CComBSTR2 bufj, bufp;
 	bufj.FromTextBox(GetDlgItem(IDC_EDIT_JID));
+	char *at = bufj.ToString();
 	bufp.FromTextBox(GetDlgItem(IDC_EDIT2_JID));
 	char bufserv[1024], bufport[1024];
-//	::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, sizeof(bufjid), (LPARAM)bufjid);
-//	::SendMessage(GetDlgItem(IDC_EDIT2_JID), WM_GETTEXT, sizeof(bufpass), (LPARAM)bufpass);
 	
+	if (!strchr(at, '@'))
+	{		
+		bufj += "@wippien.com";
+		::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_SETTEXT, 0, (LPARAM)bufj.ToString());
+	}
 	::SendMessage(GetDlgItem(IDC_EDIT_JID3), WM_GETTEXT, sizeof(bufserv), (LPARAM)bufserv);
 	::SendMessage(GetDlgItem(IDC_EDIT_JID4), WM_GETTEXT, sizeof(bufport), (LPARAM)bufport);
+
+	if (!*bufserv)
+	{
+		strcpy(bufserv, "wippien.com");
+		::SendMessage(GetDlgItem(IDC_EDIT_JID3), WM_SETTEXT, 0, (LPARAM)bufserv);
+	}	
+
+	
 	int port = atol(bufport);
 	if (!port)
 		port = 5222;

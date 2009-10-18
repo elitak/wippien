@@ -11,6 +11,7 @@ HINSTANCE hMainInstance = NULL;
 HWND hMainWnd = NULL;
 CEthernet *_Ethernet = NULL;
 CJabberLib *_Jabber = NULL;
+char gResource[1024] = {0};
 
 #ifndef _WIPPIENSERVICE
 void SetStatus(char *Text)
@@ -45,6 +46,12 @@ BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			{
 				a = strchr(tempbuff, '\r');if (a) *a = 0;
 				a = strchr(tempbuff, '\n');if (a) *a = 0;
+				if (a)
+				{
+					*a = 0;
+					a++;
+					strcpy(gResource, tempbuff);
+				}
 				strcpy(JIDbuff, tempbuff);
 			}
 

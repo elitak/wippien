@@ -15,7 +15,11 @@ extern char gJID[1024], gPassword[1024];
 #endif
 
 #define WIPPIENRESOURCE			"WippienIM3"
+#ifdef _WIPPIENSERVICE
+#define MYRESOURCE				"WippienService"
+#else
 #define MYRESOURCE				"MiniVPN"
+#endif
 #define WIPPIENINITREQUEST		"WippienInitRequest"
 #define WIPPIENINITRESPONSE		"WippienInitResponse"
 #define WIPPIENCONNECT			"WippienConnect"
@@ -26,7 +30,9 @@ static const char Base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwx
 static const char Pad64 = '=';
 
 #ifdef _WIPPIENSERVICE
-extern char gMediator[1024];
+extern char gMediator[1024], gResource[1024];
+#else
+extern char gResource[1024];
 #endif
 
 #define GET_32BIT(cp) (((u_long)(u_char)(cp)[0] << 24) | \
@@ -792,7 +798,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 				if (us->m_MyRandom && us->m_HisRandom)
 				{
-					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, MYRESOURCE, us->m_MyRandom, out, us->m_Resource, us->m_HisRandom);
+					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, gResource, us->m_MyRandom, out, us->m_Resource, us->m_HisRandom);
 				}
 				else
 				{
@@ -803,7 +809,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				char hisid[1024];
 				if (us->m_MyRandom && us->m_HisRandom)
 				{
-					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, us->m_Resource, us->m_HisRandom, m_JID, MYRESOURCE, us->m_MyRandom);
+					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, us->m_Resource, us->m_HisRandom, m_JID, gResource, us->m_MyRandom);
 				}
 				else
 				{
@@ -992,7 +998,9 @@ void CJabberLib::Connect(char *JID, char *Password)
 	WODXMPP::XMPP_SetCombineResources(m_Handle, FALSE);
 
 
-	sprintf(buff, "%s/%s", JID, MYRESOURCE);
+	if (!*gResource)
+		strcpy(gResource, MYRESOURCE);
+	sprintf(buff, "%s/%s", JID, gResource);
 	err = WODXMPP::XMPP_SetLogin(m_Handle, buff);
 
 	strcpy(m_JID, JID);

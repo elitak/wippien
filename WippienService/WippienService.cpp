@@ -18,7 +18,7 @@ HINSTANCE gInstance = 0;
 CEthernet *_Ethernet = NULL;
 CJabberLib *_Jabber = NULL;
 #ifdef _WIPPIENSERVICE
-char gMediator[1024] = {0}, gJID[1024] = {0}, gPassword[1024] = {0};
+char gMediator[1024] = {0}, gJID[1024] = {0}, gPassword[1024] = {0}, gResource[1024]={0};
 #endif
 
 #include <stdio.h>
@@ -44,6 +44,13 @@ BOOL LoadConfig(void)
 		{
 			a = strchr(tempbuff, '\r');if (a) *a = 0;
 			a = strchr(tempbuff, '\n');if (a) *a = 0;
+			a = strchr(tempbuff, '/');
+			if (a)
+			{
+				*a = 0;
+				a++;
+				strcpy(gResource, tempbuff);
+			}
 			strcpy(gJID, tempbuff);
 		}
 

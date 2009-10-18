@@ -16,7 +16,8 @@
 #define USERDEVICEDIR     "\\DosDevices\\Global\\"
 #define WIPPSUFFIX        ".wip"
 #define WIPP_COMPONENT_ID "wip0204"
-#define WIPP_COMPONENT_ID_OLDER "wip0203"
+#define TAP_COMPONENT_ID "tap0901"
+#define TAPSUFFIX         ".tap"
 
 //=================
 // Registry keys
@@ -40,6 +41,27 @@
 #define WIPP_IOCTL_GET_INFO              WIPP_CONTROL_CODE (16, METHOD_BUFFERED)
 #define WIPP_IOCTL_GET_LOG_LINE          WIPP_CONTROL_CODE (17, METHOD_BUFFERED)
 #define WIPP_IOCTL_SET_MEDIA_STATUS      WIPP_CONTROL_CODE (18, METHOD_BUFFERED)
+
+#define TAP_CONTROL_CODE(request,method) \
+CTL_CODE (FILE_DEVICE_UNKNOWN, request, method, FILE_ANY_ACCESS)
+
+// Present in 8.1
+
+#define TAP_IOCTL_GET_MAC               TAP_CONTROL_CODE (1, METHOD_BUFFERED)
+#define TAP_IOCTL_GET_VERSION           TAP_CONTROL_CODE (2, METHOD_BUFFERED)
+#define TAP_IOCTL_GET_MTU               TAP_CONTROL_CODE (3, METHOD_BUFFERED)
+#define TAP_IOCTL_GET_INFO              TAP_CONTROL_CODE (4, METHOD_BUFFERED)
+#define TAP_IOCTL_CONFIG_POINT_TO_POINT TAP_CONTROL_CODE (5, METHOD_BUFFERED)
+#define TAP_IOCTL_SET_MEDIA_STATUS      TAP_CONTROL_CODE (6, METHOD_BUFFERED)
+#define TAP_IOCTL_CONFIG_DHCP_MASQ      TAP_CONTROL_CODE (7, METHOD_BUFFERED)
+#define TAP_IOCTL_GET_LOG_LINE          TAP_CONTROL_CODE (8, METHOD_BUFFERED)
+#define TAP_IOCTL_CONFIG_DHCP_SET_OPT   TAP_CONTROL_CODE (9, METHOD_BUFFERED)
+
+// Added in 8.2
+
+/* obsoletes TAP_IOCTL_CONFIG_POINT_TO_POINT */
+#define TAP_IOCTL_CONFIG_TUN            TAP_CONTROL_CODE (10, METHOD_BUFFERED)
+
 
 /* Define to the version of this package. */
 #define VERSION "1.2.4"
@@ -87,13 +109,14 @@ public:
 	virtual ~CEthernet();
 	MACADDR m_MAC;
 
-	BOOL Init(void);
 	BOOL Start(unsigned long IP, unsigned long Netmask);
 	unsigned long m_MyIP, m_MyNetmask;
 	void GetMyIP(void);
 	char m_Guid[1024], m_RegistryKey[1024];
 
-	BOOL GetAdapterGuid(void);
+	BOOL InitAdapter(void);
+	BOOL InitOpenVPNAdapter(void);
+	BOOL GetAdapterGuid(char *ID);
 	void GetMac(MACADDR src, char dst[18]);
 	void InjectPacket(char *packet, int len);
 	static unsigned short IPHDRChecksumCalc(unsigned short *buff, int nwords);

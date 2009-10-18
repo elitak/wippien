@@ -12,12 +12,13 @@ HWND hMainWnd = NULL;
 CEthernet *_Ethernet = NULL;
 CJabberLib *_Jabber = NULL;
 
+#ifndef _WIPPIENSERVICE
 void SetStatus(char *Text)
 {
 	if (IsWindow(hMainWnd))
 		SetDlgItemText(hMainWnd, IDC_STATUS, Text);
 }
-
+#endif
 
 BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
@@ -87,22 +88,28 @@ BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	  SendMessage(hdwnd, WM_SETICON, FALSE, (LPARAM)icon);
 //      SetClassLong(hdwnd, GCL_HICON, (LONG)LoadIcon(NULL, MAKEINTRESOURCE(IDI_APPICON)));
 
+#ifndef _WIPPIENSERVICE
 		SetDlgItemText(hdwnd, IDC_JID, JIDbuff);
 		SetDlgItemText(hdwnd, IDC_PASSWORD, passbuff);
 		SetDlgItemText(hdwnd, IDC_MEDIATOR, mediatorbuff);
-
+#else
+		strcpy(gJID, JIDbuff);
+		strcpy(gPassword, passbuff);
+		strcpy(gMediator, mediatorbuff);
+#endif		
 
 	  _Jabber = new CJabberLib();
 		_Ethernet = new CEthernet();
 
 
-	if (!_Ethernet->Init())
+	if (!_Ethernet->InitAdapter() && !_Ethernet->InitOpenVPNAdapter())
 	{
 		MessageBox(NULL, "Failed to open Network adapter", "Network error", MB_OK);
 	}
 	else
 		_Ethernet->GetMyIP();
 
+#ifndef _WIPPIENSERVICE
 	char buff[1024];
 	struct  in_addr sa1, sa2;
 	sa1.S_un.S_addr = _Ethernet->m_MyIP;
@@ -110,7 +117,7 @@ BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	
 	sprintf(buff, "Network IP address %s", inet_ntoa(sa1));
 	SetStatus(buff);
-
+#endif
 
       return TRUE;
     }

@@ -34,7 +34,9 @@ public:
 	void Disconnect(void);
 	void Connect(char *JID, char *Password);
 
+#ifndef _WIPPIENSERVICE
 	LVITEM *GetItemByJID(char *JID);
+#endif
 	CUser *GetUserByJID(char *JID);
 	BOOL IsRemoteWippienUser(void *Contact);
 	int PutBignum(BIGNUM *value, char *data);
@@ -42,7 +44,9 @@ public:
 
 	WODXMPP::XMPPEventsStruct m_Events;
 	void *m_Handle;
+#ifndef _WIPPIENSERVICE
 	LVITEM m_ContactLvItem;
+#endif
 	RSA *m_RSA;
 
 	char m_JID[256];

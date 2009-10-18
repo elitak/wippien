@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{A3084FF8-63BF-40A1-8AE0-AD792B0078D9} = s 'WippienService'
+		'WippienService.EXE'
+		{
+			val AppID = s {A3084FF8-63BF-40A1-8AE0-AD792B0078D9}
+		}
+	}
+}

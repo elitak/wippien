@@ -9,7 +9,10 @@ unsigned char MAC_BROADCAST[6] = {255,255,255,255,255,255};
 char *hex="0123456789abcdef";
 extern CEthernet *_Ethernet;
 extern USERLIST m_Users;
+
+#ifndef _WIPPIENSERVICE
 void SetStatus(char *Text);
+#endif
 
 CEthernet::CEthernet()
 {
@@ -77,9 +80,10 @@ void CEthernet::GetMac(MACADDR src, char dst[18])
 	
 }
 
-BOOL CEthernet::Init(void)
+
+BOOL CEthernet::InitAdapter(void)
 {
-	if (!GetAdapterGuid())
+	if (!GetAdapterGuid(WIPP_COMPONENT_ID))
 		return FALSE;
 
 	char bname[1024];
@@ -99,17 +103,17 @@ BOOL CEthernet::Init(void)
 	m_Enabled = TRUE;
 
 	unsigned long len;
-	unsigned long AdapterVersion[3];
-    if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_GET_VERSION, &AdapterVersion, sizeof(AdapterVersion), &AdapterVersion, sizeof(AdapterVersion), &len, NULL))
+	unsigned long m_AdapterVersion[3];
+    if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_GET_VERSION, &m_AdapterVersion, sizeof(m_AdapterVersion), &m_AdapterVersion, sizeof(m_AdapterVersion), &len, NULL))
 	{
-		if (AdapterVersion[0] > 2 || AdapterVersion[1] >= 4)
+		if (m_AdapterVersion[0] > 2 || m_AdapterVersion[1] >= 4)
 		{
 			// in 2.4 we have add status
 			unsigned long mediaon = TRUE;
 			len = sizeof(mediaon);
 			if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
 			{
-				//				MessageBeep(-1);
+//				MessageBeep(-1);
 			}
 		}
 
@@ -129,28 +133,6 @@ BOOL CEthernet::Init(void)
 					RegCloseKey(key1);
 				}
 			}
-
-			// get MTU
-
-//			if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_GET_MTU, &m_MTU, sizeof(m_MTU), &m_MTU, sizeof(MACADDR), &len, NULL))
-//			{
-//				// cry...
-//			}	
-
-			
-/*			// get interface index
-			unsigned long index = 0;
-			wchar_t wbuf[256];
-			_snwprintf(wbuf, sizeof(wbuf), L"%S", bname);
-			wbuf[sizeof(wbuf) - 1] = 0;
-			if (GetAdapterIndex(wbuf, &index) == NO_ERROR) // todo ne radi
-			{
-				if (FlushIpNetTable(index) == NO_ERROR)
-				{
-					MessageBeep(-1);
-				}
-			}	
-*/				
 			
 			// init events
 			ReadHandle = CreateEvent(NULL, FALSE, FALSE, NULL);
@@ -171,8 +153,99 @@ BOOL CEthernet::Init(void)
 //			hProcThread = CreateThread(NULL, 0, ProcThreadFunc, this, 0, &ProcThreadId);
 
 			// that's it...
-			m_Available = TRUE;
+			m_Available = TRUE;	
+			return TRUE;
+		}
 
+	}
+
+	
+	// there was an error
+	// close network adapter
+	CloseHandle(m_AdapterHandle);
+	m_AdapterHandle = INVALID_HANDLE_VALUE;
+	return FALSE;
+}
+
+BOOL CEthernet::InitOpenVPNAdapter(void)
+{
+	if (!GetAdapterGuid(TAP_COMPONENT_ID))
+		return FALSE;
+
+//	m_AdapterName = TAP_COMPONENT_ID;
+
+	char bname[1024];
+	sprintf(bname, "%s%s%s", USERMODEDEVICEDIR, m_Guid, TAPSUFFIX);
+	m_AdapterHandle  = CreateFile(bname,
+		GENERIC_READ | GENERIC_WRITE,
+		0, /* was: FILE_SHARE_READ */
+		0,
+		OPEN_EXISTING,
+		FILE_ATTRIBUTE_SYSTEM | FILE_FLAG_OVERLAPPED,
+		0
+		);
+	
+	if (m_AdapterHandle == INVALID_HANDLE_VALUE)
+		return FALSE;
+
+	m_Enabled = TRUE;
+
+	unsigned long len;
+	unsigned long m_AdapterVersion[3];
+
+    if (DeviceIoControl(m_AdapterHandle, TAP_IOCTL_GET_VERSION, &m_AdapterVersion, sizeof(m_AdapterVersion), &m_AdapterVersion, sizeof(m_AdapterVersion), &len, NULL))
+	{
+		if (m_AdapterVersion[0] >= 9 || m_AdapterVersion[1] >= 1)
+		{
+			// in 2.4 we have add status
+			unsigned long mediaon = TRUE;
+			len = sizeof(mediaon);
+			if (DeviceIoControl(m_AdapterHandle, TAP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
+			{
+				//				MessageBeep(-1);
+			}
+		}
+
+		// get our MAC address
+		if (DeviceIoControl(m_AdapterHandle, TAP_IOCTL_GET_MAC, &m_MAC, sizeof(MACADDR), &m_MAC, sizeof(MACADDR), &len, NULL))
+		{
+
+			if (m_RegistryKey[0])
+			{
+				HKEY key1;
+				if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, m_RegistryKey, 0, KEY_WRITE, &key1) == ERROR_SUCCESS)
+				{
+					char bf[18];
+					memset(bf, 0, sizeof(bf));
+					GetMac(m_MAC, bf);
+					RegSetValueEx(key1, "MAC", NULL, REG_SZ, (unsigned char *)bf, 18);
+					RegCloseKey(key1);
+				}
+			}
+
+			// get MTU
+
+			
+			// init events
+			ReadHandle = CreateEvent(NULL, FALSE, FALSE, NULL);
+			WriteHandle = CreateEvent(NULL, FALSE, FALSE, NULL);
+			DieHandle = CreateEvent(NULL, TRUE, FALSE, NULL); // manual reset, so both waits can catch it
+			
+			
+			m_Alive = TRUE;
+
+			// ok, let's create three threads
+//			DWORD ReadThreadId; 
+			hReadThread = CreateThread(NULL, 0, ReadThreadFunc, this, 0, &ReadThreadId);
+			
+//			DWORD WriteThreadId; 
+			hWriteThread = CreateThread(NULL, 0, WriteThreadFunc, this, 0, &WriteThreadId);
+			
+//			DWORD ProcThreadId; 
+//			hProcThread = CreateThread(NULL, 0, ProcThreadFunc, this, 0, &ProcThreadId);
+
+			// that's it...
+			m_Available = TRUE;			
 			return TRUE;
 		}
 
@@ -340,7 +413,7 @@ void CEthernet::GetMyIP(void)
 	}
 }
 
-BOOL CEthernet::GetAdapterGuid(void)
+BOOL CEthernet::GetAdapterGuid(char *ID)
 {
 	DWORD status, len;
 	HKEY adapter_key;
@@ -368,7 +441,7 @@ BOOL CEthernet::GetAdapterGuid(void)
 					status = RegQueryValueEx(key, "ComponentId", NULL, &type, (unsigned char *)bf3, &len);
 					if (status == ERROR_SUCCESS)
 					{
-						if (!strcmp(bf3, WIPP_COMPONENT_ID))
+						if (!strcmp(bf3, ID))
 						{
 							// this is ours
 							len = sizeof(bf3);
@@ -550,8 +623,9 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 	// let's see if we can run it up again
 	while (eth->m_Alive && !eth->m_Enabled)
 	{
-		Sleep(500);
-		eth->Init();
+//		Sleep(500);
+//		eth->Init();
+		::PostQuitMessage(-1);
 	}
 	return 0;
 }
@@ -679,11 +753,12 @@ DWORD WINAPI CEthernet::ReadThreadFunc(LPVOID lpParam)
 							{
 								if (GetLastError() == ERROR_OPERATION_ABORTED)
 								{
+#ifndef _WIPPIENSERVICE
 									char buff[16384];
 									sprintf(buff, "Network adapter disabled!");
 									SetStatus(buff);
 									MessageBeep(-1);
-
+#endif
 									eth->m_Enabled = FALSE;
 								}
 							}

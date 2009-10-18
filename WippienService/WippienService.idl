@@ -1,0 +1,20 @@
+// WippienService.idl : IDL source for WippienService.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WippienService.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(A058E5FB-AA3F-4A8A-898C-A78E441711BD),
+	version(1.0),
+	helpstring("WippienService 1.0 Type Library")
+]
+library WIPPIENSERVICELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+};

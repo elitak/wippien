@@ -7,7 +7,10 @@
 // but if global it's safer when accessed in Ethernet class
 USERLIST m_Users;
 extern CEthernet *_Ethernet;
+
+#ifndef _WIPPIENSERVICE
 void SetStatus(char *Text);
+#endif
 
 #define WIPPIENRESOURCE			"WippienIM3"
 #define MYRESOURCE				"MiniVPN"
@@ -20,6 +23,9 @@ void SetStatus(char *Text);
 static const char Base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 static const char Pad64 = '=';
 
+#ifdef _WIPPIENSERVICE
+extern char gMediator[1024];
+#endif
 
 #define GET_32BIT(cp) (((u_long)(u_char)(cp)[0] << 24) | \
 	((u_long)(u_char)(cp)[1] << 16) | \
@@ -137,6 +143,7 @@ CJabberLib::CJabberLib()
 	m_JID[0] = 0;
 
 
+#ifndef _WIPPIENSERVICE
 	LVCOLUMN listCol;
 	memset(&listCol, 0, sizeof(LVCOLUMN));
 	listCol.mask = LVCF_TEXT|LVCF_WIDTH|LVCF_SUBITEM;
@@ -152,8 +159,9 @@ CJabberLib::CJabberLib()
 	listCol.cx = 120;
 	listCol.pszText="Status";
 	SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST,LVM_INSERTCOLUMN,2,(LPARAM)&listCol);
-
 	memset(&m_ContactLvItem, 0, sizeof(m_ContactLvItem));
+#endif
+	
 	m_RSA = RSA_generate_key(1024,35,NULL,NULL);
 
 }
@@ -221,12 +229,13 @@ int FromHex(char *in, char *out)
 // events
 void CJabberLib::EventConnected(void *wodXMPP)
 {
+#ifndef _WIPPIENSERVICE
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
 		SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_DELETEALLITEMS, 0, 0);
 	}
-
+#endif
 	// set status to 'do not disturb'
 	WODXMPP::XMPP_SetStatus(wodXMPP, (WODXMPP::StatusEnum)/*DoNotDisturb*/4, "DND - I am not human");
 
@@ -234,13 +243,13 @@ void CJabberLib::EventConnected(void *wodXMPP)
 
 void CJabberLib::EventDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
 {
+#ifndef _WIPPIENSERVICE
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
 		char buff[1024];
 		sprintf(buff, "(XMPP) %s", ErrorText);
 		SetStatus(buff);
-
 		if (ErrorCode) // otherwise we clicked it...
 		{
 			if (ErrorCode != 30010)
@@ -250,11 +259,13 @@ void CJabberLib::EventDisconnected(void *wodXMPP, long ErrorCode, char *ErrorTex
 			}	
 		}
 	}
+#endif
 }
 
 
 void CJabberLib::EventStateChange(void *wodXMPP, WODXMPP::StatesEnum OldState)
 {
+#ifndef _WIPPIENSERVICE
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
@@ -269,10 +280,13 @@ void CJabberLib::EventStateChange(void *wodXMPP, WODXMPP::StatesEnum OldState)
 			}
 		}
 	}
+#endif
 }
 void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *ChatRoom, WODXMPP::StatusEnum NewStatus, WODXMPP::StatusEnum OldStatus)
 {
+#ifndef _WIPPIENSERVICE
 	LVITEM li1 = {0};
+#endif
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
@@ -280,6 +294,7 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 		int jidsize = sizeof(jid);
 		WODXMPP::XMPP_Contact_GetJID(Contact, jid, &jidsize);
 
+#ifndef _WIPPIENSERVICE
 		LVITEM *li = me->GetItemByJID(jid);
 		if (!li)
 		{
@@ -355,12 +370,14 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 				}
 			}
 		}
+#endif
 	}
 }
 void CJabberLib::EventContactList(void *wodXMPP)
 {
+#ifndef _WIPPIENSERVICE
 	SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_DELETEALLITEMS, 0, 0);
-
+#endif
 }
 
 void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatRoom, void  *Message)
@@ -459,6 +476,7 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 									}
 
 
+#ifndef _WIPPIENSERVICE
 									LVITEM *li = me->GetItemByJID(jid);
 									if (li)
 									{
@@ -470,7 +488,7 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 										li->mask = LVIF_TEXT;
 										SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_SETITEM, 0, (LPARAM)li);
 									}
-
+#endif
 									us->m_State = WipWaitingInitResponse;
 									SetTimer(us->m_hWnd, 1, rand()%100, NULL);
 								}
@@ -479,7 +497,9 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 						else
 						if (!strcmp(subjbuff, WIPPIENINITRESPONSE))
 						{
+#ifndef _WIPPIENSERVICE
 							GetDlgItemText(hMainWnd, IDC_MEDIATOR, us->m_MediatorHost, sizeof(us->m_MediatorHost));
+#endif
 							us->m_MediatorPort = 8000;
 
 							char hidmediatorhost[1024];
@@ -655,7 +675,11 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 			d += PutBignum(m_RSA->n, d);
 			*d++ = (char)us->m_State;
 
+#ifndef _WIPPIENSERVICE
 			GetDlgItemText(hMainWnd, IDC_MEDIATOR, mediatorbuff, sizeof(mediatorbuff));
+#else
+			strcpy(mediatorbuff, gMediator);
+#endif			
 			PUT_32BIT(d, 8+strlen(mediatorbuff));
 			d+=4;
 			PUT_32BIT(d, strlen(mediatorbuff));
@@ -685,7 +709,11 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				RSA_public_encrypt(128 - RSA_PKCS1_PADDING_SIZE, (unsigned char *)src, (unsigned char *)dst, us->m_RSA, RSA_PKCS1_PADDING);
 				dst[128] = (char)us->m_State;
 				char *d = dst+129;
+#ifndef _WIPPIENSERVICE
 				GetDlgItemText(hMainWnd, IDC_MEDIATOR, mediatorbuff, sizeof(mediatorbuff));
+#else
+				strcpy(mediatorbuff, gMediator);
+#endif				
 				PUT_32BIT(d, strlen(mediatorbuff));
 				d += 4;
 				memcpy(d, mediatorbuff, strlen(mediatorbuff));
@@ -829,6 +857,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 }
 
+#ifndef _WIPPIENSERVICE
 LVITEM *CJabberLib::GetItemByJID(char *jid)
 {
 	char jidbuff[1024], outbuff[1024];
@@ -863,7 +892,7 @@ LVITEM *CJabberLib::GetItemByJID(char *jid)
 
 	return NULL;
 }
-
+#endif
 CUser *CJabberLib::GetUserByJID(char *jid)
 {
 	char jidbuff[1024];
@@ -944,7 +973,9 @@ void CJabberLib::Connect(char *JID, char *Password)
 	char *host = strchr(JID, '@');
 	if (!host)
 	{
+#ifndef _WIPPIENSERVICE
 		SetStatus("Invalid JID");
+#endif
 	}
 	else
 	{
@@ -958,11 +989,14 @@ void CJabberLib::Connect(char *JID, char *Password)
 		}
 		if (err)
 		{
+#ifndef _WIPPIENSERVICE
 			int s = sizeof(buff);
 			WODXMPP::XMPP_GetErrorText(m_Handle, err, buff, &s);
 			SetStatus(buff);
+
 			HWND h = ::GetDlgItem(hMainWnd, IDC_DISCONNECT);
 			::PostMessage(hMainWnd, WM_COMMAND,IDC_DISCONNECT,(LPARAM)h);
+#endif
 		}
 	}
 }

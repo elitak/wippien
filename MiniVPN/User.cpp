@@ -6,7 +6,10 @@
 BOOL gClassRegistered = FALSE;
 extern CJabberLib *_Jabber;
 extern CEthernet *_Ethernet;
+
+#ifndef _WIPPIENSERVICE
 void SetStatus(char *Text);
+#endif
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -41,13 +44,21 @@ CUser::CUser()
     if(!gClassRegistered) // thread safety not important
 	{
         wndclass.lpfnWndProc = WindowProc;
+#ifndef _WIPPIENSERVICE
         wndclass.hInstance   = hMainInstance;
+#else
+		wndclass.hInstance = _Module.GetModuleInstance();
+#endif
 		wndclass.cbWndExtra  = 4;
         RegisterClass(&wndclass);
         gClassRegistered = TRUE;
     }
 	
+#ifndef _WIPPIENSERVICE
 	m_hWnd = CreateWindow(wndclass.lpszClassName,"MiniVPNWindow",WS_POPUP,0, 0, 0, 0,NULL,NULL,hMainInstance,NULL);
+#else
+	m_hWnd = CreateWindow(wndclass.lpszClassName,"MiniVPNWindow",WS_POPUP,0, 0, 0, 0,NULL,NULL,_Module.GetModuleInstance(),NULL);
+#endif
 	if(m_hWnd) SetWindowLong(m_hWnd, GWL_USERDATA, (LONG)this);
 
 	WODVPN::VPN_SetTag(m_Handle, this);
@@ -90,6 +101,7 @@ LRESULT CALLBACK CUser::WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
 // events
 long CUser::EventStateChange(void *wodVPN, WODVPN::StatesEnum OldState)
 {
+#ifndef _WIPPIENSERVICE
 	CUser *me;
 	if (!WODVPN::VPN_GetTag(wodVPN, (void **)&me))
 	{
@@ -101,7 +113,7 @@ long CUser::EventStateChange(void *wodVPN, WODVPN::StatesEnum OldState)
 		WODVPN::VPN_GetStateText(wodVPN, st, buff, &bflen);
 		SetStatus(buff);
 	}
-
+#endif
 	return 0;
 }
 
@@ -111,11 +123,14 @@ long CUser::EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
 	if (!WODVPN::VPN_GetTag(wodVPN, (void **)&me))
 	{
 		me->m_State = WipConnected;
+#ifndef _WIPPIENSERVICE
 		char buff[1024];
 		sprintf(buff, "CONNECTED to %s", me->m_JID);
 		SetStatus(buff);
+#endif
 		KillTimer(me->m_hWnd, 2);
 
+#ifndef _WIPPIENSERVICE
 		LVITEM *li = _Jabber->GetItemByJID(me->m_JID);
 		if (li)
 		{
@@ -128,6 +143,7 @@ long CUser::EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
 			li->cchTextMax = strlen(li->pszText);
 			SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_SETITEM, 0, (LPARAM)li);
 		}	
+#endif
 	}
 	return 0;
 }
@@ -138,7 +154,9 @@ long CUser::EventDisconnected(void *wodVPN, long ErrorCode, char * ErrorText)
 	if (!WODVPN::VPN_GetTag(wodVPN, (void **)&me))
 	{
 		me->m_State = WipDisconnected;
+#ifndef _WIPPIENSERVICE
 		SetStatus("Peer Disconnected");
+#endif
 		me->m_BlinkCounter = 1;
 		me->Blink();
 		KillTimer(me->m_hWnd, 2);
@@ -158,7 +176,9 @@ long CUser::EventSearchDone(void *wodVPN, char * IP, long Port, long ErrorCode, 
 		else
 		{
 			me->m_State = WipDisconnected;
+#ifndef _WIPPIENSERVICE
 			SetStatus(ErrorText);
+#endif
 		}
 	}
 	return 0;
@@ -226,6 +246,7 @@ BOOL CUser::SendNetworkPacket(char *data, int len)
 
 void CUser::Blink(void)
 {
+#ifndef _WIPPIENSERVICE
 	LVITEM *li = _Jabber->GetItemByJID(m_JID);
 	if (li && m_BlinkCounter < 20)
 	{
@@ -248,8 +269,10 @@ void CUser::Blink(void)
 		}
 	}
 	else
+#endif
 	{
 		m_BlinkCounter = 0;
 		KillTimer(m_hWnd, 2);
 	}
+
 }

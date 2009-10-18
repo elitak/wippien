@@ -10,6 +10,8 @@ extern CEthernet *_Ethernet;
 
 #ifndef _WIPPIENSERVICE
 void SetStatus(char *Text);
+#else
+extern char gJID[1024], gPassword[1024];
 #endif
 
 #define WIPPIENRESOURCE			"WippienIM3"
@@ -235,6 +237,8 @@ void CJabberLib::EventConnected(void *wodXMPP)
 	{
 		SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_DELETEALLITEMS, 0, 0);
 	}
+#else
+	_Module.LogEvent("Successfully connected to the XMPP server." );
 #endif
 	// set status to 'do not disturb'
 	WODXMPP::XMPP_SetStatus(wodXMPP, (WODXMPP::StatusEnum)/*DoNotDisturb*/4, "DND - I am not human");
@@ -243,10 +247,10 @@ void CJabberLib::EventConnected(void *wodXMPP)
 
 void CJabberLib::EventDisconnected(void *wodXMPP, long ErrorCode, char *ErrorText)
 {
-#ifndef _WIPPIENSERVICE
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
+#ifndef _WIPPIENSERVICE
 		char buff[1024];
 		sprintf(buff, "(XMPP) %s", ErrorText);
 		SetStatus(buff);
@@ -258,8 +262,12 @@ void CJabberLib::EventDisconnected(void *wodXMPP, long ErrorCode, char *ErrorTex
 				::PostMessage(hMainWnd, WM_COMMAND,IDC_CONNECT,(LPARAM)h);
 			}	
 		}
-	}
+#else
+		_Module.LogEvent("Disconnected from the XMPP server." );
+		Sleep(1000);
+		me->Connect(gJID, gPassword);
 #endif
+	}
 }
 
 
@@ -293,6 +301,26 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 		char jid[1024];
 		int jidsize = sizeof(jid);
 		WODXMPP::XMPP_Contact_GetJID(Contact, jid, &jidsize);
+
+#ifdef _WIPPIENSERVICE
+		CUser *us = me->GetUserByJID(jid);
+		if (!us)
+		{
+			CUser *user = new CUser();
+			strcpy(user->m_JID, jid);
+			/*me->*/m_Users.push_back(user);
+
+			char *j = strchr(user->m_JID, '/');
+			if (j)
+				*j =0;
+			jidsize = sizeof(sizeof(user->m_Resource));
+			WODXMPP::XMPP_Contact_GetResource(Contact, user->m_Resource, &jidsize);
+			if (me->IsRemoteWippienUser(Contact))
+			{
+				SetTimer(user->m_hWnd, 1, rand()%2000, NULL); // TIMER1 do something
+			}					
+		}
+#endif
 
 #ifndef _WIPPIENSERVICE
 		LVITEM *li = me->GetItemByJID(jid);
@@ -499,6 +527,8 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 						{
 #ifndef _WIPPIENSERVICE
 							GetDlgItemText(hMainWnd, IDC_MEDIATOR, us->m_MediatorHost, sizeof(us->m_MediatorHost));
+#else
+							strcpy(us->m_MediatorHost, gMediator);
 #endif
 							us->m_MediatorPort = 8000;
 

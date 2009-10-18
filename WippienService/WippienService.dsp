@@ -18,11 +18,7 @@ CFG=WippienService - Win32 Debug
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
 !MESSAGE "WippienService - Win32 Debug" (based on "Win32 (x86) Application")
-!MESSAGE "WippienService - Win32 Unicode Debug" (based on "Win32 (x86) Application")
-!MESSAGE "WippienService - Win32 Release MinSize" (based on "Win32 (x86) Application")
-!MESSAGE "WippienService - Win32 Release MinDependency" (based on "Win32 (x86) Application")
-!MESSAGE "WippienService - Win32 Unicode Release MinSize" (based on "Win32 (x86) Application")
-!MESSAGE "WippienService - Win32 Unicode Release MinDependency" (based on "Win32 (x86) Application")
+!MESSAGE "WippienService - Win32 Release" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -46,8 +42,8 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Yu"stdafx.h" /FD /GZ  /c
-# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "\WeOnlyDo\OpenSSL\x86\inc32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_WIPPIENSERVICE" /Yu"stdafx.h" /FD /GZ   /c
+# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "\WeOnlyDo\OpenSSL\x86\inc32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_WIPPIENSERVICE" /FR /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x41a /d "_DEBUG"
 # ADD RSC /l 0x41a /d "_DEBUG"
@@ -56,7 +52,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 version.lib shell32.lib wininet.lib comctl32.lib wsock32.lib gdi32.lib  iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Debug\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Debug\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
+# ADD LINK32 gdi32.lib user32.lib version.lib wininet.lib comctl32.lib wsock32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Debug\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Debug\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Debug\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Debug\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
 # Begin Custom Build - Performing registration
 OutDir=.\Debug
 TargetPath=.\Debug\WippienService.exe
@@ -70,63 +66,21 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "WippienService - Win32 Unicode Debug"
-
-# PROP BASE Use_MFC 1
-# PROP BASE Use_Debug_Libraries 1
-# PROP BASE Output_Dir "DebugU"
-# PROP BASE Intermediate_Dir "DebugU"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 1
-# PROP Use_Debug_Libraries 1
-# PROP Output_Dir "DebugU"
-# PROP Intermediate_Dir "DebugU"
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /GZ   /c
-# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /Yu"stdafx.h" /FD /GZ  /c
-# ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x41a /d "_DEBUG"
-# ADD RSC /l 0x41a /d "_DEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LINK32=link.exe
-# ADD BASE LINK32 /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 /nologo /entry:"wWinMainCRTStartup" /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# Begin Custom Build - Performing registration
-OutDir=.\DebugU
-TargetPath=.\DebugU\WippienService.exe
-InputPath=.\DebugU\WippienService.exe
-SOURCE="$(InputPath)"
-
-"$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	if "%OS%"=="" goto NOTNT 
-	if not "%OS%"=="Windows_NT" goto NOTNT 
-	"$(TargetPath)" /RegServer 
-	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
-	echo Server registration done! 
-	goto end 
-	:NOTNT 
-	echo Warning : Cannot register Unicode EXE on Windows 95 
-	:end 
-	
-# End Custom Build
-
-!ELSEIF  "$(CFG)" == "WippienService - Win32 Release MinSize"
+!ELSEIF  "$(CFG)" == "WippienService - Win32 Release"
 
 # PROP BASE Use_MFC 1
 # PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ReleaseMinSize"
-# PROP BASE Intermediate_Dir "ReleaseMinSize"
+# PROP BASE Output_Dir "WippienService___Win32_Release"
+# PROP BASE Intermediate_Dir "WippienService___Win32_Release"
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 1
 # PROP Use_Debug_Libraries 0
-# PROP Output_Dir "ReleaseMinSize"
-# PROP Intermediate_Dir "ReleaseMinSize"
+# PROP Output_Dir "Release"
+# PROP Intermediate_Dir "Release"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_DLL" /Yu"stdafx.h" /FD /c
-# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
+# ADD BASE CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O1 /I "\WeOnlyDo\OpenSSL\x86\inc32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "_WIPPIENSERVICE" /Yu"stdafx.h" /FD /c
 # ADD BASE RSC /l 0x41a /d "NDEBUG"
 # ADD RSC /l 0x41a /d "NDEBUG"
 BSC32=bscmake.exe
@@ -134,137 +88,17 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /machine:I386
-# ADD LINK32 /nologo /subsystem:windows /machine:I386
+# ADD LINK32 gdi32.lib user32.lib version.lib wininet.lib comctl32.lib wsock32.lib iphlpapi.lib \WeOnlyDo\wodVPN\Code\Win32LIB\Release\wodVPN.lib \WeOnlyDo\wodXMPP\Code\Win32LIB\Release\wodXMPP.lib \WeOnlyDo\wodXMPP\Code\libpng\Release\libpng.lib \WeOnlyDo\wodXMPP\Code\zlib\Release\zlib.lib ssleay32.lib libeay32.lib Secur32.lib /nologo /subsystem:windows /machine:I386 /libpath:"\WeOnlyDo\OpenSSL\x86\out32"
 # Begin Custom Build - Performing registration
-OutDir=.\ReleaseMinSize
-TargetPath=.\ReleaseMinSize\WippienService.exe
-InputPath=.\ReleaseMinSize\WippienService.exe
+OutDir=.\Release
+TargetPath=.\Release\WippienService.exe
+InputPath=.\Release\WippienService.exe
 SOURCE="$(InputPath)"
 
 "$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	"$(TargetPath)" /RegServer 
 	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
 	echo Server registration done! 
-	
-# End Custom Build
-
-!ELSEIF  "$(CFG)" == "WippienService - Win32 Release MinDependency"
-
-# PROP BASE Use_MFC 1
-# PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ReleaseMinDependency"
-# PROP BASE Intermediate_Dir "ReleaseMinDependency"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 1
-# PROP Use_Debug_Libraries 0
-# PROP Output_Dir "ReleaseMinDependency"
-# PROP Intermediate_Dir "ReleaseMinDependency"
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /Yu"stdafx.h" /FD /c
-# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x41a /d "NDEBUG"
-# ADD RSC /l 0x41a /d "NDEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LINK32=link.exe
-# ADD BASE LINK32 /nologo /subsystem:windows /machine:I386
-# ADD LINK32 /nologo /subsystem:windows /machine:I386
-# Begin Custom Build - Performing registration
-OutDir=.\ReleaseMinDependency
-TargetPath=.\ReleaseMinDependency\WippienService.exe
-InputPath=.\ReleaseMinDependency\WippienService.exe
-SOURCE="$(InputPath)"
-
-"$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	"$(TargetPath)" /RegServer 
-	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
-	echo Server registration done! 
-	
-# End Custom Build
-
-!ELSEIF  "$(CFG)" == "WippienService - Win32 Unicode Release MinSize"
-
-# PROP BASE Use_MFC 1
-# PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ReleaseUMinSize"
-# PROP BASE Intermediate_Dir "ReleaseUMinSize"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 1
-# PROP Use_Debug_Libraries 0
-# PROP Output_Dir "ReleaseUMinSize"
-# PROP Intermediate_Dir "ReleaseUMinSize"
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /D "_ATL_DLL" /Yu"stdafx.h" /FD /c
-# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x41a /d "NDEBUG"
-# ADD RSC /l 0x41a /d "NDEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LINK32=link.exe
-# ADD BASE LINK32 /nologo /subsystem:windows /machine:I386
-# ADD LINK32 /nologo /subsystem:windows /machine:I386
-# Begin Custom Build - Performing registration
-OutDir=.\ReleaseUMinSize
-TargetPath=.\ReleaseUMinSize\WippienService.exe
-InputPath=.\ReleaseUMinSize\WippienService.exe
-SOURCE="$(InputPath)"
-
-"$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	if "%OS%"=="" goto NOTNT 
-	if not "%OS%"=="Windows_NT" goto NOTNT 
-	"$(TargetPath)" /RegServer 
-	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
-	echo Server registration done! 
-	goto end 
-	:NOTNT 
-	echo Warning : Cannot register Unicode EXE on Windows 95 
-	:end 
-	
-# End Custom Build
-
-!ELSEIF  "$(CFG)" == "WippienService - Win32 Unicode Release MinDependency"
-
-# PROP BASE Use_MFC 1
-# PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ReleaseUMinDependency"
-# PROP BASE Intermediate_Dir "ReleaseUMinDependency"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 1
-# PROP Use_Debug_Libraries 0
-# PROP Output_Dir "ReleaseUMinDependency"
-# PROP Intermediate_Dir "ReleaseUMinDependency"
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /Yu"stdafx.h" /FD /c
-# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x41a /d "NDEBUG"
-# ADD RSC /l 0x41a /d "NDEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LINK32=link.exe
-# ADD BASE LINK32 /nologo /subsystem:windows /machine:I386
-# ADD LINK32 /nologo /subsystem:windows /machine:I386
-# Begin Custom Build - Performing registration
-OutDir=.\ReleaseUMinDependency
-TargetPath=.\ReleaseUMinDependency\WippienService.exe
-InputPath=.\ReleaseUMinDependency\WippienService.exe
-SOURCE="$(InputPath)"
-
-"$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	if "%OS%"=="" goto NOTNT 
-	if not "%OS%"=="Windows_NT" goto NOTNT 
-	"$(TargetPath)" /RegServer 
-	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
-	echo Server registration done! 
-	goto end 
-	:NOTNT 
-	echo Warning : Cannot register Unicode EXE on Windows 95 
-	:end 
 	
 # End Custom Build
 
@@ -273,11 +107,7 @@ SOURCE="$(InputPath)"
 # Begin Target
 
 # Name "WippienService - Win32 Debug"
-# Name "WippienService - Win32 Unicode Debug"
-# Name "WippienService - Win32 Release MinSize"
-# Name "WippienService - Win32 Release MinDependency"
-# Name "WippienService - Win32 Unicode Release MinSize"
-# Name "WippienService - Win32 Unicode Release MinDependency"
+# Name "WippienService - Win32 Release"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"

@@ -5,9 +5,9 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Sun Oct 18 16:21:36 2009
+/* at Sun Oct 18 16:54:43 2009
  */
-/* Compiler settings for D:\Wippien\Public\WippienService\WippienService.idl:
+/* Compiler settings for C:\Wippien\Public\WippienService\WippienService.idl:
     Oicf (OptLev=i2), W1, Zp8, env=Win32, ms_ext, c_ext
     error checks: allocation ref bounds_check enum stub_data 
 */

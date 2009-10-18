@@ -461,6 +461,9 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
 
 		if (_Ethernet->InitAdapter() || _Ethernet->InitOpenVPNAdapter())
 		{
+			_Module.LogEvent("Connecting to the XMPP server." );
+			
+			_Ethernet->GetMyIP();
 			_Jabber->Connect(gJID, gPassword);
 			_Module.Start();
 		}

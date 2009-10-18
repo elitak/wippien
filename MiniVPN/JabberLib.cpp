@@ -252,7 +252,7 @@ void CJabberLib::EventDisconnected(void *wodXMPP, long ErrorCode, char *ErrorTex
 	{
 #ifndef _WIPPIENSERVICE
 		char buff[1024];
-		sprintf(buff, "(XMPP) %s", ErrorText);
+		sprintf(buff, "(XMPP) %s", ErrorText); 
 		SetStatus(buff);
 		if (ErrorCode) // otherwise we clicked it...
 		{

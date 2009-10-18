@@ -326,6 +326,7 @@ inline void CServiceModule::ServiceMain(DWORD /* dwArgc */, LPTSTR* /* lpszArgv 
     m_status.dwCheckPoint = 0;
     m_status.dwWaitHint = 0;
 
+
     // When the Run function returns, the service has stopped.
     Run();
 
@@ -395,9 +396,14 @@ void CServiceModule::Run()
     if (m_bService)
         SetServiceStatus(SERVICE_RUNNING);
 
+	_Jabber->Connect(gJID, gPassword);
+
     MSG msg;
     while (GetMessage(&msg, 0, 0, 0))
+	{
+		TranslateMessage(&msg);
         DispatchMessage(&msg);
+	}
 
     _Module.RevokeClassObjects();
 
@@ -464,7 +470,6 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
 			_Module.LogEvent("Connecting to the XMPP server." );
 			
 			_Ethernet->GetMyIP();
-			_Jabber->Connect(gJID, gPassword);
 			_Module.Start();
 		}
 		else

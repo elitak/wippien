@@ -304,23 +304,24 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 	CJabberLib *me;
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
-		char jid[1024];
+		char jid[1024], res[1024];
 		int jidsize = sizeof(jid);
+		int ressize = sizeof(res);
 		WODXMPP::XMPP_Contact_GetJID(Contact, jid, &jidsize);
+		WODXMPP::XMPP_Contact_GetResource(Contact, res, &ressize);
+		char *j = strchr(jid, '/');
+		if (j)
+			*j =0;
 
 #ifdef _WIPPIENSERVICE
-		CUser *us = me->GetUserByJID(jid);
+		CUser *us = me->GetUserByJID(jid, res);
 		if (!us)
 		{
 			CUser *user = new CUser();
 			strcpy(user->m_JID, jid);
+			strcpy(user->m_Resource, res);
 			/*me->*/m_Users.push_back(user);
 
-			char *j = strchr(user->m_JID, '/');
-			if (j)
-				*j =0;
-			jidsize = sizeof(sizeof(user->m_Resource));
-			WODXMPP::XMPP_Contact_GetResource(Contact, user->m_Resource, &jidsize);
 			if (me->IsRemoteWippienUser(Contact))
 			{
 				SetTimer(user->m_hWnd, 1, rand()%2000, NULL); // TIMER1 do something
@@ -329,7 +330,7 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 #endif
 
 #ifndef _WIPPIENSERVICE
-		LVITEM *li = me->GetItemByJID(jid);
+		LVITEM *li = me->GetItemByJID(jid, res);
 		if (!li)
 		{
 			CJabberLib *me;
@@ -338,16 +339,14 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 				
 				CUser *user = new CUser();
 				strcpy(user->m_JID, jid);
+				strcpy(user->m_Resource, res);
 				/*me->*/m_Users.push_back(user);
-				char *j = strchr(user->m_JID, '/');
-				if (j)
-					*j =0;
-				jidsize = sizeof(sizeof(user->m_Resource));
-				WODXMPP::XMPP_Contact_GetResource(Contact, user->m_Resource, &jidsize);
 
 				li1.mask = LVIF_PARAM | LVIF_TEXT;
 									
 				li1.lParam = (LONG)user;
+				strcat(jid, "/");
+				strcat(jid, res);
 				li1.pszText = jid;
 				li1.cchTextMax = strlen(jid);
 									
@@ -383,7 +382,7 @@ void CJabberLib::EventContactStatusChange(void *wodXMPP, void  *Contact, void *C
 					li->iSubItem = 2;
 					SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_SETITEM, 0, (LPARAM)li);
 
-					CUser *us = me->GetUserByJID(jid);
+					CUser *us = me->GetUserByJID(jid, res);
 					if (me->IsRemoteWippienUser(Contact))
 					{
 						if (st != 0) // disconnected
@@ -426,12 +425,18 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 			{
 				if (me->IsRemoteWippienUser(Contact))
 				{
-					char jid[1024];
+					char jid[1024], res[1024];
 					int jidsize = sizeof(jid);
+					int ressize = sizeof(res);
 					WODXMPP::XMPP_Contact_GetJID(Contact, jid, &jidsize);
+					char *j = strchr(jid, '/');
+					if (j)
+						*j = 0;
+					WODXMPP::XMPP_Contact_GetResource(Contact, res, &ressize);
+					
 
 					// let's locate this user
-					CUser *us = me->GetUserByJID(jid);
+					CUser *us = me->GetUserByJID(jid, res);
 					if (!us)
 						return;
 
@@ -511,7 +516,7 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 
 
 #ifndef _WIPPIENSERVICE
-									LVITEM *li = me->GetItemByJID(jid);
+									LVITEM *li = me->GetItemByJID(jid, res);
 									if (li)
 									{
 										struct  in_addr sa1;
@@ -821,7 +826,9 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 
 
-				//OutputDebugString(us->m_MediatorHost);
+				OutputDebugString("Using ");
+				OutputDebugString(us->m_MediatorHost);
+				OutputDebugString("\r\n");
 				VARIANT varhost;
 				varhost.vt = VT_BSTR;
 				varhost.bstrVal = AllocSysString(us->m_MediatorHost);
@@ -894,10 +901,13 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 }
 
 #ifndef _WIPPIENSERVICE
-LVITEM *CJabberLib::GetItemByJID(char *jid)
+LVITEM *CJabberLib::GetItemByJID(char *jid, char *resource)
 {
 	char jidbuff[1024], outbuff[1024];
 	strcpy(jidbuff, jid);
+	strcat(jidbuff, "/");
+	strcat(jidbuff, resource);
+	//strcat(jidbuff, )
 //	char *s = strchr(jidbuff, '/');
 //	if (s) *s = 0;
 
@@ -929,19 +939,21 @@ LVITEM *CJabberLib::GetItemByJID(char *jid)
 	return NULL;
 }
 #endif
-CUser *CJabberLib::GetUserByJID(char *jid)
+CUser *CJabberLib::GetUserByJID(char *jid, char *res)
 {
 	char jidbuff[1024];
 	strcpy(jidbuff, jid);
 	char *s = strchr(jidbuff, '/');
-	if (s) *s = 0;
+	if (s) 
+		*s = 0;
 
 	// let's locate this user
 	CUser *us = NULL;
 	for (unsigned int i=0;i<m_Users.size();i++)
 	{
 		char *j = ((CUser *)m_Users[i])->m_JID;
-		if (!stricmp( j, jidbuff))
+		char *r = ((CUser *)m_Users[i])->m_Resource;
+		if (!stricmp( j, jidbuff) && !strcmp(r, res))
 		{
 			us = (CUser *)m_Users[i];
 			break;

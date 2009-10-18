@@ -29,7 +29,7 @@ CUser::CUser()
 	m_BlinkCounter = 0;
 	m_RemoteIP = 0;
 	memset(&m_MAC, 0, sizeof(m_MAC));
-	m_JID[0] = m_Resource[0];
+	m_JID[0] = m_Resource[0] = 0;
 	m_RSA = NULL;
 	for (int i = 0; i < 16; i++) m_MyKey[i] = rand();
 
@@ -131,7 +131,7 @@ long CUser::EventConnected(void *wodVPN, char * PeerID, char * IP, long Port)
 		KillTimer(me->m_hWnd, 2);
 
 #ifndef _WIPPIENSERVICE
-		LVITEM *li = _Jabber->GetItemByJID(me->m_JID);
+		LVITEM *li = _Jabber->GetItemByJID(me->m_JID, me->m_Resource);
 		if (li)
 		{
 			li->mask = LVIF_TEXT;
@@ -247,7 +247,7 @@ BOOL CUser::SendNetworkPacket(char *data, int len)
 void CUser::Blink(void)
 {
 #ifndef _WIPPIENSERVICE
-	LVITEM *li = _Jabber->GetItemByJID(m_JID);
+	LVITEM *li = _Jabber->GetItemByJID(m_JID, m_Resource);
 	if (li && m_BlinkCounter < 20)
 	{
 		m_BlinkCounter++;

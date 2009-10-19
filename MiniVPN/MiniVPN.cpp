@@ -158,6 +158,7 @@ BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			break;
 
 		case IDC_DISCONNECT:
+			_Jabber->DisconnectAllUsers();
 			_Jabber->Disconnect();
 			break;
 

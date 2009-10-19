@@ -10,6 +10,7 @@ extern CEthernet *_Ethernet;
 
 #ifndef _WIPPIENSERVICE
 void SetStatus(char *Text);
+char gStatus[1024] = {0};
 #else
 extern char gJID[1024], gPassword[1024];
 #endif
@@ -30,7 +31,7 @@ static const char Base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwx
 static const char Pad64 = '=';
 
 #ifdef _WIPPIENSERVICE
-extern char gMediator[1024], gResource[1024];
+extern char gMediator[1024], gResource[1024], gStatus[1024];
 #else
 extern char gResource[1024];
 #endif
@@ -171,7 +172,7 @@ CJabberLib::CJabberLib()
 #endif
 	
 	m_RSA = RSA_generate_key(1024,35,NULL,NULL);
-
+	m_RealResource[0] = 0;
 }
 
 CJabberLib::~CJabberLib(void)
@@ -237,17 +238,33 @@ int FromHex(char *in, char *out)
 // events
 void CJabberLib::EventConnected(void *wodXMPP)
 {
-#ifndef _WIPPIENSERVICE
-	CJabberLib *me;
-	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
+	CJabberLib *me = NULL;
+	WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me);
+	if (me)
 	{
+#ifndef _WIPPIENSERVICE
 		SendDlgItemMessage(hMainWnd, IDC_CONTACTLIST, LVM_DELETEALLITEMS, 0, 0);
-	}
 #else
-	_Module.LogEvent("Successfully connected to the XMPP server." );
+		_Module.LogEvent("Successfully connected to the XMPP server." );
 #endif
-	// set status to 'do not disturb'
-	WODXMPP::XMPP_SetStatus(wodXMPP, (WODXMPP::StatusEnum)/*DoNotDisturb*/4, "DND - I am not human");
+		// get my resource
+		char res[1024];
+		int sres = sizeof(res);
+		WODXMPP::XMPP_GetLogin(wodXMPP, res, &sres);
+		char *a = strchr(res, '/');
+		if (a)
+		{
+			a++;
+			strcpy(me->m_RealResource, a);
+		}
+		else
+			strcpy(me->m_RealResource, gResource);
+
+		// set status to 'do not disturb'
+		if (!*gStatus)
+			strcpy(gStatus, "DND - I am not human");
+		WODXMPP::XMPP_SetStatus(wodXMPP, (WODXMPP::StatusEnum)/*DoNotDisturb*/4, gStatus);
+	}
 
 }
 
@@ -541,6 +558,8 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 #else
 							strcpy(us->m_MediatorHost, gMediator);
 #endif
+							if (!*us->m_MediatorHost)
+								strcpy(us->m_MediatorHost, "mediator.wippien.com");
 							us->m_MediatorPort = 8000;
 
 							char hidmediatorhost[1024];
@@ -803,7 +822,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 
 				if (us->m_MyRandom && us->m_HisRandom)
 				{
-					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, gResource, us->m_MyRandom, out, us->m_Resource, us->m_HisRandom);
+					sprintf(myid, "%s_%s_%u_%s_%s_%u", m_JID, m_RealResource, us->m_MyRandom, out, us->m_Resource, us->m_HisRandom);
 				}
 				else
 				{
@@ -814,7 +833,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				char hisid[1024];
 				if (us->m_MyRandom && us->m_HisRandom)
 				{
-					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, us->m_Resource, us->m_HisRandom, m_JID, gResource, us->m_MyRandom);
+					sprintf(hisid, "%s_%s_%u_%s_%s_%u", out, us->m_Resource, us->m_HisRandom, m_JID, m_RealResource, us->m_MyRandom);
 				}
 				else
 				{
@@ -1048,5 +1067,13 @@ void CJabberLib::Connect(char *JID, char *Password)
 			::PostMessage(hMainWnd, WM_COMMAND,IDC_DISCONNECT,(LPARAM)h);
 #endif
 		}
+	}
+}
+void CJabberLib::DisconnectAllUsers(void)
+{
+	for (unsigned int i=0;i<m_Users.size();i++)
+	{
+		CUser *u = (CUser *)m_Users[i];
+		WODVPN::VPN_Disconnect(u->m_Handle);
 	}
 }

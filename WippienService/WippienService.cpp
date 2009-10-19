@@ -19,6 +19,7 @@ CEthernet *_Ethernet = NULL;
 CJabberLib *_Jabber = NULL;
 #ifdef _WIPPIENSERVICE
 char gMediator[1024] = {0}, gJID[1024] = {0}, gPassword[1024] = {0}, gResource[1024]={0};
+char gStatus[1024] = {0};
 #endif
 
 #include <stdio.h>
@@ -28,6 +29,9 @@ CServiceModule _Module;
 BEGIN_OBJECT_MAP(ObjectMap)
 END_OBJECT_MAP()
 
+
+BOOL flagUnregServer = FALSE, flagRegServer = FALSE, flagService = FALSE;
+BOOL flagAutoStart = SERVICE_DEMAND_START;
 
 BOOL LoadConfig(void)
 {
@@ -44,6 +48,13 @@ BOOL LoadConfig(void)
 		{
 			a = strchr(tempbuff, '\r');if (a) *a = 0;
 			a = strchr(tempbuff, '\n');if (a) *a = 0;
+			a = strchr(tempbuff, ' ');
+			if (a)
+			{
+				*a = 0;
+				a++;
+				strcpy(gStatus, a);
+			}
 			a = strchr(tempbuff, '/');
 			if (a)
 			{
@@ -217,7 +228,7 @@ inline BOOL CServiceModule::Install()
     SC_HANDLE hService = ::CreateService(
         hSCM, m_szServiceName, m_szServiceName,
         SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
-        SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,
+        flagAutoStart, SERVICE_ERROR_NORMAL,
         szFilePath, NULL, NULL, _T("RPCSS\0"), NULL, NULL);
 
     if (hService == NULL)
@@ -411,6 +422,8 @@ void CServiceModule::Run()
 		TranslateMessage(&msg);
         DispatchMessage(&msg);
 	}
+	_Jabber->DisconnectAllUsers();
+	_Jabber->Disconnect();
 
     _Module.RevokeClassObjects();
 
@@ -430,19 +443,34 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
     LPCTSTR lpszToken = FindOneOf(lpCmdLine, szTokens);
     while (lpszToken != NULL)
     {
-        if (lstrcmpi(lpszToken, _T("UnregServer"))==0)
-            return _Module.UnregisterServer();
+        if (strnicmp(lpszToken, _T("UnregServer"), 11)==0)
+			flagUnregServer = TRUE;
 
         // Register as Local Server
-        if (lstrcmpi(lpszToken, _T("RegServer"))==0)
-            return _Module.RegisterServer(TRUE, FALSE);
+        if (strnicmp(lpszToken, _T("RegServer"), 9)==0)
+            flagRegServer = TRUE;
         
         // Register as Service
-        if (lstrcmpi(lpszToken, _T("Service"))==0)
-            return _Module.RegisterServer(TRUE, TRUE);
+        if (strnicmp(lpszToken, _T("Service"), 7)==0)
+			flagService = TRUE;
         
+        // Register as Service
+        if (strnicmp(lpszToken, _T("AutoStart"), 9)==0)
+			flagAutoStart = SERVICE_AUTO_START;
+
         lpszToken = FindOneOf(lpszToken, szTokens);
     }
+
+
+	if (flagUnregServer)
+		return _Module.UnregisterServer();
+
+	if (flagRegServer)
+		return _Module.RegisterServer(TRUE, FALSE);
+        
+	if (flagService)
+		return _Module.RegisterServer(TRUE, TRUE);
+
 
     // Are we Service or Local Server
     CRegKey keyAppID;

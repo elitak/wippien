@@ -41,6 +41,7 @@ public:
 	BOOL IsRemoteWippienUser(void *Contact);
 	int PutBignum(BIGNUM *value, char *data);
 	void ExchangeWippienDetails(CUser *user, BOOL NotifyConnect);
+	void DisconnectAllUsers(void);
 
 	WODXMPP::XMPPEventsStruct m_Events;
 	void *m_Handle;
@@ -49,7 +50,7 @@ public:
 #endif
 	RSA *m_RSA;
 
-	char m_JID[256];
+	char m_JID[256], m_RealResource[1024];
 };
 
 

@@ -831,13 +831,13 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 							}
 							b1.Append("\0",1);
 							m_pBalloon->Create(m_hWnd, b1.Ptr(), textbuff.Ptr(), img, &p,	
-							CBalloonHelp::BallonOptions::BOCloseOnButtonDown | 
-							CBalloonHelp::BallonOptions::BOCloseOnButtonUp | 
-							CBalloonHelp::BallonOptions::BOCloseOnMouseMove | 
-							CBalloonHelp::BallonOptions::BOCloseOnKeyDown | 
-							CBalloonHelp::BallonOptions::BOCloseOnAppDeactivate | 
-							CBalloonHelp::BallonOptions::BODisableFadeOut | 
-							CBalloonHelp::BallonOptions::BOShowTopMost | 
+							CBalloonHelp::BOCloseOnButtonDown | 
+							CBalloonHelp::BOCloseOnButtonUp | 
+							CBalloonHelp::BOCloseOnMouseMove | 
+							CBalloonHelp::BOCloseOnKeyDown | 
+							CBalloonHelp::BOCloseOnAppDeactivate | 
+							CBalloonHelp::BODisableFadeOut | 
+							CBalloonHelp::BOShowTopMost | 
 							/*CBalloonHelp::BallonOptions::BODeleteThisOnClose, // delete pBalloon on close */
 							NULL,
 							0);
@@ -1101,15 +1101,15 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					if (_Settings.m_JabberDebugFile.Length())
 					{
 						CComBSTR2 jabfile = _Settings.m_JabberDebugFile;
-						int handle = open(jabfile.ToString(), O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+						int handle = _open(jabfile.ToString(), O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 						if (handle != (-1))
 						{
-							long len = filelength(handle);
-							close(handle);
+							long len = _filelength(handle);
+							_close(handle);
 							if (len> _Settings.m_DeleteFunctionLogMb)
-								unlink(jabfile.ToString());	
+								_unlink(jabfile.ToString());	
 
-							close(handle);
+							_close(handle);
 						}
 					}
 
@@ -1173,7 +1173,8 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					time_t now;
 					time( &now );
 					
-					for (int i=0;i<m_UserList.m_Users.size();i++)
+					int i;
+					for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 					{
 						CUser *us = (CUser *)m_UserList.m_Users[i];
 						if (us->m_Online)
@@ -1190,8 +1191,9 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 					{
 						typedef std::vector<int> ints;
 						ints intcol;
-								
-						for (int i=0;i<m_UserList.m_Users.size();i++)
+							
+						int i;
+						for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 						{
 							CUser *us = (CUser *)m_UserList.m_Users[i];
 							if (us->m_Online && !us->m_ChatRoomPtr)
@@ -1202,7 +1204,8 @@ LRESULT CMainDlg::OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 						}
 						if (!intcol.size())
 						{
-							for (int i=0;i<m_UserList.m_Users.size();i++)
+							int i;
+							for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 							{
 								CUser *us = (CUser *)m_UserList.m_Users[i];
 								if (!us->m_ChatRoomPtr)
@@ -2132,7 +2135,7 @@ LRESULT CMainDlg::OnExit(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL&
 
 	// let's loop through all the contacts and disconnect them
 	int i;
-	for (i=0;i<m_UserList.m_Users.size();i++)
+	for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 	{
 		CUser *u = (CUser *)m_UserList.m_Users[i];
 		if (u->m_RemoteWippienState != /*WippienState.*/WipWaitingInitRequest)
@@ -2698,10 +2701,10 @@ void CMainDlg::OnIncomingMessage(char *ChatRoom, char *Contact, char *Message, c
 		else
 			j1 = "";
 
-		for (int i = 0; i < m_ChatRooms.size(); i++)
+		for (int i = 0; i < (signed)m_ChatRooms.size(); i++)
 		{
 			CChatRoom *room = m_ChatRooms[i];
-			if (!stricmp(room->m_JID, ChatRoom))
+			if (!lstrcmpi(room->m_JID, ChatRoom))
 			{
 				room->PrintMsgWindow(j1, FALSE, Message, HtmlMessage);
 				return;
@@ -2759,10 +2762,10 @@ void CMainDlg::OnIncomingNotification(char *Contact, int NotID, VARIANT Data)
 			*c = 0;
 		int j = strlen(Contact);
 
-		for (int i = 0; i < m_UserList.m_Users.size(); i++)
+		for (int i = 0; i < (signed)m_UserList.m_Users.size(); i++)
 		{
 			CUser *user = m_UserList.m_Users[i];
-			if (!strnicmp(user->m_JID, Contact, j))
+			if (!_strnicmp(user->m_JID, Contact, j))
 			{
 				user->NotifyUserIsTyping(Data.bVal);
 				return;
@@ -2916,7 +2919,7 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 		if (!group)
 		{
 			::SendMessage(m_UserList.m_hWndParent, TVM_SELECTITEM, TVGN_DROPHILITE, 0);
-			for (int i = 0; i < _Settings.m_Groups.size(); i++)
+			for (int i = 0; i < (signed)_Settings.m_Groups.size(); i++)
 			{
 				CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 				if (tg->Item == Selected)
@@ -2972,7 +2975,7 @@ LRESULT CMainDlg::OnLButtonUp(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL&
 									*jd3 = 0;
 								int jd4 = strlen(jd2);
 								int x;
-								for (x=0;x<m_UserList.m_Users.size();x++)
+								for (x=0;x<(signed)m_UserList.m_Users.size();x++)
 								{
 									CUser *u = (CUser *)m_UserList.m_Users[x];
 									if (!strncmp(u->m_JID, jd2, jd4))
@@ -3206,7 +3209,8 @@ void CMainDlg::ToggleMute(void)
 	m_btnSmallMute.Invalidate();
 
 	// redraw anywhere
-	for (int i=0;i<m_UserList.m_Users.size();i++)
+	int i;
+	for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 	{
 		CUser *us = (CUser *)m_UserList.m_Users[i];
 		if (us->IsMsgWindowOpen())
@@ -3220,7 +3224,7 @@ void CMainDlg::ToggleMute(void)
 		}
 	}
 	// redraw anywhere
-	for (i=0;i<m_ChatRooms.size();i++)
+	for (i=0;i<(signed)m_ChatRooms.size();i++)
 	{
 		CChatRoom *room = (CChatRoom *)m_ChatRooms[i];
 		if (room->IsMsgWindowOpen())
@@ -3312,7 +3316,7 @@ void CMainDlg::EnableVoiceChat(CUser *user)
 
 	int i;
 	BOOL found = FALSE;
-	for (i=0;!found && i<m_UserList.m_Users.size();i++)
+	for (i=0;!found && i<(signed)m_UserList.m_Users.size();i++)
 	{
 		CUser *u = (CUser *)m_UserList.m_Users[i];
 		if (u->m_VoiceChatActive)
@@ -3349,7 +3353,7 @@ void CMainDlg::DisableVoiceChat(CUser *user)
 
 		int i;
 		BOOL found = FALSE;
-		for (i=0;!found && i<m_UserList.m_Users.size();i++)
+		for (i=0;!found && i<(signed)m_UserList.m_Users.size();i++)
 		{
 			CUser *u = (CUser *)m_UserList.m_Users[i];
 			if (u->m_VoiceChatActive)
@@ -3364,7 +3368,7 @@ void CMainDlg::DisableVoiceChat(CUser *user)
 	else
 	{
 		int i;
-		for (i=0;i<m_UserList.m_Users.size();i++)
+		for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 		{
 			CUser *u = (CUser *)m_UserList.m_Users[i];
 			u->m_VoiceChatActive = FALSE;
@@ -3394,7 +3398,8 @@ void CMainDlg::RedrawVoiceChatButton(void)
 	m_btnVoiceChat.Invalidate();
 	
 	// redraw anywhere
-	for (int i=0;i<m_UserList.m_Users.size();i++)
+	int i;
+	for (i=0;i<(signed)m_UserList.m_Users.size();i++)
 	{
 		CUser *us = (CUser *)m_UserList.m_Users[i];
 		if (us->IsMsgWindowOpen())
@@ -3405,7 +3410,7 @@ void CMainDlg::RedrawVoiceChatButton(void)
 		}
 	}
 	// redraw anywhere
-	for (i=0;i<m_ChatRooms.size();i++)
+	for (i=0;i<(signed)m_ChatRooms.size();i++)
 	{
 		CChatRoom *room = (CChatRoom *)m_ChatRooms[i];
 		if (room->IsMsgWindowOpen())
@@ -3432,20 +3437,20 @@ void DumpDebug(char *text,...)
 		va_end(marker);
 		
 
-		handle = open(file.ToString(), O_BINARY | O_WRONLY | O_CREAT, S_IREAD | S_IWRITE);
+		handle = _open(file.ToString(), O_BINARY | O_WRONLY | O_CREAT, S_IREAD | S_IWRITE);
 		if (handle != (-1))
 		{
-			fl = lseek(handle, 0, SEEK_END);
+			fl = _lseek(handle, 0, SEEK_END);
 			if (fl > _Settings.m_DeleteFunctionLogMb)
 			{
-				close(handle);
-				handle = open(file.ToString(), O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+				_close(handle);
+				handle = _open(file.ToString(), O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 				if (handle == (-1))
 					return;
 			}
 
-			write(handle, buff, strlen(buff));
-			close(handle);
+			_write(handle, buff, strlen(buff));
+			_close(handle);
 		}
 	}
 

@@ -254,7 +254,7 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 	_Settings.SaveConfig();
 
 	// loop through all users and fix MACs
-	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	for (int i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *user = (CUser *)_MainDlg.m_UserList.m_Users[i];
 		if (user->m_HisVirtualIP && !memcmp(user->m_MAC, "\0\0\0\0\0\0", 6))

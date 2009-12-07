@@ -214,7 +214,7 @@ int FromHex(char *in, char *out)
 	while (*in)
 	{
 		memcpy(buff, in, 2);
-		strlwr(buff);
+		_strlwr(buff);
 		
 		char *s1, *s2;
 		s1 = strchr(hex, buff[0]);
@@ -490,7 +490,7 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 									len -= 10;
 									unsigned long l = GET_32BIT(d);
 									len -= 4;
-									if (l && l<= (signed)len)
+									if (l && l<= (unsigned long)len)
 									{
 										d += 4;
 										BN_bin2bn((unsigned char *)d, l, us->m_RSA->e);
@@ -500,7 +500,7 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 									
 									l = GET_32BIT(d);
 									len -= 4;
-									if (l && l<=(signed)len)
+									if (l && l<=(unsigned long)len)
 									{
 										d += 4;
 										BN_bin2bn((unsigned char *)d, l, us->m_RSA->n);
@@ -828,7 +828,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				{
 					sprintf(myid, "%s_%s", m_JID, out);
 				}
-				strlwr(myid);
+				_strlwr(myid);
 
 				char hisid[1024];
 				if (us->m_MyRandom && us->m_HisRandom)
@@ -839,7 +839,7 @@ void CJabberLib::ExchangeWippienDetails(CUser *us, BOOL NotifyConnect)
 				{
 					sprintf(hisid, "%s_%s", out, m_JID);
 				}
-				strlwr(hisid);
+				_strlwr(hisid);
 
 				WODVPN::VPN_SetMyID(us->m_Handle, myid);
 
@@ -948,7 +948,7 @@ LVITEM *CJabberLib::GetItemByJID(char *jid, char *resource)
 			{
 				if (m_ContactLvItem.pszText && *m_ContactLvItem.pszText)
 				{
-					if (!stricmp(m_ContactLvItem.pszText, jidbuff))
+					if (!lstrcmpi(m_ContactLvItem.pszText, jidbuff))
 						return &m_ContactLvItem;
 				}
 			}
@@ -972,7 +972,7 @@ CUser *CJabberLib::GetUserByJID(char *jid, char *res)
 	{
 		char *j = ((CUser *)m_Users[i])->m_JID;
 		char *r = ((CUser *)m_Users[i])->m_Resource;
-		if (!stricmp( j, jidbuff) && !strcmp(r, res))
+		if (!lstrcmpi( j, jidbuff) && !strcmp(r, res))
 		{
 			us = (CUser *)m_Users[i];
 			break;
@@ -1051,7 +1051,7 @@ void CJabberLib::Connect(char *JID, char *Password)
 		if (host)
 		{
 			host++;
-			if (!stricmp(host, "gmail.com"))
+			if (!lstrcmpi(host, "gmail.com"))
 				host = "talk.google.com";
 			if (!err)
 				err = WODXMPP::XMPP_Connect(m_Handle, host);

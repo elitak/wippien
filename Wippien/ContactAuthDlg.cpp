@@ -33,7 +33,7 @@ CContactAuthDlg::~CContactAuthDlg()
 
 LRESULT CContactAuthDlg::OnCtlColorStatic(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, BOOL& /*bHandled*/)
 {
-	if ((LPARAM)GetDlgItem(IDC_CONTACTJID) == lParam)
+	if ((LPARAM)::GetDlgItem(m_hWnd, IDC_CONTACTJID) == lParam)
 		return (LRESULT)m_WhiteBrush;
 	else
 		return FALSE;
@@ -122,7 +122,7 @@ void CContactAuthDlg::SendPresence(BOOL allow)
 
 BOOL CContactAuthDlg::UpdateWin()
 {
-	if (m_Pos >= _Settings.m_AuthRequests.size())
+	if (m_Pos >= (signed)_Settings.m_AuthRequests.size())
 		m_Pos--;
 
 	if (!_Settings.m_AuthRequests.size())
@@ -297,7 +297,8 @@ LRESULT CContactAuthDlg::OnDetails(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 {
 	CComBSTR2 mj = m_JID;
 	char *m = mj.ToString();
-	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	int i;
+	for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *us = (CUser *)_MainDlg.m_UserList.m_Users[i];
 		if (!strcmp(us->m_JID, m))
@@ -364,7 +365,7 @@ LRESULT CContactAuthDlg::OnNo(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 LRESULT CContactAuthDlg::OnNext(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	m_Pos++;
-	if (m_Pos >= _Settings.m_AuthRequests.size())
+	if (m_Pos >= (signed)_Settings.m_AuthRequests.size())
 		m_Pos = 0;
 
 	UpdateWin();

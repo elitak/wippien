@@ -173,7 +173,7 @@ public:
 		virtual HRESULT STDMETHODCALLTYPE TranslateAccelerator(DISPID inEvtDispId, IHTMLEventObj *pIEventObj);
 		virtual HRESULT STDMETHODCALLTYPE PostEditorEventNotify(DISPID inEvtDispId, IHTMLEventObj *pIEventObj);
 
-						CMSHTMLDisableDragHTMLEditDesigner();
+		void CMSHTMLDisableDragHTMLEditDesigner();
 
 		BOOL			Attach(IHTMLDocument2 *pDoc);
 		void			Detach();

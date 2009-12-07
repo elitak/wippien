@@ -112,7 +112,7 @@ DWORD WINAPI PlayThreadProc(void *d)
 						int thr = 0;
 						for (i=0;i<SPEEX_FRAME_SIZE;i++)
 						{
-							databuf[i] = me->m_TempSlot[i];
+							databuf[i] = (short)me->m_TempSlot[i];
 							if (databuf[i]>me->m_VadThreshold || databuf[i]<(- me->m_VadThreshold))
 								thr++;
 							me->m_TempSlot[i] = 0;
@@ -138,7 +138,7 @@ CUser *CVoiceChat::FindUserByNetaddr(unsigned long addr)
 {
 	int i;
 	// who is this?
-	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *u = (CUser *)_MainDlg.m_UserList.m_Users[i];
 		if (u->m_HisVirtualIP == addr)

@@ -153,11 +153,11 @@ DWORD WINAPI CProgressDlg::DownloadSkinThreadProc(LPVOID lpParam)
 						d1 += a;
 						d1 += ".smf";
 						CComBSTR2 d2 = d1;
-						int handle = open(d2.ToString(), O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+						int handle = _open(d2.ToString(), O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 						if (handle != (-1))
 						{
-							write(handle, file1.Ptr(), file1.Len());
-							close(handle);
+							_write(handle, file1.Ptr(), file1.Len());
+							_close(handle);
 						
 							// save file2...
 							CComBSTR e1 = c;
@@ -165,11 +165,11 @@ DWORD WINAPI CProgressDlg::DownloadSkinThreadProc(LPVOID lpParam)
 							e1 += a;
 							e1 += ".png";
 							CComBSTR2 e2 = e1;
-							handle = open(e2.ToString(), O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+							handle = _open(e2.ToString(), O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 							if (handle != (-1))
 							{
-								write(handle, file2.Ptr(), file2.Len());
-								close(handle);
+								_write(handle, file2.Ptr(), file2.Len());
+								_close(handle);
 
 								// set skin!
 								if (::IsWindow(ownerhwnd))

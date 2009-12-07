@@ -689,7 +689,7 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 					delete fs;
 					FirewallRules.erase(FirewallRules.begin());
 				}
-				for (int i=0;i<_Settings.m_FirewallRules.size();i++)
+				for (int i=0;i<(signed)_Settings.m_FirewallRules.size();i++)
 				{
 					FirewallStruct *orgfs = (FirewallStruct *)_Settings.m_FirewallRules[i];
 					FirewallStruct *fs = new FirewallStruct;
@@ -707,7 +707,7 @@ DWORD WINAPI CEthernet::WriteThreadFunc(LPVOID lpParam)
 				TCPHDR *tcp = (TCPHDR *)(ed->Buff + sizeof(ETH_HEADER) + sizeof(IPHDR));
 				
 				BOOL cansend = _Settings.m_FirewallDefaultAllowRule;
-				for (int i=0;i<FirewallRules.size();i++)
+				for (int i=0;i<(signed)FirewallRules.size();i++)
 				{
 					FirewallStruct *fs = (FirewallStruct *)FirewallRules[i];
 					if (fs->Proto == ip->protocol)
@@ -946,7 +946,7 @@ void CEthernet::ProcPacket(char *packet, int len)
 			// Is this the kind of packet we are looking for?
 			//-----------------------------------------------
 
-			for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+			for (int i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 			{
 				CUser *user = _MainDlg.m_UserList.m_Users[i];
 //					if (user->m_WippienState == WipConnected)
@@ -993,7 +993,7 @@ void CEthernet::ProcPacket(char *packet, int len)
 		{
 			if (len >= sizeof(ETH_HEADER))
 			{
-				for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+				for (int i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[i];
 //					if (user->m_WippienState == WipConnected)

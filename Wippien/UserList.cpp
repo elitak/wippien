@@ -175,25 +175,25 @@ void ResampleImageIfNeeded(CxImage *img, int sizeX, int sizeY)
 
 	if (w>sizeX || h>sizeY)
 	{
-		float wf = w, wh = h, s;
+		float wf = (float)w, wh = (float)h, s;
 		
 		// does need resample. Find larger image
 		if (w>h)
 		{
-			s = sizeX;
+			s = (float)sizeX;
 			wf = s/wf;
 			wh = wf*wh;
 			wf = s;
 		}
 		else
 		{
-			s = sizeY;
+			s = (float)sizeY;
 			wh = s/wh;
 			wf = wh*wf;
 			wh = s;
 		}
 		img->IncreaseBpp(24);
-		img->Resample(wf, wh);
+		img->Resample((long)wf, (long)wh);
 	}
 }
 void ResampleImageIfNeeded(CxImage *img, int size)
@@ -304,17 +304,17 @@ void CUserList::SortUsers(void)
 	if (a)
 	{
 		int i;
-		for (i=0;i<m_Users.size();i++)
+		for (i=0;i<(signed)m_Users.size();i++)
 		{
 			m_SortedUser[i] = i;
 		}
 
 		if (_Settings.m_SortContacts) // do some sort
 		{
-			for (i=0;i<m_Users.size();i++)
+			for (i=0;i<(signed)m_Users.size();i++)
 			{
 				CUser *user1 = (CUser *)m_Users[m_SortedUser[i]];
-				for (int j=i+1;j<m_Users.size();j++)
+				for (int j=i+1;j<(signed)m_Users.size();j++)
 				{
 					CUser *user2 = (CUser *)m_Users[m_SortedUser[j]];
 					
@@ -322,19 +322,19 @@ void CUserList::SortUsers(void)
 					switch (_Settings.m_SortContacts)
 					{
 						case 1: // visible name
-							rez = stricmp(user1->m_VisibleName, user2->m_VisibleName);
+							rez = lstrcmpi(user1->m_VisibleName, user2->m_VisibleName);
 							if (!rez)
 							{
-								rez = stricmp(user1->m_JID, user2->m_JID);
+								rez = lstrcmpi(user1->m_JID, user2->m_JID);
 								if (!rez)
-									rez = stricmp(user1->m_Resource, user2->m_Resource);
+									rez = lstrcmpi(user1->m_Resource, user2->m_Resource);
 							}
 							break;
 
 						case 2: // JID
-							rez = stricmp(user1->m_JID, user2->m_JID);
+							rez = lstrcmpi(user1->m_JID, user2->m_JID);
 							if (!rez)
-								rez = stricmp(user1->m_Resource, user2->m_Resource);
+								rez = lstrcmpi(user1->m_Resource, user2->m_Resource);
 							break;
 
 						case 3: // by IP bottom
@@ -347,7 +347,7 @@ void CUserList::SortUsers(void)
 								rez = -1;
 
 //							else
-//								rez = stricmp(user1->m_VisibleName, user2->m_VisibleName);
+//								rez = lstrcmpi(user1->m_VisibleName, user2->m_VisibleName);
 							break;
 /*
 						case 4: // by IP top
@@ -358,7 +358,7 @@ void CUserList::SortUsers(void)
 									rez = 1;
 							}
 							else
-								rez = stricmp(user1->m_VisibleName, user2->m_VisibleName);
+								rez = lstrcmpi(user1->m_VisibleName, user2->m_VisibleName);
 							break;
 */
 					}
@@ -391,14 +391,14 @@ void CUserList::SortUsers(void)
 void CUserList::InitialUserList(void)
 {
 	int i;
-	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *us = _MainDlg.m_UserList.m_Users[i];
 		us->m_IsOld = FALSE;
 	}
 	RefreshUser(NULL, NULL);
 	BOOL changed = FALSE;
-	for (i=0;i<m_Users.size();i++)
+	for (i=0;i<(signed)m_Users.size();i++)
 	{
 		CUser *us = m_Users[i];
 		if (!us->m_IsOld)
@@ -497,10 +497,10 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 
 						BOOL found = FALSE;
 						CUser *user = NULL;
-						for (int k=0;!found && k<m_Users.size();k++)
+						for (int k=0;!found && k<(signed)m_Users.size();k++)
 						{
 							user = (CUser *)m_Users[k];
-							if ( !stricmp(user->m_JID, jd1))
+							if ( !lstrcmpi(user->m_JID, jd1))
 							{
 								memcpy(&ChatWindowRect, &user->m_ChatWindowRect, sizeof(ChatWindowRect));
 								ChatWindowRectUsed = TRUE;
@@ -508,7 +508,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 								// same user
 								if (user->m_Resource[0]) // resource already set?
 								{
-									if (!stricmp(user->m_Resource, jd2))
+									if (!lstrcmpi(user->m_Resource, jd2))
 										found = TRUE;
 								}
 								else
@@ -568,7 +568,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 						{
 							if (chatroom1 && isuserinchatroom && !user->m_ChatRoomPtr)
 							{
-								for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+								for (int i=0;i<(signed)_MainDlg.m_ChatRooms.size();i++)
 								{
 										CChatRoom *room = _MainDlg.m_ChatRooms[i];
 										if (!strcmp(room->m_JID, chatroom1))
@@ -633,7 +633,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										strcpy(user->m_LastResource, user->m_Resource);
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = TRUE;	
-									time((long *)&user->m_LastOnline);
+									time(&user->m_LastOnline);
 									if (!user->m_IsUsingWippien)
 									{
 										CComBSTR2 r;
@@ -886,7 +886,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 							if (!user->m_Online)
 							{
 								// and remove contact from list of users
-								for (int i=0;i<m_Users.size();i++)
+								for (int i=0;i<(signed)m_Users.size();i++)
 								{
 									CUser *us = m_Users[i];
 									if (us == user)
@@ -944,13 +944,14 @@ void CUserList::RefreshView(BOOL updateonly)
 		/*m_Tree.*/DeleteAllItems();
 
 
-		for (int i=0;i<_Settings.m_Groups.size();i++)
+		int i;
+		for (i=0;i<(signed)_Settings.m_Groups.size();i++)
 		{
 			CSettings::TreeGroup *tg = _Settings.m_Groups[i];
 			TreeItem.itemex.pszText = tg->Name;
 			tg->Item = InsertItem(&TreeItem);
 		}
-		for (i=0;i<m_Users.size();i++)
+		for (i=0;i<(signed)m_Users.size();i++)
 		{
 			m_Users[i]->m_BlinkTimerCounter = 0;
 			m_Users[i]->m_TreeItem = 0;
@@ -975,7 +976,8 @@ void CUserList::RefreshView(BOOL updateonly)
 	{
 		int integralsize = TreeItem.itemex.iIntegral;
 		// finally show users
-		for (int i=0;i<m_Users.size();i++)
+		int i;
+		for (i=0;i<(signed)m_Users.size();i++)
 		{
 			CUser *p = m_Users[m_SortedUser[i]];
 			if (p->m_ChatRoomPtr)
@@ -1038,15 +1040,15 @@ void CUserList::RefreshView(BOOL updateonly)
 							}
 						}
 						// are there more users like this?
-						for (int uctr=0;uctr<m_Users.size();uctr++)
+						for (int uctr=0;uctr<(signed)m_Users.size();uctr++)
 						{
 							CUser *us = (CUser *)m_Users[uctr];
 							if (us!=p)
 							{
-								if (!stricmp(us->m_JID, p->m_JID))
+								if (!lstrcmpi(us->m_JID, p->m_JID))
 								{
 									// same user!!! find ourselves and go out
-									for (int uc=0;uc<m_Users.size();uc++)
+									for (int uc=0;uc<(signed)m_Users.size();uc++)
 									{
 										if (m_Users[uc] == p)
 										{
@@ -1084,7 +1086,7 @@ void CUserList::RefreshView(BOOL updateonly)
 								for (int it = 0; it < _Settings.m_Groups.size(); it++)
 								{
 									CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[it];
-									if (!stricmp(tg->Name, p->m_Group))
+									if (!lstrcmpi(tg->Name, p->m_Group))
 									{
 										if (p->m_ChatRoomPtr)
 											tg->Temporary = TRUE;
@@ -1181,10 +1183,10 @@ void CUserList::RefreshView(BOOL updateonly)
 						TreeItem.hInsertAfter = TVI_FIRST;
 	//					if (p->m_Online)
 	//						ATLTRACE("%s goes first\r\n", p->m_JID);
-						for (int jk=0;jk<m_Users.size() && m_Users[m_SortedUser[jk]]!=p;jk++)
+						for (int jk=0;jk<(signed)m_Users.size() && m_Users[m_SortedUser[jk]]!=p;jk++)
 						{
 							CUser *us1 = (CUser *)m_Users[m_SortedUser[jk]];
-							if (!stricmp((*us1->m_Group)?us1->m_Group:GROUP_GENERAL, (*p->m_Group)?p->m_Group:GROUP_GENERAL) && p->m_Online == us1->m_Online)
+							if (!lstrcmpi((*us1->m_Group)?us1->m_Group:GROUP_GENERAL, (*p->m_Group)?p->m_Group:GROUP_GENERAL) && p->m_Online == us1->m_Online)
 							{
 	//							if (p->m_Online)
 	//								ATLTRACE("%s goes after %s\r\n", p->m_JID, us1->m_JID);
@@ -1208,7 +1210,7 @@ void CUserList::RefreshView(BOOL updateonly)
 
 
 		// expand
-		for (i=0;i<_Settings.m_Groups.size();i++)
+		for (i=0;i<(signed)_Settings.m_Groups.size();i++)
 		{
 			CSettings::TreeGroup *tg = _Settings.m_Groups[i];
 			if (tg->Open && tg->Item)
@@ -1218,7 +1220,7 @@ void CUserList::RefreshView(BOOL updateonly)
 		_Settings.SaveUsers();
 
 
-		for (int j=0;j<_Settings.m_Groups.size();j++)
+		for (int j=0;j<(signed)_Settings.m_Groups.size();j++)
 		{
 			CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 			tg->Count = 0;
@@ -1228,10 +1230,11 @@ void CUserList::RefreshView(BOOL updateonly)
 
 		// now just enumerate users in groups
 		int offlinecount = 0;
-		for (i=0;i<m_Users.size();i++)
+		int j;
+		for (i=0;i<(signed)m_Users.size();i++)
 		{
 			CUser *user = (CUser *)m_Users[i];
-			for (int j=0;j<_Settings.m_Groups.size();j++)
+			for (j=0;j<(signed)_Settings.m_Groups.size();j++)
 			{
 				CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 				if (!strcmp(tg->Name, user->m_Group) || (!*user->m_Group && !strcmp(tg->Name, GROUP_GENERAL)))
@@ -1256,7 +1259,7 @@ void CUserList::RefreshView(BOOL updateonly)
 			}
 		}
 
-		for (j=0;j<_Settings.m_Groups.size();j++)
+		for (j=0;j<(signed)_Settings.m_Groups.size();j++)
 		{
 	//		char buff[1024];
 			CSettings::TreeGroup *tg = _Settings.m_Groups[j];
@@ -1280,7 +1283,7 @@ void CUserList::RefreshView(BOOL updateonly)
 
 
 		// clear out...
-		for (i=0;i<m_Users.size();i++)
+		for (i=0;i<(signed)m_Users.size();i++)
 		{
 			CUser *user = m_Users[i];
 			user->m_Changed = FALSE;
@@ -1334,7 +1337,7 @@ HTREEITEM CUserList::FindRoot(char *RootName, BOOL canaddnew)
 
 	if (hi)
 	{
-		for (int i = 0; i < _Settings.m_Groups.size(); i++)
+		for (int i = 0; i < (signed)_Settings.m_Groups.size(); i++)
 		{
 			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 			if (!strcmp(tg->Name, RootName))
@@ -1388,15 +1391,15 @@ CUser *CUserList::GetUserByJID(char *JID, BOOL WithResource)
 	else
 		a2 = "";
 
-	for (int i=0;i<m_Users.size();i++)
+	for (int i=0;i<(signed)m_Users.size();i++)
 	{
 		CUser *user = (CUser *)m_Users[i];
-		if ( !stricmp(user->m_JID, a1))
+		if ( !lstrcmpi(user->m_JID, a1))
 		{
 			// same user
 			if (user->m_Resource[0] && a2 && *a2) // resource already set?
 			{
-				if (!stricmp(user->m_Resource, a2))
+				if (!lstrcmpi(user->m_Resource, a2))
 					return user;
 			}
 			else
@@ -1410,7 +1413,7 @@ CUser *CUserList::GetUserByJID(char *JID, BOOL WithResource)
 
 CUser *CUserList::GetUserByVirtualIP(unsigned long IP)
 {
-	for (int i=0;i<m_Users.size();i++)
+	for (int i=0;i<(signed)m_Users.size();i++)
 	{
 		CUser *user = (CUser *)m_Users[i];
 		if (user->m_HisVirtualIP == IP)
@@ -1461,13 +1464,13 @@ LRESULT CUserList::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	if (!user)
 	{
 		BOOL save = FALSE;
-		for (int i=0;i<_Settings.m_Groups.size();i++)
+		for (int i=0;i<(signed)_Settings.m_Groups.size();i++)
 		{
 			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 			if (tg->Item == ht.hItem)
 			{
 				BOOL found = FALSE;
-				for (int o=0;o<_MainDlg.m_ChatRooms.size();o++)
+				for (int o=0;o<(signed)_MainDlg.m_ChatRooms.size();o++)
 				{
 					CChatRoom *room = _MainDlg.m_ChatRooms[o];
 					if (!strcmp(tg->Name, room->m_JID))
@@ -1584,7 +1587,7 @@ LRESULT CUserList::OnListNotify(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
 		case TVN_ITEMEXPANDED:
 			BOOL save;
 			save = FALSE;
-			for (i=0;i<_Settings.m_Groups.size();i++)
+			for (i=0;i<(signed)_Settings.m_Groups.size();i++)
 			{
 				CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 				if (tg->Item == pnmtv->itemNew.hItem)
@@ -1638,7 +1641,7 @@ void CUserList::AddMenuImage(int resid, int dataid)
 {
 	// load the icon if it isn't there
 	BOOL found = FALSE;
-	for (int x=0;!found && x<_Settings.m_MenuImages.size();x++)
+	for (int x=0;!found && x<(signed)_Settings.m_MenuImages.size();x++)
 	{
 		CxImage *img = (CxImage *)_Settings.m_MenuImages[x];
 		if (img->pUserData == (void *)dataid)
@@ -1683,7 +1686,8 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 		CSettings::TreeGroup *tg = NULL;
 
 		BOOL save = FALSE;
-		for (int i=0;i<_Settings.m_Groups.size();i++)
+		int i;
+		for (i=0;i<(signed)_Settings.m_Groups.size();i++)
 		{
 			CSettings::TreeGroup *tg1 = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 			if (!strcmp(tg1->Name, user->m_Group))
@@ -1701,7 +1705,7 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 		HMENU h = GetSubMenu(hm, 0);
 
 		int ctr = 0;
-		for (i=0;i<_Settings.m_MenuTools.size();i++)
+		for (i=0;i<(signed)_Settings.m_MenuTools.size();i++)
 		{
 			CSettings::MenuTool *mt = _Settings.m_MenuTools[i];
 			BOOL add = TRUE;
@@ -1856,7 +1860,7 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 	else
 	{
 		BOOL save = FALSE;
-		for (int i=0;i<_Settings.m_Groups.size();i++)
+		for (int i=0;i<(signed)_Settings.m_Groups.size();i++)
 		{
 			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 			if (tg->Item == ht.hItem)
@@ -1950,10 +1954,10 @@ BOOL CUserList::ExecuteRButtonGroupCommand(CSettings::TreeGroup *tg, int Command
 			tg->Block = !tg->Block;
 
 			// loop through all users and (un)block them
-			for (int j=0;j<_MainDlg.m_UserList.m_Users.size();j++)
+			for (int j=0;j<(signed)_MainDlg.m_UserList.m_Users.size();j++)
 			{
 				CUser *user = _MainDlg.m_UserList.m_Users[j];
-				if (!stricmp(user->m_Group, tg->Name))
+				if (!lstrcmpi(user->m_Group, tg->Name))
 				{
 					user->m_Block = tg->Block;
 				}
@@ -1971,18 +1975,18 @@ BOOL CUserList::DeleteGroup(char *GroupName)
 	CSettings::TreeGroup *tg = NULL;
 	BOOL found = FALSE;
 	// do we have this already?
-	for (int i=0;i<_Settings.m_Groups.size();i++)
+	for (int i=0;i<(signed)_Settings.m_Groups.size();i++)
 	{
 		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-		if (!stricmp(tg->Name, GroupName))
+		if (!lstrcmpi(tg->Name, GroupName))
 		{
 			found = TRUE;
 			// delete it
 			// loop through all users and move them to General
-			for (int j=0;j<_MainDlg.m_UserList.m_Users.size();j++)
+			for (int j=0;j<(signed)_MainDlg.m_UserList.m_Users.size();j++)
 			{
 				CUser *user = _MainDlg.m_UserList.m_Users[j];
-				if (!stricmp(user->m_Group, tg->Name))
+				if (!lstrcmpi(user->m_Group, tg->Name))
 				{
 					// move user to different group
 					user->m_Group[0] = 0;
@@ -2161,7 +2165,7 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 
 
 					// and remove contact from list of users
-					for (int i=0;i<m_Users.size();i++)
+					for (int i=0;i<(signed)m_Users.size();i++)
 					{
 						CUser *us = m_Users[i];
 						if (us == user)
@@ -2309,7 +2313,7 @@ BOOL CUserList::ExecuteRButtonUserCommand(/*HTREEITEM ht, */CUser *user, int Com
 			break;
 
 		default:
-			for (int i=0;i<_Settings.m_MenuTools.size();i++)
+			for (int i=0;i<(signed)_Settings.m_MenuTools.size();i++)
 			{
 				CSettings::MenuTool *mt = _Settings.m_MenuTools[i];
 				if (Command == (int)mt)

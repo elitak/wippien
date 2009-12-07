@@ -72,7 +72,7 @@ void CSettingsDlg::CSettingsNetworkFirewall::DoDefault(void)
 
 LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	for (int i=0;i<_Settings.m_FirewallRules.size();i++)
+	for (int i=0;i<(signed)_Settings.m_FirewallRules.size();i++)
 	{
 		FirewallStruct *orgfs = (FirewallStruct *)_Settings.m_FirewallRules[i];
 		FirewallStruct *fs = new FirewallStruct;
@@ -104,7 +104,7 @@ void CSettingsDlg::CSettingsNetworkFirewall::PopulateList(void)
 {
 	::SendMessage(GetDlgItem(IDC_RULES), LB_RESETCONTENT, NULL, NULL);
 	char buff[1024];
-	for (int i=0;i<m_FirewallRules.size();i++)
+	for (int i=0;i<(signed)m_FirewallRules.size();i++)
 	{
 		FirewallStruct *fs = (FirewallStruct *)m_FirewallRules[i];
 		switch (fs->Proto)
@@ -135,7 +135,7 @@ BOOL CSettingsDlg::CSettingsNetworkFirewall::Apply(void)
 		_Settings.m_FirewallRules.erase(_Settings.m_FirewallRules.begin());
 	}
 
-	for (int i=0;i<m_FirewallRules.size();i++)
+	for (int i=0;i<(signed)m_FirewallRules.size();i++)
 	{
 		FirewallStruct *orgfs = (FirewallStruct *)m_FirewallRules[i];
 		FirewallStruct *fs = new FirewallStruct;
@@ -192,7 +192,7 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnAddNewRule(WORD wNotifyCode, W
 		if (proto)
 		{
 			BOOL found = FALSE;
-			for (int i=0;!found && i<m_FirewallRules.size();i++)
+			for (int i=0;!found && i<(signed)m_FirewallRules.size();i++)
 			{
 				FirewallStruct *fs = (FirewallStruct *)m_FirewallRules[i];
 				if (fs->Proto == proto)
@@ -226,7 +226,7 @@ LRESULT CSettingsDlg::CSettingsNetworkFirewall::OnRemoveRule(WORD wNotifyCode, W
 	if (i != LB_ERR)
 	{
 		i = ::SendMessage(GetDlgItem(IDC_RULES), LB_GETITEMDATA, i, 0);
-		if (i>=0 && i<m_FirewallRules.size())
+		if (i>=0 && i<(signed)m_FirewallRules.size())
 		{
 			m_FirewallRules.erase(m_FirewallRules.begin()+i);
 			PopulateList();
@@ -304,7 +304,7 @@ void CSettingsDlg::CSettingsLanguages::EnumerateLocalLanguageFiles(void)
 			Author.Empty();
 			Version.Empty();
 
-			if (stricmp(FileData.cFileName, "english.txt"))
+			if (lstrcmpi(FileData.cFileName, "english.txt"))
 			{
 
 				strcpy(buff, _Settings.m_LanguagePath);

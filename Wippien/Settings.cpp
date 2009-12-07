@@ -132,7 +132,7 @@ CSettings::CSettings()
 					err = RegEnumValue(hkey, index++, valname, &valsize, NULL, &dwtype, valdata, &valdatasize);
 					if (err == ERROR_SUCCESS)
 					{
-						if (!stricmp(ms1, valname))
+						if (!lstrcmpi(ms1, valname))
 						{
 							err = ERROR_NO_MORE_ITEMS;
 							char *env = getenv(ms1);
@@ -342,7 +342,7 @@ CXmlEntity *CSettings::ReadSettingsCfg(CXmlEntity *own, char *Name, BOOL *Value,
 	CXmlEntity *ent = CXmlEntity::FindByName(own, Name, 1);
 	if (ent)
 	{
-		*Value = atoi(ent->Value);
+		*Value = (BOOL)atoi(ent->Value);
 		return ent;
 	}
 	else
@@ -464,7 +464,7 @@ int CSettings::LoadConfig(void)
 
 
 	// read from file
-	int handle = open(m_CfgFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+	int handle = _open(m_CfgFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle == (-1))
 		return FALSE;
 
@@ -472,11 +472,11 @@ int CSettings::LoadConfig(void)
 	int i;
 	do
 	{
-		i = read(handle, buff, 32768);
+		i = _read(handle, buff, 32768);
 		if (i>0)
 			b.Append(buff, i);
 	} while (i>0);
-	close(handle);
+	_close(handle);
 
 	b.Append("\0",1);
 
@@ -606,17 +606,17 @@ int CSettings::LoadConfig(void)
 			char icobuf[1024];
 			strcpy(icobuf, m_CfgFilename);
 			strcat(icobuf, ".png");
-			handle = open(icobuf, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+			handle = _open(icobuf, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 			if (handle != (-1))
 			{
 				m_Icon.Clear();
 				do
 				{
-					i = read(handle, icobuf, 1024);
+					i = _read(handle, icobuf, 1024);
 					if (i>0)
 						m_Icon.Append(icobuf, i);
 				} while (i>0);
-				close(handle);
+				_close(handle);
 			}
 
 			CXmlEntity *rst = CXmlEntity::FindByName(wip, "Roster", 1);
@@ -847,7 +847,7 @@ int CSettings::LoadConfig(void)
 int CSettings::LoadRooms(void)
 {
 	// read rooms
-	int handle = open(m_ChatRoomFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+	int handle = _open(m_ChatRoomFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle != (-1))
 	{
 		Buffer b;
@@ -855,11 +855,11 @@ int CSettings::LoadRooms(void)
 		int i;
 		do
 		{
-			i = read(handle, buff, 32768);
+			i = _read(handle, buff, 32768);
 			if (i>0)
 				b.Append(buff, i);
 		} while (i>0);
-		close(handle);
+		_close(handle);
 
 		b.Append("\0",1);
 
@@ -909,7 +909,7 @@ int CSettings::LoadUsers(void)
 	// also read users
 	if (!m_DeleteContactsOnStartup)
 	{
-		int handle = open(m_UsrFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+		int handle = _open(m_UsrFilename, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 		if (handle != (-1))
 		{
 			Buffer b;
@@ -917,11 +917,11 @@ int CSettings::LoadUsers(void)
 			int i;
 			do
 			{
-				i = read(handle, buff, 32768);
+				i = _read(handle, buff, 32768);
 				if (i>0)
 					b.Append(buff, i);
 			} while (i>0);
-			close(handle);
+			_close(handle);
 
 			b.Append("\0",1);
 
@@ -947,11 +947,14 @@ int CSettings::LoadUsers(void)
 						ReadSettingsCfg(ent, "VisibleName", user->m_VisibleName, user->m_JID);
 						user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 						ReadSettingsCfg(ent, "Block", &user->m_Block, FALSE);
-						ReadSettingsCfg(ent, "VCard", &user->m_GotVCard, 0);
+						unsigned long uml;
+						ReadSettingsCfg(ent, "VCard", &uml, 0);
+						user->m_GotVCard = uml;
 						ReadSettingsCfg(ent, "Group", user->m_Group, "");
 						if (! *user->m_Group) strcpy(user->m_Group, GROUP_GENERAL);
 						ReadSettingsCfg(ent, "Email", user->m_Email, "");
-						ReadSettingsCfg(ent, "LastOnline", &user->m_LastOnline, 0);
+						ReadSettingsCfg(ent, "LastOnline", &uml, 0);
+						user->m_LastOnline = uml;
 						user->SetSubtext();
 						ReadSettingsCfg(ent, "AllowMediatorIP", &user->m_AllowedRemoteMediator, TRUE);
 						ReadSettingsCfg(ent, "AllowAnyIP", &user->m_AllowedRemoteAny, TRUE);
@@ -1053,8 +1056,8 @@ void CSettings::FromHex(Buffer *in, Buffer *out)
 		strlwr(buff);
 
 		char *s1, *s2;
-		s1 = strchr(hex, buff[0]);
-		s2 = strchr(hex, buff[1]);
+		s1 = (char *)strchr(hex, buff[0]);
+		s2 = (char *)strchr(hex, buff[1]);
 
 		if (!s1 || !s2)
 			return;
@@ -1207,7 +1210,8 @@ BOOL CSettings::SaveConfig(void)
 
 	x.Append("<Roster>\r\n");
 
-	for (int i=0;i<m_Groups.size();i++)
+	int i;
+	for (i=0;i<(signed)m_Groups.size();i++)
 	{
 		TreeGroup *tg = m_Groups[i];
 		if (!tg->Temporary)
@@ -1231,7 +1235,7 @@ BOOL CSettings::SaveConfig(void)
 	}
 	x.Append("</Roster>\r\n");
 
-	for (i=0;i<m_LinkMediators.size();i++)
+	for (i=0;i<(signed)m_LinkMediators.size();i++)
 	{
 		LinkMediatorStruct *st =(LinkMediatorStruct *)m_LinkMediators[i];
 		if (st->Permanent)
@@ -1246,7 +1250,7 @@ BOOL CSettings::SaveConfig(void)
 
 	x.Append("<HiddenContacts>\r\n");
 	char *cb = m_HiddenContactsBuffer.Ptr();
-	for (i=0;i<m_HiddenContacts.size();i++)
+	for (i=0;i<(signed)m_HiddenContacts.size();i++)
 	{
 		x.AddChildElem("JID", cb + m_HiddenContacts[i]);
 	}
@@ -1254,7 +1258,7 @@ BOOL CSettings::SaveConfig(void)
 
 	x.Append("<FirewallRules>\r\n");
 	FirewallStruct *fw = NULL;
-	for (i=0;i<m_FirewallRules.size();i++)
+	for (i=0;i<(signed)m_FirewallRules.size();i++)
 	{
 		fw = (FirewallStruct *)m_FirewallRules[i];
 		x.AddChildAttrib("Rule", "", "Proto", fw->Proto, "Port", fw->Port);
@@ -1274,7 +1278,7 @@ BOOL CSettings::SaveConfig(void)
 
 
 	x.Append("<AuthRequests>\r\n");
-	for (i=0;i<m_AuthRequests.size();i++)
+	for (i=0;i<(signed)m_AuthRequests.size();i++)
 	{
 		CComBSTR2 b = m_AuthRequests[i];
 		x.AddChildElem("JID", b.ToUTF8String());
@@ -1335,7 +1339,7 @@ BOOL CSettings::SaveRooms(void)
 
 	// dump chat rooms
 	x.Clear();
-	for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+	for (int i=0;i<(signed)_MainDlg.m_ChatRooms.size();i++)
 	{
 		CChatRoom *room = (CChatRoom *)_MainDlg.m_ChatRooms[i];
 		if (room->m_DoSave)
@@ -1367,22 +1371,22 @@ BOOL CSettings::SaveUsers(void)
 	Buffer x;
 
 	int i;
-	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
 		user->m_Saved = FALSE;
 	}
 	
 	
-	for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *user = _MainDlg.m_UserList.m_Users[i];
 		if (!user->m_ChatRoomPtr && !user->m_Saved) // we do not dump temporary users
 		{
-			for (int o=i+1;o<_MainDlg.m_UserList.m_Users.size();o++)
+			for (int o=i+1;o<(signed)_MainDlg.m_UserList.m_Users.size();o++)
 			{
 				CUser *u = _MainDlg.m_UserList.m_Users[o];
-				if (!stricmp(user->m_JID, u->m_JID))
+				if (!lstrcmpi(user->m_JID, u->m_JID))
 					u->m_Saved = TRUE;
 			}
 			user->m_Saved = FALSE;
@@ -1398,7 +1402,7 @@ BOOL CSettings::SaveUsers(void)
 
 			x.AddChildElem("Group", user->m_Group);
 			x.AddChildElem("Email", user->m_Email);
-			x.AddChildElem("LastOnline", user->m_LastOnline);
+			x.AddChildElem("LastOnline", (int)user->m_LastOnline);
 
 			x.Append("<Chat_Dialog_Window>\r\n");
 			x.AddChildElem("Left", user->m_ChatWindowRect.left);
@@ -1411,7 +1415,7 @@ BOOL CSettings::SaveUsers(void)
 			x.AddChildElem("AllowAnyIP", user->m_AllowedRemoteAny?"1":"0");
 			x.Append("<Allowed_IPs>\r\n");
 			struct in_addr sa;
-			for (int x1=0;x1<user->m_AllowedRemoteIPs.size();x1++)
+			for (int x1=0;x1<(signed)user->m_AllowedRemoteIPs.size();x1++)
 			{
 				IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[x1];
 				if (!ips->Ignored)
@@ -1615,32 +1619,33 @@ int CSettings::LoadTools(void)
 
 void CSettings::PushGroupSorted(TreeGroup *grp)
 {
-	if (!stricmp(grp->Name, GROUP_GENERAL))
+	if (!lstrcmpi(grp->Name, GROUP_GENERAL))
 		grp->VisibleName = Translate(GROUP_GENERAL);
-	if (!stricmp(grp->Name, GROUP_OFFLINE))
+	if (!lstrcmpi(grp->Name, GROUP_OFFLINE))
 		grp->VisibleName = Translate(GROUP_OFFLINE);
 
-	for (int i = 0; i < _Settings.m_Groups.size(); i++)
+	int i;
+	for (i = 0; i < (signed)_Settings.m_Groups.size(); i++)
 	{
 		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
-		if (!stricmp(tg->Name, grp->Name))
+		if (!lstrcmpi(tg->Name, grp->Name))
 		{
 			delete grp;
 			return;
 		}
 	}
-	if (!stricmp(grp->Name, GROUP_GENERAL))
+	if (!lstrcmpi(grp->Name, GROUP_GENERAL))
 	{
 		_Settings.m_Groups.insert(_Settings.m_Groups.begin(), grp);
 		return;
 	}
 
-	if (stricmp(grp->Name, GROUP_OFFLINE))
+	if (lstrcmpi(grp->Name, GROUP_OFFLINE))
 	{
-		for (i = 0; i < _Settings.m_Groups.size(); i++)
+		for (i = 0; i < (signed)_Settings.m_Groups.size(); i++)
 		{
 			CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
-			if (stricmp(tg->Name, grp->Name)>0 && stricmp(tg->Name, GROUP_GENERAL))
+			if (lstrcmpi(tg->Name, grp->Name)>0 && lstrcmpi(tg->Name, GROUP_GENERAL))
 			{
 				_Settings.m_Groups.insert(_Settings.m_Groups.begin()+i, grp);
 				return;
@@ -1781,9 +1786,9 @@ BOOL CSettings::IsHiddenContact(char *contact)
 		*a = 0;
 
 	char *cb = m_HiddenContactsBuffer.Ptr();
-	for (int i=0;i<m_HiddenContacts.size();i++)
+	for (int i=0;i<(signed)m_HiddenContacts.size();i++)
 	{
-		if (!stricmp(buff, cb+m_HiddenContacts[i]))
+		if (!lstrcmpi(buff, cb+m_HiddenContacts[i]))
 			return TRUE;
 	}
 
@@ -1811,10 +1816,10 @@ char *trim(char *text)
 CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
 {
 	LinkMediatorStruct *st = NULL;
-	for (int i=0;!st && i<m_LinkMediators.size();i++)
+	for (int i=0;!st && i<(signed)m_LinkMediators.size();i++)
 	{
 		LinkMediatorStruct *st1 = (LinkMediatorStruct *)m_LinkMediators[i];
-		if (!stricmp(Host, st1->Host) && Port == st1->Port)
+		if (!lstrcmpi(Host, st1->Host) && Port == st1->Port)
 			st = st1;
 	}
 
@@ -1834,7 +1839,7 @@ CSettings::LinkMediatorStruct *CSettings::AddLinkMediator(char *Host, int Port)
 
 CSettings::TreeGroup *CSettings::GetGroupByName(char *Name)
 {
-	for (int j=0;j<_Settings.m_Groups.size();j++)
+	for (int j=0;j<(signed)_Settings.m_Groups.size();j++)
 	{
 		TreeGroup *tg = m_Groups[j];
 		if (!strcmp(tg->Name, Name))
@@ -2083,7 +2088,7 @@ char *CSettings::Translate(char *text)
 	char *dsta = m_LanguageOther->Ptr();
 	unsigned int *dstp = (unsigned int *)m_LanguageOtherIndex.Ptr();
 	
-	for (int i=0;i<m_LanguageEnglishTotal;i++)
+	for (int i=0;i<(signed)m_LanguageEnglishTotal;i++)
 	{
 		if (!strcmp(text, orga+orgp[i]))
 		{

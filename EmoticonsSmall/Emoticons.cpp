@@ -22,8 +22,8 @@ BOOL APIENTRY DllMain( HANDLE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 		case DLL_PROCESS_ATTACH:
 			{
 				m_hInstance = hModule;
-
-				for (int i=0;i<TOTAL_EMOTICONS;i++)
+				int i;
+				for (i=0;i<TOTAL_EMOTICONS;i++)
 				{
 					m_Index[i] = i;
 				}

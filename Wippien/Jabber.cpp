@@ -112,10 +112,11 @@ void __stdcall CJabberEvents::DispContactAuthRequest(WODXMPPCOMLib::IXMPPContact
 		
 		
 		BOOL found = FALSE;
-		for (int i=0;!found && i<_Settings.m_AuthRequests.size();i++)
+		int i;
+		for (i=0;!found && i<(signed)_Settings.m_AuthRequests.size();i++)
 		{
 			CComBSTR2 b = _Settings.m_AuthRequests[i];
-			if (!stricmp(b.ToUTF8String(), jd1)) // if they are same
+			if (!lstrcmpi(b.ToUTF8String(), jd1)) // if they are same
 				found = TRUE;
 		}
 		
@@ -258,7 +259,8 @@ void __stdcall CJabberEvents::DispDisconnected (long ErrorCode, BSTR ErrorText)
 	
 	if (_MainDlg.IsWindow())
 	{
-		for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+		int i;
+		for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 		{
 			CUser *us = (CUser *)_MainDlg.m_UserList.m_Users[i];
 			us->m_Online = FALSE;
@@ -662,7 +664,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 													while (out.Len()>4)
 													{
 														int ij = out.GetInt();
-														if (ij > out.Len())
+														if (ij > (signed)out.Len())
 															ij = out.Len();
 														char buff[1024];
 														memset(buff, 0, sizeof(buff));
@@ -1073,7 +1075,8 @@ void __stdcall CJabberEvents::DispServiceStatusChange (WODXMPPCOMLib::IXMPPServi
 #endif
 	
 	
-	for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+	int i;
+	for (i=0;i<(signed)_MainDlg.m_ChatRooms.size();i++)
 	{
 		CChatRoom *r = (CChatRoom *)_MainDlg.m_ChatRooms[i];
 		if (r->m_DoOpen)
@@ -1234,10 +1237,11 @@ void XMPPChatRoomData(void *wodXMPP, void *Room)
 	WODXMPPCOMLib::XMPP_ChatRoom_GetJID(Room, buff, &l);
 	long h = 0;
 	
-	for (int i = 0; i < _MainDlg.m_ChatRooms.size(); i++)
+	int i;
+	for (i = 0; i < (signed)_MainDlg.m_ChatRooms.size(); i++)
 	{
 		CChatRoom *room = _MainDlg.m_ChatRooms[i];
-		if (!stricmp(room->m_JID, buff))
+		if (!lstrcmpi(room->m_JID, buff))
 		{
 			h = (long)room->m_MessageWin->m_hWnd;
 			break;

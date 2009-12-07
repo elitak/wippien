@@ -140,7 +140,7 @@ public:
 	int m_MyMediatorChoice, m_HisMediatorChoice;
 	RECT m_ChatWindowRect;
 	BOOL m_Block;//, m_StaticIP;
-	unsigned long m_GotVCard;
+	time_t m_GotVCard;
 //	Buffer m_Icon;
 	CxImage *m_Image;
 	_cryptoAES128 m_AES;
@@ -163,7 +163,7 @@ public:
 	unsigned long m_HisVirtualIP;
 
 	BOOL m_Changed, m_ChangeNotify, m_Online, m_Hidden;
-	unsigned long m_LastOnline;
+	time_t m_LastOnline;
 	CChatRoom *m_ChatRoomPtr;
 	//Buffer *m_IsWippien;
 	BOOL m_IsUsingWippien;

@@ -37,7 +37,7 @@ public:
 	int m_State;
 	int m_Timer;
 	void OnPaint(HDC dc);
-	void OnTimer(UINT id, TIMERPROC proc);
+	void OnTimer(UINT id);
 	void OnMouseMove(UINT wParam, CPoint p);
 	Buffer *m_Subject, *m_Text, *m_Subtext;
 

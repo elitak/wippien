@@ -54,7 +54,8 @@ BOOL CChatRoom::IsMsgWindowOpen(void)
 
 void CChatRoom::RemoveGroup(void)
 {
-	for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+	int i;
+	for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 	{
 		CUser *us = _MainDlg.m_UserList.m_Users[i];
 		if (us->m_ChatRoomPtr == this)
@@ -66,7 +67,7 @@ void CChatRoom::RemoveGroup(void)
 	}
 	
 
-	for (i=0;i<_Settings.m_Groups.size();i++)
+	for (i=0;i<(signed)_Settings.m_Groups.size();i++)
 	{
 		CSettings::TreeGroup *tg = _Settings.m_Groups[i];
 		if (tg->Temporary && !strcmp(tg->Name, m_JID))
@@ -85,7 +86,8 @@ void CChatRoom::RemoveGroup(void)
 void CChatRoom::CreateGroup(void)
 {
 
-	for (int i = 0; i < _Settings.m_Groups.size(); i++)
+	int i;
+	for (i = 0; i < (signed)_Settings.m_Groups.size(); i++)
 	{
 		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 		if (!strcmp(tg->Name, m_JID))

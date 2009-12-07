@@ -1437,7 +1437,7 @@ void CBalloonHelp::OnLButtonUp(UINT, CPoint pt)
 	void CBalloonHelp::OnTimer(UINT nIDEvent, TIMERPROC*)
 #else
 	// This is the correct version. Fixed in WTL 7.0
-	void CBalloonHelp::OnTimer(UINT nIDEvent, TIMERPROC)
+	void CBalloonHelp::OnTimer(UINT nIDEvent)
 #endif 
 	{
 	DumpDebug("*CBalloonHelp::OnTimer\r\n");

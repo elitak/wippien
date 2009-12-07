@@ -165,7 +165,7 @@ LRESULT CSettingsDlg::OnTreeNotify(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
 	switch (pnmh->code)
 	{
 		case TVN_SELCHANGED:	
-			for (int i=0;i<m_Dialogs.size();i++)
+			for (int i=0;i<(signed)m_Dialogs.size();i++)
 			{
 				_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[i];
 				if (tem->m_hItem == pnmtv->itemNew.hItem)
@@ -215,7 +215,7 @@ LRESULT CSettingsDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	CWindow w2 = GetDlgItem(IDC_TEXT2);
 	w2.SetFont(DlgTitle2);
 
-	for (int i=0;i<m_Dialogs.size();i++)
+	for (int i=0;i<(signed)m_Dialogs.size();i++)
 	{
 		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[i];
 		if (tem->PATH && *tem->PATH)
@@ -289,7 +289,7 @@ void CSettingsDlg::ShowDialog(int Index)
 		SetDlgItemText(IDC_TEXT2, tem->TEXT2);
 
 
-		for (int i=0;i<m_Dialogs.size();i++)
+		for (int i=0;i<(signed)m_Dialogs.size();i++)
 		{
 			_CSettingsTemplate *temold = (_CSettingsTemplate *)m_Dialogs[i];
 			if (i != Index)
@@ -394,7 +394,7 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 
 	if (m_Modal) // is wizard
 	{
-		for (int i=0;i<m_Dialogs.size();i++)
+		for (int i=0;i<(signed)m_Dialogs.size();i++)
 		{
 			_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[i];
 			tem->DoDefault();
@@ -403,7 +403,7 @@ LRESULT CSettingsDlg::OnOk(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 
 
 //	int dp = m_DlgPos;
-	for (int i=0;i<m_Dialogs.size();i++)
+	for (int i=0;i<(signed)m_Dialogs.size();i++)
 	{
 		_CSettingsTemplate *tem = (_CSettingsTemplate *)m_Dialogs[i];
 //		if (i<=dp)
@@ -547,7 +547,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnChange(WORD wNotifyCode, WORD wID, HWND hW
 				::SendMessage(GetDlgItem(IDC_EDIT_JID), WM_GETTEXT, 16384, (LPARAM)buff);
 				if (buff[0])
 				{
-					strlwr(buff);
+					_strlwr(buff);
 					char *a = trim(buff);
 
 					if (!strcmp(a, "newuser@wippien.com"))
@@ -589,7 +589,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 		}
 		if (strlen(buff2))
 		{
-			srand(time(NULL));
+			srand(GetTickCount());
 			sprintf(buff, "%s%d@wippien.com", buff2, rand()%99);
 			j = buff;
 		}
@@ -743,7 +743,7 @@ LRESULT CSettingsDlg::CSettingsJID::OnJIDPassChange(WORD wNotifyCode, WORD wID, 
 	char *buff = b.ToUTF8String();
 	if (buff && buff[0])
 	{
-		strlwr(buff);
+		_strlwr(buff);
 		char *a = trim(buff);
 
 		if (!strcmp(a, "newuser@wippien.com"))
@@ -1203,7 +1203,7 @@ void CSettingsDlg::CSettingsIcon::DrawNickIcon(HDC dc)
 LRESULT CSettingsDlg::CSettingsIcon::OnNickIcon(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
 {
 	int i = m_IconList.GetCurSel();
-	if (i>=0 && i<m_Image.size())
+	if (i>=0 && i<(signed)m_Image.size())
 	{
 		m_WasShown = TRUE;
 		SelectedImage = m_Image[i];
@@ -1634,7 +1634,7 @@ LRESULT CSettingsDlg::CSettingsMediator::OnInitDialog(UINT /*uMsg*/, WPARAM /*wP
 	SendDlgItemMessage(IDC_MEDIATORLIST,LVM_INSERTCOLUMN,0,(LPARAM)&lvcol); 
 
 
-	for (int i=0;i<_Settings.m_LinkMediators.size();i++)
+	for (int i=0;i<(signed)_Settings.m_LinkMediators.size();i++)
 	{
 		CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
 
@@ -1895,7 +1895,7 @@ void CSettingsDlg::CSettingsAccounts::RefreshGatewaysList(void)
 												n = idbuf;
 												idlen = sizeof(idbuf);
 												WODXMPPCOMLib::XMPP_Identity_GetType(idty, idbuf, &idlen);
-												strlwr(idbuf);
+												_strlwr(idbuf);
 												char *t = idbuf;
 												WODXMPPCOMLib::XMPP_Identity_Free(idty);
 #endif
@@ -2112,7 +2112,8 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 
 			CCommandBarCtrlXP m_Menu;
 			m_Menu.Create(/*m_Tree.*/m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
-			for (int i=0;i<count;i++)
+			int i;
+			for (i=0;i<count;i++)
 			{
 #ifndef _WODXMPPLIB
 				WODXMPPCOMLib::IXMPPService *s = NULL;
@@ -2169,7 +2170,7 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnAddNewAccount(WORD wNotifyCode, WORD 
 										char t[1024];
 										int tlen = sizeof(t);
 										WODXMPPCOMLib::XMPP_Identity_GetType(idty, t, &tlen);
-										strlwr(t);
+										_strlwr(t);
 
 										WODXMPPCOMLib::XMPP_Identity_Free(idty);
 #endif
@@ -2429,7 +2430,7 @@ LRESULT CSettingsDlg::CSettingsAccounts::OnDrawItem(UINT uMsg, WPARAM wParam, LP
 											char t[1024];
 											int tlen = sizeof(t);
 											WODXMPPCOMLib::XMPP_Identity_GetType(idty, t, &tlen);
-											strlwr(t);
+											_strlwr(t);
 											icon = GetServiceType(t);
 										}
 										WODXMPPCOMLib::XMPP_Identity_Free(idty);
@@ -2705,7 +2706,7 @@ void CSettingsDlg::CSettingsContactsAddRemove::RefreshGatewaysList(void)
 void CSettingsDlg::CSettingsContactsAddRemove::RefreshGroupsList(void)
 {
 	m_Combo2.ResetContent();
-	for (int i = 0; i < _Settings.m_Groups.size(); i++)
+	for (int i = 0; i < (signed)_Settings.m_Groups.size(); i++)
 	{
 		CSettings::TreeGroup *tg = (CSettings::TreeGroup *)_Settings.m_Groups[i];
 		if (strcmp(tg->Name, GROUP_OFFLINE))
@@ -2723,10 +2724,10 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewGroup(WORD wNotifyCode
 	{
 		BOOL found = FALSE;
 		// do we have this already?
-		for (int i=0;i<_Settings.m_Groups.size();i++)
+		for (int i=0;i<(signed)_Settings.m_Groups.size();i++)
 		{
 			CSettings::TreeGroup *tg = _Settings.m_Groups[i];
-			if (!stricmp(tg->Name, buff))
+			if (!lstrcmpi(tg->Name, buff))
 				found = TRUE;
 		}
 		if (!found)
@@ -2926,7 +2927,7 @@ LRESULT CSettingsDlg::CSettingsContactsAddRemove::OnAddNewContact(WORD wNotifyCo
 					{
 						// is this new group?
 						BOOL f = FALSE;
-						for (int j=0;!f && j<_Settings.m_Groups.size();j++)
+						for (int j=0;!f && j<(signed)_Settings.m_Groups.size();j++)
 						{
 							CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 							if (!strcmp(tg->Name, grp))
@@ -4343,7 +4344,7 @@ void CSettingsDlg::CSettingsUser4::InitData(void)
 //		if (user->m_AllowedRemoteAny)
 			ListView_SetItemState(GetDlgItem(IDC_INTERFACELIST), res, LVIS_SELECTED, LVIS_OVERLAYMASK );
 
-		for (int i=0;i<user->m_AllowedRemoteIPs.size();i++)
+		for (int i=0;i<(signed)user->m_AllowedRemoteIPs.size();i++)
 		{
 			IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[i];
 
@@ -4422,7 +4423,7 @@ LRESULT CSettingsDlg::CSettingsUser4::OnInterfaceList(int idCtrl, LPNMHDR pnmh, 
 					else
 					{
 						int j = count-nm->iItem-2;
-						if (j<0 || j>=user->m_AllowedRemoteIPs.size())
+						if (j<0 || j>=(signed)user->m_AllowedRemoteIPs.size())
 							return 0;
 
 						IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[j];
@@ -4454,7 +4455,7 @@ LRESULT CSettingsDlg::CSettingsUser4::OnBtnResetAll(WORD wNotifyCode, WORD wID, 
 	CUser *user = _MainDlg.m_UserList.GetUserByJID(m_Text2);
 	if (user)
 	{
-		for (int i=0;i<user->m_AllowedRemoteIPs.size();i++)
+		for (int i=0;i<(signed)user->m_AllowedRemoteIPs.size();i++)
 		{
 			IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[i];
 			ips->Allowed = TRUE;
@@ -4545,7 +4546,7 @@ LRESULT CSettingsDlg::CSettingsUser4::OnDrawItem(UINT /*uMsg*/, WPARAM /*wParam*
 		else
 		{
 			int j = count-item_id-2;
-			if (j>=0 && j<user->m_AllowedRemoteIPs.size())
+			if (j>=0 && j<(signed)user->m_AllowedRemoteIPs.size())
 			{
 				IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)user->m_AllowedRemoteIPs[j];
 				if (ips->Ignored)
@@ -4713,17 +4714,17 @@ LRESULT CSettingsDlg::CSettingsSkins::OnInitDialog(UINT /*uMsg*/, WPARAM /*wPara
 				bf[i-3] = 0;
 				strcat(bf, "png");
 			}
-			int handle = open(bf, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+			int handle = _open(bf, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 			if (handle != (-1))
 			{
 				i = 0;
 				do
 				{
-					i = read(handle, bf, sizeof(bf));
+					i = _read(handle, bf, sizeof(bf));
 					if (i>0)
 						b.Append(bf, i);
 				} while (i>0);
-				close(handle);
+				_close(handle);
 
 				if (b.Len())
 				{
@@ -5339,7 +5340,7 @@ LRESULT CSettingsDlg::CSettingsSystemUpdate::OnInitDialog(UINT /*uMsg*/, WPARAM 
 		::SendMessage(GetDlgItem(IDC_CHECKUPDATE_TIMED), BM_SETCHECK, FALSE, NULL);
 
 	char buff[1024];
-	itoa(_Settings.m_CheckUpdateTimedNum, buff, 10);
+	_itoa(_Settings.m_CheckUpdateTimedNum, buff, 10);
 	SetDlgItemText(IDC_CHECKUPDATE_TIMEDNUM, buff);
 
 	if (_Settings.m_CheckUpdateSilently)
@@ -5734,7 +5735,7 @@ LRESULT CSettingsDlg::CSettingsContactsHide::OnInitDialog(UINT /*uMsg*/, WPARAM 
 	m_HiddenContacts.Attach(GetDlgItem(IDC_HIDDENCONTACTS));
 
 	char *from = _Settings.m_HiddenContactsBuffer.Ptr();
-	for (int i=0;i<_Settings.m_HiddenContacts.size();i++)
+	for (int i=0;i<(signed)_Settings.m_HiddenContacts.size();i++)
 	{
 		int j = _Settings.m_HiddenContacts[i];
 		m_HiddenContacts.AddString(from+j);

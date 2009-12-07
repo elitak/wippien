@@ -124,7 +124,7 @@ public:
 
 							if (ID < min && ID>_Settings.m_LastOperatorMessageID)
 							{
-								min = ID;
+								min = (short)ID;
 								if (showmsg)
 #ifndef _APPUPDLIB
 									showmsg->Release();
@@ -461,7 +461,7 @@ public:
 			{
 				m_Owner->m_Silently = TRUE;
 				// let's loop through all the contacts and disconnect them
-				for (i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+				for (i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 				{
 					CUser *u = (CUser *)_MainDlg.m_UserList.m_Users[i];
 					if (u->m_RemoteWippienState != /*WippienState.*/WipWaitingInitRequest)

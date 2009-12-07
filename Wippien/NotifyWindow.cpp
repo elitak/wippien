@@ -119,7 +119,7 @@ void CNotifyWindow::OnPaint(HDC dc)
 	::BitBlt(pdc.m_hDC, 0, 0, m_Image->GetWidth(), m_Image->GetHeight(), mc.m_hDC, 0, 0, SRCCOPY);
 }
 
-void CNotifyWindow::OnTimer(UINT id, TIMERPROC proc)
+void CNotifyWindow::OnTimer(UINT id)
 {
 	switch (m_State)
 	{

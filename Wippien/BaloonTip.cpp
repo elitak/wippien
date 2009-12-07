@@ -131,8 +131,6 @@ LRESULT CBalloonTipDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
 	HRESULT hr;
 	hr = wndIE.QueryControl ( &m_pWB2 );
 
-//	m_Events = new CWebBrowserEvents<CBalloonTipDlg>(this, m_pWB2);
-
 	m_Events = new CWebBrowserEvents<CBalloonTipDlg, &BaloonTipBeforeNavigate2Info>(this, m_pWB2);
 
 

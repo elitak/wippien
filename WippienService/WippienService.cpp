@@ -134,8 +134,8 @@ inline HRESULT CServiceModule::RegisterServer(BOOL bRegTypeLib, BOOL bService)
     
     if (bService)
     {
-        key.SetValue(_T("WippienService"), _T("LocalService"));
-        key.SetValue(_T("-Service"), _T("ServiceParameters"));
+        key.SetStringValue(_T("WippienService"), _T("LocalService"));
+        key.SetStringValue(_T("-Service"), _T("ServiceParameters"));
         // Create service
         Install();
     }
@@ -443,19 +443,19 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
     LPCTSTR lpszToken = FindOneOf(lpCmdLine, szTokens);
     while (lpszToken != NULL)
     {
-        if (strnicmp(lpszToken, _T("UnregServer"), 11)==0)
+        if (_strnicmp(lpszToken, _T("UnregServer"), 11)==0)
 			flagUnregServer = TRUE;
 
         // Register as Local Server
-        if (strnicmp(lpszToken, _T("RegServer"), 9)==0)
+        if (_strnicmp(lpszToken, _T("RegServer"), 9)==0)
             flagRegServer = TRUE;
         
         // Register as Service
-        if (strnicmp(lpszToken, _T("Service"), 7)==0)
+        if (_strnicmp(lpszToken, _T("Service"), 7)==0)
 			flagService = TRUE;
         
         // Register as Service
-        if (strnicmp(lpszToken, _T("AutoStart"), 9)==0)
+        if (_strnicmp(lpszToken, _T("AutoStart"), 9)==0)
 			flagAutoStart = SERVICE_AUTO_START;
 
         lpszToken = FindOneOf(lpszToken, szTokens);
@@ -485,7 +485,7 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
 
     TCHAR szValue[_MAX_PATH];
     DWORD dwLen = _MAX_PATH;
-    lRes = key.QueryValue(szValue, _T("LocalService"), &dwLen);
+    lRes = key.QueryStringValue(szValue, _T("LocalService"), &dwLen);
 
     _Module.m_bService = FALSE;
     if (lRes == ERROR_SUCCESS)

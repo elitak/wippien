@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wippien", "Wippien\Wippien.vcproj", "{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		LibDebug|Win32 = LibDebug|Win32
+		LibRelease|Win32 = LibRelease|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.Debug|Win32.Build.0 = Debug|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.LibDebug|Win32.ActiveCfg = LibDebug|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.LibDebug|Win32.Build.0 = LibDebug|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.LibRelease|Win32.ActiveCfg = LibRelease|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.LibRelease|Win32.Build.0 = LibRelease|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.Release|Win32.ActiveCfg = Release|Win32
+		{F4DDDB4C-D5BB-4DAE-8403-7917CA35A219}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

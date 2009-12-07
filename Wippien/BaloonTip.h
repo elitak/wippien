@@ -17,8 +17,7 @@
 extern _ATL_FUNC_INFO BaloonTipBeforeNavigate2Info;
 
 
-class CBalloonTipDlg : public CAxDialogImpl<CBalloonTipDlg>, public CBalloonDialog<CBalloonTipDlg>//, public CMessageFilter, public CIdleHandler
-
+class CBalloonTipDlg : public CAxDialogImpl<CBalloonTipDlg>, public CBalloonDialog<CBalloonTipDlg>
 {
 public:
 	enum { IDD = IDD_BALLOONTIP };
@@ -36,6 +35,7 @@ public:
 
 	CPNGButton m_btn1, m_btn2, m_btn3;
 	CWebBrowserEvents<CBalloonTipDlg, &BaloonTipBeforeNavigate2Info> *m_Events;
+
 	IWebBrowser2 *m_pWB2;
 	CComBSTR m_Text, m_Caption;
 
@@ -65,6 +65,9 @@ public:
 		ALT_MSG_MAP(1)
 			CHAIN_MSG_MAP_ALT( CBalloonDialog<CBalloonTipDlg>, 1 )
 	END_MSG_MAP()
+
+	BEGIN_SINK_MAP(CBalloonTipDlg)
+	END_SINK_MAP()
 
 
    LRESULT OnWhiteLabelCtlColorStatic(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)

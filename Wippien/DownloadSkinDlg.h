@@ -42,6 +42,9 @@ public:
 		COMMAND_ID_HANDLER(ID_CANCEL, OnCancelCmd)
 	END_MSG_MAP()
 
+	BEGIN_SINK_MAP(CDownloadSkinDlg)
+	END_SINK_MAP()
+
 // Handler prototypes (uncomment arguments if needed):
 //	LRESULT MessageHandler(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 //	LRESULT CommandHandler(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)

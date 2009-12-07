@@ -255,7 +255,7 @@ void CSDKMessageLink::CreateLinkWindow(void)
 
 BOOL CSDKMessageLink::FireEvent(int Cmd, void *Data, int Len)
 {
-	for (int i=0;i<m_Windows.size();i++)
+	for (int i=0;i<(signed)m_Windows.size();i++)
 	{
 		LPARAM l = m_Windows[i];
 		if (SendBuffer((HWND)l, Cmd, Data, Len) == 2)
@@ -312,7 +312,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_INIT:
 			{
 				BOOL found = FALSE;
-				for (int i=0;!found && i<pLink->m_Windows.size();i++)
+				for (int i=0;!found && i<(signed)pLink->m_Windows.size();i++)
 				{
 					LPARAM l = pLink->m_Windows[i];
 					if (wParam == l)
@@ -535,7 +535,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERJID:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					pLink->SendBuffer((HWND) wParam, user->m_JID);
@@ -547,7 +547,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERRESOURCE:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					pLink->SendBuffer((HWND) wParam, user->m_Resource);
@@ -559,7 +559,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSEREMAIL:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					pLink->SendBuffer((HWND) wParam, user->m_Email);
@@ -571,7 +571,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERVISIBLENAME:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					pLink->SendBuffer((HWND) wParam, user->m_VisibleName);
@@ -583,7 +583,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERGROUP:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					pLink->SendBuffer((HWND) wParam, user->m_Group);
@@ -595,7 +595,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERBLOCK:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					return user->m_Block+1;
@@ -607,7 +607,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 			{
 				int jid1 = lParam;
 				HRESULT hr = E_FAIL;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					if (_Jabber && _Jabber->m_Jabb)
@@ -657,7 +657,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERVPNSTATUS:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					return user->m_WippienState+1;
@@ -668,7 +668,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERIP:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					struct in_addr in;
@@ -682,7 +682,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERCONNECTEDIP:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					CComBSTR2 ra = user->m_RemoteAddr;
@@ -695,7 +695,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_GETUSERCONNECTEDPORT:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					return ntohs(user->m_RemotePort)+1;
@@ -719,7 +719,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 		case WM_WIPPIEN_USERCONNECT:
 			{
 				int jid1 = lParam;
-				if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+				if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 				{
 					CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 					if (user->m_WippienState != WipConnected)
@@ -766,10 +766,10 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 					case WM_WIPPIEN_GETUSERID:
 						{
 							// locate user
-							for (int i = 0; i < _MainDlg.m_UserList.m_Users.size(); i++)
+							for (int i = 0; i < (signed)_MainDlg.m_UserList.m_Users.size(); i++)
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[i];
-								if (!strnicmp(user->m_JID, b.Ptr(), b.Len()))
+								if (!_strnicmp(user->m_JID, b.Ptr(), b.Len()))
 									return i+1;
 							}
 
@@ -789,7 +789,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 
 							if (plaintext1 && htmltext1)
 							{
-								if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+								if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 								{
 									CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 									if (_Jabber)
@@ -808,7 +808,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							int jid1 = b.GetInt();
 							char v = b.GetChar();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								if (v)
@@ -824,7 +824,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 							int jid1 = b.GetInt();
 							char v = b.GetChar();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								user->m_Block = v;
@@ -837,7 +837,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						{
 							int jid1 = b.GetInt();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								char *a = b.GetString(NULL);
@@ -854,7 +854,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						{
 							int jid1 = b.GetInt();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								char *a = b.GetString(NULL);
@@ -871,7 +871,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						{
 							int jid1 = b.GetInt();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								char *a = b.GetString(NULL);
@@ -888,7 +888,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						{
 							int jid1 = b.GetInt();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								char *a = b.GetString(NULL);
@@ -906,7 +906,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						{
 							int jid1 = b.GetInt();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								char *a = b.GetString(NULL);
@@ -1066,7 +1066,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 #endif
 
 									// and remove contact from list of users
-									for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+									for (int i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 									{
 										CUser *us = _MainDlg.m_UserList.m_Users[i];
 										if (!strcmp(us->m_JID, aold))
@@ -1090,7 +1090,7 @@ LRESULT CALLBACK CSDKMessageLink::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 						{
 							int jid1 = b.GetInt();
 
-							if (jid1>=0 && jid1 < _MainDlg.m_UserList.m_Users.size())
+							if (jid1>=0 && jid1 < (signed)_MainDlg.m_UserList.m_Users.size())
 							{
 								CUser *user = _MainDlg.m_UserList.m_Users[jid1];	
 								if (user->m_WippienState != WipConnected)

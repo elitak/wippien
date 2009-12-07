@@ -770,7 +770,7 @@ LRESULT CMsgWin::OnEmoticonBtnClicked(WORD /*wNotifyCode*/, WORD wID, HWND /*hWn
 			if (!m_ListLoaded)
 			{
 				m_ListLoaded = TRUE;
-				for (int i=0;i<_MainDlg.m_EmoticonsInstance.m_Image.size();i++)
+				for (int i=0;i<(signed)_MainDlg.m_EmoticonsInstance.m_Image.size();i++)
 				{
 					::SendMessage(m_EmoticonList->m_hWnd, LB_ADDSTRING, NULL, (LPARAM)"");
 //					m_IconList.InsertString(i, "");
@@ -864,7 +864,7 @@ LRESULT CMsgWin::OnBtnClearHistory(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCt
 	{
 		m_LastSay.Empty();
 		m_LastTimestamp[0] = 0;
-		unlink(m_HistoryPath);
+		_unlink(m_HistoryPath);
 //		if (m_ChatBox.m_Events)
 //			delete m_ChatBox.m_Events;
 //		m_ChatBox.m_Events = NULL;
@@ -1143,11 +1143,11 @@ BOOL CMsgWin::SaveHistory(BOOL Mine, char *Text)
 	if (_Settings.m_ShowMessageHistory)
 	{
 
-		int handle = open(m_HistoryPath, O_BINARY | O_WRONLY | O_CREAT, S_IREAD | S_IWRITE);
+		int handle = _open(m_HistoryPath, O_BINARY | O_WRONLY | O_CREAT, S_IREAD | S_IWRITE);
 		if (handle == (-1))
 			return FALSE;
 
-		lseek(handle, 0, SEEK_END);
+		_lseek(handle, 0, SEEK_END);
 		Buffer b;
 		SYSTEMTIME st;
 		GetLocalTime(&st);
@@ -1165,8 +1165,8 @@ BOOL CMsgWin::SaveHistory(BOOL Mine, char *Text)
 		b.PutInt(MAKELONG(d1, d2));
 		b.PutCString(Text);
 
-		write(handle, b.Ptr(), b.Len());
-		close(handle);
+		_write(handle, b.Ptr(), b.Len());
+		_close(handle);
 	}
 	return TRUE;
 }
@@ -1176,18 +1176,18 @@ BOOL CMsgWin::LoadHistory(Buffer *c)
 	if (m_User && _Settings.m_ShowMessageHistory)
 	{
 		char buff[32768];
-		int handle = open(m_HistoryPath, O_BINARY | O_RDONLY , S_IREAD | S_IWRITE);
+		int handle = _open(m_HistoryPath, O_BINARY | O_RDONLY , S_IREAD | S_IWRITE);
 		if (handle == (-1))
 			return FALSE;
 
 		Buffer b;
-		while (!eof(handle))
+		while (!_eof(handle))
 		{
-			int i = read(handle, buff, 32768);
+			int i = _read(handle, buff, 32768);
 			if (i>0)
 				b.Append(buff, i);
 		};
-		close(handle);
+		_close(handle);
 
 		CComBSTR last;
 		
@@ -1397,7 +1397,7 @@ void CMsgWin::OnFinalMessage(HWND /*hWnd*/)
 	{
 		// delete this room
 		m_Room->m_MessageWin = NULL;
-		for (int i=0;i<_MainDlg.m_ChatRooms.size();i++)
+		for (int i=0;i<(signed)_MainDlg.m_ChatRooms.size();i++)
 		{
 			CChatRoom *room = _MainDlg.m_ChatRooms[i];
 			if (room == m_Room)
@@ -1860,7 +1860,7 @@ LRESULT CMsgWin::CChatBox::OnParentNotify(UINT /*uMsg*/, WPARAM wParam, LPARAM l
 
 		if (::GetClassName(hChild, strClassName, 255))
 		{
-			strlwr(strClassName);
+			_strlwr(strClassName);
 			if (strstr(strClassName, "internet") && strstr(strClassName, "explorer") && strstr(strClassName, "server"))
 			{
 				UnsubclassWindow();
@@ -2801,7 +2801,7 @@ HRESULT STDMETHODCALLTYPE CMsgWin::CMyHTMLEditDesigner::PostEditorEventNotify(DI
 	return S_FALSE;
 }
 
-CMsgWin::CMyHTMLEditDesigner::CMSHTMLDisableDragHTMLEditDesigner()
+void CMsgWin::CMyHTMLEditDesigner::CMSHTMLDisableDragHTMLEditDesigner()
 {
 	m_pServices = (IHTMLEditServices *) NULL;
 	m_uRefCount = 0;
@@ -2980,7 +2980,7 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 							Buffer p1;
 							char bf[128];
 							sprintf(bf, "/download/Emotico2.dll.gz");
-							dlg->m_Total = ((float)1.11 * 1024 * 1024);
+							dlg->m_Total = (int)((float)1.11 * 1024 * 1024);
 							dlg->DownloadFile(FALSE, bf, &p1, TRUE);
 
 							if (p1.Len()>0)
@@ -3005,7 +3005,7 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 									strcpy(buff, _Settings.m_MyPath);
 									strcat(buff, "Emotico2.dll");
 
-									int handle = open(buff, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+									int handle = _open(buff, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 									if (handle != (-1))
 									{
 										do
@@ -3013,10 +3013,10 @@ LRESULT CALLBACK CMsgWin::CWEmoticon::WindowProc(HWND hWnd, UINT message, WPARAM
 											int l = p2.Len();
 											if (l>65535)
 												l = 65535;
-											write(handle, p2.Ptr(), l);
+											_write(handle, p2.Ptr(), l);
 											p2.Consume(l);
 										} while (p2.Len());
-										close(handle);
+										_close(handle);
 
 										em->m_Owner->m_ImagesLoaded = FALSE;
 										em->m_Owner->m_ListLoaded = FALSE;

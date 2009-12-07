@@ -41,7 +41,8 @@ public:
 		{
 			if (recursivedepth)
 			{
-				for (int i=0;!ret && i<start->Children.size();i++)
+				int i;
+				for (i=0;!ret && i<(signed)start->Children.size();i++)
 				{
 					CXmlEntity *e = (CXmlEntity *)start->Children[i];
 					ret = FindByName(e, name, recursivedepth-1);
@@ -53,7 +54,8 @@ public:
 	}
 	static CXmlEntity * FindAttrByName(CXmlEntity *start, char *name)
 	{
-		for (int i=0;i<start->Attributes.size();i++)
+		int i;
+		for (i=0;i<(signed)start->Attributes.size();i++)
 		{
 			CXmlEntity *e = (CXmlEntity *)start->Attributes[i];
 			if (e->Name && !strcmp(name, e->Name))
@@ -71,7 +73,8 @@ public:
 		{
 			if (recursivedepth)
 			{
-				for (int i=0;!ret && i<start->Children.size();i++)
+				int i;
+				for (i=0;!ret && i<(signed)start->Children.size();i++)
 				{
 					CXmlEntity *e = (CXmlEntity *)start->Children[i];
 					ret = FindByValue(e, value, recursivedepth-1);

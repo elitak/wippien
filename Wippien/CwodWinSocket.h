@@ -286,11 +286,6 @@ public:
 	{
 		return ::WSAAsyncSelect(m_sock, m_sockWndHandle, WM_USER_SOCKET, lEvent);
 	}
-	int PASCAL FAR WSARecvEx (OUT char FAR * buf,IN int len,IN OUT int FAR *flags)
-	{
-		return ::WSARecvEx(m_sock, buf, len, flags);
-	}
-
 };
 
 template <class T> class CSimpleSocketCallback : public CwodWinSocket

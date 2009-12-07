@@ -586,7 +586,8 @@ public:
 				// grof
 								
 					CxImage *IMG = NULL;
-					for (int x=0;!IMG && x<_Settings.m_MenuImages.size();x++)
+					int x;
+					for (x=0;!IMG && x<(signed)_Settings.m_MenuImages.size();x++)
 					{
 						CxImage *img = (CxImage *)_Settings.m_MenuImages[x];
 						if (img->pUserData == (void *)lpDrawItemStruct->itemID)
@@ -742,7 +743,8 @@ public:
 				// grof
 								
 					CxImage *IMG = NULL;
-					for (int x=0;!IMG && x<_Settings.m_MenuImages.size();x++)
+					int x;
+					for (x=0;!IMG && x<(signed)_Settings.m_MenuImages.size();x++)
 					{
 						CxImage *img = (CxImage *)_Settings.m_MenuImages[x];
 						if (img->pUserData == (void *)lpDrawItemStruct->itemID)

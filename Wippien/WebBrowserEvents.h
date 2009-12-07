@@ -1,11 +1,8 @@
 #ifndef __WEBBROWSEREVENTS
 #define __WEBBROWSEREVENTS
 
-
-
-
 template <class T, _ATL_FUNC_INFO *sk>
-class CWebBrowserEvents : public IDispEventSimpleImpl<1, CWebBrowserEvents, &DIID_DWebBrowserEvents2>
+class CWebBrowserEvents : public IDispEventSimpleImpl<1, T, &DIID_DWebBrowserEvents2>
 {
 public:
     CWebBrowserEvents (T * Owner, IWebBrowser2 *pWebBrowser)

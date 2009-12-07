@@ -690,7 +690,7 @@ void CUser::FdMTU(int MTU)
 
 		int minmtu = m_MTU;
 		// let's see if we need to define new mtu in registry
-		for (int i=0;i<_MainDlg.m_UserList.m_Users.size();i++)
+		for (int i=0;i<(signed)_MainDlg.m_UserList.m_Users.size();i++)
 		{
 			CUser *us = (CUser *)_MainDlg.m_UserList.m_Users[i];
 			if (us->m_MTU)
@@ -750,7 +750,7 @@ void CUser::FdTimer(int TimerID)
 				// let's add our mediators
 				Buffer b1;
 				int total = 0;
-				for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
+				for (int i=0;i<255 && i<(signed)_Settings.m_LinkMediators.size();i++)
 				{
 					CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
 					if (st->Permanent)
@@ -770,7 +770,7 @@ void CUser::FdTimer(int TimerID)
 						if (m_MyMediatorChoice<0)
 							m_MyMediatorChoice = rand()%total;
 						int j = 0;
-						for (int i=0;i<255 && i<_Settings.m_LinkMediators.size();i++)
+						for (int i=0;i<255 && i<(signed)_Settings.m_LinkMediators.size();i++)
 						{
 							CSettings::LinkMediatorStruct *st = (CSettings::LinkMediatorStruct *)_Settings.m_LinkMediators[i];
 							if (st->Permanent)
@@ -867,7 +867,7 @@ BOOL CUser::IsIPAllowed(unsigned long IP)
 {
 	BOOL allow = m_AllowedRemoteAny;
 
-	for (int y=0;y<m_AllowedRemoteIPs.size();y++)
+	for (int y=0;y<(signed)m_AllowedRemoteIPs.size();y++)
 	{
 		IPAddressConnectionStruct *ips = (IPAddressConnectionStruct *)m_AllowedRemoteIPs[y];
 		if (ips->Address == IP && !ips->Ignored)
@@ -889,7 +889,7 @@ void CUser::DumpToFileFixed(char *text)
 	if (text && text[0])
 	{
 		
-		handle = open(file.ToString(), O_BINARY | O_WRONLY | O_APPEND | O_CREAT, S_IREAD | S_IWRITE);
+		handle = _open(file.ToString(), O_BINARY | O_WRONLY | O_APPEND | O_CREAT, S_IREAD | S_IWRITE);
 		if (handle!=(-1))
 		{
 			
@@ -910,9 +910,9 @@ void CUser::DumpToFileFixed(char *text)
 			}			
 			
 			strcat(buff, "-> ");
-			write(handle, buff, strlen(buff));						
-			write(handle, text, strlen(text));
-			close(handle);
+			_write(handle, buff, strlen(buff));						
+			_write(handle, text, strlen(text));
+			_close(handle);
 		}
 	}
 }
@@ -1014,17 +1014,17 @@ void CUser::SetSubtext(void)
 				time_t now;
 				time(&now);
 				unsigned long t;
-				t = (now - m_LastOnline) / 86400L;//(60 *60 *24);
+				t = (unsigned long)((now - m_LastOnline) / 86400L);//(60 *60 *24);
 				if (t>0)
 					sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("days"):_Settings.Translate("day"));
 				else
 				{
-					t = (now-m_LastOnline) / 3600L;//60 * 60;
+					t = (unsigned long)((now-m_LastOnline) / 3600L);//60 * 60;
 					if (t>0)
 						sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("hours"):_Settings.Translate("hour"));
 					else
 					{
-						t = (now-m_LastOnline)/60;
+						t = (unsigned long)((now-m_LastOnline)/60);
 						if (!t)
 							t = 1;
 						sprintf(howlong, "%d %s", t, t>1?_Settings.Translate("minutes"):_Settings.Translate("minute"));
@@ -1389,11 +1389,11 @@ BOOL CUser::SaveUserImage(char *data, int len)
 	strcat(buff, m_JID); 
 	strcat(buff, ".png");
 
-	int handle = open(buff, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+	int handle = _open(buff, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	if (handle != (-1))
 	{
-		write(handle, data, len);
-		close(handle);
+		_write(handle, data, len);
+		_close(handle);
 		return TRUE;
 	}
 	return FALSE;

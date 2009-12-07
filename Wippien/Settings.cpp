@@ -1053,7 +1053,7 @@ void CSettings::FromHex(Buffer *in, Buffer *out)
 			return;
 
 		memcpy(buff, in->Ptr(), 2);
-		strlwr(buff);
+		_strlwr(buff);
 
 		char *s1, *s2;
 		s1 = (char *)strchr(hex, buff[0]);
@@ -1182,11 +1182,11 @@ BOOL CSettings::SaveConfig(void)
 	char icobuf[1024];
 	strcpy(icobuf, m_CfgFilename);
 	strcat(icobuf, ".png");
-	handle = open(icobuf, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+	handle = _open(icobuf, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	if (handle != (-1))
 	{
-		write(handle, m_Icon.Ptr(), m_Icon.Len());
-		close(handle);
+		_write(handle, m_Icon.Ptr(), m_Icon.Len());
+		_close(handle);
 	}
 
 	x.AddChildElem("DoNotShow", m_DoNotShow);
@@ -1322,11 +1322,11 @@ BOOL CSettings::SaveConfig(void)
 	x.AddChildElem("DoAlign", m_DoAlign);
 	x.Append("</Message_Dialog_Window>\r\n");
 
-	handle = open(m_CfgFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+	handle = _open(m_CfgFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	if (handle != (-1))
 	{
-		write(handle, x.Ptr(), x.Len());
-		close(handle);
+		_write(handle, x.Ptr(), x.Len());
+		_close(handle);
 	}
 
 	return TRUE;
@@ -1355,12 +1355,12 @@ BOOL CSettings::SaveRooms(void)
 			x.Append("</ChatRoom>\r\n");
 		}
 	}		
-	int handle = open(m_ChatRoomFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+	int handle = _open(m_ChatRoomFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	if (handle != (-1))
 	{
 		if (x.Len()>10) // if there's anything inside at all
-			write(handle, x.Ptr(), x.Len());
-		close(handle);
+			_write(handle, x.Ptr(), x.Len());
+		_close(handle);
 	}
 
 	return TRUE;
@@ -1433,12 +1433,12 @@ BOOL CSettings::SaveUsers(void)
 		}
 	}
 
-	int handle = open(m_UsrFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+	int handle = _open(m_UsrFilename, O_BINARY | O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	if (handle != (-1))
 	{
 		if (x.Len()>10) // if there's anything inside at all
-			write(handle, x.Ptr(), x.Len());
-		close(handle);
+			_write(handle, x.Ptr(), x.Len());
+		_close(handle);
 	}
 	return TRUE;
 }
@@ -1457,7 +1457,7 @@ int CSettings::LoadTools(void)
 		buff[i] = 0;
 		strcat(buff, ".tools");
 
-		int handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+		int handle = _open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 		if (handle == (-1))
 			return FALSE;
 
@@ -1465,11 +1465,11 @@ int CSettings::LoadTools(void)
 		int i;
 		do
 		{
-			i = read(handle, buff, 32768);
+			i = _read(handle, buff, 32768);
 			if (i>0)
 				b.Append(buff, i);
 		} while (i>0);
-		close(handle);
+		_close(handle);
 
 		b.Append("\r\n\0",3);
 
@@ -1534,12 +1534,12 @@ int CSettings::LoadTools(void)
 						}
 						o1++;
 					}
-					int h2 = open(os,O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+					int h2 = _open(os,O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 					if (h2 ==(-1))
 						free(buff);
 					else
 					{
-						close(h2);
+						_close(h2);
 
 						MenuTool *mt = new MenuTool;
 						memset(mt, 0, sizeof(MenuTool));
@@ -1855,7 +1855,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 	int i;
 	Buffer temp;
 	temp.Clear();
-	int handle = open(Language, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+	int handle = _open(Language, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle >= 0)
 	{
 		BOOL initial = TRUE;
@@ -1864,7 +1864,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 		do
 		{
 			a1 = (unsigned char *)buff;
-			i = read(handle, buff, sizeof(buff));
+			i = _read(handle, buff, sizeof(buff));
 			if (i>0)
 			{
 				if (initial && i>5)
@@ -1892,7 +1892,7 @@ BOOL CSettings::LoadLanguageFile(char *Language, Buffer *temp1)
 				temp.Append((char *)a1, i);
 			}
 		} while (i>0);
-		close(handle);
+		_close(handle);
 		
 		if (isunicode)
 		{
@@ -1975,16 +1975,16 @@ BOOL CSettings::LoadLanguage(char *Language)
 	Buffer temp;
 	unsigned int offset;
 	int i;
-	int handle = open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
+	int handle = _open(buff, O_BINARY | O_RDONLY, S_IREAD | S_IWRITE);
 	if (handle >= 0)
 	{
 		do
 		{
-			i = read(handle, buff, sizeof(buff));
+			i = _read(handle, buff, sizeof(buff));
 			if (i>0)
 				temp.Append(buff, i);
 		} while (i>0);
-		close(handle);
+		_close(handle);
 
 		temp.Append("\r\n", 2);
 		m_LanguageEnglishTotal = 0;

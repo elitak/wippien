@@ -144,7 +144,7 @@
 				AdditionalIncludeDirectories="\WeOnlyDo\OpenSSL\x86\inc32"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVESSL;_WODVPNLIB;_APPUPDLIB;_WODXMPPLIB;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="0"
 				RuntimeLibrary="1"
 				PrecompiledHeaderFile=".\Debug/Wippien.pch"
 				AssemblerListingLocation=".\Debug/"
@@ -1569,6 +1569,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\WebBrowserEvents.cpp"
+				>
+			</File>
+			<File
 				RelativePath="wildmat.cpp"
 				>
 				<FileConfiguration
@@ -1847,19 +1851,19 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
-				RelativePath="..\Gfx\ac0038-16.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\RightClick\ac0038-16.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\RightClick\ac0052-16.png"
+				RelativePath="..\Gfx\ac0038-16.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\ac0052-16.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\RightClick\ac0052-16.png"
 				>
 			</File>
 			<File
@@ -1879,15 +1883,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\ac0058-48.png"
-				>
-			</File>
-			<File
 				RelativePath="ac0058-48.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\ac0058-48.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\ac0058-48.png"
 				>
 			</File>
 			<File
@@ -1959,15 +1963,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\BushBaby.png"
-				>
-			</File>
-			<File
 				RelativePath="BushBaby.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Avatars\BushBaby.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\BushBaby.png"
 				>
 			</File>
 			<File
@@ -1995,15 +1999,15 @@
 				>
 			</File>
 			<File
-				RelativePath="co0001-48.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\co0001-48.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Avatars\co0001-48.png"
+				>
+			</File>
+			<File
+				RelativePath="co0001-48.png"
 				>
 			</File>
 			<File
@@ -2031,11 +2035,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Copy.png"
+				RelativePath="..\Gfx\RightClick\Copy.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\RightClick\Copy.png"
+				RelativePath="..\Gfx\Copy.png"
 				>
 			</File>
 			<File
@@ -2055,11 +2059,11 @@
 				>
 			</File>
 			<File
-				RelativePath="dragdrop_16.bmp"
+				RelativePath="..\Gfx\dragdrop_16.bmp"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\dragdrop_16.bmp"
+				RelativePath="dragdrop_16.bmp"
 				>
 			</File>
 			<File
@@ -2075,11 +2079,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\ei0029-16.png"
+				RelativePath="..\Gfx\RightClick\ei0029-16.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\RightClick\ei0029-16.png"
+				RelativePath="..\Gfx\ei0029-16.png"
 				>
 			</File>
 			<File
@@ -2107,19 +2111,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\fontforecolor.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\MsgWin\fontforecolor.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\MsgWin\fontsizedown.png"
+				RelativePath="..\Gfx\fontforecolor.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\fontsizedown.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\MsgWin\fontsizedown.png"
 				>
 			</File>
 			<File
@@ -2131,15 +2135,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\MsgWin\fontsizeup.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\fontsizeup.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Forum Flirt.png"
+				RelativePath="..\Gfx\MsgWin\fontsizeup.png"
 				>
 			</File>
 			<File
@@ -2148,6 +2148,10 @@
 			</File>
 			<File
 				RelativePath="Forum Flirt.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\Forum Flirt.png"
 				>
 			</File>
 			<File
@@ -2187,10 +2191,6 @@
 				>
 			</File>
 			<File
-				RelativePath="HopelesslyAddicted.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\HopelesslyAddicted.png"
 				>
 			</File>
@@ -2199,11 +2199,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\MsgWin\hyperlink.png"
+				RelativePath="HopelesslyAddicted.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\hyperlink.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\MsgWin\hyperlink.png"
 				>
 			</File>
 			<File
@@ -2235,15 +2239,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\MsgWin\italic.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\italic.png"
 				>
 			</File>
 			<File
-				RelativePath="Jekyll and Hyde.png"
+				RelativePath="..\Gfx\MsgWin\italic.png"
 				>
 			</File>
 			<File
@@ -2252,6 +2252,10 @@
 			</File>
 			<File
 				RelativePath="..\Gfx\Avatars\Jekyll and Hyde.png"
+				>
+			</File>
+			<File
+				RelativePath="Jekyll and Hyde.png"
 				>
 			</File>
 			<File
@@ -2267,15 +2271,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Linux Zealot.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\Linux Zealot.png"
 				>
 			</File>
 			<File
 				RelativePath="Linux Zealot.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\Linux Zealot.png"
 				>
 			</File>
 			<File
@@ -2291,11 +2295,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\MacZealot.png"
+				RelativePath="..\Gfx\Avatars\MacZealot.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\MacZealot.png"
+				RelativePath="..\Gfx\MacZealot.png"
 				>
 			</File>
 			<File
@@ -2323,19 +2327,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Sounds\msgin.wav"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\msgin.wav"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\msgout.wav"
+				RelativePath="..\Gfx\Sounds\msgin.wav"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Sounds\msgout.wav"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\msgout.wav"
 				>
 			</File>
 			<File
@@ -2351,19 +2355,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\nd0012-16.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\RightClick\nd0012-16.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Newbie.png"
+				RelativePath="..\Gfx\nd0012-16.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Newbie.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\Newbie.png"
 				>
 			</File>
 			<File
@@ -2383,11 +2387,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\No Dissent.png"
+				RelativePath="..\Gfx\No Dissent.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\No Dissent.png"
+				RelativePath="..\Gfx\Avatars\No Dissent.png"
 				>
 			</File>
 			<File
@@ -2415,11 +2419,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\off.wav"
+				RelativePath="..\Gfx\Sounds\off.wav"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Sounds\off.wav"
+				RelativePath="..\Gfx\off.wav"
 				>
 			</File>
 			<File
@@ -2439,19 +2443,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\PCWeenie.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\PCWeenie.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Post Padder.png"
+				RelativePath="..\Gfx\Avatars\PCWeenie.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Post Padder.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\Post Padder.png"
 				>
 			</File>
 			<File
@@ -2467,19 +2471,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Ray of Sunshine.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\Avatars\Ray of Sunshine.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\rename-16.png"
+				RelativePath="..\Gfx\Ray of Sunshine.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\RightClick\rename-16.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\rename-16.png"
 				>
 			</File>
 			<File
@@ -2491,19 +2495,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Robot.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\Avatars\Robot.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Rumor Junkie.png"
+				RelativePath="..\Gfx\Robot.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Rumor Junkie.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\Rumor Junkie.png"
 				>
 			</File>
 			<File
@@ -2519,15 +2523,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Sozzled Surfer.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\Avatars\Sozzled Surfer.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Spks in Tungz.png"
+				RelativePath="..\Gfx\Sozzled Surfer.png"
 				>
 			</File>
 			<File
@@ -2535,11 +2535,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\splash2.jpg"
+				RelativePath="..\Gfx\Avatars\Spks in Tungz.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Statistician.png"
+				RelativePath="..\Gfx\splash2.jpg"
 				>
 			</File>
 			<File
@@ -2547,11 +2547,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\Tech Support.png"
+				RelativePath="..\Gfx\Statistician.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\Tech Support.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\Tech Support.png"
 				>
 			</File>
 			<File
@@ -2567,11 +2571,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\TheGuru.png"
+				RelativePath="..\Gfx\TheGuru.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\TheGuru.png"
+				RelativePath="..\Gfx\Avatars\TheGuru.png"
 				>
 			</File>
 			<File
@@ -2583,11 +2587,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\MsgWin\underline.png"
+				RelativePath="..\Gfx\underline.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\underline.png"
+				RelativePath="..\Gfx\MsgWin\underline.png"
 				>
 			</File>
 			<File
@@ -2655,19 +2659,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\RightClick\wi0102-16.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\wi0102-16.png"
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\wi0152-48.png"
+				RelativePath="..\Gfx\RightClick\wi0102-16.png"
 				>
 			</File>
 			<File
 				RelativePath="..\Gfx\wi0152-48.png"
+				>
+			</File>
+			<File
+				RelativePath="..\Gfx\Avatars\wi0152-48.png"
 				>
 			</File>
 			<File
@@ -2679,15 +2683,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Gfx\Avatars\wi0155-48.png"
-				>
-			</File>
-			<File
 				RelativePath="..\Gfx\wi0155-48.png"
 				>
 			</File>
 			<File
-				RelativePath="Windows Zealot.png"
+				RelativePath="..\Gfx\Avatars\wi0155-48.png"
 				>
 			</File>
 			<File
@@ -2696,6 +2696,10 @@
 			</File>
 			<File
 				RelativePath="..\Gfx\Avatars\Windows Zealot.png"
+				>
+			</File>
+			<File
+				RelativePath="Windows Zealot.png"
 				>
 			</File>
 			<File

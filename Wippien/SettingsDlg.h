@@ -39,7 +39,7 @@ public:
 	enum { IDD = IDD_SETTINGS };
 
 class _CSettingsTemplate;
-typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
+typedef std::vector<void *> DIALOGSLIST;
 
 
 	CSettingsDlg(BOOL Modal);
@@ -257,7 +257,7 @@ typedef std::vector<_CSettingsTemplate *> DIALOGSLIST;
 		enum { IDD = IDD_SETTINGS_JID };
 
 		CSettingsJID();
-		~CSettingsJID();
+		virtual ~CSettingsJID();
 		CJabberWiz *m_Jabber;
 		BOOL m_TestSuccess;
 

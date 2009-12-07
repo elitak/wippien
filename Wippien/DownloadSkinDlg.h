@@ -26,11 +26,12 @@ public:
 	CDownloadSkinDlg(HWND Owner);
 	virtual ~CDownloadSkinDlg();
 	HWND m_OwnerHwnd;
+	BOOL m_Initial;
 
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	virtual BOOL OnIdle();
 
-	CWebBrowserEvents<CDownloadSkinDlg, &SkinDlgBeforeNavigate2Info> *m_Events;
+	CWebBrowserEvents<CDownloadSkinDlg> *m_Events;
 	IWebBrowser2 *m_pWB2;
 
 	BEGIN_MSG_MAP(CDownloadSkinDlg)
@@ -45,6 +46,9 @@ public:
 	BEGIN_SINK_MAP(CDownloadSkinDlg)
 	END_SINK_MAP()
 
+	void __BeforeNavigate2(/*[in]*/ IDispatch* pDisp, /*[in]*/ VARIANT* URL, /*[in]*/ VARIANT* Flags, 
+	/*[in]*/ VARIANT* TargetFrameName, /*[in]*/ VARIANT* PostData, /*[in]*/ VARIANT* Headers, 
+	/*[out]*/ VARIANT_BOOL* Cancel);
 // Handler prototypes (uncomment arguments if needed):
 //	LRESULT MessageHandler(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 //	LRESULT CommandHandler(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)

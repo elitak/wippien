@@ -48,6 +48,7 @@ int CheckSettingsWizard(void)
 	do
 	{
 		CSettingsDlg dlg(TRUE);
+		dlg.m_Dialogs.size();
 		needwizard = FALSE;
 
 		if (!_Settings.LoadConfig())

@@ -14,9 +14,6 @@
 #include "PNGButton.h"
 #include "WebBrowserEvents.h"
 
-extern _ATL_FUNC_INFO BaloonTipBeforeNavigate2Info;
-
-
 class CBalloonTipDlg : public CAxDialogImpl<CBalloonTipDlg>, public CBalloonDialog<CBalloonTipDlg>
 {
 public:
@@ -30,11 +27,11 @@ public:
 	CFont m_fontTitle;
 
 	int m_Result, m_Type;
-	BOOL m_Down;
+	BOOL m_Down, m_Cancel;
 	POINT m_DownPoint;
 
 	CPNGButton m_btn1, m_btn2, m_btn3;
-	CWebBrowserEvents<CBalloonTipDlg, &BaloonTipBeforeNavigate2Info> *m_Events;
+	CWebBrowserEvents<CBalloonTipDlg> *m_Events;
 
 	IWebBrowser2 *m_pWB2;
 	CComBSTR m_Text, m_Caption;
@@ -69,6 +66,9 @@ public:
 	BEGIN_SINK_MAP(CBalloonTipDlg)
 	END_SINK_MAP()
 
+	void __BeforeNavigate2(/*[in]*/ IDispatch* pDisp, /*[in]*/ VARIANT* URL, /*[in]*/ VARIANT* Flags, 
+	/*[in]*/ VARIANT* TargetFrameName, /*[in]*/ VARIANT* PostData, /*[in]*/ VARIANT* Headers, 
+	/*[out]*/ VARIANT_BOOL* Cancel);
 
    LRESULT OnWhiteLabelCtlColorStatic(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)
    {

@@ -1220,7 +1220,8 @@ void CUserList::RefreshView(BOOL updateonly)
 		_Settings.SaveUsers();
 
 
-		for (int j=0;j<(signed)_Settings.m_Groups.size();j++)
+		int j;
+		for (j=0;j<(signed)_Settings.m_Groups.size();j++)
 		{
 			CSettings::TreeGroup *tg = _Settings.m_Groups[j];
 			tg->Count = 0;
@@ -1230,7 +1231,6 @@ void CUserList::RefreshView(BOOL updateonly)
 
 		// now just enumerate users in groups
 		int offlinecount = 0;
-		int j;
 		for (i=0;i<(signed)m_Users.size();i++)
 		{
 			CUser *user = (CUser *)m_Users[i];

@@ -12,8 +12,6 @@
 extern CSettings _Settings;
 extern CMainDlg _MainDlg;
 
-_ATL_FUNC_INFO BaloonTipBeforeNavigate2Info = {CC_STDCALL, VT_EMPTY, 7, {VT_DISPATCH,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_BOOL}};
-
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 CBalloonTipDlg::CBalloonTipDlg(HWND OwnerHwnd)
@@ -26,6 +24,7 @@ CBalloonTipDlg::CBalloonTipDlg(HWND OwnerHwnd)
 	m_Down = FALSE;
 	m_Type = MB_OK;
 	m_Events = NULL;
+	m_Cancel = FALSE;
 }
 
 CBalloonTipDlg::~CBalloonTipDlg()
@@ -131,7 +130,7 @@ LRESULT CBalloonTipDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
 	HRESULT hr;
 	hr = wndIE.QueryControl ( &m_pWB2 );
 
-	m_Events = new CWebBrowserEvents<CBalloonTipDlg, &BaloonTipBeforeNavigate2Info>(this, m_pWB2);
+	m_Events = new CWebBrowserEvents<CBalloonTipDlg>(this, m_pWB2);
 
 
 	if ( m_pWB2 )
@@ -300,7 +299,7 @@ void CBalloonTipDlg::WriteText(void)
 
 		htd->Release();
 	}
-	m_Events->m_Cancel = TRUE;
+	m_Cancel = TRUE;
 }
 
 int CBalloonTipDlg::Show(HWND hWnd, char *Text, char *Caption, int Type)
@@ -315,7 +314,7 @@ int CBalloonTipDlg::Show(HWND hWnd, char *Text, char *Caption, int Type)
 	return dlg.m_Result;
 }
 
-void CWebBrowserEvents<CBalloonTipDlg, &BaloonTipBeforeNavigate2Info>::__BeforeNavigate2(/*[in]*/ IDispatch* pDisp, /*[in]*/ VARIANT* URL, /*[in]*/ VARIANT* Flags, 
+void CBalloonTipDlg::__BeforeNavigate2(/*[in]*/ IDispatch* pDisp, /*[in]*/ VARIANT* URL, /*[in]*/ VARIANT* Flags, 
 		/*[in]*/ VARIANT* TargetFrameName, /*[in]*/ VARIANT* PostData, /*[in]*/ VARIANT* Headers, 
 		/*[out]*/ VARIANT_BOOL* Cancel)
 {

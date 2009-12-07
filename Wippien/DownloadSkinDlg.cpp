@@ -23,13 +23,12 @@ extern CSettings _Settings;
 // Define the sWeb events to be handled:
   // delete pwEvents;
 
-_ATL_FUNC_INFO SkinDlgBeforeNavigate2Info = {CC_STDCALL, VT_EMPTY, 7, {VT_DISPATCH,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_VARIANT,VT_BYREF|VT_BOOL}};
-
 CDownloadSkinDlg::CDownloadSkinDlg(HWND Owner)
 {
 	m_Events = NULL;
 	m_OwnerHwnd = Owner;
 	m_pWB2 = NULL;
+	m_Initial = TRUE;
 }
 
 CDownloadSkinDlg::~CDownloadSkinDlg()
@@ -69,7 +68,7 @@ LRESULT CDownloadSkinDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM 
 	HRESULT hr;
 	hr = wndIE.QueryControl ( &m_pWB2 );
 
-	m_Events = new CWebBrowserEvents<CDownloadSkinDlg, &SkinDlgBeforeNavigate2Info>(this, m_pWB2);
+	m_Events = new CWebBrowserEvents<CDownloadSkinDlg>(this, m_pWB2);
 
 
 	if ( m_pWB2 )
@@ -87,7 +86,7 @@ LRESULT CDownloadSkinDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM 
 }
 
 
-void CWebBrowserEvents<CDownloadSkinDlg, &SkinDlgBeforeNavigate2Info>::__BeforeNavigate2(/*[in]*/ IDispatch* pDisp, /*[in]*/ VARIANT* URL, /*[in]*/ VARIANT* Flags, 
+void CDownloadSkinDlg::__BeforeNavigate2(/*[in]*/ IDispatch* pDisp, /*[in]*/ VARIANT* URL, /*[in]*/ VARIANT* Flags, 
 		/*[in]*/ VARIANT* TargetFrameName, /*[in]*/ VARIANT* PostData, /*[in]*/ VARIANT* Headers, 
 		/*[out]*/ VARIANT_BOOL* Cancel)
 {
@@ -128,13 +127,13 @@ void CWebBrowserEvents<CDownloadSkinDlg, &SkinDlgBeforeNavigate2Info>::__BeforeN
 				*a = 0;
 
 
-			b->PutInt((unsigned int)m_Owner->m_OwnerHwnd);
+			b->PutInt((unsigned int)m_OwnerHwnd);
 			b->PutCString(&u[i]);
 			b->PutCString(_Settings.m_MyPath);
 			CProgressDlg *dlg = new CProgressDlg();
 			dlg->InitDownloadSkin(b);
 //			CreateThread(NULL, 0, DownloadThreadProc, b, 0, &id);
-			m_Owner->EndDialog(0);
+			EndDialog(0);
 
 
 		}

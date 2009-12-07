@@ -296,7 +296,7 @@ protected:
 	void OnTimer(UINT nIDEvent, TIMERPROC*);
 #else
 	// This is the correct version. Fixed in WTL 7.0
-	void OnTimer(UINT nIDEvent);
+	void OnTimer(UINT nIDEvent, TIMERPROC);
 #endif 
 	void OnActivateApp(BOOL bActivate, DWORD dwTask);
 	void OnFinalMessage(HWND);

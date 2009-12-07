@@ -6,6 +6,9 @@
 #if !defined(AFX_STDAFX_H__3309BE60_19E1_4742_86E1_B7DE97B25517__INCLUDED_)
 #define AFX_STDAFX_H__3309BE60_19E1_4742_86E1_B7DE97B25517__INCLUDED_
 
+#define _HAS_ITERATOR_DEBUGGING 0
+#define _SECURE_SCL 0
+
 // Change these values to use different versions
 #define WINVER		0x0500
 

@@ -267,6 +267,10 @@ SOURCE=.\VoiceChat.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\WebBrowserEvents.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\wildmat.cpp
 # End Source File
 # Begin Source File

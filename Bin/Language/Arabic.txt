@@ -1,207 +1,207 @@
 # Arabic translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: ahmad
-# Version: 86
+# Version: 419
 لا يوجد خطأ.  ##  No error.
-النظام لم يجد الملف المحدد.  ##  The system cannot find the file specified.
+الملف المحدد غير موجود.  ##  The system cannot find the file specified.
 النظام لم يجد المسار المحدد.  ##  The system cannot find the path specified.
 .النظام لم يجد الملف/المجلد المحدد  ##  The system cannot find the specified file/directory.
-عدم تطابق في النوع  ##  Type mismatch.
+عدم تطابق فى النوع.  ##  Type mismatch.
 .لا يمكن انشاء ملف/مجلد عندما يكون الملف/المجلد موجود حاليا  ##  Cannot create a file/directory when that file/directory already exists.
-هذا النظام لا يمكن الكتابة إلى الجهاز المحدد  ##  The system cannot write to the specified device.
-قيمة الممتلكات غير صالحة.  ##  Invalid Property Value.
-وعادت هذه العملية ، لأن مهلة انقضت فترة.  ##  This operation returned because the timeout period expired.
-تقاطع مستوى النظام انقطاع المقبس.  ##  System level interrupt interrupted socket operation.
-عام غير صالح للخطأ بشكل سيء الشكل.  ##  Generic error for invalid format, bad format.
-بذلت محاولة للوصول إلى مقبس في الطريق قبل الوصول ممنوع الاذونات.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-اكتشاف نظام صحيح معالجة نقاط في محاولة لاستخدام هذه الحجة في مؤشر الدعوة.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-العامة للخطأ صحيح ، الدخول ، الخ.  ##  Generic error for invalid format, entry, etc.
-صحيح الحجة المقدمة.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+النظام لا يستطيع الكتابة الى الجهاز المحدد.  ##  The system cannot write to the specified device.
+لقد ادخلت قيمة غير صحيحة.  ##  Invalid Property Value.
+تم اعادة العملية لتعديها المدة القصوى.  ##  This operation returned because the timeout period expired.
+مقاطع المستوى الخاص بالنظام قام بقطع العملية الجارية فى المقبس.  ##  System level interrupt interrupted socket operation.
+خطأ عام: شكل غير صحيح او سئ.  ##  Generic error for invalid format, bad format.
+تم القيام بمحاولة للدخول الى مقبس بطريقة ممنوعة طبقا لاذونات الدخول.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+تم ضبط عنوان مشار غير صحيح فى محاولة لاستخدام محادثة خاصة بالمشار لاجراء نداء.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+خطا عام: شكل غير صحيح او مدخل غير صحيح ... الخ.  ##  Generic error for invalid format, entry, etc.
+تم تقديم محادثة غير صالحة.  ##  An invalid argument was supplied.
+الاى بى المحدد غير صالح او المضيف المحدد من قبل الاى بى ليس له وجود.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+القابس غير صحيح او يوجد مشكلة فى الاتصال بالجهاز المتحكم.  ##  Invalid socket or not connected to remote.
 العنوان المحدد مستخدم بالفعل  ##  The specified address is already in use.
-العنوان المحدد غير متاح  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
-Host not found.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
-Channel already started.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-لم يتم انشاء الاتصال  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
-Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+العنوان المحدد غير متاح.  ##  The specified address is not available.
+الشبكة غير صالحة.  ##  The connected network is not available.
+.لا يمكن الوصول الى الشبكة  ##  The connected network is not reachable.
+تم اعادة ضبط اتصال الشبكة.  ##  The connected network connection has been reset.
+تم الغاء الاتصال الحالى من قبل الشبكة او خدمة وسيطة.  ##  The current connection has been aborted by the network or intermediate services.
+تم اعادة ضبط اتصال المقبس الحالى.  ##  The current socket connection has been reset.
+لم يتم اتصال المقبس الحالى.  ##  The current socket has not been connected.
+تم اغلاق الاتصال.  ##  The connection has been shutdown.
+استغرق الاتصال الحالى مدة اكثر من اللازم فى الرد.  ##  The current connection has timeout.
+تم رفض الاتصال الحالى من قبل المضيف.  ##  The requested connection has been refused by the remote host.
+اسم المضيف المحدد طويل جدا.  ##  Specified host name is too long.
+المضيف غير متاح حالياَ.  ##  Remote host is currently unavailable.
+لايمكن الوصول الى المضيف.  ##  Remote host is currently unreachable.
+النظام المتحكم ليس جاهز.  ##  Remote system is not ready.
+المقبس الحالى ليس مدعوما من قبل البرنامج.  ##  Current socket version not supported by application.
+لم يتم التعرف على واجهة المقبس البرمجية.  ##  Socket API is not initialized.
+تم فصل المقبس.  ##  Socket has been disconnected.
+لم يتم العثور على المضيف.  ##  Host not found.
+لا يوجد مساحة كافية من الذاكرة لاتمام هذة العملية.  ##  Not enough memory is available to complete this operation.
+نوع البحث غير معروف.  ##  Unknown search type.
+محادثة غير صحيحة لعملية البحث.  ##  Unknown argument for Search method.
+بدأ بالفعل.  ##  Already started.
+بدأت القناة بالفعل.  ##  Channel already started.
+لا يمكنك تغيير اعدادات القناة اثناء عملها.  ##  Cannot change channel setup while channel is started.
+يوجد كمية كبيرة من البيانات فى المقبس. حاول لاحقا.  ##  Too much data on the socket. Try later.
+الاتصال غير مؤكد  ##  Connection not established.
+نوع غير معروف من البيانات.  ##  Unknown data type.
+فشل فى بدا عملية المقبس.  ##  Failed to create socket thread.
+قناة غير معروفة.  ##  Unknown channel type.
+تم ادخال محادثة غير صحيحة فى  (LocalAddress).  ##  Invalid argument was supplied in LocalAddress property.
+لا يمكن صنع القناة من قبل الجانب العام.  ##  Channel cannot be created by local side.
+لا يمكن بدأ القناة من قبل الجانب العام.  ##  Channel cannot be started by local side.
+تم رفض القناة من قبل الجانب المتحكم.  ##  Channel refused by remote side.
+بروتوكول متحكم غير مدعوم.  ##  Unsupported remote protocol version.
+(wodVPN) لم يبدا بعد. استخدم بدأ.  ##  wodVPN not yet started. Use Start first.
+تم اغلاق القناة.  ##  Channel was closed.
+حجم (MTU) .كبير جدا  ##  MTU size too large.
+حجم (MTU) صغير جدا.  ##  MTU size too small.
+طلب قابس غير صحيح.  ##  Invalid socks request.
+كلمة المرور غير صحيحة. لاتماثل كلمة مرور المتحكم.  ##  Invalid password. Does not match remote peer's password.
+الهوية العامة (ID) لم تضبط. يلزم ضبتها لعمليات البحث  ##  Local ID not set. It is required for Search method.
+هوية المتحكم (ID) لم تضبط. يلزم ضبتها لعمليات البحث  ##  Remote ID not set. It is required for Search method.
+لا يمكن الرجول الى عنوان الاى بي المحدد.  ##  Cannot bind to specified IP address.
+يتم القيام بنقل الملف بالفعل.  ##  Already performing file transfer.
 الملف غير موجود  ##  File not found.
 فشل في كتابة الملف  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Warning  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Away  ##  Away
-Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
-Extended away  ##  Extended away
-  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
-%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
-seconds  ##  seconds
-No network  ##  No network
-Exit Wippien  ##  Exit Wippien
+لا يمكن فتح موصل الشبكة.  ##  Could not open network adapter.
+يمكن استخدام موصل واحد فقط فى الوقت الواحد.  ##  Only one adapter can be used at a time.
+مفتاح التفعيل مفقود. لايمكنك استخدام هذا المكون فى بيئة التصميم.  ##  License key missing. You can not use this component in design environment.
+خطأ غير معروف.  ##  Unrecognized Error.
+لا يمكن الاتصال فى هذا الوقت. افصل الاتصال اولا.  ##  Cannot Connect at this time. Use Disconnect first.
+لا يمكن التنفيذ. لم يتم الاتصال بعد.  ##  Cannot execute, not yet connected.
+هذا المكون مشغول.  ##  Component busy.
+لا يمكن تغيير هذه الخصيصة حاليا. قم بفصل الاتصال اولا.  ##  Cannot change property at this time. Use Disconnect first.
+اسم المضيف لم يحدد بعد.  ##  Hostname property not set.
+تسجيل الدخول لم يحدد بعد.  ##  Login property not set.
+كلمة المرور لم تحدد بعد.  ##  Password property not set.
+غير صحيحة XML حزمة.  ##  Invalid XML packet.
+هوية متسلسلة حزمة XML غير صحيحة.  ##  Invalid XML packet sequence ID.
+تسجيل دخول غير صحيح: %s.  ##  Invalid login: %s.
+هذا الاسم موجود بالفعل فى المجموعة.  ##  Contact already exists in the collection.
+لم يتم التعرف على SSL.  ##  SSL could not be negotiated.
+فشل فى تسجيل مستخدم جديد: %s.  ##  Failed to register new user: %s.
+اخطار غير صحيح.  ##  Unknown notification.
+لم يتم العثور على الملف.  ##  File not found.
+يجب عليك تحديد نوع الصورة (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+فشل فى استيراد الصورة.  ##  Failed to import photo.
+هناك عملية ايقاف بالفعل.  ##  Another blocking method in progress.
+تم استلام بيانات بروتوكول غير صحيحة.  ##  Invalid protocol data received.
+لا يوجد شئ للارسال. حجم الملف 0.  ##  There's nothing to send. File size is 0.
+الاسم غير موجود.  ##  Contact not found.
+فشل فى نقل الملف.  ##  File transfer failed.
+فشل فى الكتابة الى الملف.  ##  Could not write to file.
+عملية التحقق من الملف المستلم غير صحيحة.  ##  Checksum of received file is invalid.
+تم الغاء النقل.  ##  Transfer aborted.
+استغرقت عملية النقل وقت اكثر من اللازم.  ##  Transfer has timed out.
+تم اختيار بروتوكول غير صحيح.  ##  Invalid protocol selected.
+حالة غير صحيحة. المكون مشغول بالفعل.  ##  Invalid state. Component already busy.
+الاسم غير مميز, لاي يمكن الحصول على الاغلاق. من فضلك استخدم (UdapterName) مختلف.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+تم الغاء العملية.  ##  Method was cancelled.
+فشل فى بدأ البرنامج المسئول عن التحديث.  ##  Failed to start updater program.
+التوقيع فى المستند المستلم غير صحيح.  ##  Signature on retrieved document is invalid.
+التاريخ غير مضبوط.  ##  Date not set.
+فشل فى تسجيل خادم COM.  ##  Failed to register COM server.
+لم يتم العثور على الصفحة تم رجوع هذا الخطا من الخادم (error 404).  ##  Page not found (error 404) returned from the server.
+حجم ملف غير صحيح بعد التنزيل.  ##  Invalid file size after download.
+عملية تحقق MD5 غير صحيحة بعد التنزيل.  ##  Invalid MD5 checksum after download.
+تحذير  ##  Warning
+غير موجود  ##  Offline
+موجود  ##  Online
+بالخارج  ##  Away
+متوفّر للدردشة  ##  Free for chat
+لا تقاطعني  ##  Do not disturb
+بالخارج لفترة طويلة  ##  Extended away
+الوضع الخفي  ##  Invisible
+جارى طلب الاشتراك.  ##  Asking for subscription
+الاسم غير مشترك.  ##  Contact not subscribed
+تم قطع الاتصال بالخادم.  ##  Disconnected from server
+جارى الاتصال بالخادم.  ##  Connecting to server
+جارى تسجيل مستخدم جديد.  ##  Registering new user
+جارى صنع اتصال امن.  ##  Initializing secure connection
+جارى ارسال بيانات التعريف.  ##  Sending authentication data
+تم الاتصال بالخادم.  ##  Connected to server
+جارى استلام البيانات من الخادم.  ##  Receiving data from server
+جارى ارسال البيانات الى الخادم.  ##  Sending data to server
+جارى تنفيذ الامر على الخادم.  ##  Executing command on server
+جارى قطع الاتصال بالخادم.  ##  Disconnecting from the server
+تم طلب بيانات التعريف.  ##  Requested authorization
+جارى ضبط اعدادات موصل شبكة البرنامج.  ##  Configuring Wippien network adapter...
+الموصل \"%s\" بعنوان %s يتعارض مع البرنامج %s. من المحتمل ان البرنامج لن يستطيع ارسال او استقبال حزم البيانات خلال الشبكة.من فضلك ازل هذا البرنامج او اوقف عمله  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+تم فصل موصل الشبكة!  ##  Network adapter disabled!
+تم فتح موصل الشبكة.  ##  Network adapter opened
+لا يمكن الوصول الى موصل شبكة البرنامج. هل تريد المتابعة للمحادثة فقط؟  ##  Wippien network adapter not available. Proceed with IM only?
+البرنامج سوف يضبط الاى بى باستخدام اداة خارجية - من فضلك قم بتشغيل البرنامج مرة واحدة على الاقل كمدير (ادمين) للحصول على الموافقات الازمة للعملية.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+دخول المدير (الادمين) مطلوب!  ##  Admin privilege required!
+غير متصل  ##  Disconnected
+متصل  ##  Connected
+لم يمكن توصيل الرسالة.  ##  Could not deliver message.
+لم ينجح تغيير كلمة السر  ##  Failed to change password
+تم قطع الاتصال طبقا لقاعدة عدم النشاط.  ##  Disconnected due to inactivity rule
+(%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s)  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<&lt; الاتصال المتبادل فى بى ان لم يتم بعد >&gt;  ##  << VPN not established yet >>
+سيتم اعادة الاتصال خلال %d ثوانى.  ##  Reconnect in %d seconds.
+ثواني  ##  seconds
+لا شبكة  ##  No network
+اخرج من البرنامج  ##  Exit Wippien
 E&xit  ##  E&xit
-Open settings  ##  Open settings
-&Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
-&About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+فتح الخيارات  ##  Open settings
+&الخيارات  ##  &Settings
+إظهار عن  ##  Show AboutBox
+&عن  ##  &About
+اختر حالتك (مخفي ,, بالخارج)ـ  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
+كتم الصوت  ##  Mute sound
+فتح غرفة شات  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
-Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
-Identity  ##  Identity
-ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
-Send  ##  Send
-Send file  ##  Send file
-  ##  Details
-Contact information  ##  Contact information
-Clear  ##  Clear
-Clear history  ##  Clear history
-Mute  ##  Mute
+متأكد?  ##  Really exit Wippien?
+متأكد?  ##  Are you sure?
+تم تغيير كلمة السر الآن.  ##  Your password is now changed.
+كلمة السر تغيرت  ##  Password changed
+تغيير كلمة سر الحساب  ##  Change account password
+أدخل كلمة السر الجديدة من فضلك  ##  Please enter new password
+الهوية  ##  Identity
+بطاقة الهوية  ##  ID Card
+عنوان المنزل  ##  Home Address
+عنوان العمل  ##  Work Address
+هل أنت متأكد من حذف التاريخ?  ##  Are you sure you want to delete the history?
+حذف التاريخ?  ##  Delete history?
+ارسل  ##  Send
+ارسال ملف  ##  Send file
+تفاصيل  ##  Details
+عن الجهة  ##  Contact information
+امسح الكل  ##  Clear
+تنظيف التاريخ  ##  Clear history
+صامت  ##  Mute
 Bold  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
-Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
+ادخل رابط  ##  Insert hyperlink
+صغر حجم الخط  ##  Decrease font size
+عدل حجم الخط  ##  Reset font size
+كبر حجم الخط  ##  Increase font size
+حدد لون ال (Foreground)  ##  Set Foreground color
+حدد لون الخلفية  ##  Set Background color
+الابتسامات  ##  Emoticons
+رموز جديدة سيتم تنزيلها وتحميلها . موافق؟  ##  New emoticons will be downloaded and installed. Proceed?
+ابتسامات جديدة  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 Done!  ##  Done!
 Contact  ##  Contact
 Connecting  ##  Connecting
 Requesting  ##  Requesting
 Downloading  ##  Downloading
-Configuration file  ##  Configuration file
-General  ##  General
+ملف التكوين  ##  Configuration file
+فتى مصر  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
 allow  ##  allow
 deny  ##  deny
 not specified  ##  not specified
 &Finish  ##  &Finish
-&Next >  ##  &Next >
+&التالي>  ##  &Next >
 Identity  ##  Identity
 Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
@@ -225,7 +225,7 @@ Port  ##  Port
 Hostname  ##  Hostname
 Permanent  ##  Permanent
 Temporary  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
+أدخل جميع حساباتك هنا  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
 Delete registered account?  ##  Delete registered account?
@@ -242,7 +242,7 @@ System  ##  System
 Logging  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-Messages  ##  Messages
+الرسائل  ##  Messages
 Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
 المعلومات العامة  ##  General info
@@ -253,11 +253,11 @@ Business information  ##  Business information
 Work details for  ##  Work details for
 all other  ##  all other
 address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
-Skins  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
+المظهر  ##  Appearance
+الاشكال  ##  Skins
+اختر الشكل من القائمة التالية  ##  Choose skin from below list.
+ماذا سيرتدى ويبين؟  ##  What will Wippien wear?
+.. لا شئ ..  ##  .. none ..
 Auto Away  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
@@ -282,24 +282,24 @@ Contact online  ##  Contact online
 Contact offline  ##  Contact offline
 Message in  ##  Message in
 Message out  ##  Message out
-Error  ##  Error
+خطأ  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
-Hide  ##  Hide
-Hide contacts.  ##  Hide contacts.
-You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-Appearance  ##  Appearance
-Appearance settings.  ##  Appearance settings.
-Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
-Sort  ##  Sort
+اخف  ##  Hide
+اخف الاسماء  ##  Hide contacts.
+يمكنك اخفاء بعض الاسماء عن نظرك.  ##  You can hide some contacts from your sight.
+الشكل  ##  Appearance
+اعدادات الشكل  ##  Appearance settings.
+حدد كيف ستظهر واجهة ويبن لك  ##  Define how will Wippien's GUI appear to you.
+رتب  ##  Sort
 Sorts contacts.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
-ChatRoom  ##  ChatRoom
+غرفة الدردشة  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
 Room name  ##  Room name
-Firewall  ##  Firewall
+الحائط النارى  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP traffic  ##  * All ICMP traffic
@@ -409,7 +409,7 @@ Show message history  ##  Show message history
 البريد الإلكتروني  ##  Email
 ملاحظات  ##  Notes
 العنوان  ##  Address
-Address Ext.  ##  Address Ext.
+تمديد العنوان  ##  Address Ext.
 المدينة  ##  City
 الولاية  ##  State
 صندوق البريد  ##  ZIP
@@ -417,52 +417,52 @@ Address Ext.  ##  Address Ext.
 تاريخ الميلاد  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 ناسوخ  ##  Fax
-  ##  Title
-Company name  ##  Company name
-  ##  Department
+اللقب  ##  Title
+اسم الشركة  ##  Company name
+دائرة العمل  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
-Click on first column to change values  ##  Click on first column to change values
+السماح للجميع  ##  Allow All
+اضعط على العمود الأول لتغير القيم  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
+نفّذ  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+انتظر  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
 Auto-Away message  ##  Auto-Away message
 Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
+أظهر البرنامج في شريط المهام  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
+اخفي البرنامج تلقائياً إذا لم يعمل لمدة  ##  Auto hide if Wippien is inactive for
 دائما في المقدمة  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
+تأكيد أمر الخروج  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 حماية كلمة السر  ##  Password protect
 الإعدادت فقط  ##  Settings only
-Everything  ##  Everything
+الجميع  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
+لا تمنح الإذن أبداً  ##  Never authorize
 اسألني  ##  Ask me
 السماح بتصريح دائم  ##  Always authorize
 Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
 Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
+جاري التنفيذ  ##  Progress
 تمكين المحادثة الصوتية  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
+جهاز استماع  ##  Playback device
+جهاز تسجيل  ##  Recording device
+ابحث عن تحديثات عند تشغيل البرنامج  ##  Check for updates when Wippien starts
 Check for updates on Connect  ##  Check for updates on Connect
 Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
+حدث البرنامج وأعد تشغيله بصمط  ##  Update and restart application silently
 Show system messages received from updater  ##  Show system messages received from updater
 &Check now  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
@@ -471,10 +471,10 @@ Auto-detect MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
 Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
-Program events  ##  Program events
+أحداث البرنامج  ##  Program events
 اخفاء جهات الاتصال الجديدة  ##  Hide new contact
 اظهار جهات الاتصال  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
+الأسماء المخفية حالياً  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
 اخفاء جهات الاتصال  ##  Hide contact
 Enter contact JID  ##  Enter contact JID
@@ -508,16 +508,16 @@ Gateway  ##  Gateway
 &نسخ IP  ##  &Copy IP
 د&ردشة  ##  C&hat
 &دردشة صوتية  ##  &Voice Chat
-Send &File  ##  Send &File
-Send E&mail  ##  Send E&mail
+ارسل &ملف  ##  Send &File
+ارسل E&mail  ##  Send E&mail
 حجب  ##  &Block
 اعادة تسمية  ##  &Rename
 حذف  ##  &Delete
 تفاصيل  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
-&Online  ##  &Online
-&Away  ##  &Away
+إلغاء/إاضافة حسابات  ##  Add/Remove &Accounts
+إلغاء/إضافة أسماء  ##  Add/Remove &Contacts
+&موجود  ##  &Online
+&غير موجود  ##  &Away
 متوفّر للدردشة  ##  Free for &Chat
 &Do not Disturb  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
@@ -528,27 +528,27 @@ Change &Picture  ##  Change &Picture
 أدخل تفاصيلك  ##  Your &Details
 Enter Passphrase  ##  Enter Passphrase
 ادخل كلمة السر  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+الرجاء إدخال رمز الحماية السريّ  ##  Please enter protect password
 اللغات  ##  Languages
 .Wippien أدخل اللغة المستعملة في كل نصوص  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
+لغات جديدة تظهر بشكل دوري  ##  New languages may appear periodically.
 Following languages are found as available on local computer  ##  Following languages are found as available on local computer
   ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
+اللغة المستخدمة حالياً  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+ملفات لغة جديدة موجودة . تحميل ؟؟  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
 مراسلك يكتب.  ##  Contact is typing...
-says  ##  says
-said  ##  said
-. هناGMAILيمكنك استعمال حساب  ##  You can use your GMAIL account here.
+يقول  ##  says
+قال  ##  said
+.هنا GMAIL يمكنك استعمال حساب  ##  You can use your GMAIL account here.
   ##  Toggle voice chat
   ##  Local echo
   ##  UDP port 9913 busy
   ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
+حساسية مستقبل الصوت المكريفون  ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+لم يتم تفعيل الدردشة الصوتية بعد , عليك أن تقوم بضبط الإعدادات لذلك قبل الإستخدام الأول ,هل ترغب بفعل ذلك ألان؟  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+تم تفعيله  ##  has enabled
+تم إبطاله  ##  has disabled

@@ -1,6 +1,6 @@
 # Thai translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Injected
-# Version: 41
+# Version: 45
 sin errores  ##  No error.
 ระบบไม่สามรถหาไฟล์ที่ระบุ  ##  The system cannot find the file specified.
 ระบบไม่สามารถหาพาธที่ระบุ  ##  The system cannot find the path specified.
@@ -116,14 +116,14 @@ Extended away  ##  Extended away
 Invisible  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-กำลังเชื่มต่อเซิฟเวอร์  ##  Connecting to server
+ขาดการเชื่อมต่อกับเซิฟเวอร์  ##  Disconnected from server
+กำลังเชื่อมต่อเซิฟเวอร์  ##  Connecting to server
 Registering new user  ##  Registering new user
 Initializing secure connection  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
 Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
+กำลังรับข้อมูลจากเซิฟเวอร์  ##  Receiving data from server
+กำลังส่งข้อมูลไปยังเซิฟเวอร์  ##  Sending data to server
 Executing command on server  ##  Executing command on server
 กำลังตัดการเชื่อมต่อเซิฟเวอร์  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization

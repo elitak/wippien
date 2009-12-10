@@ -1,6 +1,6 @@
 # Hebrew translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Khir
-# Version: 565
+# Version: 600
 אין שגיאות.  ##  No error.
 המערכת לא מצליחה למצוא את הקובץ הנדרש.  ##  The system cannot find the file specified.
 המערכת לא יכולה למצוא את היעד המבוקש.  ##  The system cannot find the path specified.
@@ -23,9 +23,9 @@ The system detected an invalid pointer address in attempting to use a pointer ar
 הרשת המחוברת לא זמינה.  ##  The connected network is not available.
 הרשת המחוברת לא נגישה.  ##  The connected network is not reachable.
 החיבור לרשת המחוברת אותחל.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
+החיבור הנוכחי הופסק על ידי הרשת או שרותי ביניים.  ##  The current connection has been aborted by the network or intermediate services.
+חיבור השקע הנוכחי נהיה מאופס.  ##  The current socket connection has been reset.
+חיבור השקע הנוכחי לא חובר.  ##  The current socket has not been connected.
 החיבור נותק.  ##  The connection has been shutdown.
 ניסיון חיבור כשל  ##  The current connection has timeout.
 .החיבור המבוקש סורב על ידי המארח המרוחק  ##  The requested connection has been refused by the remote host.
@@ -39,7 +39,7 @@ Socket API is not initialized.  ##  Socket API is not initialized.
 מארח לא נמצא  ##  Host not found.
 אין מספיק זיכרון בשביל להשלים את הפעולה.  ##  Not enough memory is available to complete this operation.
 סוג חיפוש לא ידוע.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+ארגומנט לא ידוע לחיפוש  ##  Unknown argument for Search method.
 כבר התחיל.  ##  Already started.
 ערוץ כבר התחיל.  ##  Channel already started.
 לא יכול לשנות את הגדרות הערוץ כשהערוץ כבר התחיל.  ##  Cannot change channel setup while channel is started.
@@ -58,7 +58,7 @@ wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start 
 (MTU).יחידת התמסורת המקסימלית יותר מידי גדולה  ##  MTU size too large.
 (MTU).יחידת התמסורת המקסימלית יותר מידי קטנה  ##  MTU size too small.
 בקשת שקע שגויה.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
+סיסמה שגוייה. לא תואם לסיסמת צד מרוחק.  ##  Invalid password. Does not match remote peer's password.
 .תעודת זהות מקומית לא הוגדרה. היא נדרשת לשיטת החיפוש  ##  Local ID not set. It is required for Search method.
 .תעודת זהות מרוחקת לא נקבעה. היא נדרשת לשיטת החיפוש  ##  Remote ID not set. It is required for Search method.
 .לא יכול להדביק לכתובת רשת ספציפית  ##  Cannot bind to specified IP address.
@@ -76,7 +76,7 @@ Invalid password. Does not match remote peer's password.  ##  Invalid password. 
 .ערך שם המארח לא נקבע  ##  Hostname property not set.
 ערך כניסה לא נקבע.  ##  Login property not set.
 ערך סיסמה לא נקבע.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
+פקטת XML לא חוקית  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 .איש קשר כבר קיים באוסף  ##  Contact already exists in the collection.
@@ -96,7 +96,7 @@ SSL could not be negotiated.  ##  SSL could not be negotiated.
 .העברה בוטלה  ##  Transfer aborted.
 .העברה לא מגיבה  ##  Transfer has timed out.
 בחירת פרוטוקול פסול.  ##  Invalid protocol selected.
-  ##  Invalid state. Component already busy.
+מצב שגוי. הרכיב כבר תפוס.  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 שיטה בוטלה.  ##  Method was cancelled.
 .נכשל בלהתחיל את תוכנת העידכון  ##  Failed to start updater program.
@@ -139,7 +139,7 @@ Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
 .לא יכול להעביר את ההודעה  ##  Could not deliver message.
 .כישלון בשינוי הסיסמה  ##  Failed to change password
 נותק בגלל חוק חוסר הפעולה  ##  Disconnected due to inactivity rule
-%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+%s (%d)\r\nMTU: %d\r\nסה"כ הגיע: %s\r\nסה"כ נשלח: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 <&lt; VPN not established yet >&gt;  ##  << VPN not established yet >>
 שניות %d מתחבר מחדש ב  ##  Reconnect in %d seconds.
 שניות  ##  seconds
@@ -191,7 +191,7 @@ Emoticons  ##  Emoticons
 בוצע!  ##  Done!
 אנשי קשר  ##  Contact
 מתחבר  ##  Connecting
-Requesting  ##  Requesting
+מבקש  ##  Requesting
 מוריד  ##  Downloading
 קובץ הגדרות  ##  Configuration file
 כללי  ##  General
@@ -200,7 +200,7 @@ Requesting  ##  Requesting
 אפשר  ##  allow
 סרב  ##  deny
 לא מצויין  ##  not specified
-&Finish  ##  &Finish
+&סיים  ##  &Finish
 &הבא  ##  &Next >
 מאמת  ##  Identity
 בבקשה בחר את פרטי ההתחברות שלך.  ##  Please choose your logon information.
@@ -236,8 +236,8 @@ Temporary  ##  Temporary
 Add/Remove  ##  Add/Remove
 מצא אנשי קשר חדשים.  ##  Find new contacts.
 אתה יכול להוסיף אנשי קשר חדשים של ג'בר, אייסיקיו ומסנג'ר  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+כל הקבצים (*.*)\0*\0קבצי טקסט (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+כל קבצי תמונה (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0קבצי BMP (*.bmp)\0*.bmp\0קבצי JPEG (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0קבצי GIF (*.gif)\0*.gif\0קבצי PNG (*.png)\0*.png\0כל הקבצים (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 מערכת  ##  System
 Logging  ##  Logging
 .קבצי לוג התקנה ומידע של תיקון שגיאות  ##  Setup log files and debug info.
@@ -302,7 +302,7 @@ ChatRoom  ##  ChatRoom
 חומת אש  ##  Firewall
 הגדר כללי חומת אש.  ##  Set up firewall rules.
 .אתה יכול לקבוע מאילו פורטים אנשי הקשר שלך יכולים לקבל גישה  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
+* כל תנועת ICMP  ##  * All ICMP traffic
 .אך חסום את הפורטים האלו  ##  But block these ports
 אך אפשר את הפורטים האלו.  ##  But allow these ports
 עידכון וויפיאן  ##  Wippien update
@@ -375,7 +375,7 @@ Username  ##  Username
 דרישת אישור  ##  Authorization request
 &כן  ##  &Yes
 &לא  ##  &No
-&Details  ##  &Details
+&פרטים  ##  &Details
 &החל על הכל  ##  &Apply to all
 &חסום משתמש/ים  ##  &Block user(s)
 האם אתה מאשר  ##  Do you allow
@@ -400,26 +400,26 @@ Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow
 Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 במתווכים הבאים אפשר להשתמש  ##  Following mediators can be used
 אפשר למתווכים חדשים להתווסף  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
+הגדרות שונות של חלון הצ'אט  ##  Various settings regarding chat window
+הראה את זמן ההודעות  ##  Timestamp messages
 הראה היסטורית הודעות  ##  Show message history
 כינוי  ##  Nickname
 שם פרטי  ##  First name
 שם משפחה  ##  Last name
 דואר אלקטרוני  ##  Email
-Notes  ##  Notes
-Address  ##  Address
-Address Ext.  ##  Address Ext.
-City  ##  City
+הערות  ##  Notes
+כתובת  ##  Address
+הרחבת כתובת  ##  Address Ext.
+עיר  ##  City
 State  ##  State
 מיקוד  ##  ZIP
 מדינה  ##  Country
 תאריך לידה  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+טלפון  ##  Voice Tel.
 פקס  ##  Fax
-Title  ##  Title
+תואר-כבוד  ##  Title
 חברה  ##  Company name
-Department  ##  Department
+מחלקה  ##  Department
 ממשקים מורשים לחיבור ישיר.  ##  Allowed interfaces for direct connection
 אפשר הכל  ##  Allow All
 לחץ על העמודה הראשונה בכדי לשנות ערכים.  ##  Click on first column to change values
@@ -428,16 +428,16 @@ If you choose 'not specified' value, then same value is used as in 'all other' s
 החל  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &יותר סקינים...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
+חזור ממצב "לא כאן" באת זיהוי פעילות.  ##  Set back when activity is detected again.
 חכה  ##  Wait
-minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
-minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
+דקות לפני כניסה למצב "לא כאן" (0 = ביטול)  ##  minutes before going to away mode (0 = disable)
+דקות לפני כניסה למצב "לא כאן" מורחב (0 = ביטול)  ##  minutes before going to extended away mode (0 = disable)
+דקות לפני התנתקות (0 = ביטול)  ##  minutes before disconnecting (0 = disable)
 הודעת ה"לא כאן" האוטומטי שלך  ##  Auto-Away message
 הודעת "לא כאן" מוארך  ##  Extended-Away message
 הצג את וויפיאן בשורת המשימות  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
-Snap to desktop border  ##  Snap to desktop border
+למגנט לגבול שולחן העבודה  ##  Snap to desktop border
 החבא אוטומטית אם וויפיאן לא פעיל ל  ##  Auto hide if Wippien is inactive for
 תמיד מעל  ##  Always on top
 ודא יציאה מהתוכנה.  ##  Confirm exit from application
@@ -468,7 +468,7 @@ Progress  ##  Progress
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 קבוע MTU השתמש ב  ##  Use fixed MTU
 MTU זיהוי אוטומטי של  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
+(יהפוך לפעיל כשהחיבור יתחדש)  ##  (will become effective as peers reconnect)
 צליל (השאר ריק בשביל ברירת מחדל)  ##  Sound (leave empty for default sound)
 &נגן  ##  &Play
 אירועי תוכנה  ##  Program events
@@ -513,7 +513,7 @@ by IP (without IP goes top)  ##  by IP (without IP goes top)
 &חסום  ##  &Block
 &שינוי שם  ##  &Rename
 &מחיקה  ##  &Delete
-De&tails  ##  De&tails
+פרט&ים  ##  De&tails
 הוספת/הסרת חשבונות  ##  Add/Remove &Accounts
 הוספת/הסרת אנשי קשר  ##  Add/Remove &Contacts
 &מחובר  ##  &Online
@@ -550,3 +550,5 @@ UDP port 9913 תפוס  ##  UDP port 9913 busy
 .רגישות המיקרופון  ##  Microphone sensitivity
 .דבר אל המקרופון שלך והתאם את המחוון. לא אמור להיות שום תנועה בצג התנועה העליון כאשר אתה לא מדבר ותנועה גדולה שמגיעה כמעט עד הסוף כאשר אתה מדבר בקול רם  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 הצ'אט הקולי לא ניראה מוגדר. אתה חייב להגדיר אותו לפני השימוש הראשוני. לעשות זאת עכשיו?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+הפעיל  ##  has enabled
+הפסיק  ##  has disabled

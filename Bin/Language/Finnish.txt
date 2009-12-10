@@ -1,12 +1,12 @@
 # Finnish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Antti
-# Version: 353
+# Version: 357
 Ei virhettä.  ##  No error.
 Tiedostoa ei löydy.  ##  The system cannot find the file specified.
 Hakemistoa ei löydy.  ##  The system cannot find the path specified.
 Tiedostoa tai hakemistoa ei löydy.  ##  The system cannot find the specified file/directory.
 Tyyppiristiriita  ##  Type mismatch.
-Tiedostoa/hakemistoa ei voida luoda, jos se on jo olemassa.  ##  Cannot create a file/directory when that file/directory already exists.
+Ei voida luoda tiedostoa tai hakemistoa koska saman niminen tiedosto tai hakemisto on jo olemassa.  ##  Cannot create a file/directory when that file/directory already exists.
 Laitteeseen ei voida kirjoittaa.  ##  The system cannot write to the specified device.
 Virheellinen ominaisuusarvo  ##  Invalid Property Value.
 Tehtävä palautettiin koska aikakatkaisun aikaraja meni umpeen.  ##  This operation returned because the timeout period expired.

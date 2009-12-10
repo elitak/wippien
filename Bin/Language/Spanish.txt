@@ -1,6 +1,6 @@
 # Spanish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: tdknela@gmail.com
-# Version: 70
+# Version: 123
 Sin Errores.  ##  No error.
 El sistema no puede hallar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede hallar la ruta especificada.  ##  The system cannot find the path specified.
@@ -131,7 +131,7 @@ Configurando adaptador de red Wippien  ##  Configuring Wippien network adapter..
 El adaptador \"%s\" con la dirección %s se encuentra en conflicto con el del Wippien %s. Puede que entonces Wippien no sea capaz de enviar y recibir paquetes. Por favor desinstala o deshabilita ese adaptador.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 ˇAdaptador de red deshabilitado!  ##  Network adapter disabled!
 Adaptador de red inciado  ##  Network adapter opened
-Adaptador de red Wippien no disponible. żDesea usar Wippien para mensajería instantánea?  ##  Wippien network adapter not available. Proceed with IM only?
+Adaptador de Red Wippien no esta disponible. Proceder solamente con IM?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien debe configurar una dirección IP para el adaptador a traves de una herramienta externa - y requiere permisos de administrador. Por favor ejecute Wippien al menos una vez con permisos de administrador para obtener los privilegios necesarios.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 ˇPermisos de administrador requeridos!  ##  Admin privilege required!
 Desconectado  ##  Disconnected
@@ -140,7 +140,7 @@ Imposible dejar el mensaje.  ##  Could not deliver message.
 Fallo al cambiar la contraseńa  ##  Failed to change password
 Desconectado por inactividad  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  entrante: %s\r\nTotal saliente: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<&lt; VPN no establecido aún >&gt;  ##  << VPN not established yet >>
+<&lt; VPN not established yet >&amp;gt;  ##  << VPN not established yet >>
 Reconexión en %d segundos.  ##  Reconnect in %d seconds.
 segundos  ##  seconds
 No hay red  ##  No network
@@ -345,7 +345,7 @@ Ya tengo una cuenta Jabber  ##  I have existing Jabber account
 Introduzca aquí su Jabber ID (JID). Wippien usa la red Jabber para la presencia, es decir, informar a sus contactos de tu estado, ver otros contactos, etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 Si no posee una JID, debe registrarse para obtener una. Puede hacerlo en cualquier servidor de jabber. Existen muchos servidores públicos disponibles. Puede encontrar una lista de servidores disponibles actualmente pulsando sobre el botón Buscar.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 Jabber ID  ##  JID
-Contrasńa.  ##  Password
+Contraséña.  ##  Password
 Servidor  ##  Server
 Puerto  ##  Port
 Por favor pulse en 'Probar Cuenta' para continuar.  ##  Please click on 'Test Account' to proceed.
@@ -501,7 +501,7 @@ Alias para las salas  ##  Nickname for chatrooms
 Mostrar las salas que hay disponibles en:  ##  Show available rooms on following gateways
 Seleccione una sala de arriba, o introduzca los detalles de la nueva sala abajo:  ##  Click above to select room, or enter new chat room details below
 Nombre de la sala a Crear/Entrar  ##  Room name to create or join
-Contraseńa (opcional)  ##  Password (empty if none)
+Contraseña (opcional)  ##  Password (empty if none)
 Puerta de enlace  ##  Gateway
 Crear/Entrar en una sala  ##  Join or Create room
 Bloquear usuarios al inicio  ##  Block users at startup
@@ -516,19 +516,19 @@ Enviar C&orreo-e  ##  Send E&mail
 &De&talles  ##  De&tails
 Agregar/Borrar Cue&ntas  ##  Add/Remove &Accounts
 Agregar &Contactos  ##  Add/Remove &Contacts
-&Conectado  ##  &Online
-&Ausente  ##  &Away
-Disponible para charlar  ##  Free for &Chat
+&En Linea  ##  &Online
+&Fuera  ##  &Away
+Libre para &Chat  ##  Free for &Chat
 &No molestar  ##  &Do not Disturb
 A&usente+  ##  E&xtended Away
 &Invisible  ##  &Invisible
 &Desconectado  ##  O&ffline
 Cambiar Ima&gen  ##  Change &Picture
-Cambiar Contra&seńa  ##  Change Pa&ssword
+Cambiar Contra&seña  ##  Change Pa&ssword
 Sus De&talles  ##  Your &Details
 Introduzca clave  ##  Enter Passphrase
-Introduzca contraseńa  ##  Enter password
-Por favor introduzca una contraseńa de protección  ##  Please enter protect password
+Escriba Contraseña  ##  Enter password
+Por favor introduzca una contraseña de protección  ##  Please enter protect password
 Idiomas  ##  Languages
 Elegir el idioma que será utilizado en todos los textos de Wippien  ##  Setup language used in all Wippien texts.
 Nuevos idiomas irán apareciendo próximamente  ##  New languages may appear periodically.
@@ -549,6 +549,6 @@ Puerto UDP 9913 Ocupado  ##  UDP port 9913 busy
 Incapaz de recibir comunicación por voz entrante.  ##  Unable to listen for incoming voice chat
 Sensibilidad del Micrófono  ##  Microphone sensitivity
 Hablar al microfono y ajustar el volumen.No deberia haber actividad en el monitor superior cuando no se hable, y la actividad del monitor deberia ser maxima cuando se hable.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-La comunicación por voz no está configurada. Debe configurarla antes de su primer uso. ¿Hacerlo ahora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+No se puede establecer Chat por Voz. Debe Configurarlo antes del primer uso. Desea Hacerlo ahora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 Fue activado  ##  has enabled
 Fue desactviado  ##  has disabled

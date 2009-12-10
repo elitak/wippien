@@ -1,10 +1,10 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 69
+# Version: 108
 Sem erro.  ##  No error.
 O Sistema não conseguiu encontrar o arquivo especificado  ##  The system cannot find the file specified.
 O Sistema não conseguiu encontrar o caminho especificado  ##  The system cannot find the path specified.
-O Sistema não conseguiu encontrar o arquivo/diretório especificado  ##  The system cannot find the specified file/directory.
+O sistema não pode encontrar o arquivo/diretório especificado.  ##  The system cannot find the specified file/directory.
 Tipo incompatível  ##  Type mismatch.
 Não é possivel criar arquivo/pasta quando elas já existem.  ##  Cannot create a file/directory when that file/directory already exists.
 O sistema não consegue gravar no dispositivo especificado  ##  The system cannot write to the specified device.
@@ -23,10 +23,10 @@ O endereço especificado não está disponível.  ##  The specified address is n
 A rede a que está ligado não está disponível.  ##  The connected network is not available.
 A rede conectada não está ao alcance  ##  The connected network is not reachable.
 A rede a que está ligado foi reiniciada.  ##  The connected network connection has been reset.
-A ligação actual foi interrompida pela rede ou serviços intermédios.  ##  The current connection has been aborted by the network or intermediate services.
+A conexão atual foi cancelada pela rede ou por serviços intermediários.  ##  The current connection has been aborted by the network or intermediate services.
 A ligação de socket foi reiniciada.  ##  The current socket connection has been reset.
 O socket actual ainda não está ligado.  ##  The current socket has not been connected.
-A conexão foi encerrada  ##  The connection has been shutdown.
+A conexão foi desligada.  ##  The connection has been shutdown.
 A conexão atingiu tempo limite  ##  The current connection has timeout.
 A ligação pedida foi recusada pelo computador remoto.  ##  The requested connection has been refused by the remote host.
 O nome de computador fornecido é muito comprido.  ##  Specified host name is too long.
@@ -148,9 +148,9 @@ Sair do Wippien  ##  Exit Wippien
 &Sair  ##  E&xit
 Abrir as configurações  ##  Open settings
 &Configurações  ##  &Settings
-Mostra a caixa "Acerca de"  ##  Show AboutBox
-&Acerca de  ##  &About
-Define o teu status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+Mostra a caixa "Sobre"  ##  Show AboutBox
+&Sobre  ##  &About
+Defina seu status (Ausente, Invisível...)  ##  Set your status (Away,Invisible...)
 Adicionar contactos e outras contas  ##  Add contacts and alien accounts
 Fechar o som  ##  Mute sound
 Abrir sala de conversa  ##  Open chat room
@@ -343,7 +343,7 @@ Eu já tenho uma conta existente no Jabber  ##  I have existing Jabber account
 &Testa Conta  ##  &Test Account
 &Procurar  ##  &Search
 Você deve inserir sua ID do jabber(JID) aqui. O Wippen usa o Jabber para indicar a presença de rede - para notificar seus contatos que você está online, para ver outros contatos etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-Se você não tem uma JID, você deve registrar uma nova. Você pode fazer isso em qualquer rede jabber que você quiser. Existem muitas redes públicas disponíveis. Você pode encontrar uma lista de servidores livres clicando nesse botão.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Se você não tem uma JID, você deve registar uma nova. Você pode fazer isso em qualquer rede jabber que você quiser. Existem muitas redes públicas disponíveis. Você pode encontrar uma lista de servidores livres clicando nesse botão.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Palavra Chave  ##  Password
 Servidor  ##  Server
@@ -394,8 +394,8 @@ Configurações  ##  Settings
 &Voltar  ##  < &Back
 Log de comunicações do Jabber  ##  Log Jabber communication
 Log de comunicações socket  ##  Log socket communication
-Logar chamadas de funções raw (pode crescer rápidamente!)  ##  Log raw function calls (may grow quickly!)
-Deletar log de raw cada um  ##  Delete raw log on each
+Registar chamadas de funções raw (pode crescer rápidamente!)  ##  Log raw function calls (may grow quickly!)
+Apagar log de raw cada um  ##  Delete raw log on each
 megabytes  ##  megabytes
 Registar comunicação VPN ao início do P2P  ##  Log VPN communication on P2P startup
 Os seguintes mediadores podem ser usados  ##  Following mediators can be used
@@ -447,24 +447,24 @@ Configurações apenas  ##  Settings only
 Tudo  ##  Everything
 Pasta de configurações (a mudaça de valores abaixo exigem a o reinício do Wippen)  ##  Settings folder (changing below value requires wippien restart)
 Lista de contatos persistente  ##  Contact list persistance
-Deletar todos os contatos locais no início  ##  Delete all local contacts on startup
-Deletar todos os contatos locais ao conectar  ##  Delete all local contacts on connect
+Apagar todos os contatos locais no início  ##  Delete all local contacts on startup
+Apagar todos os contatos locais ao conectar  ##  Delete all local contacts on connect
 Autorização de inscrição de contatos  ##  Contacts subscription authorization
 Nunca autorizar  ##  Never authorize
 Pergunte-me  ##  Ask me
-Sempre autorizar  ##  Always authorize
-Estabelecer VPN no tráfico de rede automaticamente  ##  Automatically establish VPN on network traffic
+Autorizar sempre  ##  Always authorize
+Estabelecer VPN automaticamente no tráfico de rede  ##  Automatically establish VPN on network traffic
 Estabelcer VPN automaticamente no início  ##  Automatically establish VPN on startup
 Progresso  ##  Progress
 Habilitar chat de voz  ##  Enable voice chat
 Dispositivo de ouvir gravações  ##  Playback device
 Dispositivo de gravação  ##  Recording device
-Checar por atualizações quando o Wippien iniciar  ##  Check for updates when Wippien starts
-Checar por atualiazações ao conectar  ##  Check for updates on Connect
-Checar por atualizações a cada  ##  Check for updates each
-Atualizar e reiniciar a aplicação silenciosamente  ##  Update and restart application silently
-Mostra mensagens do sistema recebidas do adaptador  ##  Show system messages received from updater
-&Verificar agora  ##  &Check now
+Procurar por atualizações quando o Wippien iniciar  ##  Check for updates when Wippien starts
+Procurar por atualiazações ao conectar  ##  Check for updates on Connect
+Procurar por atualizações a cada  ##  Check for updates each
+Actualizar e reiniciar a aplicação silenciosamente  ##  Update and restart application silently
+Mostrar mensagens do sistema recebidas do adaptador  ##  Show system messages received from updater
+Verificar agora  ##  &Check now
 As cofigurações MTU definem o máximo de pacotes UDP enviados aos peers. Se sua conexão de rede tem um MTU mais baixo que o Wippien é possível que o peer nunca receba pacotes grandes.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 Usar MTU fixo  ##  Use fixed MTU
 Auto-detectar MTU  ##  Auto-detect MTU
@@ -494,8 +494,8 @@ Detalhes visíveis do contacto  ##  Contact's visible details
 Desordenado  ##  unsorted
 Por nome  ##  By name
 Por JID  ##  By JID
-por IP (sem IP vai para o fundo)  ##  by IP (without IP goes bottom)
-por IP (sem IP vai para cima)  ##  by IP (without IP goes top)
+Por IP (sem IP vai para o fundo)  ##  by IP (without IP goes bottom)
+Por IP (sem IP vai para cima)  ##  by IP (without IP goes top)
 Ordenar lista de contactos  ##  Sort contact list
 Alcunha para salas de conversa  ##  Nickname for chatrooms
 Mostar salas disponíveis nas seguintes nas seguintes entradas  ##  Show available rooms on following gateways
@@ -548,7 +548,7 @@ Echo Local  ##  Local echo
 porta UDP 9913 ocupada  ##  UDP port 9913 busy
 Impossível escutar voz de entrada em conversação de voz.  ##  Unable to listen for incoming voice chat
 Sensibilidade do Microfone  ##  Microphone sensitivity
-Fale no seu microfone e ajuste o menu deslizante. O sensor não pode se movimentar quando você não fala, e deverá ficar cheio quando você falar alto.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Fale no seu microfone e ajuste o menu deslizante. O sensor não se pode movimentar quando você não fala, e deverá ficar cheio quando você falar alto.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Chat com voz não configurado. Tem que ser configurado antes de ser possivel usar. Configurar agora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 habilitado  ##  has enabled
 desabilitado  ##  has disabled

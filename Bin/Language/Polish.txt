@@ -1,8 +1,8 @@
 # Polish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Poliman.pl - info@poliman.pl
-# Version: 39
-  ##  No error.
-  ##  The system cannot find the file specified.
+# Version: 77
+Brak błędu. ##  No error.
+System nie może znaleźć wybranego pliku.  ##  The system cannot find the file specified.
 System nie może znaleźć wybranej ścieżki.  ##  The system cannot find the path specified.
 System nie może znaleźć wybranego pliku/katalogu.  ##  The system cannot find the specified file/directory.
 Niezgodność typów.  ##  Type mismatch.
@@ -46,12 +46,12 @@ Nie można zmienić ustawień kanału gdy jest uruchomiony.  ##  Cannot change c
 Zbyt dużo danych na gnieździe. Spróbuj później.  ##  Too much data on the socket. Try later.
 Połączenie nie nawiązane.  ##  Connection not established.
 Nieznany typ danych.  ##  Unknown data type.
-  ##  Failed to create socket thread.
+Nie udało się utworzyć wątka wtyczki.  ##  Failed to create socket thread.
 Nieznany typ kanału  ##  Unknown channel type.
 Błędny argument wpisany we właściwościach lokalnego adresu.  ##  Invalid argument was supplied in LocalAddress property.
 Kanał nie może być utworzony po stronie lokalnej.  ##  Channel cannot be created by local side.
 Kanał nie może być zainicjowany po stronie lokalnej.  ##  Channel cannot be started by local side.
-  ##  Channel refused by remote side.
+Kanał odrzucony przez stronę zdalną.  ##  Channel refused by remote side.
 Nie obsługiwana wersja protokołu po stronie zdalnej .  ##  Unsupported remote protocol version.
 wodVPN jeszcze nie zainicjowany. Użyj najpierw Start.  ##  wodVPN not yet started. Use Start first.
 Kanał został zamknięty.  ##  Channel was closed.
@@ -131,7 +131,7 @@ Konfigurowanie urządzenia sieciowego Wippien...  ##  Configuring Wippien networ
 Urządzenie sieciowe \"%s\" o adresie %s ma konflikt z adresem Wippien %s. Jest możliwe że Wippien nie będzie mógł wysyłać ani odbierać pakietów sieciowych. Proszę odinstalować lub wyłączyć to urządzenie.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Urządzenie sieciowe wyłączone!  ##  Network adapter disabled!
 Urzadzenie sieciowe otwarte  ##  Network adapter opened
-  ##  Wippien network adapter not available. Proceed with IM only?
+Protokół sieciowy Wippien nie jest dostępny. Można używać tylko komunikatora. Kontynuować?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien musi ustawić adres sieciowy IP urządzenia przy użyciu zewnętrznego narzędzia - potrzebuje uprawnień admistratora. Proszę uruchomić Wippien chociaż raz jako administrator aby uzyskać uprawnienia  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Potrzebne uprawnienia Administratora  ##  Admin privilege required!
 Rozłączony  ##  Disconnected
@@ -140,7 +140,7 @@ Nie można dostarczyć wiadomości.  ##  Could not deliver message.
 Nie udało się zmienić hasła.  ##  Failed to change password
 Rozłączono z powodu zasady braku aktywności.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nSuma  do: %s\r\nSuma od: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN jeszcze nie nawiązane >>  ##  << VPN not established yet >>
+<&lt; VPN not established yet >&amp;gt;  ##  << VPN not established yet >>
 Ponowne połączenie za %d sekund.  ##  Reconnect in %d seconds.
 sekundy  ##  seconds
 Brak sieci  ##  No network
@@ -428,7 +428,7 @@ Następujące pliki skórek zostały znalezione  ##  Following skin files are fo
 Zastosuj  ##  Apply
 Aby dodać więcej skórek, możesz wkleić je do podfoldera 'Skin'. Dodaj odpowiedni plik 100x100 PNG dla podglądu.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 Więcej skórek  ##  &More skins...
-Ustaw kiedy wykryta zostanie aktywność.  ##  Set back when activity is detected again.
+Ustaw z powrotem gdy aktywność zostanie ponownie wykryta.  ##  Set back when activity is detected again.
 Czekaj  ##  Wait
 minut po których włączy się status Oddalony (0=wyłączenie)  ##  minutes before going to away mode (0 = disable)
 minut po których włączy się status Oddalony na dłużej (0=wyłączenie)  ##  minutes before going to extended away mode (0 = disable)

@@ -1,6 +1,6 @@
-# Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+﻿# Dutch translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Wippien Fan
-# Version: 125
+# Version: 194
 Geen fout  ##  No error.
 Het systeem kan het opgegeven bestand niet vinden.  ##  The system cannot find the file specified.
 Systeem kan opgegeven pad niet vinden.  ##  The system cannot find the path specified.
@@ -23,12 +23,12 @@ Dit adres is niet beschikbaar.  ##  The specified address is not available.
 Het verbonden netwerk is niet beschikbaar.  ##  The connected network is not available.
 Het gekozen netwerk is niet beschikbaar.  ##  The connected network is not reachable.
 De verbinding met het verbonden netwerk is gereset.  ##  The connected network connection has been reset.
-  ##  The current connection has been aborted by the network or intermediate services.
+De huidige verbinding is afgebroken door het netwerk of tussenliggende services.  ##  The current connection has been aborted by the network or intermediate services.
 De huidige socket verbinding is herstart.  ##  The current socket connection has been reset.
 De huidige socket is niet verbonden.  ##  The current socket has not been connected.
 De verbinding is afgebroken.  ##  The connection has been shutdown.
 De huidige verbinding heeft een timeout.  ##  The current connection has timeout.
-  ##  The requested connection has been refused by the remote host.
+De aangevraagde verbinding werd geweigerd door de host  ##  The requested connection has been refused by the remote host.
 De hostnaam is te lang.  ##  Specified host name is too long.
 Remote host is momenteel niet beschikbaar.  ##  Remote host is currently unavailable.
 Remote host is momenteel niet te bereiken.  ##  Remote host is currently unreachable.
@@ -59,8 +59,8 @@ MTU waarde is te groot.  ##  MTU size too large.
 MTU waarde is te klein.  ##  MTU size too small.
 Ongeldige socks aanvraag.  ##  Invalid socks request.
 Ongeldig wachtwoord. Wachtwoorden zijn ongelijk.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
+Lokaal ID onbepaald. Dit is nodig voor de Search functie.  ##  Local ID not set. It is required for Search method.
+Remote ID onbepaald. Dit is nodig voor de Search functie.  ##  Remote ID not set. It is required for Search method.
 Kan geen verbinding maken met het opgegeven IP adres.  ##  Cannot bind to specified IP address.
 Je bent al een bestand aan het verzenden.  ##  Already performing file transfer.
 Bestand niet gevonden.  ##  File not found.
@@ -72,16 +72,16 @@ Onbekende fout.  ##  Unrecognized Error.
 Deze verbinding kan op dit moment niet worden gemaakt. Verbreek eerst de bestaande verbinding.  ##  Cannot Connect at this time. Use Disconnect first.
 Kan niet uitvoeren, nog niet verbonden.  ##  Cannot execute, not yet connected.
 Component is bezet.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
+Kan eigenschap niet veranderen, verbreek eerst de verbinding.  ##  Cannot change property at this time. Use Disconnect first.
+Hostname eigenschap niet bepaald  ##  Hostname property not set.
+Login eigenschap niet bepaald  ##  Login property not set.
+Paswoord eigenschap niet bepaald  ##  Password property not set.
 Ongeldig XML pakket  ##  Invalid XML packet.
 Ongeldig XML pakket volgnummer.  ##  Invalid XML packet sequence ID.
 Ongeldige login: %s.  ##  Invalid login: %s.
 Contact bestaat reeds in de collectie.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
+SSL kon niet worden overlegt  ##  SSL could not be negotiated.
+Registeren van nieuwe gebruiker mislukt: %s.  ##  Failed to register new user: %s.
 Onbekende notificatie.  ##  Unknown notification.
 Bestand niet gevonden.  ##  File not found.
 Geef het bestands type op.(PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
@@ -94,15 +94,15 @@ Bestands overdracht mislukt.  ##  File transfer failed.
 Kon niet schrijven naar bestand.  ##  Could not write to file.
 Checksum van ontvangen bestand is ongeldig.  ##  Checksum of received file is invalid.
 Overdracht geannuleerd.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
+Overschreiding van de tijds limit bij overdracht.  ##  Transfer has timed out.
 Ongeldig protocol geselecteerd.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Updater starten is mislukt.  ##  Failed to start updater program.
+Ongeldige status. Component reeds in gebruik.  ##  Invalid state. Component already busy.
+Naam is niet uniek, kan niet vergrendelen. Gebruik een andere UpdateNaam.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Methode is geannuleerd.  ##  Method was cancelled.
+Kan programma update niet starten.  ##  Failed to start updater program.
 Handtekening van opgehaald document is ongeldig.  ##  Signature on retrieved document is invalid.
 datum niet ingesteld.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
+Registeren van COM Server mislukt  ##  Failed to register COM server.
 Pagina niet gevonden(fout 404) bericht van de server.  ##  Page not found (error 404) returned from the server.
 Ongeldige bestandsgrootte na download.  ##  Invalid file size after download.
 Ongeldige MD5 checksum na download.  ##  Invalid MD5 checksum after download.
@@ -114,8 +114,8 @@ Beschikbaar voor de chat.  ##  Free for chat
 Niet storen  ##  Do not disturb
 Lang afwezig  ##  Extended away
 Onzichtbaar  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
+Aan het vragen voor aanmelding  ##  Asking for subscription
+Contact is niet aangemeld  ##  Contact not subscribed
 Verbinding met de server is verbroken  ##  Disconnected from server
 Verbinding met de server wordt tot stand gebracht  ##  Connecting to server
 Bezig met registreren nieuwe gebruiker  ##  Registering new user
@@ -214,19 +214,19 @@ Icon  ##  Icon
 Selecteer uw icoon.  ##  Please choose your icon.
 Dit is zichtbaar  voor uw contacten.  ##  This is usually visible to your contacts.
 Netwerk  ##  Network
-Selecteer u IP adres en netmask.  ##  Please choose your IP address and netmask.
+Selecteer uw IP adres en netmask.  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Netwerk  ##  Network
 Mediator  ##  Mediator
 Maak alstublieft een keuze wie u als mediator (tussenpersoon) wilt gebruiken.  ##  Please choose who will be your mediator.
-This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
+Dit definieert mensen die P2P connecties gebruiken.  ##  This defines people that mediate P2P connections.
 Laatste controle.  ##  Last check
 Poort  ##  Port
 Gastname  ##  Hostname
 Permanent  ##  Permanent
 Tijdelijk  ##  Temporary
-Voer al u accounts hier in.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Voer al uw accounts hier in.  ##  Enter all your accounts here.
+U kunt eender welke account toevoegen die ondersteunt wordt door uw Jabber server (zoals: ICQ, MSN, enz..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Weet u zeker dat u dit account wilt VERWIJDEREN?. '%s'?  ##  Are you sure you want to delete account '%s'?
 Geregistreed  account verwijderen?  ##  Delete registered account?
 Accounts  ##  Accounts
@@ -240,27 +240,27 @@ Alle bestanden (*.*)\0*\0TXT bestanden (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0
 Alle bestanden (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Systeem  ##  System
 Logging  ##  Logging
-Setup log files and debug info.  ##  Setup log files and debug info.
-Specify paths below  ##  Specify paths below
+Stel log bestanden en debug informatie in.  ##  Setup log files and debug info.
+Geef hieronder de paths op  ##  Specify paths below
 Berichten  ##  Messages
-Chat window instellingen.  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
+Chat scherm instellingen  ##  Chat window settings.
+Voor alle open chat schermen  ##  For all open chat windows.
 Algemene info  ##  General info
-General information about  ##  General information about
-Personal information  ##  Personal information
-Home details for  ##  Home details for
-Business information  ##  Business information
-Work details for  ##  Work details for
+Algemene info over  ##  General information about
+Persoons gegevens  ##  Personal information
+Thuis details voor  ##  Home details for
+Bedrijfsinformatie  ##  Business information
+Werk details voor  ##  Work details for
 Alle anderen  ##  all other
 address given by mediator  ##  address given by mediator
 Uitstraling  ##  Appearance
 Skins  ##  Skins
 KIes de lay out hier onder.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
+Wat zal Wippien dragen?  ##  What will Wippien wear?
 .. niets ..  ##  .. none ..
 Automatich afwezig.  ##  Auto Away
 Auto afwezig instellingen.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+Bepaald hoe Wippien zich zal gedragen als het systeem niet actief is.  ##  Determines how will Wippien behave when system is inactive.
 Systeem  ##  System
 Basis systeem berichten.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
@@ -289,19 +289,19 @@ Verberg contacten.  ##  Hide contacts.
 Plaats u contacten uit het zicht.  ##  You can hide some contacts from your sight.
 Uitstraling  ##  Appearance
 Appearance settings.  ##  Appearance settings.
-  ##  Define how will Wippien's GUI appear to you.
+Bepaal hoe Wippien's GUI er uitziet.  ##  Define how will Wippien's GUI appear to you.
 Sorteer  ##  Sort
 Sorteer contacten.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+Kies een sorteer optie.  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
+Zoek of maak chat rooms. (NOG STEEDS IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Zoek naar een room om te joinen, of geef het path er van op, of maak een nieuwe room.  ##  Specify or browse for a room to join or create new one.
 - Alle gateways -  ##  - All gateways -
 Service  gateway  ##  Service gateway
 Kamer naam (room)  ##  Room name
 Firewall  ##  Firewall
 Stel de  firewall regels in.  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
+Je kan instellen welke poorten er kunnen gebruikt worden door je contacten.  ##  You can set up which ports can be accessed by your contacts.
 * Alle ICMP verkeer  ##  * All ICMP traffic
 Blokeer deze poorten  ##  But block these ports
 Sta deze poorten toe.  ##  But allow these ports
@@ -366,27 +366,27 @@ Netmask  ##  Netmask
 Status  ##  Status
 URL  ##  URL
 Beschrijving  ##  Description
-  ##  Add new account
+Voeg een nieuwe account toe.  ##  Add new account
 Verwijder account  ##  Remove account
-  ##  Register!
+Registreer!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
 Username  ##  Username
 Maak een new account.  ##  Open new account
-Authorization request  ##  Authorization request
+Authorisatie aanvraag  ##  Authorization request
 &Ja  ##  &Yes
 &Nee  ##  &No
 &Details  ##  &Details
-&Apply to all  ##  &Apply to all
+&Pas toe op alles  ##  &Apply to all
 &Blokkeer gebruiker(s)  ##  &Block user(s)
 Niet toestaan  ##  Do you allow
-to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
+om je toe te voegen aan zijn contacten-lijst?  ##  to add you to his contact list?
+Meer wachtende aanvragen...  ##  more requests waiting...
 Groep toevoegen  ##  Add Group
 Groep verwijderen  ##  Remove Group
 Contact toevoegen  ##  Add Contact
-Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-  ##  Contact Type
+Voeg Contact toe aan Groep  ##  Put contact to the group
+JID van contact  ##  Contact JID
+Type van contact  ##  Contact Type
 Zichtbare naam  ##  Visible Name
 Hernoem contact  ##  Rename contact
 Voer nieuwe contact naam in  ##  Enter new contact name
@@ -415,7 +415,7 @@ Provincie  ##  State
 Postcode  ##  ZIP
 Land  ##  Country
 Verjaardag  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+Stem Tel.  ##  Voice Tel.
 Fax  ##  Fax
 Title  ##  Title
 Bedrijfs naam  ##  Company name
@@ -426,26 +426,26 @@ Click on first column to change values  ##  Click on first column to change valu
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
 Aanpassen  ##  Apply
-To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+Om meer skins toe te voegen, plak ze in de 'Skin' submap. Voeg daarbij een 100x100 PNG bestand als preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &Meer Skins..  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
 Wacht  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
+Aantal minuten voor onderbreken verbinding ( 0 = uitschakelen)  ##  minutes before disconnecting (0 = disable)
+Automatisch afwezig-bericht  ##  Auto-Away message
 Extended-Away message  ##  Extended-Away message
 Show Wippien in taskbar  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
+Wippien automatisch verbergen wanneer deze niet gebruik is voor  ##  Auto hide if Wippien is inactive for
 Altijd op voorgrond  ##  Always on top
 Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Wachtwoord beveiligd  ##  Password protect
 Alleen instellingen  ##  Settings only
 Alles  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
+Instellingen map (veranderen van onderliggende waardes vereisen en herstart van Wippien)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup
 Delete all local contacts on connect  ##  Delete all local contacts on connect
@@ -468,7 +468,7 @@ controleer nu.  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 Gebruik een vaste MTU grootte  ##  Use fixed MTU
 Detecteer MTU automatisch  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
+(word actief wanneer peers verbonden zijn)  ##  (will become effective as peers reconnect)
 Geluid (leeg laten voor default)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
 Programma gebeurtenissen.  ##  Program events

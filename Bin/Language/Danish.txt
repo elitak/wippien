@@ -1,6 +1,6 @@
 # Danish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Darkeydence
-# Version: 79
+# Version: 81
 Ingen fejl.  ##  No error.
 Systemet kan ikke finde den specificerede fil.  ##  The system cannot find the file specified.
 Systemet kan ikke finde den specificerede sti.  ##  The system cannot find the path specified.
@@ -78,7 +78,7 @@ Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
 Ugyldig XML pakke.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
+Ugyldig login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
   ##  Failed to register new user: %s.
@@ -413,7 +413,7 @@ Address Ext.  ##  Address Ext.
 City  ##  City
 State  ##  State
 ZIP  ##  ZIP
-Country  ##  Country
+Land  ##  Country
 Birthday  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax

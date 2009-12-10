@@ -1,6 +1,6 @@
 # Hungarian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Péter Varga
-# Version: 418
+# Version: 694
 Nincs hiba  ##  No error.
 A rendszer nem találja a megadott fájlt  ##  The system cannot find the file specified.
 A rendszer nem találja a megadott mappát  ##  The system cannot find the path specified.
@@ -8,11 +8,11 @@ A rendszer nem találja a megadott fájlt/mappát  ##  The system cannot find th
 Nem megfelelő típus.  ##  Type mismatch.
 Nem lehet a fájlt/könyvtárt létrehozni, ha az a fájl/könyvtár már létezik.  ##  Cannot create a file/directory when that file/directory already exists.
 A rendszer nem tud írni a megadott eszközre.  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
+Érvénytelen érték  ##  Invalid Property Value.
 A művelet befejeződött, mert a várakozási idő lejárt  ##  This operation returned because the timeout period expired.
 Renszer szintű megszakítás, megszakított socket művelet.  ##  System level interrupt interrupted socket operation.
 Általános formátum hiba, helytelen formátum.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
 An invalid argument was supplied.  ##  An invalid argument was supplied.
@@ -37,10 +37,10 @@ Current socket version not supported by application.  ##  Current socket version
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
 Host nem található  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
+Nincs elég memória a művelet végrehajtásához.  ##  Not enough memory is available to complete this operation.
 Nem ismert keresési forma.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
+A program már fut.  ##  Already started.
 Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
@@ -140,7 +140,7 @@ Az üzenet nem kézbesíthető.  ##  Could not deliver message.
 Nem sikerült a jelszót megváltoztatni  ##  Failed to change password
 A tétlenségi szabály végett lecsatlakozva  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<&lt; VPN még nincs létrehozva >&gt;  ##  << VPN not established yet >>
+<&lt; VPN még nincs létrehozva >&amp;gt;  ##  << VPN not established yet >>
 Újrakapcsolódás %d másodperc múlva.  ##  Reconnect in %d seconds.
 másodperc  ##  seconds
 Nincs hálózat  ##  No network
@@ -173,16 +173,16 @@ Fájl küldése  ##  Send file
 Részletek  ##  Details
 Contact information  ##  Contact information
 Clear  ##  Clear
-Clear history  ##  Clear history
+Előzmények törlése  ##  Clear history
 Némít  ##  Mute
 Bold  ##  Bold
 Dőlt  ##  Italic
 Aláhúzott  ##  Underline
 Hiperhivatkozás beszúrása  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
+Betűméret csökkentése  ##  Decrease font size
 Alapértelmezett betűméret  ##  Reset font size
 Betűméret növelése  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
+Előtér színének beállítása  ##  Set Foreground color
 Háttérszín beállítása  ##  Set Background color
 Hangulatjelek  ##  Emoticons
 Új hangulatjelek kerülnek letöltésre és telepítésre. Folytassuk?  ##  New emoticons will be downloaded and installed. Proceed?
@@ -204,17 +204,17 @@ Nem meghatározott  ##  not specified
 &Következő >  ##  &Next >
 Személyazonosság  ##  Identity
 Kérem válassza ki a bejelentkezési információit  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
+Ez megjelenik a barátod listáján is  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
+Helytelen bejelentkezési adatok  ##  Invalid logon details
+Be kell ütnöd a JID kódodat  ##  You must enter your JID.
+Be kell ütnöd a password-ödet!  ##  You must enter your password.
 Jabber hiba  ##  Jabber error
 Ikon  ##  Icon
 Kérlek válassz ikont!  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
 Hálózat.  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
+Válasszad ki az ipcímedet és a hálózati maszkod  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Hálózat  ##  Network
 Mediator  ##  Mediator
@@ -228,13 +228,13 @@ Ideiglenes  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+Töröljem a regisztrált fiókodat?  ##  Delete registered account?
 Felhasználók  ##  Accounts
-Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
-  ##  Contacts
+Csak az átjárók mutatása  ##  Show only gateways
+Összes szolgáltatás megmutatása  ##  Show all services
+Kapcsolatok  ##  Contacts
 Hozzáadás / Eltávolítás  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
+Új kapcsolatok felkutatása  ##  Find new contacts.
 Felveheti új Jabber, ICQ, MSN ... névjegyzékek  ##  You can add new Jabber, ICQ, MSN... contacts
 Minden fájl (*.*) \ 0 * \ 0TXT fájlok (*. txt) \ 0 *. txt \ 0 \ 0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Minden Képfájl (*. bmp, *. jpg, *. jpeg, *. png, *. gif) \ 0 *. bmp, *. jpg, *. jpeg, *. gif, *. png \ 0Windows bitképeket (* . bmp) \ 0 *. bmp \ 0Jpeg fájlok (*. jpg, *. jpeg) \ 0 *. jpeg, *. jpg \ 0GIF fájlok (*. gif) \ 0 *. gif \ 0PNG fájlok (*. png) \ 0 *. png \ 0All (*.*) Files \ 0 * \ 0 \ 0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
@@ -247,10 +247,10 @@ Chat ablak beállításai.  ##  Chat window settings.
   ##  For all open chat windows.
 Általános információk  ##  General info
 General information about  ##  General information about
-Personal information  ##  Personal information
+Személyes adatok  ##  Personal information
 Home details for  ##  Home details for
-Business information  ##  Business information
-Work details for  ##  Work details for
+Munkahely adatai  ##  Business information
+Részletesen a munkáról  ##  Work details for
 egyéb  ##  all other
 address given by mediator  ##  address given by mediator
 Kinézet  ##  Appearance
@@ -258,8 +258,8 @@ Témák  ##  Skins
 Válasszon témát az alábbi listáról  ##  Choose skin from below list.
 Mit fog a Wippien viselni?  ##  What will Wippien wear?
 .. Nincs ..  ##  .. none ..
-  ##  Auto Away
-  ##  Auto away settings.
+Távollét kijelzése automatikusan  ##  Auto Away
+Távollét kijelzés beállításai  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
 Rendszer  ##  System
 Alapvető rendszer üzenetek.  ##  Basic system messages.
@@ -276,22 +276,22 @@ MTU  ##  MTU
 Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
 If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
 Hangok  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
+Esemémyek hangbeállításai  ##  Setup sounds to be played on various events.
+Válassz a beépített hangok közül, vagy tallózz be egy wav fájlt  ##  Choose internal ones, or browse for WAV files.
 A parnter elérhető  ##  Contact online
 A parnter nem elérhető  ##  Contact offline
 Bejövő üzenet  ##  Message in
 Kimenő üzenet  ##  Message out
 Hiba  ##  Error
-WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+WAV fájlok (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Elrejt  ##  Hide
-Hide contacts.  ##  Hide contacts.
+Kapcsolat elrejtése  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
 Kinézet  ##  Appearance
 Kinézet beállitásai  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Rendezés  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
+Kapcsolatok rendezése  ##  Sorts contacts.
 Válasz a felsorolt opcíók közül.  ##  Pick one of sort options.
 Chat szoba  ##  ChatRoom
 Böngéssz vagy csinálj chat szobát. (MÉG BÉTA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
@@ -301,16 +301,16 @@ Service gateway  ##  Service gateway
 Szoba neve  ##  Room name
 Tűzfal  ##  Firewall
 Tűzfal szabályok beállítása  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
+Beállíthatod milyen portokon érhetnek el a kapcsolataid  ##  You can set up which ports can be accessed by your contacts.
 * Összes ICMP forgalom  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
+De tiltsa ezeket a portokat  ##  But block these ports
+De engedélyezze ezeket a portokat  ##  But allow these ports
 Wippien frissítés  ##  Wippien update
 A Wippien újabb verziója elérhető. Letöltsük?  ##  New version of Wippien is available. Download?
 Az újdonságok megtekintéséért kattints ide  ##  Click here to see what's new.
 A jelenlegi Wippien-ed friss  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
+Hiba a távoli szerver nem kapcsolódik  ##  Error connecting to remote server.
+A letöltés sikerült, felülírjam a régit?  ##  Download successful. Replace now?
 Wippien frissítési hiba!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
 Új verzió  ##  New version
@@ -324,15 +324,15 @@ percek  ##  minutes
 Utoljára megtekintve: soha  ##  Last seen: never
 Jelenleg offline  ##  is currently offline
 jelenleg online  ##  is now offline
-is now online  ##  is now online
+kapcsolódott  ##  is now online
 blokkolva van  ##  is blocked
-is offline  ##  is offline
+offline  ##  is offline
 Engedélyez  ##  Unblock
 Blokkol  ##  Block
 Biztos, hogy törlöd a %s csoportot?  ##  Are you sure you want to remove group %s
 Csoport törlése?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
+Biztosan törlöd ezt a kapcsolatot %s  ##  Are you sure you want to remove contact %s
+Eltávolítod a kapcsolatot?  ##  Remove contact?
 Adapter hiba  ##  Adapter error
 Csoport átnevezése  ##  Rename group
 Új csoport név megadása  ##  Enter new group name
@@ -432,7 +432,7 @@ Set back when activity is detected again.  ##  Set back when activity is detecte
 Várakozás  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
+  ##  minutes before disconnecting (0 = disable)
 Auto-Away message  ##  Auto-Away message
 Extended-Away message  ##  Extended-Away message
 Show Wippien in taskbar  ##  Show Wippien in taskbar

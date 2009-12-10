@@ -1,6 +1,6 @@
 # Turkish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Xasf
-# Version: 368
+# Version: 400
 Hata yok.  ##  No error.
 Sistem belirtilen dosyayı bulamıyor.  ##  The system cannot find the file specified.
 Sistem belirtilen yolu bulamıyor.  ##  The system cannot find the path specified.
@@ -44,7 +44,7 @@ Zaten başlamış durumda.  ##  Already started.
 Kanal zaten başlamış durumda.  ##  Channel already started.
 Kanal açıkken kanal ayarları değiştirilemiyor.  ##  Cannot change channel setup while channel is started.
 Sokette aşırı veri var. Daha sonra tekrar deneyin.  ##  Too much data on the socket. Try later.
-Bağlantı kurulmadı.  ##  Connection not established.
+Bağlantı kurulamadı.  ##  Connection not established.
 Bilinmeyen veri türü.  ##  Unknown data type.
 Soket dizisi yaratılamadı.  ##  Failed to create socket thread.
 Bilinmeyen kanal türü.  ##  Unknown channel type.
@@ -114,13 +114,13 @@ Sohbete Hazir  ##  Free for chat
 Rahatsiz etme  ##  Do not disturb
 Cok uzakta  ##  Extended away
 Gorunmez  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
+Kayıt için soruluyor  ##  Asking for subscription
+Kişi kayıtlı değil  ##  Contact not subscribed
+Sunucu bağlantısı kesildi  ##  Disconnected from server
 Sunucuya baglaniyor  ##  Connecting to server
 Yeni kullanici kaydi yapiliyor  ##  Registering new user
 Guvenli baglanti kuruluyor  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
+Yetkilendirme verisi gönderiliyor  ##  Sending authentication data
 Sunucuya baglanildi  ##  Connected to server
 Sunucudan bilgi aliniyor  ##  Receiving data from server
 Sunucuya bilgi gonderiliyor  ##  Sending data to server
@@ -128,21 +128,21 @@ Sunucuda islem yapiliyor  ##  Executing command on server
 Sunucudan baglanti kopariliyor  ##  Disconnecting from the server
 Onaylama istendi  ##  Requested authorization
 Wippien Ag cihazi kuruluyor......  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
+%s adresli \"%s\" adaptoru Wippien'in %s i ile çakisiyor. Muhtemelen Wippien ag paketlerini gonderip alamayacak. Lutfen bu adaptoru kaldirin ya da kapatin.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Ag bagdastiricisi calismiyor!  ##  Network adapter disabled!
 Ag cihazi acik  ##  Network adapter opened
 Wippien ag cihazi hazir degil. Sadece IM ile devam etmek istermisiniz?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
+Wippien bagdastirici IP adresi harici bir cihaz kullanilarak ayarlanmalidir ve bunun icin  yonetici ayricaliklari gereklidir. Gerekli yetkileri elde edebilmek icin lütfen Wippien'i en az bir kez yonetici olarak calistirin.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Yonetici yetkisi gerekli!  ##  Admin privilege required!
 Bağlantı Koptu  ##  Disconnected
 Bağlandı  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
+Mesaj iletilemedi!  ##  Could not deliver message.
 Parola degistirilemedi  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
+Eylemsizlik kuralı geregi baglanti kesildi.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
+<&lt; Henuz VPN kurulmadi>&gt;  ##  << VPN not established yet >>
 %d saniye içinde tekrar bağlanmayı deneyecek.  ##  Reconnect in %d seconds.
-  ##  seconds
+saniye  ##  seconds
 Ag yok  ##  No network
 Wippienden cik  ##  Exit Wippien
 Cikis  ##  E&xit
@@ -150,12 +150,12 @@ Ayarlari Ac  ##  Open settings
 Ayarlar  ##  &Settings
 Hakkinda goster  ##  Show AboutBox
 Hakkinda  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+Durumunuzu belirleyin (Uzakta, Gorunmez...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
 Sesi kapat  ##  Mute sound
-Open chat room  ##  Open chat room
+Chat odası aç  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
-  ##  Idle
+Boşta  ##  Idle
 Wippienden gercekten cik?  ##  Really exit Wippien?
 Eminmisiniz?  ##  Are you sure?
 Parola simdi degistirildi.  ##  Your password is now changed.
@@ -171,7 +171,7 @@ Gecmisi Sil?  ##  Delete history?
 Gonder  ##  Send
 Dosya gonder  ##  Send file
 Detaylar  ##  Details
-Contact information  ##  Contact information
+Kişi bilgileri  ##  Contact information
 Temizle  ##  Clear
 Gecmisi Temizle  ##  Clear history
 Sesi Kapat  ##  Mute
@@ -207,11 +207,11 @@ Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
+JID'inizi girmek zorundasınız.  ##  You must enter your JID.
 Şifrenizi girmelisiniz.  ##  You must enter your password.
-Jabber error  ##  Jabber error
+Jabber hatası  ##  Jabber error
 Ikon  ##  Icon
-Please choose your icon.  ##  Please choose your icon.
+Lütfen iconunuzu seçin  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
 Network  ##  Network
 Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
@@ -255,14 +255,14 @@ all other  ##  all other
 address given by mediator  ##  address given by mediator
 Goruntu  ##  Appearance
 Skins  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
+Listeden arayüz seçin  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
 .. none ..  ##  .. none ..
 Auto Away  ##  Auto Away
 Auto away settings.  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
 Sistem  ##  System
-Basic system messages.  ##  Basic system messages.
+Temel sistem mesajları.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
 Sesli Chat  ##  Voice Chat
 Please setup your voice chat devices.  ##  Please setup your voice chat devices.
@@ -540,14 +540,14 @@ Changes will take affect on 'as needed' basis. You should restart Wippien if you
 Yeni lisan dosyasi bulundu. Indirilsinmi?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
 Yaziyor...  ##  Contact is typing...
-soyler  ##  says
+diyor  ##  says
 soyledi  ##  said
 Burası için GMAIL hesabınızı kullanabilirsiniz.  ##  You can use your GMAIL account here.
 Toggle voice chat  ##  Toggle voice chat
 Local echo  ##  Local echo
 UDP port 9913 busy  ##  UDP port 9913 busy
 Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
-Microphone sensitivity  ##  Microphone sensitivity
+Mikrofon hassaslığı  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 has enabled  ##  has enabled

@@ -1,6 +1,6 @@
 # Argentina translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Alejandro73
-# Version: 212
+# Version: 442
 Ningun error.  ##  No error.
 El sistema no puede encontrar el archivo especificado.  ##  The system cannot find the file specified.
 El sistema no puede encontrar el directorio especificado.  ##  The system cannot find the path specified.
@@ -13,7 +13,7 @@ Esta operacion termino debido a que el tiempo de espera a terminado.  ##  This o
 Interrupción a nivel de sistema ha interrumpido la operación de socket.  ##  System level interrupt interrupted socket operation.
 Error generico por formato invalido, formato erroneo.  ##  Generic error for invalid format, bad format.
 Un intento de acceder a socket fue denegado por sus permisos de acceso.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Indicador de dirección erroneo durante la llamada de un parámetro.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Error generico por formato inválido, entrada inválida, etc.  ##  Generic error for invalid format, entry, etc.
 Se proveyó un argumento inválido.  ##  An invalid argument was supplied.
 La dirección IP provista no es válida o el host (anfitrión) especificado por la IP no existe.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
@@ -46,7 +46,7 @@ No puede cambiarse la configuración del canal una vez que éste ha sido comenza
 Demasiados datos en socket. Intente más tarde.  ##  Too much data on the socket. Try later.
 La conexión no se ha establecido.  ##  Connection not established.
 Tipo de dato desconocido.  ##  Unknown data type.
-Failed to create socket thread. Fallo al crear hilo de socket.  ##  Failed to create socket thread.
+Fallo al crear hilo de socket.  ##  Failed to create socket thread.
 Tipo de canal desconocido.  ##  Unknown channel type.
 Argumento inválido en propiedad LocalAddress.  ##  Invalid argument was supplied in LocalAddress property.
 El canal no puede ser creado del lado local.  ##  Channel cannot be created by local side.
@@ -61,61 +61,61 @@ Petición de socket inválida.  ##  Invalid socks request.
 Contraseña inválida. No concuerda con la contraseña en el punto remoto.  ##  Invalid password. Does not match remote peer's password.
 ID local no definida. Esto es requerido por el método Search.  ##  Local ID not set. It is required for Search method.
 ID remota no definida. Esto es requerido por el método Search.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address. No se puede enlazar con la dirección IP especificada.  ##  Cannot bind to specified IP address.
+No se puede enlazar con la dirección IP especificada.  ##  Cannot bind to specified IP address.
 Ya se está ejecutando una trasferencia de archivo.  ##  Already performing file transfer.
 Archivo no encontrado.  ##  File not found.
 Fallo al escribir archivo.  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
+No se puede abrir el adaptador de red.  ##  Could not open network adapter.
+Solo se puede usar un adaptador al mismo tiempo.  ##  Only one adapter can be used at a time.
+Clave de licencia perdida. No podrá usar este componente en el entorno de diseño.  ##  License key missing. You can not use this component in design environment.
+Error Desconocido.  ##  Unrecognized Error.
+No se puede conectar en este momento. Utilice Desconectar primero.  ##  Cannot Connect at this time. Use Disconnect first.
+No se puede ejecutar, no esta conectado.  ##  Cannot execute, not yet connected.
+Componente Ocupado.  ##  Component busy.
+No se puede cambiar correctamente en este momento. Usar Desconectar primero.  ##  Cannot change property at this time. Use Disconnect first.
+Nombre de Host  no configurado correctamente.  ##  Hostname property not set.
+Usuario no configurado correctamente.  ##  Login property not set.
+Contraseña no configurado correctamente.  ##  Password property not set.
+Paquete XML incorrecto.  ##  Invalid XML packet.
+ID en secuencia de paquete XML invalido.  ##  Invalid XML packet sequence ID.
+Usuario incorrecto: %s.  ##  Invalid login: %s.
+Ya existe el contacto en su lista.  ##  Contact already exists in the collection.
 No pudo negociarse SSL.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
+Fallo al registrar nuevo usuario: %s.  ##  Failed to register new user: %s.
 Notificción desconocida.  ##  Unknown notification.
 Archivo no encontrado.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Debes especificar la extensión de la foto (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Fallo al importar foto.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
+Otro método de bloqueo en proceso.  ##  Another blocking method in progress.
+Protocolo invalido de datos recibidos.  ##  Invalid protocol data received.
+No hay nada para enviar. El tamaño del archivo es 0.  ##  There's nothing to send. File size is 0.
 Contacto no encontrado.  ##  Contact not found.
-Fallo en la transferencia de archivo.  ##  File transfer failed.
+Fallo en la transferencia del archivo  ##  File transfer failed.
 No se puede escribir a un archivo.  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
+Comprobación de los archivos recibidos incorrecta.  ##  Checksum of received file is invalid.
 Transferencia abortada.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
+Tiempo de transferencia vencido.  ##  Transfer has timed out.
+El protocolo seleccionado es incorrecto.  ##  Invalid protocol selected.
+Estado incorrecto. El componente esta ocupado.  ##  Invalid state. Component already busy.
+El nombre  no es unico, no se puede obtener el bloqueo. Por favor use otro nombre de actualizacion.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+El metodo fue cancelado.  ##  Method was cancelled.
+Fallo al iniciar el programa de actualización.  ##  Failed to start updater program.
+La firma en la recuperacion de documento es incorrecta.  ##  Signature on retrieved document is invalid.
 Fecha no definida.  ##  Date not set.
 Fallo al registrar servidor COM.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
+Pagina no encontrada (error 404) retorno desde el servidor.  ##  Page not found (error 404) returned from the server.
 Tamaño de archivo inválido luego de descargar.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Warning  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Away  ##  Away
+Comprobacion MD5 invalido despues de la descarga.  ##  Invalid MD5 checksum after download.
+Alerta  ##  Warning
+Desconectado  ##  Offline
+Conectado  ##  Online
+En Espera  ##  Away
 Disponible para chatear  ##  Free for chat
 No molestar  ##  Do not disturb
-Extended away  ##  Extended away
+En espera extendida  ##  Extended away
 Invisible  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
+Preguntando por suscripción  ##  Asking for subscription
+Contacto no suscrito  ##  Contact not subscribed
 Desconectado del servidor  ##  Disconnected from server
 Conectando al servidor  ##  Connecting to server
 Registrando nuevo usuario  ##  Registering new user
@@ -128,160 +128,160 @@ Ejecutando comandos en el servidor  ##  Executing command on server
 Desconectando al servidor  ##  Disconnecting from the server
 Pidiendo autorización  ##  Requested authorization
 Configurando adaptador de red Wippien  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Adaptador \"%s\" con dirección %s hace conflicto con Wippien %s. Es posible que Wippien no envie y reciba paquetes de red. Por favor desinstalel o deshabilite ese adaptador.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Adaptador de red deshabilitado!  ##  Network adapter disabled!
 Adaptador de red abierto  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
-Disconnected  ##  Disconnected
-Connected  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
-%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
-seconds  ##  seconds
-No network  ##  No network
-Exit Wippien  ##  Exit Wippien
+Adaptador de red Wippien no disponible. Desea Usar como mensajeria solamente?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien debe establecer una dirección IP al adaptador usando una herramienta externa  - y requiere privilegios administrativos. Por favor ejecutar Wippien al menos una vez como administrador con motivo de obtener los permisos suficientes.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Privilegio administrativo requerido!  ##  Admin privilege required!
+Desconectado  ##  Disconnected
+Conectado  ##  Connected
+No se puede enviar mensaje.  ##  Could not deliver message.
+Fallo al cambiar la contraseña  ##  Failed to change password
+Desconectado por inactividad  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\nTotal entrada: %s\r\nTotal salida: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<&lt; VPN no establecida >&gt;  ##  << VPN not established yet >>
+Reconectar en %d segundos.  ##  Reconnect in %d seconds.
+segundos  ##  seconds
+Sin red  ##  No network
+Salir Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
-Open settings  ##  Open settings
-&Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
-&About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
-Open chat room  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
-Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
-Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
-Identity  ##  Identity
-ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
-Send  ##  Send
-Send file  ##  Send file
-Details  ##  Details
-Contact information  ##  Contact information
-Clear  ##  Clear
-Clear history  ##  Clear history
-Mute  ##  Mute
-Bold  ##  Bold
-Italic  ##  Italic
-Underline  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
-Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-Done!  ##  Done!
-Contact  ##  Contact
-Connecting  ##  Connecting
-Requesting  ##  Requesting
-Downloading  ##  Downloading
-Configuration file  ##  Configuration file
+Abrir opciones  ##  Open settings
+&Opciones  ##  &Settings
+Mostrar AcercaDe  ##  Show AboutBox
+&Acerca de  ##  &About
+Establecer estado (En espera,Invisible...)  ##  Set your status (Away,Invisible...)
+Agregar contactos y cuentas alien  ##  Add contacts and alien accounts
+Silenciar sonido  ##  Mute sound
+Abrir sala de chat  ##  Open chat room
+Autorizar a tus amigos  ##  Authorize your friends
+Inactivo  ##  Idle
+Salir realmente de Wippien?  ##  Really exit Wippien?
+Esta seguro?  ##  Are you sure?
+Su contraseña ha fue cambiada.  ##  Your password is now changed.
+Contraseña cambiada  ##  Password changed
+Cambiar contraseña de cuenta  ##  Change account password
+Por favor ingrese una nueva contraseña  ##  Please enter new password
+Identidad  ##  Identity
+Tarjeta de Identificación  ##  ID Card
+Dirección Personal  ##  Home Address
+Dirección de Trabajo  ##  Work Address
+Esta seguro que quiere borrar el historial?  ##  Are you sure you want to delete the history?
+Borrar historial?  ##  Delete history?
+Enviar  ##  Send
+Enviar archivo  ##  Send file
+Detalles  ##  Details
+Información de Contácto  ##  Contact information
+Limpiar  ##  Clear
+Limpiar Historial  ##  Clear history
+Silenciar  ##  Mute
+Negrita  ##  Bold
+Cursiva  ##  Italic
+Subrayado  ##  Underline
+Insertar hipervinculo  ##  Insert hyperlink
+Decrementar tamaño de letra  ##  Decrease font size
+Reiniciar tamaño de letra  ##  Reset font size
+Incrementar tamaño de letra  ##  Increase font size
+Establecer color en primer plano  ##  Set Foreground color
+Establecer color de fondo  ##  Set Background color
+Emoicons  ##  Emoticons
+Serán descargados e instalado nuevos emoticons. Proceder?  ##  New emoticons will be downloaded and installed. Proceed?
+Nuevos emoticons  ##  New emoticons
+Ya puedes clickear nuevamente en el icono de emoticons para ver los que se instalaron.  ##  You can now click again on emoticon button to see new installed emoticons.
+Listo!  ##  Done!
+Contacto  ##  Contact
+Conectando  ##  Connecting
+Solicitando  ##  Requesting
+Descargando  ##  Downloading
+Archivo de configuración  ##  Configuration file
 General  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
-allow  ##  allow
-deny  ##  deny
-not specified  ##  not specified
-&Finish  ##  &Finish
-&Next >  ##  &Next >
-Identity  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
-Jabber error  ##  Jabber error
-Icon  ##  Icon
-Please choose your icon.  ##  Please choose your icon.
-This is usually visible to your contacts.  ##  This is usually visible to your contacts.
-Network  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
-This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
-Network  ##  Network
-Mediator  ##  Mediator
-Please choose who will be your mediator.  ##  Please choose who will be your mediator.
-This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
-Port  ##  Port
-Hostname  ##  Hostname
-Permanent  ##  Permanent
-Temporary  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
-Accounts  ##  Accounts
-Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
-Contacts  ##  Contacts
-Add/Remove  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-System  ##  System
-Logging  ##  Logging
-Setup log files and debug info.  ##  Setup log files and debug info.
-Specify paths below  ##  Specify paths below
-Messages  ##  Messages
-Chat window settings.  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
-General information about  ##  General information about
-Personal information  ##  Personal information
-Home details for  ##  Home details for
-Business information  ##  Business information
-Work details for  ##  Work details for
-all other  ##  all other
-address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
-Skins  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-System  ##  System
-Basic system messages.  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-Voice Chat  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
+En espera por inactividad.  ##  Away due to inactivity.
+En espera por un largoooo tiempo.  ##  Away for a loooong time.
+permitir  ##  allow
+denegar  ##  deny
+no especificado  ##  not specified
+&Finalizar  ##  &Finish
+&Siguiente  ##  &Next >
+Identidad  ##  Identity
+Por favor elige tu información de usuario.  ##  Please choose your logon information.
+Será mostrado en tu lista de amigos.  ##  This is shown on your friend's list.
+El JID deberá contener el nombre del servidor, en formato usuario@servidor.com  ##  JID should contain server name, formatted like user@server.com
+Detalles de usuario incorrectos  ##  Invalid logon details
+Debes ingresar tu JID.  ##  You must enter your JID.
+Debes ingresar tu contraseña.  ##  You must enter your password.
+Error Jabber  ##  Jabber error
+Icono  ##  Icon
+Por favor elija su icono.  ##  Please choose your icon.
+Usualmente es visto por tus contactos.  ##  This is usually visible to your contacts.
+Red  ##  Network
+Por favor elija su dirección IP y  mascara red.  ##  Please choose your IP address and netmask.
+Define el rango de red que será usado por wippien.  ##  This defines network range to be used by wippien.
+Red  ##  Network
+Mediador  ##  Mediator
+Por favor elija quien será su mediador.  ##  Please choose who will be your mediator.
+Define la gente que es mediadora en las conecciones P2P.  ##  This defines people that mediate P2P connections.
+Ultimo chequeo  ##  Last check
+Puerto  ##  Port
+Nombre de Host  ##  Hostname
+Permanente  ##  Permanent
+Temporal  ##  Temporary
+Ingrese todas las cuentas aquí.  ##  Enter all your accounts here.
+Puedes agregar una de tus cuentas soportadas por tu servidor Jabber  (tipicamente ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Esta seguro que quiere eliminar la cuenta '%s'?  ##  Are you sure you want to delete account '%s'?
+Borrar cuenta registradat?  ##  Delete registered account?
+Cuentas  ##  Accounts
+Mostrar unicamente Puertas de Enlace  ##  Show only gateways
+Mostrar todos los servicios  ##  Show all services
+Contactos  ##  Contacts
+Agregar/Eliminar  ##  Add/Remove
+Buscar nuevos contactos.  ##  Find new contacts.
+Puedes agregar nuevos contactos Jabber, ICQ, MSN.  ##  You can add new Jabber, ICQ, MSN... contacts
+Todos los Archivos (*.*)\0*\0TXT Archivos (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Todos los tipos de imagenes (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Mapa Bits de Windows (*.bmp)\0*.bmp\0Jpeg archivos (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF archivos (*.gif)\0*.gif\0PNG archivos (*.png)\0*.png\0Todos los Archivos (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Sistema  ##  System
+Conectando...  ##  Logging
+Establecer archivo de log e información de depuración.  ##  Setup log files and debug info.
+Especificar rutas a continuación  ##  Specify paths below
+Mensajes  ##  Messages
+Opciones en ventana de chat  ##  Chat window settings.
+Para todas las ventanas de chat abiertas.  ##  For all open chat windows.
+Información general  ##  General info
+Acerca de información general  ##  General information about
+Información personal  ##  Personal information
+Datos del Hogar  ##  Home details for
+Información de Negocios  ##  Business information
+Datos de Empleo  ##  Work details for
+Otros  ##  all other
+dirección proporcionada por el mediador  ##  address given by mediator
+Apariencia  ##  Appearance
+Pieles  ##  Skins
+Elegir piel desde la lista.  ##  Choose skin from below list.
+En que usa Wippien?  ##  What will Wippien wear?
+.. nada ..  ##  .. none ..
+En espera automático  ##  Auto Away
+Opciones de Espera automatica.  ##  Auto away settings.
+Establece como estará Wippien cuando el sistema este inactivo.  ##  Determines how will Wippien behave when system is inactive.
+Sistema  ##  System
+Mensajes de sistema básicos.  ##  Basic system messages.
+Defina el comportamiento del uso Wippien.  ##  Define Wippien application's behavior.
+Chat de Voz  ##  Voice Chat
+Por favor instale los dispositivos de chat de voz  ##  Please setup your voice chat devices.
+Escoja de la lista de abajo.  ##  Choose from list below.
+<Sistema Predeterminado  ##  <system default>
+Configuraciones basicas de los contactos  ##  Contacts basic settings.
 Updates  ##  Updates
-Update definitions.  ##  Update definitions.
-Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
+Definiciones de actualizaciones  ##  Update definitions.
+Definir "como" y "cuando" wippien debe auto-actualizarse  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
-If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
+Por favor determine la unidad maxima de transferencia (MTU)  ##  Please determine maximum transfer unit.
+Si algun host no responde a los paquetes grandes...  ##  If some peer doesn't respond to large packets...
 Sounds  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
+Configurar sonidos  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
+Contacto en linea  ##  Contact online
+Contacto fuera de linea  ##  Contact offline
+Mensaje de entrada  ##  Message in
+Mensaje de salida  ##  Message out
 Error  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Hide  ##  Hide
@@ -313,7 +313,7 @@ Error connecting to remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
 Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
+Nueva version  ##  New version
 Status changed:  ##  Status changed:
 day  ##  day
 days  ##  days
@@ -322,17 +322,17 @@ hours  ##  hours
 minute  ##  minute
 minutes  ##  minutes
 Last seen: never  ##  Last seen: never
-is currently offline  ##  is currently offline
+se encuentra desconectado  ##  is currently offline
 is now offline  ##  is now offline
 is now online  ##  is now online
-is blocked  ##  is blocked
-is offline  ##  is offline
+está bloqueado  ##  is blocked
+está desconectado  ##  is offline
 Unblock  ##  Unblock
 Block  ##  Block
 Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
+Quitar el grupo?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
+Quitar el contacto?  ##  Remove contact?
 Adapter error  ##  Adapter error
 Rename group  ##  Rename group
 Enter new group name  ##  Enter new group name
@@ -402,7 +402,7 @@ Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
-Show message history  ##  Show message history
+Mostrar el historial de los mensajes  ##  Show message history
 Apodo  ##  Nickname
 Nombre  ##  First name
 Apellido  ##  Last name
@@ -549,6 +549,6 @@ El puerto 9913 UDP está ocupado.  ##  UDP port 9913 busy
 Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
 Sensibilidad del micrófono  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+El Chat de voz no parece estar instalado. Usted debe configurarlo antes del primero uso. ¿Hacerlo ahora?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 ha sido actidavo  ##  has enabled
 ha sido desactivado  ##  has disabled

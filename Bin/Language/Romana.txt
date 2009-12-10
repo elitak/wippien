@@ -1,58 +1,58 @@
 # Romana translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: mo0n_sniper
-# Version: 25
+# Version: 143
 Nicio eroare.  ##  No error.
 Sistemul nu gaseste fisierul specificat  ##  The system cannot find the file specified.
 Sistemul nu gaseste calea specificata  ##  The system cannot find the path specified.
 Sistemul nu gaseste fisier /director specificat  ##  The system cannot find the specified file/directory.
-  ##  Type mismatch.
+Nepotrivire de Tip  ##  Type mismatch.
 Nu se poate crea un fisier/director cand acel fisier/director deja exista.  ##  Cannot create a file/directory when that file/directory already exists.
 Sistemul nu poate scrie pe device  ##  The system cannot write to the specified device.
 Valoare a propietatii invalida.  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
+Această operaţiune a revenit, deoarece perioada de expirare a expirat.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
+Eroare generică datorată unui format invalid, format greşit.  ##  Generic error for invalid format, bad format.
 An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
 An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Adresa IP oferita nu este valida sau host-ul specificat de adresa IP nu exista.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 Adresa specificata este deja in folosinta.  ##  The specified address is already in use.
 Adresa specificata nu este disponibila.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
+conectată la retea nu este disponibilă.  ##  The connected network is not available.
+conectarea la retea nu este accesibil.  ##  The connected network is not reachable.
+Conexiunea la retea a fost resetata  ##  The connected network connection has been reset.
 The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
 The current socket connection has been reset.  ##  The current socket connection has been reset.
 The current socket has not been connected.  ##  The current socket has not been connected.
 Conexiunea a fost oprita.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
+Conexiunea curenta a expirat  ##  The current connection has timeout.
 Conexiunea ceruta a fost refuzata de gazda  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
+Numele host-ului specificat este prea lung.  ##  Specified host name is too long.
+Sistemul la distanta este momentan indisponibil  ##  Remote host is currently unavailable.
+Momentan nu se poate ajunge la sistemul la distanta  ##  Remote host is currently unreachable.
+Sistemul la distanta nu este pregatit  ##  Remote system is not ready.
+  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
-Host not found.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
+Host-ul nu a fost gasit.  ##  Host not found.
+Nu este destula memorie disponibila pentru a termina aceasta operatiune.  ##  Not enough memory is available to complete this operation.
 Unknown search type.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
 Already started.  ##  Already started.
 Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
+Legatura nu este stabilita  ##  Connection not established.
 Tip de date necunoscut.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Tip de canal necunoscut.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
+Canalul nu poate fi creat din aceasta parte  ##  Channel cannot be created by local side.
+Canalul nu poate fi poornit din aceasta parte  ##  Channel cannot be started by local side.
+Canal refuzat de sistemul la distanta  ##  Channel refused by remote side.
+Versiune de protocol de control la distanta neacceptata  ##  Unsupported remote protocol version.
 wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
 Canalul a fost inchis.  ##  Channel was closed.
 Marime MTU prea mare.  ##  MTU size too large.
@@ -62,13 +62,13 @@ Invalid password. Does not match remote peer's password.  ##  Invalid password. 
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
+Transferul fisierului este deja in curs.  ##  Already performing file transfer.
+Fisierul nu a fost gasit.  ##  File not found.
 Failed to write file.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
+  ##  Unrecognized Error.
 Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
@@ -76,16 +76,16 @@ Cannot change property at this time. Use Disconnect first.  ##  Cannot change pr
 Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
+Pachet XML invalid.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
+Notificare necunoscuta  ##  Unknown notification.
+Fisierul nu a fost gasit  ##  File not found.
+Trebuie sa specificati tipul fisierului (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Importul foto a esuat  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
@@ -93,7 +93,7 @@ Contact not found.  ##  Contact not found.
 File transfer failed.  ##  File transfer failed.
 Could not write to file.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
+Transfer intrerupt.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
 Invalid protocol selected.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
@@ -101,7 +101,7 @@ Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name
 Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
+Data nu este setata.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
@@ -111,19 +111,19 @@ Offline  ##  Offline
 Online  ##  Online
 Away  ##  Away
 Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
+Nu deranjati.  ##  Do not disturb
 Extended away  ##  Extended away
 Invisible  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
-Disconnected from server  ##  Disconnected from server
-Connecting to server  ##  Connecting to server
-Registering new user  ##  Registering new user
+Deconectat de la server.  ##  Disconnected from server
+Se conecteaza la server  ##  Connecting to server
+Inregistrare utilizator nou  ##  Registering new user
 Initializing secure connection  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
+Conectat la server  ##  Connected to server
+Se primesc date de la server  ##  Receiving data from server
+Se trimit date la server  ##  Sending data to server
 Executing command on server  ##  Executing command on server
 Disconnecting from the server  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization
@@ -136,14 +136,14 @@ Wippien must set up adapter IP address using external tool - and requires admini
 Admin privilege required!  ##  Admin privilege required!
 Deconectat  ##  Disconnected
 Conectat  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
+Mesajul nu a putut fi trimis.  ##  Could not deliver message.
+Parola nu a putut fi schimbata.  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+Reconectare in %d secunde.  ##  Reconnect in %d seconds.
 secunde  ##  seconds
-No network  ##  No network
+Retea inexistenta  ##  No network
 Exit Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
 Open settings  ##  Open settings
@@ -152,16 +152,16 @@ Show AboutBox  ##  Show AboutBox
 &About  ##  &About
 Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
+Opriti sunetul.  ##  Mute sound
 Open chat room  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
 Really exit Wippien?  ##  Really exit Wippien?
 Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
-Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
+Parola dumneavoastra este acum schimbata  ##  Your password is now changed.
+Parola schimbata  ##  Password changed
+Schimbati parola contului  ##  Change account password
+Introduceti noua parola  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
 Home Address  ##  Home Address
@@ -208,7 +208,7 @@ This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
 You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
+Trebuie sa introduceti parola dumneavoastra.  ##  You must enter your password.
 Jabber error  ##  Jabber error
 Icon  ##  Icon
 Please choose your icon.  ##  Please choose your icon.
@@ -228,7 +228,7 @@ Temporary  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+Doriti sa stergeti contul inregistrat?  ##  Delete registered account?
 Accounts  ##  Accounts
 Show only gateways  ##  Show only gateways
 Show all services  ##  Show all services
@@ -237,17 +237,17 @@ Add/Remove  ##  Add/Remove
 Find new contacts.  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 System  ##  System
 Logging  ##  Logging
 Setup log files and debug info.  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
-Messages  ##  Messages
-Chat window settings.  ##  Chat window settings.
+Mesaje  ##  Messages
+Setarile ferestrei de chat.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
-General information about  ##  General information about
-Personal information  ##  Personal information
+Informatii generale  ##  General info
+Informatii generale despre  ##  General information about
+  ##  Personal information
 Home details for  ##  Home details for
 Business information  ##  Business information
 Work details for  ##  Work details for
@@ -266,7 +266,7 @@ Basic system messages.  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
 Voice Chat  ##  Voice Chat
 Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
+Alegeti din lista de mai jos.  ##  Choose from list below.
 <system default>  ##  <system default>
 Contacts basic settings.  ##  Contacts basic settings.
 Updates  ##  Updates
@@ -306,31 +306,31 @@ You can set up which ports can be accessed by your contacts.  ##  You can set up
 But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
 Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
+Versiune noua a Wippien este disponibila. Descarcati?  ##  New version of Wippien is available. Download?
 Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
+  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
+Descarcarea a fost efectuata cu succes. Inlocuiti acum?  ##  Download successful. Replace now?
 Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
+Versiune noua  ##  New version
 Status changed:  ##  Status changed:
-day  ##  day
-days  ##  days
-hour  ##  hour
-hours  ##  hours
-minute  ##  minute
-minutes  ##  minutes
+Zi  ##  day
+Zile  ##  days
+Ora  ##  hour
+Ore  ##  hours
+Minut  ##  minute
+Minute  ##  minutes
 Last seen: never  ##  Last seen: never
 is currently offline  ##  is currently offline
 is now offline  ##  is now offline
 is now online  ##  is now online
 is blocked  ##  is blocked
 is offline  ##  is offline
-Unblock  ##  Unblock
-Block  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
+Deblocati  ##  Unblock
+Blocati  ##  Block
+Sunteti sigur ca doriti sa stergeti grupul %s  ##  Are you sure you want to remove group %s
+Stergere grup?  ##  Remove group?
 Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
 Remove contact?  ##  Remove contact?
 Adapter error  ##  Adapter error
@@ -338,14 +338,14 @@ Rename group  ##  Rename group
 Enter new group name  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
+Am nevoie de un nou cont Jabber  ##  I need new Jabber account
 I have existing Jabber account  ##  I have existing Jabber account
 &Test Account  ##  &Test Account
 &Search  ##  &Search
 You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
 If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Password  ##  Password
+Parola  ##  Password
 Server  ##  Server
 Port  ##  Port
 Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
@@ -365,33 +365,33 @@ IP address  ##  IP address
 Netmask  ##  Netmask
 Status  ##  Status
 URL  ##  URL
-Description  ##  Description
-Add new account  ##  Add new account
-Remove account  ##  Remove account
+Descriere  ##  Description
+Adaugati cont nou  ##  Add new account
+Stergeti cont  ##  Remove account
 Register!  ##  Register!
 Your current Instant messaging connections  ##  Your current Instant messaging connections
 Username  ##  Username
 Open new account  ##  Open new account
 Authorization request  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
-&Details  ##  &Details
+&Da  ##  &Yes
+&Nu  ##  &No
+&Detalii  ##  &Details
 &Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
-Do you allow  ##  Do you allow
+&Blocati user(i)  ##  &Block user(s)
+Permiteti  ##  Do you allow
 to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
+mai multe cereri in asteptare...  ##  more requests waiting...
+Adaugati Grup  ##  Add Group
+Stergeti Grup  ##  Remove Group
+Adaugati Contact  ##  Add Contact
 Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
-Visible Name  ##  Visible Name
+Contactati JID  ##  Contact JID
+Tipul contactului  ##  Contact Type
+Nume visibil  ##  Visible Name
 Rename contact  ##  Rename contact
-Enter new contact name  ##  Enter new contact name
+  ##  Enter new contact name
 Settings  ##  Settings
-< &Back  ##  < &Back
+< &Inapoi  ##  < &Back
 Log Jabber communication  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
@@ -402,34 +402,34 @@ Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
-Show message history  ##  Show message history
+Arata Istoricul Mesajelor  ##  Show message history
 Nickname  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
+Prenume  ##  First name
+Nume  ##  Last name
 Email  ##  Email
-Notes  ##  Notes
-Address  ##  Address
+Note  ##  Notes
+Adresa  ##  Address
 Address Ext.  ##  Address Ext.
-City  ##  City
-State  ##  State
+Oras  ##  City
+  ##  State
 ZIP  ##  ZIP
-Country  ##  Country
-Birthday  ##  Birthday
+Tara  ##  Country
+Data nasterii  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
 Title  ##  Title
-Company name  ##  Company name
-Department  ##  Department
+Numele companiei  ##  Company name
+Departament  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
 Allow All  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
+  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
+Asteptati  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
@@ -523,12 +523,12 @@ Free for &Chat  ##  Free for &Chat
 E&xtended Away  ##  E&xtended Away
 &Invisible  ##  &Invisible
 O&ffline  ##  O&ffline
-Change &Picture  ##  Change &Picture
+  ##  Change &Picture
 Change Pa&ssword  ##  Change Pa&ssword
 Your &Details  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
-Enter password  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+Inttroduceti codul de acces  ##  Enter Passphrase
+Introduceti parola  ##  Enter password
+Introduceti parola de protectie  ##  Please enter protect password
 Languages  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
 New languages may appear periodically.  ##  New languages may appear periodically.
@@ -547,7 +547,7 @@ Poti folosi contul tau de GMAIL aici.  ##  You can use your GMAIL account here.
   ##  Local echo
   ##  UDP port 9913 busy
   ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
+Sensitivitatea microfonului  ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
   ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
   ##  has enabled

@@ -1,11 +1,11 @@
 # Bahasa+Indonesia translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sumabek
-# Version: 114
+# Version: 123
 Tidak ditemukan kesalahan.  ##  No error.
 Sistem tidak dapat menemukan kesalahan yang dimaksud.  ##  The system cannot find the file specified.
 Sistem tidak dapat menemukan jalur yang dimaksud.  ##  The system cannot find the path specified.
 Sistem tidak dapat menemukan data/direktori yang dimaksud.  ##  The system cannot find the specified file/directory.
-Ketidakpasan tipe.  ##  Type mismatch.
+Tipe tidak sesuai  ##  Type mismatch.
 Tidak dapat menciptakan data/direktori apabila data/direktori tersebut sudah ada.  ##  Cannot create a file/directory when that file/directory already exists.
 Sistem tidak dapat menulis ke alat yang dimaksud.  ##  The system cannot write to the specified device.
 Nilai properti tidak valid.  ##  Invalid Property Value.
@@ -35,19 +35,19 @@ Remote host is currently unreachable.  ##  Remote host is currently unreachable.
 Remote system is not ready.  ##  Remote system is not ready.
 Current socket version not supported by application.  ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
+Socket telah diputus  ##  Socket has been disconnected.
 Host tidak ditemukan  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
+  ##  Not enough memory is available to complete this operation.
+Tipe pencarian tidak diketahui  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
 siap dimulai  ##  Already started.
-Channel already started.  ##  Channel already started.
+  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Connection not established.  ##  Connection not established.
-data type tidak diketahui  ##  Unknown data type.
+Tipe data tidak dikenal  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
+Tipe channel tidak dikenal  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.

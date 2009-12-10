@@ -1,6 +1,6 @@
 # Swedish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: MrMust
-# Version: 561
+# Version: 621
 Inget fel uppstod  ##  No error.
 Systemet kunde inte hitta den specifierade filen.  ##  The system cannot find the file specified.
 Systemet kunde inte hitta den specificerade sökvägen  ##  The system cannot find the path specified.
@@ -97,7 +97,7 @@ Mottagna filen har en felaktig checksum.  ##  Checksum of received file is inval
 Överföringen har misslyckats  ##  Transfer has timed out.
 Ogiltigt protokoll valt.  ##  Invalid protocol selected.
 Ogiltigt tillstånd. Komponenten är redan upptagen.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Namnet är inte unikt, kan ej låsas. Var god använd ett annat UppdateringsNamn.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 Metoden avbröts.  ##  Method was cancelled.
 Misslyckades med att starta uppdateringshanteraren.  ##  Failed to start updater program.
 Signaturen på mottaget dokument är ogiltig.  ##  Signature on retrieved document is invalid.
@@ -132,7 +132,7 @@ Adapter \"%s\" med adressen %s skapar en konlikt med Wippien's %s. Det är möjl
 Nätverksadapter inaktiverad!  ##  Network adapter disabled!
 Nätverksadapter startad  ##  Network adapter opened
 Wippien nätverksadapter är inte tillgänglig. Fortsätt med endast IM?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Wippien måste iordningställa adaptern för IP adressen genom att använda "external tool" - vilket kräver administrativa privilegium. Var snäll och kör Wippien minst en gång som administratör för att få tillgång till detta.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
 Administrationsprivilegier krävs!  ##  Admin privilege required!
 Disconnected  ##  Disconnected
 Connected  ##  Connected
@@ -140,7 +140,7 @@ Kunde inte leverera meddelande.  ##  Could not deliver message.
 Misslyckades med att ändra lösenord  ##  Failed to change password
 Frånkopplad på grund av inaktivitet  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotalt  in: %s\r\nTotalt ut: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN-tunnel är ännu ej etablerad >  ##  << VPN not established yet >>
+<&lt; VPN-tunnel är ännu ej etablerad >  ##  << VPN not established yet >>
 Återansluter om %d sekunder.  ##  Reconnect in %d seconds.
 sekunder  ##  seconds
 Inget nätverk  ##  No network
@@ -219,7 +219,7 @@ Detta anger nätverksområde att användas av wippien.  ##  This defines network
 Network  ##  Network
 Medlare  ##  Mediator
 Var god välj medlare  ##  Please choose who will be your mediator.
-This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
+Detta bestämmer vem som medlar P2P anslutningarna.  ##  This defines people that mediate P2P connections.
 Senaste kontroll  ##  Last check
 Port  ##  Port
 Värdnamn  ##  Hostname
@@ -286,7 +286,7 @@ Error  ##  Error
 WAV fileR (*.wav)\0*.wav\0AllA FileR (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Hide  ##  Hide
 Göm kontakter.  ##  Hide contacts.
-You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
+Du kan hindra vissa kontakter från att synas.  ##  You can hide some contacts from your sight.
 Appearance  ##  Appearance
 Visningsinställningar  ##  Appearance settings.
 Ändra GUI-utseende  ##  Define how will Wippien's GUI appear to you.
@@ -295,11 +295,11 @@ Sorterar kontakter.  ##  Sorts contacts.
 Välj ett sorteringsalternativ  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
 Sök efter eller skapa chat rum. (Fortfarande i beta!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
+Specifiera eller leta efter ett rum att delta i, eller skapa ett nytt.  ##  Specify or browse for a room to join or create new one.
 - Alla gateways -  ##  - All gateways -
-  ##  Service gateway
+Tjänstens gateway  ##  Service gateway
 Rums Namn  ##  Room name
-Firewall  ##  Firewall
+Brandvägg  ##  Firewall
 Sätt upp brandväggsregler  ##  Set up firewall rules.
 Du kan ställa in vilka portar som kan vara åtkomliga av dina kontakter.  ##  You can set up which ports can be accessed by your contacts.
 * All ICMP-trafik (Ping)  ##  * All ICMP traffic
@@ -342,8 +342,8 @@ Jag behöver ett nytt Jabber-konto  ##  I need new Jabber account
 Jag har redan ett Jabber-konto  ##  I have existing Jabber account
 &Kontrollera konto  ##  &Test Account
 &Sök  ##  &Search
-You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Här ska du skriva in ditt jabber ID (JID). Wippien använder Jabbers nätverk för att visa närvaro - så att dina kontakter ser att du är online, för att kunna se andra kontakter etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Har du inte JID så registrera en. Du kan göra det på vilken jabber server du vill. Det finns många offentliga servrar tillgängliga. Du kan hitta en lista med förnärvarande fungerande servrar genom att klicka på denna knappen.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Lösenord  ##  Password
 Värddator  ##  Server
@@ -423,12 +423,12 @@ Avdelning  ##  Department
 Tillåtna  interfaces för direkt förbindelse  ##  Allowed interfaces for direct connection
 Tillåt alla  ##  Allow All
 Klick på första kolumnen för att ändra värde  ##  Click on first column to change values
-If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Om du väljer "ospecificerat" så visas samma i övriga inställningar.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Följande skal hittade  ##  Following skin files are found
 Apply  ##  Apply
-To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+För att lägga till fler utseende så kan du även kopiera dem till mappen "skin". Lägg till en 100x100 PNG fil för förhandsvisning.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &Flera skal...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
+Sätt till 'tillbaka' vid aktivitet  ##  Set back when activity is detected again.
 Vänta  ##  Wait
 minuter innan frånvaroläget aktiveras (0 för att inaktivera)  ##  minutes before going to away mode (0 = disable)
 minuter innan det utökade frånvaruläget aktiveras (0 för att inaktivera)  ##  minutes before going to extended away mode (0 = disable)
@@ -436,39 +436,39 @@ minuter innan nedkoppling (0 för att inaktivera)  ##  minutes before disconnect
 Automatiskt frånvarumeddelande  ##  Auto-Away message
 Utökat frånvarumeddelande  ##  Extended-Away message
 Visa Wippien i aktivitetsfältet  ##  Show Wippien in taskbar
-Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
-Snap to desktop border  ##  Snap to desktop border
+Omarrangera skrivbordet när Wippiens fönster är fäst vid kanten  ##  Rearrange desktop when Wippien window is aligned to border
+Fäst vid skrivbordskanten  ##  Snap to desktop border
 Göm automatiskt om Wippien är inaktivt efter  ##  Auto hide if Wippien is inactive for
 Alltid överst  ##  Always on top
 Bekräfta vid avslut av programet  ##  Confirm exit from application
-Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Koppla från när datorn är försatt i viloläge/vänteläge, Anslut när den fortsätter  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Lösenordsskydda  ##  Password protect
-Settings only  ##  Settings only
-Everything  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
-Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
-Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Fråga mej  ##  Ask me
+Enbart inställningar  ##  Settings only
+Allting  ##  Everything
+Inställnings mappen (ändring av följande värde kräver att  wippien startas om)  ##  Settings folder (changing below value requires wippien restart)
+Kontaktlistans varaktighet  ##  Contact list persistance
+Ta bort alla lokala kontaker vid uppstart  ##  Delete all local contacts on startup
+Ta bort alla lokala kontaker vid anslutning  ##  Delete all local contacts on connect
+Kontakternas auktorisering  ##  Contacts subscription authorization
+Tillåt aldrig  ##  Never authorize
+Fråga mig  ##  Ask me
 Tillåt alltid  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
+Inrätta automatiskt VPN på nätverks traffiken  ##  Automatically establish VPN on network traffic
 Automatiskt etablera VPN vid uppstart.  ##  Automatically establish VPN on startup
 Progress  ##  Progress
 Aktivera ljud chat  ##  Enable voice chat
 Uppspelningsenhet  ##  Playback device
-Recording device  ##  Recording device
+Inspelningsenhet  ##  Recording device
 Sök efter uppdateringar när Wippien startar  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
+Kolla efter uppdateringar vid anslutning  ##  Check for updates on Connect
+Kontrollera uppdateringar varje  ##  Check for updates each
+Uppdatera och starta om programet  ##  Update and restart application silently
 Visa systemmeddelanden mottagna vid uppdatering  ##  Show system messages received from updater
 &Kontrollera nu  ##  &Check now
-MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+MTU inställningen definerar största UDP paketet som man bli sänt till användarna. Om din nätverksanslutning har lägre MTU värde än wippien så är det möjligt att användarna aldrig mottager större paket.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
 Använd fixat MTU-värde  ##  Use fixed MTU
 Auto-dekektera optimal MTU  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
+(börjar gälla när användarna återansluter)  ##  (will become effective as peers reconnect)
 Ljud (lämnas tomt för standardljud)  ##  Sound (leave empty for default sound)
 Spela  ##  &Play
 Programhändelser  ##  Program events
@@ -494,13 +494,13 @@ Kontaktens synliga detaljer  ##  Contact's visible details
 osorterad  ##  unsorted
 Byt namn  ##  By name
 Byt JID  ##  By JID
-by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
-by IP (without IP goes top)  ##  by IP (without IP goes top)
+efter IP (utan IP går ner)  ##  by IP (without IP goes bottom)
+efter IP (utan IP går upp)  ##  by IP (without IP goes top)
 Sortera kontaktlista  ##  Sort contact list
 Nickname för chatrum  ##  Nickname for chatrooms
 Visa tillgängliga rum för följande gateways  ##  Show available rooms on following gateways
 Klicka ovanför för att välja rum, eller skriv in nya chattrumsdetaljer nedanför  ##  Click above to select room, or enter new chat room details below
-  ##  Room name to create or join
+Rumnamn att skapa eller gå in i  ##  Room name to create or join
 Lösenord (tomt om inget)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Joina eller Skapa rum  ##  Join or Create room
@@ -536,7 +536,7 @@ Följande språk är tillgängliga på datorn:  ##  Following languages are foun
 &Change  ##  &Change
 Platsinställningarna som används på den lokala datorn  ##  Locale used on local computer
 Valt språk  ##  Currently used language
-Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Ändringarna börjar inte gälla förrens dem "behövs". Du borde starta om Wippien om du vill att ändringarna ska börja gälla direkt.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Nya språkpaket finns tillgängliga. Vill du ladda ned dem?  ##  New language files available. Download?
 Visa popup- fönster när en kontakt går online/offline  ##  Show notification popup window when contact goes online/offline
 Kontakten skriver ett meddelande...  ##  Contact is typing...
@@ -548,7 +548,7 @@ Lokal eko  ##  Local echo
 UDP-port 9913 används redan.  ##  UDP port 9913 busy
 Kan inte lyssna efter inkommande röstchatt  ##  Unable to listen for incoming voice chat
 Mikrofonkänslighet  ##  Microphone sensitivity
-  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-har aktiverat  ##  has enabled
-har avaktiverat  ##  has disabled
+Snacka i din mikrofon och justera scrollen. Det ska inte finnas någon aktivitet i den övre delen av mätaren när du inte snackar och mätaren ska vara full när du pratar högt.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Röstsamtal verkar inte vara inställt. Du måste konfigurera den innan du använder den. Vill du göra det nu?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+har aktiverats  ##  has enabled
+har avaktiverats  ##  has disabled

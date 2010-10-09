@@ -1,10 +1,10 @@
 # ChineseTraditional translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Taiwan
-# Version: 133
+# Version: 135
 æ²’æœ‰éŒ¯èª¤  ##  No error.
 ç³»çµ±æ‰¹.#yb,9£!ùk¦¹ª¥9¨b  ##  The system cannot find the file specified.
 ç³»çµ±æ‰¹.#yb,9£!ùk¦º-ëùo¤  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
+ç³»çµ±ç„¡æ³•æ‰¹b,9£!ùk¦¹æ¡9ª¥9¨b‹8ZZg–’ø  ##  The system cannot find the specified file/directory.
 é¡åˆ¥ä¸ç¬¦åˆ  ##  Type mismatch.
   ##  Cannot create a file/directory when that file/directory already exists.
 ç³»çµ±ç„¡æ³•åªùaiy£!ùk¦º*+y`¦  ##  The system cannot write to the specified device.

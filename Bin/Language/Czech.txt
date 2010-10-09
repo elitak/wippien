@@ -1,22 +1,22 @@
 # Czech translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ch Proios
-# Version: 323
-Zadna chyba.  ##  No error.
+# Version: 892
+Bez chyb.  ##  No error.
 System nemuze najit uvedeny soubor.  ##  The system cannot find the file specified.
 System nemuze najit uvedenou cestu.  ##  The system cannot find the path specified.
 System nemuze najit uvedeny soubor/cestu.  ##  The system cannot find the specified file/directory.
 Neshodné typy.  ##  Type mismatch.
-Nelze vytvorit soubor/slozku, kdyz jiz existuje.  ##  Cannot create a file/directory when that file/directory already exists.
-System nemuze zapisovat na uvedene zarizeni.  ##  The system cannot write to the specified device.
+Nelze vytvořit soubor/složku. Už existují.  ##  Cannot create a file/directory when that file/directory already exists.
+Nelze zapisovat na uvedené zařízení.  ##  The system cannot write to the specified device.
 Nespravne zadana hodnota.  ##  Invalid Property Value.
-Tato operace se vrátila, protořH�\��[�\�ݞH[Z]  ##  This operation returned because the timeout period expired.
-Systémové úrovni přerušení přerušen provoz zásuvky  ##  System level interrupt interrupted socket operation.
+Vypršel časový limit, operace se nezdařila.  ##  This operation returned because the timeout period expired.
+  ##  System level interrupt interrupted socket operation.
 Generické chyby na správný formát, špatný formát  ##  Generic error for invalid format, bad format.
 Byl proveden pokus o přístup k soketu způsobem zakázal jeho přístupová oprávnění.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 Systém zjistil neplatnou adresu ukazatel ve snaze využít ukazatel argument ve výzvě.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Ještě nejsme schopni provádět překlady z jazyka okcitánsky do jazyka česky.  ##  Generic error for invalid format, entry, etc.
 Byl poskytnut nesprávný parametr  ##  An invalid argument was supplied.
-Poskytnutá IP adresa není správná, nebo hostitel neexistuje  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Poskytnutá IP adresa je neplatná nebo hostitel neexistuje.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Neplatná zásuvky nebo není připojen ke vzdálené.  ##  Invalid socket or not connected to remote.
 Tato adresa je již využívána.  ##  The specified address is already in use.
 Tato adresa není dostupná.  ##  The specified address is not available.
@@ -51,435 +51,435 @@ Neznámý kanál  ##  Unknown channel type.
 Neplatný argument byl dodáván ve vlastnictví LocalAddress.  ##  Invalid argument was supplied in LocalAddress property.
 Kanál nemůže být vytvořena místní boku  ##  Channel cannot be created by local side.
 Kanál nemůže být zahájena místní boku  ##  Channel cannot be started by local side.
-Kanál zamítnuta vzdálené straně.  ##  Channel refused by remote side.
+Kanál zamítnut vzdálené straně.  ##  Channel refused by remote side.
 Nepodporovaný protokol vzdáleného verze.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
-MTU size too large.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
-Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+wodVPN ještě nebyl spuštěn. Použijte Start.  ##  wodVPN not yet started. Use Start first.
+Kanál byl uzavřen.  ##  Channel was closed.
+Příliš velká velikost MTU.  ##  MTU size too large.
+Příliš malá velikost MTU.  ##  MTU size too small.
+Nekorektní socks žádost.  ##  Invalid socks request.
+Neplatné heslo. Neshoduje se s heslem peeru.  ##  Invalid password. Does not match remote peer's password.
+Nezadáno místní ID. Je nutné pro vyhledávání.  ##  Local ID not set. It is required for Search method.
+Nezadáno místní ID. Je nutné pro vyhledávání.  ##  Remote ID not set. It is required for Search method.
+Nelze naslouchat na dané IP adrese.  ##  Cannot bind to specified IP address.
+Přenos souboru již probíhá.  ##  Already performing file transfer.
 soubor nenalezen  ##  File not found.
 chyba zapsání souboru  ##  Failed to write file.
 Nelze otevřít síťový adaptér  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Současně lze používat pouze jeden adaptér.  ##  Only one adapter can be used at a time.
+Chybí licenční klíč. Tuto komponentu nelze používat v návrhovém prostředí.  ##  License key missing. You can not use this component in design environment.
 Nespecifikovaná chyba!  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
-Hostname property not set.  ##  Hostname property not set.
-Login property not set.  ##  Login property not set.
-Password property not set.  ##  Password property not set.
+V tuto chvíli se nelze připojit. Nejprve se odpojte.  ##  Cannot Connect at this time. Use Disconnect first.
+Nelze spustit, ještě nepřipojeno.  ##  Cannot execute, not yet connected.
+Součást zaneprázdněna.  ##  Component busy.
+Nyní nelze měnit vlastnosti. Nejdřív se odpoj.  ##  Cannot change property at this time. Use Disconnect first.
+Vlastnosti poskytovatele nezadány.  ##  Hostname property not set.
+Přihlašovací údaje nezadány.  ##  Login property not set.
+Heslo nenastaveno.  ##  Password property not set.
 Nesprávný XML paket  ##  Invalid XML packet.
-Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
-SSL could not be negotiated.  ##  SSL could not be negotiated.
-Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
+Nekorektní ID sekvence XML paketu.  ##  Invalid XML packet sequence ID.
+Neplatné přihlášeni: %s.  ##  Invalid login: %s.
+Kontakt už je zahrnut  ##  Contact already exists in the collection.
+SSL nemohlo být vyjednáno.  ##  SSL could not be negotiated.
+Registrace uživatele %s selhala.  ##  Failed to register new user: %s.
+Neznámá hláška.  ##  Unknown notification.
 Soubor nenalezen  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
+Musiš určit typ fotografie (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Importování fotografie se nezdařilo  ##  Failed to import photo.
+Probíhá jiná metoda blokování.  ##  Another blocking method in progress.
+Vráceny nesprávné informace o protokolu  ##  Invalid protocol data received.
+Není co poslat. Velikost souboru je 0.  ##  There's nothing to send. File size is 0.
 Kontakt nebyl nalezen  ##  Contact not found.
 Přenos souborů selhal  ##  File transfer failed.
 Nelze zapsat do souboru  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer aborted.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
-Invalid protocol selected.  ##  Invalid protocol selected.
-Invalid state. Component already busy.  ##  Invalid state. Component already busy.
-Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
-Method was cancelled.  ##  Method was cancelled.
-Failed to start updater program.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
-Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
-Invalid file size after download.  ##  Invalid file size after download.
-Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
-Warning  ##  Warning
+Nesouhlasí kontrolní součet přijatého souboru.  ##  Checksum of received file is invalid.
+Přenos zrušen  ##  Transfer aborted.
+Časový limit přenosu vypršel.  ##  Transfer has timed out.
+Vybrán neplatný protokol.  ##  Invalid protocol selected.
+Nekorektní stav. Komponenta je zaneprázdněna.  ##  Invalid state. Component already busy.
+Jméno není unikátní, nelze získat uzamčení. Prosím použijte jiné UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Metoda byla stornována.  ##  Method was cancelled.
+Selhalo stahování aktualizací  ##  Failed to start updater program.
+Podpis přijatého dokumentu je neplatný  ##  Signature on retrieved document is invalid.
+Nenastaveno datum.  ##  Date not set.
+Chyba registrace na COM serveru.  ##  Failed to register COM server.
+Stránka nenalezena (chyba 404) - vráceno ze serveru.  ##  Page not found (error 404) returned from the server.
+Špatná velikost souboru po stažení.  ##  Invalid file size after download.
+Neplatný MD5checksum po downloadu.  ##  Invalid MD5 checksum after download.
+Varování  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
-Pryč  ##  Away
+Nepřítomen  ##  Away
 Volný pro chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
-Extended away  ##  Extended away
+Nerušit  ##  Do not disturb
+Dlouho nepřítomen  ##  Extended away
 Neviditelný  ##  Invisible
-Asking for subscription  ##  Asking for subscription
-Contact not subscribed  ##  Contact not subscribed
+Žádám o podpis  ##  Asking for subscription
+Kontakt nepodepsán  ##  Contact not subscribed
 Odpojení ze serveru.  ##  Disconnected from server
 Připojení k serveru.  ##  Connecting to server
 Registrace nového uživatele  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
-Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
-Sending data to server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
-Requested authorization  ##  Requested authorization
-Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
-Network adapter opened  ##  Network adapter opened
-Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
-Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
+Nastavuji zabezpečené připojení  ##  Initializing secure connection
+Posílám ověřovací data  ##  Sending authentication data
+Připojeno k serveru  ##  Connected to server
+Přijímám data ze serveru  ##  Receiving data from server
+Posílám data na server  ##  Sending data to server
+Provádím přikaz na serveru  ##  Executing command on server
+Odpojuji od serveru  ##  Disconnecting from the server
+Autorizace nutná  ##  Requested authorization
+Nastavuji wippien síťový adaptér...  ##  Configuring Wippien network adapter...
+Adaptér \"%s\" s adresou %s koliduje s Wippien %s Je možné, že Wippien nebude moci příjmat a odesílat síťové pakety. Odinstalujte nebo zakažte daný adaptér.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Síťový adaptér zakázán !  ##  Network adapter disabled!
+Síťový adaptér je otevřen.  ##  Network adapter opened
+Wippien síťový adaptér je nedostupný. Pokračovat pouze s IM?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien musí nastavit IP adresu adaptéru pomocí externího nástroje - a vyžaduje administrátorská práva. Prosím spusťte Wippien alespoň jednou jako administrátor pro dosažení dostatečného oprávnění.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Vyžaduje Administrátorská práva!  ##  Admin privilege required!
 Odpojeno  ##  Disconnected
 Připojeno  ##  Connected
-Could not deliver message.  ##  Could not deliver message.
-Failed to change password  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
-  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+Zpráva nelze doručit.  ##  Could not deliver message.
+Změna hesla se nezdařila.  ##  Failed to change password
+Odpojen z důvodu neaktivity.  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\nAbsolutní počet v: %s\r\nAbsolutní počet vně: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<&lt; VPN ješte nebyla zřízena >&gt;  ##  << VPN not established yet >>
+Znovapřipojení za %d sekund.  ##  Reconnect in %d seconds.
 vteřin  ##  seconds
 Žádná síť  ##  No network
-Vypnout Wippien  ##  Exit Wippien
+Ukončit Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
 Otevřít nastavení  ##  Open settings
 &Nastavení  ##  &Settings
-Show AboutBox  ##  Show AboutBox
-&o Produktu  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
+O aplikaci  ##  Show AboutBox
+&O Aplikaci  ##  &About
+Nastavit status (Nepřítomný,Neviditelný...)  ##  Set your status (Away,Invisible...)
+Přidat kontakty a cizí účty  ##  Add contacts and alien accounts
 Vypnout zvuk  ##  Mute sound
 Otevřít chat  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
-Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
+Autorizovat přátelé  ##  Authorize your friends
+nečinný  ##  Idle
+Opravdu ukončit wippien?  ##  Really exit Wippien?
 Jistě ?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
+Vaše heslo bylo nyní zmeněno.  ##  Your password is now changed.
 Heslo změněno  ##  Password changed
 Změnit heslo  ##  Change account password
 Nové heslo  ##  Please enter new password
-Identity  ##  Identity
+Identita  ##  Identity
 ID karta  ##  ID Card
 Domací adresa  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
-Send  ##  Send
+Pracovní adresa  ##  Work Address
+Skutečně chcete smazat historii?  ##  Are you sure you want to delete the history?
+Vymazat historii?  ##  Delete history?
+Odeslat  ##  Send
 Odešli soubor  ##  Send file
-Details  ##  Details
-Contact information  ##  Contact information
-Clear  ##  Clear
+Detaily  ##  Details
+Kontaktní informace.  ##  Contact information
+Smazat  ##  Clear
 Vymazat historii  ##  Clear history
-Mute  ##  Mute
-Bold  ##  Bold
+Ztišit  ##  Mute
+Tučně  ##  Bold
 Italic  ##  Italic
-Underline  ##  Underline
-  ##  Insert hyperlink
-  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
-Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
-Done!  ##  Done!
-Contact  ##  Contact
-Connecting  ##  Connecting
-Requesting  ##  Requesting
-Downloading  ##  Downloading
-Configuration file  ##  Configuration file
-General  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
-allow  ##  allow
-deny  ##  deny
-not specified  ##  not specified
-&Finish  ##  &Finish
-&Next >  ##  &Next >
-Identity  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
-Jabber error  ##  Jabber error
-Icon  ##  Icon
+Podtrhnutí  ##  Underline
+Vložit odkaz  ##  Insert hyperlink
+Zmenšit velikost fontu  ##  Decrease font size
+Resetovat velikost fontu  ##  Reset font size
+Zvětšit velikost fontu  ##  Increase font size
+Nastavit barvu popředí  ##  Set Foreground color
+Nastavit barvu pozadí  ##  Set Background color
+Emotikony  ##  Emoticons
+Pokračovat ve stažení a instalaci nových emotikonů?  ##  New emoticons will be downloaded and installed. Proceed?
+Nové emotikony  ##  New emoticons
+Nyní můžete kliknout na tlačítko emotikonů pro jejich zobrazení včetně nově nainstalovaných.  ##  You can now click again on emoticon button to see new installed emoticons.
+Hotovo!  ##  Done!
+Kontakt  ##  Contact
+Spojuji  ##  Connecting
+Požadavek  ##  Requesting
+Stahuji  ##  Downloading
+Konfigurační soubor  ##  Configuration file
+Obecné  ##  General
+Nepřítomný z důvodu neaktivity.  ##  Away due to inactivity.
+Nepřítomen hooodně dlouho.  ##  Away for a loooong time.
+Povolit  ##  allow
+Odmítnout  ##  deny
+nespecifikováno  ##  not specified
+&Dokončit  ##  &Finish
+&Další >  ##  &Next >
+Identita  ##  Identity
+Prosím zvolte své přihlašovací údaje.  ##  Please choose your logon information.
+Toto je zobrazeno ve vašem seznamu přátel.  ##  This is shown on your friend's list.
+JID by mělo obsahovat název serveru, formátovaný jako uživatel@server.com  ##  JID should contain server name, formatted like user@server.com
+Nekorektní přihlašovací informace  ##  Invalid logon details
+Musíte vložit své JID.  ##  You must enter your JID.
+Musíte zadat vaše heslo.  ##  You must enter your password.
+Chyba Jabbera  ##  Jabber error
+Ikona  ##  Icon
 Prosím, vyberte si ikonu.  ##  Please choose your icon.
-To je obvykle vidět své kontakty.  ##  This is usually visible to your contacts.
-Network  ##  Network
+Toto obvykle vidí vaše kontakty.  ##  This is usually visible to your contacts.
+Síť  ##  Network
 Prosím, vyberte vaši IP adresu a masku sítě.  ##  Please choose your IP address and netmask.
-Vymezuje rozsah této sítě, které budou vyuŰ�]�]�\Y[�  ##  This defines network range to be used by wippien.
-Network  ##  Network
-Mediator  ##  Mediator
-Prosím zvolit, kdo bude vaše prostředník.  ##  Please choose who will be your mediator.
-  ##  This defines people that mediate P2P connections.
+Vymezuje rozsah sítě, který bude využíván Wippienem.  ##  This defines network range to be used by wippien.
+Síť  ##  Network
+Prostředník  ##  Mediator
+Prosím zvolte vašeho prostředníka.  ##  Please choose who will be your mediator.
+Toto definuje uživatele, kteří jsou prostředníky P2P připojení.  ##  This defines people that mediate P2P connections.
 Poslední kontrola  ##  Last check
 Port  ##  Port
 Hostname  ##  Hostname
 permanentní  ##  Permanent
-Temporary  ##  Temporary
+Dočasný  ##  Temporary
 Zadejte všechny své účty zde.  ##  Enter all your accounts here.
-Můžete přidat některý z účtů podporuje vaše Jabber serveru (typicky ICQ, MSN, atd..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Můžete přidat některý z účtů podporovaný vaším Jabber serverem (typicky ICQ, MSN, atd.)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Jste si jisti, že chcete smazat účet '% s'?  ##  Are you sure you want to delete account '%s'?
-Smazat registrovaných účet?  ##  Delete registered account?
+Smazat registrovaný účet?  ##  Delete registered account?
 Účty  ##  Accounts
 Zobrazit pouze brány  ##  Show only gateways
 Zobrazit všechny služby  ##  Show all services
-Contacts  ##  Contacts
+Kontakty  ##  Contacts
 Přidat / Odebrat  ##  Add/Remove
 Najít nové kontakty  ##  Find new contacts.
 Můžete přidat nové Jabber, ICQ, MSN ... kontakty  ##  You can add new Jabber, ICQ, MSN... contacts
 Všechny soubory (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Všechny obrazové soubory (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
-System  ##  System
+Systém  ##  System
 Přihlášení  ##  Logging
 Souborů protokolu instalace a ladění info.  ##  Setup log files and debug info.
 Specifikovat cesty pod  ##  Specify paths below
 Zprávy  ##  Messages
-Chat okno nastavení.  ##  Chat window settings.
-Všech otevřených oken chatu.  ##  For all open chat windows.
+Nastavení chat okna.  ##  Chat window settings.
+Pro všechna otevřená chat okna.  ##  For all open chat windows.
 Obecné info  ##  General info
 Obecné informace o  ##  General information about
 Osobní informace  ##  Personal information
-Home details for  ##  Home details for
+Domovské detaily pro  ##  Home details for
 Obchodní informace  ##  Business information
 Podrobnosti o práci  ##  Work details for
-all other  ##  all other
-address given by mediator  ##  address given by mediator
-Appearance  ##  Appearance
-Skins  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+Vše ostatní  ##  all other
+Adresa přidělená prostředníkem.  ##  address given by mediator
+Vzhled  ##  Appearance
+Skiny  ##  Skins
+Vyberte skin z následujícího seznamu.  ##  Choose skin from below list.
+Co má na sebe Wippien hodit?  ##  What will Wippien wear?
+.. nezadáno ..  ##  .. none ..
+Automatické přepnutí nepřítomnosti  ##  Auto Away
+Nastavení automatického přepnutí nepřítomnosti  ##  Auto away settings.
+Určuje jak se bude Wippien chovat když systém není aktivní.  ##  Determines how will Wippien behave when system is inactive.
 System  ##  System
-Basic system messages.  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-Voice Chat  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
-Updates  ##  Updates
-Update definitions.  ##  Update definitions.
-Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
-  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
-If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
+Základní systémová hlášení.  ##  Basic system messages.
+Definujte aplikační chování Wippiena.  ##  Define Wippien application's behavior.
+Hlasový chat  ##  Voice Chat
+Prosím nastavte zařízení pro hlasovou komunikaci.  ##  Please setup your voice chat devices.
+Vyberte z následujícího seznamu.  ##  Choose from list below.
+<standard systému>  ##  <system default>
+Základní nastavení kontaktů.  ##  Contacts basic settings.
+Aktualizace  ##  Updates
+Definice aktualizací.  ##  Update definitions.
+Definovat, kdy a jak se má Wippien sám aktualizovat.  ##  Define when and how will Wippien update itself.
+MTU  ##  MTU
+Prosím určete maximální přenosovou jednotku.  ##  Please determine maximum transfer unit.
+Jestliže některý peer neodpovídá na velké pakety...  ##  If some peer doesn't respond to large packets...
 Zvuky  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
+Nastavit zvuky pro různé události.  ##  Setup sounds to be played on various events.
+Vybrat interní nebo se podívat po WAV souborech.  ##  Choose internal ones, or browse for WAV files.
 Kontakt je online  ##  Contact online
 Kontakt je offline  ##  Contact offline
-Message in  ##  Message in
-Message out  ##  Message out
-Error  ##  Error
-WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+Příchozí zpráva  ##  Message in
+Odchozí zpráva  ##  Message out
+Chyba  ##  Error
+WAV soubory (*.wav)\0*.wav\0Všechny soubory (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Skrýt  ##  Hide
 Skrýt kontakty.  ##  Hide contacts.
-You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
-  ##  Appearance
-Appearance settings.  ##  Appearance settings.
-Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
-  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+Některé kontakty je možno skrýt.  ##  You can hide some contacts from your sight.
+Vzhled  ##  Appearance
+Nastavení vzhledu.  ##  Appearance settings.
+Definujte vzhled GUI Wippiena.  ##  Define how will Wippien's GUI appear to you.
+Třídit  ##  Sort
+Třídit kontakty  ##  Sorts contacts.
+Vyberte jednu z možností třídění.  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
 Procházet nebo vytvořit chatovací místnosti. (Stále v beta verzi!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Určete nebo procházet místnosti se připojit nebo si vytvořit nový.  ##  Specify or browse for a room to join or create new one.
 - Všechny brány --  ##  - All gateways -
-Service Gateway  ##  Service gateway
+Servisní brána  ##  Service gateway
 název místnosti  ##  Room name
 Firewall  ##  Firewall
 nastavit pravidla firewallu  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
-Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien update error!  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
-Status changed:  ##  Status changed:
-day  ##  day
-days  ##  days
-hour  ##  hour
-hours  ##  hours
-minute  ##  minute
-minutes  ##  minutes
-Last seen: never  ##  Last seen: never
-is currently offline  ##  is currently offline
+Můžete nastavit, které porty budou přístupné vašim kontaktům.  ##  You can set up which ports can be accessed by your contacts.
+* Veškerý ICMP provoz  ##  * All ICMP traffic
+Ale blokovat následující porty  ##  But block these ports
+Ale povolit následující porty  ##  But allow these ports
+Aktualizace Wippiena  ##  Wippien update
+Nová verze Wippiena je dostupná. Stáhnout?  ##  New version of Wippien is available. Download?
+Klikněte sem pro info co je nového.  ##  Click here to see what's new.
+Vaše verze Wippiena je aktuální.  ##  Your version of Wippien is up-to-date.
+Chyba při připojení ke vzdálenému serveru.  ##  Error connecting to remote server.
+Úspěšně staženo. Nahradit nyní?  ##  Download successful. Replace now?
+Chyba při aktualizaci Wippiena!  ##  Wippien update error!
+Nová verze Wippiena nalezena lokálně. Nahradit?  ##  New version of Wippien found localy. Replace?
+Nová verze  ##  New version
+Status změněn:  ##  Status changed:
+den  ##  day
+dní  ##  days
+hodina  ##  hour
+hodin  ##  hours
+minuta  ##  minute
+minut  ##  minutes
+Naposledy zpatřen : nikdy  ##  Last seen: never
+Je v současnosti offline  ##  is currently offline
 je offline  ##  is now offline
 je online  ##  is now online
 je blokovaný  ##  is blocked
 je offline  ##  is offline
-Unblock  ##  Unblock
-Block  ##  Block
-  ##  Are you sure you want to remove group %s
+Odblokovat  ##  Unblock
+Zablokovat  ##  Block
+Jste si jisti, že chcete odebrat skupinu %s  ##  Are you sure you want to remove group %s
 odstranit skupinu ?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
+Jste si jisti, že chcete odebrat kontakt %s  ##  Are you sure you want to remove contact %s
 odstranit kontakt  ##  Remove contact?
-Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
-Download more skins from Wippien website  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
-I have existing Jabber account  ##  I have existing Jabber account
-&Test Account  ##  &Test Account
-&Search  ##  &Search
-You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Chyba adaptéru  ##  Adapter error
+Přejmenovat skupinu  ##  Rename group
+Vložte nový název skupiny  ##  Enter new group name
+Stáhnout více skinů ze stránek Wippiena  ##  Download more skins from Wippien website
+Klikněte na skin pro jeho stažení a instalaci.  ##  Click on the skin to download and install it.
+Potřebuju nový Jabber účet.  ##  I need new Jabber account
+Mám Jabber účet.  ##  I have existing Jabber account
+&Vyskoušet účet  ##  &Test Account
+&Hledat  ##  &Search
+Zde by jste měli zadat Vaše jabber ID (JID). Wippien užívá síť Jabber pro prezenci - k upozornění vašich kontaktů že jste online, k zobrazení kontaktů atd.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Jestliže nemáte JID, měli by jste se zaregistrovat. Je možno tak učinit na kterémkoliv z mnoha volně přístupných jabber serverů. Seznam současně otevřených serverů můžete zobrazit kliknutím na toto tlačítko.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
-Password  ##  Password
+Heslo  ##  Password
 Server  ##  Server
 Port  ##  Port
-Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
-Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+Kliknite na "Vyskoušet účet" pro pokračování.  ##  Please click on 'Test Account' to proceed.
+Použít SSL wrapper na portu 443 (pro GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
-&Cancel  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
-Disconnect adapter on exit  ##  Disconnect adapter on exit
-UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-IP address for Wippien network adapter  ##  IP address for Wippien network adapter
-Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
-Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
-IP address  ##  IP address
-Netmask  ##  Netmask
+&Storno  ##  &Cancel
+Prosím zadejte klíčový řetězec/heslo.  ##  Please enter key passphrase
+Přidat &Nový  ##  Add &New
+Zobrazit upozornění, když je adaptér nedostupný.  ##  Show notification if ethernet adapter is unavailable.
+Odpojit adaptér při ukončení.  ##  Disconnect adapter on exit
+UDP port fort pro odchozí a příchozí pakety (0 pro automatický výběr)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+IP adresa pro síťový adaptér Wippiena  ##  IP address for Wippien network adapter
+Ignorovat. IP bude nastavena mimo tuto aplikaci.  ##  Ignore. IP will be set outside of this program.
+Získáno z databáze poskytovatele IP, na URL  ##  Obtained from IP provider database, on URL
+Použít nasledující statickou IP adresu :  ##  Use following static address
+IP adresa  ##  IP address
+Síťová maska  ##  Netmask
 Status  ##  Status
 URL  ##  URL
-Description  ##  Description
+Popis  ##  Description
 Přidat nový účet  ##  Add new account
 Odebrat účet  ##  Remove account
-Register!  ##  Register!
+Registrovat!  ##  Register!
 Vaše aktuální Instant messaging spojení  ##  Your current Instant messaging connections
 Username  ##  Username
 Otevřete nový účet  ##  Open new account
 Žádosti o autorizaci  ##  Authorization request
-&Yes  ##  &Yes
-&No  ##  &No
+&Ano  ##  &Yes
+&Ne  ##  &No
 &Details  ##  &Details
 &Platí pro všechny  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
-Do you allow  ##  Do you allow
-to add you to his contact list?  ##  to add you to his contact list?
-more requests waiting...  ##  more requests waiting...
-Add Group  ##  Add Group
-Remove Group  ##  Remove Group
-Add Contact  ##  Add Contact
-Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
-Visible Name  ##  Visible Name
-Rename contact  ##  Rename contact
-Enter new contact name  ##  Enter new contact name
+&Blokovat uživatele  ##  &Block user(s)
+Povolíte  ##  Do you allow
+aby vás přidal do svého seznamu kontaktů?  ##  to add you to his contact list?
+další čekající žádosti...  ##  more requests waiting...
+Přidat skupinu  ##  Add Group
+Odstránit skupinu  ##  Remove Group
+Přidat kontakt  ##  Add Contact
+Přidat kontakt do skupiny  ##  Put contact to the group
+JID kontaktu  ##  Contact JID
+Typ kontaktu  ##  Contact Type
+Zobrazované jméno  ##  Visible Name
+Přejmenovat kontakt  ##  Rename contact
+Vložit nový název kontaktu  ##  Enter new contact name
 Nastaveni  ##  Settings
-< &Back  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
-Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
-Delete raw log on each  ##  Delete raw log on each
-megabytes  ##  megabytes
-Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
-Following mediators can be used  ##  Following mediators can be used
-Allow new mediators to be added  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
-Zobraz historii zprav  ##  Show message history
+< &Zpět  ##  < &Back
+Logovat Jabber komunikaci  ##  Log Jabber communication
+Logovat socket komunikaci  ##  Log socket communication
+Logovat volání raw funkcí (může narůstat rychle!)  ##  Log raw function calls (may grow quickly!)
+Vymazat raw log každých  ##  Delete raw log on each
+megabajtů  ##  megabytes
+Logovat VPN komunikaci při spuštění P2P sítě  ##  Log VPN communication on P2P startup
+Následující zprostředkovatelé jsou povoleni  ##  Following mediators can be used
+Povolit přidání nových zprostředkovatelů.  ##  Allow new mediators to be added
+Různá nastavení pro chatovací okno  ##  Various settings regarding chat window
+Časové zprávy  ##  Timestamp messages
+Zobraz historii zpráv  ##  Show message history
 Prezdivka  ##  Nickname
 Jmeno  ##  First name
 Prijmeni  ##  Last name
 Email  ##  Email
 Poznamky  ##  Notes
 Adresa  ##  Address
-Address Ext.  ##  Address Ext.
+Kontaktní adresa  ##  Address Ext.
 Mesto  ##  City
 Stat  ##  State
 Smerovaci cislo  ##  ZIP
 Zeme  ##  Country
 Narozeniny  ##  Birthday
-Voice Tel.  ##  Voice Tel.
+Telefon  ##  Voice Tel.
 Fax  ##  Fax
 Název  ##  Title
 Jmeno spolecnosti  ##  Company name
 Oddeleni  ##  Department
-Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
-Click on first column to change values  ##  Click on first column to change values
-If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found  ##  Following skin files are found
-Apply  ##  Apply
-To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
-Wait  ##  Wait
-minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
-minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
-Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
-Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
-Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
-Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Password protect  ##  Password protect
-Settings only  ##  Settings only
-Everything  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
-Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
-Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Ask me  ##  Ask me
-Always authorize  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
+Povolená rozhraní pro přímé připojení  ##  Allowed interfaces for direct connection
+Povolit vše  ##  Allow All
+Klikem na první sloupec se změní hodnoty.  ##  Click on first column to change values
+Zvolíte-li 'nezadáno', bude použita ta samá hodnota v nastavení 'vše ostatní'.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Nalezeny následující skin soubory  ##  Following skin files are found
+Použít  ##  Apply
+Pro přidání více skinů stačí i zkopíravat je do "skin" podadresáře. Přidejte odpovídající 100x100 PNG soubor pro náhled.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+&Více skinů...  ##  &More skins...
+Jsem-li znovu aktivní, nastav vše zpět  ##  Set back when activity is detected again.
+Čekat  ##  Wait
+minut před přechodem do modu "pryč" (0 = zrušit)  ##  minutes before going to away mode (0 = disable)
+minut před přechodem do rozšířeného modu "pryč" (0 = zrušit)  ##  minutes before going to extended away mode (0 = disable)
+minut před odpojením (0 = disable)  ##  minutes before disconnecting (0 = disable)
+Automatická odpověď při režimu "pryč"  ##  Auto-Away message
+Rozšířená zpráva v režímu "pryč"  ##  Extended-Away message
+Zobrazit wippien v liště  ##  Show Wippien in taskbar
+Zaktualizovat plochu, je-li wippien ukotven k okraji  ##  Rearrange desktop when Wippien window is aligned to border
+Ukotvit k okraji plochy  ##  Snap to desktop border
+Automaticky schovávat, je-li wippien neaktivní  ##  Auto hide if Wippien is inactive for
+Ukotvit nahoře  ##  Always on top
+Potvrzovat ukončení aplikace.  ##  Confirm exit from application
+Odpojit při režimu úspory/spánku, připojit po probuzení.  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Ochrana heslem  ##  Password protect
+Pouze nastavení  ##  Settings only
+Vše  ##  Everything
+Nastavení složek (změna hodnot vyžaduje restart wippienu)  ##  Settings folder (changing below value requires wippien restart)
+Nastavení stálosti kontaktů  ##  Contact list persistance
+Smazat místní kontakty po spuštění.  ##  Delete all local contacts on startup
+Smazat místní kontakty po připojení.  ##  Delete all local contacts on connect
+Nastavení autorizace  ##  Contacts subscription authorization
+Neautorizovat  ##  Never authorize
+Ptát se  ##  Ask me
+Autorizovat vzdy  ##  Always authorize
+Automaticky nastavit VPN pro síťový provoz  ##  Automatically establish VPN on network traffic
+Automaticky nastavit VPN při startu  ##  Automatically establish VPN on startup
 Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
-Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
-MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+Povolit hlasovou komunikaci  ##  Enable voice chat
+Přehravač  ##  Playback device
+Rekordér  ##  Recording device
+Kotrolovat aktualizace po spuštění Wippienu.  ##  Check for updates when Wippien starts
+Kontrolovat aktualizace po připojení.  ##  Check for updates on Connect
+Kontroluj aktualizace každých  ##  Check for updates each
+Aktualizovat a restartovat aplikaci bez uživatele.  ##  Update and restart application silently
+Zobraz zprávy zaslané z update-serveru  ##  Show system messages received from updater
+&Zkontroluj hned  ##  &Check now
+MTU nastavení udává maximální UDP paketu, které lze poslat peerům. Má-li váš systém nastavenou nižší hodnotu MTU než wippien, je možné, že peer nebude moct přijímat větší pakety.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Použít pevné MTU  ##  Use fixed MTU
+Auto-detekce MTU  ##  Auto-detect MTU
+začne fungovat, jakmile se peers znovu připojí)  ##  (will become effective as peers reconnect)
+Zvuk (vynech pro výchozí zvuk)  ##  Sound (leave empty for default sound)
+&Hrát  ##  &Play
+Programové události  ##  Program events
+Skrýt nový kontakt  ##  Hide new contact
+Zobrazit skryté kontakty  ##  Unhide contact
+Momentálně skryté kontakty  ##  Currently hidden contacts
+Všechny zadané kontakty se NIKDY nezobrazí ve Wippienu. Prostě pro tebe neexistují. Takto lze ignorovat kontakty permanentně.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Skrýt kontakt  ##  Hide contact
+Vlož JID kontaktu  ##  Enter contact JID
+Povolit veškerý provoz  ##  Allow all traffic
+Blokovat veškerý provoz.  ##  Block all traffic
 &Add  ##  &Add
 &Remove  ##  &Remove
 Výchozí pravidlo  ##  Default rule
@@ -488,23 +488,23 @@ Jméno  ##  Name
 IP adresa  ##  IP address
 Stav textu  ##  Status text
 Naposledy online čas  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
-Contact's visible details  ##  Contact's visible details
+Monitor aktivity  ##  Activity Monitor
+Viditelne detaily  ##  Visible details
+Viditelné údaje o kontaktu.  ##  Contact's visible details
 unsorted  ##  unsorted
 Podle name  ##  By name
 Podle JID  ##  By JID
 podle IP (aniz by IP sla nejnize)  ##  by IP (without IP goes bottom)
 podle IP (aniz by IP sla nejvyse)  ##  by IP (without IP goes top)
 Seřadit seznam kontaktů  ##  Sort contact list
-Nickname for chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
-Password (empty if none)  ##  Password (empty if none)
+Nick pro místnost.  ##  Nickname for chatrooms
+Ukaž dostupné místnosti v následujících bránách.  ##  Show available rooms on following gateways
+Vyber místnost nebo zadej detaily pro vytvoření nové.  ##  Click above to select room, or enter new chat room details below
+Jméno místnosti (založit/připojit).  ##  Room name to create or join
+Heslo (nebo nechej prázdné).  ##  Password (empty if none)
 Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
-Block users at startup  ##  Block users at startup
+Připoj se nebo založ místnost.  ##  Join or Create room
+Při spuštění blokovat uživatele.  ##  Block users at startup
 &Zkopírovat IP  ##  &Copy IP
 C&hat  ##  C&hat
 &Hlasový chat  ##  &Voice Chat
@@ -514,8 +514,8 @@ Odeslat E&mail  ##  Send E&mail
 &Přejmenovat  ##  &Rename
 &Smazat  ##  &Delete
 De&taily  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
+Pridat/Odebrat &Ucty  ##  Add/Remove &Accounts
+Pridat/Odebrat &Kontakty  ##  Add/Remove &Contacts
 &Online  ##  &Online
 Pryč  ##  &Away
 Připravený na pokec  ##  Free for &Chat
@@ -525,30 +525,30 @@ Neviditelný  ##  &Invisible
 Offline  ##  O&ffline
 Změnit obrázek  ##  Change &Picture
 Změnit heslo  ##  Change Pa&ssword
-  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
+Vaše &Detaily  ##  Your &Details
+Vložte heslo.  ##  Enter Passphrase
 Vlož heslo  ##  Enter password
-Please enter protect password  ##  Please enter protect password
-Languages  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
-&Change  ##  &Change
-Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
-Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Prosím, nastav heslo.  ##  Please enter protect password
+Jazyky  ##  Languages
+Nastav jazyk pro všechny texty ve Wippienu.  ##  Setup language used in all Wippien texts.
+Další jazykové lokalizace budou následovat.  ##  New languages may appear periodically.
+Nalezeny další jazyky na vašem počítači.  ##  Following languages are found as available on local computer
+&Změnit  ##  &Change
+Místní nastavení použitá na lokálním počítači.  ##  Locale used on local computer
+Právě používaný jazyk.  ##  Currently used language
+Změny se projeví pouze lokálně. Pro plnou změnu restartujte Wippien.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Nové jazykové soubory k dispozici, stáhnout ?  ##  New language files available. Download?
-Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
-Uzivatel pise...  ##  Contact is typing...
+Upozorni mě, je-li kontakt online/offline.  ##  Show notification popup window when contact goes online/offline
+Kontakt píše...  ##  Contact is typing...
 říká  ##  says
 řekl  ##  said
-You can use your GMAIL account here.  ##  You can use your GMAIL account here.
-Toggle voice chat  ##  Toggle voice chat
+Můžete použít Váš účet GMAIL.  ##  You can use your GMAIL account here.
+Spusť hlasovou komunikaci.  ##  Toggle voice chat
 Lokální echo  ##  Local echo
 UDP port 9913 je zaneprázdněn  ##  UDP port 9913 busy
-Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
+Nelze naslouchat příchozí hlasové konverzaci  ##  Unable to listen for incoming voice chat
 Citlivost mikrofonu  ##  Microphone sensitivity
-Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+Mluvte do mikrofonu a nastavujte posuvník. Když nemluvíte, neměl by být žádný pohyb na detektoru aktivity. Naopak při hlasitém mluvení by měla aktivita vyskočit naplno.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Hlasová komunikace nebyla nastavena. Musíte ji nastavit před prvním použitím. Chcete tak učinit nyní?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 má povoleno  ##  has enabled
 má zakázáno  ##  has disabled

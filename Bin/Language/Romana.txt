@@ -1,6 +1,6 @@
 # Romana translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: mo0n_sniper
-# Version: 143
+# Version: 310
 Nicio eroare.  ##  No error.
 Sistemul nu gaseste fisierul specificat  ##  The system cannot find the file specified.
 Sistemul nu gaseste calea specificata  ##  The system cannot find the path specified.
@@ -10,51 +10,51 @@ Nu se poate crea un fisier/director cand acel fisier/director deja exista.  ##  
 Sistemul nu poate scrie pe device  ##  The system cannot write to the specified device.
 Valoare a propietatii invalida.  ##  Invalid Property Value.
 Această operaţiune a revenit, deoarece perioada de expirare a expirat.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
+Nivelul sistemului intrerupt operatia socket-ului intrerupta.  ##  System level interrupt interrupted socket operation.
 Eroare generică datorată unui format invalid, format greşit.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+S-a incercat accesarea unui socket intr-un fel interzis de permisiunile de acces.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
+Eroare generica pentru format invalid, intrare, etc.  ##  Generic error for invalid format, entry, etc.
+A fost furnizat un argument invalid.  ##  An invalid argument was supplied.
 Adresa IP oferita nu este valida sau host-ul specificat de adresa IP nu exista.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+Port inadecvat sau nu e posibila conexiunea la distanta.  ##  Invalid socket or not connected to remote.
 Adresa specificata este deja in folosinta.  ##  The specified address is already in use.
 Adresa specificata nu este disponibila.  ##  The specified address is not available.
 conectată la retea nu este disponibilă.  ##  The connected network is not available.
-conectarea la retea nu este accesibil.  ##  The connected network is not reachable.
-Conexiunea la retea a fost resetata  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
+conectarea la retea nu este accesibilă.  ##  The connected network is not reachable.
+Conexiunea la reţea a fost resetată.  ##  The connected network connection has been reset.
+Conexiunea curenta a fost anulata de retea sau de serviciile intermediare.  ##  The current connection has been aborted by the network or intermediate services.
+Conexiunea socket curenta a fost resetata.  ##  The current socket connection has been reset.
+Socket-ul curent nu a fost conectat.  ##  The current socket has not been connected.
 Conexiunea a fost oprita.  ##  The connection has been shutdown.
 Conexiunea curenta a expirat  ##  The current connection has timeout.
 Conexiunea ceruta a fost refuzata de gazda  ##  The requested connection has been refused by the remote host.
 Numele host-ului specificat este prea lung.  ##  Specified host name is too long.
 Sistemul la distanta este momentan indisponibil  ##  Remote host is currently unavailable.
-Momentan nu se poate ajunge la sistemul la distanta  ##  Remote host is currently unreachable.
-Sistemul la distanta nu este pregatit  ##  Remote system is not ready.
+Momentan nu se poate ajunge la sistemul de la distanţă.  ##  Remote host is currently unreachable.
+Sistemul de la distanţă nu este pregătit.  ##  Remote system is not ready.
   ##  Current socket version not supported by application.
 Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
-Host-ul nu a fost gasit.  ##  Host not found.
-Nu este destula memorie disponibila pentru a termina aceasta operatiune.  ##  Not enough memory is available to complete this operation.
-Unknown search type.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
-Already started.  ##  Already started.
-Channel already started.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Legatura nu este stabilita  ##  Connection not established.
+Socket-ul a fost deconectat  ##  Socket has been disconnected.
+Host-ul nu a fost găsit.  ##  Host not found.
+Nu există destulă memorie disponibilă pentru a termina această operaţiune.  ##  Not enough memory is available to complete this operation.
+Tip de căutare necunoscut.  ##  Unknown search type.
+Argument necunoscut pentru metoda Căutare.  ##  Unknown argument for Search method.
+Deja pornit.  ##  Already started.
+Canal deja pornit.  ##  Channel already started.
+Nu se pot schimba setarile de canal in timp ce canalul este pornit.  ##  Cannot change channel setup while channel is started.
+Prea multe date pe socket . Incercati mai tarziu  ##  Too much data on the socket. Try later.
+Legătura nu este stabilită.  ##  Connection not established.
 Tip de date necunoscut.  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Tip de canal necunoscut.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Canalul nu poate fi creat din aceasta parte  ##  Channel cannot be created by local side.
-Canalul nu poate fi poornit din aceasta parte  ##  Channel cannot be started by local side.
-Canal refuzat de sistemul la distanta  ##  Channel refused by remote side.
-Versiune de protocol de control la distanta neacceptata  ##  Unsupported remote protocol version.
+Canalul nu poate fi creat din această parte.  ##  Channel cannot be created by local side.
+Canalul nu poate fi poornit din această parte.  ##  Channel cannot be started by local side.
+Canal refuzat de sistemul de la distanţă  ##  Channel refused by remote side.
+Versiune de protocol de control la distanţă neacceptată.  ##  Unsupported remote protocol version.
 wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Canalul a fost inchis.  ##  Channel was closed.
+Canalul a fost închis.  ##  Channel was closed.
 Marime MTU prea mare.  ##  MTU size too large.
 Marime MTU prea mare.  ##  MTU size too small.
 Invalid socks request.  ##  Invalid socks request.
@@ -64,15 +64,15 @@ Remote ID not set. It is required for Search method.  ##  Remote ID not set. It 
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Transferul fisierului este deja in curs.  ##  Already performing file transfer.
 Fisierul nu a fost gasit.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
+Scrierea fisierului a esuat  ##  Failed to write file.
+Nu se poate accesa placa de retea.  ##  Could not open network adapter.
+Doar un singur adaptor poate fi folosit la un moment dat.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
-Component busy.  ##  Component busy.
-Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
+Eroare necunoscută.  ##  Unrecognized Error.
+Conectarea este imposibilă momentan. Folosiţi mai intâi Deconectare.  ##  Cannot Connect at this time. Use Disconnect first.
+Execuţie imposibilă, încă nu există conexiune.  ##  Cannot execute, not yet connected.
+Componentă ocupată.  ##  Component busy.
+Proprietatile nu pot fi modificate acum.Deconectati-va mai intai.  ##  Cannot change property at this time. Use Disconnect first.
 Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
@@ -82,26 +82,26 @@ Invalid login: %s.  ##  Invalid login: %s.
 Contact already exists in the collection.  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
-Notificare necunoscuta  ##  Unknown notification.
-Fisierul nu a fost gasit  ##  File not found.
-Trebuie sa specificati tipul fisierului (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Notificare necunoscută.  ##  Unknown notification.
+Fişierul nu a fost găsit.  ##  File not found.
+Trebuie să specificaţi tipul fişierului (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Importul foto a esuat  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
-File transfer failed.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
+Contactul nu a fost găsit.  ##  Contact not found.
+Transferul fişierelor a eşuat.  ##  File transfer failed.
+Nu s-a putut scrie fişierul.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
-Transfer intrerupt.  ##  Transfer aborted.
-Transfer has timed out.  ##  Transfer has timed out.
+Transfer întrerupt.  ##  Transfer aborted.
+Transferul s-a oprit.  ##  Transfer has timed out.
 Invalid protocol selected.  ##  Invalid protocol selected.
 Invalid state. Component already busy.  ##  Invalid state. Component already busy.
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Data nu este setata.  ##  Date not set.
+Data nu este setată.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
@@ -110,7 +110,7 @@ Warning  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
 Away  ##  Away
-Free for chat  ##  Free for chat
+Liber pentru discutie.  ##  Free for chat
 Nu deranjati.  ##  Do not disturb
 Extended away  ##  Extended away
 Invisible  ##  Invisible
@@ -119,13 +119,13 @@ Contact not subscribed  ##  Contact not subscribed
 Deconectat de la server.  ##  Disconnected from server
 Se conecteaza la server  ##  Connecting to server
 Inregistrare utilizator nou  ##  Registering new user
-Initializing secure connection  ##  Initializing secure connection
-Sending authentication data  ##  Sending authentication data
+Initializez conexiune securizata.  ##  Initializing secure connection
+Trimit datele de autentificare.  ##  Sending authentication data
 Conectat la server  ##  Connected to server
 Se primesc date de la server  ##  Receiving data from server
 Se trimit date la server  ##  Sending data to server
-Executing command on server  ##  Executing command on server
-Disconnecting from the server  ##  Disconnecting from the server
+Executarea comenzii pe server.  ##  Executing command on server
+Deconectare de la server.  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization
 Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
@@ -144,32 +144,32 @@ Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 Reconectare in %d secunde.  ##  Reconnect in %d seconds.
 secunde  ##  seconds
 Retea inexistenta  ##  No network
-Exit Wippien  ##  Exit Wippien
+Parasiti Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
-Open settings  ##  Open settings
+Deschideti setarile  ##  Open settings
 &Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
+Afiseaza casuta "About"  ##  Show AboutBox
 &About  ##  &About
-Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+Setativa statusu ( invisible , busy ... )  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
 Opriti sunetul.  ##  Mute sound
-Open chat room  ##  Open chat room
+Deschide camera de chat  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
+Vrei sa parasesti Wippien?  ##  Really exit Wippien?
+Esti sigur?  ##  Are you sure?
 Parola dumneavoastra este acum schimbata  ##  Your password is now changed.
 Parola schimbata  ##  Password changed
 Schimbati parola contului  ##  Change account password
 Introduceti noua parola  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
-Home Address  ##  Home Address
+  ##  Home Address
 Work Address  ##  Work Address
 Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
 Delete history?  ##  Delete history?
 Send  ##  Send
-Send file  ##  Send file
+Trimite fisier  ##  Send file
 Details  ##  Details
 Contact information  ##  Contact information
 Clear  ##  Clear
@@ -179,9 +179,9 @@ Bold  ##  Bold
 Italic  ##  Italic
 Underline  ##  Underline
 Insert hyperlink  ##  Insert hyperlink
-Decrease font size  ##  Decrease font size
-Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
+Scade marimea fontului.  ##  Decrease font size
+Reseteaza marimea fontului  ##  Reset font size
+Creste marimea fontului  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
 Set Background color  ##  Set Background color
 Emoticons  ##  Emoticons
@@ -199,7 +199,7 @@ Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
 allow  ##  allow
 deny  ##  deny
-not specified  ##  not specified
+Nespecificat  ##  not specified
 &Finish  ##  &Finish
 &Next >  ##  &Next >
 Identity  ##  Identity
@@ -402,22 +402,22 @@ Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
 Various settings regarding chat window  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
-Arata Istoricul Mesajelor  ##  Show message history
+Arata istoricul mesajelor  ##  Show message history
 Nickname  ##  Nickname
 Prenume  ##  First name
 Nume  ##  Last name
 Email  ##  Email
 Note  ##  Notes
 Adresa  ##  Address
-Address Ext.  ##  Address Ext.
+Continuarea adresei  ##  Address Ext.
 Oras  ##  City
-  ##  State
-ZIP  ##  ZIP
-Tara  ##  Country
+Stat  ##  State
+ZIP (cod poştal)  ##  ZIP
+Ţara  ##  Country
 Data nasterii  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
-Title  ##  Title
+Titlu  ##  Title
 Numele companiei  ##  Company name
 Departament  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
@@ -429,59 +429,59 @@ Following skin files are found  ##  Following skin files are found
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
 Set back when activity is detected again.  ##  Set back when activity is detected again.
-Asteptati  ##  Wait
+Asteptaţi  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
 Auto-Away message  ##  Auto-Away message
 Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
+Arata Wippien in bara de stare  ##  Show Wippien in taskbar
 Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
 Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
+Auto ascunde daca Wippien este inactiv pentru  ##  Auto hide if Wippien is inactive for
+Mereu deasupra  ##  Always on top
+Confirmă ieşirea din aplicaţie  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
-Password protect  ##  Password protect
-Settings only  ##  Settings only
-Everything  ##  Everything
+Protejare cu parolă  ##  Password protect
+Doar setările  ##  Settings only
+Totul  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
+Sterge toate contactele locale la pornire  ##  Delete all local contacts on startup
+Sterge toate contactele locale la conectare  ##  Delete all local contacts on connect
 Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
-Ask me  ##  Ask me
-Always authorize  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
-Progress  ##  Progress
-Enable voice chat  ##  Enable voice chat
-Playback device  ##  Playback device
-Recording device  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
+Nu autoriza niciodată  ##  Never authorize
+Întreabă-mă  ##  Ask me
+Autorizează întotdeauna  ##  Always authorize
+Realizează automat VPN când există trafic pe reţea  ##  Automatically establish VPN on network traffic
+Realizează automat VPN la pornire  ##  Automatically establish VPN on startup
+Progres  ##  Progress
+Activeaza convorbirea vocala  ##  Enable voice chat
+Dispozitivul de redare  ##  Playback device
+Dispozitivul de inregistrare  ##  Recording device
+Cauta update-uri cand Wippien porneste  ##  Check for updates when Wippien starts
+Cauta update-uri la Conectare  ##  Check for updates on Connect
+Verifica daca exista update-uri noi in fiecare  ##  Check for updates each
 Update and restart application silently  ##  Update and restart application silently
-Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
+  ##  Show system messages received from updater
+&Verifica acum  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
+Foloseste MTU-ul fix  ##  Use fixed MTU
+Auto-detecteaza MTU  ##  Auto-detect MTU
 (will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
+Sunet (lasa gol pentru Sunetul Implicit)  ##  Sound (leave empty for default sound)
 &Play  ##  &Play
 Program events  ##  Program events
-Hide new contact  ##  Hide new contact
+  ##  Hide new contact
 Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
+Contacte prezent ascunse  ##  Currently hidden contacts
 All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
-&Add  ##  &Add
-&Remove  ##  &Remove
+Ascunde contactul  ##  Hide contact
+Scrie JID-ul contactului  ##  Enter contact JID
+Permite tot traficul  ##  Allow all traffic
+Blocheaza tot traficul  ##  Block all traffic
+&Adaugă  ##  &Add
+&Elimină  ##  &Remove
 Default rule  ##  Default rule
 Avatar picture  ##  Avatar picture
 Name  ##  Name
@@ -491,64 +491,64 @@ Last online time  ##  Last online time
 Activity Monitor  ##  Activity Monitor
 Visible details  ##  Visible details
 Contact's visible details  ##  Contact's visible details
-unsorted  ##  unsorted
-By name  ##  By name
-By JID  ##  By JID
-by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
-by IP (without IP goes top)  ##  by IP (without IP goes top)
-Sort contact list  ##  Sort contact list
+nesortat  ##  unsorted
+După nume  ##  By name
+După JID  ##  By JID
+după IP (fără IP jos)  ##  by IP (without IP goes bottom)
+după IP (fără IP sus)  ##  by IP (without IP goes top)
+Sortează lista de contacte  ##  Sort contact list
 Nickname for chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
+Arata camerele disponibile pe urmatoarele Porti:  ##  Show available rooms on following gateways
 Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
+Numele camerei pentru creare sau alaturare  ##  Room name to create or join
 Password (empty if none)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
-Block users at startup  ##  Block users at startup
-&Copy IP  ##  &Copy IP
-C&hat  ##  C&hat
-&Voice Chat  ##  &Voice Chat
-Send &File  ##  Send &File
-Send E&mail  ##  Send E&mail
-&Block  ##  &Block
-&Rename  ##  &Rename
-&Delete  ##  &Delete
-De&tails  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
+Alatura-te sau creeaza camera  ##  Join or Create room
+Blocheaza utilizatorii la pornire  ##  Block users at startup
+&Copiaza IP  ##  &Copy IP
+&Chat  ##  C&hat
+  ##  &Voice Chat
+Trimite &Fisier  ##  Send &File
+&Trimite Email  ##  Send E&mail
+&Blochează  ##  &Block
+&Redenumeşte  ##  &Rename
+&Sterge  ##  &Delete
+&Detalii  ##  De&tails
+Adauga/Sterge &Conturi  ##  Add/Remove &Accounts
+Adauga/Sterge &Contacte  ##  Add/Remove &Contacts
 &Online  ##  &Online
 &Away  ##  &Away
-Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
+  ##  Free for &Chat
+&Nu deranja  ##  &Do not Disturb
 E&xtended Away  ##  E&xtended Away
 &Invisible  ##  &Invisible
-O&ffline  ##  O&ffline
-  ##  Change &Picture
-Change Pa&ssword  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
-Inttroduceti codul de acces  ##  Enter Passphrase
-Introduceti parola  ##  Enter password
-Introduceti parola de protectie  ##  Please enter protect password
-Languages  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
+&Offline  ##  O&ffline
+Schimba &Poza  ##  Change &Picture
+Schimba Pa&rola  ##  Change Pa&ssword
+Detaliile &Tale  ##  Your &Details
+Introduceţi codul de acces  ##  Enter Passphrase
+Introduceţi parola  ##  Enter password
+Introduceţi parola de protecţie  ##  Please enter protect password
+Limbi  ##  Languages
+Setati limba folosita in toate textele Wippien  ##  Setup language used in all Wippien texts.
+Limbi noi pot aparea periodic  ##  New languages may appear periodically.
 Following languages are found as available on local computer  ##  Following languages are found as available on local computer
 &Change  ##  &Change
 Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
+Limba folosita in prezent  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+Fisiere noi de limba disponibile. Descarci?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
-Contact is typing...  ##  Contact is typing...
+Contactul scrie...  ##  Contact is typing...
 spune  ##  says
 a spus  ##  said
-Poti folosi contul tau de GMAIL aici.  ##  You can use your GMAIL account here.
+Poţi folosi contul tău de GMAIL aici.  ##  You can use your GMAIL account here.
   ##  Toggle voice chat
-  ##  Local echo
-  ##  UDP port 9913 busy
+Echo local  ##  Local echo
+Portul UDP 9913 este ocupat  ##  UDP port 9913 busy
   ##  Unable to listen for incoming voice chat
-Sensitivitatea microfonului  ##  Microphone sensitivity
+Sensibilitatea microfonului  ##  Microphone sensitivity
   ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+Convorbirea vocala nu pare sa fie setata. Trebuie sa o configurezi inainte de prima folosire. Faci asta acum?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+Activat  ##  has enabled
+Dezactivat  ##  has disabled

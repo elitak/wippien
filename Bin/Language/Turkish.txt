@@ -1,7 +1,7 @@
 # Turkish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Xasf
-# Version: 400
-Hata yok.  ##  No error.
+# Version: 761
+Hata yok  ##  No error.
 Sistem belirtilen dosyayı bulamıyor.  ##  The system cannot find the file specified.
 Sistem belirtilen yolu bulamıyor.  ##  The system cannot find the path specified.
 Sistem belirtilen dosyayı/dizini bulamıyor.  ##  The system cannot find the specified file/directory.
@@ -15,7 +15,7 @@ Yanlış biçimlendirme için genel hata.  ##  Generic error for invalid format,
 Bir sokete erişim izinlerinin engel olduğu bir şekilde ulaşılmaya çalışıldı.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 Sistem bir çağrı içerisinde işaretçi kullanırken geçersiz bir işaretçi adresi tespit etti.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Geçersiz giriş veya biçimlendirme için genel hata.  ##  Generic error for invalid format, entry, etc.
-Yanlış bir değer verildi.  ##  An invalid argument was supplied.
+Geçersiz bir argüman temin edildi.  ##  An invalid argument was supplied.
 IP adresi geçersiz veya belirtilen IP adresinde ana makina yok.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Geçersiz soket veya uzak bağlantı yok.  ##  Invalid socket or not connected to remote.
 Belirtilen adres zaten kullanımda.  ##  The specified address is already in use.
@@ -65,7 +65,7 @@ Belirtilen IP adresine bağlanılamıyor.  ##  Cannot bind to specified IP addre
 Dosya aktarımı zaten yapılıyor.  ##  Already performing file transfer.
 Dosya bulunamadı.  ##  File not found.
 Dosya yazılamadı.  ##  Failed to write file.
-Ağ bağdaştırıcısı açılamadı.  ##  Could not open network adapter.
+Ağ adaptörü aktifleştirilemedi.  ##  Could not open network adapter.
 Aynı anda sadece bir bağdaştırıcı kullanılabilir.  ##  Only one adapter can be used at a time.
 Lisans anahtarı yok. Bu bileşeni tasarım ortamında kullanamazsınız.  ##  License key missing. You can not use this component in design environment.
 Bilinmeyen hata.  ##  Unrecognized Error.
@@ -107,17 +107,17 @@ Sunucu sayfa bulunamadı (Hata 404) döndürdü.  ##  Page not found (error 404)
 Hatali dosya boyutu indirildi.  ##  Invalid file size after download.
 MD5 Dogrulamasi hatali  ##  Invalid MD5 checksum after download.
 Uyari  ##  Warning
-Offline  ##  Offline
-Online  ##  Online
-Uzakta  ##  Away
-Sohbete Hazir  ##  Free for chat
+Çevrim Dışı  ##  Offline
+Çevrim İçi  ##  Online
+Dışarıda  ##  Away
+Sohbete Hazır  ##  Free for chat
 Rahatsiz etme  ##  Do not disturb
-Cok uzakta  ##  Extended away
-Gorunmez  ##  Invisible
+Dışarıda  ##  Extended away
+Görünmez  ##  Invisible
 Kayıt için soruluyor  ##  Asking for subscription
 Kişi kayıtlı değil  ##  Contact not subscribed
 Sunucu bağlantısı kesildi  ##  Disconnected from server
-Sunucuya baglaniyor  ##  Connecting to server
+Sunucuya bağlanıyor  ##  Connecting to server
 Yeni kullanici kaydi yapiliyor  ##  Registering new user
 Guvenli baglanti kuruluyor  ##  Initializing secure connection
 Yetkilendirme verisi gönderiliyor  ##  Sending authentication data
@@ -127,7 +127,7 @@ Sunucuya bilgi gonderiliyor  ##  Sending data to server
 Sunucuda islem yapiliyor  ##  Executing command on server
 Sunucudan baglanti kopariliyor  ##  Disconnecting from the server
 Onaylama istendi  ##  Requested authorization
-Wippien Ag cihazi kuruluyor......  ##  Configuring Wippien network adapter...
+Wippien ağ adaptörü ayarlanıyor.  ##  Configuring Wippien network adapter...
 %s adresli \"%s\" adaptoru Wippien'in %s i ile çakisiyor. Muhtemelen Wippien ag paketlerini gonderip alamayacak. Lutfen bu adaptoru kaldirin ya da kapatin.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Ag bagdastiricisi calismiyor!  ##  Network adapter disabled!
 Ag cihazi acik  ##  Network adapter opened
@@ -139,7 +139,7 @@ Bağlandı  ##  Connected
 Mesaj iletilemedi!  ##  Could not deliver message.
 Parola degistirilemedi  ##  Failed to change password
 Eylemsizlik kuralı geregi baglanti kesildi.  ##  Disconnected due to inactivity rule
-%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+%s (%d)\r\nMTU: %d\r\nToplam  gelen: %s\r\nToplam giden: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 <&lt; Henuz VPN kurulmadi>&gt;  ##  << VPN not established yet >>
 %d saniye içinde tekrar bağlanmayı deneyecek.  ##  Reconnect in %d seconds.
 saniye  ##  seconds
@@ -151,10 +151,10 @@ Ayarlar  ##  &Settings
 Hakkinda goster  ##  Show AboutBox
 Hakkinda  ##  &About
 Durumunuzu belirleyin (Uzakta, Gorunmez...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
+Temaslar ve yabancı hesaplarını ekleyin  ##  Add contacts and alien accounts
 Sesi kapat  ##  Mute sound
-Chat odası aç  ##  Open chat room
-Authorize your friends  ##  Authorize your friends
+Sohbet odası aç  ##  Open chat room
+Arkadaslarini onayla  ##  Authorize your friends
 Boşta  ##  Idle
 Wippienden gercekten cik?  ##  Really exit Wippien?
 Eminmisiniz?  ##  Are you sure?
@@ -187,7 +187,7 @@ Arkaplan rengini belirle  ##  Set Background color
 İfadeler  ##  Emoticons
 Yeni ifadeler indirilip yüklenecek. Devam etmek istiyor musunuz ?  ##  New emoticons will be downloaded and installed. Proceed?
 Yeni İfadeler  ##  New emoticons
-You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
+İfade düğmesini yüklenen yeni emoticons görebilirsiniz şimdi yeniden tıklatın.  ##  You can now click again on emoticon button to see new installed emoticons.
 Tamam  ##  Done!
 Kontak  ##  Contact
 Baglaniyor  ##  Connecting
@@ -195,124 +195,124 @@ Isteniyor  ##  Requesting
 Indiriliyor  ##  Downloading
 Ayar dosyası  ##  Configuration file
 Genel  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
+inaktif oldugu icin disarda  ##  Away due to inactivity.
+Uzuuuun zamandir inaktif  ##  Away for a loooong time.
 Izin ver  ##  allow
 Izin verme  ##  deny
-not specified  ##  not specified
+belirtilmemiş  ##  not specified
 Bitir  ##  &Finish
 Sonraki  ##  &Next >
 Identity  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
-This is shown on your friend's list.  ##  This is shown on your friend's list.
-JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
-Invalid logon details  ##  Invalid logon details
+Lütfen oturum açma bilgileri seçin.  ##  Please choose your logon information.
+Bu senin arkadas listende gozukmektedir  ##  This is shown on your friend's list.
+JID sunucu adı, user@server.com biçiminde içermelidir  ##  JID should contain server name, formatted like user@server.com
+Geçersiz oturum açma bilgileri  ##  Invalid logon details
 JID'inizi girmek zorundasınız.  ##  You must enter your JID.
 Şifrenizi girmelisiniz.  ##  You must enter your password.
 Jabber hatası  ##  Jabber error
 Ikon  ##  Icon
 Lütfen iconunuzu seçin  ##  Please choose your icon.
-This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+Bu genellikle kişiler tarafından görülebilir.  ##  This is usually visible to your contacts.
 Network  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
-This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+Lütfen IP adresi ve ağ maskesi seçin.  ##  Please choose your IP address and netmask.
+Bu wippien tarafından kullanılmak üzere etki alanı tanımlar.  ##  This defines network range to be used by wippien.
 Network  ##  Network
 Ara bulucu  ##  Mediator
-Please choose who will be your mediator.  ##  Please choose who will be your mediator.
-This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
+Lütfen kimin yönetici olacağını seçin  ##  Please choose who will be your mediator.
+Bu bağlantıları P2P arabulucu tanımlar.  ##  This defines people that mediate P2P connections.
+Son kontrol  ##  Last check
 Port  ##  Port
 Hostname  ##  Hostname
 Kalici  ##  Permanent
 Gecici  ##  Temporary
-Enter all your accounts here.  ##  Enter all your accounts here.
-You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
-Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+Burada tüm hesaplarını girin.  ##  Enter all your accounts here.
+Herhangi bir Jabber sunucusu tarafından desteklenen hesabı ekleyebilirsiniz (örnek ICQ, MSN, vb..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Bu '%s' hesabı silmek istediğinizden emin misiniz?  ##  Are you sure you want to delete account '%s'?
+Kayıtlı hesap silinsinmi?  ##  Delete registered account?
 Hesaplar  ##  Accounts
-Show only gateways  ##  Show only gateways
+Sadece ağ  geçidini göster  ##  Show only gateways
 Butun servisleri goster  ##  Show all services
-  ##  Contacts
+Rehber  ##  Contacts
 Ekle/Kaldir  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
-All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
-All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+Yeni kişiler bulun.  ##  Find new contacts.
+Yeni bir Jabber, ICQ, MSN... iletişim hesabı ekle  ##  You can add new Jabber, ICQ, MSN... contacts
+Tüm dosyalar  (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+Tüm resim dosyaları (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Sistem  ##  System
-  ##  Logging
-Setup log files and debug info.  ##  Setup log files and debug info.
-Specify paths below  ##  Specify paths below
+Giriş  ##  Logging
+Kurulum log dosyaları ve hata ayıklama bilgisi.  ##  Setup log files and debug info.
+Yolları aşağıda belirtin  ##  Specify paths below
 Mesajlar  ##  Messages
-Chat window settings.  ##  Chat window settings.
-For all open chat windows.  ##  For all open chat windows.
-General info  ##  General info
-General information about  ##  General information about
-Personal information  ##  Personal information
-Home details for  ##  Home details for
-Business information  ##  Business information
-Work details for  ##  Work details for
-all other  ##  all other
-address given by mediator  ##  address given by mediator
+Sohbet penceresi ayarları.  ##  Chat window settings.
+Tüm açık sohbet pencereleri için  ##  For all open chat windows.
+Genel bilgi  ##  General info
+Genel bilgi hakkında  ##  General information about
+Kişisel bilgiler  ##  Personal information
+Ev detayları için  ##  Home details for
+İş bilgileri  ##  Business information
+Çalışma detayları için  ##  Work details for
+Tüm diğerleri  ##  all other
+Aracı tarafından verilen adres  ##  address given by mediator
 Goruntu  ##  Appearance
 Skins  ##  Skins
 Listeden arayüz seçin  ##  Choose skin from below list.
-What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
-Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+Wippien temayı kullansınmı?  ##  What will Wippien wear?
+.. yok ..  ##  .. none ..
+Oto-Durum  ##  Auto Away
+Oto-Durum ayarları.  ##  Auto away settings.
+Wippien'in sistemi ne zaman devre dışı bırakacağını belirle  ##  Determines how will Wippien behave when system is inactive.
 Sistem  ##  System
 Temel sistem mesajları.  ##  Basic system messages.
-Define Wippien application's behavior.  ##  Define Wippien application's behavior.
+Wippien'in uygulamalara davranışını belirle  ##  Define Wippien application's behavior.
 Sesli Chat  ##  Voice Chat
-Please setup your voice chat devices.  ##  Please setup your voice chat devices.
-Choose from list below.  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
+Lütfen sesli sohbet sürücüsünü kurun  ##  Please setup your voice chat devices.
+Aşağıdaki listeden seçin  ##  Choose from list below.
+<sistem varsayılanı>  ##  <system default>
+Rehber temel ayarları.  ##  Contacts basic settings.
 Guncellemeler  ##  Updates
-Update definitions.  ##  Update definitions.
-Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
+Tanımlar güncelleniyor  ##  Update definitions.
+Wippien'in nasıl güncelleneceğini tanımla  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
-Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
-If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
+Lütfen en fazla aktarım birimini belirle.  ##  Please determine maximum transfer unit.
+Bazı üyelerin büyük paketlerine yanıt vermezse...  ##  If some peer doesn't respond to large packets...
 Sesler  ##  Sounds
-Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
-Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
+Hangi olaylarda ses çalınacağını belirle.  ##  Setup sounds to be played on various events.
+Bilgisayardan bir WAV ses dosyası seç.  ##  Choose internal ones, or browse for WAV files.
+İletişim açık  ##  Contact online
+İletişim kapalı  ##  Contact offline
 Gelen mesajlar  ##  Message in
 Giden mesajlar  ##  Message out
 Hata  ##  Error
-WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+WAV dosyaları (*.wav)\0*.wav\0Tüm dosyalar (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Gizle  ##  Hide
-  ##  Hide contacts.
-You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
+İletileri gizle.  ##  Hide contacts.
+Eğer istemezseniz bazı kişileri gizleyebilirsiniz  ##  You can hide some contacts from your sight.
 Görüntü  ##  Appearance
 Görüntü Ayarları.  ##  Appearance settings.
-Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
-  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+Wippien'in dış görünümünü ayarla  ##  Define how will Wippien's GUI appear to you.
+Ekle  ##  Sort
+Kontakları sırala.  ##  Sorts contacts.
+Bir sıralama ayarı seçin  ##  Pick one of sort options.
 Chat Odası  ##  ChatRoom
-Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
-Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
-- All gateways -  ##  - All gateways -
-Service gateway  ##  Service gateway
+Sohbet odasına gir yada oluştur. (Henüz BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Odamı oluşturmak yoksa varolan odayamı girmek istiyorsunuz.  ##  Specify or browse for a room to join or create new one.
+- Tüm Geçitler-  ##  - All gateways -
+Servis geçişi  ##  Service gateway
 Oda İsmi  ##  Room name
 Firewall  ##  Firewall
-Set up firewall rules.  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
-* All ICMP traffic  ##  * All ICMP traffic
-But block these ports  ##  But block these ports
-But allow these ports  ##  But allow these ports
+Firewall ayarlarını ayarla  ##  Set up firewall rules.
+  ##  You can set up which ports can be accessed by your contacts.
+* Tğm ICMP akışı  ##  * All ICMP traffic
+Fakat bu portları engelle  ##  But block these ports
+Fakat bu portları onayla  ##  But allow these ports
 Wippien güncelleme  ##  Wippien update
 Wippien'in yeni versiyonu mevcut. İndirmek ister misiniz ?  ##  New version of Wippien is available. Download?
-Click here to see what's new.  ##  Click here to see what's new.
-Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
-Error connecting to remote server.  ##  Error connecting to remote server.
-Download successful. Replace now?  ##  Download successful. Replace now?
-Wippien update error!  ##  Wippien update error!
-New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
+Tıklayın ve gelişmeleri, haberleri takip edin  ##  Click here to see what's new.
+Wippien'in versiyonu düşük  ##  Your version of Wippien is up-to-date.
+Uzak sağlayıcıya bağlanamıyor  ##  Error connecting to remote server.
+İndirme tamamlandı. Şimdi değiştirilsin mi?  ##  Download successful. Replace now?
+Wippien güncelleme hatası!  ##  Wippien update error!
+Wippien'in yeni versiyonu mevcut.Değiştirilsin mi?  ##  New version of Wippien found localy. Replace?
 Yeni versiyon  ##  New version
 Durum değiştirildi :  ##  Status changed:
 gun  ##  day
@@ -321,234 +321,234 @@ saat  ##  hour
 saat  ##  hours
 dakika  ##  minute
 dakika  ##  minutes
-Last seen: never  ##  Last seen: never
-is currently offline  ##  is currently offline
-is now offline  ##  is now offline
-is now online  ##  is now online
-is blocked  ##  is blocked
-is offline  ##  is offline
+Son giriş zamanı: hiç  ##  Last seen: never
+Şu an çevrimdışı  ##  is currently offline
+çevrimdışı oldu  ##  is now offline
+çevrimiçi oldu  ##  is now online
+engellendi  ##  is blocked
+çevrimdışı  ##  is offline
 Engellemeyi kaldir  ##  Unblock
 Engelle  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
+Grubu kaldırmak istediğinizden emin misiniz: %s  ?  ##  Are you sure you want to remove group %s
 Grubu sil  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
+Bu kişi ile bağlantınızı kaldırmak istediğinizden emin misiniz? %s  ##  Are you sure you want to remove contact %s
 Kişi sil  ##  Remove contact?
-Adaptör hatası  ##  Adapter error
+  ##  Adapter error
 Grubu adlandır  ##  Rename group
 Yeni grup ismi gir  ##  Enter new group name
 Wippien sitesinden yeni temalar indir  ##  Download more skins from Wippien website
-Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
-I have existing Jabber account  ##  I have existing Jabber account
-Accountu test et  ##  &Test Account
+İstediğiniz kaplamaya tıklayarak indirebilir ve yükleyebilirsiniz  ##  Click on the skin to download and install it.
+Yeni bir Jabber hesabına ihtiyacım var  ##  I need new Jabber account
+Zaten Jabber hesabına sahibim  ##  I have existing Jabber account
+Hesabı test et  ##  &Test Account
 Ara  ##  &Search
-You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
-If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+Jabber ID nizi buraya girmelisiniz (JID). Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Eğer JID sahibi değilseniz, yeni bir tanesi için kayıt yapmalısınız. İstediğiniz her Jabber sunucusundan bunu gerçekleştirebilirsiniz.Birçok sunucu mevcut. Şu anda mevcut serverleri görmek için buraya tıklayabilirsiniz..  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
 JID  ##  JID
 Parola  ##  Password
 Sunucu  ##  Server
 Port  ##  Port
-Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' to proceed.
-Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+Lütfen onaylamak için "tes account (hesabı test et)" e tıklayınız  ##  Please click on 'Test Account' to proceed.
+  ##  Use SSL wrapper on port 443 (for GTalk)
 Tamam  ##  O&K
 Iptal  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
-Add &New  ##  Add &New
-Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
-Disconnect adapter on exit  ##  Disconnect adapter on exit
-UDP port fort for outoing and incoming packets (0 for auto select)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
-IP address for Wippien network adapter  ##  IP address for Wippien network adapter
-Ignore. IP will be set outside of this program.  ##  Ignore. IP will be set outside of this program.
-Obtained from IP provider database, on URL  ##  Obtained from IP provider database, on URL
-Use following static address  ##  Use following static address
+Lütfen passphrase şifrenizi giriniz (passphrase*)  ##  Please enter key passphrase
+Yeni &Ekle  ##  Add &New
+  ##  Show notification if ethernet adapter is unavailable.
+Çıkış'a giderek bağlantıyı kopar  ##  Disconnect adapter on exit
+  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+Wippien için kullanılan ip adresi  ##  IP address for Wippien network adapter
+  ##  Ignore. IP will be set outside of this program.
+  ##  Obtained from IP provider database, on URL
+Statik ip kullan  ##  Use following static address
 IP Adresi  ##  IP address
-  ##  Netmask
+Ağ maskesi  ##  Netmask
 Durum  ##  Status
 URL  ##  URL
 Açıklama  ##  Description
 Yeni hesap ac  ##  Add new account
 Hesabi kapat  ##  Remove account
 Kayit ol  ##  Register!
-Your current Instant messaging connections  ##  Your current Instant messaging connections
+  ##  Your current Instant messaging connections
 Kullanıcı  ##  Username
 Yeni hesap ac  ##  Open new account
-Authorization request  ##  Authorization request
+Yetkilendirme isteği  ##  Authorization request
 Evet  ##  &Yes
 Hayir  ##  &No
 Detaylar  ##  &Details
-&Apply to all  ##  &Apply to all
-&Block user(s)  ##  &Block user(s)
+&Herşeyi onayla  ##  &Apply to all
+&kullanıcı(ları) engelle  ##  &Block user(s)
 Kabul Ediyor Musunuz ?  ##  Do you allow
-to add you to his contact list?  ##  to add you to his contact list?
+kişi listenize eklemek ister misiniz?  ##  to add you to his contact list?
 Daha fazla istek beklemede...  ##  more requests waiting...
 Grup Ekleyin  ##  Add Group
 Grup Kaldırın  ##  Remove Group
 Kişi Ekleyin.  ##  Add Contact
-Put contact to the group  ##  Put contact to the group
-Contact JID  ##  Contact JID
-Contact Type  ##  Contact Type
-Visible Name  ##  Visible Name
+Kişiyi bir gruba ekle  ##  Put contact to the group
+Bağlantı JID  ##  Contact JID
+Bağlantı tipi  ##  Contact Type
+Görünecek rumuz  ##  Visible Name
 Kişiyi yeniden adlandırın  ##  Rename contact
 Yeni bir kişi ismi girin  ##  Enter new contact name
 Ayarlar  ##  Settings
-< &Back  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
-Log socket communication  ##  Log socket communication
-Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
-Delete raw log on each  ##  Delete raw log on each
+< &Geri  ##  < &Back
+Jabber iletişime gir  ##  Log Jabber communication
+  ##  Log socket communication
+  ##  Log raw function calls (may grow quickly!)
+  ##  Delete raw log on each
 megabytes  ##  megabytes
-Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
-Following mediators can be used  ##  Following mediators can be used
-Allow new mediators to be added  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
-Timestamp messages  ##  Timestamp messages
+  ##  Log VPN communication on P2P startup
+  ##  Following mediators can be used
+yeni eklenen mediators'ları onayla  ##  Allow new mediators to be added
+  ##  Various settings regarding chat window
+Mesajlarda zaman damgası  ##  Timestamp messages
 Mesaj geçmişini göster  ##  Show message history
 Nickname  ##  Nickname
-Isim  ##  First name
-Soyad  ##  Last name
+İsim  ##  First name
+aydun  ##  Last name
 Email  ##  Email
 Notlar  ##  Notes
-Addres  ##  Address
-Addres devam  ##  Address Ext.
-Sehir  ##  City
+Adres  ##  Address
+Adres devam  ##  Address Ext.
+Şehir  ##  City
 Eyalet  ##  State
 Posta Kodu  ##  ZIP
-Ulke  ##  Country
-Dogum Gunu  ##  Birthday
+Ülke  ##  Country
+Doğum Günü  ##  Birthday
 Telefon  ##  Voice Tel.
 Fax  ##  Fax
 Unvan  ##  Title
-Sirket adi  ##  Company name
+Şirket adı  ##  Company name
 Departman  ##  Department
-Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
-Click on first column to change values  ##  Click on first column to change values
-If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
-Following skin files are found  ##  Following skin files are found
+  ##  Allowed interfaces for direct connection
+Tümünü Onayla  ##  Allow All
+Değerleri değiştirmek için sütuna tıklayın  ##  Click on first column to change values
+  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Yeni dış görünüş dosyaları bulundu  ##  Following skin files are found
 Uygula  ##  Apply
-To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
-&More skins...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
+"Skin" dosyasına daha fazla skin ekleyebilirsiniz. 100x100 PNG dosyası olmalıdır  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+&Daha fazla arayüz...  ##  &More skins...
+  ##  Set back when activity is detected again.
 Bekle  ##  Wait
-minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
-minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
-minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
-Auto-Away message  ##  Auto-Away message
-Extended-Away message  ##  Extended-Away message
-Show Wippien in taskbar  ##  Show Wippien in taskbar
-Rearrange desktop when Wippien window is aligned to border  ##  Rearrange desktop when Wippien window is aligned to border
-Snap to desktop border  ##  Snap to desktop border
-Auto hide if Wippien is inactive for  ##  Auto hide if Wippien is inactive for
-Always on top  ##  Always on top
-Confirm exit from application  ##  Confirm exit from application
-Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+şu kadar dakika sonra dışarıda görün (0 = asla)  ##  minutes before going to away mode (0 = disable)
+dışarıda modundan şu dakika sonra çık (0 = asla)  ##  minutes before going to extended away mode (0 = disable)
+bağlantıyı koparmadan önce bu kadar dakika (0 = asla)  ##  minutes before disconnecting (0 = disable)
+Oto-Durum mesajı  ##  Auto-Away message
+Dışarıda mesajı bırak  ##  Extended-Away message
+Wippien'i görev çubuğu içinde göster  ##  Show Wippien in taskbar
+  ##  Rearrange desktop when Wippien window is aligned to border
+Masaüstü köşelerini yakala  ##  Snap to desktop border
+Wippien aktif değilse otomatik gizle  ##  Auto hide if Wippien is inactive for
+Her zaman üstte  ##  Always on top
+Uygulamadan çıkmayı onayla  ##  Confirm exit from application
+  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Parola Korumali  ##  Password protect
-Settings only  ##  Settings only
+Sadece ayarlar  ##  Settings only
 Hersey  ##  Everything
-Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
-Contact list persistance  ##  Contact list persistance
-Delete all local contacts on startup  ##  Delete all local contacts on startup
-Delete all local contacts on connect  ##  Delete all local contacts on connect
-Contacts subscription authorization  ##  Contacts subscription authorization
-Never authorize  ##  Never authorize
+Ayarlar dosyası (değişiklikler restart ettikten sonra etkinleşir)  ##  Settings folder (changing below value requires wippien restart)
+  ##  Contact list persistance
+Başlangıçtaki tüm yerel bağlantıları sil  ##  Delete all local contacts on startup
+Tüm yerel bağlantıları bağlantıdan sil  ##  Delete all local contacts on connect
+  ##  Contacts subscription authorization
+Asla yetkilendirme  ##  Never authorize
 Bana Sor  ##  Ask me
-Always authorize  ##  Always authorize
-Automatically establish VPN on network traffic  ##  Automatically establish VPN on network traffic
-Automatically establish VPN on startup  ##  Automatically establish VPN on startup
+Her zaman yetkilendir  ##  Always authorize
+  ##  Automatically establish VPN on network traffic
+  ##  Automatically establish VPN on startup
 Surec  ##  Progress
 Sesli chat'i aktiflestir  ##  Enable voice chat
-  ##  Playback device
+Playback cihazı  ##  Playback device
 Kayit cihazi  ##  Recording device
-Check for updates when Wippien starts  ##  Check for updates when Wippien starts
-Check for updates on Connect  ##  Check for updates on Connect
-Check for updates each  ##  Check for updates each
-Update and restart application silently  ##  Update and restart application silently
-Show system messages received from updater  ##  Show system messages received from updater
-&Check now  ##  &Check now
-MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
-  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+Açılışta Wippien güncellemelerini kontrol et.  ##  Check for updates when Wippien starts
+Bağlanırken güncellemeleri kontrol et  ##  Check for updates on Connect
+Her güncellemeyi kontrol et  ##  Check for updates each
+Uygulamayı sessizce güncelle ve restart et  ##  Update and restart application silently
+  ##  Show system messages received from updater
+&Şimdi kontrol et  ##  &Check now
+  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Düzeltilmiş MTU kullan  ##  Use fixed MTU
+Otomatik MTU bul  ##  Auto-detect MTU
+  ##  (will become effective as peers reconnect)
+Ses (normal ses için boş bırak)  ##  Sound (leave empty for default sound)
+&Başlat  ##  &Play
+Program olayları  ##  Program events
+Yeni bağlantıyı sakla  ##  Hide new contact
+Saklı bağlantıyı göster  ##  Unhide contact
+Şu anda gizli kişiler  ##  Currently hidden contacts
+Tüm bağlantılar *asla* olarak Wippien içinde gözüküyor.. Size asla ulaşamazlar. Böylelikle kişileri tamamen engelleyebilirsiniz..  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Bağlantıyı gizle  ##  Hide contact
+Bağlantı JID'ini gir  ##  Enter contact JID
+Tüm trafiğe izin ver  ##  Allow all traffic
+Tüm trafiği engelle  ##  Block all traffic
 Ekle  ##  &Add
 Kaldir  ##  &Remove
-Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
+Ayarları sıfırla  ##  Default rule
+Görüntü Resmi  ##  Avatar picture
 Isim  ##  Name
 IP addresi  ##  IP address
-Status text  ##  Status text
-Last online time  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
-Contact's visible details  ##  Contact's visible details
-  ##  unsorted
-By name  ##  By name
-By JID  ##  By JID
-by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
-by IP (without IP goes top)  ##  by IP (without IP goes top)
-Sort contact list  ##  Sort contact list
-Nickname for chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
-Password (empty if none)  ##  Password (empty if none)
+Durumum  ##  Status text
+Son çevrimiçi tarihi  ##  Last online time
+Aktivite ekranı  ##  Activity Monitor
+Görünürlük detayları  ##  Visible details
+Kişilerin bilgileri  ##  Contact's visible details
+Sıralanmamış  ##  unsorted
+İsmin  ##  By name
+JID'e göre  ##  By JID
+IP'ye göre (IP'sizleri aşağı al)  ##  by IP (without IP goes bottom)
+IP'ye göre (IP'sizleri yukarı al)  ##  by IP (without IP goes top)
+Kişi listesini düzenle  ##  Sort contact list
+Sohbet odaları için rumuz  ##  Nickname for chatrooms
+Takip edilen geçişlerden uygun odaları göster  ##  Show available rooms on following gateways
+Seçilen odanın üzerinde, veya yeni girilen sohbet odasının detaylarını altında göster  ##  Click above to select room, or enter new chat room details below
+Oda adı yarat veya giriş yap  ##  Room name to create or join
+Şifre (istemiyorsanız boş bırakın)  ##  Password (empty if none)
 Gateway  ##  Gateway
-Join or Create room  ##  Join or Create room
-Block users at startup  ##  Block users at startup
-&Copy IP  ##  &Copy IP
-  ##  C&hat
-&Voice Chat  ##  &Voice Chat
-Send &File  ##  Send &File
-Send E&mail  ##  Send E&mail
-  ##  &Block
-  ##  &Rename
-  ##  &Delete
-  ##  De&tails
-Add/Remove &Accounts  ##  Add/Remove &Accounts
-Add/Remove &Contacts  ##  Add/Remove &Contacts
-  ##  &Online
-  ##  &Away
-Free for &Chat  ##  Free for &Chat
-&Do not Disturb  ##  &Do not Disturb
-E&xtended Away  ##  E&xtended Away
+Oda oluştur veya katıl  ##  Join or Create room
+Başlangıçtaki kullanıcıları engelle  ##  Block users at startup
+&IP Kopyala  ##  &Copy IP
+S&ohbet  ##  C&hat
+&Sesli Sohbet  ##  &Voice Chat
+Dosya &Gönder  ##  Send &File
+E&mail Gönder  ##  Send E&mail
+&Engelle  ##  &Block
+&Değiştir  ##  &Rename
+&Sil  ##  &Delete
+De&taylar  ##  De&tails
+Hesap &Ekle/Kaldır  ##  Add/Remove &Accounts
+Kişileri ekle-çıkart  ##  Add/Remove &Contacts
+&Çevrim İçi  ##  &Online
+&Dışarıda  ##  &Away
+Serbest &sohbet  ##  Free for &Chat
+&Rahatsız etmeyiniz  ##  &Do not Disturb
+&Buralarda değil  ##  E&xtended Away
 Gorunmez  ##  &Invisible
-  ##  O&ffline
-Change &Picture  ##  Change &Picture
-Change Pa&ssword  ##  Change Pa&ssword
-Your &Details  ##  Your &Details
-  ##  Enter Passphrase
-Parolayi giriniz  ##  Enter password
-Please enter protect password  ##  Please enter protect password
+Çevrim& Dışı  ##  O&ffline
+Resmi &Değiştir  ##  Change &Picture
+Şifre &Değiştir  ##  Change Pa&ssword
+Detaylı bilgileriniz  ##  Your &Details
+Passphrase giriniz (passphrase*)  ##  Enter Passphrase
+Parolayı giriniz  ##  Enter password
+Lütfen güvenlik şifrenizi girin  ##  Please enter protect password
 Lisanlar  ##  Languages
-Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
-  ##  &Change
-Locale used on local computer  ##  Locale used on local computer
-Currently used language  ##  Currently used language
-Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-Yeni lisan dosyasi bulundu. Indirilsinmi?  ##  New language files available. Download?
-Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
-Yaziyor...  ##  Contact is typing...
+  ##  Setup language used in all Wippien texts.
+Yeni dil seçenekleri periyodik olarak eklenmektedir.  ##  New languages may appear periodically.
+Yerel bilgisayarda aşağıdaki diller  varsayılan olarak bulundu  ##  Following languages are found as available on local computer
+&Değiştir  ##  &Change
+Yerel bilgisayarda yerel kullanımda  ##  Locale used on local computer
+Şu anki dil  ##  Currently used language
+  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Yeni dil dosyasi bulundu. Indirilsinmi?  ##  New language files available. Download?
+  ##  Show notification popup window when contact goes online/offline
+Yazıyor...  ##  Contact is typing...
 diyor  ##  says
-soyledi  ##  said
+söyledi  ##  said
 Burası için GMAIL hesabınızı kullanabilirsiniz.  ##  You can use your GMAIL account here.
-Toggle voice chat  ##  Toggle voice chat
-Local echo  ##  Local echo
-UDP port 9913 busy  ##  UDP port 9913 busy
-Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
+Sesli konuşma aç/kapat  ##  Toggle voice chat
+Yerel yankı  ##  Local echo
+UDP port 9913 meşgul  ##  UDP port 9913 busy
+Karşıdan gelen sesli konuşmaları engelle  ##  Unable to listen for incoming voice chat
 Mikrofon hassaslığı  ##  Microphone sensitivity
-Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-has enabled  ##  has enabled
-has disabled  ##  has disabled
+  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Sesli konuşma ayarlarınız yapılmamış.Kullanmadan önce ayarlama yapmanız gerek.Şimdi yapmak ister misiniz?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+işler durumda  ##  has enabled
+işlemez durumda  ##  has disabled

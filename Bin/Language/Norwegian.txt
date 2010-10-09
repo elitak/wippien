@@ -1,0 +1,554 @@
+# Norwegian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
+# Author: Schpoonman
+# Version: 349
+Ingen feil  ##  No error.
+Systemet kan ikke finne filen  ##  The system cannot find the file specified.
+Systemet kan ikke finne plasseringen  ##  The system cannot find the path specified.
+Systemet kan ikke finne den spesifiserte filen/mappen  ##  The system cannot find the specified file/directory.
+Feilstavelse  ##  Type mismatch.
+Kan ikke lage en fil/mappe når den allerede eksisterer  ##  Cannot create a file/directory when that file/directory already exists.
+Systemet kan ikke skrive til den spesifiserte delen  ##  The system cannot write to the specified device.
+Ugyldig enhetsverdi  ##  Invalid Property Value.
+Operasjonen ble avsluttet fordi tidsgrensen ble overskredet  ##  This operation returned because the timeout period expired.
+Systemnivå avbrutt. Socket adgang nektet  ##  System level interrupt interrupted socket operation.
+Generic feil for invalid format, Feil format.  ##  Generic error for invalid format, bad format.
+Et forsøk på å endre en socket ble gjort på en slik måte som ikke lov pga begrensninger  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
+An invalid argument was supplied.  ##  An invalid argument was supplied.
+The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+Den valgte adressen er allerede i bruk  ##  The specified address is already in use.
+Valgt adresse er ikke tilgjenglig  ##  The specified address is not available.
+Tilknyttet nettverk er ikke tilgjenglig  ##  The connected network is not available.
+Tilknyttet nettverk kan ikke nås.  ##  The connected network is not reachable.
+The connected network connection has been reset.  ##  The connected network connection has been reset.
+The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
+The current socket connection has been reset.  ##  The current socket connection has been reset.
+The current socket has not been connected.  ##  The current socket has not been connected.
+The connection has been shutdown.  ##  The connection has been shutdown.
+The current connection has timeout.  ##  The current connection has timeout.
+The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
+Specified host name is too long.  ##  Specified host name is too long.
+Remote host is currently unavailable.  ##  Remote host is currently unavailable.
+Remote host is currently unreachable.  ##  Remote host is currently unreachable.
+Remote system is not ready.  ##  Remote system is not ready.
+Current socket version not supported by application.  ##  Current socket version not supported by application.
+Socket API is not initialized.  ##  Socket API is not initialized.
+Socket has been disconnected.  ##  Socket has been disconnected.
+Host not found.  ##  Host not found.
+Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
+Unknown search type.  ##  Unknown search type.
+Unknown argument for Search method.  ##  Unknown argument for Search method.
+Already started.  ##  Already started.
+Channel already started.  ##  Channel already started.
+Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
+Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
+Connection not established.  ##  Connection not established.
+Ukjent data type.  ##  Unknown data type.
+Failed to create socket thread.  ##  Failed to create socket thread.
+Unknown channel type.  ##  Unknown channel type.
+Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
+Channel cannot be created by local side.  ##  Channel cannot be created by local side.
+Channel cannot be started by local side.  ##  Channel cannot be started by local side.
+Channel refused by remote side.  ##  Channel refused by remote side.
+Unsupported remote protocol version.  ##  Unsupported remote protocol version.
+wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
+Channel was closed.  ##  Channel was closed.
+MTU size too large.  ##  MTU size too large.
+MTU size too small.  ##  MTU size too small.
+Invalid socks request.  ##  Invalid socks request.
+Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
+Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
+Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
+Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
+Filoverføring allerede i gang.  ##  Already performing file transfer.
+Fil ikke funnet.  ##  File not found.
+Feil ved skriving av fil.  ##  Failed to write file.
+Could not open network adapter.  ##  Could not open network adapter.
+Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
+License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Ukjent feil.  ##  Unrecognized Error.
+Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
+Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
+Component busy.  ##  Component busy.
+Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
+Hostname property not set.  ##  Hostname property not set.
+Login property not set.  ##  Login property not set.
+Password property not set.  ##  Password property not set.
+Invalid XML packet.  ##  Invalid XML packet.
+Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
+Invalid login: %s.  ##  Invalid login: %s.
+Contact already exists in the collection.  ##  Contact already exists in the collection.
+SSL could not be negotiated.  ##  SSL could not be negotiated.
+Failed to register new user: %s.  ##  Failed to register new user: %s.
+Unknown notification.  ##  Unknown notification.
+Fil ikke funnet.  ##  File not found.
+You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Failed to import photo.  ##  Failed to import photo.
+Another blocking method in progress.  ##  Another blocking method in progress.
+Invalid protocol data received.  ##  Invalid protocol data received.
+There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
+Contact not found.  ##  Contact not found.
+File transfer failed.  ##  File transfer failed.
+Could not write to file.  ##  Could not write to file.
+Checksum of received file is invalid.  ##  Checksum of received file is invalid.
+Transfer aborted.  ##  Transfer aborted.
+Transfer has timed out.  ##  Transfer has timed out.
+Invalid protocol selected.  ##  Invalid protocol selected.
+Invalid state. Component already busy.  ##  Invalid state. Component already busy.
+Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
+Method was cancelled.  ##  Method was cancelled.
+Failed to start updater program.  ##  Failed to start updater program.
+Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
+Date not set.  ##  Date not set.
+Failed to register COM server.  ##  Failed to register COM server.
+Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
+Invalid file size after download.  ##  Invalid file size after download.
+Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
+Advarsel  ##  Warning
+Offline  ##  Offline
+Online  ##  Online
+Borte  ##  Away
+Klari for samtale  ##  Free for chat
+Ikke forstyrr.  ##  Do not disturb
+Extended away  ##  Extended away
+Usynlig  ##  Invisible
+Asking for subscription  ##  Asking for subscription
+Contact not subscribed  ##  Contact not subscribed
+Ikke tilkoblet server.  ##  Disconnected from server
+Kobler til server  ##  Connecting to server
+Registrerer ny bruker  ##  Registering new user
+Setter opp sikker forbindelse  ##  Initializing secure connection
+Sending authentication data  ##  Sending authentication data
+Tilkoblet server  ##  Connected to server
+Mottar data fra server  ##  Receiving data from server
+Sender data til server  ##  Sending data to server
+Utfører kommando på server  ##  Executing command on server
+Kobler fra server  ##  Disconnecting from the server
+Krevde godkjenning  ##  Requested authorization
+Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
+Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Network adapter disabled!  ##  Network adapter disabled!
+Network adapter opened  ##  Network adapter opened
+Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
+Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
+Admin privilege required!  ##  Admin privilege required!
+Frakoblet  ##  Disconnected
+Tilkoblet  ##  Connected
+Kunne ikke levere melding  ##  Could not deliver message.
+Feil ved endring av passord  ##  Failed to change password
+  ##  Disconnected due to inactivity rule
+%s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
+<< VPN not established yet >>  ##  << VPN not established yet >>
+Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+sekunder  ##  seconds
+Intet nettverk  ##  No network
+Avslutt Wippien  ##  Exit Wippien
+Avslutt  ##  E&xit
+Open settings  ##  Open settings
+&Instillinger  ##  &Settings
+Vis Om  ##  Show AboutBox
+&Om  ##  &About
+Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
+Add contacts and alien accounts  ##  Add contacts and alien accounts
+Demp lyd  ##  Mute sound
+Open chat room  ##  Open chat room
+Authorize your friends  ##  Authorize your friends
+Idle  ##  Idle
+Really exit Wippien?  ##  Really exit Wippien?
+Er du sikker?  ##  Are you sure?
+Your password is now changed.  ##  Your password is now changed.
+Password changed  ##  Password changed
+Change account password  ##  Change account password
+Please enter new password  ##  Please enter new password
+Identity  ##  Identity
+ID Card  ##  ID Card
+Home Address  ##  Home Address
+Work Address  ##  Work Address
+Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
+Slett historie?  ##  Delete history?
+Send  ##  Send
+Send fil  ##  Send file
+Detaljer  ##  Details
+Kontakt informasjon  ##  Contact information
+Slett  ##  Clear
+Slett historie  ##  Clear history
+Lydløs  ##  Mute
+Bold  ##  Bold
+Italic  ##  Italic
+Understrek  ##  Underline
+Sett inn hyperlink  ##  Insert hyperlink
+Øk font størrelse  ##  Decrease font size
+Tilbakestill font størrelse  ##  Reset font size
+Increase font size  ##  Increase font size
+Set Foreground color  ##  Set Foreground color
+Sett bakgrunnsfarge  ##  Set Background color
+Emoticons  ##  Emoticons
+New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
+New emoticons  ##  New emoticons
+You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
+Utført!  ##  Done!
+Contact  ##  Contact
+Connecting  ##  Connecting
+Requesting  ##  Requesting
+Downloading  ##  Downloading
+Configuration file  ##  Configuration file
+General  ##  General
+Away due to inactivity.  ##  Away due to inactivity.
+Away for a loooong time.  ##  Away for a loooong time.
+allow  ##  allow
+deny  ##  deny
+not specified  ##  not specified
+&Finish  ##  &Finish
+&Next >  ##  &Next >
+Identity  ##  Identity
+Please choose your logon information.  ##  Please choose your logon information.
+This is shown on your friend's list.  ##  This is shown on your friend's list.
+JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
+Invalid logon details  ##  Invalid logon details
+You must enter your JID.  ##  You must enter your JID.
+You must enter your password.  ##  You must enter your password.
+Jabber error  ##  Jabber error
+Icon  ##  Icon
+Please choose your icon.  ##  Please choose your icon.
+This is usually visible to your contacts.  ##  This is usually visible to your contacts.
+Network  ##  Network
+Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
+This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
+Network  ##  Network
+Mediator  ##  Mediator
+Please choose who will be your mediator.  ##  Please choose who will be your mediator.
+This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
+Last check  ##  Last check
+Port  ##  Port
+Hostname  ##  Hostname
+Permanent  ##  Permanent
+Temporary  ##  Temporary
+Enter all your accounts here.  ##  Enter all your accounts here.
+You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
+Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
+Delete registered account?  ##  Delete registered account?
+Accounts  ##  Accounts
+Show only gateways  ##  Show only gateways
+Show all services  ##  Show all services
+Contacts  ##  Contacts
+Add/Remove  ##  Add/Remove
+Find new contacts.  ##  Find new contacts.
+You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
+All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
+All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
+System  ##  System
+Logging  ##  Logging
+Setup log files and debug info.  ##  Setup log files and debug info.
+Specify paths below  ##  Specify paths below
+Messages  ##  Messages
+Chat window settings.  ##  Chat window settings.
+For all open chat windows.  ##  For all open chat windows.
+General info  ##  General info
+General information about  ##  General information about
+Personlig informasjon  ##  Personal information
+Home details for  ##  Home details for
+Business information  ##  Business information
+Work details for  ##  Work details for
+all other  ##  all other
+address given by mediator  ##  address given by mediator
+Utseende  ##  Appearance
+Skins  ##  Skins
+Choose skin from below list.  ##  Choose skin from below list.
+What will Wippien wear?  ##  What will Wippien wear?
+.. none ..  ##  .. none ..
+Auto Borte  ##  Auto Away
+Auto away settings.  ##  Auto away settings.
+Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
+System  ##  System
+Basic system messages.  ##  Basic system messages.
+Define Wippien application's behavior.  ##  Define Wippien application's behavior.
+Voice Chat  ##  Voice Chat
+Please setup your voice chat devices.  ##  Please setup your voice chat devices.
+Choose from list below.  ##  Choose from list below.
+<system default>  ##  <system default>
+Contacts basic settings.  ##  Contacts basic settings.
+Oppdateringer  ##  Updates
+Update definitions.  ##  Update definitions.
+Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
+MTU  ##  MTU
+Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
+If some peer doesn't respond to large packets...  ##  If some peer doesn't respond to large packets...
+Lyder  ##  Sounds
+Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
+Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
+Contact online  ##  Contact online
+Contact offline  ##  Contact offline
+Message in  ##  Message in
+Message out  ##  Message out
+Feil  ##  Error
+WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
+Skjul  ##  Hide
+Hide contacts.  ##  Hide contacts.
+You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
+Utseende  ##  Appearance
+Appearance settings.  ##  Appearance settings.
+Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
+Sort  ##  Sort
+Sorts contacts.  ##  Sorts contacts.
+Pick one of sort options.  ##  Pick one of sort options.
+ChatRoom  ##  ChatRoom
+Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
+Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
+- All gateways -  ##  - All gateways -
+Service gateway  ##  Service gateway
+Romnavn  ##  Room name
+Brannmur  ##  Firewall
+Still inn brannmur regler  ##  Set up firewall rules.
+Du kan sette opp hvilke porter som dine kontakter har tilgang til  ##  You can set up which ports can be accessed by your contacts.
+* AlI CMP trafikk  ##  * All ICMP traffic
+Men blokker disse portene  ##  But block these ports
+Men tillat disse portene  ##  But allow these ports
+Wippien oppdatering  ##  Wippien update
+Ny versjon av Wippien tilgjengelig. Laste ned?  ##  New version of Wippien is available. Download?
+Klikk for å se hva som er nytt.  ##  Click here to see what's new.
+Din versjon av Wippien er fullstendig oppdatert!  ##  Your version of Wippien is up-to-date.
+Feil ved tilkobling til server  ##  Error connecting to remote server.
+Nedlasting vellykket! Oppdatere nå?  ##  Download successful. Replace now?
+Wippien oppdateringsfeil!  ##  Wippien update error!
+Tidligere nedlastet oppdatering funnet. Oppdatere nå?  ##  New version of Wippien found localy. Replace?
+Ny versjon  ##  New version
+Status forandret:  ##  Status changed:
+dag  ##  day
+dager  ##  days
+time  ##  hour
+timer  ##  hours
+minutt  ##  minute
+minutter  ##  minutes
+Sist sett: aldri  ##  Last seen: never
+er avlogget for øyeblikket  ##  is currently offline
+er nå avlogget  ##  is now offline
+er nå pålogget  ##  is now online
+er blokkert  ##  is blocked
+er avlogget  ##  is offline
+Fjern blokkering  ##  Unblock
+Blokker  ##  Block
+Èr du sikker på at du vil fjerne gruppen %s  ##  Are you sure you want to remove group %s
+Fjern gruppe?  ##  Remove group?
+Er du sikker på at du vil fjerne kontakten %s  ##  Are you sure you want to remove contact %s
+Fjern kontakt?  ##  Remove contact?
+Adapterfeil  ##  Adapter error
+Endre gruppenavn  ##  Rename group
+Skriv inn nytt gruppenavn  ##  Enter new group name
+Last ned flere utseender fra Wippien sin hjemmeside  ##  Download more skins from Wippien website
+Klikk på utseende for å laste ned og installere  ##  Click on the skin to download and install it.
+Jeg trenger en ny jabber konto  ##  I need new Jabber account
+Jeg har allerede en jabber konto  ##  I have existing Jabber account
+&Test konto  ##  &Test Account
+&Søk  ##  &Search
+Du burde skrive inn din jabber ID (JID) her. Wippien bruker Jabber nettverk for tilstedeværelse - å meddele dine kontakter at du er pålogget og for å se andre kontakter osv.  ##  You should enter your jabber ID (JID) here. Wippien uses Jabber network for presence - to notify your contacts that you're online, to view other contacts etc.
+Hvis du ikke har JID burde du skaffe deg en. Du kan gjøre dette på hvilken som helst jabberserver. Det er mange offentlige servere tilgjengelig. Du kan finne en liste over mange åpne servere ved å klikke på denne knappen.  ##  If you don't have JID, you should register for new one. You can do it on any jabber server you wish. There are many public servers available. You can find list of currently open servers by clicking on this button.
+JID  ##  JID
+Passord  ##  Password
+Server  ##  Server
+Port  ##  Port
+Vennligst trykk på 'Test konto' for å fortsette  ##  Please click on 'Test Account' to proceed.
+Bruk SSL på port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
+O&K  ##  O&K
+&Avbryt  ##  &Cancel
+Vennligst angi hovedpassord  ##  Please enter key passphrase
+Legg til &Ny  ##  Add &New
+Vis melding om ethernet adapter er utilgjengelig  ##  Show notification if ethernet adapter is unavailable.
+Frakoble adapter ved avslutt  ##  Disconnect adapter on exit
+UDP port for utgående og innkommende pakker (0 for autokonfigurasjon)  ##  UDP port fort for outoing and incoming packets (0 for auto select)
+IP address for Wippien nettverksadapter  ##  IP address for Wippien network adapter
+Ignorer. IP vil bli satt utenfor dette programmet  ##  Ignore. IP will be set outside of this program.
+Få fra IP leverandørens database, på URL  ##  Obtained from IP provider database, on URL
+Bruk følgende statisk adresse  ##  Use following static address
+IP adresse  ##  IP address
+Netmask  ##  Netmask
+Status  ##  Status
+URL  ##  URL
+Beskrivelse  ##  Description
+Legg til ny konto  ##  Add new account
+Fjern konto  ##  Remove account
+Registrer!  ##  Register!
+Dine nåverende IM (instant Messaging) forbindelser  ##  Your current Instant messaging connections
+Brukernavn  ##  Username
+Åpne ny konto  ##  Open new account
+Autorisasjonsforespørsel  ##  Authorization request
+&Ja  ##  &Yes
+&Nei  ##  &No
+&Detaljer  ##  &Details
+&Bruk på alle  ##  &Apply to all
+&Blokk bruker(e)  ##  &Block user(s)
+Tillater du  ##  Do you allow
+å legge deg til i hans/hennes kontaktliste?  ##  to add you to his contact list?
+flere anmodninger venter..  ##  more requests waiting...
+Legg til gruppe  ##  Add Group
+Slett gruppe  ##  Remove Group
+Legg til kontakt  ##  Add Contact
+Legg kontakt i gruppen  ##  Put contact to the group
+Kontakt JID  ##  Contact JID
+Kontakt Type  ##  Contact Type
+Synlig Navn  ##  Visible Name
+Endre kontaktnavn  ##  Rename contact
+Skriv inn nytt kontaktnavn  ##  Enter new contact name
+Innstillinger  ##  Settings
+< &Tilbake  ##  < &Back
+Logg Jabber kommunikasjon  ##  Log Jabber communication
+Logg socket kommunikasjon  ##  Log socket communication
+Logg raw funksjonsanrop (kan fort bli stor!)  ##  Log raw function calls (may grow quickly!)
+Slett raw log hver  ##  Delete raw log on each
+megabytes  ##  megabytes
+Logg påVPN kommunikasjon for P2P ved oppstart  ##  Log VPN communication on P2P startup
+Følgende meglere kan bli brukt  ##  Following mediators can be used
+Tillat at nye meglere blir lagt til  ##  Allow new mediators to be added
+Forskjellinge instillinger angående chattevinduet  ##  Various settings regarding chat window
+Tidsstempel på meldinger  ##  Timestamp messages
+Vis meldingshistorie  ##  Show message history
+Klengenavn  ##  Nickname
+Fornavn  ##  First name
+Etternavn  ##  Last name
+Email  ##  Email
+Noteringer  ##  Notes
+Adresse  ##  Address
+Adresse utstrakt  ##  Address Ext.
+By  ##  City
+Fylke  ##  State
+Postkode  ##  ZIP
+Land  ##  Country
+Bursdag  ##  Birthday
+Stemmetelefon  ##  Voice Tel.
+Fax  ##  Fax
+Tittel  ##  Title
+Firmanavn  ##  Company name
+Avdeling  ##  Department
+Tillat interfaces for direkte tilkobling  ##  Allowed interfaces for direct connection
+Tillat alle  ##  Allow All
+Klikk på første kolonne for å endre verdier  ##  Click on first column to change values
+Hvis du velger en 'ikke spesifisert' verdi, så blir samme verdi brukt i 'alle andre' innstillingen.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
+Følgende utseender ble funnet  ##  Following skin files are found
+Apply  ##  Apply
+For å legge til flere utseender kan du legge dem inn i 'Skin' mappa. Legg til en 100x100 PNG fil for forhåndsvisning.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
+&Flere utseender (Wippies utseende)  ##  &More skins...
+Sett til 'tilbake' ved aktivitet  ##  Set back when activity is detected again.
+Vent  ##  Wait
+minutter for bortemodus aktiveres (0 = deaktiver)  ##  minutes before going to away mode (0 = disable)
+minutter før forlenget bortmodus aktiveres (0 = deaktiver)  ##  minutes before going to extended away mode (0 = disable)
+minutter før avlogging (0 = deaktiver)  ##  minutes before disconnecting (0 = disable)
+Automatisk bortemelding  ##  Auto-Away message
+Forlenget-borte melding  ##  Extended-Away message
+Vis Wippien i verktøyslinjen  ##  Show Wippien in taskbar
+Omarranger skrivebordet når Wippien er stilt opp langs kanten  ##  Rearrange desktop when Wippien window is aligned to border
+Fest til skrivebordskanten  ##  Snap to desktop border
+Gjem automatisk hvis Wippien er inaktiv etter  ##  Auto hide if Wippien is inactive for
+Alltid på topp  ##  Always on top
+Bekreft avsluttelse av applikasjonen  ##  Confirm exit from application
+Logg av når maskinen går i dvale, logg på igjen når økten blir gjenopptatt  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
+Passordbeskyttet  ##  Password protect
+Bare innstillinger  ##  Settings only
+Alt  ##  Everything
+Innstillingsmappe (endring av verdi nedenfor krever restart)  ##  Settings folder (changing below value requires wippien restart)
+Kontaktliste iherdighet  ##  Contact list persistance
+Slett alle kontakter ved oppstart  ##  Delete all local contacts on startup
+Slett alle kontakter når tilkoblet  ##  Delete all local contacts on connect
+Kontakters autorisering  ##  Contacts subscription authorization
+Aldri autoriser  ##  Never authorize
+Spør meg  ##  Ask me
+Alltid autoriser  ##  Always authorize
+Automatisk etabler VPN på nettverkstrafikk  ##  Automatically establish VPN on network traffic
+Automatisk etabler VPN ved oppstart  ##  Automatically establish VPN on startup
+Fremgang  ##  Progress
+Aktiver stemmechat  ##  Enable voice chat
+Avspillingsapparat  ##  Playback device
+Lydopptager apparat  ##  Recording device
+Sjekk for oppdateringen når Wippien starter  ##  Check for updates when Wippien starts
+Sjekk for oppdateringen ved tilkobling  ##  Check for updates on Connect
+Sjekk for oppdateringen hver  ##  Check for updates each
+Oppdater og restart applikasjonen stille  ##  Update and restart application silently
+Vis systemmeldinger mottatt ved oppdatering  ##  Show system messages received from updater
+&Sjekk nå  ##  &Check now
+MTU innstillinger angir maksimum UDP pakker som kan bli sent til brukere. Hvis nettverket ditt har en lavere MTU verdi enn Wippien, er det mulig at brukere aldri mottar store pakker.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
+Bruk fikset MTU  ##  Use fixed MTU
+Finn MTU automatisk  ##  Auto-detect MTU
+(vil bli aktivert når kontakten pålogges)  ##  (will become effective as peers reconnect)
+Lyd (la dette feltet være blankt for forhåndsvalgt lyd)  ##  Sound (leave empty for default sound)
+&Spill  ##  &Play
+Programhendelser  ##  Program events
+Gjem ny kontakt  ##  Hide new contact
+Endre gjemt kontakt  ##  Unhide contact
+Gjemte kontakter  ##  Currently hidden contacts
+Alle kontakter oppført here vil *ALDRI* vises i Wippien.. De eksisterer ikke for deg lenger. På denne måten kan du ignorere folk fullstendig.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Skjul kontakt  ##  Hide contact
+Skriv inn kontakt JID  ##  Enter contact JID
+Tillat all trafikk  ##  Allow all traffic
+Blokker all trafikk  ##  Block all traffic
+&Legg til  ##  &Add
+&Fjern  ##  &Remove
+Grunnregel  ##  Default rule
+Avatar bilde  ##  Avatar picture
+Navn  ##  Name
+IP addresse  ##  IP address
+Status tekst  ##  Status text
+Siste pålogginstid  ##  Last online time
+Aktivitetsmonitor  ##  Activity Monitor
+Synlige detaljer  ##  Visible details
+Kontakters synlige detaljer  ##  Contact's visible details
+usortert  ##  unsorted
+etter navn  ##  By name
+Etter JID  ##  By JID
+etter IP (uten IP legges på bunn)  ##  by IP (without IP goes bottom)
+etter IP (uten IP legges på topp)  ##  by IP (without IP goes top)
+Sorter kontaktliste  ##  Sort contact list
+Klengenavn for chatterom  ##  Nickname for chatrooms
+Vis tilgjengelige rom på følgende gateways  ##  Show available rooms on following gateways
+Klikk ovenfor for å velge rom, eller skriv inn chatdetaljer nedenfor  ##  Click above to select room, or enter new chat room details below
+Romnavn å entre eller lage  ##  Room name to create or join
+Passord (blank om intet passord)  ##  Password (empty if none)
+Gateway  ##  Gateway
+Entre eller lag chatrom  ##  Join or Create room
+Block brukere ved oppstart  ##  Block users at startup
+Kopier IP  ##  &Copy IP
+Chat  ##  C&hat
+Pratechat  ##  &Voice Chat
+Sende Fil  ##  Send &File
+Sende Email  ##  Send E&mail
+&Blokker  ##  &Block
+&Bytt navn  ##  &Rename
+&Slett  ##  &Delete
+De&taljer  ##  De&tails
+Legg til/fjern kontoer  ##  Add/Remove &Accounts
+Legg til/fjern kontakter  ##  Add/Remove &Contacts
+&Online  ##  &Online
+&Away  ##  &Away
+Fri for &Chat  ##  Free for &Chat
+&Opptatt  ##  &Do not Disturb
+B&orte  ##  E&xtended Away
+&Usynlig  ##  &Invisible
+A&vlogget  ##  O&ffline
+Bytt &Bilde  ##  Change &Picture
+Bytt Pa&ssord  ##  Change Pa&ssword
+Dine &Detaljer  ##  Your &Details
+Skriv inn passfrase  ##  Enter Passphrase
+Skriv inn passord  ##  Enter password
+Vennligst skriv inn beskyttelsespassord  ##  Please enter protect password
+Languages  ##  Languages
+Innstallasjonsspråk  ##  Setup language used in all Wippien texts.
+Nye språk kan forekomme periodisk  ##  New languages may appear periodically.
+Følgende språk er tilgjengelige på maskinen  ##  Following languages are found as available on local computer
+&Forandre  ##  &Change
+Plassinnstillinger brukt på dataen  ##  Locale used on local computer
+Språk allerede i bruk  ##  Currently used language
+Forandringer vil endres etter behov. Restart Wippien for å se alle forandringer  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Nye språkfiler tilgjengelige. Laste ned?  ##  New language files available. Download?
+Vis pop-up bindu når kontakter pålogger/avlogger  ##  Show notification popup window when contact goes online/offline
+Kontakten skriver...  ##  Contact is typing...
+sier  ##  says
+sa  ##  said
+Du kan bruke din Gmail konto her  ##  You can use your GMAIL account here.
+Sett på/steng av stemmechat  ##  Toggle voice chat
+Lokal ekko  ##  Local echo
+UDP port 9913 opptatt  ##  UDP port 9913 busy
+Klarer ikke å lytte etter innkommende stemmechat  ##  Unable to listen for incoming voice chat
+Mikrofonfølsomhet  ##  Microphone sensitivity
+Snakk i mikrofonen og juster på kontrollen.Det skal ikke være noe bevegelse i den øvre aktivitetsmonitoren når du ikke snakker, men den skal bli fyllt når du snakker høyt.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Stemmechat ser ikke ut til å være innstilt. Du må konfigurere den først. Vil du gjøre det nå?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+har aktivert  ##  has enabled
+har deaktivert  ##  has disabled

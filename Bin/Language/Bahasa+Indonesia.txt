@@ -1,22 +1,22 @@
 # Bahasa+Indonesia translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Sumabek
-# Version: 123
+# Version: 215
 Tidak ditemukan kesalahan.  ##  No error.
 Sistem tidak dapat menemukan kesalahan yang dimaksud.  ##  The system cannot find the file specified.
 Sistem tidak dapat menemukan jalur yang dimaksud.  ##  The system cannot find the path specified.
-Sistem tidak dapat menemukan data/direktori yang dimaksud.  ##  The system cannot find the specified file/directory.
+Sistem tidak menemukan file atau direktori  ##  The system cannot find the specified file/directory.
 Tipe tidak sesuai  ##  Type mismatch.
 Tidak dapat menciptakan data/direktori apabila data/direktori tersebut sudah ada.  ##  Cannot create a file/directory when that file/directory already exists.
 Sistem tidak dapat menulis ke alat yang dimaksud.  ##  The system cannot write to the specified device.
 Nilai properti tidak valid.  ##  Invalid Property Value.
-Operasi dibatalkan, waktu yang ditentukan telah habis.  ##  This operation returned because the timeout period expired.
+  ##  This operation returned because the timeout period expired.
 Interupsi level sistem telah menginterupsi operasi soket.  ##  System level interrupt interrupted socket operation.
 Kesalahan generik untuk format yang tidak valid, format gagal.  ##  Generic error for invalid format, bad format.
-Sebuah usaha untuk mengakses sebuah soket dengan cara yang dilarang oleh ijin aksesnya telah dilakukan.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-System mendeteksi adanya kesalahan penunjukan alamat dalam penggunaan argumentasi panggilan.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+System mendeteksi adanya kesalahan penunjukan alamat lam gunaan argumentasi panggilan.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Kesalahan generik untuk format, masukan, dll yang tidak valid.  ##  Generic error for invalid format, entry, etc.
 Argumen tidak valid diberikan.  ##  An invalid argument was supplied.
-  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+IP Address salah atau host yang dituju oleh IP tidak ada  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Socket salah atau tidak terkoneksi ke jaringan.  ##  Invalid socket or not connected to remote.
 Alamat yang diberikan sudah terpakai.  ##  The specified address is already in use.
 Alamat yang dimaksud tidak tersedia.  ##  The specified address is not available.
@@ -28,70 +28,70 @@ Jalur Koneksi telah diperbaharui.  ##  The current socket connection has been re
 Jalur Koneksi tidak tersambung.  ##  The current socket has not been connected.
 Hubungan telah diputuskan.  ##  The connection has been shutdown.
 Koneksi yg sedang digunakan telah habis masa waktunya  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
+Koneksi yang diminta telah di tolak oleh Remote host  ##  The requested connection has been refused by the remote host.
 Nama host yang diberikan terlalu panjang  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
+Remote Host belum tersedia  ##  Remote host is currently unavailable.
+Remote host belum dapat dijangkau  ##  Remote host is currently unreachable.
+Sistem Remote belum siap  ##  Remote system is not ready.
+Jenis soket tidak didukung oleh aplikasi  ##  Current socket version not supported by application.
+Soket API belum dikenali  ##  Socket API is not initialized.
 Socket telah diputus  ##  Socket has been disconnected.
 Host tidak ditemukan  ##  Host not found.
-  ##  Not enough memory is available to complete this operation.
+Memory yang tersedia tidak mencukupi  ##  Not enough memory is available to complete this operation.
 Tipe pencarian tidak diketahui  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+Perintah tidak dikenal pada search method  ##  Unknown argument for Search method.
 siap dimulai  ##  Already started.
-  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
-Connection not established.  ##  Connection not established.
+Chanel telah dimulai  ##  Channel already started.
+Setingan chanel tidak bisa diubah saat chanel sedang aktif  ##  Cannot change channel setup while channel is started.
+Terlalu banyak data dalam soket, silahkan coba kembali  ##  Too much data on the socket. Try later.
+Koneksi tidak berhasil  ##  Connection not established.
 Tipe data tidak dikenal  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Tipe channel tidak dikenal  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-Channel cannot be started by local side.  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
-Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
-Channel was closed.  ##  Channel was closed.
+Local side tidak bisa membuat chanel  ##  Channel cannot be created by local side.
+Local side tidak bisa memulai Chanel  ##  Channel cannot be started by local side.
+Chanel dihetikan oleh Remote  ##  Channel refused by remote side.
+Versi remote protokol tidak mendukung.  ##  Unsupported remote protocol version.
+wodVPN belum aktif, silahkan aktifkan dulu  ##  wodVPN not yet started. Use Start first.
+Chanel telah ditutup  ##  Channel was closed.
 Ukuran MTU terlalu besar  ##  MTU size too large.
 Ukuran MTU terlalu kecil  ##  MTU size too small.
 Invalid socks request.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
-Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
+Password salah atau tidak cocok  ##  Invalid password. Does not match remote peer's password.
+Local ID belum di atur, hal ini diperlukan untuk Search method.  ##  Local ID not set. It is required for Search method.
+Remote ID belum di atur, hal ini diperlukan untuk Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+sudah/sedang menjalankan file transfer  ##  Already performing file transfer.
 File tidak ditemukan  ##  File not found.
 Gagal menulis file  ##  Failed to write file.
-Could not open network adapter.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
+tidak dapat membuka network adapter.  ##  Could not open network adapter.
+Hanya satu buah adapter saja yang dapat digunakan.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
+Error tidak dikenali.  ##  Unrecognized Error.
+tidak dapat terhubung, putuskan koneksi dulu.  ##  Cannot Connect at this time. Use Disconnect first.
 tidak bisa di eksekusi, sedang tidak tersambungkan  ##  Cannot execute, not yet connected.
 Komponen sibuk  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
 Hostname property not set.  ##  Hostname property not set.
 Login property not set.  ##  Login property not set.
 Password property not set.  ##  Password property not set.
-Invalid XML packet.  ##  Invalid XML packet.
+XML packet tidak Valid  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
-Invalid login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
+login tidak valid: %s.  ##  Invalid login: %s.
+Contact sudah ada  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
-Failed to import photo.  ##  Failed to import photo.
+Peringatan tidak diketahui  ##  Unknown notification.
+File tidak ditemukan  ##  File not found.
+Anda harus menetukan type foto (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+gagal mengimpor foto  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
-Invalid protocol data received.  ##  Invalid protocol data received.
-There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
-Contact not found.  ##  Contact not found.
+protokol data yang diterima tidak valid.  ##  Invalid protocol data received.
+Tidak ada file yang dikirim. Ukuran file = 0  ##  There's nothing to send. File size is 0.
+Contact tidak ditemukan  ##  Contact not found.
 pengiriman file gagal  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
+Tidak dapat menulis file.  ##  Could not write to file.
 Checksum of received file is invalid.  ##  Checksum of received file is invalid.
 Transfer aborted.  ##  Transfer aborted.
 Transfer has timed out.  ##  Transfer has timed out.
@@ -133,41 +133,41 @@ Network adapter disabled!  ##  Network adapter disabled!
 Network adapter opened  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
-Admin privilege required!  ##  Admin privilege required!
+Hak Admin dibutuhkan!  ##  Admin privilege required!
 Terputus  ##  Disconnected
 Tersambung  ##  Connected
 Tidak dapat mengirim pesan  ##  Could not deliver message.
 Perubahan Password gagal  ##  Failed to change password
-Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
+Putus karena tidak ada aktivitas (otomatis)  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
-Reconnect in %d seconds.  ##  Reconnect in %d seconds.
+Koneksi ulang dalam %d detik  ##  Reconnect in %d seconds.
 seconds  ##  seconds
-No network  ##  No network
-Exit Wippien  ##  Exit Wippien
+Tidak ada Jaringan  ##  No network
+Keluar dari Wippien  ##  Exit Wippien
 &Keluar  ##  E&xit
-Open settings  ##  Open settings
+Buka Setting  ##  Open settings
 &Settings  ##  &Settings
   ##  Show AboutBox
 &Tentang  ##  &About
 Ubah status Anda (Keluar, Tidak terlihat...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
+Tambah kontak dan account asing  ##  Add contacts and alien accounts
 Tidak bersuara  ##  Mute sound
-Open chat room  ##  Open chat room
+Buka chat room  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
-Really exit Wippien?  ##  Really exit Wippien?
+Yakin Keluar?  ##  Really exit Wippien?
 Apa kamu yakin?  ##  Are you sure?
 Password Anda telah berubah.  ##  Your password is now changed.
 Password telah berubah.  ##  Password changed
-Change account password  ##  Change account password
-Please enter new password  ##  Please enter new password
+Ubah Password.  ##  Change account password
+Silahkan masukkan Password baru.  ##  Please enter new password
 Mengidentitas  ##  Identity
-ID Card  ##  ID Card
-Home Address  ##  Home Address
-Work Address  ##  Work Address
-Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
-Delete history?  ##  Delete history?
+ID Card.  ##  ID Card
+Alamat Rumah  ##  Home Address
+Alamat Kantor  ##  Work Address
+Apakah anda yakin menghapus history?  ##  Are you sure you want to delete the history?
+Hapus history  ##  Delete history?
 Send  ##  Send
 Mengirim file  ##  Send file
 Details  ##  Details
@@ -182,11 +182,11 @@ Masukkan hyperlink  ##  Insert hyperlink
 Kurangi ukuran huruf  ##  Decrease font size
 Reset ukuran huruf  ##  Reset font size
 Tambah ukuran huruf  ##  Increase font size
-Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
+Set warna Foreground.  ##  Set Foreground color
+Set warna Background.  ##  Set Background color
 Emoticons  ##  Emoticons
-New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
-New emoticons  ##  New emoticons
+Emoticon baru akan didownload dan diinstall, setujukah?  ##  New emoticons will be downloaded and installed. Proceed?
+emoticons baru.  ##  New emoticons
 You can now click again on emoticon button to see new installed emoticons.  ##  You can now click again on emoticon button to see new installed emoticons.
 Done!  ##  Done!
 Contact  ##  Contact
@@ -199,11 +199,11 @@ Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
 allow  ##  allow
 deny  ##  deny
-not specified  ##  not specified
+tidak dispesifikasi  ##  not specified
 &Finish  ##  &Finish
-&Next >  ##  &Next >
+&Next >.  ##  &Next >
 Identity  ##  Identity
-Please choose your logon information.  ##  Please choose your logon information.
+Silahkan pilih Informasi login anda  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
@@ -214,7 +214,7 @@ Icon  ##  Icon
 Silahkan pilih icon anda.  ##  Please choose your icon.
 Ini biasanya terlihat di kontak anda.  ##  This is usually visible to your contacts.
 Network  ##  Network
-Please choose your IP address and netmask.  ##  Please choose your IP address and netmask.
+silahkan pilih alamat IP dan Netmask  ##  Please choose your IP address and netmask.
 This defines network range to be used by wippien.  ##  This defines network range to be used by wippien.
 Network  ##  Network
 Mediator  ##  Mediator
@@ -230,11 +230,11 @@ You can add any of accounts supported by your Jabber server (typically ICQ, MSN,
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
 Hapus akun terdaftar?  ##  Delete registered account?
 Accounts  ##  Accounts
-Show only gateways  ##  Show only gateways
-Show all services  ##  Show all services
+Hanya Tampilkan gateway  ##  Show only gateways
+Tampilkan semua servis  ##  Show all services
 Contacts  ##  Contacts
 Add/Remove  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
+Menemukan contact baru  ##  Find new contacts.
 You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
 All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
@@ -248,29 +248,29 @@ For all open chat windows.  ##  For all open chat windows.
 Informasi umum  ##  General info
 Informasi umum tentang  ##  General information about
 Informasi personal  ##  Personal information
-Home details for  ##  Home details for
+Home details untuk  ##  Home details for
 Informasi bisnis  ##  Business information
-Work details for  ##  Work details for
-all other  ##  all other
-address given by mediator  ##  address given by mediator
+Work details untuk  ##  Work details for
+yang lainnya  ##  all other
+Addres diset oleh mediator  ##  address given by mediator
 Appearance  ##  Appearance
 Skins  ##  Skins
-Choose skin from below list.  ##  Choose skin from below list.
+Pilih Skin dibawah ini  ##  Choose skin from below list.
 What will Wippien wear?  ##  What will Wippien wear?
-.. none ..  ##  .. none ..
-Auto Away  ##  Auto Away
-Auto away settings.  ##  Auto away settings.
+.. tidak ada ..  ##  .. none ..
+Kabur otomatis  ##  Auto Away
+Kabur otomatis setting  ##  Auto away settings.
 Determines how will Wippien behave when system is inactive.  ##  Determines how will Wippien behave when system is inactive.
-System  ##  System
-Basic system messages.  ##  Basic system messages.
+Sistem  ##  System
+pesan dasar  ##  Basic system messages.
 Define Wippien application's behavior.  ##  Define Wippien application's behavior.
-Voice Chat  ##  Voice Chat
+Chat SUara  ##  Voice Chat
 Please setup your voice chat devices.  ##  Please setup your voice chat devices.
 Choose from list below.  ##  Choose from list below.
-<system default>  ##  <system default>
-Contacts basic settings.  ##  Contacts basic settings.
+<sistem umum>  ##  <system default>
+Contacts dasar setting  ##  Contacts basic settings.
 Updates  ##  Updates
-Update definitions.  ##  Update definitions.
+Update definisi  ##  Update definitions.
 Define when and how will Wippien update itself.  ##  Define when and how will Wippien update itself.
 MTU  ##  MTU
 Please determine maximum transfer unit.  ##  Please determine maximum transfer unit.
@@ -291,7 +291,7 @@ Appearance  ##  Appearance
 Appearance settings.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Sort  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
+urutkan contact  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
   ##  Browse or create chat rooms. (STILL IN BETA!!)
@@ -418,7 +418,7 @@ Birthday  ##  Birthday
 Voice Tel.  ##  Voice Tel.
 Fax  ##  Fax
 Title  ##  Title
-Company name  ##  Company name
+Nama Perusahaan  ##  Company name
 Department  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
 Allow All  ##  Allow All
@@ -429,7 +429,7 @@ Apply  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
   ##  Set back when activity is detected again.
-Wait  ##  Wait
+Tunggu  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)
 minutes before disconnecting (0 = disable)  ##  minutes before disconnecting (0 = disable)
@@ -444,7 +444,7 @@ Confirm exit from application  ##  Confirm exit from application
 Disconnect on computer Sleep/Hibernate, Connect on Resume  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Password protect  ##  Password protect
 Settings only  ##  Settings only
-Everything  ##  Everything
+Semuanya  ##  Everything
 Settings folder (changing below value requires wippien restart)  ##  Settings folder (changing below value requires wippien restart)
 Contact list persistance  ##  Contact list persistance
 Delete all local contacts on startup  ##  Delete all local contacts on startup

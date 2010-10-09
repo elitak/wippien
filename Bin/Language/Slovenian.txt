@@ -1,6 +1,6 @@
 # Slovenian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: _black_cell_
-# Version: 192
+# Version: 265
 Ni napak.  ##  No error.
 Sistem ne more najti iskane datoteke.  ##  The system cannot find the file specified.
 Sistem ne najde iskane poti.  ##  The system cannot find the path specified.
@@ -13,10 +13,10 @@ Operacija je bila preklicana ker je čas čakanja potekel.  ##  This operation r
 Sistem moti vtičnico operacijo.  ##  System level interrupt interrupted socket operation.
 Osnovna napaka za napačen format, neveljaven format.  ##  Generic error for invalid format, bad format.
 Poskušen je bil dostop do vtičnice na način, ki jih ta prepoveduje  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-System je zaznal napačen kazalni naslov  v poskusu uporabe kazalnega argumenta v klicu.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Sistem je zaznal neveljaven kazalec na naslov v poskusu uporabe argumenta kazalca v klicu.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Generična napaka za neveljaven format, vnos, itd  ##  Generic error for invalid format, entry, etc.
+Podan je bil neveljavni argument.  ##  An invalid argument was supplied.
+Vnešen IP naslov ni veljaven ali gostitelj z tem IP naslovom ne obstaja.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
 The specified address is already in use.  ##  The specified address is already in use.
 The specified address is not available.  ##  The specified address is not available.
@@ -63,7 +63,7 @@ Local ID not set. It is required for Search method.  ##  Local ID not set. It is
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Already performing file transfer.  ##  Already performing file transfer.
-File not found.  ##  File not found.
+Ne najdem datoteke  ##  File not found.
 Failed to write file.  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
@@ -83,7 +83,7 @@ Contact already exists in the collection.  ##  Contact already exists in the col
 SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Unknown notification.  ##  Unknown notification.
-File not found.  ##  File not found.
+Ne najdem datoteke.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Failed to import photo.  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
@@ -101,7 +101,7 @@ Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name
 Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
-Date not set.  ##  Date not set.
+Datum ni nastavljen.  ##  Date not set.
   ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
@@ -110,9 +110,9 @@ Opozorilo  ##  Warning
 Nedosegljiv  ##  Offline
 Dosegljiv  ##  Online
 Odstoten  ##  Away
-Free for chat  ##  Free for chat
-Do not disturb  ##  Do not disturb
-Extended away  ##  Extended away
+Prost za pogovor  ##  Free for chat
+Ne moti  ##  Do not disturb
+Dolgo odsoten  ##  Extended away
 Neviden  ##  Invisible
 Asking for subscription  ##  Asking for subscription
 Contact not subscribed  ##  Contact not subscribed
@@ -129,7 +129,7 @@ Disconnecting from the server  ##  Disconnecting from the server
 Requested authorization  ##  Requested authorization
 Configuring Wippien network adapter...  ##  Configuring Wippien network adapter...
 Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
-Network adapter disabled!  ##  Network adapter disabled!
+  ##  Network adapter disabled!
 Network adapter opened  ##  Network adapter opened
 Wippien network adapter not available. Proceed with IM only?  ##  Wippien network adapter not available. Proceed with IM only?
 Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.  ##  Wippien must set up adapter IP address using external tool - and requires administrative privileges. Please run Wippien at least once as administrator in order to obtain enough permissions.
@@ -173,17 +173,17 @@ Pošlji datoteko  ##  Send file
 Podrobnosti  ##  Details
 Contact information  ##  Contact information
 Počisti  ##  Clear
-Clear history  ##  Clear history
+Počisti zgodovino  ##  Clear history
 Nemo  ##  Mute
 Bold  ##  Bold
 Italic  ##  Italic
 Podčrtaj  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
+Vstavi povezavo  ##  Insert hyperlink
 Zmanjšaj velikost pisave  ##  Decrease font size
 Ponastavi velokost pisave  ##  Reset font size
 Povečaj velikost pisave  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
-Set Background color  ##  Set Background color
+Nastabi barvo ozadja  ##  Set Background color
 Smeški  ##  Emoticons
 New emoticons will be downloaded and installed. Proceed?  ##  New emoticons will be downloaded and installed. Proceed?
 Novi smeški  ##  New emoticons
@@ -209,7 +209,7 @@ JID should contain server name, formatted like user@server.com  ##  JID should c
 Invalid logon details  ##  Invalid logon details
 You must enter your JID.  ##  You must enter your JID.
 Vnesti moraš vaše geslo  ##  You must enter your password.
-Jabber error  ##  Jabber error
+Jabber napaka  ##  Jabber error
 Ikona  ##  Icon
 Prosim izberite svojo ikono  ##  Please choose your icon.
 This is usually visible to your contacts.  ##  This is usually visible to your contacts.
@@ -396,7 +396,7 @@ Log Jabber communication  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
 Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
 Delete raw log on each  ##  Delete raw log on each
-megabajtov  ##  megabytes
+megabajti (MB)  ##  megabytes
 Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 Following mediators can be used  ##  Following mediators can be used
 Allow new mediators to be added  ##  Allow new mediators to be added
@@ -404,12 +404,12 @@ Various settings regarding chat window  ##  Various settings regarding chat wind
 Timestamp messages  ##  Timestamp messages
 Show message history  ##  Show message history
 Vzdevek  ##  Nickname
-First name  ##  First name
-Last name  ##  Last name
+Ime  ##  First name
+Priimek  ##  Last name
 Epošta  ##  Email
 Notes  ##  Notes
 Naslov  ##  Address
-Address Ext.  ##  Address Ext.
+Naslov dodatno  ##  Address Ext.
 Mesto  ##  City
 State  ##  State
 Poštna številka  ##  ZIP
@@ -421,7 +421,7 @@ Poklic  ##  Title
 Ime podjetja  ##  Company name
 Oddelek  ##  Department
 Allowed interfaces for direct connection  ##  Allowed interfaces for direct connection
-Allow All  ##  Allow All
+Dovoli vse  ##  Allow All
 Click on first column to change values  ##  Click on first column to change values
 If you choose 'not specified' value, then same value is used as in 'all other' setting.  ##  If you choose 'not specified' value, then same value is used as in 'all other' setting.
 Following skin files are found  ##  Following skin files are found
@@ -466,41 +466,41 @@ Update and restart application silently  ##  Update and restart application sile
 Show system messages received from updater  ##  Show system messages received from updater
 &Check now  ##  &Check now
 MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.  ##  MTU setting defines maximum UDP packet that can be sent to peers. If your network connection has lower MTU value than wippien, it is possible that peer never receives large packets.
-Use fixed MTU  ##  Use fixed MTU
-Auto-detect MTU  ##  Auto-detect MTU
-(will become effective as peers reconnect)  ##  (will become effective as peers reconnect)
-Sound (leave empty for default sound)  ##  Sound (leave empty for default sound)
+Uporabi fiksen MTU  ##  Use fixed MTU
+Avtomatsko zaznaj MTU  ##  Auto-detect MTU
+(bo postalo veljano ko se soležnik ponovno poveže)  ##  (will become effective as peers reconnect)
+Zvok(pusti prazno za privzeti zvok)  ##  Sound (leave empty for default sound)
 &Igraj  ##  &Play
-Program events  ##  Program events
-Hide new contact  ##  Hide new contact
-Unhide contact  ##  Unhide contact
-Currently hidden contacts  ##  Currently hidden contacts
-All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
-Hide contact  ##  Hide contact
-Enter contact JID  ##  Enter contact JID
-Allow all traffic  ##  Allow all traffic
-Block all traffic  ##  Block all traffic
+Dogodki programa  ##  Program events
+Skrij novi stik  ##  Hide new contact
+Naj stik postane viden  ##  Unhide contact
+Trenutno skriti stiki  ##  Currently hidden contacts
+Vsi stiki, ki so tukaj našteti se* NIKOLI* ne pojavijo v Wippienu .. Za tebe več ne obstajajo. Na ta način lahko ljudje popolnoma ignorirate.  ##  All contacts listed here *NEVER* appear in Wippien.. They don't exist for you anymore. This way you can ignore people completely.
+Skrij stik  ##  Hide contact
+Vnesi JID stika  ##  Enter contact JID
+Dovoli ves promet  ##  Allow all traffic
+Blokiraj ves promet  ##  Block all traffic
 &Dodaj  ##  &Add
 &Odstrani  ##  &Remove
-Default rule  ##  Default rule
-Avatar picture  ##  Avatar picture
+Privzeto pravilo  ##  Default rule
+Slika avatarja  ##  Avatar picture
 Ime  ##  Name
-IP address  ##  IP address
-Status text  ##  Status text
-Last online time  ##  Last online time
-Activity Monitor  ##  Activity Monitor
-Visible details  ##  Visible details
-Contact's visible details  ##  Contact's visible details
+IP naslov  ##  IP address
+Statusni tekst  ##  Status text
+Čas od zadnje prijave  ##  Last online time
+Nadzor aktivnosti  ##  Activity Monitor
+Prikazane podrobnosti  ##  Visible details
+Prikazane pobrobnosti stika  ##  Contact's visible details
 nesortirano  ##  unsorted
-By name  ##  By name
-By JID  ##  By JID
-by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
-by IP (without IP goes top)  ##  by IP (without IP goes top)
-Sort contact list  ##  Sort contact list
-Nickname for chatrooms  ##  Nickname for chatrooms
-Show available rooms on following gateways  ##  Show available rooms on following gateways
-Click above to select room, or enter new chat room details below  ##  Click above to select room, or enter new chat room details below
-Room name to create or join  ##  Room name to create or join
+Po imenu  ##  By name
+Po JID  ##  By JID
+Po IP naslovu (zadetki brez IP naslova na dnu)  ##  by IP (without IP goes bottom)
+Po IP naslovu(zadetki brez IP naslova na vrhu)  ##  by IP (without IP goes top)
+Sortiraj list kontaktov  ##  Sort contact list
+Vzdevek za klepetalnico  ##  Nickname for chatrooms
+Prikaži sobe ki no na voljo na naslednjih prehodih  ##  Show available rooms on following gateways
+Kliknite zgoraj da izberete sobo ali vnesite podrobnosti nove klepetalnice spodaj  ##  Click above to select room, or enter new chat room details below
+Ime sobe ki jo želite ustvariti oziroma se ji pridružiti  ##  Room name to create or join
 Geslo (prazno če brez)  ##  Password (empty if none)
 Gateway  ##  Gateway
 Pridruži ali ustvari prostor  ##  Join or Create room
@@ -533,7 +533,7 @@ Languages  ##  Languages
 Namestitveni jezik, ki ga Wippien uporablja v vseh besedilih.  ##  Setup language used in all Wippien texts.
 Novi jeziki se lahko pojavijo občasno.  ##  New languages may appear periodically.
 Sledeči jeziki so bili najdeni v lokalnem računalniku.  ##  Following languages are found as available on local computer
-&Change  ##  &Change
+&Spremeni  ##  &Change
 Lacale se uporablja na lokalnem računalniku  ##  Locale used on local computer
 Trenuten jezik v uporabi  ##  Currently used language
 Spremembe bodo po potrebi začele veljati po ponovnem zagonu programa.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
@@ -543,12 +543,12 @@ Stik piše...  ##  Contact is typing...
 pravi  ##  says
 je rekel  ##  said
 Tukaj lahko uporabite vaš GMAIL račun.  ##  You can use your GMAIL account here.
-  ##  Toggle voice chat
-  ##  Local echo
-  ##  UDP port 9913 busy
-  ##  Unable to listen for incoming voice chat
-  ##  Microphone sensitivity
-  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
-  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+Aktiviraj zvočni pogovor  ##  Toggle voice chat
+Lokalni odmev  ##  Local echo
+UDP vrata  9913  so zasedena  ##  UDP port 9913 busy
+Ni mogoče poslušati za prihajajoči klepet  ##  Unable to listen for incoming voice chat
+Občutljivost mikrofona  ##  Microphone sensitivity
+Govorite v mikrofon in prilagodite drsnik. Ko ne govorite v zgornjem monitoru ne sme biti nobene aktivnosti,ko pa govorite glasno mora biti aktivnost na polno.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
+Glasovni klepet ni vzpostavljen. Pred prvo uporabo ga skonfigurirajte. Želite to storiti sedaj?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
+je omogočil  ##  has enabled
+je onemogočil  ##  has disabled

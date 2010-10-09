@@ -1,75 +1,75 @@
 # Danish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Darkeydence
-# Version: 81
+# Version: 197
 Ingen fejl.  ##  No error.
 Systemet kan ikke finde den specificerede fil.  ##  The system cannot find the file specified.
 Systemet kan ikke finde den specificerede sti.  ##  The system cannot find the path specified.
 Systemet kan ikke finde den specificerede fil/sti.  ##  The system cannot find the specified file/directory.
   ##  Type mismatch.
-  ##  Cannot create a file/directory when that file/directory already exists.
-  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
-This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+Kan ikke oprette en fil / mappe, når den pågældende fil / mappe allerede eksisterer.  ##  Cannot create a file/directory when that file/directory already exists.
+Systemet kan ikke skrive til den angivne enhed.  ##  The system cannot write to the specified device.
+Ugyldig Ejendom Værdi  ##  Invalid Property Value.
+Denne operation tilbage, fordi timeout udløb.  ##  This operation returned because the timeout period expired.
+System niveau afbryder afbrydes socket operation  ##  System level interrupt interrupted socket operation.
+Generisk fejl for ugyldigt format, dårlig format  ##  Generic error for invalid format, bad format.
+Et forsøg blev gjort for at få adgang til en stikkontakt på en måde forbudt ved sin adgangstilladelser  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Systemet opdaget en ugyldig pointer adresse i forsøget på at bruge en pegepind argument i et opkald  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Generisk fejl for ugyldigt format, indrejse, etc  ##  Generic error for invalid format, entry, etc.
+Et ugyldigt argument var leveret.  ##  An invalid argument was supplied.
+IP-adresse, er ikke gyldig eller værten angivet af IP eksisterer ikke.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Ugyldig socket eller ikke er forbundet med fjernbetjening.  ##  Invalid socket or not connected to remote.
 Den angivne adresse er allerede i brug.  ##  The specified address is already in use.
-The specified address is not available.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
-The connected network connection has been reset.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
-The current socket connection has been reset.  ##  The current socket connection has been reset.
-The current socket has not been connected.  ##  The current socket has not been connected.
-The connection has been shutdown.  ##  The connection has been shutdown.
-The current connection has timeout.  ##  The current connection has timeout.
-The requested connection has been refused by the remote host.  ##  The requested connection has been refused by the remote host.
-Specified host name is too long.  ##  Specified host name is too long.
-Remote host is currently unavailable.  ##  Remote host is currently unavailable.
-Remote host is currently unreachable.  ##  Remote host is currently unreachable.
-Remote system is not ready.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
-Socket API is not initialized.  ##  Socket API is not initialized.
-Socket has been disconnected.  ##  Socket has been disconnected.
-Vært ikke fundet.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
+Den angivne adresse er ikke tilgængelig.  ##  The specified address is not available.
+Den tilsluttede netværk er ikke tilgængelig.  ##  The connected network is not available.
+Den tilsluttede netværk er ikke tilgængelig.  ##  The connected network is not reachable.
+Den tilsluttede netværksforbindelse er blevet nulstillet.  ##  The connected network connection has been reset.
+Den nuværende forbindelse er blevet afbrudt af netværket eller mellemliggende tjenester.  ##  The current connection has been aborted by the network or intermediate services.
+Den nuværende fatning er blevet nulstillet.  ##  The current socket connection has been reset.
+Den nuværende sokkel er ikke tilsluttet.  ##  The current socket has not been connected.
+Forbindelsen har været lukning.  ##  The connection has been shutdown.
+Den nuværende forbindelse har timeout.  ##  The current connection has timeout.
+Den anmodede forbindelse er blevet afvist af fjernvært.  ##  The requested connection has been refused by the remote host.
+Specificeret værtsnavn er for langt.  ##  Specified host name is too long.
+Remote host er ikke tilgængelig i øjeblikket.  ##  Remote host is currently unavailable.
+Remote host er i øjeblikket ikke tilgængelig.  ##  Remote host is currently unreachable.
+Remote system ikke er klar.  ##  Remote system is not ready.
+Nuværende socket version understøttes ikke af ansøgningen.  ##  Current socket version not supported by application.
+Socket API er ikke initialiseret.  ##  Socket API is not initialized.
+Socket er blevet afbrudt.  ##  Socket has been disconnected.
+  ##  Host not found.
+Der er ikke tilstrækkelig hukommelse til at fuldføre denne operation.  ##  Not enough memory is available to complete this operation.
 Ukendt søge type  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+Ukendt argument for Search-metoden.  ##  Unknown argument for Search method.
 Allerede started.  ##  Already started.
 Kanal allerede started  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
-Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
+Kan ikke skifte kanal setup mens kanal er startet.  ##  Cannot change channel setup while channel is started.
+For meget data på sokkel. Prøv senere.  ##  Too much data on the socket. Try later.
 Forbindelse ikke etableret.  ##  Connection not established.
 Ukendt data type.  ##  Unknown data type.
-  ##  Failed to create socket thread.
-Unknown channel type.  ##  Unknown channel type.
-  ##  Invalid argument was supplied in LocalAddress property.
-Channel cannot be created by local side.  ##  Channel cannot be created by local side.
-  ##  Channel cannot be started by local side.
-Channel refused by remote side.  ##  Channel refused by remote side.
+Kunne ikke oprette sokkel tråd.  ##  Failed to create socket thread.
+Ukendt kanal type.  ##  Unknown channel type.
+Invalid argument blev leveret i LocalAddress ejendom.  ##  Invalid argument was supplied in LocalAddress property.
+Kanal ikke kan skabes af lokale side.  ##  Channel cannot be created by local side.
+Kanal ikke kan startes ved lokale side.  ##  Channel cannot be started by local side.
+Kanal afvist af fjernbetjening side.  ##  Channel refused by remote side.
 Ikke understøttet  fjern protokol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
+wodVPN endnu ikke startet. Brug Start først.  ##  wodVPN not yet started. Use Start first.
 Kanalen blev lukket.  ##  Channel was closed.
 MTU størrelse for stor.  ##  MTU size too large.
-MTU size too small.  ##  MTU size too small.
+MTU-størrelsen er for lille.  ##  MTU size too small.
 Invalid socks request.  ##  Invalid socks request.
 Ugyldigt kodeord. Stemmer ikke overens med fjern peer's kodeord.  ##  Invalid password. Does not match remote peer's password.
-Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
+  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
 Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
 Udfører allerede filoverførsel.  ##  Already performing file transfer.
 Fil ikke fundet.  ##  File not found.
-Failed to write file.  ##  Failed to write file.
+  ##  Failed to write file.
 Could not open network adapter.  ##  Could not open network adapter.
 Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
 License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
-Unrecognized Error.  ##  Unrecognized Error.
-Cannot Connect at this time. Use Disconnect first.  ##  Cannot Connect at this time. Use Disconnect first.
+  ##  Unrecognized Error.
+  ##  Cannot Connect at this time. Use Disconnect first.
 Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
 Component busy.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
@@ -79,14 +79,14 @@ Password property not set.  ##  Password property not set.
 Ugyldig XML pakke.  ##  Invalid XML packet.
 Invalid XML packet sequence ID.  ##  Invalid XML packet sequence ID.
 Ugyldig login: %s.  ##  Invalid login: %s.
-Contact already exists in the collection.  ##  Contact already exists in the collection.
+  ##  Contact already exists in the collection.
 SSL could not be negotiated.  ##  SSL could not be negotiated.
-  ##  Failed to register new user: %s.
-Unknown notification.  ##  Unknown notification.
+Failed to register new user: %s.sassassasa  ##  Failed to register new user: %s.
+  ##  Unknown notification.
 Filen blev ikke fundet.  ##  File not found.
 You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Failed to import photo.  ##  Failed to import photo.
-Another blocking method in progress.  ##  Another blocking method in progress.
+  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 There's nothing to send. File size is 0.  ##  There's nothing to send. File size is 0.
 Contact not found.  ##  Contact not found.
@@ -102,16 +102,16 @@ Method was cancelled.  ##  Method was cancelled.
 Failed to start updater program.  ##  Failed to start updater program.
 Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
 Date not set.  ##  Date not set.
-Failed to register COM server.  ##  Failed to register COM server.
+  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
 Invalid file size after download.  ##  Invalid file size after download.
 Invalid MD5 checksum after download.  ##  Invalid MD5 checksum after download.
 Advarsel  ##  Warning
 Offline  ##  Offline
 Online  ##  Online
-Ikke til stede.  ##  Away
+  ##  Away
 Free for chat  ##  Free for chat
-Vil ikke forstyres  ##  Do not disturb
+  ##  Do not disturb
 Extended away  ##  Extended away
 Usynlig  ##  Invisible
 Asking for subscription  ##  Asking for subscription
@@ -122,7 +122,7 @@ Registering new user  ##  Registering new user
 Initializing secure connection  ##  Initializing secure connection
 Sending authentication data  ##  Sending authentication data
 Connected to server  ##  Connected to server
-Receiving data from server  ##  Receiving data from server
+  ##  Receiving data from server
 Sender Data til server  ##  Sending data to server
 Executing command on server  ##  Executing command on server
 Disconnecting from the server  ##  Disconnecting from the server
@@ -142,34 +142,34 @@ Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
 << VPN not established yet >>  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
-seconds  ##  seconds
-No network  ##  No network
-Exit Wippien  ##  Exit Wippien
+sekunder  ##  seconds
+Intet netværk.  ##  No network
+Luk Wippien  ##  Exit Wippien
 E&xit  ##  E&xit
-Open settings  ##  Open settings
+Åben indstillinger  ##  Open settings
 &Settings  ##  &Settings
 Show AboutBox  ##  Show AboutBox
 &About  ##  &About
 Set your status (Away,Invisible...)  ##  Set your status (Away,Invisible...)
 Add contacts and alien accounts  ##  Add contacts and alien accounts
-Mute sound  ##  Mute sound
+Dæmp lyden  ##  Mute sound
 Open chat room  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
 Idle  ##  Idle
 Really exit Wippien?  ##  Really exit Wippien?
-Are you sure?  ##  Are you sure?
-Your password is now changed.  ##  Your password is now changed.
-Password changed  ##  Password changed
+Er du sikker?  ##  Are you sure?
+Din adgangskode er nu ændret.  ##  Your password is now changed.
+Adgangskode ændret.  ##  Password changed
 Change account password  ##  Change account password
 Please enter new password  ##  Please enter new password
 Identity  ##  Identity
 ID Card  ##  ID Card
-Home Address  ##  Home Address
+Hjemmeadresse  ##  Home Address
 Work Address  ##  Work Address
 Are you sure you want to delete the history?  ##  Are you sure you want to delete the history?
 Delete history?  ##  Delete history?
 Send  ##  Send
-Send file  ##  Send file
+Send fil  ##  Send file
 Details  ##  Details
 Kontakt information  ##  Contact information
 Ryd  ##  Clear
@@ -178,10 +178,10 @@ Mute  ##  Mute
 Fed  ##  Bold
 Kursiv  ##  Italic
 Understreget  ##  Underline
-Insert hyperlink  ##  Insert hyperlink
+Indsæt hyperlink  ##  Insert hyperlink
 Decrease font size  ##  Decrease font size
 Reset font size  ##  Reset font size
-Increase font size  ##  Increase font size
+Forøg skriftstørrelse  ##  Increase font size
 Set Foreground color  ##  Set Foreground color
 Set Background color  ##  Set Background color
 Emoticons  ##  Emoticons
@@ -193,10 +193,10 @@ Contact  ##  Contact
 Connecting  ##  Connecting
 Requesting  ##  Requesting
 Downloading  ##  Downloading
-Configuration file  ##  Configuration file
+Konfigurationsfil  ##  Configuration file
 General  ##  General
 Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
+  ##  Away for a loooong time.
 Tillad  ##  allow
 Afvis  ##  deny
 not specified  ##  not specified
@@ -220,7 +220,7 @@ Network  ##  Network
 Mediator  ##  Mediator
 Please choose who will be your mediator.  ##  Please choose who will be your mediator.
 This defines people that mediate P2P connections.  ##  This defines people that mediate P2P connections.
-Last check  ##  Last check
+Sidste tjek  ##  Last check
 Port  ##  Port
 Hostname  ##  Hostname
 Permanent  ##  Permanent
@@ -228,14 +228,14 @@ Temporary  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
 Are you sure you want to delete account '%s'?  ##  Are you sure you want to delete account '%s'?
-Delete registered account?  ##  Delete registered account?
+Slet registreret konto?  ##  Delete registered account?
 Accounts  ##  Accounts
 Show only gateways  ##  Show only gateways
 Show all services  ##  Show all services
 Contacts  ##  Contacts
 Tilføj/Fjern  ##  Add/Remove
-Find new contacts.  ##  Find new contacts.
-You can add new Jabber, ICQ, MSN... contacts  ##  You can add new Jabber, ICQ, MSN... contacts
+Find nye kontakter.  ##  Find new contacts.
+Duu kan tilføje nye Jabber, ICQ, MSN... kontakter  ##  You can add new Jabber, ICQ, MSN... contacts
 Alle filtyper (*.*)\0*\0TXT filer (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Alle billede filer (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg filer (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF filer (*.gif)\0*.gif\0PNG filer (*.png)\0*.png\0Alle Filer (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 System  ##  System
@@ -247,11 +247,11 @@ Chat window settings.  ##  Chat window settings.
 For all open chat windows.  ##  For all open chat windows.
 General info  ##  General info
 General information about  ##  General information about
-Personal information  ##  Personal information
+Personlig information  ##  Personal information
 Home details for  ##  Home details for
 Business information  ##  Business information
 Work details for  ##  Work details for
-all other  ##  all other
+alle andre  ##  all other
 address given by mediator  ##  address given by mediator
 Udseende  ##  Appearance
 Skins  ##  Skins
@@ -278,27 +278,27 @@ If some peer doesn't respond to large packets...  ##  If some peer doesn't respo
 Lyde  ##  Sounds
 Setup sounds to be played on various events.  ##  Setup sounds to be played on various events.
 Choose internal ones, or browse for WAV files.  ##  Choose internal ones, or browse for WAV files.
-Contact online  ##  Contact online
-Contact offline  ##  Contact offline
+Kontakt online  ##  Contact online
+Kontakt offline  ##  Contact offline
 Message in  ##  Message in
 Message out  ##  Message out
 Fejl  ##  Error
 WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0  ##  WAV files (*.wav)\0*.wav\0All Files (*.*)\0*\0\0
 Skjul  ##  Hide
-Hide contacts.  ##  Hide contacts.
+Skjul kontakter  ##  Hide contacts.
 You can hide some contacts from your sight.  ##  You can hide some contacts from your sight.
 Appearance  ##  Appearance
 Appearance settings.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Sort  ##  Sort
-Sorts contacts.  ##  Sorts contacts.
+Sorterer kontakter.  ##  Sorts contacts.
 Pick one of sort options.  ##  Pick one of sort options.
 ChatRoom  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
 - All gateways -  ##  - All gateways -
 Service gateway  ##  Service gateway
-Room name  ##  Room name
+Rumnavn  ##  Room name
 Firewall  ##  Firewall
 Set up firewall rules.  ##  Set up firewall rules.
 You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
@@ -306,39 +306,39 @@ You can set up which ports can be accessed by your contacts.  ##  You can set up
 But block these ports  ##  But block these ports
 But allow these ports  ##  But allow these ports
 Wippien update  ##  Wippien update
-New version of Wippien is available. Download?  ##  New version of Wippien is available. Download?
+En ny version af Wippien er tilgængelig. Download?  ##  New version of Wippien is available. Download?
 Click here to see what's new.  ##  Click here to see what's new.
 Your version of Wippien is up-to-date.  ##  Your version of Wippien is up-to-date.
 Error connecting to remote server.  ##  Error connecting to remote server.
 Download successful. Replace now?  ##  Download successful. Replace now?
 Wippien update error!  ##  Wippien update error!
 New version of Wippien found localy. Replace?  ##  New version of Wippien found localy. Replace?
-New version  ##  New version
-Status changed:  ##  Status changed:
+Ny version  ##  New version
+Status ændret:  ##  Status changed:
 dag  ##  day
 dage  ##  days
 time  ##  hour
 timer  ##  hours
 minut  ##  minute
 minuter  ##  minutes
-Last seen: never  ##  Last seen: never
+Sidst set: aldrig  ##  Last seen: never
 is currently offline  ##  is currently offline
-is now offline  ##  is now offline
-is now online  ##  is now online
-is blocked  ##  is blocked
-is offline  ##  is offline
+er nu offline  ##  is now offline
+er nu online  ##  is now online
+er blokeret  ##  is blocked
+er offline  ##  is offline
 Afbloker  ##  Unblock
 Bloker  ##  Block
-Are you sure you want to remove group %s  ##  Are you sure you want to remove group %s
-Remove group?  ##  Remove group?
-Are you sure you want to remove contact %s  ##  Are you sure you want to remove contact %s
-Remove contact?  ##  Remove contact?
+Er du sikker på at du vil slette gruppe %s  ##  Are you sure you want to remove group %s
+Slet gruppe?  ##  Remove group?
+Er du sikker på at du vil slette kontakt %s  ##  Are you sure you want to remove contact %s
+Slet kontakt?  ##  Remove contact?
 Adapter error  ##  Adapter error
-Rename group  ##  Rename group
-Enter new group name  ##  Enter new group name
+Omdøb gruppe  ##  Rename group
+Indtast nyt gruppenavn  ##  Enter new group name
 Download more skins from Wippien website  ##  Download more skins from Wippien website
 Click on the skin to download and install it.  ##  Click on the skin to download and install it.
-I need new Jabber account  ##  I need new Jabber account
+Jeg har brug for en ny Jabber konto  ##  I need new Jabber account
 I have existing Jabber account  ##  I have existing Jabber account
 &Test Account  ##  &Test Account
 &Search  ##  &Search
@@ -352,7 +352,7 @@ Please click on 'Test Account' to proceed.  ##  Please click on 'Test Account' t
 Use SSL wrapper on port 443 (for GTalk)  ##  Use SSL wrapper on port 443 (for GTalk)
 O&K  ##  O&K
 &Cancel  ##  &Cancel
-Please enter key passphrase  ##  Please enter key passphrase
+  ##  Please enter key passphrase
 Add &New  ##  Add &New
 Show notification if ethernet adapter is unavailable.  ##  Show notification if ethernet adapter is unavailable.
 Disconnect adapter on exit  ##  Disconnect adapter on exit
@@ -428,7 +428,7 @@ Following skin files are found  ##  Following skin files are found
 Apply  ##  Apply
 To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &More skins...  ##  &More skins...
-Set back when activity is detected again.  ##  Set back when activity is detected again.
+  ##  Set back when activity is detected again.
 Wait  ##  Wait
 minutes before going to away mode (0 = disable)  ##  minutes before going to away mode (0 = disable)
 minutes before going to extended away mode (0 = disable)  ##  minutes before going to extended away mode (0 = disable)

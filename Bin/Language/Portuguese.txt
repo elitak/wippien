@@ -1,9 +1,9 @@
 # Portuguese translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: José Martins and Ahn
-# Version: 108
+# Version: 193
 Sem erro.  ##  No error.
 O Sistema não conseguiu encontrar o arquivo especificado  ##  The system cannot find the file specified.
-O Sistema não conseguiu encontrar o caminho especificado  ##  The system cannot find the path specified.
+O sistema não pode encontrar o caminho especificado.  ##  The system cannot find the path specified.
 O sistema não pode encontrar o arquivo/diretório especificado.  ##  The system cannot find the specified file/directory.
 Tipo incompatível  ##  Type mismatch.
 Não é possivel criar arquivo/pasta quando elas já existem.  ##  Cannot create a file/directory when that file/directory already exists.
@@ -13,10 +13,10 @@ Esta operação acabou porque foi atingido o tempo de espera.  ##  This operatio
 Uma interrupção ao nível do Sistema, interrompeu a operação de Socket.  ##  System level interrupt interrupted socket operation.
 Erro genérico para formato inválido, formato errado.  ##  Generic error for invalid format, bad format.
 Uma tentativa de obter acesso no socket de modo proibido.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-O sistema detectou um endereço inválido, numa tentativa de chamada através de endereço.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Erro genérico para formato inválido, entrada errada, etc.  ##  Generic error for invalid format, entry, etc.
-Foi fornecido um argumento inválido.  ##  An invalid argument was supplied.
-O endereço IP fornecido não é válido ou o host especificado pelo IP não existe  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+O sistema detectou um endereço de ponteiro inválido ao tentar utilizar um argumento de ponteiro em uma chamada.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Erro genérico para formato inválido, entrada, etc  ##  Generic error for invalid format, entry, etc.
+Um argumento inválido foi fornecido  ##  An invalid argument was supplied.
+O endereço IP fornecido não é válido ou o host especificado pelo IP não existe.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Socket inválido, ou não está ligado ao remoto.  ##  Invalid socket or not connected to remote.
 O endereço especificado já está em uso.  ##  The specified address is already in use.
 O endereço especificado não está disponível.  ##  The specified address is not available.
@@ -57,8 +57,8 @@ O wodVPN ainda não foi inicializado. Utilize "Start" primeiro.  ##  wodVPN not 
 O Canal foi fechado.  ##  Channel was closed.
 MTU muito grande.  ##  MTU size too large.
 MTU muito pequeno.  ##  MTU size too small.
-Pedido inválido de socket.  ##  Invalid socks request.
-Password inválida. Não coincide com o remoto.  ##  Invalid password. Does not match remote peer's password.
+Requisição de socks inválida.  ##  Invalid socks request.
+senha inválida. Não coincidir com a senha.  ##  Invalid password. Does not match remote peer's password.
 Identificador (ID) local não atribuido. É requerido para o método de procura (Search).  ##  Local ID not set. It is required for Search method.
 Idetificação remota não atribuida. Ela é requerida pelo método  "Search".  ##  Remote ID not set. It is required for Search method.
 Não consigo atribuir o endereço IP especificado.  ##  Cannot bind to specified IP address.
@@ -140,7 +140,7 @@ Não pude entregar a mensagem.  ##  Could not deliver message.
 Falhou a mudança de password  ##  Failed to change password
 Desconectado devido a inatividade.  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  entrada: %s\r\nTotal saída: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<&lt; VPN não foi concluida. >&gt;  ##  << VPN not established yet >>
+A conexão VPN ainda não foi estabelecida  ##  << VPN not established yet >>
 A ligar dentro de %d segundos.  ##  Reconnect in %d seconds.
 Segundos  ##  seconds
 Sem rede  ##  No network
@@ -397,7 +397,7 @@ Log de comunicações socket  ##  Log socket communication
 Registar chamadas de funções raw (pode crescer rápidamente!)  ##  Log raw function calls (may grow quickly!)
 Apagar log de raw cada um  ##  Delete raw log on each
 megabytes  ##  megabytes
-Registar comunicação VPN ao início do P2P  ##  Log VPN communication on P2P startup
+Log comunicação VPN em P2P inicialização  ##  Log VPN communication on P2P startup
 Os seguintes mediadores podem ser usados  ##  Following mediators can be used
 Permitir a adição de novos moderadores  ##  Allow new mediators to be added
 Várias configurações relacionadas à janela de chat  ##  Various settings regarding chat window
@@ -428,7 +428,7 @@ Os seguintes arquivos de skin foram encontrados  ##  Following skin files are fo
 Aplicar  ##  Apply
 Para adicionar mais skins, você pode também colá-los na pasta 'Skin'. Adicionar o arquivo PNG 100x100 correspondente para previsão.  ##  To add more skins, you can also paste them to 'Skin' subfolder. Add corresponding 100x100 PNG file for preview.
 &Mais skins...  ##  &More skins...
-Determinar meu status como 'de volta' quando forem detectadas atividades novamente.  ##  Set back when activity is detected again.
+Set de volta quando a atividade é detectada novamente.  ##  Set back when activity is detected again.
 Aguardar  ##  Wait
 minutos antes de tornar o status 'longe' (0 = disabilitado)  ##  minutes before going to away mode (0 = disable)
 minutos antes de tornar o status 'longe por algum temp' (0 = disabilitado)  ##  minutes before going to extended away mode (0 = disable)
@@ -538,7 +538,7 @@ Definições de localização usadas neste computador  ##  Locale used on local 
 Linguagem actual  ##  Currently used language
 Para aplicar todas as alterações deve reiniciar o Wippien.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Novos arquivos de linguagem disponíveis, baixar?  ##  New language files available. Download?
-Mostrar notificação quando o contacto está ligado/desligado  ##  Show notification popup window when contact goes online/offline
+Mostrar o popup de notificação quando um contato alterar online/offline  ##  Show notification popup window when contact goes online/offline
 O contacto está a escrever...  ##  Contact is typing...
 diz  ##  says
 disse  ##  said

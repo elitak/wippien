@@ -1,6 +1,6 @@
 # Italian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Ottomano Nicola http://www.nicolaottomano.it
-# Version: 57
+# Version: 139
 Nessun errore.  ##  No error.
 Il sistema non riesce a trovare il file specificato.  ##  The system cannot find the file specified.
 Il sistema non riesce a trovare il percorso specificato.  ##  The system cannot find the path specified.
@@ -11,14 +11,14 @@ Il sistema non riesce a scrivere sul supporto specificato.  ##  The system canno
 Valore di proprietà non valido.  ##  Invalid Property Value.
 Timeout dell'operazione.  ##  This operation returned because the timeout period expired.
 Un interrupt a livello di sistema ha bloccato l'operazione del socket.  ##  System level interrupt interrupted socket operation.
-Errore di formato non valido.  ##  Generic error for invalid format, bad format.
-E' stato fatto un tentativo non consentito di accesso al socket.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Errore generico di formato non valido, formato male.  ##  Generic error for invalid format, bad format.
+Si è tentato di accedere a un socket in maniera vietata dalla sua autorizzazioni di accesso.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 Il sistema ha rilevato un argomento non valido al puntatore durante la chiamata.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
 Errore generico di formato non valido, input, etc.  ##  Generic error for invalid format, entry, etc.
 Argomento non valido.  ##  An invalid argument was supplied.
 Indirizzo IP non valido o l'host specificato non esiste.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Socket non valido o nessuna connessione remota.  ##  Invalid socket or not connected to remote.
-L'indirizzo specificato è già in uso.  ##  The specified address is already in use.
+L'indirizzo specificato è già utilizzato  ##  The specified address is already in use.
 L'indirizzo specificato non è disponibile.  ##  The specified address is not available.
 La Rete a cui ci si sta connettendo non è disponibile.  ##  The connected network is not available.
 La Rete a cui ci si sta connettendo non è raggiungibile.  ##  The connected network is not reachable.
@@ -53,7 +53,7 @@ Il canale non può essere creato dal client.  ##  Channel cannot be created by l
 Il canale non può essere attivato dal client.  ##  Channel cannot be started by local side.
 Canale rifiutato dal client remoto.  ##  Channel refused by remote side.
 Versione del protocollo non supportata.  ##  Unsupported remote protocol version.
-wodVPN non inizializzato. Selezionare Start.  ##  wodVPN not yet started. Use Start first.
+wodVPN non ancora avviato. Usa prima Start.  ##  wodVPN not yet started. Use Start first.
 Canale chiuso.  ##  Channel was closed.
 MTU troppo grande.  ##  MTU size too large.
 MTU troppo piccolo.  ##  MTU size too small.
@@ -127,7 +127,7 @@ Invio dati al server  ##  Sending data to server
 Esecuzione comandi sul server  ##  Executing command on server
 Disconnessione dal server  ##  Disconnecting from the server
 Autorizzazione richiesta  ##  Requested authorization
-Configurazione interfaccia di rete di Wippien...  ##  Configuring Wippien network adapter...
+Configurazione dell'adattatore di rete Wippien...  ##  Configuring Wippien network adapter...
 L'interfaccia \"%s\" con indirizzo %s va in conflitto con l'interfaccia %s di Wippien. E' possibile che Wippien non possa inviare o ricevere pacchetti di rete. Si consiglia di disinstallare o disabilitare l'interfaccia di rete.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Interfaccia di rete disabilitata!  ##  Network adapter disabled!
 Interfaccia di rete aperta  ##  Network adapter opened
@@ -136,11 +136,11 @@ Wippien deve configurare l'indirizzo IP dell'adattatore di rete utilizzando uno 
 Richiesti privilegi amministrativi!  ##  Admin privilege required!
 Disconnesso  ##  Disconnected
 Connesso  ##  Connected
-Impossibile inviare il messaggio.  ##  Could not deliver message.
+Non è stato possibile recapitare il messaggio  ##  Could not deliver message.
 Errore nel cambiare la password  ##  Failed to change password
 Disconnesso secondo le regole di inattivitŕ  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotale  in: %s\r\nTotale out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN non stabilita >>  ##  << VPN not established yet >>
+<&lt; VPN non ancora stabilita >&gt;  ##  << VPN not established yet >>
 Connessione tra %d secondi.  ##  Reconnect in %d seconds.
 secondi  ##  seconds
 Nessuna rete  ##  No network
@@ -443,7 +443,7 @@ Sempre in primo piano  ##  Always on top
 Chiedi conferma prima di uscire  ##  Confirm exit from application
 Disconnetti se il computer va in Standby, Connetti al ripristino  ##  Disconnect on computer Sleep/Hibernate, Connect on Resume
 Proteggi con password  ##  Password protect
-Solo impostazioni  ##  Settings only
+solo Impostazioni  ##  Settings only
 Tutto  ##  Everything
 Cartella delle Impostazioni (richiede il riavvio di Wippien)  ##  Settings folder (changing below value requires wippien restart)
 Persistenza della lista contatti  ##  Contact list persistance

@@ -1,6 +1,6 @@
 # Hungarian+v2 translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Kovács Vince
-# Version: 386
+# Version: 438
 Nincs hiba.  ##  No error.
 A rendszer nem találja a megadott fájlt.  ##  The system cannot find the file specified.
 A rendszer nem találja a megadott mappát.  ##  The system cannot find the path specified.
@@ -8,22 +8,22 @@ A rendszer nem találja a megadott fájlt/mappát.  ##  The system cannot find t
 Típus eltérés.  ##  Type mismatch.
 A rendszer nem tudja létrehozni a fájlt/mappát, ha létezik ez a fájl/mappa.  ##  Cannot create a file/directory when that file/directory already exists.
 A rendszer nem tud írni a kiválasztott eszközre.  ##  The system cannot write to the specified device.
-Invalid Property Value.  ##  Invalid Property Value.
+Érvénytelen érték.  ##  Invalid Property Value.
 A folyamat időtúlépés miatt befejeződött.  ##  This operation returned because the timeout period expired.
-System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
-Generic error for invalid format, bad format.  ##  Generic error for invalid format, bad format.
-An attempt was made to access a socket in a way forbidden by its access permissions.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
-The system detected an invalid pointer address in attempting to use a pointer argument in a call.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generic error for invalid format, entry, etc.  ##  Generic error for invalid format, entry, etc.
-An invalid argument was supplied.  ##  An invalid argument was supplied.
-The IP address provided is not valid or the host specified by the IP does not exist.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
-Invalid socket or not connected to remote.  ##  Invalid socket or not connected to remote.
+A socket műveletet a rendszer megszakította.  ##  System level interrupt interrupted socket operation.
+Általános hiba. Érvénytelen formátum.  ##  Generic error for invalid format, bad format.
+Socket hozzáférés megtagadva.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
+Rossz memóriahivatkozás.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
+Általános hiba.  ##  Generic error for invalid format, entry, etc.
+Rossz függvényparaméter.  ##  An invalid argument was supplied.
+Rossz IP cím vagy hostnév.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
+Nincs kapcsolat. Érvénytelen socket.  ##  Invalid socket or not connected to remote.
 A megadott cím használatban van.  ##  The specified address is already in use.
 A megadott cím nem elérhető.  ##  The specified address is not available.
-The connected network is not available.  ##  The connected network is not available.
-The connected network is not reachable.  ##  The connected network is not reachable.
+Nincs kapcsolat a távoli hálózattal.  ##  The connected network is not available.
+A távoli hálózat nem elérhető.  ##  The connected network is not reachable.
 A kapcsolódott hálózati kapcsolat újraindult.  ##  The connected network connection has been reset.
-The current connection has been aborted by the network or intermediate services.  ##  The current connection has been aborted by the network or intermediate services.
+A kapcsolat megszakadt.  ##  The current connection has been aborted by the network or intermediate services.
 A jelenlegi socket kapcsolat újraindult.  ##  The current socket connection has been reset.
 A jelenlegi socket nem kapcsolódott.  ##  The current socket has not been connected.
 A kapcsolat leáll.  ##  The connection has been shutdown.
@@ -33,44 +33,44 @@ A megadott gazdanév túl hosszú.  ##  Specified host name is too long.
 A távoli gazda jelenleg nem elérhető.  ##  Remote host is currently unavailable.
 A távoli gazda elérhetetlen.  ##  Remote host is currently unreachable.
 A távoli rendszer nem áll készen.  ##  Remote system is not ready.
-Current socket version not supported by application.  ##  Current socket version not supported by application.
+Rossz socket API verzió.  ##  Current socket version not supported by application.
 Socket API nincs inicializálva.  ##  Socket API is not initialized.
 Socket szétkapcsolt.  ##  Socket has been disconnected.
 A Host nem található.  ##  Host not found.
 Nincs elegendő memória a folyamat végrehajtásához.  ##  Not enough memory is available to complete this operation.
 Ismeretlen keresési típus.  ##  Unknown search type.
-Unknown argument for Search method.  ##  Unknown argument for Search method.
+Ismeretlen keresési paraméter.  ##  Unknown argument for Search method.
 Már folyamatban.  ##  Already started.
 Csatorna már megnyitva.  ##  Channel already started.
-Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
+Nem tudja a csatornabeállításokat elvégezni, mert a csatorna nyitva van  ##  Cannot change channel setup while channel is started.
 Túl sok adat a socketen. Próbáld később!  ##  Too much data on the socket. Try later.
 A kapcsolat nem jött létre.  ##  Connection not established.
 Ismeretlen adat típus.  ##  Unknown data type.
-Failed to create socket thread.  ##  Failed to create socket thread.
+A socketszál létrehozása sikertelen.  ##  Failed to create socket thread.
 Ismeretlen csatornatípus.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
 Channel cannot be created by local side.  ##  Channel cannot be created by local side.
 Channel cannot be started by local side.  ##  Channel cannot be started by local side.
 Channel refused by remote side.  ##  Channel refused by remote side.
 Unsupported remote protocol version.  ##  Unsupported remote protocol version.
-wodVPN not yet started. Use Start first.  ##  wodVPN not yet started. Use Start first.
+wodVPN nincs elindítva. Indísd el.  ##  wodVPN not yet started. Use Start first.
 Csatorna bezárva.  ##  Channel was closed.
 MTU mérete túl nagy.  ##  MTU size too large.
 MTU mérete túl kicsi.  ##  MTU size too small.
 Hibás socket kérelem.  ##  Invalid socks request.
-Invalid password. Does not match remote peer's password.  ##  Invalid password. Does not match remote peer's password.
+A jelszó helytelen.  ##  Invalid password. Does not match remote peer's password.
 Local ID not set. It is required for Search method.  ##  Local ID not set. It is required for Search method.
 Remote ID not set. It is required for Search method.  ##  Remote ID not set. It is required for Search method.
-Cannot bind to specified IP address.  ##  Cannot bind to specified IP address.
-Already performing file transfer.  ##  Already performing file transfer.
+Nem tud a megadott IP címre kapcsolódni.  ##  Cannot bind to specified IP address.
+Fájlátvitel már folyamatban.  ##  Already performing file transfer.
 A fájl nem található.  ##  File not found.
 A fájl nem írható.  ##  Failed to write file.
 A hálózati adapter nem megnyitható.  ##  Could not open network adapter.
-Only one adapter can be used at a time.  ##  Only one adapter can be used at a time.
-License key missing. You can not use this component in design environment.  ##  License key missing. You can not use this component in design environment.
+Egyszerre csak egy adaptert lehet használni.  ##  Only one adapter can be used at a time.
+Ehhez a művelethez nincs licenszed.  ##  License key missing. You can not use this component in design environment.
 Felismerhetetlen hiba.  ##  Unrecognized Error.
 Most nem lehet kapcsolódni. Először bontsa a kapcsolatot.  ##  Cannot Connect at this time. Use Disconnect first.
-Cannot execute, not yet connected.  ##  Cannot execute, not yet connected.
+Végrehajtás sikertelen. A kapcsolat még nem jött létre.  ##  Cannot execute, not yet connected.
 A komponens túlterhelt.  ##  Component busy.
 Cannot change property at this time. Use Disconnect first.  ##  Cannot change property at this time. Use Disconnect first.
 Hostname property not set.  ##  Hostname property not set.
@@ -84,15 +84,15 @@ SSL could not be negotiated.  ##  SSL could not be negotiated.
 Failed to register new user: %s.  ##  Failed to register new user: %s.
 Ismeretlen értesítés.  ##  Unknown notification.
 A fájl nem található  ##  File not found.
-You must specify photo type (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
+Add meg a képfájl tipusát (PNG/JPG/BMP/GIF).  ##  You must specify photo type (PNG/JPG/BMP/GIF).
 Fénykép importálása nem sikerült  ##  Failed to import photo.
 Another blocking method in progress.  ##  Another blocking method in progress.
 Invalid protocol data received.  ##  Invalid protocol data received.
 Nincs mit elküldeni. A fájl mérete 0.  ##  There's nothing to send. File size is 0.
 A partner nem található.  ##  Contact not found.
 Fájlküldés sikertelen.  ##  File transfer failed.
-Could not write to file.  ##  Could not write to file.
-Checksum of received file is invalid.  ##  Checksum of received file is invalid.
+Sikertelen fájlírás.  ##  Could not write to file.
+A kapott fájl ellenőrzőösszege adathibát mutat.  ##  Checksum of received file is invalid.
 Átvitel megszakítva.  ##  Transfer aborted.
 A transzfer átlépte az időkorlátot.  ##  Transfer has timed out.
 Helytelen protokoll lett kiválasztva.  ##  Invalid protocol selected.
@@ -100,7 +100,7 @@ Invalid state. Component already busy.  ##  Invalid state. Component already bus
 Name not unique, cannot obtain lock. Please use different UpdaterName.  ##  Name not unique, cannot obtain lock. Please use different UpdaterName.
 A folyamat megszakítva.  ##  Method was cancelled.
 A frissítés indítása sikertelen.  ##  Failed to start updater program.
-Signature on retrieved document is invalid.  ##  Signature on retrieved document is invalid.
+A dokumentum aláirása érvénytelen.  ##  Signature on retrieved document is invalid.
 A dátum nincs beállítva.  ##  Date not set.
 Failed to register COM server.  ##  Failed to register COM server.
 Page not found (error 404) returned from the server.  ##  Page not found (error 404) returned from the server.
@@ -140,7 +140,7 @@ Az üzenet nem kézbesíthető.  ##  Could not deliver message.
 A jelszó megváltoztatása nem sikerült  ##  Failed to change password
 Inaktivitás miatt lekapcsolódott  ##  Disconnected due to inactivity rule
 Adminisztrátori jog elengedhetetlen!  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
+<< VPN kapcsolat még nem jött létre >>  ##  << VPN not established yet >>
 Újrakapcsolódás %d másodperc múlva.  ##  Reconnect in %d seconds.
 seconds  ##  seconds
 Nincs hálózat  ##  No network
@@ -148,10 +148,10 @@ Kilépés Wippienből  ##  Exit Wippien
 E&xit  ##  E&xit
 Beállítások megnyitása  ##  Open settings
 &Settings  ##  &Settings
-Show AboutBox  ##  Show AboutBox
+Névjegy  ##  Show AboutBox
 &About  ##  &About
 Állapot beállítása (Távol, Láthatatlan...)  ##  Set your status (Away,Invisible...)
-Add contacts and alien accounts  ##  Add contacts and alien accounts
+Kapcsolatok hozzáadása  ##  Add contacts and alien accounts
 Hang némítása  ##  Mute sound
 Chat szoba megnyitása  ##  Open chat room
 Authorize your friends  ##  Authorize your friends
@@ -199,7 +199,7 @@ Away due to inactivity.  ##  Away due to inactivity.
 Away for a loooong time.  ##  Away for a loooong time.
 engedélyez  ##  allow
 tilt  ##  deny
-not specified  ##  not specified
+nincs megadva  ##  not specified
   ##  &Finish
 &Next >  ##  &Next >
   ##  Identity
@@ -223,7 +223,7 @@ This defines people that mediate P2P connections.  ##  This defines people that 
 Utolsó ellenőrzés  ##  Last check
 Port  ##  Port
   ##  Hostname
-  ##  Permanent
+Állandó  ##  Permanent
 Ideiglenes  ##  Temporary
 Enter all your accounts here.  ##  Enter all your accounts here.
 You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)  ##  You can add any of accounts supported by your Jabber server (typically ICQ, MSN, etc..)
@@ -251,7 +251,7 @@ Személyes információ  ##  Personal information
 Home details for  ##  Home details for
 Üzleti informació  ##  Business information
 Work details for  ##  Work details for
-all other  ##  all other
+az összes többi  ##  all other
 address given by mediator  ##  address given by mediator
 Megjelenés  ##  Appearance
 Bőrök  ##  Skins
@@ -292,7 +292,7 @@ Megjelenési beállítások.  ##  Appearance settings.
 Define how will Wippien's GUI appear to you.  ##  Define how will Wippien's GUI appear to you.
 Lista  ##  Sort
 Kapcsolati lista  ##  Sorts contacts.
-Pick one of sort options.  ##  Pick one of sort options.
+Válassz rendezési sorrendet.  ##  Pick one of sort options.
 ChatSzoba  ##  ChatRoom
 Browse or create chat rooms. (STILL IN BETA!!)  ##  Browse or create chat rooms. (STILL IN BETA!!)
 Specify or browse for a room to join or create new one.  ##  Specify or browse for a room to join or create new one.
@@ -301,7 +301,7 @@ Szervíz átjáró  ##  Service gateway
 Szoba neve  ##  Room name
 Tűzfal  ##  Firewall
 Tűzfal szabályainak beállítása.  ##  Set up firewall rules.
-You can set up which ports can be accessed by your contacts.  ##  You can set up which ports can be accessed by your contacts.
+Beállíthatod a kívülről elérhető portokat.  ##  You can set up which ports can be accessed by your contacts.
 * Összes ICMP forgalom  ##  * All ICMP traffic
 De blokkold ezeket a portokat  ##  But block these ports
 De engedélyezd ezeket a portokat  ##  But allow these ports
@@ -392,15 +392,15 @@ Kapcsolat átnevezése  ##  Rename contact
 Üsse be az új kapcsolata nevét  ##  Enter new contact name
 Beállítások  ##  Settings
 Vissza  ##  < &Back
-Log Jabber communication  ##  Log Jabber communication
+Jabber forgalom naplózása  ##  Log Jabber communication
 Log socket communication  ##  Log socket communication
-Log raw function calls (may grow quickly!)  ##  Log raw function calls (may grow quickly!)
+Függvényhívásokat naplózni (sok lesz!)  ##  Log raw function calls (may grow quickly!)
 Delete raw log on each  ##  Delete raw log on each
 megabytes  ##  megabytes
 Log VPN communication on P2P startup  ##  Log VPN communication on P2P startup
 A következő mediator-okat lehet használni  ##  Following mediators can be used
 Engedélyezi új mediator-ok hozzádadását  ##  Allow new mediators to be added
-Various settings regarding chat window  ##  Various settings regarding chat window
+A csevegőablak beállításai  ##  Various settings regarding chat window
 Timestamp messages  ##  Timestamp messages
 Üzenetek előzményének mutatása  ##  Show message history
 Becenév  ##  Nickname
@@ -491,7 +491,7 @@ Utoljára online  ##  Last online time
 Aktivitás figyelése  ##  Activity Monitor
 Látható részletek  ##  Visible details
 Contact's visible details  ##  Contact's visible details
-  ##  unsorted
+rendezetlen  ##  unsorted
 Név szerint  ##  By name
 JID szerint  ##  By JID
 by IP (without IP goes bottom)  ##  by IP (without IP goes bottom)
@@ -526,13 +526,13 @@ Kijelentkezés  ##  O&ffline
 Kép megváltoztatása  ##  Change &Picture
 Jelszó megváltoztatása  ##  Change Pa&ssword
 Adataim  ##  Your &Details
-Enter Passphrase  ##  Enter Passphrase
+Add meg a jelszót  ##  Enter Passphrase
 Jelszó megadása  ##  Enter password
 Please enter protect password  ##  Please enter protect password
 Nyelvek  ##  Languages
 Setup language used in all Wippien texts.  ##  Setup language used in all Wippien texts.
-New languages may appear periodically.  ##  New languages may appear periodically.
-Following languages are found as available on local computer  ##  Following languages are found as available on local computer
+A választható nyelvek folyamatosan bővülnek.  ##  New languages may appear periodically.
+Ezek a nyelvek érhetők el a helyi gépen:  ##  Following languages are found as available on local computer
   ##  &Change
 Locale used on local computer  ##  Locale used on local computer
 Most használt nyelv  ##  Currently used language
@@ -540,13 +540,13 @@ Changes will take affect on 'as needed' basis. You should restart Wippien if you
 Új nyelvi fájlok elérhetőek. Letölti?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
 Éppen ír...  ##  Contact is typing...
-  ##  says
-  ##  said
+mondja  ##  says
+mondta  ##  said
 Használhat GMAIL címet is  ##  You can use your GMAIL account here.
 voice chat bekapcsolása  ##  Toggle voice chat
 Helyi echo  ##  Local echo
 UDP port 9913 foglalt  ##  UDP port 9913 busy
-Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
+Nem képes hangot fogadni  ##  Unable to listen for incoming voice chat
 Mikrofon érzékenysége  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?

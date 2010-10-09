@@ -1,9 +1,9 @@
 # Polish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Poliman.pl - info@poliman.pl
-# Version: 77
-Brak błędu. ##  No error.
-System nie może znaleźć wybranego pliku.  ##  The system cannot find the file specified.
-System nie może znaleźć wybranej ścieżki.  ##  The system cannot find the path specified.
+# Version: 146
+Brak błędu.  ##  No error.
+System nie może odnaleźć określonego pliku =(  ##  The system cannot find the file specified.
+System nie może znaleźć wybranej ścieżki. :)  ##  The system cannot find the path specified.
 System nie może znaleźć wybranego pliku/katalogu.  ##  The system cannot find the specified file/directory.
 Niezgodność typów.  ##  Type mismatch.
 Nie można utworzyć pliku/katalogu jeśli ten plik/katalog istnieje.  ##  Cannot create a file/directory when that file/directory already exists.
@@ -44,7 +44,7 @@ Już zainicjowane.  ##  Already started.
 Kanał już zainicjowany.  ##  Channel already started.
 Nie można zmienić ustawień kanału gdy jest uruchomiony.  ##  Cannot change channel setup while channel is started.
 Zbyt dużo danych na gnieździe. Spróbuj później.  ##  Too much data on the socket. Try later.
-Połączenie nie nawiązane.  ##  Connection not established.
+Połączenie nie zostało ustabilizowane  ##  Connection not established.
 Nieznany typ danych.  ##  Unknown data type.
 Nie udało się utworzyć wątka wtyczki.  ##  Failed to create socket thread.
 Nieznany typ kanału  ##  Unknown channel type.
@@ -69,7 +69,7 @@ Nie można otworzyć adaptera sieciowego.  ##  Could not open network adapter.
 Tylko jeden adapter sieciowy może być używany w tym samym czasie.  ##  Only one adapter can be used at a time.
 Brak klucza licencyjnego. Nie możesz używać tego komponentu w środowisku projektowania.  ##  License key missing. You can not use this component in design environment.
 Nieznany błąd.  ##  Unrecognized Error.
-Nie można połączyć w tym momencie. Użyj najpierw Rozłącz.  ##  Cannot Connect at this time. Use Disconnect first.
+Nie można się połączyć w tym momencie. Użyj opcji Rozłącz i spróbuj ponownie.  ##  Cannot Connect at this time. Use Disconnect first.
 Nie można wykonać, jeszcze nie podłączony.  ##  Cannot execute, not yet connected.
 Komponent zajęty.  ##  Component busy.
 Nie można zmienić właściwości w tym momencie. Użyj najpierw Rozłącz.  ##  Cannot change property at this time. Use Disconnect first.
@@ -92,7 +92,7 @@ Nic nie ma do wysłania. Rozmiar pliku 0.  ##  There's nothing to send. File siz
 Nie znaleziono Kontaktu.  ##  Contact not found.
 Transfer pliku się nie powiódł.  ##  File transfer failed.
 Nie można zapisać do pliku.  ##  Could not write to file.
-Suma kontrolna pliku jest błędna.  ##  Checksum of received file is invalid.
+Suma kontrolna otrzymanego pliku jest błędna.  ##  Checksum of received file is invalid.
 Transfer anulowany.  ##  Transfer aborted.
 Minął czas oczekiwania transferu.  ##  Transfer has timed out.
 Wybrano błędny protokół.  ##  Invalid protocol selected.
@@ -109,7 +109,7 @@ Błędna suma kontrolna MD5 po ściągnięciu.  ##  Invalid MD5 checksum after d
 Uwaga  ##  Warning
 Niedostępny  ##  Offline
 Dostępny  ##  Online
-Oddalony  ##  Away
+Nieobecny  ##  Away
 Gotowy do rozmowy  ##  Free for chat
 Nie przeszkadzać  ##  Do not disturb
 Oddalony na dłużej  ##  Extended away
@@ -119,7 +119,7 @@ Kontakt nie zatwierdzony  ##  Contact not subscribed
 Rozłączono z serwerem  ##  Disconnected from server
 Łączenie z serwerem  ##  Connecting to server
 Rejestrowanie nowego użytkownika  ##  Registering new user
-Nawiązywanie bezpiecznego polączenia  ##  Initializing secure connection
+Nawiązywanie bezpiecznego połączenia  ##  Initializing secure connection
 Wysłanie danych uwierzytelniających  ##  Sending authentication data
 Połączono z serwerem  ##  Connected to server
 Odbieranie danch z serwera  ##  Receiving data from server
@@ -368,8 +368,8 @@ URL  ##  URL
 Opis  ##  Description
 Dodaj nowe konto  ##  Add new account
 Usuń konto  ##  Remove account
-Zarejestruj (się)!  ##  Register!
-Twoje obecne połączenia komunikatorów  ##  Your current Instant messaging connections
+Zarejestruj.  ##  Register!
+Twoje bieżące połączenia 'Instant messaging'  ##  Your current Instant messaging connections
 Nazwa użytkownika  ##  Username
 Otwórz nowe konto  ##  Open new account
 Prośba o autoryzację  ##  Authorization request
@@ -446,15 +446,15 @@ Zabezpieczenie hasłem  ##  Password protect
 Tylko ustawienia  ##  Settings only
 Wszystko  ##  Everything
 Folder ustawień (zmiana wymaga restartu Wippien)  ##  Settings folder (changing below value requires wippien restart)
-Trwałość listy kontaktów  ##  Contact list persistance
+Stała lista kontaktów  ##  Contact list persistance
 Usuń wszystkie kontakty lokalne przy uruchomieniu  ##  Delete all local contacts on startup
 Usuń wszystkie kontakty lokalne przy połączeniu  ##  Delete all local contacts on connect
 Autoryzacja kontaktów  ##  Contacts subscription authorization
 Nigdy nie autoryzuj, odrzucaj prośby o autoryzację  ##  Never authorize
 Zawsze pytaj o autoryzację  ##  Ask me
 Zawsze autoryzuj, bez pytania  ##  Always authorize
-Automatycznie nawiązuj VPN przy aktywności sieci  ##  Automatically establish VPN on network traffic
-Automatycznie nawiązuj VPN przy uruchomieniu  ##  Automatically establish VPN on startup
+Automatycznie ustanów VPN przy ruchu w sieci  ##  Automatically establish VPN on network traffic
+Automatycznie ustanów VPN przy starcie  ##  Automatically establish VPN on startup
 Postęp  ##  Progress
 Włącz rozmowy głosowe  ##  Enable voice chat
 Urządzenie do odtwarzania  ##  Playback device
@@ -543,12 +543,12 @@ Kontakt pisze...  ##  Contact is typing...
 mówi  ##  says
 powiedział  ##  said
 Możesz użyć swojego konta GMAIL  ##  You can use your GMAIL account here.
-Toggle czat głosowy  ##  Toggle voice chat
+Przełącz czat głosowy  ##  Toggle voice chat
 lokalne echo  ##  Local echo
 UDP port 9913 zajęty  ##  UDP port 9913 busy
 Niezdolny do wysłuchania przychodzących chatów głosowych  ##  Unable to listen for incoming voice chat
 Czułość mikrofonu  ##  Microphone sensitivity
 Mów do mikrofonu i reguluj suwak. Gdy nie mówisz wskaźnik nie powinie się poruszać , a podczas głośnego mówienia powinien osiągać maksymalne wartości .  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Rozmowy głosowe prawdopodobnie nie zostały skonfigurowane. Musisz ustawić parametry rozmów głosowych przed pierwszym użyciem .  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
-  ##  has enabled
-  ##  has disabled
+Zostało włączone  ##  has enabled
+Zostało wyłączone  ##  has disabled

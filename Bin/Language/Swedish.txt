@@ -1,11 +1,11 @@
 # Swedish translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: MrMust
-# Version: 621
-Inget fel uppstod  ##  No error.
+# Version: 645
+  ##  No error.
 Systemet kunde inte hitta den specifierade filen.  ##  The system cannot find the file specified.
 Systemet kunde inte hitta den specificerade sökvägen  ##  The system cannot find the path specified.
 Systemet kunde inte hitta den specificerade filen eller sökvägen  ##  The system cannot find the specified file/directory.
-Typerna överensstämmer inte.  ##  Type mismatch.
+Fel inmatning  ##  Type mismatch.
 Kan inte skapa en fil/mapp när den filen/mappen redan existerar.  ##  Cannot create a file/directory when that file/directory already exists.
 Systemet kan inte skriva till den angivna enheten.  ##  The system cannot write to the specified device.
 Ogilltigt Enhetesvärde.  ##  Invalid Property Value.
@@ -14,7 +14,7 @@ Systemnivån förhindrades, Nekades socket åtgärd.  ##  System level interrupt
 Generisk Error/Fel för skadat format, Skadat Format.  ##  Generic error for invalid format, bad format.
 Ett försök att erhålla tillträde till en Socket på förbjudet sätt p.g.a. begränsningar i tillståndet.  ##  An attempt was made to access a socket in a way forbidden by its access permissions.
 Systemet upptäckte skadad länkadress i ett försök att använda ett hänvisningsargument i anslutning.  ##  The system detected an invalid pointer address in attempting to use a pointer argument in a call.
-Generiskt felmeddelande för felaktigt format, hänvisning, ingång, etc.  ##  Generic error for invalid format, entry, etc.
+Generic-fel för ogiltigt format, inträde, osv  ##  Generic error for invalid format, entry, etc.
 Ett felaktigt argument har bifogats.  ##  An invalid argument was supplied.
 Bifogad IP adress är inte giltig eller Host Specifik IP existerar inte.  ##  The IP address provided is not valid or the host specified by the IP does not exist.
 Ogiltig Socket eller inte ansluten fjärrenhet.  ##  Invalid socket or not connected to remote.
@@ -128,7 +128,7 @@ Kör kommandot på server  ##  Executing command on server
 Kopplar ner från värddator  ##  Disconnecting from the server
 Begär autentisering  ##  Requested authorization
 Konfigurerar Wippien nätverksadapter...  ##  Configuring Wippien network adapter...
-Adapter \"%s\" med adressen %s skapar en konlikt med Wippien's %s. Det är möjligt att Wippien inte kan skicka eller ta i mot nätverkspaket. Avinstaller eller stäng av den här adaptern.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
+Adapter \"%s\" med adressen %s skapar en konlikt med Wippiens %s. Det är möjligt att Wippien inte kan skicka eller ta emot nätverkspaket. Avinstallera eller stäng av den här adaptern.  ##  Adapter \"%s\" with address %s conflicts with Wippien's %s. It is possible that Wippien will not be able to send and receive network packets. Please uninstall or disable this adapter.
 Nätverksadapter inaktiverad!  ##  Network adapter disabled!
 Nätverksadapter startad  ##  Network adapter opened
 Wippien nätverksadapter är inte tillgänglig. Fortsätt med endast IM?  ##  Wippien network adapter not available. Proceed with IM only?
@@ -536,7 +536,7 @@ Följande språk är tillgängliga på datorn:  ##  Following languages are foun
 &Change  ##  &Change
 Platsinställningarna som används på den lokala datorn  ##  Locale used on local computer
 Valt språk  ##  Currently used language
-Ändringarna börjar inte gälla förrens dem "behövs". Du borde starta om Wippien om du vill att ändringarna ska börja gälla direkt.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
+Ändringarna kommer inte att börja gälla förrän de "behövs". Du bör starta om Wippien om du  vill se förändringarna direkt.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
 Nya språkpaket finns tillgängliga. Vill du ladda ned dem?  ##  New language files available. Download?
 Visa popup- fönster när en kontakt går online/offline  ##  Show notification popup window when contact goes online/offline
 Kontakten skriver ett meddelande...  ##  Contact is typing...

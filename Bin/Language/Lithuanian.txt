@@ -1,13 +1,13 @@
 # Lithuanian translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: r00lz
-# Version: 456
-Nėra klaidos.  ##  No error.
-The system cannot find the file specified.  ##  The system cannot find the file specified.
-  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
+# Version: 474
+Nėra klaidos!  ##  No error.
+Programa nerado nurodyto failo  ##  The system cannot find the file specified.
+Programa nerado nurodyto kelio iki failo  ##  The system cannot find the path specified.
+  ##  The system cannot find the specified file/directory.
 Type mismatch.  ##  Type mismatch.
 Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
-The system cannot write to the specified device.  ##  The system cannot write to the specified device.
+Programa negali įrašyti į nurodytą įrenginį  ##  The system cannot write to the specified device.
 Invalid Property Value.  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
@@ -37,7 +37,7 @@ Current socket version not supported by application.  ##  Current socket version
 Socket API is not initialized.  ##  Socket API is not initialized.
 Socket has been disconnected.  ##  Socket has been disconnected.
 Host not found.  ##  Host not found.
-Not enough memory is available to complete this operation.  ##  Not enough memory is available to complete this operation.
+Nepakanka atminties nurodytai operacijai  ##  Not enough memory is available to complete this operation.
 Unknown search type.  ##  Unknown search type.
 Unknown argument for Search method.  ##  Unknown argument for Search method.
 Jau paleista.  ##  Already started.
@@ -45,7 +45,7 @@ Channel already started.  ##  Channel already started.
 Cannot change channel setup while channel is started.  ##  Cannot change channel setup while channel is started.
 Too much data on the socket. Try later.  ##  Too much data on the socket. Try later.
 Connection not established.  ##  Connection not established.
-Unknown data type.  ##  Unknown data type.
+Neatpažintas duomenų tipas  ##  Unknown data type.
 Failed to create socket thread.  ##  Failed to create socket thread.
 Unknown channel type.  ##  Unknown channel type.
 Invalid argument was supplied in LocalAddress property.  ##  Invalid argument was supplied in LocalAddress property.
@@ -195,8 +195,8 @@ Jungiamasi  ##  Connecting
 Siunčiama  ##  Downloading
 Nustatymų failas  ##  Configuration file
 Prisijungę(General)  ##  General
-Away due to inactivity.  ##  Away due to inactivity.
-Away for a loooong time.  ##  Away for a loooong time.
+Nesantis dėl neaktyvumo.  ##  Away due to inactivity.
+Pasišalinęs labai ilam laikui  ##  Away for a loooong time.
 leisti  ##  allow
 drausti  ##  deny
 nenustatyas  ##  not specified
@@ -207,8 +207,8 @@ Please choose your logon information.  ##  Please choose your logon information.
 This is shown on your friend's list.  ##  This is shown on your friend's list.
 JID should contain server name, formatted like user@server.com  ##  JID should contain server name, formatted like user@server.com
 Invalid logon details  ##  Invalid logon details
-You must enter your JID.  ##  You must enter your JID.
-You must enter your password.  ##  You must enter your password.
+Turi įvesti savo JID.  ##  You must enter your JID.
+  ##  You must enter your password.
 Jabber klaida.  ##  Jabber error
 Avataras  ##  Icon
 Pasirink savo avatarą.  ##  Please choose your icon.
@@ -239,8 +239,8 @@ Galite įdėti Jabber, ICQ, MSN... kontaktus  ##  You can add new Jabber, ICQ, M
 Visi failai (*.*)\0*\0TXT failai (*.txt)\0*.txt\0\0  ##  All Files (*.*)\0*\0TXT files (*.txt)\0*.txt\0\0
 Visi paveiksliukų failai (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg failai (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF failai (*.gif)\0*.gif\0PNG failai (*.png)\0*.png\0Visi failai (*.*)\0*\0\0  ##  All image files (*.bmp;*.jpg;*.jpeg;*.png;*.gif)\0*.bmp;*.jpg;*.jpeg;*.gif;*.png\0Windows bitmaps (*.bmp)\0*.bmp\0Jpeg files (*.jpg,*.jpeg)\0*.jpeg;*.jpg\0GIF files (*.gif)\0*.gif\0PNG files (*.png)\0*.png\0All Files (*.*)\0*\0\0
 Sistema  ##  System
-  ##  Logging
-Setup log files and debug info.  ##  Setup log files and debug info.
+Prisijungiama  ##  Logging
+  ##  Setup log files and debug info.
 Specify paths below  ##  Specify paths below
 Žinutės  ##  Messages
 Pokalbių lango nustatymai.  ##  Chat window settings.
@@ -537,7 +537,7 @@ Following languages are found as available on local computer  ##  Following lang
 Kompiuterio lokali kalba  ##  Locale used on local computer
 Wippien naudojama kalba  ##  Currently used language
 Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.  ##  Changes will take affect on 'as needed' basis. You should restart Wippien if you want to see full change.
-New language files available. Download?  ##  New language files available. Download?
+Jau yra nauju kalbos rinkmenu! Atsisiusti?  ##  New language files available. Download?
 Show notification popup window when contact goes online/offline  ##  Show notification popup window when contact goes online/offline
 Kontaktas rašo...  ##  Contact is typing...
 sako  ##  says
@@ -547,7 +547,7 @@ Perjungti į balso pokalbį  ##  Toggle voice chat
 Local echo  ##  Local echo
 UDP prievadas 9913 užimtas  ##  UDP port 9913 busy
 Unable to listen for incoming voice chat  ##  Unable to listen for incoming voice chat
-Mikrafono jautrumas  ##  Microphone sensitivity
+Mikrofono jautrumas  ##  Microphone sensitivity
 Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.  ##  Talk to your microphone and adjust the slider. There should be no movement on upper activity monitor when you don't speak, and activity monitor should go full when you speak loud.
 Voice chat does not seem to be set up. You must configure it before first use. Do it now?  ##  Voice chat does not seem to be set up. You must configure it before first use. Do it now?
 has enabled  ##  has enabled

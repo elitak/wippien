@@ -1,13 +1,13 @@
 # Tagalog translation file. Each line should contain <space><space>## as 'end of line marker', you can put any comment or just leave english text after it, it is ignored.
 # Author: Jerome Dumlao
-# Version: 106
+# Version: 112
 Walang "error".  ##  No error.
-The system cannot find the file specified.  ##  The system cannot find the file specified.
-The system cannot find the path specified.  ##  The system cannot find the path specified.
-The system cannot find the specified file/directory.  ##  The system cannot find the specified file/directory.
+Hindi mahanap ng "system" ang "file" na iyong pinili.  ##  The system cannot find the file specified.
+Hindi mahanap ng "system" ang "path" na iyong pinili.  ##  The system cannot find the path specified.
+Hindi mahanap ng "system" ang "file" o "path" na iyong pinili.  ##  The system cannot find the specified file/directory.
 Mali ang "Type".  ##  Type mismatch.
-Cannot create a file/directory when that file/directory already exists.  ##  Cannot create a file/directory when that file/directory already exists.
-The system cannot write to the specified device.  ##  The system cannot write to the specified device.
+Hindi makagawa ng "file/directory" kung kasalukuyan ay meron na.  ##  Cannot create a file/directory when that file/directory already exists.
+Ang "system" ay hindi makasulat sa piniling "device".  ##  The system cannot write to the specified device.
 Mali ang "Property Value".  ##  Invalid Property Value.
 This operation returned because the timeout period expired.  ##  This operation returned because the timeout period expired.
 System level interrupt interrupted socket operation.  ##  System level interrupt interrupted socket operation.
@@ -140,7 +140,7 @@ Could not deliver message.  ##  Could not deliver message.
 Failed to change password  ##  Failed to change password
 Disconnected due to inactivity rule  ##  Disconnected due to inactivity rule
 %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s  ##  %s (%d)\r\nMTU: %d\r\nTotal  in: %s\r\nTotal out: %s
-<< VPN not established yet >>  ##  << VPN not established yet >>
+<&lt; VPN not established yet >&gt;  ##  << VPN not established yet >>
 Reconnect in %d seconds.  ##  Reconnect in %d seconds.
 segundos  ##  seconds
 No network  ##  No network

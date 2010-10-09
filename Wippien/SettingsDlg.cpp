@@ -604,11 +604,11 @@ LRESULT CSettingsDlg::CSettingsJID::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Office"));
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Laptop"));
 	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)_Settings.Translate("Desktop"));
-	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)WIPPIENIM);
+	SendMessage(GetDlgItem(IDC_RESOURCE), CB_ADDSTRING, 0, (LPARAM)WIPPIENIM3);
 	if (!_Settings.m_Resource.Length())
 	{
-		_Settings.m_Resource = WIPPIENIM;
-		_Settings.m_StaticResource = WIPPIENIM;
+		_Settings.m_Resource = "Wippien";
+		_Settings.m_StaticResource = "Wippien";
 	}
 
 	CComBSTR2 res = _Settings.m_StaticResource;

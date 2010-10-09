@@ -29,7 +29,8 @@ typedef std::vector<CxImage *> IMAGESLIST;
 extern char *GROUP_GENERAL;
 extern char *GROUP_OFFLINE;
 
-#define WIPPIENIM	"WippienIM3"
+#define WIPPIENIM3	"WippienIM3"
+#define WIPPIENIM4	"WippienIM4"
 #define REFRESHUSERDETAILS			21600L // 6 hours
 
 

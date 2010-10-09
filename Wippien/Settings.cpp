@@ -544,10 +544,10 @@ int CSettings::LoadConfig(void)
 				ReadSettingsCfg(wip, "Password", m_Password, "");
 			}
 			ReadSettingsCfg(wip, "UseSSLWrapper", &m_UseSSLWrapper, FALSE);
-			ReadSettingsCfg(wip, "Resource", m_Resource, WIPPIENIM);
+			ReadSettingsCfg(wip, "Resource", m_Resource, WIPPIENIM3);
 			if (!m_Resource.Length())
 			{
-				m_Resource = WIPPIENIM;
+				m_Resource = "Wippien";
 			}
 			m_StaticResource = m_Resource;
 

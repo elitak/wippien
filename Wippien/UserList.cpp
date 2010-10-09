@@ -634,7 +634,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 									m_SortedUsersBuffer.Clear();
 									user->m_Online = TRUE;	
 									time(&user->m_LastOnline);
-									if (!user->m_IsUsingWippien)
+									if (!user->m_IsUsingWippien3)
 									{
 										CComBSTR2 r;
 #ifndef _WODXMPPLIB
@@ -645,16 +645,25 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										WODXMPPCOMLib::XMPP_Contact_GetCapabilities(contact, rsbuf, &rsbuflen);
 										r = rsbuf;
 #endif
-										if (strstr(r.ToString(), WIPPIENIM))
+										if (strstr(r.ToString(), WIPPIENIM4))
 										{
-											user->m_IsUsingWippien = TRUE;
+											user->m_IsUsingWippien3 = TRUE;
+											user->m_IsUsingWippien4 = TRUE;
+											user->m_WippienState = WipWaitingInitRequest;
+											user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
+											user->SetTimer(rand()%10 * 500, 3);
+										}
+										else
+										if (strstr(r.ToString(), WIPPIENIM3))
+										{
+											user->m_IsUsingWippien3 = TRUE;
 											user->m_WippienState = WipWaitingInitRequest;
 											user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 											user->SetTimer(rand()%10 * 500, 3);
 										}
 									}
 #ifdef _WODXMPPLIB
-									if (!user->m_IsUsingWippien)
+									if (!user->m_IsUsingWippien3)
 									{
 										char nickbuff[1024];
 										int nickbuflen = sizeof(nickbuff);
@@ -707,12 +716,12 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 															user->m_bstrVisibleName.FromUTF8String(user->m_VisibleName);
 														}
 
-														if (!user->m_IsUsingWippien)
+														if (!user->m_IsUsingWippien3)
 														{
-															user->m_IsUsingWippien = TRUE;
+															user->m_IsUsingWippien3 = TRUE;
 															user->m_IsAlienWippien = TRUE;
 														}
-														if (user->m_IsUsingWippien && _Ethernet.m_Available)
+														if (user->m_IsUsingWippien3 && _Ethernet.m_Available)
 														{
 																// send presence notification to user
 																Buffer raw;
@@ -773,10 +782,15 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 										WODXMPPCOMLib::XMPP_Contact_GetCapabilities(contact, rsbuf, &rsbuflen);
 										r = rsbuf;
 #endif
-										if (!user->m_IsUsingWippien && strstr(r.ToString(), WIPPIENIM))
-												user->m_IsUsingWippien = TRUE;
-										if (!user->m_IsUsingWippien && res && res && !strcmp(res, WIPPIENIM))
-												user->m_IsUsingWippien = TRUE;
+										if (!user->m_IsUsingWippien3 && strstr(r.ToString(), WIPPIENIM3))
+												user->m_IsUsingWippien3 = TRUE;
+										if (!user->m_IsUsingWippien3 && res && res && !strcmp(res, WIPPIENIM3))
+												user->m_IsUsingWippien3 = TRUE;
+										if (!user->m_IsUsingWippien4 && strstr(r.ToString(), WIPPIENIM4))
+										{
+												user->m_IsUsingWippien3 = TRUE;
+												user->m_IsUsingWippien4 = TRUE;
+										}
 
 
 #ifndef _WODXMPPLIB
@@ -804,7 +818,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 #endif
 
 										// also check by resource (obsolete!)
-										if (!user->m_IsUsingWippien)
+										if (!user->m_IsUsingWippien3)
 										{
 #ifndef _WODXMPPLIB
 											if (SUCCEEDED(contact->get_Resource(&r)))
@@ -822,7 +836,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 												do 
 												{
 													line = b.GetNextLine();
-													if (line && !strncmp(line, WIPPIENIM, strlen(WIPPIENIM)))
+													if (line && !strncmp(line, WIPPIENIM3, strlen(WIPPIENIM3)))
 													{
 														// yes he is, request init details
 														user->SetTimer(rand()%1000, 3);
@@ -832,7 +846,7 @@ void CUserList::RefreshUser(void *cntc, char *chatroom1)
 											}	
 										}
 
-										if (user->m_IsUsingWippien)
+										if (user->m_IsUsingWippien3)
 										{
 											// yes he is, request init details
 											user->SetTimer(rand()%1000, 3);
@@ -1439,7 +1453,7 @@ BOOL CUserList::ConnectIfPossible(CUser *user, BOOL perform)
 		}
 		else
 		{
-			if (user->m_IsUsingWippien)
+			if (user->m_IsUsingWippien3)
 				user->ExchangeWippienDetails();
 		}
 	}
@@ -1896,6 +1910,16 @@ LRESULT CUserList::OnRButtonDown(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
 					SetMenuItemInfo(h, ID_POPUP1_DELETE, FALSE, &lpmii);
 				
 				}
+
+				lpmii.fMask = MIIM_STRING | MIIM_DATA;
+				lpmii.dwTypeData = _Settings.Translate("&Rename");
+				SetMenuItemInfo(h, ID_POPUP1_RENAME, FALSE, &lpmii);
+
+				lpmii.fMask = MIIM_STRING | MIIM_DATA;
+				lpmii.dwTypeData = _Settings.Translate("&Delete");
+				SetMenuItemInfo(h, ID_POPUP1_DELETE, FALSE, &lpmii);
+
+
 
 				AddMenuImage(ID_PNG1_RENAME, ID_POPUP1_RENAME);
 				AddMenuImage(ID_PNG1_DELETE, ID_POPUP1_DELETE);

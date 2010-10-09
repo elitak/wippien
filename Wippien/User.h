@@ -166,8 +166,7 @@ public:
 	time_t m_LastOnline;
 	CChatRoom *m_ChatRoomPtr;
 	//Buffer *m_IsWippien;
-	BOOL m_IsUsingWippien;
-	BOOL m_IsAlienWippien;
+	BOOL m_IsUsingWippien3, m_IsUsingWippien4, m_IsAlienWippien;
 
 
 	void SetSubtext(void);

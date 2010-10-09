@@ -420,17 +420,16 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 							if (IsValid) // let's check gateways too
 							{
 								BOOL found = FALSE;
-								if (!Gateway)
-									found = TRUE;
+								BOOL gset = FALSE;
 
 								IP_ADDR_STRING* pNext = NULL;
 								pNext = &(ad_info->GatewayList);
-								while(pNext) 
+								if (!pNext && !Gateway)
+									found = TRUE;
+								else
 								{
-									found = FALSE;
-
-									if (Gateway)
-									{
+									while(pNext && !found) 
+									{	
 										// is our IP on the list?
 										struct  in_addr sa;
 										sa.S_un.S_addr = _Settings.m_Gateway;
@@ -439,14 +438,15 @@ DWORD CEthernet::DoRenewRelease(BOOL ReleaseOnly)
 										{
 											if (!strcmp(pNext->IpAddress.String, ips))
 												found = TRUE;
-										}
-									}
-									else
-										if (!strcmp(pNext->IpAddress.String, ""))
-											found = TRUE;
 
-										
-									pNext = pNext->Next;
+											if (strcmp(pNext->IpAddress.String, "") && strcmp(pNext->IpAddress.String, "0.0.0.0"))
+												gset = TRUE;
+
+										}
+										pNext = pNext->Next;
+									}
+									if (!gset && !Gateway)
+										found = TRUE;
 								}
 
 								if (!found)

@@ -491,7 +491,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 			char subjbuff[1024];
 			int subjbufflen = sizeof(subjbuff);
 			int consumetextcount = 0;
-			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3)//::MsgHeadline)
+			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3 || 
+				msgtype == (WODXMPPCOMLib::MessageTypesEnum)0)//::Normal)
 			{
 				//				ATLTRACE("Got message from remote peer\r\n");
 #ifndef _WODXMPPLIB
@@ -535,34 +536,35 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 						if (!strncmp(r1+1, WIPPIENINITREQUEST, strlen(WIPPIENINITREQUEST)))
 						{
 							subj = WIPPIENINITREQUEST;
-							msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+							msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
 							consumetextcount += strlen(WIPPIENINITREQUEST)+2;
 						}
 						else
 							if (!strncmp(r1+1, WIPPIENINITRESPONSE, strlen(WIPPIENINITRESPONSE)))
 							{
 								subj = WIPPIENINITRESPONSE;
-								msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+								msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
 								consumetextcount += strlen(WIPPIENINITRESPONSE)+2;
 							}
 							else
 								if (!strncmp(r1+1, WIPPIENCONNECT, strlen(WIPPIENCONNECT)))
 								{
 									subj = WIPPIENCONNECT;
-									msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+									msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
 								}
 								else
 									if (!strncmp(r1+1, WIPPIENDISCONNECT, strlen(WIPPIENDISCONNECT)))
 									{
 										subj = WIPPIENDISCONNECT;
-										msgtype = (WODXMPPCOMLib::MessageTypesEnum)3;
+										msgtype = (WODXMPPCOMLib::MessageTypesEnum)0;
 									}
 					}
 				}
 				
 			}
 			
-			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3)//::MsgHeadline)
+			if (msgtype == (WODXMPPCOMLib::MessageTypesEnum)3 ||
+				msgtype == (WODXMPPCOMLib::MessageTypesEnum)0 )//::MsgHeadline or normal)
 			{
 				{
 					if (subj == WIPPIENINITREQUEST && Contact)
@@ -615,9 +617,9 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									user->DumpToFileFixed("Got WIPPIENINITREQUEST\r\n");
 									
 									// since this message arrived, he *MUST* be using wippien, isn't he?
-									user->m_IsUsingWippien = TRUE;
+									user->m_IsUsingWippien3 = TRUE;
 									
-									if (user->m_IsUsingWippien)
+									if (user->m_IsUsingWippien3)
 									{
 										if (out.Len()>=4)
 										{
@@ -750,7 +752,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 									memcpy(src, out.Ptr(), 128);
 									if (RSA_private_decrypt(128, (unsigned char *)src, (unsigned char *)dst,  _Settings.m_RSA, RSA_PKCS1_PADDING) < 0)
 									{
-										user->m_IsUsingWippien = TRUE; // obviously...
+										user->m_IsUsingWippien3 = TRUE; // obviously...
 										user->m_WippienState = WipWaitingInitRequest;
 										user->DumpToFile("WippienState set to %s\r\n", WippienStateString[user->m_WippienState]);
 										user->SetTimer(rand()%100, 3);
@@ -910,11 +912,11 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							}
 							if (user && !user->m_Block)
 							{
-								if (user->m_IsUsingWippien)
+								if (user->m_IsUsingWippien3)
 									user->SendConnectionRequest(FALSE);
 								else
 								{
-									user->m_IsUsingWippien = TRUE;
+									user->m_IsUsingWippien3 = TRUE;
 									user->SetTimer(rand()%100, 3);
 								}
 							}
@@ -1335,7 +1337,7 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 	else
 	{
 		if (_Ethernet.m_Available)
-			l += WIPPIENIM;
+			l += WIPPIENIM3;
 		else
 			l += "WippienNoAdapter";
 	}
@@ -1371,11 +1373,13 @@ void CJabber::Connect(char *JID, char *pass, char *hostname, int port, BOOL uses
 		char buff[1024] = {0};
 		int bflen = sizeof(buff);
 		WODXMPPCOMLib::XMPP_GetCapabilities(m_Jabb, buff, &bflen);
-		if (!strstr(buff, WIPPIENIM))
+		if (!strstr(buff, WIPPIENIM3))
 		{
 			if (strlen(buff))
 				strcat(buff, " ");
-			strcat(buff, WIPPIENIM);
+			strcat(buff, WIPPIENIM3);
+			strcat(buff, " ");
+			strcat(buff, WIPPIENIM4);
 			WODXMPPCOMLib::XMPP_SetCapabilities(m_Jabb, buff);
 		}
 	}
@@ -1625,13 +1629,13 @@ void CJabber::ExchangeWippienDetails(CUser *User, char *Subj, Buffer *Text)
 
 
 #ifndef _WODXMPPLIB
-	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgHeadline*/3);
+	msg->put_Type((WODXMPPCOMLib::MessageTypesEnum)/*WODXMPPCOMLib::MessageTypesEnum::MsgNormal*/User->m_IsUsingWippien4?0:3);
 	CComBSTR t = Subj;
 	msg->put_Subject(t);
 	CComBSTR thr = "ExchangeDetailsThread";
 	msg->put_Thread(thr);
 #else
-	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)3);
+	WODXMPPCOMLib::XMPP_Message_SetType(msg, (WODXMPPCOMLib::MessageTypesEnum)(User->m_IsUsingWippien4?0:3));
 	WODXMPPCOMLib::XMPP_Message_SetSubject(msg, Subj);
 	WODXMPPCOMLib::XMPP_Message_SetThread(msg, "ExchangeDetailsThread");
 #endif
@@ -1661,7 +1665,7 @@ void CJabber::ExchangeWippienDetails(CUser *User, char *Subj, Buffer *Text)
 #endif
 	}
 
-	if (User->m_IsUsingWippien)
+	if (User->m_IsUsingWippien3)
 	{
 #ifndef _WODXMPPLIB
 	CComBSTR j5 = User->m_IsWippien->Ptr();

@@ -241,7 +241,8 @@ CUser::CUser()
 	m_AllowedRemoteAny = m_AllowedRemoteMediator = TRUE;
 	m_HisVirtualIP = 0;
 
-	m_IsUsingWippien = NULL;
+	m_IsUsingWippien3 = FALSE;
+	m_IsUsingWippien4 = FALSE;
 	m_MyRandom = m_HisRandom = 0;
 	ReInit(TRUE);
 	m_MTU = 0;
@@ -360,7 +361,7 @@ void CUser::ReInit(BOOL WithDirect)
 		m_MyRandom = (rand()%1024)+1;
 	}
 	if (m_WippienState != WipConnected)
-		m_IsUsingWippien = FALSE;
+		m_IsUsingWippien3 = FALSE;
 
 	SetDebugLogFile();
 	if (WithDirect)
@@ -612,10 +613,10 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			varempty.vt = VT_ERROR;
 
 #ifdef _WODVPNLIB
-			WODVPNCOMLib::VPN_SetRetryCount(m_wodVPN, 30);
+			WODVPNCOMLib::VPN_SetRetryCount(m_wodVPN, 15);
 			WODVPNCOMLib::VPN_SetRetryWait(m_wodVPN, 500);
 			WODVPNCOMLib::VPN_SetThreads(m_wodVPN, TRUE);
-			WODVPNCOMLib::VPN_SetTimeout(m_wodVPN, 15);
+			WODVPNCOMLib::VPN_SetTimeout(m_wodVPN, 10);
 			long port = 0;
 			if (_Settings.m_VPNSocketDebugFolder.Length())
 			{
@@ -652,7 +653,7 @@ void CUser::SendConnectionRequest(BOOL Notify)
 			CComBSTR2 hisid2 = hisid;
 			WODVPNCOMLib::VPN_Search(m_wodVPN, (WODVPNCOMLib::SearchEnum)0, hisid2.ToString(), varhost, varport, varempty);
 #else
-			m_wodVPN->RetryCount = 30;
+			m_wodVPN->RetryCount = 10;
 			m_wodVPN->RetryWait = 500;
 			m_wodVPN->Threads = TRUE;
 			m_wodVPN->Timeout = 8;
@@ -788,7 +789,7 @@ void CUser::FdTimer(int TimerID)
 				}
 				b.PutInt(m_MyRandom); // add random value to append to VPN request
 
-				if (m_IsUsingWippien)
+				if (m_IsUsingWippien3)
 				{
 					DumpToFile("Sending WIPPIENINITREQUEST, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 					_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENINITREQUEST, &b);
@@ -814,7 +815,7 @@ void CUser::FdTimer(int TimerID)
 				b.PutInt(m_MyMediatorPort);
 				b.PutInt(m_MyMediatorChoice);
 
-				if (m_IsUsingWippien && !m_Block)
+				if (m_IsUsingWippien3 && !m_Block)
 				{
 					DumpToFile("Sending WIPPIENINITRESPONSE, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 					_Jabber->ExchangeWippienDetails(this , (char *)WIPPIENINITRESPONSE, &b);
@@ -834,7 +835,7 @@ void CUser::FdTimer(int TimerID)
 	else
 	if (TimerID == 8)
 	{
-		if (m_IsUsingWippien && !m_Block && m_HisVirtualIP)
+		if (m_IsUsingWippien3 && !m_Block && m_HisVirtualIP)
 		{
 			switch (m_WippienState)
 			{
@@ -1415,16 +1416,18 @@ void CUser::NotifyDisconnect(void)
 	t.PutChar((char)m_WippienState);
 //	_Settings.ToHex(&t, &out);
 //	out.Append("\0", 1);
-	if (m_IsUsingWippien)
+	if (m_IsUsingWippien3)
 	{
 		DumpToFile("Sending WIPPIENDISCONNECT, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENDISCONNECT, &t);
 	}
 
 
-	BOOL iswip = m_IsUsingWippien;
+	BOOL iswip3 = m_IsUsingWippien3;
+	BOOL iswip4 = m_IsUsingWippien4;
 	ReInit(TRUE);
-	m_IsUsingWippien = iswip;
+	m_IsUsingWippien3 = iswip3;
+	m_IsUsingWippien4 = iswip4;
 }
 
 void CUser::NotifyConnect(void)
@@ -1434,7 +1437,7 @@ void CUser::NotifyConnect(void)
 	t.PutChar((char)m_WippienState);
 //	_Settings.ToHex(&t, &out);
 //	out.Append("\0", 1);
-	if (m_IsUsingWippien  && !m_Block)
+	if (m_IsUsingWippien3  && !m_Block)
 	{
 		DumpToFile("Sending WIPPIENCONNECT, WippienState %s, RemoteWippienState %s\r\n", WippienStateString[m_WippienState], WippienStateString[m_RemoteWippienState]);
 		_Jabber->ExchangeWippienDetails(this, (char *)WIPPIENCONNECT, &t);

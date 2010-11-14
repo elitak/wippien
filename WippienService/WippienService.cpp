@@ -134,8 +134,8 @@ inline HRESULT CServiceModule::RegisterServer(BOOL bRegTypeLib, BOOL bService)
     
     if (bService)
     {
-        key.SetStringValue(_T("WippienService"), _T("LocalService"));
-        key.SetStringValue(_T("-Service"), _T("ServiceParameters"));
+        key.SetValue(_T("WippienService"), _T("LocalService"));
+        key.SetValue(_T("-Service"), _T("ServiceParameters"));
         // Create service
         Install();
     }
@@ -485,7 +485,7 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
 
     TCHAR szValue[_MAX_PATH];
     DWORD dwLen = _MAX_PATH;
-    lRes = key.QueryStringValue(szValue, _T("LocalService"), &dwLen);
+    lRes = key.QueryValue(szValue, _T("LocalService"), &dwLen);
 
     _Module.m_bService = FALSE;
     if (lRes == ERROR_SUCCESS)

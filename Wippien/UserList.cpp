@@ -1559,7 +1559,7 @@ LRESULT CUserList::OnLButtonDblClick(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 			return FALSE;
 		}
 
-		if (user->m_WippienState != WipConnected)
+		if (user->m_WippienState != WipConnected || user->m_RemoteWippienState != WipConnected)
 		{
 			if (!ConnectIfPossible(user, TRUE))
 			{

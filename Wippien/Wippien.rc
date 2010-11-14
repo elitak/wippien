@@ -1384,7 +1384,7 @@ BEGIN
             VALUE "FileDescription", "Wippien Module\0"
             VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "Wippien\0"
-            VALUE "LegalCopyright", "Copyright 2006-2008\0"
+            VALUE "LegalCopyright", "Copyright 2006-2010\0"
             VALUE "OriginalFilename", "Wippien.EXE\0"
             VALUE "ProductName", "Wippien Executable\0"
             VALUE "ProductVersion", STRFILEVER

@@ -15,7 +15,8 @@ char gStatus[1024] = {0};
 extern char gJID[1024], gPassword[1024];
 #endif
 
-#define WIPPIENRESOURCE			"WippienIM3"
+#define WIPPIENRESOURCE3			"WippienIM3"
+#define WIPPIENRESOURCE4			"WippienIM4"
 #ifdef _WIPPIENSERVICE
 #define MYRESOURCE				"WippienService"
 #else
@@ -436,9 +437,11 @@ void CJabberLib::EventIncomingMessage(void *wodXMPP, void  *Contact, void *ChatR
 	if (!WODXMPP::XMPP_GetTag(wodXMPP, (void **)&me))
 	{
 		int type = 0;
+		int usrtype = me->IsRemoteWippienUser(Contact);
+
 		if (!WODXMPP::XMPP_Message_GetType(Message, (WODXMPP::MessageTypesEnum *)&type))
 		{
-			if (type == 3) // this is how we exchange messages
+			if (usrtype && (type == 3 || (type == 0 && usrtype == 2))) // this is how we exchange messages
 			{
 				if (me->IsRemoteWippienUser(Contact))
 				{
@@ -981,7 +984,7 @@ CUser *CJabberLib::GetUserByJID(char *jid, char *res)
 	return us;
 }
 
-BOOL CJabberLib::IsRemoteWippienUser(void *Contact)
+int CJabberLib::IsRemoteWippienUser(void *Contact)
 {
 	// get JID
 	char subjbuff[16384];
@@ -989,20 +992,28 @@ BOOL CJabberLib::IsRemoteWippienUser(void *Contact)
 	subjbuff[0] = 0;
 	if (!WODXMPP::XMPP_Contact_GetResource(Contact, subjbuff, &bflen))
 	{
-		if (!strcmp(subjbuff, WIPPIENRESOURCE))
+		if (!strcmp(subjbuff, WIPPIENRESOURCE4))
 		{
-			return TRUE;
+			return 2;
+		}
+		if (!strcmp(subjbuff, WIPPIENRESOURCE3))
+		{
+			return 1;
 		}
 	}
 	bflen = sizeof(subjbuff);
 	if (!WODXMPP::XMPP_Contact_GetCapabilities(Contact, subjbuff, &bflen))
 	{
-		if (strstr(subjbuff, WIPPIENRESOURCE))
+		if (strstr(subjbuff, WIPPIENRESOURCE4))
 		{
-			return TRUE;
+			return 2;
+		}
+		if (strstr(subjbuff, WIPPIENRESOURCE3))
+		{
+			return 1;
 		}
 	}
-	return FALSE;
+	return 0;
 }
 
 // methods
@@ -1019,10 +1030,16 @@ void CJabberLib::Connect(char *JID, char *Password)
 	int bflen = sizeof(buff);
 	if (!WODXMPP::XMPP_GetCapabilities(m_Handle, buff, &bflen))
 	{
-		if (!strstr(buff, WIPPIENRESOURCE))
+		if (!strstr(buff, WIPPIENRESOURCE3))
 		{
 			strcat(buff, " ");
-			strcat(buff, WIPPIENRESOURCE);
+			strcat(buff, WIPPIENRESOURCE3);
+			WODXMPP::XMPP_SetCapabilities(m_Handle, buff);
+		}
+		if (!strstr(buff, WIPPIENRESOURCE4))
+		{
+			strcat(buff, " ");
+			strcat(buff, WIPPIENRESOURCE4);
 			WODXMPP::XMPP_SetCapabilities(m_Handle, buff);
 		}
 	}

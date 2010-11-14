@@ -38,7 +38,7 @@ public:
 	LVITEM *GetItemByJID(char *JID, char *resource);
 #endif
 	CUser *GetUserByJID(char *JID, char *resource);
-	BOOL IsRemoteWippienUser(void *Contact);
+	int IsRemoteWippienUser(void *Contact);
 	int PutBignum(BIGNUM *value, char *data);
 	void ExchangeWippienDetails(CUser *user, BOOL NotifyConnect);
 	void DisconnectAllUsers(void);

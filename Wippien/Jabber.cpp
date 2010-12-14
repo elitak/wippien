@@ -700,6 +700,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							}
 						}
 					}
+					else
 					if (subj == WIPPIENINITRESPONSE && Contact)
 					{
 						if (!_Ethernet.m_Available) return; // ignore if ethernet is not available
@@ -841,6 +842,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							}
 						}
 					}
+					else
 					if (subj == WIPPIENDISCONNECT && Contact)
 					{
 						//						ATLTRACE("Got DISCONNECT message\r\n");
@@ -863,6 +865,7 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							}
 						}
 					}
+					else
 					if (subj == WIPPIENCONNECT && Contact)
 					{
 						// reinit...
@@ -922,6 +925,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 							}
 						}
 					}			
+					else
+						goto valid_message_hack;
 				}
 			}
 			else
@@ -929,6 +934,8 @@ void __stdcall CJabberEvents::DispIncomingMessage(WODXMPPCOMLib::IXMPPContact *C
 				if (!ChatRoom || msgtype != /*MgrGroupChat*/2)
 				{
 				
+valid_message_hack:
+
 					CComBSTR2 j;
 	#ifndef _WODXMPPLIB
 					Contact->get_JID(&j);

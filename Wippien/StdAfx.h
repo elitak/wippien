@@ -54,6 +54,7 @@ extern CAppModule _Module;
 #endif
 
 //#define _SKINMAGICKEY "put_licensekey_here"
+#define _SKINMAGICKEY "459A5E5A528750D3"
 
 
 void DumpDebug(char *text,...);

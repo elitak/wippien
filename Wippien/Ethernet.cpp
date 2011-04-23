@@ -89,19 +89,15 @@ void CEthernet::Die(void)
 	// tell everyone to die
 	SetEvent(DieHandle);
 	
-	// should we disconnect?
-	if (!strcmp(m_AdapterName, WIPP_COMPONENT_ID))
+	// in 2.4 we have add mediastatus
+	if (_Settings.m_DisconnectEthernetOnExit)
 	{
-		// in 2.4 we have add mediastatus
-		if (_Settings.m_DisconnectEthernetOnExit)
+		unsigned long len;
+		unsigned long mediaon = FALSE;
+		len = sizeof(mediaon);
+		if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
 		{
-			unsigned long len;
-			unsigned long mediaon = FALSE;
-			len = sizeof(mediaon);
-			if (DeviceIoControl(m_AdapterHandle, WIPP_IOCTL_SET_MEDIA_STATUS, &mediaon, sizeof(mediaon), &mediaon, sizeof(mediaon), &len, NULL))
-			{
-				//				MessageBeep(-1);
-			}
+			//				MessageBeep(-1);
 		}
 	}
 	

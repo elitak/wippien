@@ -18,7 +18,7 @@
 #endif
 
 #define WIPP_DRIVER_MAJOR_VERSION 2
-#define WIPP_DRIVER_MINOR_VERSION 4
+#define WIPP_DRIVER_MINOR_VERSION 5
 
 //======================
 // Filesystem prefixes
@@ -29,8 +29,8 @@
 #define USERDEVICEDIR     "\\DosDevices\\Global\\"
 #define WIPPSUFFIX        ".wip"
 #define TAPSUFFIX         ".tap"
-#define WIPP_COMPONENT_ID "wip0204"
-#define WIPP_COMPONENT_ID_OLDER "wip0203"
+#define WIPP_COMPONENT_ID "wip0205"
+#define WIPP_COMPONENT_ID_OLDER "wip0204"
 #define TAP_COMPONENT_ID "tap0901"
 
 //=================

@@ -28,6 +28,7 @@
 #define SYSDEVICEDIR      "\\Device\\"
 #define USERDEVICEDIR     "\\DosDevices\\Global\\"
 #define WIPPSUFFIX        ".wod"
+#define WIPPSUFFIX_OLDER  ".wip"
 #define TAPSUFFIX         ".tap"
 #define WIPP_COMPONENT_ID "wod0205"
 #define WIPP_COMPONENT_ID_OLDER "wip0204"

@@ -142,6 +142,7 @@ void CEthernet::GetMac(MACADDR src, char dst[18])
 
 BOOL CEthernet::InitAdapter(void)
 {
+	char *wipsuffix = WIPPSUFFIX;
 	if (!GetAdapterGuid(WIPP_COMPONENT_ID))
 	{
 		if (!GetAdapterGuid(WIPP_COMPONENT_ID_OLDER))
@@ -149,13 +150,16 @@ BOOL CEthernet::InitAdapter(void)
 			return FALSE;
 		}
 		else
+		{
 			m_AdapterName = WIPP_COMPONENT_ID_OLDER;
+			wipsuffix = WIPPSUFFIX_OLDER;
+		}
 	}
 	else
 		m_AdapterName = WIPP_COMPONENT_ID;
 
 	char bname[1024];
-	sprintf(bname, "%s%s%s", USERMODEDEVICEDIR, m_Guid, WIPPSUFFIX);
+	sprintf(bname, "%s%s%s", USERMODEDEVICEDIR, m_Guid, wipsuffix);
 	m_AdapterHandle  = CreateFile(bname,
 		GENERIC_READ | GENERIC_WRITE,
 		0, /* was: FILE_SHARE_READ */

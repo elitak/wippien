@@ -27,9 +27,9 @@
 #define USERMODEDEVICEDIR "\\\\.\\Global\\"
 #define SYSDEVICEDIR      "\\Device\\"
 #define USERDEVICEDIR     "\\DosDevices\\Global\\"
-#define WIPPSUFFIX        ".wip"
+#define WIPPSUFFIX        ".wod"
 #define TAPSUFFIX         ".tap"
-#define WIPP_COMPONENT_ID "wip0205"
+#define WIPP_COMPONENT_ID "wod0205"
 #define WIPP_COMPONENT_ID_OLDER "wip0204"
 #define TAP_COMPONENT_ID "tap0901"
 

@@ -110,7 +110,7 @@ BOOL CALLBACK DialogFunc(HWND hdwnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 		_Ethernet = new CEthernet();
 
 
-	if (!_Ethernet->InitAdapter() && !_Ethernet->InitOpenVPNAdapter())
+	if (!_Ethernet->InitAdapter())
 	{
 		MessageBox(NULL, "Failed to open Network adapter", "Network error", MB_OK);
 	}

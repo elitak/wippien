@@ -39,7 +39,12 @@ BOOL LoadConfig(void)
 	strcpy(tempbuff, __argv[0]);
 	strcat(tempbuff, ".config");
 	FILE *stream = fopen(tempbuff, "rt");
-	
+	if (!stream)
+	{
+		strcpy(tempbuff, __argv[0]);
+		strcat(tempbuff, ".txt");
+		stream = fopen(tempbuff, "rt");
+	}
 	if (stream)
 	{
 		tempbuff[0] = 0;
@@ -500,7 +505,7 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
 		_Ethernet = new CEthernet();
 
 
-		if (_Ethernet->InitAdapter() || _Ethernet->InitOpenVPNAdapter())
+		if (_Ethernet->InitAdapter())
 		{
 			_Module.LogEvent("Connecting to the XMPP server." );
 			
